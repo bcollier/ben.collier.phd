@@ -4,85 +4,130 @@
 #   ./scripts/setup_github.sh                    # uses defaults below
 #   ./scripts/setup_github.sh myuser my-repo     # override owner / repo
 #
-# Auth: either `gh auth login` first, or export GITHUB_TOKEN with 'repo' scope.
+# Auth, in order of preference:
+#   export GITHUB_TOKEN=...   a token that can create repos (see below)
+#   gh auth login             interactive
+#
+# If the repo already exists, this script skips creation and just pushes.
 
 set -euo pipefail
 
 OWNER="${1:-bcollier}"
 REPO="${2:-ben.collier.phd}"
 BRANCH="main"
+API="https://api.github.com"
 
 cd "$(dirname "$0")/.."
 
 echo "==> Target: https://github.com/${OWNER}/${REPO}"
 
-have_gh_auth() { command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; }
+token=""
+if [ -n "${GITHUB_TOKEN:-}" ]; then
+  token="${GITHUB_TOKEN}"
+elif command -v gh >/dev/null 2>&1 && gh auth status >/dev/null 2>&1; then
+  token="$(gh auth token 2>/dev/null || true)"
+fi
 
-create_with_gh() {
-  echo "==> Creating repo with gh"
-  gh repo create "${OWNER}/${REPO}" --public --disable-wiki --source=. --remote=github --push
-}
-
-create_with_api() {
-  echo "==> Creating repo with the GitHub API"
-  local auth_user payload endpoint
-  auth_user="$(curl -fsS -H "Authorization: Bearer ${GITHUB_TOKEN}" https://api.github.com/user | sed -n 's/.*"login": *"\([^"]*\)".*/\1/p' | head -1)"
-  payload="{\"name\":\"${REPO}\",\"private\":false,\"has_wiki\":false,\"description\":\"Faculty site for Ben Collier — ben.collier.phd\"}"
-
-  if [ "${auth_user}" = "${OWNER}" ]; then
-    endpoint="https://api.github.com/user/repos"
-  else
-    endpoint="https://api.github.com/orgs/${OWNER}/repos"
-  fi
-
-  curl -fsS -X POST "${endpoint}" \
-    -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-    -H "Accept: application/vnd.github+json" \
-    -d "${payload}" >/dev/null || echo "   (repo may already exist — continuing)"
-
-  git remote remove github 2>/dev/null || true
-  git remote add github "https://x-access-token:${GITHUB_TOKEN}@github.com/${OWNER}/${REPO}.git"
-  git push -u github "${BRANCH}"
-}
-
-enable_pages() {
-  local token="${GITHUB_TOKEN:-}"
-  if [ -z "${token}" ] && have_gh_auth; then
-    token="$(gh auth token)"
-  fi
-  [ -z "${token}" ] && { echo "==> Skipping Pages API (no token); enable it in Settings → Pages"; return; }
-
-  echo "==> Enabling GitHub Pages from ${BRANCH} / root"
-  curl -fsS -X POST "https://api.github.com/repos/${OWNER}/${REPO}/pages" \
-    -H "Authorization: Bearer ${token}" \
-    -H "Accept: application/vnd.github+json" \
-    -d "{\"source\":{\"branch\":\"${BRANCH}\",\"path\":\"/\"}}" >/dev/null \
-    || echo "   (Pages may already be enabled — continuing)"
-}
-
-if have_gh_auth; then
-  create_with_gh
-elif [ -n "${GITHUB_TOKEN:-}" ]; then
-  create_with_api
-else
+if [ -z "${token}" ]; then
   cat <<'EOF'
-No GitHub credentials found.
+No GitHub credentials found. Do one of these, then re-run:
 
-Do one of these first, then re-run this script:
+  gh auth login                  # interactive, easiest locally
+  export GITHUB_TOKEN=ghp_xxx    # classic token with 'repo' scope
 
-  gh auth login                       # interactive, recommended locally
-  export GITHUB_TOKEN=ghp_xxx         # a token with 'repo' scope
-
-Or create the repo by hand at https://github.com/new (name: ben.collier.phd),
-then:
-
-  git remote add github https://github.com/bcollier/ben.collier.phd.git
-  git push -u github main
+Or create the repo by hand at https://github.com/new (name: ben.collier.phd)
+and re-run this script — it will detect the repo and just push.
 EOF
   exit 1
 fi
 
-enable_pages
+api() {
+  # api <method> <path> [body]  -> prints "HTTP_STATUS<newline>BODY"
+  local method="$1" path="$2" body="${3:-}"
+  local args=(-sS -w '\n%{http_code}' -X "${method}" "${API}${path}"
+              -H "Authorization: Bearer ${token}"
+              -H "Accept: application/vnd.github+json"
+              -H "X-GitHub-Api-Version: 2022-11-28")
+  [ -n "${body}" ] && args+=(-d "${body}")
+  local out status
+  out="$(curl "${args[@]}")"
+  status="${out##*$'\n'}"
+  printf '%s\n%s' "${status}" "${out%$'\n'*}"
+}
+
+status_of() { printf '%s' "$1" | head -n 1; }
+
+repo_exists() {
+  local resp
+  resp="$(api GET "/repos/${OWNER}/${REPO}")"
+  [ "$(status_of "${resp}")" = "200" ]
+}
+
+explain_creation_failure() {
+  cat <<EOF
+
+!! The token cannot create repositories.
+
+GitHub requires the "Administration: Read and write" permission for
+POST /user/repos. Contents and Pages are not enough. Fine-grained tokens
+also cannot create repos inside an organization at all.
+
+Pick whichever is less annoying:
+
+  A. Create it in the browser (30 seconds, no new token)
+       https://github.com/new
+       Name: ${REPO}   Visibility: Public   Do NOT add a README
+     Then re-run this script. It will detect the repo and push.
+
+  B. Edit the token to add Administration
+       https://github.com/settings/personal-access-tokens
+       -> your token -> Repository permissions
+       -> Administration: Read and write -> Save
+     Then re-run this script.
+
+  C. Use a classic token with the whole 'repo' scope
+       https://github.com/settings/tokens
+
+EOF
+}
+
+if repo_exists; then
+  echo "==> Repo already exists, skipping creation"
+else
+  echo "==> Creating repo"
+  payload="{\"name\":\"${REPO}\",\"private\":false,\"has_wiki\":false,\"has_projects\":false,\"description\":\"Faculty site for Ben Collier — ben.collier.phd\"}"
+  resp="$(api POST "/user/repos" "${payload}")"
+  code="$(status_of "${resp}")"
+  case "${code}" in
+    201) echo "    created" ;;
+    403)
+      explain_creation_failure
+      exit 1
+      ;;
+    422) echo "    already exists (422), continuing" ;;
+    *)
+      echo "!! Unexpected response ${code} creating the repo:"
+      printf '%s\n' "${resp}" | tail -n +2 | head -c 600
+      echo
+      exit 1
+      ;;
+  esac
+fi
+
+echo "==> Pushing ${BRANCH}"
+git remote remove github 2>/dev/null || true
+git remote add github "https://github.com/${OWNER}/${REPO}.git"
+# Send the token via a header so it never lands in .git/config or the remote URL.
+git -c "http.https://github.com/.extraheader=Authorization: Bearer ${token}" \
+    push -u github "${BRANCH}"
+
+echo "==> Enabling GitHub Pages from ${BRANCH} / root"
+resp="$(api POST "/repos/${OWNER}/${REPO}/pages" "{\"source\":{\"branch\":\"${BRANCH}\",\"path\":\"/\"}}")"
+case "$(status_of "${resp}")" in
+  201|409) echo "    Pages is on" ;;
+  403) echo "    !! token lacks Pages: write — turn it on in Settings → Pages" ;;
+  *)    echo "    !! could not enable Pages automatically; do it in Settings → Pages" ;;
+esac
 
 cat <<EOF
 
@@ -90,6 +135,8 @@ Done.
 
   Repo:   https://github.com/${OWNER}/${REPO}
   Pages:  https://${OWNER}.github.io/${REPO}/     <- hand this in for class
+
+Pages can take a minute or two to build the first time.
 
 No custom domain is attached yet, on purpose: attaching one makes GitHub
 redirect the github.io URL, which would break the course link.
