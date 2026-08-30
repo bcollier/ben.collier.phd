@@ -1,0 +1,60 @@
+{
+  "students": [
+    {
+      "id": "michelle-min",
+      "name": "Michelle Min",
+      "role": "Graduate teaching assistant",
+      "years": "2025–26",
+      "program": "Tepper",
+      "linkedin": "https://www.linkedin.com/in/michelle-de-min",
+      "linkedin_slug": "michelle-de-min",
+      "photo": "assets/students/michelle-min.jpg",
+      "now": "",
+      "blurb": "TA across Data Mining, Data Visualization, AI Methods for Social and Visual Data, Machine Learning for Business Applications, and Modern Data Management."
+    },
+    {
+      "id": "annie-winkler",
+      "name": "Annie Winkler",
+      "role": "Part-time MSBA student · Class of 2027",
+      "years": "2025–",
+      "program": "MSBA",
+      "linkedin": "https://www.linkedin.com/in/annie-winkler-97799519a",
+      "linkedin_slug": "annie-winkler-97799519a",
+      "photo": "assets/students/annie-winkler.jpg",
+      "now": "HR Business Partner Associate, PNC",
+      "blurb": "Interviewed me for the Tepper School about what the MSBA is actually like — the decathlon of stats, ML, code, viz, and communication."
+    }
+  ],
+  "papers": [
+    {
+      "id": "capstone-slot-2026-a",
+      "title": "MSBA Capstone — Team A (title forthcoming)",
+      "students": [],
+      "year": "2026",
+      "kind": "capstone",
+      "summary": "Paste the project summary here once the team opts in: client context, question, method, and what changed because of the work.",
+      "link": "",
+      "status": "placeholder"
+    },
+    {
+      "id": "capstone-slot-2026-b",
+      "title": "MSBA Capstone — Team B (title forthcoming)",
+      "students": [],
+      "year": "2026",
+      "kind": "capstone",
+      "summary": "Paste the project summary here once the team opts in.",
+      "link": "",
+      "status": "placeholder"
+    },
+    {
+      "id": "independent-study-2026",
+      "title": "MSBA Independent Study (46-994)",
+      "students": [],
+      "year": "2026",
+      "kind": "independent-study",
+      "summary": "Add the paper or project title, a short abstract, and a PDF link when the student is ready to be listed.",
+      "link": "",
+      "status": "placeholder"
+    }
+  ]
+}

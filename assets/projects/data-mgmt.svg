@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#9a5a3a"/>
+  
+  <g fill="#f3efe6">
+    <ellipse cx="400" cy="140" rx="180" ry="40"/>
+    <ellipse cx="400" cy="250" rx="180" ry="40"/>
+    <ellipse cx="400" cy="360" rx="180" ry="40"/>
+  </g>
+  <g fill="none" stroke="#1b1714" stroke-width="3">
+    <line x1="220" y1="140" x2="220" y2="360"/>
+    <line x1="580" y1="140" x2="580" y2="360"/>
+  </g>
+
+</svg>

@@ -1,0 +1,30 @@
+{
+  "updated": "2026-08-30",
+  "note": "LinkedIn does not offer a public RSS feed. Add posts with scripts/add_linkedin_post.py or by editing this file. Tag student shout-outs with \"students\" so they appear on /students/.",
+  "posts": [
+    {
+      "id": "7470537380123418626",
+      "date": "2026-06-10",
+      "url": "https://www.linkedin.com/posts/bcollierphd_i-am-grateful-to-share-that-this-year-i-received-activity-7470537380123418626-UpKW",
+      "tags": ["students", "teaching", "news"],
+      "people": ["Tepper MBA Class of 2026"],
+      "text": "Grateful to receive the George Leland Bach Teaching Award — chosen by vote of the graduating MBA class. Many thanks to the students of the Class of 2026 for the curiosity, energy, and great conversations you brought to the classroom."
+    },
+    {
+      "id": "tepper-msba-annie-winkler",
+      "date": "2026-04-01",
+      "url": "https://www.linkedin.com/posts/carnegie-mellon-tepper-school-of-business_ever-wonder-what-its-actually-like-to-learn-activity-7455705367965175808-GDZl",
+      "tags": ["students", "teaching"],
+      "people": ["Annie Winkler"],
+      "text": "Part-time MSBA student Annie Winkler sat down with me for the Tepper School to talk about what the program is actually like. I compared it to a decathlon: statistics, machine learning, programming, visualization, and the communication skills to make it land in a business context."
+    },
+    {
+      "id": "6886708611205107712",
+      "date": "2022-01-11",
+      "url": "https://www.linkedin.com/posts/bcollierphd_foreign-language-annals-actfl-lanugage-activity-6886708611205107712-XRDw",
+      "tags": ["mentorship", "news"],
+      "people": ["Erin Gustafson"],
+      "text": "Very proud of our Duolingo research team for their peer-reviewed paper on language teaching efficacy — especially Erin Gustafson, for the perseverance it took to pull the project off."
+    }
+  ]
+}
