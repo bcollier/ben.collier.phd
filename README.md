@@ -1,64 +1,78 @@
-# Ben Collier — ben.collier.phd
+# ben.collier.phd
 
 Faculty site for [Ben Collier](https://www.linkedin.com/in/bcollierphd), Assistant Teaching Professor of Business Analytics at the Tepper School of Business, Carnegie Mellon University.
 
-Static HTML/CSS/JS. No CMS. **GitHub Pages** hosts the files (required for class). The public hostname is **https://ben.collier.phd**. The apex **collier.phd** should redirect there.
+Static HTML/CSS/JS. No build step for content edits, no CMS.
+
+- **Host:** GitHub Pages, from `main` at the repo root
+- **Course URL:** `https://<user>.github.io/ben.collier.phd/`
+- **Final URL:** `https://ben.collier.phd` (attach later — see below)
+- **Apex:** `collier.phd` redirects to `ben.collier.phd`
 
 ## Local preview
 
 ```bash
-python3 scripts/build.py
-python3 -m http.server 43217 --bind 0.0.0.0
-# or: npm start
+python3 scripts/build.py        # regenerate HTML after editing data/ or scripts/build.py
+python3 -m http.server 43217    # or: npm start
 ```
 
 Open [http://127.0.0.1:43217](http://127.0.0.1:43217).
 
-## GitHub Pages (course URL)
+## Put it on GitHub
 
-1. Push this repo to GitHub (`bcollier.github.io` → `https://bcollier.github.io/`, or any repo → `https://<user>.github.io/<repo>/`).
-2. Settings → Pages → Deploy from branch → `main` → `/ (root)`.
-3. Turn in the `*.github.io` URL GitHub shows.
+The repo should live at **`github.com/bcollier/ben.collier.phd`**.
 
-`.nojekyll` is present. Links are relative so project pages and user pages both work.
+```bash
+gh auth login                   # or: export GITHUB_TOKEN=ghp_xxx
+./scripts/setup_github.sh       # creates the repo, pushes main, turns on Pages
+```
 
-## Domains: ben.collier.phd + collier.phd redirect
+Override the defaults with `./scripts/setup_github.sh <owner> <repo>`.
 
-The `CNAME` file is `ben.collier.phd` — that is the GitHub Pages custom domain and the canonical site.
+Prefer clicking through it? Create `ben.collier.phd` at [github.com/new](https://github.com/new), then:
 
-### DNS for the site itself
+```bash
+git remote add github https://github.com/bcollier/ben.collier.phd.git
+git push -u github main
+```
+
+Then **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**. `.nojekyll` is committed, so GitHub serves the files as-is. All internal links are relative, so the site works both at a domain root and under `/ben.collier.phd/`.
+
+Hand in the `github.io` URL that Settings → Pages shows.
+
+## Custom domain (do this second)
+
+There is deliberately **no `CNAME` file in the repo yet**. Attaching a custom domain makes GitHub Pages redirect the `github.io` URL to that domain — which would break the link you turn in for class. Ship on `github.io` first.
+
+When you are ready, add DNS at your registrar for `collier.phd`:
 
 | Type | Name | Value |
 | --- | --- | --- |
 | `CNAME` | `ben` | `bcollier.github.io` |
 
-(If the GitHub Pages site is a project page, the CNAME target is still `bcollier.github.io`.)
+and a permanent (301) redirect: `collier.phd` → `https://ben.collier.phd/`. A Cloudflare Redirect Rule does this in one step. GitHub Pages only supports one custom domain per site, which is why the apex is a DNS-level redirect rather than a second `CNAME` file.
 
-### Redirect apex → subdomain
+Then:
 
-GitHub Pages only attaches **one** custom domain per site. Put the site on `ben.collier.phd`, then redirect the apex at your DNS host (Cloudflare, Namecheap, Google Domains, etc.):
+```bash
+./scripts/enable_domain.sh
+```
 
-- `collier.phd` → `https://ben.collier.phd/` (301 / permanent URL redirect)
-- `www.collier.phd` → `https://ben.collier.phd/` (optional)
-
-In Cloudflare, a Redirect Rule is enough. Do **not** put `collier.phd` in the repo `CNAME` file; that would make the apex the primary host.
-
-After DNS checks green in GitHub → Settings → Pages, enable **Enforce HTTPS**.
-
-Until DNS is live, graders should use the `github.io` URL. If GitHub starts redirecting `github.io` to `ben.collier.phd` before DNS works, temporarily remove `CNAME`.
+That writes `CNAME`, pushes, sets the Pages domain, and enables HTTPS enforcement.
 
 ## Paste / update content
 
 | What | Where |
 | --- | --- |
-| Full CV | `data/cv.md` → then `python3 scripts/build.py` |
-| Student roster + advised papers | `data/students.json` |
+| Full CV | `data/cv.md`, then `python3 scripts/build.py` |
+| Students, advised papers | `data/students.json` |
 | Course sample projects | `data/projects.json` |
 | LinkedIn shout-outs | `data/linkedin.json` or `scripts/add_linkedin_post.py` |
 | Student photos | `assets/students/<slug>.jpg` or `scripts/fetch_linkedin_photo.py` |
+| Paper PDFs | `papers/` |
 | Calendly | `js/config.js` |
 
-### Import a LinkedIn post (student highlights)
+### Import a LinkedIn post
 
 ```bash
 python3 scripts/add_linkedin_post.py \
@@ -69,17 +83,17 @@ python3 scripts/add_linkedin_post.py \
   --tags students teaching
 ```
 
+LinkedIn has no public RSS feed, so posts are stored as a static copy in `data/linkedin.json` and rendered on `/students/` and `/news/`.
+
 ### Fetch a LinkedIn photo
 
 ```bash
-python3 scripts/fetch_linkedin_photo.py \
-  --slug michelle-min \
-  --linkedin michelle-de-min
+python3 scripts/fetch_linkedin_photo.py --slug michelle-min --linkedin michelle-de-min
 ```
 
-Then set `"photo": "assets/students/michelle-min.jpg"` in `data/students.json` and rebuild if needed.
+Then point `"photo"` at it in `data/students.json`.
 
-### Advised paper / project summary
+### Add an advised paper
 
 In `data/students.json` → `papers`, replace a placeholder:
 
@@ -96,15 +110,13 @@ In `data/students.json` → `papers`, replace a placeholder:
 }
 ```
 
-Put PDFs in `papers/`.
-
 ## Site map
 
-- **Home** — photo, bio, courses built, student project strip
-- **Courses** — built / taught, with sample studio projects on each course page
+- **Home** — portrait, bio, courses built, student project strip
+- **Courses** — built and taught, each with sample student projects
 - **Students** — photos, advised papers, capstone log, LinkedIn highlights
 - **Materials** — notebooks, video, workshops
 - **Practice** — Hot Metal Data, gAIm Systems
-- **CV** — full vita from `data/cv.md`
+- **CV** — generated from `data/cv.md`
 - **News** — dated log
 - **Contact** — email, office, Calendly hook
