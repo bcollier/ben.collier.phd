@@ -23,11 +23,13 @@ Open [http://127.0.0.1:43217](http://127.0.0.1:43217).
 The repo should live at **`github.com/bcollier/ben.collier.phd`**.
 
 ```bash
-gh auth login                   # or: export GITHUB_TOKEN=ghp_xxx
+gh auth login                   # or: export GITHUB_TOKEN=...
 ./scripts/setup_github.sh       # creates the repo, pushes main, turns on Pages
 ```
 
 Override the defaults with `./scripts/setup_github.sh <owner> <repo>`.
+
+**Token permissions.** Creating a repository needs more than you might expect. A fine-grained token must have **Administration: Read and write** — `POST /user/repos` rejects Contents and Pages alone with `Resource not accessible by personal access token`. A classic token needs the whole `repo` scope. Simplest alternative: create the repo in the browser first, then re-run the script, which detects the existing repo and just pushes. For pushing and configuring Pages afterward, a fine-grained token only needs **Contents: write** and **Pages: write**.
 
 Prefer clicking through it? Create `ben.collier.phd` at [github.com/new](https://github.com/new), then:
 
@@ -91,7 +93,7 @@ LinkedIn has no public RSS feed, so posts are stored as a static copy in `data/l
 python3 scripts/fetch_linkedin_photo.py --slug michelle-min --linkedin michelle-de-min
 ```
 
-Then point `"photo"` at it in `data/students.json`.
+Then point `"photo"` at it in `data/students.json`. Headshots render as circles, so square source images work best — anything non-square is center-cropped by CSS. Use `assets/students/placeholder.svg` for someone without a photo.
 
 ### Add an advised paper
 
