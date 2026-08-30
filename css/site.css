@@ -142,18 +142,20 @@ h3 { font-size: 1.2rem; margin: 0 0 0.35rem; }
 
 .hero {
   display: grid;
-  grid-template-columns: 8.5rem minmax(0, 1fr);
+  grid-template-columns: 10rem minmax(0, 1fr);
   gap: 1.6rem 2rem;
   align-items: start;
   margin-bottom: 2.2rem;
 }
 
 .portrait {
-  width: 8.5rem;
-  height: 8.5rem;
+  width: 10rem;
+  height: 10rem;
   object-fit: cover;
-  border-radius: 2px;
+  object-position: center 20%;
+  border-radius: 50%;
   background: var(--paper-2);
+  box-shadow: 0 0 0 1px var(--rule);
 }
 
 .role {
@@ -393,8 +395,10 @@ table.roster td {
   width: 4.2rem;
   height: 4.2rem;
   object-fit: cover;
-  border-radius: 2px;
+  object-position: center 20%;
+  border-radius: 50%;
   background: var(--paper-2);
+  box-shadow: 0 0 0 1px var(--rule);
 }
 
 .person h3 { margin: 0 0 0.15rem; font-size: 1.05rem; }
@@ -473,7 +477,7 @@ a.project:hover { border-color: var(--ink); }
 
 @media (max-width: 640px) {
   .hero { grid-template-columns: 1fr; }
-  .portrait { width: 7.2rem; height: 7.2rem; }
+  .portrait { width: 8rem; height: 8rem; }
   .tiles, .stat-row { grid-template-columns: 1fr; }
   .feed li, .contact-list li { grid-template-columns: 1fr; gap: 0.2rem; }
   header.site { padding-top: 1rem; }
