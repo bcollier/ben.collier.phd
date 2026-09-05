@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ben Collier — Studio</title>
+<meta name="description" content="Ben Collier, Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Teaching, applied AI, and consulting through Hot Metal AI.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   DESIGN 5 of 5 — "STUDIO"
+   Swiss gallery. A strict 12-column grid, enormous type, almost no colour,
+   and a lot of air. The argument here is restraint: the person is senior
+   enough that the page does not need to shout.
+
+   AI USAGE NOTE (15-113): drafted with Claude in Claude Code, then reworked.
+   What I changed:
+     - Whitespace. The first draft was dense, because that is what most
+       training data looks like. I roughly doubled every vertical rhythm value
+       and cut about a third of the words. Restraint has to be real restraint.
+     - The numbered index in the left rail is mine, borrowed from exhibition
+       catalogues: it tracks the section you are in as you scroll.
+     - Type: an optical-size serif for display at large sizes only, paired
+       with Inter for anything you actually have to read at 16px.
+     - The model wanted a fade-in on every element. I cut it to a single
+       clip-path reveal on the big portrait, so one thing moves, not forty.
+   =========================================================================== */
+
+:root{
+  --paper:#fbfaf8;
+  --ink:#0e0e0d;
+  --ink-2:#6a6862;
+  --ink-3:#a29e96;
+  --rule:#e2ded6;
+  --accent:#8a3a12;
+  --serif:"Instrument Serif",Georgia,serif;
+  --sans:"Inter",system-ui,-apple-system,sans-serif;
+  --gut:clamp(1.5rem,4vw,4.5rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.62;font-weight:400;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+a:hover{border-color:var(--accent);color:var(--accent)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;background:var(--ink);color:var(--paper);padding:.6rem 1rem;z-index:99;border:0}
+
+.page{max-width:1400px;margin:0 auto;padding:0 var(--gut)}
+.rail{
+  position:fixed;left:var(--gut);top:50%;transform:translateY(-50%);z-index:30;
+  display:flex;flex-direction:column;gap:.55rem;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;
+}
+.rail a{border:0;color:var(--ink-3);display:flex;align-items:center;gap:.6rem;transition:color .2s}
+.rail a i{font-style:normal;width:1.4rem;display:inline-block}
+.rail a span{width:0;height:1px;background:var(--ink);transition:width .28s;display:inline-block}
+.rail a:hover,.rail a.on{color:var(--ink)}
+.rail a.on span{width:22px}
+
+.inner{margin-left:0}
+@media(min-width:1080px){.inner{margin-left:9rem}}
+
+/* ---- masthead ---- */
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:2rem;padding:2rem 0 0;flex-wrap:wrap}
+.top .name{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;border:0}
+.top nav{display:flex;flex-wrap:wrap;gap:.55rem 1.3rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.top nav a{border:0;color:var(--ink-2)}
+.top nav a:hover{color:var(--accent)}
+
+section{padding:clamp(5rem,11vh,9rem) 0;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:0}
+.idx{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2.4rem;display:block}
+
+h1,h2,h3{font-weight:400;margin:0;letter-spacing:-.022em}
+h1{font-family:var(--serif);font-size:clamp(3.2rem,11vw,8.5rem);line-height:.88}
+h2{font-family:var(--serif);font-size:clamp(2.2rem,6vw,4.6rem);line-height:1.0;margin-bottom:2.5rem}
+h3{font-size:1.02rem;font-weight:500;letter-spacing:-.005em;line-height:1.3}
+p{margin:0 0 1.5rem;max-width:60ch}
+.big{font-family:var(--serif);font-size:clamp(1.5rem,3.1vw,2.5rem);line-height:1.22;max-width:22ch;margin:0}
+.small{font-size:.9rem;color:var(--ink-2)}
+.dim{color:var(--ink-2)}
+
+/* ---- hero ---- */
+.hero{padding:clamp(3rem,9vh,7rem) 0 clamp(4rem,9vh,7rem);border-bottom:1px solid var(--rule)}
+.hero h1{margin-bottom:1.6rem}
+.hero .grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:end}
+.portrait{
+  width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 20%;
+  clip-path:inset(0 0 100% 0);animation:unveil 1.4s cubic-bezier(.16,1,.3,1) .25s forwards;
+}
+@keyframes unveil{to{clip-path:inset(0 0 0 0)}}
+.hero .meta{display:flex;gap:clamp(1.5rem,4vw,3.5rem);flex-wrap:wrap;margin-top:3rem;padding-top:1.6rem;border-top:1px solid var(--rule)}
+.hero .meta div{font-size:.82rem;letter-spacing:.02em}
+.hero .meta span{display:block;color:var(--ink-3);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;margin-bottom:.4rem}
+
+/* ---- two-column editorial ---- */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(2rem,7vw,7rem)}
+.split .k{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+
+/* ---- index list: courses as a catalogue ---- */
+.cat{border-top:1px solid var(--rule)}
+.cat li{list-style:none}
+.cat a{
+  display:grid;grid-template-columns:4.5rem minmax(0,1fr) auto;gap:clamp(1rem,3vw,3rem);align-items:baseline;
+  padding:1.5rem 0;border-bottom:1px solid var(--rule);border-top:0;color:var(--ink);
+}
+.cat a:hover{color:var(--accent)}
+.cat .no{font-size:.78rem;color:var(--ink-3);letter-spacing:.1em}
+.cat h3{font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.95rem);font-weight:400;letter-spacing:-.015em}
+.cat .sub{font-size:.86rem;color:var(--ink-2);margin-top:.3rem;max-width:56ch}
+.cat .tag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.cat .tag.b{color:var(--accent)}
+
+/* ---- plates ---- */
+.plates{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3vw,2.5rem)}
+.plate img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#eee}
+.plate .no{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin:1rem 0 .4rem}
+.plate h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;margin-bottom:.4rem}
+.plate p{font-size:.9rem;color:var(--ink-2);margin:0;max-width:44ch}
+
+/* ---- services ---- */
+.svc{border-top:1px solid var(--ink)}
+.svc article{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.5fr) auto;gap:clamp(1.5rem,4vw,4rem);padding:2.6rem 0;border-bottom:1px solid var(--rule);align-items:start}
+.svc h3{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.1rem);font-weight:400}
+.svc .fee{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1;margin-top:.5rem}
+.svc .per{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-top:.45rem}
+.svc p{font-size:.98rem;margin:0 0 1rem}
+.svc ul{margin:0;padding:0;list-style:none;font-size:.88rem;color:var(--ink-2)}
+.svc li{padding-left:1.1rem;position:relative;margin-bottom:.35rem}
+.svc li::before{content:"—";position:absolute;left:0;color:var(--ink-3)}
+.svc .act{white-space:nowrap}
+.svc .act a{
+  display:inline-block;border:1px solid var(--ink);border-radius:0;padding:.7rem 1.5rem;
+  font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;transition:background .2s,color .2s;
+}
+.svc .act a:hover{background:var(--ink);color:var(--paper)}
+.fine{font-size:.85rem;color:var(--ink-2);margin-top:2rem;max-width:60ch}
+
+/* ---- contact ---- */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2.5rem;border-top:1px solid var(--rule);padding-top:2.5rem}
+.contact div span{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.6rem}
+.contact div a,.contact div p{font-size:.98rem;margin:0 0 .3rem;display:block}
+
+footer{padding:4rem 0 5rem;font-size:.84rem;color:var(--ink-2)}
+footer .cred{max-width:78ch;line-height:1.75;margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--rule);font-size:.8rem}
+
+@media(max-width:900px){
+  .rail{display:none}
+  .hero .grid,.split{grid-template-columns:1fr;gap:2.5rem}
+  .cat a{grid-template-columns:2.6rem minmax(0,1fr);row-gap:.4rem}
+  /* The course tag is nowrap so it reads as one label on desktop. At phone
+     width that pushed the grid 54px past the viewport, so let it wrap. */
+  .cat .tag{grid-column:2;white-space:normal}
+  .svc article{grid-template-columns:1fr;gap:1.2rem}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .portrait{animation:none;clip-path:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="rail" aria-label="Section index">
+  <a href="#top" class="on"><i>00</i><span></span>Index</a>
+  <a href="#about"><i>01</i><span></span>About</a>
+  <a href="#teaching"><i>02</i><span></span>Teaching</a>
+  <a href="#work"><i>03</i><span></span>Work</a>
+  <a href="#services"><i>04</i><span></span>Services</a>
+  <a href="#contact"><i>05</i><span></span>Contact</a>
+</nav>
+
+<div class="page">
+  <div class="inner">
+
+    <div class="top">
+      <a class="name" href="#top">Ben Collier</a>
+      <nav>
+        <a href="#about">About</a><a href="#teaching">Teaching</a><a href="#work">Work</a>
+        <a href="#services">Services</a><a href="#contact">Contact</a><a href="../">Editions</a>
+      </nav>
+    </div>
+
+    <main id="main">
+
+      <section class="hero" id="top">
+        <h1>Ben<br>Collier</h1>
+        <div class="grid">
+          <div>
+            <p class="big">Teaching people to build, evaluate, and ship data systems. Then going and doing it, so the classroom stays honest.</p>
+            <p class="small" style="margin-top:2rem;max-width:46ch">Assistant Teaching Professor of Business Analytics at the Tepper School of Business, Carnegie Mellon University, with selected courses at Heinz College. Consulting through Hot Metal AI.</p>
+          </div>
+          <img class="portrait" src="../../assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
+        </div>
+        <div class="meta">
+          <div><span>Based</span>Pittsburgh, Pennsylvania</div>
+          <div><span>Teaching</span>Ten courses, three built</div>
+          <div><span>Advising</span>Eleven capstone teams</div>
+          <div><span>Recognition</span>Bach Teaching Award, 2026</div>
+          <div><span>Practice</span>Hot Metal AI · gAIm Systems</div>
+        </div>
+      </section>
+
+      <section id="about">
+        <span class="idx">01 — About</span>
+        <div class="split">
+          <div>
+            <h2>The model was never the decision.</h2>
+            <p class="k">Interests</p>
+            <p class="small">Experimentation and causal inference. The sociology of open collaboration, which was my dissertation territory and still shows up in my published work on Wikipedia. How technical teams get assembled and assessed. Whether any dashboard has ever changed a decision.</p>
+            <p class="k" style="margin-top:2rem">Tools</p>
+            <p class="small">Python with pandas and scikit-learn, daily. SQL and the data modelling underneath it. Large language models applied to text, image, and network data, taught as instruments with known failure modes rather than as oracles.</p>
+            <p class="k" style="margin-top:2rem">Education</p>
+            <p class="small">PhD and MS, Information Systems and Organizational Behavior, Carnegie Mellon. MBA, University of Wisconsin–Madison. BBA in Management Computer Systems and Mathematics, Wisconsin–Whitewater.</p>
+          </div>
+          <div>
+            <p>My appointment is at the Tepper School of Business, where I teach across the MBA, the MS in Business Analytics, and undergraduate programs, plus selected courses at Heinz College. The PhD is from Carnegie Mellon in Information Systems and Organizational Behavior, which is a long way of saying I arrived at machine learning through the question of how organizations actually behave rather than the other way round.</p>
+            <p>That order is the whole method. My labs spend as much time on whether a finding should change anyone's behaviour as on whether the model converged, because a classifier with a good score that nobody can act on is a hobby.</p>
+            <p>Before returning to the faculty I led data science at Duolingo through the IPO and the launch of Duolingo Max, running monetization analytics, large-scale experimentation, and financial forecasting. Before that I ran data science at UPMC as founding data scientist on a joint venture with IBM Watson Health, leading CognitiveRx, a drug price forecasting and shortage prediction product later acquired by Premier. Earlier still, four years at Carnegie Mellon Qatar teaching organizational behavior and co-directing executive education.</p>
+            <p>The practice work continues through Hot Metal AI, my consulting and corporate training firm, and gAIm Systems, where I build tools for how sports organizations recruit, develop, and assemble teams. It is what keeps the labs from drifting into toy problems.</p>
+            <p class="dim">In 2026 the graduating MBA class voted me the George Leland Bach Teaching Award. That one belongs to them more than to me.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="teaching">
+        <span class="idx">02 — Teaching</span>
+        <h2>Ten courses.<br>Three built from nothing.</h2>
+        <ul class="cat" id="courses" style="padding:0;margin:0"></ul>
+      </section>
+
+      <section id="work">
+        <span class="idx">03 — Work</span>
+        <h2>Selected student work.</h2>
+        <p class="small" style="margin-bottom:3.5rem">Studio work from the courses. Named teams appear as students opt in. The final plate is this website.</p>
+        <div class="plates" id="plates"></div>
+      </section>
+
+      <section id="services">
+        <span class="idx">04 — Services · Hot Metal AI</span>
+        <h2>Three ways to hire the practice.</h2>
+        <div class="svc" id="svc"></div>
+        <p class="fine" id="fine"></p>
+      </section>
+
+      <section id="contact">
+        <span class="idx">05 — Contact</span>
+        <h2>Email is the reliable door.</h2>
+        <p class="small" style="margin-bottom:3rem;max-width:48ch">Students: put the course number in the subject line. Companies: tell me what you are trying to decide, and by when.</p>
+        <div class="contact">
+          <div><span>University</span><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></div>
+          <div><span>Personal</span><a href="mailto:ben@collier.phd">ben@collier.phd</a></div>
+          <div><span>Networks</span>
+            <a href="https://www.linkedin.com/in/bcollierphd">LinkedIn</a>
+            <a href="https://github.com/bcollier">GitHub</a>
+            <a href="https://orcid.org/0000-0002-4651-7684">ORCID</a>
+            <a href="https://scholars.cmu.edu/473-ben-collier">CMU Scholars</a>
+          </div>
+          <div><span>Office</span><p class="small" style="margin:0">Tepper School of Business<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</p></div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <div style="display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap">
+        <span>Ben Collier · Pittsburgh</span>
+        <span><a href="../">All five design editions</a> · <a href="../../">Multi-page version</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a> · <a href="../../PROMPTS.md">Prompt log</a></span>
+      </div>
+      <div class="cred">
+        <b>Credits.</b> Designed and coded by Ben Collier. Drafted with Claude (Anthropic) in Claude Code and then edited by hand; the code comments record what the AI wrote and what I changed, and the full prompt log is in the repository.
+        Typefaces are <a href="https://fonts.google.com/specimen/Instrument+Serif">Instrument Serif</a> by Rodrigo Fuenzalida and Jordan Egstad, and <a href="https://fonts.google.com/specimen/Inter">Inter</a> by Rasmus Andersson, both under the SIL Open Font License, served by Google Fonts.
+        Portrait photograph courtesy Carnegie Mellon University. Project plates are original SVG drawings made for this site. No stock photography and no template.
+        Built as plain HTML, CSS, and JavaScript with no framework, no analytics, and no cookies, hosted on GitHub Pages.
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="../shared/booking.js"></script>
+<script>
+(function () {
+  "use strict";
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+  var COURSES = [
+    ["45-884","AI Methods for Social and Visual Data","Modern AI on text, networks, and images, with ethics in the same lab as the code.","MBA · Tepper",1],
+    ["70-377","Managing and Assessing Tech Talent and Organizations","Hiring, growing, and evaluating technical people without managing by vibes.","Undergraduate · CMU Qatar",1],
+    ["MSBA","Math Skills Workshop","Built so incoming students arrive ready for the quantitative core.","Workshop · 2026",1],
+    ["45-851","Data Mining","Structure in messy business data, and the habit of asking whether to trust it.","MBA · Tepper",0],
+    ["45-885","Data Visualization","Charts that survive contact with an executive, and enough perceptual ground to know when a graphic is lying.","MBA · Tepper",0],
+    ["46-885","Data Exploration and Visualization","Exploratory analysis, then the communication layer that makes a finding usable.","MSBA · Tepper",0],
+    ["46-880","Introduction to Probability and Statistics","The quantitative floor every later analytics course stands on.","MSBA · Tepper",0],
+    ["46-887","Machine Learning for Business Applications","Pipelines, evaluation, and the translation from a fitted model to an operational decision.","MSBA · Tepper",0],
+    ["45-881","Modern Data Management","SQL and the unglamorous work that decides whether the model ever sees the right table.","MBA · Tepper",0],
+    ["90-803","Machine Learning Foundations with Python","The Python foundation Heinz students need before applying it to policy.","Heinz College",0]
+  ];
+  document.getElementById("courses").innerHTML = COURSES.map(function (c, i) {
+    var n = String(i + 1).padStart(2, "0");
+    return '<li><a href="#teaching"><span class="no">' + n + "</span>" +
+      "<span><h3>" + esc(c[1]) + '</h3><div class="sub">' + esc(c[2]) + "</div></span>" +
+      '<span class="tag' + (c[4] ? " b" : "") + '">' + esc(c[0]) + " · " + esc(c[3]) +
+      (c[4] ? " · Built" : "") + "</span></a></li>";
+  }).join("");
+
+  var PLATES = [
+    ["clusters.svg","45-851 · Fall 2025","Grocery segments","Cluster a retail basket dataset, name the segments in a category manager's language, and fund exactly one promotion change."],
+    ["churn.svg","45-851 · Spring 2025","Churn, or merely quiet","Separating real churn risk from dormancy, with a cost-sensitive evaluation and a one-page decision brief."],
+    ["dashboard.svg","45-885 · Spring 2025","A dashboard that lied","Documenting the perceptual and statistical failures in a real public dashboard, then rebuilding it."],
+    ["earnings-call.svg","45-884 · Fall 2025","Reading an earnings call","Transcript, audio, and video analysed together, with an honest account of what the model cannot see."],
+    ["network.svg","45-884 · Fall 2025","A city's civic graph","Civic organizations mapped from public text, and an argument about the limits of centrality."],
+    ["talent.svg","70-377 · Fall 2025","A hiring scorecard","A defensible assessment rubric for a twelve-person data team, stress-tested against real job posts."]
+  ];
+  var out = PLATES.map(function (p, i) {
+    var n = String(i + 1).padStart(2, "0");
+    return '<figure class="plate" style="margin:0"><img src="../../assets/projects/' + p[0] + '" alt="" width="800" height="500" loading="lazy">' +
+      '<figcaption><div class="no">Plate ' + n + " · " + esc(p[1]) + "</div><h3>" + esc(p[2]) + "</h3><p>" + esc(p[3]) + "</p></figcaption></figure>";
+  }).join("");
+  /* Required by the 15-113 brief: the portfolio lists itself as a project. */
+  out += '<figure class="plate" style="margin:0"><img src="../../assets/og.png" alt="" width="800" height="500" loading="lazy">' +
+    '<figcaption><div class="no">Plate 07 · 15-113 Project 1</div><h3>This website</h3>' +
+    '<p>Five complete design directions for one portfolio, hand-written in HTML, CSS, and JavaScript with no framework. ' +
+    '<a href="https://github.com/bcollier/ben.collier.phd">Source</a> · <a href="../">Compare all five</a></p></figcaption></figure>';
+  document.getElementById("plates").innerHTML = out;
+
+  document.getElementById("svc").innerHTML = window.BOOKING.offers.map(function (o) {
+    return "<article><div><h3>" + esc(o.name) + '</h3><div class="fee">' + esc(o.price) +
+      '</div><div class="per">' + esc(o.unit) + "</div></div>" +
+      "<div><p>" + esc(o.blurb) + "</p><ul>" +
+      o.points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul></div>" +
+      '<div class="act"><a href="' + window.bookingHref(o) + '">' + window.bookingCta(o) + "</a></div></article>";
+  }).join("");
+
+  var live = window.BOOKING.offers.some(function (o) { return !!o.checkout; });
+  document.getElementById("fine").textContent = live
+    ? "Payment is handled by Stripe; a receipt and a scheduling link follow immediately. Hot Metal AI, Pittsburgh."
+    : "Card payment is not connected yet, so each button opens a prefilled email and I invoice on booking. Prices are published because making you ask for a number is a tax on your time. Hot Metal AI, Pittsburgh.";
+
+  /* ---- the numbered rail -------------------------------------------------
+     Borrowed from exhibition catalogues: the index marks where you are.
+     rootMargin biases the trigger to the upper third of the viewport so the
+     mark changes when a section becomes the thing you are reading, not when
+     its last pixel leaves. */
+  var links = Array.prototype.slice.call(document.querySelectorAll(".rail a"));
+  var spy = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      links.forEach(function (a) {
+        a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id);
+      });
+    });
+  }, { rootMargin: "-20% 0px -65% 0px" });
+  links.forEach(function (a) {
+    var t = document.querySelector(a.getAttribute("href"));
+    if (t) spy.observe(t);
+  });
+})();
+</script>
+</body>
+</html>
