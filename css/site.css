@@ -6,7 +6,11 @@
   --rule: #d6cec0;
   --accent: #c24e16;
   --accent-ink: #9a3c10;
+  --accent-hover: #8f350c;
   --white: #fbf8f2;
+  /* Text on the coloured course tiles. Stays light in both themes: the tiles
+     keep their colour, so --white (a surface token) would invert underneath it. */
+  --thumb-ink: #fbf8f2;
   --prose: 42rem;
   --page: 72rem;
 }
@@ -34,7 +38,8 @@ a {
   text-underline-offset: 0.18em;
 }
 
-a:hover { color: var(--accent); }
+/* Hover raises contrast. --accent tests at 4.16:1 on paper, under the 4.5 floor. */
+a:hover { color: var(--accent-hover); }
 
 .skip {
   position: absolute;
@@ -233,7 +238,7 @@ a.card:hover { border-color: var(--ink); }
   align-items: flex-end;
   justify-content: space-between;
   padding: 0.7rem 0.85rem;
-  color: var(--white);
+  color: var(--thumb-ink);
   font-family: Fraunces, Georgia, serif;
   font-size: 1.15rem;
 }
@@ -340,7 +345,7 @@ table.roster td {
   display: flex;
   align-items: flex-end;
   padding: 1rem 1.1rem;
-  color: #fff;
+  color: var(--thumb-ink);
   font-family: Fraunces, Georgia, serif;
   font-size: 1.6rem;
 }
@@ -364,7 +369,7 @@ table.roster td {
 }
 .contact-list span { color: var(--ink-soft); }
 
-.c-rust { background: #c24e16; }
+.c-rust { background: #a8410f; }
 .c-ink { background: #2a2420; }
 .c-olive { background: #4d5a3c; }
 .c-slate { background: #3d4c5c; }
@@ -372,7 +377,7 @@ table.roster td {
 .c-copper { background: #8a4b28; }
 .c-pine { background: #2f4a43; }
 .c-navy { background: #243652; }
-.c-clay { background: #9a5a3a; }
+.c-clay { background: #8f5334; }
 
 .people-grid {
   display: grid;
@@ -482,4 +487,70 @@ a.project:hover { border-color: var(--ink); }
   .feed li, .contact-list li { grid-template-columns: 1fr; gap: 0.2rem; }
   header.site { padding-top: 1rem; }
   .wrap { width: min(var(--page), calc(100% - 1.6rem)); }
+}
+
+/* ---------------------------------------------------------------------------
+   Dark mode. Same warm paper design, inverted: deep ink ground, paper text.
+   Only the tokens change; every rule above reads through them.
+   --------------------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #17130f;
+    --paper-2: #2a231c;
+    --ink: #ece5da;
+    --ink-soft: #a89d8e;
+    --rule: #38302a;
+    --accent: #f0a97f;
+    --accent-ink: #f09a6b;
+    --accent-hover: #ffd0b4;
+    --white: #1f1913;
+  }
+
+  /* Two course tiles sit within 1.5:1 of the dark card surface and vanish into
+     it. Lifted just enough to read as tiles; the rest already separate. */
+  .c-ink  { background: #544639; }
+  .c-navy { background: #334b73; }
+
+  .portrait, .person img { box-shadow: 0 0 0 1px var(--rule); }
+  img.shot { opacity: 0.92; }
+  a.card:hover, a.project:hover { border-color: var(--accent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Visible keyboard focus. The default ring disappears against the paper. */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Reserved capstone slots were rendering their own editing instructions.
+   They are filtered out at build time now; this styles any that are dimmed
+   deliberately. The old selector targeted the list, not its items. */
+.paper-list li.placeholder { opacity: 0.72; }
+
+.btn {
+  font: inherit;
+  font-size: 0.92rem;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+@media print {
+  .no-print { display: none !important; }
 }

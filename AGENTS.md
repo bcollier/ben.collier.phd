@@ -54,7 +54,8 @@ committed, so what is in the repo is exactly what is served.
 
 | Path | What it is |
 | --- | --- |
-| `scripts/build.py` | Generates every `.html` file. Course list and news live here. |
+| `scripts/build.py` | Generates every `.html` file, plus `sitemap.xml`, `robots.txt`, and `feed.xml`. Course list and news live here. |
+| `data/site.json` | Absolute-URL config: which host canonical/OG/sitemap URLs use. |
 | `data/cv.md` | CV source, rendered to `/cv/`. |
 | `data/students.json` | Student roster and advised papers. |
 | `data/projects.json` | Sample student projects per course. |
@@ -87,6 +88,18 @@ python3 scripts/build.py
 
 ## Content rules
 
+- **Never render editing instructions into the page.** Text like "paste this into
+  `data/students.json`" or "run `python3 scripts/build.py`" belongs in this file
+  or the README, never in HTML a visitor sees. Every string in `scripts/build.py`
+  that reaches the page is public copy, written for a reader, in Ben's voice.
+- Rows marked `"status": "placeholder"` in `data/students.json` are reserved
+  slots, not content. The build filters them out. Do not remove that filter, and
+  do not write summaries into a placeholder that is still unpublished — replace
+  the whole row with the real entry and set `"status": "public"`.
+- Absolute URLs come from `data/site.json`. Do not hardcode a host in
+  `scripts/build.py`. While `domain_live` is `false` they point at the github.io
+  address on purpose: a canonical tag aimed at a domain that does not resolve
+  tells search engines the real page is a dead link.
 - Never publish a student's name, photo, or project without explicit permission.
   Placeholder entries in `data/students.json` stay placeholders until a student
   opts in.

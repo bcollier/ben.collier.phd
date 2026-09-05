@@ -5,11 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Students · Ben Collier</title>
   <meta name="description" content="Students Ben Collier advises, teaching assistants, papers, and LinkedIn highlights.">
-  <link rel="canonical" href="https://ben.collier.phd/students/">
+  <meta name="author" content="Ben Collier">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://bcollier.github.io/ben.collier.phd/students/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ben Collier">
+  <meta property="og:title" content="Students · Ben Collier">
+  <meta property="og:description" content="Students Ben Collier advises, teaching assistants, papers, and LinkedIn highlights.">
+  <meta property="og:url" content="https://bcollier.github.io/ben.collier.phd/students/">
+  <meta property="og:image" content="https://bcollier.github.io/ben.collier.phd/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ben Collier, Assistant Teaching Professor of Business Analytics, Tepper School of Business">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Students · Ben Collier">
+  <meta name="twitter:description" content="Students Ben Collier advises, teaching assistants, papers, and LinkedIn highlights.">
+  <meta name="twitter:image" content="https://bcollier.github.io/ben.collier.phd/assets/og.png">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="alternate" type="application/atom+xml" title="Ben Collier — news" href="../feed.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
 </head>
 <body>
@@ -31,16 +50,16 @@
 
       <p class="kicker">Advising</p>
       <h1>Students</h1>
-      <p class="lede">Capstones, independent studies, teaching assistants, LinkedIn shout-outs, and the papers and projects I advise. Photos are pulled from LinkedIn when students are listed.</p>
+      <p class="lede">Capstones, independent studies, teaching assistants, and the papers and projects I advise. Everyone here asked to be listed.</p>
 
       <div class="stat-row">
         <div class="stat"><b>11</b> MSBA capstone teams advised, 2024–2026</div>
-        <div class="stat"><b>3</b> courses I built</div>
+        <div class="stat"><b>2</b> courses I built</div>
         <div class="stat"><b>1</b> Bach Teaching Award, MBA Class of 2026</div>
       </div>
 
       <h2>People</h2>
-      <p class="muted prose-width">Drop a headshot into <code>assets/students/</code> or run <code>scripts/fetch_linkedin_photo.py</code>. I only list people who opt in.</p>
+      <p class="muted prose-width">Students, teaching assistants, and advisees who agreed to be listed here.</p>
       <div class="people-grid"><article class="person">
   <img src="../assets/students/michelle-min.jpg" alt="Photo of Michelle Min" width="200" height="200">
   <div>
@@ -63,24 +82,7 @@
 </div>
 
       <h2>Papers and projects I advised</h2>
-      <p class="muted prose-width">Paste titles, summaries, and PDF links into <code>data/students.json</code> under <code>papers</code>. Placeholder rows stay until a team is ready to be named.</p>
-      <ul class="paper-list">
-        <li class="placeholder">
-  <h3>MSBA Capstone — Team A (title forthcoming)</h3>
-  <div class="meta">2026 · capstone · Names with permission</div>
-  <p>Paste the project summary here once the team opts in: client context, question, method, and what changed because of the work.</p>
-</li>
-<li class="placeholder">
-  <h3>MSBA Capstone — Team B (title forthcoming)</h3>
-  <div class="meta">2026 · capstone · Names with permission</div>
-  <p>Paste the project summary here once the team opts in.</p>
-</li>
-<li class="placeholder">
-  <h3>MSBA Independent Study (46-994)</h3>
-  <div class="meta">2026 · independent-study · Names with permission</div>
-  <p>Add the paper or project title, a short abstract, and a PDF link when the student is ready to be listed.</p>
-</li>
-      </ul>
+      <div class="empty">Titles and abstracts go up as teams clear their work for publication. The log below records what I have advised.</div>
       <table class="roster" style="margin-top:1.5rem">
         <thead><tr><th>Year</th><th>Role</th><th>What</th></tr></thead>
         <tbody>
@@ -92,7 +94,7 @@
       </table>
 
       <h2>From LinkedIn</h2>
-      <p class="muted prose-width">Posts where I highlight students. Add more with <code>python3 scripts/add_linkedin_post.py</code>.</p>
+      <p class="muted prose-width">Posts where I highlight student work.</p>
       <ol class="feed" id="linkedin-students">
         <li>
           <time datetime="2026-06-10">Jun 10, 2026</time>
@@ -111,7 +113,7 @@
     </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="https://ben.collier.phd/">ben.collier.phd</a> · hosted on GitHub Pages</div>
+      <div><a href="../">ben.collier.phd</a> · <a href="../feed.xml">News feed</a> · <a href="https://www.linkedin.com/in/bcollierphd">LinkedIn</a></div>
     </footer>
   </div>
   <script src="../js/config.js"></script>

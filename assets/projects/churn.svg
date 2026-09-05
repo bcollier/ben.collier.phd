@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#3a2b22"/>
+
+  <!-- Retention curves: a churning cohort against a merely quiet one. -->
+  <g fill="none" stroke="#f3efe6" stroke-width="1" opacity="0.22">
+    <line x1="80" y1="410" x2="740" y2="410"/>
+    <line x1="80" y1="330" x2="740" y2="330"/>
+    <line x1="80" y1="250" x2="740" y2="250"/>
+    <line x1="80" y1="170" x2="740" y2="170"/>
+    <line x1="80" y1="90"  x2="740" y2="90"/>
+  </g>
+
+  <path d="M80 100 C 200 130, 300 210, 400 300 S 620 400, 740 415"
+        fill="none" stroke="#c24e16" stroke-width="5" stroke-linecap="round"/>
+  <path d="M80 110 C 220 128, 360 150, 500 168 S 660 185, 740 196"
+        fill="none" stroke="#8aa37a" stroke-width="5" stroke-linecap="round"/>
+
+  <g fill="#c24e16"><circle cx="740" cy="415" r="8"/></g>
+  <g fill="#8aa37a"><circle cx="740" cy="196" r="8"/></g>
+
+  <g fill="#e8e1d4" opacity="0.85" font-family="Georgia, serif" font-size="22">
+    <text x="96" y="76">churn risk</text>
+  </g>
+  <g fill="#8aa37a" font-family="Georgia, serif" font-size="22">
+    <text x="560" y="240">just quiet</text>
+  </g>
+</svg>

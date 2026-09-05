@@ -5,9 +5,14 @@ Faculty site for [Ben Collier](https://www.linkedin.com/in/bcollierphd), Assista
 Static HTML/CSS/JS. No build step for content edits, no CMS.
 
 - **Host:** GitHub Pages, from `main` at the repo root
-- **Course URL:** `https://<user>.github.io/ben.collier.phd/`
+- **Live now:** <https://bcollier.github.io/ben.collier.phd/>
 - **Final URL:** `https://ben.collier.phd` (attach later — see below)
 - **Apex:** `collier.phd` redirects to `ben.collier.phd`
+
+Absolute URLs (canonical tags, Open Graph, `sitemap.xml`, `feed.xml`) all come from
+`data/site.json`. While `domain_live` is `false` they point at the github.io address,
+because a canonical tag aimed at a domain that does not resolve tells Google the real
+page is a dead link. `scripts/enable_domain.sh` flips it.
 
 ## Local preview
 
@@ -73,6 +78,8 @@ That writes `CNAME`, pushes, sets the Pages domain, and enables HTTPS enforcemen
 | Student photos | `assets/students/<slug>.jpg` or `scripts/fetch_linkedin_photo.py` |
 | Paper PDFs | `papers/` |
 | Calendly | `js/config.js` |
+| Site-wide URLs, name, links | `data/site.json` |
+| Social share image | `python3 scripts/make_og_image.py` |
 
 ### Import a LinkedIn post
 
@@ -111,6 +118,21 @@ In `data/students.json` → `papers`, replace a placeholder:
   "status": "public"
 }
 ```
+
+## What the build generates
+
+Beyond the HTML pages:
+
+| File | What it does |
+| --- | --- |
+| `sitemap.xml` | Every canonical URL, for search engines. |
+| `robots.txt` | Points crawlers at the sitemap. |
+| `feed.xml` | Atom feed of the news log. Linked from every page's `<head>`. |
+| `assets/og.png` | The 1200x630 card LinkedIn and X show when a page is shared. |
+
+`assets/og.png` is committed, so a normal build does not need to regenerate it.
+Re-run `python3 scripts/make_og_image.py` after changing the portrait or the title
+block; rasterising needs `rsvg-convert` (`brew install librsvg`).
 
 ## Site map
 

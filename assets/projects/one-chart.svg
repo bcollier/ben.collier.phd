@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#3d4c5c"/>
+
+  <!-- One slope chart on a board page: two periods, one decision. -->
+  <rect x="120" y="50" width="560" height="400" fill="#f3efe6" opacity="0.07"/>
+
+  <g stroke="#f3efe6" stroke-width="1.2" opacity="0.35">
+    <line x1="250" y1="90" x2="250" y2="410"/>
+    <line x1="550" y1="90" x2="550" y2="410"/>
+  </g>
+
+  <g stroke-width="4" stroke-linecap="round" fill="none">
+    <line x1="250" y1="150" x2="550" y2="120" stroke="#c24e16"/>
+    <line x1="250" y1="230" x2="550" y2="300" stroke="#e8e1d4" opacity="0.55"/>
+    <line x1="250" y1="310" x2="550" y2="345" stroke="#e8e1d4" opacity="0.4"/>
+    <line x1="250" y1="380" x2="550" y2="250" stroke="#8aa37a"/>
+  </g>
+
+  <g fill="#c24e16"><circle cx="250" cy="150" r="7"/><circle cx="550" cy="120" r="9"/></g>
+  <g fill="#8aa37a"><circle cx="250" cy="380" r="7"/><circle cx="550" cy="250" r="9"/></g>
+  <g fill="#e8e1d4" opacity="0.6"><circle cx="250" cy="230" r="6"/><circle cx="550" cy="300" r="6"/>
+     <circle cx="250" cy="310" r="6"/><circle cx="550" cy="345" r="6"/></g>
+
+  <rect x="596" y="112" width="60" height="4" fill="#c24e16"/>
+</svg>

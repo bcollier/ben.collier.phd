@@ -27,7 +27,24 @@ fi
 
 echo "==> Writing CNAME"
 echo "${DOMAIN}" > CNAME
-git add CNAME
+
+echo "==> Pointing absolute URLs at https://${DOMAIN}"
+# Canonical tags, Open Graph URLs, the sitemap, and the feed all carry absolute
+# URLs. They must move to the custom domain in the same commit as the CNAME, or
+# the live site advertises the github.io address as canonical.
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+path = Path("data/site.json")
+site = json.loads(path.read_text(encoding="utf-8"))
+site["domain_live"] = True
+path.write_text(json.dumps(site, indent=2) + "\n", encoding="utf-8")
+print("   data/site.json: domain_live = true")
+PY
+python3 scripts/build.py
+
+git add CNAME data/site.json .
 git commit -m "Attach custom domain ${DOMAIN}" || echo "   (nothing to commit)"
 
 for remote in github origin; do

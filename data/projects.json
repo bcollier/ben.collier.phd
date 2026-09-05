@@ -1,5 +1,5 @@
 {
-  "note": "Course sample projects and advised work. Named students appear when they opt in. Studio samples are representative posted work from the courses — replace or rename as real teams allow.",
+  "note": "Course sample projects and advised work. Named students appear when they opt in. Studio samples are representative posted work from the courses \u2014 replace or rename as real teams allow.",
   "projects": [
     {
       "id": "mining-retail-segments",
@@ -7,7 +7,9 @@
       "title": "Grocery segments that change a promotion",
       "term": "Fall 2025",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "Cluster a retail basket dataset, name the segments in language a category manager would use, and recommend one promotion change you would actually fund.",
       "image": "assets/projects/clusters.svg",
       "link": ""
@@ -18,9 +20,11 @@
       "title": "Who churns, and who is just quiet",
       "term": "Spring 2025",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "A classification project that separates true churn risk from dormancy, with a cost-sensitive evaluation and a one-page decision brief for a product owner.",
-      "image": "assets/projects/clusters.svg",
+      "image": "assets/projects/churn.svg",
       "link": ""
     },
     {
@@ -29,7 +33,9 @@
       "title": "Redesigning a misleading public dashboard",
       "term": "Spring 2025",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "Take a real dashboard that lies by accident, document the perceptual and statistical failures, and ship a redesign that a non-analyst can use under time pressure.",
       "image": "assets/projects/dashboard.svg",
       "link": ""
@@ -40,9 +46,11 @@
       "title": "One chart, one decision",
       "term": "Spring 2026",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "A board-packet exercise: a single visual that forces a yes/no decision, with the discarded alternatives shown in an appendix.",
-      "image": "assets/projects/dashboard.svg",
+      "image": "assets/projects/one-chart.svg",
       "link": ""
     },
     {
@@ -51,9 +59,11 @@
       "title": "Reading the room on an earnings call",
       "term": "Fall 2025",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "A multimodal project I designed into the new AI methods course: text, audio, and visual signals from an earnings call, with an explicit section on what the model must not be used for.",
-      "image": "assets/projects/network.svg",
+      "image": "assets/projects/earnings-call.svg",
       "link": ""
     },
     {
@@ -62,7 +72,9 @@
       "title": "A city's civic graph",
       "term": "Fall 2025",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "Build a network from public social data, find communities, and write the management memo before you write the model card.",
       "image": "assets/projects/network.svg",
       "link": ""
@@ -73,7 +85,9 @@
       "title": "Hiring scorecard for a twelve-person data team",
       "term": "Fall 2025",
       "kind": "course-sample",
-      "students": ["Undergraduate studio"],
+      "students": [
+        "Undergraduate studio"
+      ],
       "summary": "From the micro-course I built: design a hiring and leveling scorecard that a non-technical manager can defend.",
       "image": "assets/projects/talent.svg",
       "link": ""
@@ -84,7 +98,9 @@
       "title": "First week with a messy operations extract",
       "term": "Spring 2025",
       "kind": "course-sample",
-      "students": ["MSBA team"],
+      "students": [
+        "MSBA team"
+      ],
       "summary": "Explore, clean, and visualize a hostile CSV until the interesting question is obvious. Then make the chart that survives the handoff.",
       "image": "assets/projects/explore.svg",
       "link": ""
@@ -95,8 +111,10 @@
       "title": "How large is large enough?",
       "term": "Fall 2024",
       "kind": "course-sample",
-      "students": ["MSBA team"],
-      "summary": "A power and uncertainty brief for a product A/B test — the statistics course as a management deliverable.",
+      "students": [
+        "MSBA team"
+      ],
+      "summary": "A power and uncertainty brief for a product A/B test \u2014 the statistics course as a management deliverable.",
       "image": "assets/projects/probability.svg",
       "link": ""
     },
@@ -106,7 +124,9 @@
       "title": "A model with a constraint you cannot ignore",
       "term": "Spring 2026",
       "kind": "course-sample",
-      "students": ["MSBA team"],
+      "students": [
+        "MSBA team"
+      ],
       "summary": "Machine learning for business applications: fit the model, then put a real operating constraint next to the ROC curve and decide anyway.",
       "image": "assets/projects/ml-business.svg",
       "link": ""
@@ -117,7 +137,9 @@
       "title": "Inspection outcomes without leaking the future",
       "term": "Spring 2026",
       "kind": "course-sample",
-      "students": ["Heinz studio"],
+      "students": [
+        "Heinz studio"
+      ],
       "summary": "Policy-facing machine learning: predict an inspection-related outcome with a leakage hunt as part of the grade.",
       "image": "assets/projects/heinz.svg",
       "link": ""
@@ -128,7 +150,9 @@
       "title": "Three CSVs to a table a model can trust",
       "term": "Spring 2026",
       "kind": "course-sample",
-      "students": ["MBA team"],
+      "students": [
+        "MBA team"
+      ],
       "summary": "Modern data management sample: design keys, clean joins, and document the warehouse table so next week's mining team does not invent the schema again.",
       "image": "assets/projects/data-mgmt.svg",
       "link": ""

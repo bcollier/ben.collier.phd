@@ -5,10 +5,24 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import date, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-HOST = "https://ben.collier.phd"
+
+SITE = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
+
+# Absolute URLs have to point somewhere that resolves. Until DNS for the custom
+# domain is live, that is the github.io address; pointing canonical tags at a
+# domain that does not answer tells search engines the real page is a dead link.
+HOST = (
+    f"https://{SITE['custom_domain']}"
+    if SITE.get("domain_live")
+    else SITE["pages_url"].rstrip("/")
+)
+DOMAIN_LABEL = SITE["custom_domain"]
+OG_IMAGE = f"{HOST}/assets/og.png"
+BUILT = date.today().isoformat()
 
 COURSES = [
     {
@@ -214,24 +228,57 @@ def inline(text: str) -> str:
     return text
 
 
-def header(root: str, active: str) -> str:
+def esc(text: str) -> str:
+    return (
+        str(text)
+        .replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+    )
+
+
+def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: str) -> str:
     def item(href, label, key):
         current = ' aria-current="page"' if active == key else ""
         return f'<a href="{root}{href}"{current}>{label}</a>'
 
+    url = f"{HOST}/{canon}"
+    ld = (
+        f'\n  <script type="application/ld+json">{jsonld}</script>' if jsonld else ""
+    )
     return f"""<!DOCTYPE html>
 <html lang="en" data-root="{root}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>REPLACE_TITLE</title>
-  <meta name="description" content="REPLACE_DESC">
-  <link rel="canonical" href="{HOST}/REPLACE_CANON">
+  <title>{esc(title)}</title>
+  <meta name="description" content="{esc(desc)}">
+  <meta name="author" content="{esc(SITE['author'])}">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="{url}">
+  <meta property="og:type" content="{'profile' if canon == '' else 'article'}">
+  <meta property="og:site_name" content="{esc(SITE['author'])}">
+  <meta property="og:title" content="{esc(title)}">
+  <meta property="og:description" content="{esc(desc)}">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{OG_IMAGE}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ben Collier, Assistant Teaching Professor of Business Analytics, Tepper School of Business">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{esc(title)}">
+  <meta name="twitter:description" content="{esc(desc)}">
+  <meta name="twitter:image" content="{OG_IMAGE}">
   <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
+  <link rel="alternate" type="application/atom+xml" title="Ben Collier — news" href="{root}feed.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{root}css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{root}css/site.css">{ld}
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -256,7 +303,7 @@ def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{HOST}/">ben.collier.phd</a> · hosted on GitHub Pages</div>
+      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://www.linkedin.com/in/bcollierphd">LinkedIn</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -266,12 +313,8 @@ def footer(root: str) -> str:
 """
 
 
-def page(root, active, title, desc, canon, body) -> str:
-    html = header(root, active)
-    html = html.replace("REPLACE_TITLE", title)
-    html = html.replace("REPLACE_DESC", desc)
-    html = html.replace("REPLACE_CANON", canon)
-    return html + body + footer(root)
+def page(root, active, title, desc, canon, body, jsonld="") -> str:
+    return header(root, active, title, desc, canon, jsonld) + body + footer(root)
 
 
 def write(rel, content: str):
@@ -326,15 +369,93 @@ def person_card(s, root):
 """
 
 
+MONTHS = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+]
+
+
+def human_date(iso: str) -> str:
+    """2026-06-10 -> June 10, 2026. 2026-03 -> March 2026. 2026 -> 2026."""
+    parts = iso.split("-")
+    if len(parts) == 3:
+        return f"{MONTHS[int(parts[1]) - 1]} {int(parts[2])}, {parts[0]}"
+    if len(parts) == 2:
+        return f"{MONTHS[int(parts[1]) - 1]} {parts[0]}"
+    return iso
+
+
+def rfc3339(iso: str) -> str:
+    """Pad a partial date out to a timestamp Atom will accept."""
+    parts = iso.split("-")
+    while len(parts) < 3:
+        parts.append("01")
+    return f"{parts[0]}-{parts[1]}-{parts[2]}T12:00:00Z"
+
+
 def news_items(limit=None):
     items = NEWS if limit is None else NEWS[:limit]
     out = ['<ol class="feed">']
-    for date, text in items:
+    for iso, text in items:
         out.append(
-            f'<li><time datetime="{date}">{date}</time><div class="post"><p>{text}</p></div></li>'
+            f'<li><time datetime="{iso}">{human_date(iso)}</time>'
+            f'<div class="post"><p>{text}</p></div></li>'
         )
     out.append("</ol>")
     return "\n".join(out)
+
+
+def person_jsonld() -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": f"{HOST}/#person",
+        "name": SITE["author"],
+        "url": f"{HOST}/",
+        "image": OG_IMAGE,
+        "jobTitle": SITE["job_title"],
+        "email": f"mailto:{SITE['email']}",
+        "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "Carnegie Mellon University",
+            "department": {
+                "@type": "Organization",
+                "name": "Tepper School of Business",
+            },
+            "url": "https://www.cmu.edu/tepper/",
+        },
+        "knowsAbout": [
+            "Business analytics",
+            "Machine learning",
+            "Data visualization",
+            "Data mining",
+            "Applied statistics",
+        ],
+        "sameAs": SITE["same_as"],
+    }
+    return json.dumps(data, indent=2)
+
+
+def course_jsonld(c) -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": f"{c['number']} {c['title']}",
+        "courseCode": c["number"],
+        "description": c["blurb"],
+        "url": f"{HOST}/courses/{c['slug']}/",
+        "provider": {
+            "@type": "CollegeOrUniversity",
+            "name": "Carnegie Mellon University",
+            "url": "https://www.cmu.edu/",
+        },
+        "instructor": {
+            "@type": "Person",
+            "@id": f"{HOST}/#person",
+            "name": SITE["author"],
+        },
+    }
+    return json.dumps(data, indent=2)
 
 
 def build_home(projects):
@@ -368,7 +489,7 @@ def build_home(projects):
       <div class="grid" style="margin-top:1rem">{cards}</div>
 
       <h2>Student work from the courses</h2>
-      <p class="muted prose-width">Every course has sample studio work. Named teams go up when students opt in. Replace any card by editing <code>data/projects.json</code>.</p>
+      <p class="muted prose-width">The kind of studio work each course asks for. Teams are named here once they opt in.</p>
       <div class="project-grid">{featured}</div>
       <p><a href="courses/">All courses and projects</a></p>
 
@@ -397,6 +518,7 @@ def build_home(projects):
             "Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Courses, students, and applied work.",
             "",
             body,
+            person_jsonld(),
         ),
     )
 
@@ -417,7 +539,7 @@ def build_courses_index(projects):
       <div class="grid">{taught}</div>
 
       <h2>Sample student projects</h2>
-      <p class="muted prose-width">Studio work posted from the courses. Swap in named teams, PDFs, and screenshots via <code>data/projects.json</code>.</p>
+      <p class="muted prose-width">Studio work posted from the courses. Named teams and their artifacts go up once students opt in.</p>
       <div class="project-grid">{samples}</div>
 """
     write(
@@ -463,7 +585,7 @@ def build_course_pages(projects):
         else:
             project_block = """
         <h2>Sample student projects</h2>
-        <div class="empty">Add projects for this course in <code>data/projects.json</code>.</div>
+        <div class="empty">Studio work from this course goes up as teams clear it for publication.</div>
 """
         body = f"""
       <article class="course-hero prose-width">
@@ -490,15 +612,17 @@ def build_course_pages(projects):
                 c["one_liner"],
                 f"courses/{c['slug']}/",
                 body,
+                course_jsonld(c),
             ),
         )
 
     write(
         "courses/70-445/index.html",
-        """<!DOCTYPE html><html lang="en"><head>
+        f"""<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8"><title>70-445 Modern Data Management</title>
+<meta name="robots" content="noindex">
 <meta http-equiv="refresh" content="0; url=../45-881/">
-<link rel="canonical" href="https://ben.collier.phd/courses/45-881/">
+<link rel="canonical" href="{HOST}/courses/45-881/">
 </head><body><p>70-445 is now catalogued as 70-455 / MBA 45-881. <a href="../45-881/">Continue to Modern Data Management</a>.</p></body></html>
 """,
     )
@@ -506,43 +630,60 @@ def build_course_pages(projects):
 
 def build_students(students_data):
     people = "\n".join(person_card(s, "../") for s in students_data["students"])
-    papers_html = []
-    for paper in students_data["papers"]:
-        cls = " placeholder" if paper.get("status") == "placeholder" else ""
-        names = ", ".join(paper.get("students") or []) or "Names with permission"
-        link = (
-            f' · <a href="{paper["link"]}">Paper / artifact</a>'
-            if paper.get("link")
-            else ""
-        )
-        papers_html.append(
-            f"""<li class="{cls.strip()}">
+
+    # Placeholder rows are editing scaffolding, not content. They stay in the
+    # JSON as reserved slots, but nothing unpublished is rendered to visitors.
+    public_papers = [
+        p for p in students_data["papers"] if p.get("status") != "placeholder"
+    ]
+    if public_papers:
+        papers_html = []
+        for paper in public_papers:
+            names = ", ".join(paper.get("students") or []) or "Names with permission"
+            link = (
+                f' · <a href="{paper["link"]}">Paper / artifact</a>'
+                if paper.get("link")
+                else ""
+            )
+            papers_html.append(
+                f"""<li>
   <h3>{paper['title']}</h3>
   <div class="meta">{paper['year']} · {paper['kind']} · {names}{link}</div>
   <p>{paper['summary']}</p>
 </li>"""
+            )
+        papers = f'<ul class="paper-list">\n{chr(10).join(papers_html)}\n      </ul>'
+        reserved = len(students_data["papers"]) - len(public_papers)
+        if reserved:
+            papers += (
+                f'\n      <p class="muted">{reserved} more '
+                f'{"team is" if reserved == 1 else "teams are"} finishing work that '
+                "will be listed here once cleared for publication.</p>"
+            )
+    else:
+        papers = (
+            '<div class="empty">Titles and abstracts go up as teams clear their work '
+            "for publication. The log below records what I have advised.</div>"
         )
-    papers = "\n".join(papers_html)
+
+    built_count = sum(1 for c in COURSES if c["built"])
     body = f"""
       <p class="kicker">Advising</p>
       <h1>Students</h1>
-      <p class="lede">Capstones, independent studies, teaching assistants, LinkedIn shout-outs, and the papers and projects I advise. Photos are pulled from LinkedIn when students are listed.</p>
+      <p class="lede">Capstones, independent studies, teaching assistants, and the papers and projects I advise. Everyone here asked to be listed.</p>
 
       <div class="stat-row">
         <div class="stat"><b>11</b> MSBA capstone teams advised, 2024–2026</div>
-        <div class="stat"><b>3</b> courses I built</div>
+        <div class="stat"><b>{built_count}</b> courses I built</div>
         <div class="stat"><b>1</b> Bach Teaching Award, MBA Class of 2026</div>
       </div>
 
       <h2>People</h2>
-      <p class="muted prose-width">Drop a headshot into <code>assets/students/</code> or run <code>scripts/fetch_linkedin_photo.py</code>. I only list people who opt in.</p>
+      <p class="muted prose-width">Students, teaching assistants, and advisees who agreed to be listed here.</p>
       <div class="people-grid">{people}</div>
 
       <h2>Papers and projects I advised</h2>
-      <p class="muted prose-width">Paste titles, summaries, and PDF links into <code>data/students.json</code> under <code>papers</code>. Placeholder rows stay until a team is ready to be named.</p>
-      <ul class="paper-list">
-        {papers}
-      </ul>
+      {papers}
       <table class="roster" style="margin-top:1.5rem">
         <thead><tr><th>Year</th><th>Role</th><th>What</th></tr></thead>
         <tbody>
@@ -554,7 +695,7 @@ def build_students(students_data):
       </table>
 
       <h2>From LinkedIn</h2>
-      <p class="muted prose-width">Posts where I highlight students. Add more with <code>python3 scripts/add_linkedin_post.py</code>.</p>
+      <p class="muted prose-width">Posts where I highlight student work.</p>
       <ol class="feed" id="linkedin-students">
         <li>
           <time datetime="2026-06-10">Jun 10, 2026</time>
@@ -590,7 +731,8 @@ def build_cv():
     body = f"""
       <p class="kicker">Curriculum vitae</p>
       <h1>CV</h1>
-      <p class="lede">Paste updates into <code>data/cv.md</code>, then run <code>python3 scripts/build.py</code>. Print-friendly.</p>
+      <p class="lede">Appointments, teaching, courses built, advising, and practice. Formatted to print or save as a PDF.</p>
+      <p class="muted no-print"><button class="btn" type="button" data-print>Print or save as PDF</button></p>
       <article class="cv">
         <div class="cv-head">
           <p><strong>Ben Collier</strong> · Assistant Teaching Professor of Business Analytics</p>
@@ -732,9 +874,9 @@ def build_contact():
       <ul class="contact-list">
         <li><span>CMU email</span><div><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></div></li>
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
-        <li><span>Site</span><div><a href="{HOST}/">ben.collier.phd</a> · <code>collier.phd</code> redirects here</div></li>
+        <li><span>Site</span><div><a href="../">{DOMAIN_LABEL}</a></div></li>
         <li><span>Office</span><div>Tepper School of Business<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
-        <li><span>Calendly</span><div id="calendly-slot">Add your Calendly URL in <code>js/config.js</code>, or email two times that work.</div></li>
+        <li><span>Office hours</span><div id="calendly-slot">Email me two times that work and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
         <li><span>ORCID</span><div><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></div></li>
@@ -766,6 +908,70 @@ def build_404():
     )
 
 
+def site_paths():
+    """Every canonical URL path on the site, in navigation order."""
+    paths = ["", "courses/", "students/", "materials/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths += [f"courses/{c['slug']}/" for c in COURSES]
+    return paths
+
+
+def build_sitemap():
+    urls = []
+    for path in site_paths():
+        priority = "1.0" if path == "" else "0.7" if "/" in path.rstrip("/") else "0.8"
+        urls.append(
+            "  <url>\n"
+            f"    <loc>{HOST}/{path}</loc>\n"
+            f"    <lastmod>{BUILT}</lastmod>\n"
+            f"    <priority>{priority}</priority>\n"
+            "  </url>"
+        )
+    write(
+        "sitemap.xml",
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        + "\n".join(urls)
+        + "\n</urlset>\n",
+    )
+
+
+def build_robots():
+    write(
+        "robots.txt",
+        "User-agent: *\nAllow: /\n\n" f"Sitemap: {HOST}/sitemap.xml\n",
+    )
+
+
+def build_feed():
+    entries = []
+    for iso, text in NEWS:
+        stamp = rfc3339(iso)
+        entries.append(
+            "  <entry>\n"
+            f"    <title>{esc(text)}</title>\n"
+            f'    <link href="{HOST}/news/"/>\n'
+            f"    <id>tag:{DOMAIN_LABEL},{iso.split('-')[0]}:news/{iso}</id>\n"
+            f"    <updated>{stamp}</updated>\n"
+            f"    <summary>{esc(text)}</summary>\n"
+            "  </entry>"
+        )
+    latest = rfc3339(NEWS[0][0]) if NEWS else f"{BUILT}T12:00:00Z"
+    write(
+        "feed.xml",
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<feed xmlns="http://www.w3.org/2005/Atom">\n'
+        f"  <title>Ben Collier — news</title>\n"
+        f"  <subtitle>Teaching, advising, and applied work.</subtitle>\n"
+        f'  <link href="{HOST}/feed.xml" rel="self"/>\n'
+        f'  <link href="{HOST}/"/>\n'
+        f"  <id>{HOST}/</id>\n"
+        f"  <updated>{latest}</updated>\n"
+        f"  <author><name>{SITE['author']}</name></author>\n"
+        + "\n".join(entries)
+        + "\n</feed>\n",
+    )
+
+
 def main():
     projects = load_json("projects.json")["projects"]
     students_data = load_json("students.json")
@@ -779,7 +985,10 @@ def main():
     build_news()
     build_contact()
     build_404()
-    print("done")
+    build_sitemap()
+    build_robots()
+    build_feed()
+    print(f"done — absolute URLs point at {HOST}")
 
 
 if __name__ == "__main__":

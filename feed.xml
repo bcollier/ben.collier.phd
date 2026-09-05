@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ben Collier — news</title>
+  <subtitle>Teaching, advising, and applied work.</subtitle>
+  <link href="https://bcollier.github.io/ben.collier.phd/feed.xml" rel="self"/>
+  <link href="https://bcollier.github.io/ben.collier.phd/"/>
+  <id>https://bcollier.github.io/ben.collier.phd/</id>
+  <updated>2026-06-10T12:00:00Z</updated>
+  <author><name>Ben Collier</name></author>
+  <entry>
+    <title>George Leland Bach Teaching Award, voted by the MBA Class of 2026.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-06-10</id>
+    <updated>2026-06-10T12:00:00Z</updated>
+    <summary>George Leland Bach Teaching Award, voted by the MBA Class of 2026.</summary>
+  </entry>
+  <entry>
+    <title>Named an AWS Academy Educator.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-03</id>
+    <updated>2026-03-01T12:00:00Z</updated>
+    <summary>Named an AWS Academy Educator.</summary>
+  </entry>
+  <entry>
+    <title>Advising two MSBA capstone teams this spring.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-01</id>
+    <updated>2026-01-01T12:00:00Z</updated>
+    <summary>Advising two MSBA capstone teams this spring.</summary>
+  </entry>
+  <entry>
+    <title>First offering of AI Methods for Social and Visual Data, a course I built for the MBA.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-08</id>
+    <updated>2025-08-01T12:00:00Z</updated>
+    <summary>First offering of AI Methods for Social and Visual Data, a course I built for the MBA.</summary>
+  </entry>
+  <entry>
+    <title>Joined gAIm Systems as Senior Director of AI and Data Science.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-05</id>
+    <updated>2025-05-01T12:00:00Z</updated>
+    <summary>Joined gAIm Systems as Senior Director of AI and Data Science.</summary>
+  </entry>
+  <entry>
+    <title>Advised five MSBA capstone projects.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-01</id>
+    <updated>2025-01-01T12:00:00Z</updated>
+    <summary>Advised five MSBA capstone projects.</summary>
+  </entry>
+  <entry>
+    <title>Joined Tepper as Assistant Teaching Professor of Business Analytics.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-08</id>
+    <updated>2024-08-01T12:00:00Z</updated>
+    <summary>Joined Tepper as Assistant Teaching Professor of Business Analytics.</summary>
+  </entry>
+  <entry>
+    <title>Taught in the Business Analytics Summer Summit.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-06</id>
+    <updated>2024-06-01T12:00:00Z</updated>
+    <summary>Taught in the Business Analytics Summer Summit.</summary>
+  </entry>
+  <entry>
+    <title>Advised four MSBA capstone projects.</title>
+    <link href="https://bcollier.github.io/ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-01</id>
+    <updated>2024-01-01T12:00:00Z</updated>
+    <summary>Advised four MSBA capstone projects.</summary>
+  </entry>
+</feed>
