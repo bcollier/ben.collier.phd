@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ben Collier — Broadsheet</title>
+<meta name="description" content="Ben Collier, Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Teaching, applied AI, and consulting through Hot Metal AI.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   DESIGN 2 of 5 — "BROADSHEET"
+   A print newspaper. Real multi-column text via CSS columns, hairline rules,
+   a drop cap, a masthead with a dateline, and classified-ad density.
+   The bet: in a sea of dark portfolio sites, an actual newspaper stands out.
+
+   AI USAGE NOTE (15-113): drafted with Claude in Claude Code, then reworked.
+   What I changed:
+     - The first draft faked columns with a CSS grid, which broke the flow of
+       reading (you had to jump back up to the top of the next box). I asked
+       for real `column-count` so the text flows the way a newspaper does.
+     - Drop caps: the model's version used ::first-letter with a fixed pixel
+       size that collided with the second line. I moved it to a float with a
+       line-height of 0.82 measured against this specific typeface.
+     - I wrote the headline copy. Newspapers do not say "Welcome to my page".
+     - Dark mode is deliberately NOT here. Newsprint is a light medium; a dark
+       newspaper is a different design, and I have four other designs for that.
+   =========================================================================== */
+
+:root{
+  --paper:#f6f2e8;
+  --paper-2:#efe9db;
+  --ink:#13110f;
+  --ink-2:#4b453d;
+  --ink-3:#7d7469;
+  --rule:#c9c0ad;
+  --red:#a8200f;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --display:"Playfair Display",Georgia,serif;
+  --cond:"Roboto Condensed",Haettenschweiler,"Arial Narrow",sans-serif;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;overflow-x:hidden;background:#e6dfd0;color:var(--ink);
+  font-family:var(--serif);font-size:17px;line-height:1.52;
+}
+img{max-width:100%;display:block}
+a{color:var(--red)}
+.sheet{
+  max-width:1120px;margin:0 auto;background:var(--paper);
+  padding:2rem 2.6rem 3.5rem;
+  box-shadow:0 0 60px -20px rgba(0,0,0,.35);
+  min-height:100vh;
+}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;background:var(--ink);color:var(--paper);padding:.5rem 1rem}
+
+/* ---- masthead ---- */
+.eyebrow{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  border-bottom:1px solid var(--ink);padding-bottom:.5rem;color:var(--ink-2);
+}
+.masthead{text-align:center;padding:1.5rem 0 .9rem;border-bottom:3px double var(--ink)}
+.masthead h1{
+  font-family:var(--display);font-weight:900;font-size:clamp(2.8rem,8.5vw,6.2rem);
+  margin:0;letter-spacing:-.02em;line-height:.94;
+}
+.masthead .sub{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.35em;font-size:.74rem;
+  color:var(--ink-2);margin-top:.7rem;
+}
+nav.paper{
+  display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;
+  padding:.7rem 0;border-bottom:1px solid var(--ink);
+}
+nav.paper a{color:var(--ink);text-decoration:none}
+nav.paper a:hover{color:var(--red);text-decoration:underline}
+
+/* ---- headline block ---- */
+.lead{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:2.4rem;padding:2rem 0 1.6rem;border-bottom:1px solid var(--rule)}
+.kicker{font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;color:var(--red);margin-bottom:.6rem}
+h2.head{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4.4vw,3.35rem);line-height:1.03;margin:0 0 .8rem;letter-spacing:-.018em}
+.standfirst{font-size:1.12rem;color:var(--ink-2);font-style:italic;margin:0 0 1rem;max-width:52ch}
+.byline{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--ink-3);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:.45rem 0;margin-bottom:1.2rem}
+.portrait-box figure{margin:0}
+.portrait-box img{width:100%;filter:grayscale(1) contrast(1.12);border:1px solid var(--rule)}
+.portrait-box figcaption{font-family:var(--cond);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-3);padding-top:.45rem;line-height:1.4}
+
+/* ---- real newspaper columns ---- */
+.cols3{column-count:3;column-gap:2.2rem;column-rule:1px solid var(--rule);padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+.cols2{column-count:2;column-gap:2.2rem;column-rule:1px solid var(--rule)}
+.cols3 p,.cols2 p{margin:0 0 .95rem;text-align:justify;hyphens:auto}
+.dropcap::first-letter{
+  font-family:var(--display);font-weight:900;float:left;
+  font-size:4.15rem;line-height:.82;padding:.06em .09em 0 0;color:var(--red);
+}
+h3.sec{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:.82rem;
+  border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:.42rem 0;margin:2.4rem 0 1.1rem;
+}
+.pull{
+  font-family:var(--display);font-size:1.5rem;line-height:1.24;font-style:italic;
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  padding:1rem 0;margin:1.2rem 0;break-inside:avoid;color:var(--ink);
+}
+
+/* ---- listings ---- */
+.listing{column-count:2;column-gap:2.2rem;column-rule:1px solid var(--rule)}
+.item{break-inside:avoid;padding:.72rem 0;border-bottom:1px dotted var(--rule)}
+.item b{font-family:var(--cond);font-size:.9rem;letter-spacing:.04em}
+.item .no{color:var(--red);font-family:var(--cond)}
+.item p{margin:.2rem 0 0;font-size:.93rem;color:var(--ink-2);text-align:left}
+.built{background:var(--ink);color:var(--paper);font-family:var(--cond);font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;padding:.08rem .34rem;margin-left:.35rem;vertical-align:2px}
+
+/* ---- project plates ---- */
+.plates{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1.5rem 1.8rem}
+.plate figure{margin:0}
+.plate img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(1) contrast(1.06);border:1px solid var(--rule)}
+.plate figcaption{padding-top:.5rem}
+.plate .cap{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:.68rem;color:var(--red)}
+.plate h4{font-family:var(--display);font-size:1.1rem;margin:.25rem 0 .3rem;line-height:1.2;font-weight:700}
+.plate p{font-size:.88rem;color:var(--ink-2);margin:0;line-height:1.45}
+
+/* ---- classifieds / consulting ---- */
+.ads{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:0;border:2px solid var(--ink)}
+.ad{padding:1.35rem 1.4rem;border-right:1px solid var(--ink);display:flex;flex-direction:column}
+.ad:last-child{border-right:0}
+.ad .rate{font-family:var(--display);font-size:2.2rem;font-weight:900;line-height:1;margin:.4rem 0 .2rem}
+.ad .per{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:.68rem;color:var(--ink-3)}
+.ad h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.86rem;margin:0}
+.ad p{font-size:.9rem;color:var(--ink-2);margin:.85rem 0}
+.ad ul{margin:0 0 1.1rem;padding-left:1.05rem;font-size:.86rem;color:var(--ink-2);flex:1}
+.ad li{margin-bottom:.32rem}
+.ad a.cta{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;
+  text-align:center;text-decoration:none;background:var(--ink);color:var(--paper);padding:.6rem;
+}
+.ad a.cta:hover{background:var(--red)}
+.notice{border:1px solid var(--ink);border-left:4px solid var(--red);padding:.8rem 1rem;font-size:.9rem;margin-top:1.2rem;background:var(--paper-2)}
+
+/* ---- contact table ---- */
+table.contact{width:100%;border-collapse:collapse;font-size:.95rem}
+table.contact th{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;
+  text-align:left;color:var(--ink-3);width:11rem;padding:.5rem .8rem .5rem 0;vertical-align:top;
+  border-bottom:1px dotted var(--rule);font-weight:400;
+}
+table.contact td{padding:.5rem 0;border-bottom:1px dotted var(--rule)}
+
+/* ---- weather box: a small joke that is also real information ---- */
+.weatherbox{border:2px solid var(--ink);padding:1rem 1.1rem;margin-top:1.4rem;break-inside:avoid}
+.weatherbox h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;margin:0 0 .6rem;border-bottom:1px solid var(--ink);padding-bottom:.4rem}
+.weatherbox dl{margin:0;font-size:.88rem}
+.weatherbox dt{font-family:var(--cond);text-transform:uppercase;font-size:.68rem;letter-spacing:.1em;color:var(--ink-3);margin-top:.5rem}
+.weatherbox dd{margin:0}
+
+footer.paper{border-top:3px double var(--ink);margin-top:2.5rem;padding-top:1.2rem;font-size:.82rem;color:var(--ink-2)}
+footer.paper .fcols{column-count:2;column-gap:2.2rem}
+footer.paper a{color:var(--ink)}
+
+@media(max-width:900px){
+  .sheet{padding:1.4rem 1.2rem 2.5rem}
+  .lead{grid-template-columns:1fr;gap:1.4rem}
+  .cols3{column-count:2}
+  .ad{border-right:0;border-bottom:1px solid var(--ink)}
+  .ad:last-child{border-bottom:0}
+}
+@media(max-width:620px){
+  .cols3,.cols2,.listing,footer.paper .fcols{column-count:1}
+  nav.paper{gap:1rem;font-size:.72rem}
+}
+@media print{
+  body{background:#fff}
+  .sheet{box-shadow:none;max-width:100%}
+  nav.paper{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="sheet">
+
+  <div class="eyebrow">
+    <span>Pittsburgh, Pennsylvania</span>
+    <span id="dateline">&nbsp;</span>
+    <span>Vol. I &nbsp;·&nbsp; No. 1 &nbsp;·&nbsp; Free</span>
+  </div>
+
+  <div class="masthead">
+    <h1>The Collier Review</h1>
+    <div class="sub">Teaching · Applied Machine Learning · Consulting</div>
+  </div>
+
+  <nav class="paper">
+    <a href="#about">About</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#projects">Projects</a>
+    <a href="#consulting">Consulting</a>
+    <a href="#contact">Contact</a>
+    <a href="../">Other editions</a>
+  </nav>
+
+  <main id="main">
+
+    <div class="lead">
+      <div>
+        <div class="kicker">Faculty · Carnegie Mellon University</div>
+        <h2 class="head">Professor argues the model was never the decision</h2>
+        <p class="standfirst">Ben Collier teaches business analytics at the Tepper School and Heinz College, and keeps a consulting practice running so the labs never drift into toy problems.</p>
+        <div class="byline">By Ben Collier &nbsp;·&nbsp; Assistant Teaching Professor of Business Analytics &nbsp;·&nbsp; Tepper School of Business</div>
+        <p style="margin:0;font-size:.95rem;color:var(--ink-2)">Continued in three columns below. Course listings on this page. Consulting rates in the classified section. Correspondence welcome.</p>
+      </div>
+      <div class="portrait-box">
+        <figure>
+          <img src="../../assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
+          <figcaption>Collier, photographed at the Tepper School. Photograph courtesy Carnegie Mellon University.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="cols3">
+        <p class="dropcap">My appointment is at the Tepper School of Business, where I teach across the MBA, the MS in Business Analytics, and undergraduate programs, with selected courses at Heinz College. The PhD is from Carnegie Mellon in Information Systems and Organizational Behavior, which is a long way of saying I arrived at machine learning through the question of how organizations actually behave rather than the other way round.</p>
+        <p>That order matters. It is why my labs spend as much time on whether a finding should change anyone's behaviour as on whether the model converged. A classifier with a good AUC that nobody can act on is a hobby.</p>
+        <p>Before returning to the faculty I led data science at Duolingo through the IPO and the launch of Duolingo Max, running monetization analytics, large-scale experimentation, and financial forecasting. Before that I was at UPMC as Senior Director of Data Science and the founding data scientist on a joint venture with IBM Watson Health, where I led CognitiveRx, a drug price forecasting and shortage prediction product later acquired by Premier.</p>
+        <div class="pull">A classifier with a good AUC that nobody can act on is a hobby.</div>
+        <p>Earlier still I spent four years at Carnegie Mellon Qatar as Assistant Teaching Professor of Organizational Behavior and Co-Director of Executive Education, teaching negotiation, leadership, and research methods to students and executives across the Gulf.</p>
+        <p>The practice work continues today through Hot Metal AI, my analytics consulting and corporate training firm, and through gAIm Systems, where I am Senior Director of AI and Data Science building tools for how sports organizations recruit, develop, and assemble teams.</p>
+        <p>In 2026 the graduating MBA class voted me the George Leland Bach Teaching Award. That one is theirs more than mine, and it is the piece of this page I am least neutral about.</p>
+        <p><b>Interests.</b> Experimentation and causal inference; the sociology of open collaboration, which was my dissertation territory and still shows up in my published work on Wikipedia; how technical teams get assembled and assessed; and the stubborn question of whether any dashboard has ever changed a decision.</p>
+        <p><b>Tools.</b> Python with pandas and scikit-learn daily. SQL and the unglamorous data modelling underneath it. Tableau when the audience needs it. Increasingly, large language models applied to text, image, and network data, taught as instruments with known failure modes rather than as oracles.</p>
+      </div>
+    </section>
+
+    <section id="teaching">
+      <h3 class="sec">Course listings · Ten titles · Three built from scratch</h3>
+      <div class="listing" id="courses"></div>
+      <div class="weatherbox">
+        <h4>By the numbers</h4>
+        <dl>
+          <dt>Courses currently taught</dt><dd>Ten, across MBA, MSBA, undergraduate, and Heinz</dd>
+          <dt>Courses built from nothing</dt><dd>Three, including a Math Skills Workshop</dd>
+          <dt>MSBA capstone teams advised</dt><dd>Eleven, 2024 through 2026</dd>
+          <dt>Awards</dt><dd>George Leland Bach Teaching Award, 2026 · AWS Academy Educator, 2026</dd>
+          <dt>Education</dt><dd>PhD and MS, Carnegie Mellon · MBA, Wisconsin–Madison · BBA, Wisconsin–Whitewater</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h3 class="sec">From the studio · Student work and other projects</h3>
+      <p style="margin:0 0 1.2rem;color:var(--ink-2);font-size:.95rem">Representative work from the courses. Named teams appear when students opt in. The final plate is this newspaper.</p>
+      <div class="plates" id="plates"></div>
+    </section>
+
+    <section id="consulting">
+      <h3 class="sec">Classified · Professional services · Hot Metal AI</h3>
+      <p style="margin:0 0 1.2rem;color:var(--ink-2);font-size:.95rem">Twenty years of building data systems inside healthcare, education, telecom, and sport. Rates published, because making people ask is a tax on their time.</p>
+      <div class="ads" id="ads"></div>
+      <p class="notice" id="notice"></p>
+    </section>
+
+    <section id="contact">
+      <h3 class="sec">Correspondence</h3>
+      <div class="cols2">
+        <table class="contact">
+          <tbody>
+            <tr><th>University</th><td><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></td></tr>
+            <tr><th>Personal</th><td><a href="mailto:ben@collier.phd">ben@collier.phd</a></td></tr>
+            <tr><th>LinkedIn</th><td><a href="https://www.linkedin.com/in/bcollierphd">in/bcollierphd</a></td></tr>
+            <tr><th>GitHub</th><td><a href="https://github.com/bcollier">github.com/bcollier</a></td></tr>
+            <tr><th>ORCID</th><td><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></td></tr>
+            <tr><th>CMU Scholars</th><td><a href="https://scholars.cmu.edu/473-ben-collier">scholars.cmu.edu</a></td></tr>
+            <tr><th>Office</th><td>Tepper School of Business<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</td></tr>
+          </tbody>
+        </table>
+        <div>
+          <p style="margin-top:0"><b>To students.</b> Put the course number in the subject line and I will find it faster. I take on a small number of independent studies, capstone teams, and teaching assistants each year; tell me the project, the program, and what you want out of it.</p>
+          <p><b>To editors and organisers.</b> I speak on applied machine learning in organizations, on teaching technical material to non-technical audiences, and on what actually happened to data science teams over the last decade.</p>
+          <p><b>To companies.</b> The classified section above is the whole price list. There is no discovery call before the price.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="paper">
+    <div class="fcols">
+      <p><b>Credits and sources.</b> Written, designed, and coded by Ben Collier. Drafted with Claude (Anthropic) in Claude Code and then edited by hand; the code comments mark what the AI produced and what I changed, and the full <a href="../../PROMPTS.md">prompt log</a> is in the repository.</p>
+      <p><b>Typefaces.</b> <a href="https://fonts.google.com/specimen/Playfair+Display">Playfair Display</a> by Claus Eggers Sørensen, <a href="https://fonts.google.com/specimen/Source+Serif+4">Source Serif 4</a> by Frank Grießhammer for Adobe, and <a href="https://fonts.google.com/specimen/Roboto+Condensed">Roboto Condensed</a> by Christian Robertson. All under the SIL Open Font License, served by Google Fonts.</p>
+      <p><b>Images.</b> Portrait photograph courtesy Carnegie Mellon University. All project plates are original SVG drawings made for this site. No stock photography, no template.</p>
+      <p><b>Colophon.</b> Hand-written HTML and CSS. Columns are real CSS multi-column, not a grid pretending. No framework, no tracker, no cookie. Source at <a href="https://github.com/bcollier/ben.collier.phd">github.com/bcollier/ben.collier.phd</a>. One of <a href="../">five design editions</a>.</p>
+    </div>
+  </footer>
+</div>
+
+<script src="../shared/booking.js"></script>
+<script>
+/* Three small pieces of JavaScript: a live dateline, the course and project
+   listings rendered from data, and the classified ads built from the shared
+   booking config. Keeping content in arrays means adding a course is one line,
+   not a hunt through markup. */
+(function () {
+  "use strict";
+
+  /* A newspaper with a stale date is a dead newspaper. */
+  document.getElementById("dateline").textContent =
+    new Date().toLocaleDateString("en-US", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+  var COURSES = [
+    ["45-884","AI Methods for Social and Visual Data","MBA, Tepper",1,"Modern AI on text, networks, and images. Ethics sits in the same lab as the code."],
+    ["70-377","Managing and Assessing Tech Talent and Organizations","Undergraduate, CMU Qatar",1,"Hiring, growing, and evaluating technical people without managing by vibes."],
+    ["MSBA","Math Skills Workshop","Workshop, developed 2026",1,"Built so incoming MSBA students arrive ready for the quantitative core."],
+    ["45-851","Data Mining","MBA, Tepper",0,"Structure in messy business data, and the habit of asking whether to trust it."],
+    ["45-885","Data Visualization","MBA, Tepper",0,"Charts that change what somebody does on Monday. Decoration is not the job."],
+    ["46-885","Data Exploration and Visualization","MSBA, Tepper",0,"Exploratory analysis first, then the communication layer that makes it usable."],
+    ["46-880","Introduction to Probability and Statistics","MSBA, Tepper",0,"The quantitative floor every later analytics course stands on."],
+    ["46-887","Machine Learning for Business Applications","MSBA, Tepper",0,"Pipelines, evaluation, and the translation into an operational decision."],
+    ["45-881","Modern Data Management","MBA, Tepper",0,"SQL, pipelines, and the work that decides whether the model sees the right table."],
+    ["90-803","Machine Learning Foundations with Python","Heinz College",0,"The Python foundation Heinz students need before they apply it to policy."]
+  ];
+  document.getElementById("courses").innerHTML = COURSES.map(function (c) {
+    return '<div class="item"><b><span class="no">' + esc(c[0]) + '</span> &nbsp;' + esc(c[1]) +
+      (c[3] ? '<span class="built">Built</span>' : "") + "</b>" +
+      '<p><i>' + esc(c[2]) + "</i> — " + esc(c[4]) + "</p></div>";
+  }).join("");
+
+  var PLATES = [
+    ["clusters.svg","45-851 · Fall 2025","Grocery segments that change a promotion","Cluster a retail basket dataset, name the segments in a category manager's language, then fund exactly one promotion change."],
+    ["churn.svg","45-851 · Spring 2025","Who churns, and who is just quiet","Separating real churn risk from dormancy, with cost-sensitive evaluation and a one-page brief."],
+    ["dashboard.svg","45-885 · Spring 2025","Redesigning a misleading public dashboard","A real dashboard that lies by accident, documented and then rebuilt for someone under time pressure."],
+    ["earnings-call.svg","45-884 · Fall 2025","Reading the room on an earnings call","Transcript, audio, and video together, plus an honest account of what the model cannot see."],
+    ["network.svg","45-884 · Fall 2025","A city's civic graph","Civic organizations mapped from public text, and an argument about what centrality does not license you to claim."],
+    ["one-chart.svg","45-885 · Spring 2026","One chart, one decision","A board packet reduced until a single graphic carries the recommendation."]
+  ];
+  var html = PLATES.map(function (p) {
+    return '<div class="plate"><figure><img src="../../assets/projects/' + p[0] + '" alt="" width="800" height="500" loading="lazy">' +
+      '<figcaption><div class="cap">' + esc(p[1]) + "</div><h4>" + esc(p[2]) + "</h4><p>" + esc(p[3]) + "</p></figcaption></figure></div>";
+  }).join("");
+  /* The 15-113 brief asks that the portfolio itself appear as a project. */
+  html += '<div class="plate"><figure><img src="../../assets/og.png" alt="" width="800" height="500" loading="lazy">' +
+    '<figcaption><div class="cap">15-113 · Project 1</div><h4>This newspaper</h4>' +
+    "<p>One of five complete design directions for the same portfolio, in hand-written HTML and CSS. " +
+    'Columns are real CSS multi-column. <a href="https://github.com/bcollier/ben.collier.phd">Source</a> · <a href="../">Compare all five</a></p></figcaption></figure></div>';
+  document.getElementById("plates").innerHTML = html;
+
+  document.getElementById("ads").innerHTML = window.BOOKING.offers.map(function (o) {
+    return '<div class="ad"><h4>' + esc(o.name) + "</h4>" +
+      '<div class="rate">' + esc(o.price) + '</div><div class="per">' + esc(o.unit) + "</div>" +
+      "<p>" + esc(o.blurb) + "</p><ul>" +
+      o.points.map(function (pt) { return "<li>" + esc(pt) + "</li>"; }).join("") +
+      '</ul><a class="cta" href="' + window.bookingHref(o) + '">' + window.bookingCta(o) + "</a></div>";
+  }).join("");
+
+  var live = window.BOOKING.offers.some(function (o) { return !!o.checkout; });
+  document.getElementById("notice").innerHTML = live
+    ? "<b>Payment.</b> Handled by Stripe. A receipt and a scheduling link arrive immediately after checkout."
+    : "<b>Notice to advertisers.</b> Card payment is not connected yet, so each button opens a prefilled email and I invoice on booking. Hot Metal AI, Pittsburgh, Pennsylvania.";
+})();
+</script>
+</body>
+</html>

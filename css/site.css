@@ -554,3 +554,13 @@ button:focus-visible {
 @media print {
   .no-print { display: none !important; }
 }
+
+/* Banner pointing at the five-design review. Deliberately loud: it is the
+   thing I want a first-time visitor to click while the review is open. */
+.notice-strip{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1rem;
+  background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--accent);
+  padding:.9rem 1.1rem;margin:2rem 0 0;font-size:.96rem;
+}
+.notice-strip span{color:var(--ink-soft);flex:1;min-width:14rem}
+.notice-strip a{white-space:nowrap;font-weight:600}

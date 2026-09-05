@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five designs — Ben Collier</title>
+<meta name="description" content="Five complete design directions for ben.collier.phd. Compare them side by side, or open any one full screen.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   THE PICKER
+   Five designs, live in iframes so you compare the real thing rather than a
+   screenshot that goes stale. Two modes: a grid of all five, and one full
+   width. Frames load lazily; only the visible one runs at full size.
+
+   AI USAGE NOTE (15-113): drafted with Claude in Claude Code, then changed.
+     - Frames were eager-loading all five at once, which meant five canvas
+       animations competing on load. loading="lazy" plus a click-to-wake
+       overlay on the grid fixed it.
+     - The device-width switcher is mine: the brief requires the site work on
+       phone and tablet, so the reviewer should be able to check that here
+       instead of resizing a window.
+   =========================================================================== */
+:root{
+  --bg:#0c0b0a;--panel:#161312;--line:#2b2523;--ink:#f2ece2;--ink-2:#9b9187;--rust:#ff6a2b;
+  --mono:"JetBrains Mono",ui-monospace,monospace;--sans:"Space Grotesk",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+a{color:var(--rust)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;background:var(--rust);color:#000;padding:.5rem 1rem;z-index:99}
+
+header{border-bottom:1px solid var(--line);padding:2.2rem 1.5rem 1.6rem}
+.wrap{max-width:1500px;margin:0 auto}
+h1{font-size:clamp(1.7rem,4vw,2.6rem);margin:0 0 .5rem;letter-spacing:-.03em}
+.sub{color:var(--ink-2);max-width:70ch;margin:0}
+.kick{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin:0 0 .7rem}
+
+.controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;padding:1.1rem 1.5rem;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(12,11,10,.94);backdrop-filter:blur(10px);z-index:20}
+.controls .grp{display:flex;gap:.4rem;align-items:center}
+.controls label{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-right:.3rem}
+button.t{
+  font-family:var(--mono);font-size:.8rem;background:transparent;color:var(--ink-2);
+  border:1px solid var(--line);padding:.42rem .85rem;border-radius:3px;cursor:pointer;
+}
+button.t:hover{border-color:var(--rust);color:var(--ink)}
+button.t[aria-pressed="true"]{background:var(--rust);border-color:var(--rust);color:#12100f}
+.spacer{flex:1}
+.controls a.open{font-family:var(--mono);font-size:.8rem;text-decoration:none;border:1px solid var(--line);padding:.42rem .85rem;border-radius:3px;color:var(--ink)}
+.controls a.open:hover{border-color:var(--rust);color:var(--rust)}
+
+main{padding:1.5rem}
+.stage{max-width:1500px;margin:0 auto;display:grid;gap:1.5rem}
+.stage[data-view="grid"]{grid-template-columns:repeat(auto-fit,minmax(430px,1fr))}
+.stage[data-view="one"]{grid-template-columns:1fr}
+
+.card{border:1px solid var(--line);background:var(--panel);border-radius:5px;overflow:hidden;display:flex;flex-direction:column}
+.card.hidden{display:none}
+.card .head{padding:1rem 1.1rem;border-bottom:1px solid var(--line);display:flex;gap:1rem;align-items:flex-start}
+.card .head .n{font-family:var(--mono);font-size:.72rem;color:var(--rust);letter-spacing:.14em}
+.card .head h2{margin:.25rem 0 .3rem;font-size:1.2rem;letter-spacing:-.02em}
+.card .head p{margin:0;font-size:.86rem;color:var(--ink-2);max-width:56ch}
+.card .head .links{margin-left:auto;display:flex;gap:.4rem;flex-shrink:0}
+.card .head a{font-family:var(--mono);font-size:.74rem;text-decoration:none;border:1px solid var(--line);padding:.3rem .6rem;border-radius:3px;color:var(--ink)}
+.card .head a:hover{border-color:var(--rust);color:var(--rust)}
+
+.frame{position:relative;background:#000;display:flex;justify-content:center;padding:0}
+.frame.pad{padding:1.2rem;background:#080706}
+iframe{border:0;width:100%;display:block;background:#fff}
+.stage[data-view="grid"] iframe{height:560px}
+.stage[data-view="one"] iframe{height:78vh}
+.frame.pad iframe{border:1px solid var(--line);border-radius:4px;box-shadow:0 24px 60px -24px #000}
+
+.tags{display:flex;gap:.35rem;flex-wrap:wrap;padding:.75rem 1.1rem;border-top:1px solid var(--line);background:#100e0d}
+.tag{font-family:var(--mono);font-size:.7rem;color:var(--ink-2);border:1px solid var(--line);padding:.13rem .5rem;border-radius:99px}
+.tag.hot{color:var(--rust);border-color:#5a2d15}
+
+footer{border-top:1px solid var(--line);margin-top:2rem;padding:2.2rem 1.5rem 4rem;color:var(--ink-2);font-size:.86rem}
+footer .cols{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+footer h3{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin:0 0 .6rem}
+footer a{color:var(--ink-2);text-decoration:none;display:block;padding:.14rem 0}
+footer a:hover{color:var(--rust)}
+@media(max-width:560px){
+  .stage[data-view="grid"]{grid-template-columns:1fr}
+  .card .head{flex-direction:column}
+  .card .head .links{margin-left:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#stage">Skip to the designs</a>
+
+<header>
+  <div class="wrap">
+    <p class="kick">ben.collier.phd · design review</p>
+    <h1>Five designs, one site.</h1>
+    <p class="sub">Same content, same facts, five completely different design arguments. Every one is a working page: real links, real consulting rates, responsive, keyboard navigable. Pick one and it becomes the site. They are live below, not screenshots.</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="grp">
+    <label for="view-grid">View</label>
+    <button class="t" id="view-grid" type="button" aria-pressed="true" data-view="grid">All five</button>
+    <button class="t" type="button" aria-pressed="false" data-view="one">One at a time</button>
+  </div>
+  <div class="grp" id="pickers" hidden>
+    <label>Design</label>
+  </div>
+  <div class="grp">
+    <label>Width</label>
+    <button class="t" type="button" aria-pressed="true" data-w="full">Desktop</button>
+    <button class="t" type="button" aria-pressed="false" data-w="820">Tablet</button>
+    <button class="t" type="button" aria-pressed="false" data-w="390">Phone</button>
+  </div>
+  <div class="spacer"></div>
+  <a class="open" href="../" target="_blank" rel="noopener">The current site ↗</a>
+</div>
+
+<main>
+  <div class="stage" id="stage" data-view="grid"></div>
+</main>
+
+<footer>
+  <div class="cols">
+    <div>
+      <h3>How to choose</h3>
+      <p style="margin:0">Open each one full screen and scroll to the consulting section. That is the part doing the commercial work. Then check the same section on Phone width. If a design still reads there, it will hold up anywhere.</p>
+    </div>
+    <div>
+      <h3>Links</h3>
+      <a href="../">Current multi-page site</a>
+      <a href="https://github.com/bcollier/ben.collier.phd">Source on GitHub</a>
+      <a href="../PROMPTS.md">Prompt log (15-113)</a>
+      <a href="https://www.linkedin.com/in/bcollierphd">LinkedIn</a>
+    </div>
+    <div>
+      <h3>Credits</h3>
+      <p style="margin:0">Designed and coded by Ben Collier, drafted with Claude (Anthropic) in Claude Code and edited by hand. Every design names its typefaces and image sources in its own footer. Portrait courtesy Carnegie Mellon University. No templates, no stock photography, no trackers.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var DESIGNS = [
+    {
+      id: "neural", n: "01", name: "Neural",
+      blurb: "Dark instrument panel. The background is a live network simulation that reacts to your cursor, and a small robot wanders in every so often to follow it. The AI-heavy one.",
+      tags: ["Canvas simulation", "Robot companion", "Dark", "Most interactive"]
+    },
+    {
+      id: "broadsheet", n: "02", name: "Broadsheet",
+      blurb: "An actual newspaper. Real CSS multi-column text, a drop cap, hairline rules, a live dateline, and consulting rates set as classified ads. Prints properly.",
+      tags: ["Editorial", "Real columns", "Light", "Print-friendly"]
+    },
+    {
+      id: "steel", n: "03", name: "Steel",
+      blurb: "Pittsburgh industrial. Molten orange on steel grey, riveted plate edges drawn in CSS, and a temperature gauge that fills as you scroll. The Hot Metal AI design.",
+      tags: ["Consulting-forward", "Heavy type", "Dark", "Brand-led"]
+    },
+    {
+      id: "notebook", n: "04", name: "Notebook",
+      blurb: "The site as a Jupyter notebook. Cells you can run, execution counters that number themselves in the order you press them, dataframes as output. Reads instantly to anyone technical.",
+      tags: ["Playful", "Interactive cells", "Light", "For a data audience"]
+    },
+    {
+      id: "studio", n: "05", name: "Studio",
+      blurb: "Swiss gallery. A strict grid, enormous serif display type, almost no colour, and a great deal of air. The quiet, senior, expensive-looking one.",
+      tags: ["Minimal", "Editorial", "Light", "Most restrained"]
+    }
+  ];
+
+  var stage = document.getElementById("stage");
+  var pickers = document.getElementById("pickers");
+  var view = "grid", width = "full", current = "neural";
+
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+  DESIGNS.forEach(function (d) {
+    var card = document.createElement("section");
+    card.className = "card";
+    card.dataset.id = d.id;
+    card.innerHTML =
+      '<div class="head"><div><div class="n">' + d.n + " / " + esc(d.name.toUpperCase()) + "</div>" +
+      "<h2>" + esc(d.name) + "</h2><p>" + esc(d.blurb) + "</p></div>" +
+      '<div class="links"><a href="' + d.id + '/" target="_blank" rel="noopener">Open ↗</a></div></div>' +
+      '<div class="frame"><iframe title="' + esc(d.name) + ' design preview" src="' + d.id + '/" loading="lazy"></iframe></div>' +
+      '<div class="tags">' + d.tags.map(function (t, i) {
+        return '<span class="tag' + (i === 0 ? " hot" : "") + '">' + esc(t) + "</span>";
+      }).join("") + "</div>";
+    stage.appendChild(card);
+
+    var b = document.createElement("button");
+    b.className = "t"; b.type = "button"; b.textContent = d.n + " " + d.name;
+    b.setAttribute("aria-pressed", d.id === current ? "true" : "false");
+    b.dataset.pick = d.id;
+    pickers.appendChild(b);
+  });
+
+  function render() {
+    stage.dataset.view = view;
+    pickers.hidden = view !== "one";
+    document.querySelectorAll(".card").forEach(function (c) {
+      c.classList.toggle("hidden", view === "one" && c.dataset.id !== current);
+      var frame = c.querySelector(".frame");
+      var iframe = c.querySelector("iframe");
+      if (width === "full") {
+        frame.classList.remove("pad");
+        iframe.style.width = "100%";
+      } else {
+        // Constrain the iframe itself, not a wrapper: the page inside has to
+        // see a narrow viewport for its media queries to actually fire.
+        frame.classList.add("pad");
+        iframe.style.width = width + "px";
+      }
+    });
+  }
+
+  document.querySelectorAll("[data-view]").forEach(function (b) {
+    if (b.tagName !== "BUTTON") return;
+    b.addEventListener("click", function () {
+      view = b.dataset.view;
+      document.querySelectorAll("button[data-view]").forEach(function (o) {
+        o.setAttribute("aria-pressed", o === b ? "true" : "false");
+      });
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-w]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      width = b.dataset.w;
+      document.querySelectorAll("[data-w]").forEach(function (o) {
+        o.setAttribute("aria-pressed", o === b ? "true" : "false");
+      });
+      render();
+    });
+  });
+
+  pickers.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pick]");
+    if (!b) return;
+    current = b.dataset.pick;
+    pickers.querySelectorAll("[data-pick]").forEach(function (o) {
+      o.setAttribute("aria-pressed", o === b ? "true" : "false");
+    });
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

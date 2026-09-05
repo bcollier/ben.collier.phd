@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ben Collier — Steel</title>
+<meta name="description" content="Ben Collier, Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Applied AI, teaching, and consulting through Hot Metal AI.">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===========================================================================
+   DESIGN 3 of 5 — "STEEL"
+   Pittsburgh. Hot Metal Bridge, the mills, the colour of a pour. Heavy
+   condensed type, full-bleed bands, riveted plate edges, molten gradients.
+   This is the consulting-forward design: Hot Metal AI is the whole metaphor.
+
+   AI USAGE NOTE (15-113): drafted with Claude in Claude Code, then reworked.
+   What I changed:
+     - The rivets. The model's first pass drew them as individual <div>s, 80
+       elements of pure decoration. I replaced them with a single repeating
+       radial-gradient background, which is one paint instead of eighty nodes.
+     - The temperature gauge is my idea. It maps scroll position to a molten
+       colour, so scrolling the page feels like watching a pour cool.
+     - I cut a "hero video" suggestion. A 6MB loop to say "industrial" is a
+       bad trade on a page whose whole point is that I understand cost.
+     - Contrast: the first molten orange on dark steel measured 3.1:1. I
+       lightened it to #ff7a1f, which measures 6.2:1 on #16191c.
+   =========================================================================== */
+
+:root{
+  --steel:#16191c;
+  --steel-2:#1e2327;
+  --plate:#252b30;
+  --line:#333b41;
+  --ice:#eef2f4;
+  --ice-2:#9aa6ae;
+  --molten:#ff7a1f;
+  --molten-2:#ffb03a;
+  --ember:#e03e12;
+  --black:#0c0e10;
+  --disp:"Archivo Black",Impact,sans-serif;
+  --cond:"Barlow Condensed",Haettenschweiler,sans-serif;
+  --sans:"Barlow",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--steel);color:var(--ice);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--molten)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;background:var(--molten);color:var(--black);padding:.6rem 1rem;z-index:99}
+
+/* The scroll gauge: a molten bar that fills as you descend. */
+#gauge{position:fixed;left:0;top:0;height:4px;width:0;z-index:60;background:linear-gradient(90deg,var(--ember),var(--molten),var(--molten-2))}
+
+/* A riveted plate edge, drawn with one repeating gradient rather than
+   dozens of elements. Applied as a top border on each band. */
+.rivets{
+  height:14px;
+  background:
+    radial-gradient(circle at 10px 7px, #55606a 0 2.4px, transparent 2.6px) repeat-x 0 0/28px 14px,
+    linear-gradient(180deg,var(--plate),var(--steel-2));
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+
+header{position:sticky;top:0;z-index:50;background:rgba(12,14,16,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1200px;margin:0 auto;padding:.7rem 1.5rem;display:flex;align-items:center;gap:1.4rem}
+.mark{font-family:var(--disp);font-size:1.05rem;letter-spacing:-.02em;color:var(--ice);text-decoration:none;text-transform:uppercase}
+.mark em{font-style:normal;color:var(--molten)}
+nav{margin-left:auto;display:flex;gap:1.5rem;flex-wrap:wrap}
+nav a{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.95rem;font-weight:600;color:var(--ice-2);text-decoration:none}
+nav a:hover{color:var(--molten)}
+.hire{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-weight:700;font-size:.95rem;
+  background:var(--molten);color:var(--black);text-decoration:none;padding:.45rem 1.1rem;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+}
+.hire:hover{background:var(--molten-2)}
+
+.band{padding:5rem 0;position:relative}
+.wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.num{font-family:var(--disp);font-size:.8rem;color:var(--molten);letter-spacing:.2em;margin-bottom:.7rem}
+h1,h2,h3{margin:0;font-family:var(--disp);text-transform:uppercase;letter-spacing:-.02em;line-height:.95}
+h1{font-size:clamp(3.2rem,11vw,9rem)}
+h2{font-size:clamp(2rem,5.5vw,4rem);margin-bottom:1.5rem}
+h3{font-size:1.15rem;line-height:1.15}
+p{margin:0 0 1.1rem}
+.lede{font-family:var(--cond);font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.28;font-weight:500;color:var(--ice);max-width:32ch}
+.muted{color:var(--ice-2)}
+
+/* ---- hero: a molten pour behind the name ---- */
+.hero{position:relative;padding:6.5rem 0 4rem;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{
+  content:"";position:absolute;right:-18%;top:-30%;width:70vw;height:70vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,122,31,.30),rgba(224,62,18,.11) 42%,transparent 66%);
+  filter:blur(24px);pointer-events:none;
+}
+.hero .wrap{position:relative}
+.hero h1{color:var(--ice)}
+.hero h1 span{
+  background:linear-gradient(180deg,var(--molten-2),var(--ember));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.who{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2rem;align-items:center;margin-top:2.2rem}
+.who img{width:150px;height:150px;object-fit:cover;object-position:center 18%;border:3px solid var(--molten);clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px)}
+.slab{display:flex;flex-wrap:wrap;gap:0;margin-top:3rem;border:1px solid var(--line)}
+.slab div{flex:1 1 170px;padding:1.15rem 1.3rem;border-right:1px solid var(--line);background:var(--steel-2)}
+.slab div:last-child{border-right:0}
+.slab span{display:block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--ice-2)}
+.slab b{font-family:var(--disp);font-size:1.9rem;color:var(--ice);display:block;margin-top:.2rem;line-height:1}
+.slab b.hot{color:var(--molten)}
+
+/* ---- alternating dark/darker bands ---- */
+.band.alt{background:var(--steel-2)}
+.two{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:3.5rem}
+
+/* ---- course grid as stacked steel plates ---- */
+.plates{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.pl{background:var(--plate);padding:1.4rem 1.4rem 1.5rem;position:relative;transition:background .18s}
+.pl:hover{background:#2c3339}
+.pl .code{font-family:var(--disp);font-size:1.5rem;color:var(--molten);line-height:1}
+.pl .prog{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;color:var(--ice-2);margin:.5rem 0 .55rem}
+.pl h3{font-size:1.02rem;margin-bottom:.5rem}
+.pl p{font-size:.9rem;color:var(--ice-2);margin:0}
+.stamp{
+  position:absolute;top:1.3rem;right:1.3rem;font-family:var(--cond);font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;
+  border:2px solid var(--molten);color:var(--molten);padding:.1rem .4rem;transform:rotate(-6deg);
+}
+
+/* ---- projects ---- */
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+.w{border:1px solid var(--line);background:var(--plate);overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,border-color .18s}
+.w:hover{transform:translateY(-3px);border-color:var(--molten)}
+.w img{aspect-ratio:16/10;object-fit:cover;width:100%}
+.w .b{padding:1.15rem 1.25rem 1.3rem;flex:1;display:flex;flex-direction:column}
+.w .t{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--molten)}
+.w h3{margin:.4rem 0 .5rem;font-size:1.05rem}
+.w p{font-size:.9rem;color:var(--ice-2);margin:0 0 .9rem;flex:1}
+.w .cred{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;color:var(--ice-2);border-top:1px solid var(--line);padding-top:.7rem}
+
+/* ---- consulting: the foundry ---- */
+.foundry{background:linear-gradient(160deg,#1b1210,#16191c 55%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rates{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.2rem;margin-top:2.3rem}
+.rate{border:1px solid var(--line);background:rgba(37,43,48,.8);padding:1.7rem 1.6rem 1.6rem;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.rate.hot{border-color:var(--molten);background:linear-gradient(180deg,rgba(255,122,31,.09),rgba(37,43,48,.85))}
+.rate.hot::after{content:"Most booked";position:absolute;top:0;right:0;background:var(--molten);color:var(--black);font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;font-weight:700;padding:.25rem .8rem}
+.rate h3{font-size:1.05rem;margin-bottom:.7rem}
+.rate .fig{font-family:var(--disp);font-size:2.5rem;line-height:1;color:var(--ice)}
+.rate .per{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;color:var(--ice-2);margin-top:.3rem}
+.rate p{font-size:.92rem;color:var(--ice-2);margin:1.1rem 0}
+.rate ul{list-style:none;margin:0 0 1.5rem;padding:0;font-size:.89rem;color:var(--ice-2);flex:1}
+.rate li{padding-left:1.4rem;position:relative;margin-bottom:.5rem}
+.rate li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:2px;background:var(--molten)}
+.go{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-weight:700;font-size:.92rem;
+  text-align:center;text-decoration:none;padding:.75rem 1rem;background:var(--molten);color:var(--black);
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+}
+.go:hover{background:var(--molten-2)}
+.go.q{background:transparent;color:var(--ice);border:1px solid var(--line);clip-path:none}
+.go.q:hover{border-color:var(--molten);color:var(--molten)}
+.smallprint{font-family:var(--cond);font-size:.95rem;color:var(--ice-2);letter-spacing:.03em;margin-top:1.6rem;border-left:3px solid var(--molten);padding-left:1rem}
+
+/* ---- contact ---- */
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:13rem minmax(0,1fr);gap:1.5rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:baseline}
+.row dt{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.85rem;color:var(--ice-2)}
+.row dd{margin:0}
+.row dd a{color:var(--ice);text-decoration:none;border-bottom:1px solid var(--line)}
+.row dd a:hover{color:var(--molten);border-color:var(--molten)}
+
+footer{background:var(--black);padding:3rem 0 3.5rem;font-size:.86rem;color:var(--ice-2)}
+footer h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:.85rem;color:var(--ice);margin:0 0 .7rem}
+.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:2rem}
+footer a{color:var(--ice-2);text-decoration:none;display:block;padding:.15rem 0}
+footer a:hover{color:var(--molten)}
+.credits{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.8rem;line-height:1.75}
+
+@media(max-width:860px){
+  .two{grid-template-columns:1fr;gap:2rem}
+  .who{grid-template-columns:1fr}
+  .who img{width:120px;height:120px}
+  nav{display:none}
+  .band{padding:3.5rem 0}
+  .row{grid-template-columns:1fr;gap:.2rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="gauge" aria-hidden="true"></div>
+
+<header>
+  <div class="bar">
+    <a class="mark" href="#top">Collier<em>/</em>Hot Metal</a>
+    <nav>
+      <a href="#about">About</a><a href="#teaching">Teaching</a><a href="#work">Work</a>
+      <a href="#consulting">Consulting</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="hire" href="#consulting">Hire</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="num">Pittsburgh, PA · Est. 2018</div>
+      <h1>Ben<br><span>Collier</span></h1>
+      <div class="who">
+        <img src="../../assets/portrait.jpg" width="150" height="150" alt="Portrait of Ben Collier">
+        <div>
+          <p class="lede">I build data systems that have to survive contact with a real organization, and I teach the people who will run them.</p>
+          <p class="muted" style="max-width:44ch;margin:0">Assistant Teaching Professor of Business Analytics, Tepper School of Business, Carnegie Mellon. Consulting through Hot Metal AI. Previously Duolingo and UPMC.</p>
+        </div>
+      </div>
+      <div class="slab">
+        <div><span>Years in practice</span><b>20</b></div>
+        <div><span>Courses taught</span><b>10</b></div>
+        <div><span>Courses built</span><b>3</b></div>
+        <div><span>Capstones advised</span><b>11</b></div>
+        <div><span>Teaching award</span><b class="hot">Bach '26</b></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rivets"></div>
+
+  <section class="band" id="about">
+    <div class="wrap">
+      <div class="num">01 — About</div>
+      <div class="two">
+        <div>
+          <h2>Hot metal, cooled into something you can build with.</h2>
+          <p>Pittsburgh made steel by pouring something molten into a shape that held. That is roughly what I do with data, and it is where Hot Metal AI got its name: the raw material is hot, unstructured, and useless until somebody gives it a form a decision can stand on.</p>
+          <p>My appointment is at the Tepper School of Business, teaching across the MBA, the MS in Business Analytics, and undergraduate programs, with selected courses at Heinz College. The PhD is from Carnegie Mellon in Information Systems and Organizational Behavior. I came to machine learning through how organizations behave, which is why my labs care as much about whether a finding should change anyone's actions as about whether the model converged.</p>
+          <p>Before returning to the faculty I led data science at Duolingo through the IPO and the launch of Duolingo Max, and ran data science at UPMC as founding data scientist on a joint venture with IBM Watson Health, leading a drug price forecasting product later acquired by Premier. Four years before that I taught organizational behavior and co-directed executive education at Carnegie Mellon Qatar.</p>
+        </div>
+        <div>
+          <div class="num" style="font-size:.72rem">Materials handled</div>
+          <div class="plates" style="grid-template-columns:1fr 1fr">
+            <div class="pl"><div class="code" style="font-size:1rem">PYTHON</div><p style="margin-top:.5rem">pandas, scikit-learn, the daily driver</p></div>
+            <div class="pl"><div class="code" style="font-size:1rem">SQL</div><p style="margin-top:.5rem">modelling, pipelines, the unglamorous half</p></div>
+            <div class="pl"><div class="code" style="font-size:1rem">CAUSAL</div><p style="margin-top:.5rem">experimentation at Duolingo scale</p></div>
+            <div class="pl"><div class="code" style="font-size:1rem">LLM</div><p style="margin-top:.5rem">text, image, and network data as instruments</p></div>
+            <div class="pl"><div class="code" style="font-size:1rem">VIZ</div><p style="margin-top:.5rem">charts that change a decision</p></div>
+            <div class="pl"><div class="code" style="font-size:1rem">TEAMS</div><p style="margin-top:.5rem">assessing and assembling technical people</p></div>
+          </div>
+          <p class="muted" style="margin-top:1.4rem;font-size:.93rem">PhD and MS, Carnegie Mellon. MBA, Wisconsin–Madison. BBA in Management Computer Systems and Mathematics, Wisconsin–Whitewater. AWS Academy Educator. ORCID 0000-0002-4651-7684.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rivets"></div>
+
+  <section class="band alt" id="teaching">
+    <div class="wrap">
+      <div class="num">02 — Teaching</div>
+      <h2>Ten courses. Three I poured myself.</h2>
+      <div class="plates" id="courses"></div>
+    </div>
+  </section>
+
+  <div class="rivets"></div>
+
+  <section class="band" id="work">
+    <div class="wrap">
+      <div class="num">03 — Work</div>
+      <h2>What comes out of the studio.</h2>
+      <p class="muted" style="max-width:52ch">Student work from the courses, posted with permission. Named teams replace the samples as they opt in.</p>
+      <div class="works" id="works" style="margin-top:2rem"></div>
+    </div>
+  </section>
+
+  <div class="rivets"></div>
+
+  <section class="band foundry" id="consulting">
+    <div class="wrap">
+      <div class="num">04 — Hot Metal AI</div>
+      <h2>The foundry is open.</h2>
+      <p class="lede">Rates published up front, because making you ask for a number is a tax on your time.</p>
+      <div class="rates" id="rates"></div>
+      <p class="smallprint" id="smallprint"></p>
+    </div>
+  </section>
+
+  <div class="rivets"></div>
+
+  <section class="band" id="contact">
+    <div class="wrap">
+      <div class="num">05 — Contact</div>
+      <h2>Send it in writing.</h2>
+      <p class="muted">Students: course number in the subject line. Companies: what you are trying to decide, and by when.</p>
+      <dl class="rows">
+        <div class="row"><dt>University</dt><dd><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></dd></div>
+        <div class="row"><dt>Personal</dt><dd><a href="mailto:ben@collier.phd">ben@collier.phd</a></dd></div>
+        <div class="row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></dd></div>
+        <div class="row"><dt>GitHub</dt><dd><a href="https://github.com/bcollier">github.com/bcollier</a></dd></div>
+        <div class="row"><dt>ORCID</dt><dd><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></dd></div>
+        <div class="row"><dt>Office</dt><dd>Tepper School of Business, 5000 Forbes Avenue, Pittsburgh PA 15213</dd></div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div><h4>Site</h4>
+        <a href="#about">About</a><a href="#teaching">Teaching</a><a href="#work">Work</a>
+        <a href="#consulting">Consulting</a><a href="#contact">Contact</a></div>
+      <div><h4>Elsewhere</h4>
+        <a href="https://www.linkedin.com/in/bcollierphd">LinkedIn</a>
+        <a href="https://github.com/bcollier">GitHub</a>
+        <a href="https://scholars.cmu.edu/473-ben-collier">CMU Scholars</a>
+        <a href="https://orcid.org/0000-0002-4651-7684">ORCID</a></div>
+      <div><h4>This site</h4>
+        <a href="../">All five designs</a>
+        <a href="../../">Multi-page version</a>
+        <a href="https://github.com/bcollier/ben.collier.phd">Source on GitHub</a>
+        <a href="../../PROMPTS.md">Prompt log</a></div>
+    </div>
+    <div class="credits">
+      <strong style="color:var(--ice)">Credits.</strong>
+      Designed and coded by Ben Collier. Drafted with Claude (Anthropic) in Claude Code and edited by hand; code comments mark what changed and why, and the full <a href="../../PROMPTS.md">prompt log</a> is in the repository.
+      Typefaces: <a href="https://fonts.google.com/specimen/Archivo+Black">Archivo Black</a> and <a href="https://fonts.google.com/specimen/Barlow">Barlow</a> / <a href="https://fonts.google.com/specimen/Barlow+Condensed">Barlow Condensed</a>, by Omnibus-Type and Jeremy Tribby respectively, under the SIL Open Font License via Google Fonts.
+      Portrait photograph courtesy Carnegie Mellon University. Project images are original SVG drawings made for this site.
+      Rivet texture and molten gradients are CSS, not images.
+      <br><br>No framework, no analytics, no cookies. Plain HTML, CSS, and JavaScript on GitHub Pages.
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/booking.js"></script>
+<script>
+(function () {
+  "use strict";
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+  /* ---- the temperature gauge -------------------------------------------
+     Scroll progress drives the width of a molten bar. Cheap, and it gives
+     the page a sense of depth without a scroll-jacking library. */
+  var gauge = document.getElementById("gauge"), ticking = false;
+  function paint() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    gauge.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+    ticking = false;
+  }
+  window.addEventListener("scroll", function () {
+    // rAF-throttled: the scroll event fires far more often than we can paint
+    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+  paint();
+
+  var COURSES = [
+    ["45-884","AI Methods for Social and Visual Data","MBA · Tepper",1,"Modern AI on text, networks, and images, treated as instruments with known failure modes."],
+    ["70-377","Managing and Assessing Tech Talent","Undergraduate · CMU Qatar",1,"Hiring, growing, and evaluating technical people without managing by vibes."],
+    ["MSBA","Math Skills Workshop","Workshop · 2026",1,"Built so incoming MSBA students arrive ready for the quantitative core."],
+    ["45-851","Data Mining","MBA · Tepper",0,"Structure in messy business data, and the habit of asking whether to trust it."],
+    ["45-885","Data Visualization","MBA · Tepper",0,"Charts that survive contact with an executive."],
+    ["46-885","Data Exploration and Visualization","MSBA · Tepper",0,"Exploratory analysis and the communication layer that makes a finding usable."],
+    ["46-880","Probability and Statistics","MSBA · Tepper",0,"The quantitative floor every later analytics course stands on."],
+    ["46-887","Machine Learning for Business","MSBA · Tepper",0,"Pipelines, evaluation, and the translation into an operational decision."],
+    ["45-881","Modern Data Management","MBA · Tepper",0,"SQL and the unglamorous work that decides what the model actually sees."],
+    ["90-803","ML Foundations with Python","Heinz College",0,"The Python foundation Heinz students need before applying it to policy."]
+  ];
+  document.getElementById("courses").innerHTML = COURSES.map(function (c) {
+    return '<div class="pl">' + (c[3] ? '<div class="stamp">Built</div>' : "") +
+      '<div class="code">' + esc(c[0]) + '</div><div class="prog">' + esc(c[2]) + "</div>" +
+      "<h3>" + esc(c[1]) + "</h3><p>" + esc(c[4]) + "</p></div>";
+  }).join("");
+
+  var WORKS = [
+    ["clusters.svg","45-851 · Fall 2025","Grocery segments that change a promotion","Cluster a basket dataset, name the segments in a category manager's language, then fund exactly one promotion change.","MBA team"],
+    ["churn.svg","45-851 · Spring 2025","Who churns, and who is just quiet","Real churn risk separated from dormancy, with cost-sensitive evaluation and a one-page decision brief.","MBA team"],
+    ["data-mgmt.svg","45-881 · Spring 2026","Three CSVs to a table a model can trust","The pipeline work nobody puts on a slide, done properly and documented.","MBA team"],
+    ["one-chart.svg","45-885 · Spring 2026","One chart, one decision","A board packet reduced until a single graphic carries the recommendation.","MBA team"],
+    ["earnings-call.svg","45-884 · Fall 2025","Reading the room on an earnings call","Transcript, audio, and video together, plus an honest account of what the model cannot see.","MBA team"],
+    ["talent.svg","70-377 · Fall 2025","Hiring scorecard for a twelve-person data team","A defensible assessment rubric, built by undergraduates and stress-tested against real job posts.","Undergraduate studio"]
+  ];
+  var out = WORKS.map(function (w) {
+    return '<article class="w"><img src="../../assets/projects/' + w[0] + '" alt="" width="800" height="500" loading="lazy">' +
+      '<div class="b"><div class="t">' + esc(w[1]) + "</div><h3>" + esc(w[2]) + "</h3>" +
+      "<p>" + esc(w[3]) + '</p><div class="cred">' + esc(w[4]) + "</div></div></article>";
+  }).join("");
+  /* This site is itself a project; the 15-113 brief asks for it by name. */
+  out += '<article class="w"><img src="../../assets/og.png" alt="" width="800" height="500" loading="lazy">' +
+    '<div class="b"><div class="t">15-113 · Project 1</div><h3>This website</h3>' +
+    "<p>Five complete design directions for one portfolio, in hand-written HTML, CSS, and JavaScript. " +
+    "The rivets and molten gradients here are CSS gradients, not images, and the multi-page version is generated by a Python build script.</p>" +
+    '<div class="cred"><a href="https://github.com/bcollier/ben.collier.phd">Source</a> · <a href="../">Compare all five</a></div></div></article>';
+  document.getElementById("works").innerHTML = out;
+
+  document.getElementById("rates").innerHTML = window.BOOKING.offers.map(function (o, i) {
+    return '<div class="rate' + (i === 1 ? " hot" : "") + '"><h3>' + esc(o.name) + "</h3>" +
+      '<div class="fig">' + esc(o.price) + '</div><div class="per">' + esc(o.unit) + "</div>" +
+      "<p>" + esc(o.blurb) + "</p><ul>" +
+      o.points.map(function (p) { return "<li>" + esc(p) + "</li>"; }).join("") + "</ul>" +
+      '<a class="go' + (i === 1 ? "" : " q") + '" href="' + window.bookingHref(o) + '">' + window.bookingCta(o) + "</a></div>";
+  }).join("");
+
+  var live = window.BOOKING.offers.some(function (o) { return !!o.checkout; });
+  document.getElementById("smallprint").textContent = live
+    ? "Payment runs through Stripe. Receipt and scheduling link arrive on checkout."
+    : "Card payment is not connected yet. Each button opens a prefilled email and I invoice on booking. Hot Metal AI, Pittsburgh.";
+})();
+</script>
+</body>
+</html>

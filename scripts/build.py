@@ -303,7 +303,7 @@ def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://www.linkedin.com/in/bcollierphd">LinkedIn</a></div>
+      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="{root}designs/">Five designs</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -476,6 +476,12 @@ def build_home(projects):
       <div class="bio">
         <p>My primary appointment is at Tepper, where I teach across the MBA, MS in Business Analytics, and undergraduate programs. I also teach selected courses at Heinz College. The work is applied: Python workflows, statistical reasoning, and the ethical judgment you need when a model meets a real organization.</p>
         <p>Before returning to the faculty I led data science at Duolingo and at UPMC. That practice work — now through Hot Metal Data and gAIm Systems — is what I bring into the classroom. I build courses, advise MSBA capstones, and post student work here with permission.</p>
+      </div>
+
+      <div class="notice-strip">
+        <strong>Five new designs are up for review.</strong>
+        <span>The same content in five completely different design directions, live side by side.</span>
+        <a href="designs/">Compare all five &rarr;</a>
       </div>
 
       <div class="tiles">
@@ -910,7 +916,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "courses/", "students/", "materials/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths = ["", "courses/", "students/", "materials/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
