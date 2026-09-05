@@ -7,6 +7,13 @@
     slot.innerHTML = '<a href="' + calendly + '">Book a time</a>';
   }
 
+  const printButton = document.querySelector("[data-print]");
+  if (printButton) {
+    printButton.addEventListener("click", function () {
+      window.print();
+    });
+  }
+
   function renderPosts(posts, mount, opts) {
     if (!mount) return;
     const filter = (opts && opts.filter) || null;
