@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ben-collier — agent session</title>
+<meta name="description" content="Ben Collier, Assistant Teaching Professor of Business Analytics at the Tepper School of Business, Carnegie Mellon University. Teaching, applied AI, and consulting through Hot Metal AI.">
+<meta name="author" content="Ben Collier">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+/* Set the flag before first paint so the animated block starts hidden rather
+   than flashing in and then re-typing. Anything that fails here leaves the
+   page in its no-JS state, which is fully readable.
+
+   The timeout is a dead man's switch owned by this file rather than by
+   script.js, so the content comes back even if that file is blocked, throws,
+   or stalls part-way. Rendering this page from file:// in headless Chrome
+   starved requestAnimationFrame and left the command line blank; a fallback
+   that lives inside the thing that can stall is not a fallback. */
+try {
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var de = document.documentElement;
+    de.className += " will-type";
+    setTimeout(function () {
+      de.className = de.className.replace(/\s*\bwill-type\b/g, "");
+      var t = document.querySelector(".cmd[data-type] .t");
+      if (t) { t.style.maxWidth = ""; }
+      var c = document.querySelector(".prompt-idle .cursor");
+      if (c) { c.style.visibility = ""; }
+    }, 2800);
+  }
+} catch (e) {}
+</script>
+</head>
+<body>
+<a class="skip" href="#session">Skip to content</a>
+
+<!-- Decorative CRT layers. aria-hidden and pointer-events:none. -->
+<div class="crt" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="term">
+
+  <!-- ================= SECTION 1 — THE LIVE SESSION ================= -->
+  <header class="titlebar">
+    <span class="tb-name">ben-collier</span>
+    <span class="tb-meta">agent session · fall 2026</span>
+  </header>
+
+  <main>
+  <section id="session" aria-labelledby="s1">
+    <h1 id="s1" class="sr-only">What I am doing right now</h1>
+
+    <p class="line cmd" data-type="cmd"><span class="p">$</span> <span class="t">agent run ben-collier --semester fall-2026</span></p>
+    <p class="line boot" data-type="boot">session started. <b>4</b> tasks active, <b>1</b> blocked.</p>
+
+    <p class="ident">
+      <span class="ident-name">Ben Collier</span><br>
+      Assistant Teaching Professor of Business Analytics<br>
+      <span class="dim">Tepper School of Business, Carnegie Mellon University</span>
+    </p>
+
+    <h2 class="rule"><span>active task queue</span></h2>
+
+    <ol class="queue" aria-label="Active task queue">
+      <li data-type="task">
+        <span class="st run">RUNNING</span>
+        <span class="task">Teaching <b>45-884 AI Methods for Social and Visual Data</b>
+          <span class="dim">Tepper MBA · Mon/Wed</span></span>
+      </li>
+      <li data-type="task">
+        <span class="st run">RUNNING</span>
+        <span class="task">Teaching <b>70-445 AI for Business Leaders</b>
+          <span class="dim">undergraduate · Tue/Thu · first run, building as it ships</span></span>
+      </li>
+      <li data-type="task">
+        <span class="st run">RUNNING</span>
+        <span class="task">Enrolled as a student in <b>15-113 Coding with AI</b>
+          <span class="dim">Mon/Wed · yes, at the same time</span></span>
+      </li>
+      <li data-type="task">
+        <span class="st run">RUNNING</span>
+        <span class="task">Building the <b>gAIm Systems</b> platform
+          <span class="dim">sports analytics · ML infrastructure</span></span>
+      </li>
+      <li data-type="task">
+        <span class="st blk">BLOCKED</span>
+        <span class="task">Selling a house</span>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ================= SECTION 2 — WHAT I'VE BUILT ================= -->
+  <section id="built" aria-labelledby="s2">
+    <p class="line cmd"><span class="p">$</span> <span class="t">agent history --all</span></p>
+    <h2 id="s2" class="rule"><span>previous runs</span></h2>
+
+    <ul class="runs">
+      <li>
+        <p class="proc">hot-metal-data <span class="st run">RUNNING</span></p>
+        <p class="fields"><span class="k">started</span> 2018-10 &nbsp; <span class="k">elapsed</span> 7y 11m &nbsp; <span class="k">pid</span> 0001</p>
+        <p class="desc">Consulting practice. ML infrastructure and applied AI, delivered as Hot Metal AI.</p>
+      </li>
+      <li>
+        <p class="proc">gaim-systems <span class="st run">RUNNING</span></p>
+        <p class="fields"><span class="k">started</span> 2025-05 &nbsp; <span class="k">elapsed</span> 1y 4m &nbsp; <span class="k">pid</span> 0002</p>
+        <p class="desc">Sports analytics and ML infrastructure venture. Senior Director of AI and Data Science.</p>
+      </li>
+      <li>
+        <p class="proc">45-884-ai-methods <span class="st done">DONE</span> <span class="exit">exit 0</span></p>
+        <p class="fields"><span class="k">first run</span> 2025 fall &nbsp; <span class="k">status</span> re-running 2026 fall</p>
+        <p class="desc">MBA elective. Designed from scratch. Text, networks, and images, with the failure modes taught alongside the methods.</p>
+      </li>
+      <li>
+        <p class="proc">70-445-ai-for-business-leaders <span class="st run">RUNNING</span></p>
+        <p class="fields"><span class="k">started</span> 2026-08 &nbsp; <span class="k">elapsed</span> first run</p>
+        <p class="desc">Undergraduate course. Written and shipped in the same semester it is taught.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= SECTION 3 — HOW I GOT HERE ================= -->
+  <section id="log" aria-labelledby="s3">
+    <p class="line cmd"><span class="p">$</span> <span class="t">agent log --reverse</span></p>
+    <h2 id="s3" class="rule"><span>how i got here</span></h2>
+
+    <ol class="log">
+      <li>
+        <span class="yr">2024</span>
+        <span class="ev"><b>Assistant Teaching Professor of Business Analytics</b>
+          <span class="dim">Tepper School of Business, Carnegie Mellon University.
+          Also teaches selected courses at Heinz College.</span></span>
+      </li>
+      <li>
+        <span class="yr">2020</span>
+        <span class="ev"><b>Staff Data Scientist</b>
+          <span class="dim">Duolingo</span></span>
+      </li>
+      <li>
+        <span class="yr">2016</span>
+        <span class="ev"><b>Senior Director of Data Science</b>
+          <span class="dim">UPMC</span></span>
+      </li>
+      <li>
+        <span class="yr">2012</span>
+        <span class="ev"><b>PhD</b>
+          <span class="dim">Carnegie Mellon, Tepper School of Business.
+          Dual emphasis in Information Systems and Organizational Behavior.</span></span>
+      </li>
+    </ol>
+
+    <p class="line cmd"><span class="p">$</span> <span class="t">whoami</span></p>
+    <div class="whoami">
+      <img src="portrait.jpg" width="132" height="132" alt="Portrait of Ben Collier">
+      <p class="desc">Twenty years between the classroom and the practice, in roughly equal
+      measure. The practice is what keeps the labs from drifting into toy problems, and the
+      classroom is what stops the practice from mistaking a good score for a good decision.
+      <span class="dim">Photograph courtesy Carnegie Mellon University.</span></p>
+    </div>
+  </section>
+
+  <!-- ================= BOOKING ================= -->
+  <section id="book" aria-labelledby="s4">
+    <h2 id="s4" class="rule"><span>booking</span></h2>
+    <p class="desc">Two ways in. Both go to the same calendar.</p>
+
+    <ul class="book">
+      <li>
+        <a class="line cmdlink" href="#" data-book="intro">
+          <span class="p">$</span> <span class="t">book --intro</span>
+          <span class="dim">15 minute intro call, free</span>
+        </a>
+      </li>
+      <li>
+        <a class="line cmdlink" href="#" data-book="consultation">
+          <span class="p">$</span> <span class="t">book --consultation</span>
+          <span class="dim">paid consulting engagement, Hot Metal AI</span>
+        </a>
+      </li>
+    </ul>
+    <p class="note" id="book-note"></p>
+
+    <p class="line cmd"><span class="p">$</span> <span class="t">cat contact.txt</span></p>
+    <ul class="contact">
+      <li><span class="k">email</span> <a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></li>
+      <li><span class="k">email</span> <a href="mailto:ben@collier.phd">ben@collier.phd</a></li>
+      <li><span class="k">linkedin</span> <a href="https://www.linkedin.com/in/bcollierphd">in/bcollierphd</a></li>
+      <li><span class="k">github</span> <a href="https://github.com/bcollier">github.com/bcollier</a></li>
+      <li><span class="k">orcid</span> <a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></li>
+      <li><span class="k">office</span> Tepper School of Business, Carnegie Mellon University</li>
+    </ul>
+  </section>
+  </main>
+
+  <footer>
+    <p class="line cmd"><span class="p">$</span> <span class="t">cat CREDITS</span></p>
+    <p class="cred">
+      Written, designed, and coded by Ben Collier. Drafted with Claude (Anthropic) in
+      Claude Code, then edited by hand. What the model wrote and what was cut is recorded in
+      <a href="README.md">README.md</a> here and in the
+      <a href="../../PROMPTS.md">prompt log</a> at the repository root.
+    </p>
+    <p class="cred">
+      Typeface <a href="https://fonts.google.com/specimen/JetBrains+Mono">JetBrains Mono</a>
+      by Philipp Nurullin and Konstantin Bulenkov for JetBrains, SIL Open Font License,
+      served by Google Fonts. Portrait photograph courtesy Carnegie Mellon University.
+      No other external requests. No analytics, no trackers, no cookies.
+    </p>
+    <p class="cred">
+      This page is one of six design directions for the same site.
+      <a href="../">Compare them</a> ·
+      <a href="../../">Multi-page version</a> ·
+      <a href="https://github.com/bcollier/ben.collier.phd">Source</a>
+    </p>
+    <p class="line prompt-idle"><span class="p">$</span> <span class="cursor" aria-hidden="true"></span></p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
