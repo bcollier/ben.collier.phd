@@ -3,6 +3,15 @@
 Required by 15-113 Project 1: "a text document that contains the prompts you
 used (simply copy-pasted) and the replies you received."
 
+**Companion documents.** This file is the argument: what I asked for, what I
+rejected, and why. The blow-by-blow narrative lives in two transcripts, one per
+tool:
+
+- [`claude-code-chat-history.md`](claude-code-chat-history.md) — the Claude Code
+  session that produced the six designs, four steps, each naming its commit.
+- [`cursor-ai-code-assistance-chat-history.md`](cursor-ai-code-assistance-chat-history.md)
+  — the earlier Cursor session that built the multi-page scaffold, thirteen steps.
+
 **Tool used:** Claude Code (Anthropic's CLI), running Claude Opus 5. Two
 sessions on 5 September 2026. I worked in the terminal rather than a
 browser chat, which matters for reading this log: the model could read and edit

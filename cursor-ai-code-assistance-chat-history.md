@@ -23,10 +23,12 @@ One redaction: in Step 9 I pasted a GitHub personal access token into the chat.
 The token is replaced with `github_pat_[REDACTED]` below. It was revoked at the
 time.
 
-**Related document.** `PROMPTS.md` is the prompt log for a later session run in a
-different tool (Claude Code, 5 September 2026) that took the site from this
-scaffold to five finished design directions. This file covers the Cursor work
-that came first. Step 13 summarises how the two connect.
+**Related documents.** A later session in a different tool (Claude Code,
+5 September 2026) took the site from this scaffold to six finished design
+directions. That session kept its own transcript in
+[`claude-code-chat-history.md`](claude-code-chat-history.md), and the reflective
+prompt log for the assignment is [`PROMPTS.md`](PROMPTS.md). This file covers the
+Cursor work that came first. Step 13 summarises how they connect.
 
 ---
 

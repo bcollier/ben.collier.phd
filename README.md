@@ -6,8 +6,94 @@ Static HTML/CSS/JS. No build step for content edits, no CMS.
 
 - **Host:** GitHub Pages, from `main` at the repo root
 - **Live now:** <https://bcollier.github.io/ben.collier.phd/>
+- **Compare the designs:** <https://bcollier.github.io/ben.collier.phd/designs/>
 - **Final URL:** `https://ben.collier.phd` (attach later — see below)
 - **Apex:** `collier.phd` redirects to `ben.collier.phd`
+
+---
+
+## Six designs, one site
+
+Same content, same facts, six completely different design arguments. Every one is
+a working page: real links, real consulting rates, responsive, keyboard
+navigable. Pick one and it becomes the site.
+
+They are live and side by side at
+**[/designs/](https://bcollier.github.io/ben.collier.phd/designs/)**, which
+renders all six in iframes with a desktop / tablet / phone width switcher, so
+you can check responsiveness without resizing a window. The screenshots below
+are that page in its one-at-a-time view.
+
+### 01 — Neural
+
+Dark instrument panel. The background is a live network simulation that reacts
+to your cursor, and a small robot wanders in every 25 to 55 seconds to follow
+it. The AI-heavy one.
+
+[![Neural design](designs_screenshots/design1.png)](https://bcollier.github.io/ben.collier.phd/designs/neural/)
+
+### 02 — Broadsheet
+
+An actual newspaper. Real CSS multi-column text, a drop cap, hairline rules, a
+live dateline, and consulting rates set as classified ads. Prints properly.
+
+[![Broadsheet design](designs_screenshots/design2.png)](https://bcollier.github.io/ben.collier.phd/designs/broadsheet/)
+
+### 03 — Steel
+
+Pittsburgh industrial, and the Hot Metal AI design. Molten orange on steel grey,
+riveted plate edges drawn in CSS, and a temperature gauge that fills as you
+scroll.
+
+[![Steel design](designs_screenshots/design3.png)](https://bcollier.github.io/ben.collier.phd/designs/steel/)
+
+### 04 — Notebook
+
+The site as a Jupyter notebook. Cells you can run, execution counters that
+number themselves in the order you press them, dataframes as output. Reads
+instantly to anyone technical.
+
+[![Notebook design](designs_screenshots/design4.png)](https://bcollier.github.io/ben.collier.phd/designs/notebook/)
+
+### 05 — Studio
+
+Swiss gallery. A strict grid, enormous serif display type, almost no colour, and
+a great deal of air. The quiet, senior, expensive-looking one.
+
+[![Studio design](designs_screenshots/design5.png)](https://bcollier.github.io/ben.collier.phd/designs/studio/)
+
+### 06 — Agent session
+
+Amber on near-black. Ben as the agent being run: a task queue with live status,
+a run history with exit codes, a log. The joke is structural, and the line that
+lands is a RUNNING entry reading "yes, at the same time". Runs standalone from
+`file://` with no server. See its own
+[README](designs/agent/README.md) for the full rationale.
+
+[![Agent session design](designs_screenshots/design6.png)](https://bcollier.github.io/ben.collier.phd/designs/agent/)
+
+---
+
+## How this site was built, and with what
+
+Two AI coding tools built this, in two sessions, and both kept a record. The
+logs are the coursework deliverable for 15-113 Project 1, but they are also the
+honest answer to "how much of this did you write".
+
+| Document | Tool | What it covers |
+| --- | --- | --- |
+| [`cursor-ai-code-assistance-chat-history.md`](cursor-ai-code-assistance-chat-history.md) | Cursor Cloud Agent | The first session, 30 August 2026. Getting a correct, deployable, multi-page site to exist at all. Thirteen steps, each naming its commit. |
+| [`claude-code-chat-history.md`](claude-code-chat-history.md) | Claude Code, Opus 5 | The second session, 5 September 2026. Taking that scaffold to six finished design directions. Four steps, each naming its commit. |
+| [`PROMPTS.md`](PROMPTS.md) | Both | The reflective prompt log required by the assignment. Less narrative, more argument: what got rejected and why. |
+
+The two chat histories are complementary rather than duplicative. The Cursor one
+is about making something correct. The Claude Code one is about making it good,
+which turned out to mean removing most of what the model added.
+
+Every design file also carries an `AI USAGE NOTE` comment block at the top of
+its stylesheet, naming what was drafted and what was changed by hand.
+
+---
 
 Absolute URLs (canonical tags, Open Graph, `sitemap.xml`, `feed.xml`) all come from
 `data/site.json`. While `domain_live` is `false` they point at the github.io address,
