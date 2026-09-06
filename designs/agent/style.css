@@ -1,0 +1,331 @@
+/* ===========================================================================
+   ben-collier — agent session
+   Design 6 of 6 for ben.collier.phd
+
+   The conceit: Ben teaches and works on agentic AI, so his portfolio is an
+   agent execution trace. A task queue, a run history, a log. The terminal is
+   the page's structural language, not a costume and not a fake shell.
+
+   Palette is amber phosphor on near-black. Every value below was measured
+   against #0c0c0c rather than eyeballed:
+
+     #FFB000  body amber          10.68:1
+     #FFD166  RUNNING             13.57:1
+     #DE7C2C  BLOCKED              6.54:1
+     #B98A34  DONE                 6.29:1
+     #A87F31  metadata, dim        5.35:1
+     #3A2E17  rules, borders only  1.47:1  (never carries text)
+
+   AI USAGE NOTE (15-113): drafted with Claude in Claude Code, then reworked.
+   What I changed:
+     - The first draft built an interactive shell where you type commands.
+       Cut. That is the tired version of this idea and it buries the content
+       behind a prompt nobody wants to use.
+     - The scanline overlay came back at 0.06 alpha over a 2px period, which
+       moires against 1.6 line-height text and reads as a Halloween filter.
+       Dropped to 0.022 over 3px and confined to a fixed layer behind content.
+     - The model reached for a text-shadow glow on every glyph. On a full page
+       of monospace that is a blur, not a CRT. The glow now sits only on the
+       three status keywords and the cursor.
+     - I set the measure at 74ch. The model had it at 100%, which is what
+       makes most terminal-themed sites read as a website in costume: real
+       terminals are narrow, and the narrowness is the whole tell.
+   =========================================================================== */
+
+:root{
+  --bg:#0c0c0c;
+  --bg-2:#111111;
+  --amber:#ffb000;
+  --run:#ffd166;
+  --blocked:#de7c2c;
+  --done:#b98a34;
+  --dim:#a87f31;
+  --rule:#3a2e17;
+  --rule-2:#2a2112;
+  --measure:76ch;   /* text measure; the padding is added on top, below */
+  --mono:"JetBrains Mono","IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+*{box-sizing:border-box}
+
+html{
+  background:var(--bg);
+  /* The page is one long session; smooth scroll would fight that reading. */
+  scroll-behavior:auto;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--bg-2) 0%, var(--bg) 62%);
+  color:var(--amber);
+  font-family:var(--mono);
+  font-size:15px;
+  line-height:1.6;
+  font-variant-ligatures:none;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* --- decorative CRT layers ------------------------------------------------
+   Both are fixed, behind the text, and cannot be clicked. The scanlines are
+   deliberately near-invisible: you should notice them only if you look for
+   them or turn them off. */
+.crt,.vignette{position:fixed;inset:0;pointer-events:none;z-index:1}
+.crt{
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,176,0,.022) 0px,
+    rgba(255,176,0,.022) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+.vignette{
+  background:radial-gradient(115% 85% at 50% 42%, transparent 55%, rgba(0,0,0,.55) 100%);
+}
+
+.term{
+  position:relative;
+  z-index:2;
+  /* content-box so --measure counts characters of text, not box width */
+  box-sizing:content-box;
+  max-width:var(--measure);
+  margin-inline:auto;
+  padding:0 1.5rem 5rem;
+}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{
+  left:1rem;top:1rem;z-index:20;background:var(--amber);color:var(--bg);
+  padding:.5rem .9rem;text-decoration:none;
+}
+
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+a{color:var(--amber);text-decoration:none;border-bottom:1px solid var(--rule)}
+a:hover{color:var(--run);border-bottom-color:var(--run)}
+a:focus-visible{outline:2px solid var(--run);outline-offset:2px;border-radius:1px}
+
+b{font-weight:500;color:var(--amber)}
+.dim{color:var(--dim)}
+
+/* --- title bar ------------------------------------------------------------ */
+.titlebar{
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:1.1rem 0 .9rem;
+  border-bottom:1px solid var(--rule);
+  margin-bottom:2rem;
+  font-size:.8rem;
+  color:var(--dim);
+}
+.tb-name{color:var(--amber)}
+.tb-name::before{content:"● ";color:var(--run)}
+
+/* --- command lines -------------------------------------------------------- */
+.line{margin:0 0 .35rem;white-space:pre-wrap;word-break:break-word}
+.p{color:var(--dim);user-select:none}
+.cmd .t{color:var(--run)}
+.boot{color:var(--dim);margin-bottom:1.6rem}
+.boot b{color:var(--amber)}
+
+section{padding:0 0 3.2rem}
+section + section{padding-top:.6rem}
+
+.ident{margin:0 0 2rem;line-height:1.55}
+.ident-name{
+  font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:var(--amber);
+  text-shadow:0 0 22px rgba(255,176,0,.28);
+}
+
+/* --- section rules -------------------------------------------------------- */
+.rule{
+  display:flex;align-items:center;gap:.75rem;
+  font-size:.78rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);margin:2.4rem 0 1.1rem;
+}
+.rule::after{content:"";flex:1;height:1px;background:var(--rule)}
+
+/* --- the task queue ------------------------------------------------------- */
+.queue{list-style:none;margin:0;padding:0}
+.queue li{
+  display:grid;
+  grid-template-columns:8ch minmax(0,1fr);
+  gap:0 1ch;
+  padding:.5rem 0 .5rem .55rem;
+  border-left:2px solid var(--rule-2);
+  margin-bottom:.15rem;
+}
+.queue li:hover{border-left-color:var(--rule);background:rgba(255,176,0,.022)}
+.task{min-width:0}
+.task .dim{display:block;font-size:.86rem}
+
+/* Status keywords are the only glyphs that glow, and the word itself carries
+   the meaning, so the colour is reinforcement rather than the whole signal. */
+.st{font-weight:700;letter-spacing:.02em}
+.st.run{color:var(--run);text-shadow:0 0 12px rgba(255,209,102,.4)}
+.st.blk{color:var(--blocked);text-shadow:0 0 12px rgba(222,124,44,.32)}
+.st.done{color:var(--done)}
+.queue li:has(.blk){border-left-color:rgba(222,124,44,.42)}
+.queue li:has(.blk) .task{color:var(--dim)}
+
+/* --- previous runs -------------------------------------------------------- */
+.runs{list-style:none;margin:0;padding:0}
+.runs li{padding:1rem 0;border-top:1px solid var(--rule-2)}
+.runs li:first-child{border-top:1px solid var(--rule)}
+.proc{margin:0;font-weight:500;color:var(--amber);word-break:break-word}
+.proc .st{margin-left:.75ch;font-size:.82rem}
+.exit{color:var(--dim);font-size:.82rem}
+.fields{margin:.3rem 0 .45rem;font-size:.84rem;color:var(--dim)}
+.k{color:var(--rule);color:#8f6c2a}
+.desc{margin:0;color:var(--dim);font-size:.92rem}
+.desc .dim{color:#8f6c2a}
+
+/* --- the log -------------------------------------------------------------- */
+.log{list-style:none;margin:0;padding:0}
+.log li{
+  display:grid;grid-template-columns:6ch minmax(0,1fr);gap:0 1ch;
+  padding:.7rem 0;border-top:1px solid var(--rule-2);
+}
+.log li:first-child{border-top:1px solid var(--rule)}
+.yr{color:var(--dim);font-variant-numeric:tabular-nums}
+.ev{min-width:0}
+.ev .dim{display:block;font-size:.88rem}
+
+/* --- whoami --------------------------------------------------------------- */
+#log .cmd + .whoami,
+.whoami{
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.2rem;
+  align-items:start;margin-top:.8rem;
+}
+.whoami img{
+  width:132px;height:132px;object-fit:cover;object-position:center 18%;
+  border:1px solid var(--rule);
+  /* Duotone the portrait into the phosphor palette so it belongs to the page
+     rather than sitting on it as a photograph. */
+  filter:grayscale(1) sepia(1) saturate(2.6) hue-rotate(-14deg) contrast(1.04) brightness(.92);
+}
+
+/* --- booking -------------------------------------------------------------- */
+.book{list-style:none;margin:1rem 0 .4rem;padding:0}
+.book li{margin-bottom:.4rem}
+.cmdlink{
+  display:block;border:0;padding:.62rem .8rem;
+  background:transparent;color:var(--amber);
+  border-left:2px solid var(--rule-2);
+  transition:background .12s linear,border-color .12s linear;
+  /* .line sets pre-wrap so real command spacing survives. Here that would
+     also render the source indentation inside the anchor as blank lines, so
+     this one opts out and spaces itself with margins instead. */
+  white-space:normal;
+}
+.cmdlink .t{color:var(--run)}
+.cmdlink .dim{display:block;font-size:.86rem;margin:.15rem 0 0 2ch}
+.cmdlink::after{
+  content:"_";color:var(--run);opacity:0;margin-left:.5ch;
+}
+.cmdlink:hover,.cmdlink:focus-visible{
+  background:rgba(255,176,0,.055);
+  border-left-color:var(--run);
+  color:var(--amber);
+}
+.cmdlink:hover::after,.cmdlink:focus-visible::after{opacity:1}
+.note{margin:.9rem 0 0;font-size:.84rem;color:var(--dim);border-left:2px solid var(--rule);padding-left:.9rem}
+
+/* --- contact -------------------------------------------------------------- */
+.contact{list-style:none;margin:.8rem 0 0;padding:0;font-size:.92rem}
+.contact li{
+  display:grid;grid-template-columns:10ch minmax(0,1fr);gap:0 1ch;
+  padding:.3rem 0;word-break:break-word;
+}
+
+/* --- footer --------------------------------------------------------------- */
+footer{border-top:1px solid var(--rule);padding-top:1.6rem;margin-top:1.5rem}
+.cred{margin:0 0 .9rem;font-size:.8rem;color:var(--dim);line-height:1.65}
+.cred a{color:var(--dim);border-bottom-color:var(--rule-2)}
+.cred a:hover{color:var(--run)}
+.prompt-idle{margin-top:1.4rem}
+/* Breathing room before each mid-section prompt. */
+.log + .cmd,
+.whoami + .cmd,
+.note + .cmd{margin-top:2.4rem}
+
+/* --- the cursor ----------------------------------------------------------- */
+.cursor{
+  display:inline-block;width:1ch;height:1.05em;vertical-align:-.18em;
+  background:var(--run);box-shadow:0 0 14px rgba(255,209,102,.45);
+  animation:blink 1.05s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
+
+/* --- the typing state -----------------------------------------------------
+   Set by an inline script in <head>, so the animated block never flashes in
+   before it is typed. Without JavaScript, or with reduced motion, this class
+   is never added and everything is simply visible.
+
+   The `reveal` animation is a dead man's switch. Hiding content behind a
+   script that might not finish is how a portfolio ends up showing an empty
+   box: rendering this page from file:// in headless Chrome starved
+   requestAnimationFrame and left the whole task queue blank. So the hidden
+   state now expires on its own after 2.6s in CSS, whether or not any
+   JavaScript ever runs. The script's only job is to reveal things sooner,
+   in order. */
+@keyframes reveal{to{visibility:visible}}
+
+.will-type [data-type]{
+  visibility:hidden;
+  animation:reveal 0s linear 2.6s forwards;
+}
+.will-type [data-type].typed{visibility:visible;animation:none}
+.will-type .cmd[data-type]{visibility:visible;animation:none}
+
+/* The command line types by clipping, not by rewriting text. The full string
+   stays in the DOM the whole time and the width is stepped in whole `ch`
+   units, which in a monospace face IS character-by-character typing. The
+   earlier version emptied textContent and refilled it, so when the animation
+   stalled under file:// the command was simply gone. Presentation should
+   never own the content. */
+.will-type .cmd[data-type] .t{
+  display:inline-block;
+  overflow:hidden;
+  white-space:nowrap;
+  vertical-align:bottom;
+  max-width:0;
+  animation:typeout 0s linear 2.6s forwards;
+}
+@keyframes typeout{to{max-width:60ch}}
+.will-type .cmd[data-type].typed .t{max-width:60ch;animation:none}
+
+/* --- responsive -----------------------------------------------------------
+   The measure relaxes rather than forcing horizontal scroll. Below 560px the
+   status column stacks above its task so an eight-character label never
+   squeezes the description into a two-word ribbon. */
+@media (max-width:560px){
+  body{font-size:14px}
+  .term{padding:0 1.1rem 4rem}
+  .queue li,.log li,.contact li{grid-template-columns:minmax(0,1fr);gap:.1rem 0}
+  .queue li{padding-left:.7rem}
+  .whoami{grid-template-columns:minmax(0,1fr)}
+  .whoami img{width:112px;height:112px}
+  .ident-name{font-size:1.3rem}
+  .titlebar{font-size:.74rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .cursor{animation:none}
+  .cmdlink{transition:none}
+}
+
+/* Some people turn transparency down; drop the CRT layers entirely for them. */
+@media (prefers-reduced-transparency:reduce){
+  .crt,.vignette{display:none}
+}
+
+@media print{
+  .crt,.vignette,.cursor{display:none}
+  body{background:#fff;color:#000}
+  a{color:#000}
+}

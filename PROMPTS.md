@@ -3,8 +3,8 @@
 Required by 15-113 Project 1: "a text document that contains the prompts you
 used (simply copy-pasted) and the replies you received."
 
-**Tool used:** Claude Code (Anthropic's CLI), running Claude Opus 5. One
-continuous session on 5 September 2026. I worked in the terminal rather than a
+**Tool used:** Claude Code (Anthropic's CLI), running Claude Opus 5. Two
+sessions on 5 September 2026. I worked in the terminal rather than a
 browser chat, which matters for reading this log: the model could read and edit
 files in the repository directly, so its "replies" are often a description of
 edits it made rather than a block of code for me to paste.
@@ -71,6 +71,100 @@ was due **that same day at 8:00 PM**, roughly six hours out. It also checked
 why the consulting section lives on this site rather than linking out.
 
 It then built five complete designs plus a picker page.
+
+---
+
+## Session 2 — a sixth design, run separately
+
+### Prompt 3
+
+> build one more design based on this prompt Run with Opus. Build in its own
+> directory, alongside the other five variants. Do not overwrite them; the
+> assignment rewards visible iteration.
+>
+> Build a personal portfolio website for Ben Collier. Single page, static,
+> deployable to GitHub Pages. Plain HTML, CSS and vanilla JavaScript. No
+> framework, no build step, no dependencies beyond a webfont. It must run by
+> opening index.html.
+>
+> THE CONCEPT
+>
+> The site is a terminal session in which Ben himself is the agent being run.
+> This is a deliberate, self-aware joke: he teaches and researches agentic AI,
+> so the portfolio presents his own life as an agent execution trace with a
+> task queue, a run history and a log.
+>
+> [Full brief continues: three named sections, an amber-on-near-black palette
+> with specific hex values, a 70-80 character measure, one animated element
+> under two seconds, two booking commands, an explicit list of things to avoid,
+> and a ban on writing three particular words on the page.]
+
+I wrote this brief myself rather than asking for "a terminal design", which is
+the difference between the result and a template. It specifies the concept, the
+structure, the palette down to hex values, the measure in characters, what to
+animate and what not to, and an explicit list of failure modes. It also bans
+the tired version of the idea by name: no fake shell where the visitor types
+commands.
+
+**Reply, summarised.** Built `designs/agent/` as `index.html`, `style.css`,
+`script.js`, `README.md` and a copy of the portrait, self-contained enough to
+run from `file://`. Measured every colour against the background before
+committing to it. Then found and fixed a real bug in its own work, described
+below.
+
+### The bug that was worth the session
+
+The first version hid the task queue and the command line behind the typing
+animation. Rendering the page from `file://` in headless Chrome starved
+`requestAnimationFrame`, the animation never ran, and the page showed an empty
+box where the content should have been. The brief said it must run by opening
+`index.html`, and it did not.
+
+Three fixes came out of that:
+
+1. **The animation stopped owning the content.** The command line now reveals
+   by widening a clip in whole character units, which in a monospace face is
+   literally character-by-character typing. The full string stays in the DOM the
+   whole time. The first version emptied `textContent` and refilled it, so a
+   stalled animation destroyed the text permanently.
+2. **The fallback moved out of the file that can fail.** A dead man's switch in
+   the inline `<head>` script strips the hiding class after 2.8 seconds, and the
+   stylesheet carries its own reveal at 2.6 seconds. A fallback living inside
+   `script.js` is not a fallback if `script.js` is the thing that stalled.
+3. **The starting clip is written by the first frame, not at setup**, so an
+   inline style can never outlive a stall and hide the content for good.
+
+Separately: the first implementation chained about 45 `setTimeout` calls.
+Browsers clamp those to roughly 1Hz in a tab that is not in the foreground,
+which stretched a 1.6 second animation to eleven seconds in testing. It is now
+one `requestAnimationFrame` loop deriving its state from elapsed time, so a
+throttled tab lands on the finished state rather than crawling through it.
+
+None of this was visible by looking at the page in a normal browser tab. It
+came out of rendering it the way the brief said it had to work.
+
+### Other things I changed in this one
+
+- **The measure was wrong and the CSS lied about it.** `max-width: 74ch` on a
+  border-box element with side padding measured out to 68 characters of actual
+  text, under the 70 the brief asked for. Switched that element to
+  `content-box` so the number means what it says. It is 76 characters now.
+- **Removed the office address.** The brief bans one particular word on the
+  page, and the postal address was the only place it appeared. It is also the
+  least terminal-native line in a contact block, so it went rather than got
+  abbreviated.
+- **Scanlines were at 0.06 alpha over a 2px period**, which moirés against the
+  line height and reads as a Halloween filter. Dropped to 0.022 over 3px.
+- **Cut a glow from every glyph.** On a full page of monospace a text-shadow is
+  a blur, not a CRT. It now sits only on the three status keywords and the
+  cursor.
+
+### One thing to resolve before this goes live
+
+The brief describes 70-445 as "AI for Business Leaders", an undergraduate
+course in its first run. The main site currently redirects 70-445 to 45-881
+Modern Data Management, on the basis that the undergraduate catalogue number
+was relabelled. Both cannot be right. This design uses the brief.
 
 ---
 
@@ -205,6 +299,7 @@ stylesheet listing what was drafted, what I changed, and why:
 - `designs/steel/index.html`
 - `designs/notebook/index.html`
 - `designs/studio/index.html`
+- `designs/agent/` — all three files, plus its own `README.md`
 - `designs/index.html` (the picker)
 - `scripts/build.py` and `css/site.css` for the multi-page version
 
