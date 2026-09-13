@@ -132,7 +132,7 @@ done — absolute URLs point at https://bcollier.github.io/ben.collier.phd
 | --- | --- |
 | `data/site.json` | Every page's `<head>` — canonical, Open Graph, JSON-LD — plus `sitemap.xml` and `feed.xml` |
 | `data/cv.md` | `/cv/`, through a small Markdown subset renderer in the script |
-| `data/students.json` | `/students/` — roster and advised papers |
+| `data/students.json` | Nothing at the moment. The students section is held back until there are projects and permissions; the roster is empty and the paper slots are placeholders |
 | `data/portfolio.json` | `/projects/` — fun projects shown to classes |
 | `data/projects.json` | Nothing at the moment. Sample student projects are held back from the site for now; the data stays here for when they return |
 | `COURSES` in `scripts/build.py` | `/courses/`, every course page, the home page, `sitemap.xml` |
@@ -146,7 +146,7 @@ their copy written directly in their `build_*()` function.
 ### What it writes
 
 `index.html`, `404.html`, and an `index.html` under `courses/`, `courses/<slug>/`,
-`students/`, `cv/`, `materials/`, `projects/`, `practice/`, `teaching/`, `news/`, and `contact/`
+`cv/`, `materials/`, `projects/`, `practice/`, `teaching/`, `news/`, and `contact/`
 — plus `sitemap.xml`, `robots.txt`, and `feed.xml`.
 
 ### When you have to run it
@@ -229,7 +229,7 @@ That writes `CNAME`, pushes, sets the Pages domain, and enables HTTPS enforcemen
 | What | Where | Rebuild after? |
 | --- | --- | --- |
 | Full CV | `data/cv.md` | Yes |
-| Students, advised papers | `data/students.json` | Yes |
+| Students, advised papers (section currently not built) | `data/students.json` | Yes |
 | Portfolio projects | `data/portfolio.json` (images in `assets/portfolio/`) | Yes |
 | Course sample projects (currently not rendered) | `data/projects.json` | Yes |
 | Courses, news log | `COURSES` / `NEWS` in `scripts/build.py` | Yes |
@@ -255,7 +255,7 @@ python3 scripts/add_linkedin_post.py \
   --tags students teaching
 ```
 
-LinkedIn has no public RSS feed, so posts are stored as a static copy in `data/linkedin.json` and rendered on `/students/` and `/news/`.
+LinkedIn has no public RSS feed, so posts are stored as a static copy in `data/linkedin.json`. The five newest render on the home page and all of them on `/news/`.
 
 ### Fetch a LinkedIn photo
 
@@ -301,7 +301,6 @@ block; rasterising needs `rsvg-convert` (`brew install librsvg`).
 
 - **Home** — portrait, bio, courses built
 - **Courses** — built and taught
-- **Students** — photos, advised papers, capstone log, LinkedIn highlights
 - **Materials** — notebooks, video, workshops
 - **Projects** — fun projects built for classes, generated from `data/portfolio.json`
 - **Practice** — Hot Metal Data, gAIm Systems

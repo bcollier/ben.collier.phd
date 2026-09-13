@@ -58,7 +58,7 @@
     .then(function (r) { return r.json(); })
     .then(function (data) {
       const posts = data.posts || [];
-      renderPosts(posts, document.getElementById("linkedin-students"), { filter: "students" });
+      renderPosts(posts, document.getElementById("linkedin-recent"), { limit: 5 });
       renderPosts(posts, document.getElementById("linkedin-all"));
     })
     .catch(function () {
