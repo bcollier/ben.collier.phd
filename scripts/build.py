@@ -26,6 +26,19 @@ BUILT = date.today().isoformat()
 
 COURSES = [
     {
+        "slug": "70-445",
+        "number": "70-445",
+        "title": "Artificial Intelligence for Business Leaders",
+        "program": "Undergraduate",
+        "school": "Tepper",
+        "built": True,
+        "color": "c-navy",
+        "one_liner": "Where AI creates business value, where it does not, and how to tell the board which is which.",
+        "blurb": "A flagship, practice-oriented undergraduate course on how AI is reshaping organizations, industries, and managerial decisions. The first half covers the foundations: how machine learning, neural networks, and large language models work, and the data, chips, and compute economics underneath them. The second half works through AI in marketing, sales, finance, operations, people analytics, and strategy, plus the ethics, governance, and regulation that decide whether adoption lasts. It runs on active learning: in-class exercises, short cases, memos written for executives, student-led briefings on current AI topics, and a semester-long group project in one of three tracks: an AI investment committee for a real public company, building and red-teaming an AI agent, or earning $100 with an AI-enabled business.",
+        "offerings": ["Developed for Fall 2026", "Fall 2026"],
+        "materials": "No required textbook. Materials for enrolled students are on Canvas.",
+    },
+    {
         "slug": "45-884",
         "number": "45-884",
         "title": "AI Methods for Social and Visual Data",
@@ -55,6 +68,20 @@ COURSES = [
         "blurb": "A micro-course I developed on managing technical talent: assessing skill, designing work, and building teams that can actually ship. Built for undergraduates and taught as a new offering at CMU Qatar in Fall 2025.",
         "offerings": ["Developed October 2025", "Fall 2025 CMU Qatar"],
         "materials": "Course outline available to enrolled students; public excerpts go on the materials page.",
+    },
+    {
+        "slug": "msba-math-skills-workshop",
+        "number": "",
+        "label": "MSBA",
+        "title": "MSBA Math Skills Workshop",
+        "program": "MSBA",
+        "school": "Tepper",
+        "built": True,
+        "color": "c-clay",
+        "one_liner": "The math MSBA students need in place before the quantitative core starts.",
+        "blurb": "A workshop I developed for Summer 2026 for incoming MSBA students. The aim is that students arrive at the program's quantitative courses with the mathematics already in hand, rather than learning it alongside the statistics.",
+        "offerings": ["Developed for Summer 2026"],
+        "materials": "Workshop notes will be posted as I stabilize them for reuse.",
     },
     {
         "slug": "45-851",
@@ -116,9 +143,9 @@ COURSES = [
         "built": False,
         "color": "c-slate",
         "one_liner": "The quantitative floor every later analytics course stands on.",
-        "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning. I also developed a math-skills workshop so students arrive ready.",
-        "offerings": ["Fall 2024 full-time", "MSBA Math Skills Workshop, 2026"],
-        "materials": "Workshop notes will be posted as I stabilize them for reuse.",
+        "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning.",
+        "offerings": ["Fall 2024 full-time"],
+        "materials": "Public excerpts go on the materials page as they are cleared.",
     },
     {
         "slug": "46-887",
@@ -146,22 +173,10 @@ COURSES = [
         "offerings": ["Spring 2026 full-time"],
         "materials": "Heinz students get the full set on Canvas; public excerpts go on the materials page.",
     },
-    {
-        "slug": "45-881",
-        "number": "45-881",
-        "title": "Modern Data Management",
-        "program": "MBA",
-        "school": "Tepper",
-        "built": False,
-        "color": "c-clay",
-        "one_liner": "Get the data into a shape a model — or a manager — can actually use.",
-        "blurb": "How organizations capture, store, and prepare data for analysis. SQL, pipelines, and the unglamorous work that decides whether the fancy model ever sees the right table. (Undergraduate catalog lineage: 70-445 / 70-455.)",
-        "offerings": ["Spring 2026"],
-        "materials": "SQL and wrangling labs listed under Teaching materials.",
-    },
 ]
 
 NEWS = [
+    ("2026-08-25", "First day of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built."),
     ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
     ("2026-03", "Named an AWS Academy Educator."),
     ("2026-01", "Advising two MSBA capstone teams this spring."),
@@ -195,6 +210,12 @@ def md_to_html(md: str) -> str:
                 in_ul = False
             # Skip top H1; page already has a title.
             continue
+        if line.startswith("### "):
+            if in_ul:
+                out.append("</ul>")
+                in_ul = False
+            out.append(f"<h3>{inline(line[4:])}</h3>")
+            continue
         if line.startswith("## "):
             if in_ul:
                 out.append("</ul>")
@@ -225,6 +246,8 @@ def inline(text: str) -> str:
     text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
     text = re.sub(r"\*(.+?)\*", r"<em>\1</em>", text)
     text = re.sub(r"\[(.+?)\]\((.+?)\)", r'<a href="\2">\1</a>', text)
+    # Bare URLs become links too, so the CV source can stay plain text.
+    text = re.sub(r'(?<!href=")(?<!">)(https?://[^\s<]+?)(?=[.,;)]?(?:\s|$))', r'<a href="\1">\1</a>', text)
     return text
 
 
@@ -289,6 +312,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("courses/", "courses", "courses")}
         {item("students/", "students", "students")}
         {item("materials/", "materials", "materials")}
+        {item("projects/", "projects", "projects")}
         {item("practice/", "practice", "practice")}
         {item("cv/", "cv", "cv")}
         {item("news/", "news", "news")}
@@ -324,29 +348,24 @@ def write(rel, content: str):
     print("wrote", rel)
 
 
+def course_label(c) -> str:
+    """Short text for a course thumbnail: the catalog number, or a label for a course without one."""
+    return c["number"] or c.get("label") or c["program"]
+
+
+def course_name(c) -> str:
+    """Catalog number and title, or just the title when there is no number."""
+    return f"{c['number']} {c['title']}".strip()
+
+
 def course_card(c, root):
     built = '<span class="badge built">Built</span>' if c["built"] else ""
     return f"""<a class="card" href="{root}courses/{c['slug']}/">
-  <div class="thumb {c['color']}"><span>{c['number']}</span></div>
+  <div class="thumb {c['color']}"><span>{course_label(c)}</span></div>
   <div class="body">
     <div class="meta">{built}<span>{c['program']} · {c['school']}</span></div>
     <h3>{c['title']}</h3>
     <p>{c['one_liner']}</p>
-  </div>
-</a>
-"""
-
-
-def project_card(p, root):
-    students = ", ".join(p.get("students") or []) or "Student team"
-    href = f"{root}courses/{p['course']}/#project-{p['id']}"
-    return f"""<a class="project" href="{href}">
-  <img class="shot" src="{root}{p['image']}" alt="" width="800" height="500">
-  <div class="body">
-    <div class="meta">{p['course']} · {p['term']}</div>
-    <h3>{p['title']}</h3>
-    <p>{p['summary']}</p>
-    <div class="who">{students}</div>
   </div>
 </a>
 """
@@ -440,8 +459,7 @@ def course_jsonld(c) -> str:
     data = {
         "@context": "https://schema.org",
         "@type": "Course",
-        "name": f"{c['number']} {c['title']}",
-        "courseCode": c["number"],
+        "name": course_name(c),
         "description": c["blurb"],
         "url": f"{HOST}/courses/{c['slug']}/",
         "provider": {
@@ -455,13 +473,14 @@ def course_jsonld(c) -> str:
             "name": SITE["author"],
         },
     }
+    if c["number"]:
+        data["courseCode"] = c["number"]
     return json.dumps(data, indent=2)
 
 
-def build_home(projects):
+def build_home():
     built = [c for c in COURSES if c["built"]]
     cards = "\n".join(course_card(c, "") for c in built)
-    featured = "\n".join(project_card(p, "") for p in projects[:6])
     body = f"""
       <section class="hero">
         <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
@@ -485,7 +504,7 @@ def build_home(projects):
       </div>
 
       <div class="tiles">
-        <a class="tile" href="courses/"><div class="n">01</div><strong>Courses</strong><span>What I built, what I teach, student work.</span></a>
+        <a class="tile" href="courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
         <a class="tile" href="students/"><div class="n">02</div><strong>Students</strong><span>Advisees, papers, LinkedIn highlights.</span></a>
         <a class="tile" href="cv/"><div class="n">03</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
         <a class="tile" href="practice/"><div class="n">04</div><strong>Practice</strong><span>Hot Metal Data and gAIm Systems.</span></a>
@@ -493,11 +512,7 @@ def build_home(projects):
 
       <h2>Courses I built</h2>
       <div class="grid" style="margin-top:1rem">{cards}</div>
-
-      <h2>Student work from the courses</h2>
-      <p class="muted prose-width">The kind of studio work each course asks for. Teams are named here once they opt in.</p>
-      <div class="project-grid">{featured}</div>
-      <p><a href="courses/">All courses and projects</a></p>
+      <p><a href="courses/">All courses</a></p>
 
       <h2>Students, from LinkedIn</h2>
       <ol class="feed" id="linkedin-students">
@@ -529,24 +544,19 @@ def build_home(projects):
     )
 
 
-def build_courses_index(projects):
+def build_courses_index():
     built = "\n".join(course_card(c, "../") for c in COURSES if c["built"])
     taught = "\n".join(course_card(c, "../") for c in COURSES if not c["built"])
-    samples = "\n".join(project_card(p, "../") for p in projects)
     body = f"""
       <p class="kicker">Teaching</p>
       <h1>Courses</h1>
-      <p class="lede">Built ones first, then the ones I currently teach. Every course page ends with sample student work.</p>
+      <p class="lede">Built ones first, then the ones I currently teach.</p>
 
       <h2>Courses I built</h2>
       <div class="grid">{built}</div>
 
       <h2>Courses I teach</h2>
       <div class="grid">{taught}</div>
-
-      <h2>Sample student projects</h2>
-      <p class="muted prose-width">Studio work posted from the courses. Named teams and their artifacts go up once students opt in.</p>
-      <div class="project-grid">{samples}</div>
 """
     write(
         "courses/index.html",
@@ -554,51 +564,23 @@ def build_courses_index(projects):
             "../",
             "courses",
             "Courses · Ben Collier",
-            "Courses Ben Collier built and teaches at Tepper and Heinz, with sample student projects.",
+            "Courses Ben Collier built and teaches at Tepper and Heinz.",
             "courses/",
             body,
         ),
     )
 
 
-def build_course_pages(projects):
-    by_course = {}
-    for p in projects:
-        by_course.setdefault(p["course"], []).append(p)
-
+def build_course_pages():
     for c in COURSES:
         offerings = "".join(f"<li>{o}</li>" for o in c["offerings"])
         built = '<span class="badge built">Course I built</span>' if c["built"] else ""
-        course_projects = by_course.get(c["slug"], [])
-        if course_projects:
-            cards = "\n".join(
-                f"""<article class="project" id="project-{p['id']}">
-  <img class="shot" src="../../{p['image']}" alt="" width="800" height="500">
-  <div class="body">
-    <div class="meta">{p['term']} · sample studio work</div>
-    <h3>{p['title']}</h3>
-    <p>{p['summary']}</p>
-    <div class="who">{', '.join(p.get('students') or ['Student team'])}</div>
-  </div>
-</article>"""
-                for p in course_projects
-            )
-            project_block = f"""
-        <h2>Sample student projects</h2>
-        <p class="muted">Posted samples from the course. Named student pieces replace these when teams opt in.</p>
-        <div class="project-grid">{cards}</div>
-"""
-        else:
-            project_block = """
-        <h2>Sample student projects</h2>
-        <div class="empty">Studio work from this course goes up as teams clear it for publication.</div>
-"""
         body = f"""
       <article class="course-hero prose-width">
         <p class="kicker">{c['school']} · {c['program']}</p>
-        <h1>{c['number']} {c['title']}</h1>
+        <h1>{course_name(c)}</h1>
         <p>{built}</p>
-        <div class="thumb {c['color']}">{c['number']}</div>
+        <div class="thumb {c['color']}">{course_label(c)}</div>
         <p class="lede">{c['one_liner']}</p>
         <p>{c['blurb']}</p>
         <h2>Recent offerings</h2>
@@ -606,7 +588,6 @@ def build_course_pages(projects):
         <h2>Materials</h2>
         <p>{c['materials']} <a href="../../materials/">Teaching materials</a>.</p>
       </article>
-      {project_block}
       <p><a href="../">All courses</a></p>
 """
         write(
@@ -614,24 +595,13 @@ def build_course_pages(projects):
             page(
                 "../../",
                 "courses",
-                f"{c['number']} {c['title']} · Ben Collier",
+                f"{course_name(c)} · Ben Collier",
                 c["one_liner"],
                 f"courses/{c['slug']}/",
                 body,
                 course_jsonld(c),
             ),
         )
-
-    write(
-        "courses/70-445/index.html",
-        f"""<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8"><title>70-445 Modern Data Management</title>
-<meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0; url=../45-881/">
-<link rel="canonical" href="{HOST}/courses/45-881/">
-</head><body><p>70-445 is now catalogued as 70-455 / MBA 45-881. <a href="../45-881/">Continue to Modern Data Management</a>.</p></body></html>
-""",
-    )
 
 
 def build_students(students_data):
@@ -737,8 +707,7 @@ def build_cv():
     body = f"""
       <p class="kicker">Curriculum vitae</p>
       <h1>CV</h1>
-      <p class="lede">Appointments, teaching, courses built, advising, and practice. Formatted to print or save as a PDF.</p>
-      <p class="muted no-print"><button class="btn" type="button" data-print>Print or save as PDF</button></p>
+      <p class="lede">Appointments, teaching, courses built, advising, and practice.</p>
       <article class="cv">
         <div class="cv-head">
           <p><strong>Ben Collier</strong> · Assistant Teaching Professor of Business Analytics</p>
@@ -779,8 +748,8 @@ def build_materials():
 
       <h2>Workshops</h2>
       <ul class="materials">
-        <li><strong>MSBA Math Skills Workshop</strong> — developed 2026.</li>
-        <li><strong>Business Analytics Summer Summit</strong> — instructor, 2024–.</li>
+        <li><strong>MSBA Math Skills Workshop</strong> — developed for Summer 2026.</li>
+        <li><strong>Business Analytics Summer Summit</strong> — instructor, 2024 and 2025.</li>
         <li><strong>Hot Metal Data workshops</strong> — corporate training outlines on request.</li>
       </ul>
 """
@@ -815,6 +784,41 @@ def build_materials():
             "Teaching hub: courses, students, materials, CV.",
             "teaching/",
             hub,
+        ),
+    )
+
+
+def portfolio_card(p, root):
+    links = " · ".join(f'<a href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
+    return f"""<article class="portfolio-item" id="{p['id']}">
+  <a href="{esc(p['links'][0]['href'])}"><img class="shot" src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="1280" height="642" loading="lazy"></a>
+  <div class="body">
+    <div class="meta">{esc(p['kind'])} · {esc(p['tools'])} · {esc(p['date'])}</div>
+    <h2>{esc(p['title'])}</h2>
+    <p>{p['summary']}</p>
+    <p>{p['process']}</p>
+    <p class="links">{links}</p>
+  </div>
+</article>"""
+
+
+def build_portfolio(portfolio):
+    items = "\n".join(portfolio_card(p, "../") for p in portfolio)
+    body = f"""
+      <p class="kicker">Portfolio</p>
+      <h1>Projects</h1>
+      <p class="lede">Things I build to show my classes what the tools can do now. Small, playable, and honest about how they were made. More are coming.</p>
+      <div class="portfolio">{items}</div>
+"""
+    write(
+        "projects/index.html",
+        page(
+            "../",
+            "projects",
+            "Projects · Ben Collier",
+            "Fun projects Ben Collier builds for his classes, with source, prompts, and build logs.",
+            "projects/",
+            body,
         ),
     )
 
@@ -916,7 +920,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "courses/", "students/", "materials/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
+    paths = ["", "courses/", "students/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -979,13 +983,14 @@ def build_feed():
 
 
 def main():
-    projects = load_json("projects.json")["projects"]
     students_data = load_json("students.json")
-    build_home(projects)
-    build_courses_index(projects)
-    build_course_pages(projects)
+    portfolio = load_json("portfolio.json")["projects"]
+    build_home()
+    build_courses_index()
+    build_course_pages()
     build_students(students_data)
     build_cv()
+    build_portfolio(portfolio)
     build_materials()
     build_practice()
     build_news()
