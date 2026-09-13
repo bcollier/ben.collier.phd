@@ -310,7 +310,6 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
       <a class="wordmark" href="{root}">Ben Collier</a>
       <nav class="primary" aria-label="Primary">
         {item("courses/", "courses", "courses")}
-        {item("students/", "students", "students")}
         {item("materials/", "materials", "materials")}
         {item("projects/", "projects", "projects")}
         {item("practice/", "practice", "practice")}
@@ -368,23 +367,6 @@ def course_card(c, root):
     <p>{c['one_liner']}</p>
   </div>
 </a>
-"""
-
-
-def person_card(s, root):
-    now = f"<div class=\"meta\">Now: {s['now']}</div>" if s.get("now") else ""
-    linkedin = (
-        f' · <a href="{s["linkedin"]}">LinkedIn</a>' if s.get("linkedin") else ""
-    )
-    return f"""<article class="person">
-  <img src="{root}{s['photo']}" alt="Photo of {s['name']}" width="200" height="200">
-  <div>
-    <h3>{s['name']}</h3>
-    <div class="meta">{s['role']} · {s['years']}{linkedin}</div>
-    {now}
-    <p>{s.get('blurb', '')}</p>
-  </div>
-</article>
 """
 
 
@@ -494,7 +476,7 @@ def build_home():
 
       <div class="bio">
         <p>My primary appointment is at Tepper, where I teach across the MBA, MS in Business Analytics, and undergraduate programs. I also teach selected courses at Heinz College. The work is applied: Python workflows, statistical reasoning, and the ethical judgment you need when a model meets a real organization.</p>
-        <p>Before returning to the faculty I led data science at Duolingo and at UPMC. That practice work — now through Hot Metal Data and gAIm Systems — is what I bring into the classroom. I build courses, advise MSBA capstones, and post student work here with permission.</p>
+        <p>Before returning to the faculty I led data science at Duolingo and at UPMC. That practice work — now through Hot Metal Data and gAIm Systems — is what I bring into the classroom. I build courses and advise MSBA capstones.</p>
       </div>
 
       <div class="notice-strip">
@@ -505,7 +487,7 @@ def build_home():
 
       <div class="tiles">
         <a class="tile" href="courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
-        <a class="tile" href="students/"><div class="n">02</div><strong>Students</strong><span>Advisees, papers, LinkedIn highlights.</span></a>
+        <a class="tile" href="projects/"><div class="n">02</div><strong>Projects</strong><span>Fun things I build for my classes.</span></a>
         <a class="tile" href="cv/"><div class="n">03</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
         <a class="tile" href="practice/"><div class="n">04</div><strong>Practice</strong><span>Hot Metal Data and gAIm Systems.</span></a>
       </div>
@@ -514,8 +496,8 @@ def build_home():
       <div class="grid" style="margin-top:1rem">{cards}</div>
       <p><a href="courses/">All courses</a></p>
 
-      <h2>Students, from LinkedIn</h2>
-      <ol class="feed" id="linkedin-students">
+      <h2>Recent posts from LinkedIn</h2>
+      <ol class="feed" id="linkedin-recent">
         <li>
           <time datetime="2026-06-10">Jun 10, 2026</time>
           <div class="post">
@@ -524,7 +506,7 @@ def build_home():
           </div>
         </li>
       </ol>
-      <p><a href="students/">Students, papers, and photos</a></p>
+      <p><a href="news/">All posts</a> · <a href="https://www.linkedin.com/in/bcollierphd">Follow on LinkedIn</a></p>
 
       <h2>News</h2>
       {news_items(5)}
@@ -536,7 +518,7 @@ def build_home():
             "",
             "home",
             "Ben Collier · Teaching, Tepper School of Business",
-            "Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Courses, students, and applied work.",
+            "Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Courses, projects, and applied work.",
             "",
             body,
             person_jsonld(),
@@ -602,103 +584,6 @@ def build_course_pages():
                 course_jsonld(c),
             ),
         )
-
-
-def build_students(students_data):
-    people = "\n".join(person_card(s, "../") for s in students_data["students"])
-
-    # Placeholder rows are editing scaffolding, not content. They stay in the
-    # JSON as reserved slots, but nothing unpublished is rendered to visitors.
-    public_papers = [
-        p for p in students_data["papers"] if p.get("status") != "placeholder"
-    ]
-    if public_papers:
-        papers_html = []
-        for paper in public_papers:
-            names = ", ".join(paper.get("students") or []) or "Names with permission"
-            link = (
-                f' · <a href="{paper["link"]}">Paper / artifact</a>'
-                if paper.get("link")
-                else ""
-            )
-            papers_html.append(
-                f"""<li>
-  <h3>{paper['title']}</h3>
-  <div class="meta">{paper['year']} · {paper['kind']} · {names}{link}</div>
-  <p>{paper['summary']}</p>
-</li>"""
-            )
-        papers = f'<ul class="paper-list">\n{chr(10).join(papers_html)}\n      </ul>'
-        reserved = len(students_data["papers"]) - len(public_papers)
-        if reserved:
-            papers += (
-                f'\n      <p class="muted">{reserved} more '
-                f'{"team is" if reserved == 1 else "teams are"} finishing work that '
-                "will be listed here once cleared for publication.</p>"
-            )
-    else:
-        papers = (
-            '<div class="empty">Titles and abstracts go up as teams clear their work '
-            "for publication. The log below records what I have advised.</div>"
-        )
-
-    built_count = sum(1 for c in COURSES if c["built"])
-    body = f"""
-      <p class="kicker">Advising</p>
-      <h1>Students</h1>
-      <p class="lede">Capstones, independent studies, teaching assistants, and the papers and projects I advise. Everyone here asked to be listed.</p>
-
-      <div class="stat-row">
-        <div class="stat"><b>11</b> MSBA capstone teams advised, 2024–2026</div>
-        <div class="stat"><b>{built_count}</b> courses I built</div>
-        <div class="stat"><b>1</b> Bach Teaching Award, MBA Class of 2026</div>
-      </div>
-
-      <h2>People</h2>
-      <p class="muted prose-width">Students, teaching assistants, and advisees who agreed to be listed here.</p>
-      <div class="people-grid">{people}</div>
-
-      <h2>Papers and projects I advised</h2>
-      {papers}
-      <table class="roster" style="margin-top:1.5rem">
-        <thead><tr><th>Year</th><th>Role</th><th>What</th></tr></thead>
-        <tbody>
-          <tr><td>Spring 2026</td><td>Advisor</td><td>Two MSBA capstone teams</td></tr>
-          <tr><td>Spring 2025</td><td>Advisor</td><td>Five MSBA capstone projects</td></tr>
-          <tr><td>Spring 2024</td><td>Advisor</td><td>Four MSBA capstone projects</td></tr>
-          <tr><td>Spring 2026</td><td>Independent study</td><td>MSBA 46-994</td></tr>
-        </tbody>
-      </table>
-
-      <h2>From LinkedIn</h2>
-      <p class="muted prose-width">Posts where I highlight student work.</p>
-      <ol class="feed" id="linkedin-students">
-        <li>
-          <time datetime="2026-06-10">Jun 10, 2026</time>
-          <div class="post">
-            <p>Grateful to receive the George Leland Bach Teaching Award — chosen by vote of the graduating MBA class. Many thanks to the students of the Class of 2026.</p>
-            <div class="people"><span>Tepper MBA Class of 2026</span></div>
-          </div>
-        </li>
-      </ol>
-
-      <h2>How to work with me</h2>
-      <div class="prose-width">
-        <p>I take on a small number of MSBA independent studies, capstone teams, and teaching assistants each year. Send a short note with the project, the course or program, and what you want out of it. If you want your photo, paper abstract, or “now at” line on this page, say so in the email.</p>
-        <p><a href="../contact/">Contact</a> · <a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></p>
-      </div>
-"""
-    write(
-        "students/index.html",
-        page(
-            "../",
-            "students",
-            "Students · Ben Collier",
-            "Students Ben Collier advises, teaching assistants, papers, and LinkedIn highlights.",
-            "students/",
-            body,
-        ),
-    )
 
 
 def build_cv():
@@ -767,10 +652,10 @@ def build_materials():
     hub = """
       <p class="kicker">Teaching</p>
       <h1>Teaching</h1>
-      <p class="lede">Courses I built, students I advise, and the materials that travel with them.</p>
+      <p class="lede">Courses I built, projects I show in class, and the materials that travel with them.</p>
       <div class="tiles">
         <a class="tile" href="../courses/"><div class="n">01</div><strong>Courses</strong><span>Built, taught, student projects.</span></a>
-        <a class="tile" href="../students/"><div class="n">02</div><strong>Students</strong><span>Capstones, papers, photos.</span></a>
+        <a class="tile" href="../projects/"><div class="n">02</div><strong>Projects</strong><span>Fun things built for class.</span></a>
         <a class="tile" href="../materials/"><div class="n">03</div><strong>Materials</strong><span>Notebooks, video, workshops.</span></a>
         <a class="tile" href="../cv/"><div class="n">04</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
       </div>
@@ -781,7 +666,7 @@ def build_materials():
             "../",
             "courses",
             "Teaching · Ben Collier",
-            "Teaching hub: courses, students, materials, CV.",
+            "Teaching hub: courses, projects, materials, CV.",
             "teaching/",
             hub,
         ),
@@ -791,7 +676,7 @@ def build_materials():
 def portfolio_card(p, root):
     links = " · ".join(f'<a href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
     return f"""<article class="portfolio-item" id="{p['id']}">
-  <a href="{esc(p['links'][0]['href'])}"><img class="shot" src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="1280" height="642" loading="lazy"></a>
+  <a href="{esc(p['links'][0]['href'])}"><img class="shot" src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}" loading="lazy"></a>
   <div class="body">
     <div class="meta">{esc(p['kind'])} · {esc(p['tools'])} · {esc(p['date'])}</div>
     <h2>{esc(p['title'])}</h2>
@@ -910,7 +795,7 @@ def build_404():
     body = """
       <h1>Page not found</h1>
       <p class="lede">That URL is not on this site.</p>
-      <p><a href="./">Home</a> · <a href="./courses/">Courses</a> · <a href="./students/">Students</a> · <a href="./cv/">CV</a></p>
+      <p><a href="./">Home</a> · <a href="./courses/">Courses</a> · <a href="./projects/">Projects</a> · <a href="./cv/">CV</a></p>
 """
     write(
         "404.html",
@@ -920,7 +805,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "courses/", "students/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
+    paths = ["", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -983,12 +868,10 @@ def build_feed():
 
 
 def main():
-    students_data = load_json("students.json")
     portfolio = load_json("portfolio.json")["projects"]
     build_home()
     build_courses_index()
     build_course_pages()
-    build_students(students_data)
     build_cv()
     build_portfolio(portfolio)
     build_materials()

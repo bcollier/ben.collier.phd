@@ -1,30 +1,5 @@
 {
-  "students": [
-    {
-      "id": "michelle-min",
-      "name": "Michelle Min",
-      "role": "Graduate teaching assistant",
-      "years": "2025–26",
-      "program": "Tepper",
-      "linkedin": "https://www.linkedin.com/in/michelle-de-min",
-      "linkedin_slug": "michelle-de-min",
-      "photo": "assets/students/michelle-min.jpg",
-      "now": "",
-      "blurb": "TA across Data Mining, Data Visualization, AI Methods for Social and Visual Data, and Machine Learning for Business Applications."
-    },
-    {
-      "id": "annie-winkler",
-      "name": "Annie Winkler",
-      "role": "Part-time MSBA student · Class of 2027",
-      "years": "2025–",
-      "program": "MSBA",
-      "linkedin": "https://www.linkedin.com/in/annie-winkler-97799519a",
-      "linkedin_slug": "annie-winkler-97799519a",
-      "photo": "assets/students/annie-winkler.jpg",
-      "now": "HR Business Partner Associate, PNC",
-      "blurb": "Interviewed me for the Tepper School about what the MSBA is actually like — the decathlon of stats, ML, code, viz, and communication."
-    }
-  ],
+  "students": [],
   "papers": [
     {
       "id": "capstone-slot-2026-a",
@@ -56,5 +31,6 @@
       "link": "",
       "status": "placeholder"
     }
-  ]
+  ],
+  "note": "Held back from the site for now. Nothing here renders until the students section returns with projects and permissions. Only list people who have agreed."
 }

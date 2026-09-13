@@ -38,7 +38,6 @@
       <a class="wordmark" href="../">Ben Collier</a>
       <nav class="primary" aria-label="Primary">
         <a href="../courses/">courses</a>
-        <a href="../students/">students</a>
         <a href="../materials/">materials</a>
         <a href="../projects/" aria-current="page">projects</a>
         <a href="../practice/">practice</a>
@@ -60,6 +59,16 @@
     <p>A browser replica of Crossy Road with Charlie, our nine-year-old cocker spaniel, in the chicken's place. It keeps the bones of the original (the voxel look, one hop per input, endless roads, rivers, and railways, a camera that punishes dawdling) and swaps in what matters to him: tennis balls instead of coins, a bark that stops traffic, squirrels to chase, his real outfits as unlocks, a giant caterpillar toy worth five balls, and a squirrel-piloted flying saucer where the eagle used to be.</p>
     <p>The first version came out of thirty minutes in class with Kiro: five iterations from colored rectangles to a fake-isometric board that never quite worked. The rebuild took an evening at home with Claude Code. I measured the camera angle from real gameplay screenshots, wrote a spec with machine-checkable acceptance criteria and fairness rules for the world generator, and let an autonomous run build it block by block, checking each block by stepping the simulation through a debug harness rather than trusting a screenshot. A second round after playing it added the bark, the saucer, combos, a daily challenge, and a shareable trading card. Every prompt, decision, and build step is in the repo.</p>
     <p class="links"><a href="https://bcollier.github.io/charlie-road/">Play it</a> · <a href="https://bcollier.github.io/charlie-road/v1/">Play the 30-minute class prototype</a> · <a href="https://github.com/bcollier/charlie-road">Source, prompts, and build log on GitHub</a> · <a href="https://youtu.be/4csO6aQQAdw">Gameplay video</a></p>
+  </div>
+</article>
+<article class="portfolio-item" id="claude-ravens-demo">
+  <a href="https://github.com/bcollier/claude-ravens-demo"><img class="shot" src="../assets/portfolio/claude-ravens-demo.png" alt="A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options" width="902" height="664" loading="lazy"></a>
+  <div class="body">
+    <div class="meta">Experiment · Python, Claude Code, 16 language models · September 2026</div>
+    <h2>Can a computer pass an IQ test?</h2>
+    <p>Three programs, written eight years apart, sit the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still turns up in hiring. A student's 2017 course project, run without changing a character, scores 34. A rule-based expert system I wrote this year with no language model, about 300 candidate if-then rules and a learned ranker, scores 59 in under a minute on a laptop. A current language model, sent the puzzle sheet and every cell as images, scores 93. Random guessing gets 13.</p>
+    <p>Sixteen language models from nine companies ran the identical puzzles with the identical prompt, so the write-up can compare accuracy, cost, and speed side by side: four models tied at 92 while their prices differed almost five to one, five scored below the program with no AI in it, and one release changed how the model works at answer time and moved the score more than two years of scaling on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the reason why is the most useful lesson in the repo. Every number is generated from the raw results by a script, and every instruction that produced it is quoted in the prompt history.</p>
+    <p class="links"><a href="https://github.com/bcollier/claude-ravens-demo">Read the write-up and browse the code on GitHub</a> · <a href="https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md">Prompt history</a></p>
   </div>
 </article></div>
     </main>
