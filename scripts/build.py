@@ -66,8 +66,8 @@ COURSES = [
         "built": True,
         "color": "c-clay",
         "one_liner": "The math MSBA students need in place before the quantitative core starts.",
-        "blurb": "A workshop I developed in 2026 for incoming MSBA students. The aim is that students arrive at the program's quantitative courses with the mathematics already in hand, rather than learning it alongside the statistics.",
-        "offerings": ["Developed 2026"],
+        "blurb": "A workshop I developed for Summer 2026 for incoming MSBA students. The aim is that students arrive at the program's quantitative courses with the mathematics already in hand, rather than learning it alongside the statistics.",
+        "offerings": ["Developed for Summer 2026"],
         "materials": "Workshop notes will be posted as I stabilize them for reuse.",
     },
     {
@@ -693,6 +693,7 @@ def build_cv():
       <p class="kicker">Curriculum vitae</p>
       <h1>CV</h1>
       <p class="lede">Appointments, teaching, courses built, advising, and practice.</p>
+      <p class="muted"><a href="BenCollierCV.pdf">Download the CV as a PDF</a></p>
       <article class="cv">
         <div class="cv-head">
           <p><strong>Ben Collier</strong> · Assistant Teaching Professor of Business Analytics</p>
@@ -733,7 +734,7 @@ def build_materials():
 
       <h2>Workshops</h2>
       <ul class="materials">
-        <li><strong>MSBA Math Skills Workshop</strong> — developed 2026.</li>
+        <li><strong>MSBA Math Skills Workshop</strong> — developed for Summer 2026.</li>
         <li><strong>Business Analytics Summer Summit</strong> — instructor, 2024 and 2025.</li>
         <li><strong>Hot Metal Data workshops</strong> — corporate training outlines on request.</li>
       </ul>
