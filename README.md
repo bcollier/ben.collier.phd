@@ -133,6 +133,7 @@ done — absolute URLs point at https://bcollier.github.io/ben.collier.phd
 | `data/site.json` | Every page's `<head>` — canonical, Open Graph, JSON-LD — plus `sitemap.xml` and `feed.xml` |
 | `data/cv.md` | `/cv/`, through a small Markdown subset renderer in the script |
 | `data/students.json` | `/students/` — roster and advised papers |
+| `data/portfolio.json` | `/projects/` — fun projects shown to classes |
 | `data/projects.json` | Nothing at the moment. Sample student projects are held back from the site for now; the data stays here for when they return |
 | `COURSES` in `scripts/build.py` | `/courses/`, every course page, the home page, `sitemap.xml` |
 | `NEWS` in `scripts/build.py` | `/news/`, the five latest on `/`, and `feed.xml` |
@@ -145,7 +146,7 @@ their copy written directly in their `build_*()` function.
 ### What it writes
 
 `index.html`, `404.html`, and an `index.html` under `courses/`, `courses/<slug>/`,
-`students/`, `cv/`, `materials/`, `practice/`, `teaching/`, `news/`, and `contact/`
+`students/`, `cv/`, `materials/`, `projects/`, `practice/`, `teaching/`, `news/`, and `contact/`
 — plus `sitemap.xml`, `robots.txt`, and `feed.xml`.
 
 ### When you have to run it
@@ -229,6 +230,7 @@ That writes `CNAME`, pushes, sets the Pages domain, and enables HTTPS enforcemen
 | --- | --- | --- |
 | Full CV | `data/cv.md` | Yes |
 | Students, advised papers | `data/students.json` | Yes |
+| Portfolio projects | `data/portfolio.json` (images in `assets/portfolio/`) | Yes |
 | Course sample projects (currently not rendered) | `data/projects.json` | Yes |
 | Courses, news log | `COURSES` / `NEWS` in `scripts/build.py` | Yes |
 | Site-wide URLs, name, links | `data/site.json` | Yes |
@@ -301,6 +303,7 @@ block; rasterising needs `rsvg-convert` (`brew install librsvg`).
 - **Courses** — built and taught
 - **Students** — photos, advised papers, capstone log, LinkedIn highlights
 - **Materials** — notebooks, video, workshops
+- **Projects** — fun projects built for classes, generated from `data/portfolio.json`
 - **Practice** — Hot Metal Data, gAIm Systems
 - **CV** — generated from `data/cv.md`
 - **News** — dated log

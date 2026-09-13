@@ -34,19 +34,19 @@ ORCID: 0000-0002-4651-7684
 
 - **45-884 AI Methods for Social and Visual Data** (MBA) — developed for Fall 2025; full-time and online hybrid
 - **70-377 Managing and Assessing Tech Talent and Organizations** (undergraduate) — micro-course developed for Fall 2025, Carnegie Mellon University in Qatar
-- **Artificial Intelligence for Business Leaders** (undergraduate) — in development for Fall 2026
+- **70-445 Artificial Intelligence for Business Leaders** (undergraduate) — developed for Fall 2026
 - **MSBA Math Skills Workshop** — developed for Summer 2026
 
 ### MBA courses
 
-- **45-851 Data Mining** — Fall 2023, Spring 2024, Fall 2024 (full-time), Spring 2025 (online hybrid), and continuing
-- **45-885 Data Visualization** — Spring 2024, Spring 2025 (full-time and online hybrid), and continuing
-- **45-884 AI Methods for Social and Visual Data** — Fall 2025 (full-time and online hybrid)
+- **45-851 Data Mining** — Fall 2023, Spring 2024, Fall 2024 (full-time), Spring 2025 (online hybrid), Fall 2025
+- **45-885 Data Visualization** — Spring 2024, Spring 2025 (full-time and online hybrid), Fall 2025, Spring 2026
+- **45-884 AI Methods for Social and Visual Data** — Fall 2025 (full-time and online hybrid), Summer 2026
 
 ### MSBA courses
 
 - **46-880 Introduction to Probability and Statistics** — Fall 2024 (full-time)
-- **46-885 Data Exploration and Visualization** — Spring 2025 (online hybrid), and continuing
+- **46-885 Data Exploration and Visualization** — Spring 2025 (online hybrid), Spring 2026
 - **46-887 Machine Learning for Business Applications** — Spring 2026
 - **46-994 MSBA Independent Study**
 - **MSBA Math Skills Workshop** — Summer 2026
@@ -55,15 +55,16 @@ ORCID: 0000-0002-4651-7684
 
 - **90-803 Machine Learning Foundations with Python** (Public Policy and Management) — Spring 2026
 
-### Undergraduate courses, Carnegie Mellon University in Qatar
+### Undergraduate courses
 
-- **Managing and Assessing Tech Talent and Organizations** — Fall 2025 (micro-course)
-- **Organizational Behavior** — Summer 2011 (Pittsburgh), Fall 2012, Fall 2013, Fall 2014, Spring 2016, Fall 2016
-- **Negotiations and Conflict Resolution** — Spring 2013
-- **Empirical Research Methods** — Spring 2013
-- **Business Technology Consulting** — Spring 2014, Spring 2015
-- **Digital Marketing and Social Media Strategy** — Spring 2014, Spring 2015, Fall 2015
-- **Managing Across Cultures** — Spring 2016, Fall 2016
+- **70-445 Artificial Intelligence for Business Leaders** — Fall 2026, Tepper School of Business
+- **70-377 Managing and Assessing Tech Talent and Organizations** — Fall 2025 (micro-course), Carnegie Mellon University in Qatar
+- **Organizational Behavior** — Summer 2011 (Pittsburgh); Fall 2012, Fall 2013, Fall 2014, Spring 2016, Fall 2016 (Carnegie Mellon University in Qatar)
+- **Negotiations and Conflict Resolution** — Spring 2013, Carnegie Mellon University in Qatar
+- **Empirical Research Methods** — Spring 2013, Carnegie Mellon University in Qatar
+- **Business Technology Consulting** — Spring 2014, Spring 2015, Carnegie Mellon University in Qatar
+- **Digital Marketing and Social Media Strategy** — Spring 2014, Spring 2015, Fall 2015, Carnegie Mellon University in Qatar
+- **Managing Across Cultures** — Spring 2016, Fall 2016, Carnegie Mellon University in Qatar
 
 ### Executive education, Carnegie Mellon University in Qatar
 

@@ -410,6 +410,35 @@ table.roster td {
 .person .meta { font-size: 0.85rem; color: var(--ink-soft); margin: 0 0 0.35rem; }
 .person p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
 
+.portfolio { display: grid; gap: 1.2rem; margin: 1.2rem 0 1.5rem; }
+
+.portfolio-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+}
+
+@media (min-width: 46rem) {
+  .portfolio-item { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+}
+
+.portfolio-item .shot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1280 / 642;
+  object-fit: cover;
+  background: var(--paper-2);
+}
+
+.portfolio-item .body { padding: 1.1rem 1.25rem 1.25rem; }
+.portfolio-item .meta { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.portfolio-item h2 { margin: 0.3rem 0 0.6rem; border: 0; padding: 0; }
+.portfolio-item p { margin: 0 0 0.7rem; color: var(--ink-soft); font-size: 0.97rem; }
+.portfolio-item .links { color: var(--ink); margin-top: 0.9rem; }
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));

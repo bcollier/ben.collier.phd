@@ -26,6 +26,19 @@ BUILT = date.today().isoformat()
 
 COURSES = [
     {
+        "slug": "70-445",
+        "number": "70-445",
+        "title": "Artificial Intelligence for Business Leaders",
+        "program": "Undergraduate",
+        "school": "Tepper",
+        "built": True,
+        "color": "c-navy",
+        "one_liner": "Where AI creates business value, where it does not, and how to tell the board which is which.",
+        "blurb": "A flagship, practice-oriented undergraduate course on how AI is reshaping organizations, industries, and managerial decisions. The first half covers the foundations: how machine learning, neural networks, and large language models work, and the data, chips, and compute economics underneath them. The second half works through AI in marketing, sales, finance, operations, people analytics, and strategy, plus the ethics, governance, and regulation that decide whether adoption lasts. It runs on active learning: in-class exercises, short cases, memos written for executives, student-led briefings on current AI topics, and a semester-long group project in one of three tracks: an AI investment committee for a real public company, building and red-teaming an AI agent, or earning $100 with an AI-enabled business.",
+        "offerings": ["Developed for Fall 2026", "Fall 2026"],
+        "materials": "No required textbook. Materials for enrolled students are on Canvas.",
+    },
+    {
         "slug": "45-884",
         "number": "45-884",
         "title": "AI Methods for Social and Visual Data",
@@ -163,6 +176,7 @@ COURSES = [
 ]
 
 NEWS = [
+    ("2026-08-25", "First day of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built."),
     ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
     ("2026-03", "Named an AWS Academy Educator."),
     ("2026-01", "Advising two MSBA capstone teams this spring."),
@@ -298,6 +312,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("courses/", "courses", "courses")}
         {item("students/", "students", "students")}
         {item("materials/", "materials", "materials")}
+        {item("projects/", "projects", "projects")}
         {item("practice/", "practice", "practice")}
         {item("cv/", "cv", "cv")}
         {item("news/", "news", "news")}
@@ -693,7 +708,6 @@ def build_cv():
       <p class="kicker">Curriculum vitae</p>
       <h1>CV</h1>
       <p class="lede">Appointments, teaching, courses built, advising, and practice.</p>
-      <p class="muted"><a href="BenCollierCV.pdf">Download the CV as a PDF</a></p>
       <article class="cv">
         <div class="cv-head">
           <p><strong>Ben Collier</strong> · Assistant Teaching Professor of Business Analytics</p>
@@ -770,6 +784,41 @@ def build_materials():
             "Teaching hub: courses, students, materials, CV.",
             "teaching/",
             hub,
+        ),
+    )
+
+
+def portfolio_card(p, root):
+    links = " · ".join(f'<a href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
+    return f"""<article class="portfolio-item" id="{p['id']}">
+  <a href="{esc(p['links'][0]['href'])}"><img class="shot" src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="1280" height="642" loading="lazy"></a>
+  <div class="body">
+    <div class="meta">{esc(p['kind'])} · {esc(p['tools'])} · {esc(p['date'])}</div>
+    <h2>{esc(p['title'])}</h2>
+    <p>{p['summary']}</p>
+    <p>{p['process']}</p>
+    <p class="links">{links}</p>
+  </div>
+</article>"""
+
+
+def build_portfolio(portfolio):
+    items = "\n".join(portfolio_card(p, "../") for p in portfolio)
+    body = f"""
+      <p class="kicker">Portfolio</p>
+      <h1>Projects</h1>
+      <p class="lede">Things I build to show my classes what the tools can do now. Small, playable, and honest about how they were made. More are coming.</p>
+      <div class="portfolio">{items}</div>
+"""
+    write(
+        "projects/index.html",
+        page(
+            "../",
+            "projects",
+            "Projects · Ben Collier",
+            "Fun projects Ben Collier builds for his classes, with source, prompts, and build logs.",
+            "projects/",
+            body,
         ),
     )
 
@@ -871,7 +920,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "courses/", "students/", "materials/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
+    paths = ["", "courses/", "students/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -935,11 +984,13 @@ def build_feed():
 
 def main():
     students_data = load_json("students.json")
+    portfolio = load_json("portfolio.json")["projects"]
     build_home()
     build_courses_index()
     build_course_pages()
     build_students(students_data)
     build_cv()
+    build_portfolio(portfolio)
     build_materials()
     build_practice()
     build_news()
