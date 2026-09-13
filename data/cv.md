@@ -43,7 +43,6 @@ ORCID: 0000-0002-4651-7684
 - **46-885 Data Exploration and Visualization** (MSBA)
 - **46-880 Introduction to Probability and Statistics** (MSBA)
 - **46-887 Machine Learning for Business Applications** (MSBA) — Spring 2026
-- **45-881 Modern Data Management** (MBA) — Spring 2026
 - **90-803 Machine Learning Foundations with Python** (Heinz College) — Spring 2026
 - **46-994 MSBA Independent Study**
 
@@ -90,7 +89,7 @@ Organizational Behavior; Negotiations and Conflict Resolution; Empirical Researc
 - Business Analytics Teaching Track Hiring Committee, Tepper, 2025
 - MSBA Curriculum Review Committee, 2024–
 - Business Analytics Summer Summit Planning Committee, 2024–
-- BASS Instructor, 2024–
+- Business Analytics Summer Summit Instructor, 2024 and 2025
 
 ## Links
 

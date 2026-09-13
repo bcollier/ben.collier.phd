@@ -133,7 +133,7 @@ done — absolute URLs point at https://bcollier.github.io/ben.collier.phd
 | `data/site.json` | Every page's `<head>` — canonical, Open Graph, JSON-LD — plus `sitemap.xml` and `feed.xml` |
 | `data/cv.md` | `/cv/`, through a small Markdown subset renderer in the script |
 | `data/students.json` | `/students/` — roster and advised papers |
-| `data/projects.json` | `/`, `/courses/`, and each `/courses/<slug>/` |
+| `data/projects.json` | Nothing at the moment. Sample student projects are held back from the site for now; the data stays here for when they return |
 | `COURSES` in `scripts/build.py` | `/courses/`, every course page, the home page, `sitemap.xml` |
 | `NEWS` in `scripts/build.py` | `/news/`, the five latest on `/`, and `feed.xml` |
 
@@ -229,7 +229,7 @@ That writes `CNAME`, pushes, sets the Pages domain, and enables HTTPS enforcemen
 | --- | --- | --- |
 | Full CV | `data/cv.md` | Yes |
 | Students, advised papers | `data/students.json` | Yes |
-| Course sample projects | `data/projects.json` | Yes |
+| Course sample projects (currently not rendered) | `data/projects.json` | Yes |
 | Courses, news log | `COURSES` / `NEWS` in `scripts/build.py` | Yes |
 | Site-wide URLs, name, links | `data/site.json` | Yes |
 | LinkedIn shout-outs | `data/linkedin.json` or `scripts/add_linkedin_post.py` | No — fetched at runtime |
@@ -297,8 +297,8 @@ block; rasterising needs `rsvg-convert` (`brew install librsvg`).
 
 ## Site map
 
-- **Home** — portrait, bio, courses built, student project strip
-- **Courses** — built and taught, each with sample student projects
+- **Home** — portrait, bio, courses built
+- **Courses** — built and taught
 - **Students** — photos, advised papers, capstone log, LinkedIn highlights
 - **Materials** — notebooks, video, workshops
 - **Practice** — Hot Metal Data, gAIm Systems

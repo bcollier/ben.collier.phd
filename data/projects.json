@@ -1,5 +1,5 @@
 {
-  "note": "Course sample projects and advised work. Named students appear when they opt in. Studio samples are representative posted work from the courses \u2014 replace or rename as real teams allow.",
+  "note": "Course sample projects and advised work. Named students appear when they opt in. Studio samples are representative posted work from the courses — replace or rename as real teams allow.",
   "projects": [
     {
       "id": "mining-retail-segments",
@@ -114,7 +114,7 @@
       "students": [
         "MSBA team"
       ],
-      "summary": "A power and uncertainty brief for a product A/B test \u2014 the statistics course as a management deliverable.",
+      "summary": "A power and uncertainty brief for a product A/B test — the statistics course as a management deliverable.",
       "image": "assets/projects/probability.svg",
       "link": ""
     },
@@ -142,19 +142,6 @@
       ],
       "summary": "Policy-facing machine learning: predict an inspection-related outcome with a leakage hunt as part of the grade.",
       "image": "assets/projects/heinz.svg",
-      "link": ""
-    },
-    {
-      "id": "mdm-warehouse",
-      "course": "45-881",
-      "title": "Three CSVs to a table a model can trust",
-      "term": "Spring 2026",
-      "kind": "course-sample",
-      "students": [
-        "MBA team"
-      ],
-      "summary": "Modern data management sample: design keys, clean joins, and document the warehouse table so next week's mining team does not invent the schema again.",
-      "image": "assets/projects/data-mgmt.svg",
       "link": ""
     }
   ]
