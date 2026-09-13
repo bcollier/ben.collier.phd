@@ -2,9 +2,11 @@
 
 Conventions for AI agents working in this repository.
 
-## Never commit to `main`. Always open a pull request.
+## Never commit directly to `main`. Branch, open a pull request, then merge it.
 
 `main` is the branch GitHub Pages deploys from, so a bad commit is a live site.
+Every change reaches `main` through a pull request, so there is a reviewable
+record of what changed and why.
 
 Required workflow for **every** change, however small:
 
@@ -12,16 +14,21 @@ Required workflow for **every** change, however small:
 2. Commit your work there.
 3. Push the branch.
 4. Open a pull request against `main`.
-5. Stop. A human reviews and merges.
+5. Merge the pull request with **squash and merge**, then delete the branch.
+6. Pull `main` locally so the checkout matches what is deployed.
+
+Squash-merging keeps `main` to one commit per pull request and keeps anything
+added and later removed on the branch out of `main`'s history.
 
 Do not:
 
-- commit or push directly to `main`
-- merge your own pull request, or enable auto-merge
+- commit or push directly to `main`, even for a one-line fix
+- merge anything that was not opened as a pull request
 - force-push, or amend commits that are already pushed
 - rewrite history on any shared branch
 
-If you notice you have already committed to `main`, do not try to hide it. Say so, move the commits onto a branch, and open a PR.
+If you notice you have already committed to `main`, do not try to hide it. Say
+so, move the commits onto a branch, and open a PR.
 
 ### Branch names
 
