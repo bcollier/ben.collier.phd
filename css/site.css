@@ -438,6 +438,12 @@ table.roster td {
 .portfolio-item h2 { margin: 0.3rem 0 0.6rem; border: 0; padding: 0; }
 .portfolio-item p { margin: 0 0 0.7rem; color: var(--ink-soft); font-size: 0.97rem; }
 .portfolio-item .links { color: var(--ink); margin-top: 0.9rem; }
+.portfolio-item .note {
+  border-left: 3px solid var(--rule);
+  padding-left: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
 
 .project-grid {
   display: grid;
