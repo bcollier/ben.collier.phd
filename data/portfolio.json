@@ -2,6 +2,29 @@
   "note": "Fun projects shown to classes. Each entry renders as a card on /projects/. Keep image paths under assets/portfolio/.",
   "projects": [
     {
+      "id": "rink-rivals",
+      "title": "Rink Rivals",
+      "kind": "Web app",
+      "date": "September 2026",
+      "tools": "Python, Flask, Claude Code, the NHL API, OpenAI",
+      "image": "assets/portfolio/rink-rivals.png",
+      "image_alt": "Rink Rivals comparing Sidney Crosby and Alex Ovechkin, with trophy badges and a season-by-season points chart",
+      "summary": "Type two NHL players and get their careers side by side: every regular-season statistic with the leader highlighted, each man's draft position and trophy case, and a season-by-season chart of their production. Then, if you want it settled, an LLM reads the whole comparison and declares a winner — it has to commit to a pick, defend it, and state the best argument against itself. Built for 15-113, Effective Coding with AI, as a study in what a small app owes the person reading it.",
+      "process": "The interesting work was refusing to do things. The NHL's search endpoint does not rank by relevance — \"Marc-Andre Fleury\" returns Marc-Andre Dorion first — so taking the first match silently renders the wrong career and never errors; a scoring function fixes it and a regression test asserts the endpoint still misbehaves. Skaters and goalies share almost no statistics, so the app declines to compare them rather than printing numbers that are true and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, and longevity cannot masquerade as skill. The OpenAI key stays server-side: I wanted this on GitHub Pages until I worked out that Pages has no server to hold a secret and GitHub Secrets are build-time variables that would bake the key into the published JavaScript. That reasoning is in the README, because it is the part worth reading.",
+      "links": [
+        {
+          "label": "Source, tests, and prompt log on GitHub",
+          "href": "https://github.com/bcollier/nhl-player-compare"
+        },
+        {
+          "label": "How the two APIs are called",
+          "href": "https://github.com/bcollier/nhl-player-compare#the-apis-used"
+        }
+      ],
+      "image_width": 1600,
+      "image_height": 1724
+    },
+    {
       "id": "charlie-road",
       "title": "Charlie Road",
       "kind": "Browser game",
