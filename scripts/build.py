@@ -675,6 +675,9 @@ def build_materials():
 
 def portfolio_card(p, root):
     links = " · ".join(f'<a href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
+    # Optional aside: context that is not the project itself, such as related
+    # private work. Rendered muted so it reads as a footnote to the card.
+    note = f'    <p class="note">{p["note"]}</p>\n' if p.get("note") else ""
     return f"""<article class="portfolio-item" id="{p['id']}">
   <a href="{esc(p['links'][0]['href'])}"><img class="shot" src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}" loading="lazy"></a>
   <div class="body">
@@ -682,7 +685,7 @@ def portfolio_card(p, root):
     <h2>{esc(p['title'])}</h2>
     <p>{p['summary']}</p>
     <p>{p['process']}</p>
-    <p class="links">{links}</p>
+{note}    <p class="links">{links}</p>
   </div>
 </article>"""
 
