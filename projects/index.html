@@ -51,7 +51,17 @@
       <p class="kicker">Portfolio</p>
       <h1>Projects</h1>
       <p class="lede">Things I build to show my classes what the tools can do now. Small, playable, and honest about how they were made. More are coming.</p>
-      <div class="portfolio"><article class="portfolio-item" id="rink-rivals">
+      <div class="portfolio"><article class="portfolio-item" id="ignatius-at-home">
+  <a href="https://bcollier.github.io/ignatius-hw4-web/"><img class="shot" src="../assets/portfolio/ignatius-at-home.jpg" alt="A day of the retreat Come and See as a two-page spread: Duccio's Calling of Peter and Andrew on the left, and on the right the title Follow Me, Mark 1:16–20, the day's grace and the passage with a large first letter" width="1600" height="881" loading="lazy"></a>
+  <div class="body">
+    <div class="meta">Web app · Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render · September 2026</div>
+    <h2>Ignatius at Home</h2>
+    <p>I'm making the Spiritual Exercises this year in daily life, a retreat that arrives as weekly handout PDFs. This app turns material like that (a handout, a few passages, a photo of verses, or just an idea such as "the parables of Jesus, seven days") into a guided audio retreat prayed one day at a time. Each day follows lectio divina: the passage read four times, a reflection for the heart, a deep dive into the text's history and original language researched on the web, silence between two bells, and a painting to pray with. Around it: a spoken companion to talk the day over in real time, guided practices with timed silences and journaling, and an evening Examen that can be written around your own life. Built for 15-113, Effective Coding with AI, as the course's server-side project on Render.</p>
+    <p>It was built spec first: a design spec and build plan before any code, then a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, with every prompt logged. The judgements that mattered: the model plans the days and writes around the text, but never writes scripture, which is copied from the person's own material or fetched from the public-domain World English Bible; it is free for anyone, on an academic cloud's open models, free Microsoft voices and the free tiers of six search services, with Claude and ElevenLabs as the paid tier; the notes a person writes about themselves are hidden from anyone else, even in the build logs of the shared examples; and most of the late work was the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and a guided session stalled whenever the screen turned off.</p>
+    <p class="links"><a href="https://bcollier.github.io/ignatius-hw4-web/">Try it</a> · <a href="https://github.com/bcollier/ignatius-hw4-web">Source, screenshots, and prompt log on GitHub</a> · <a href="https://github.com/bcollier/ignatius-hw4-api">Backend and architecture</a> · <a href="https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md">The original design spec</a></p>
+  </div>
+</article>
+<article class="portfolio-item" id="rink-rivals">
   <a href="https://github.com/bcollier/nhl-player-compare"><img class="shot" src="../assets/portfolio/rink-rivals.png" alt="Rink Rivals comparing Sidney Crosby and Alex Ovechkin, with trophy badges and a season-by-season points chart" width="1600" height="1724" loading="lazy"></a>
   <div class="body">
     <div class="meta">Web app · Python, Flask, Claude Code, the NHL API, OpenAI · September 2026</div>
