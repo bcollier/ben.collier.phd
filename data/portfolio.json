@@ -2,6 +2,37 @@
   "note": "Fun projects shown to classes. Each entry renders as a card on /projects/. Keep image paths under assets/portfolio/.",
   "projects": [
     {
+      "id": "ignatius-at-home",
+      "title": "Ignatius at Home",
+      "kind": "Web app",
+      "date": "September 2026",
+      "tools": "Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render",
+      "image": "assets/portfolio/ignatius-at-home.jpg",
+      "image_alt": "A day of the retreat Come and See as a two-page spread: Duccio's Calling of Peter and Andrew on the left, and on the right the title Follow Me, Mark 1:16–20, the day's grace and the passage with a large first letter",
+      "image_width": 1600,
+      "image_height": 881,
+      "summary": "I'm making the Spiritual Exercises this year in daily life, a retreat that arrives as weekly handout PDFs. This app turns material like that (a handout, a few passages, a photo of verses, or just an idea such as \"the parables of Jesus, seven days\") into a guided audio retreat prayed one day at a time. Each day follows lectio divina: the passage read four times, a reflection for the heart, a deep dive into the text's history and original language researched on the web, silence between two bells, and a painting to pray with. Around it: a spoken companion to talk the day over in real time, guided practices with timed silences and journaling, and an evening Examen that can be written around your own life. Built for 15-113, Effective Coding with AI, as the course's server-side project on Render.",
+      "process": "It was built spec first: a design spec and build plan before any code, then a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, with every prompt logged. The judgements that mattered: the model plans the days and writes around the text, but never writes scripture, which is copied from the person's own material or fetched from the public-domain World English Bible; it is free for anyone, on an academic cloud's open models, free Microsoft voices and the free tiers of six search services, with Claude and ElevenLabs as the paid tier; the notes a person writes about themselves are hidden from anyone else, even in the build logs of the shared examples; and most of the late work was the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and a guided session stalled whenever the screen turned off.",
+      "links": [
+        {
+          "label": "Try it",
+          "href": "https://bcollier.github.io/ignatius-hw4-web/"
+        },
+        {
+          "label": "Source, screenshots, and prompt log on GitHub",
+          "href": "https://github.com/bcollier/ignatius-hw4-web"
+        },
+        {
+          "label": "Backend and architecture",
+          "href": "https://github.com/bcollier/ignatius-hw4-api"
+        },
+        {
+          "label": "The original design spec",
+          "href": "https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md"
+        }
+      ]
+    },
+    {
       "id": "rink-rivals",
       "title": "Rink Rivals",
       "kind": "Web app",
