@@ -1,25 +1,30 @@
 #!/usr/bin/env bash
-# Attach ben.collier.phd to the GitHub Pages site. Run this ONLY after DNS resolves.
+# Attach collier.phd to the GitHub Pages site. Run this ONLY after DNS resolves.
 #
 #   ./scripts/enable_domain.sh [owner] [repo]
 #
 # Attaching a custom domain makes GitHub redirect the <owner>.github.io URL to
-# the domain. If your class still needs the github.io link, wait.
+# the domain. The 15-113 submission is preserved as the cs15-113-submission tag.
 
 set -euo pipefail
 
 OWNER="${1:-bcollier}"
 REPO="${2:-ben.collier.phd}"
-DOMAIN="ben.collier.phd"
+DOMAIN="collier.phd"
 
 cd "$(dirname "$0")/.."
 
 echo "==> Checking DNS for ${DOMAIN}"
 if command -v dig >/dev/null 2>&1; then
   dig +short "${DOMAIN}" || true
-  if [ -z "$(dig +short "${DOMAIN}")" ]; then
-    echo "!! ${DOMAIN} does not resolve yet. Add this record first:"
-    echo "     CNAME   ben   ${OWNER}.github.io"
+  # collier.phd already resolves (to an old server), so check it points at GitHub.
+  if ! dig +short "${DOMAIN}" | grep -q '^185\.199\.'; then
+    echo "!! ${DOMAIN} does not point at GitHub Pages yet. Replace its A records with:"
+    echo "     A      @     185.199.108.153"
+    echo "     A      @     185.199.109.153"
+    echo "     A      @     185.199.110.153"
+    echo "     A      @     185.199.111.153"
+    echo "     CNAME  www   ${OWNER}.github.io"
     read -r -p "Continue anyway? [y/N] " reply
     [ "${reply}" = "y" ] || exit 1
   fi
@@ -71,4 +76,4 @@ fi
 
 echo
 echo "Live at https://${DOMAIN}/ once GitHub finishes the DNS check."
-echo "Remember the apex redirect: collier.phd -> https://${DOMAIN}/"
+echo "www.${DOMAIN} redirects to ${DOMAIN} automatically once the www CNAME exists."

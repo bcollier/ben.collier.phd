@@ -33,10 +33,10 @@ COURSES = [
         "school": "Tepper",
         "built": True,
         "color": "c-navy",
-        "one_liner": "Where AI creates business value, where it does not, and how to tell the board which is which.",
-        "blurb": "A flagship, practice-oriented undergraduate course on how AI is reshaping organizations, industries, and managerial decisions. The first half covers the foundations: how machine learning, neural networks, and large language models work, and the data, chips, and compute economics underneath them. The second half works through AI in marketing, sales, finance, operations, people analytics, and strategy, plus the ethics, governance, and regulation that decide whether adoption lasts. It runs on active learning: in-class exercises, short cases, memos written for executives, student-led briefings on current AI topics, and a semester-long group project in one of three tracks: an AI investment committee for a real public company, building and red-teaming an AI agent, or earning $100 with an AI-enabled business.",
+        "one_liner": "Where AI creates value in a business, where it does not, and how to explain the difference to the people paying for it.",
+        "blurb": "An undergraduate course on how AI is changing organizations and the decisions managers make. The first half covers how machine learning, neural networks, and large language models work, along with the data, chips, and compute costs underneath them. The second half looks at AI in marketing, sales, finance, operations, people analytics, and strategy, and at the ethics, governance, and regulation that decide whether adoption lasts. Most class time is active: exercises, short cases, memos written for executives, and student briefings on current AI news. The semester project has three tracks. Teams can act as an AI investment committee for a real public company, build and red-team an AI agent, or try to earn $100 with a business that uses AI.",
         "offerings": ["Developed for Fall 2026", "Fall 2026"],
-        "materials": "No required textbook. Materials for enrolled students are on Canvas.",
+        "materials": "There is no required textbook. Enrolled students find the materials on Canvas.",
     },
     {
         "slug": "45-884",
@@ -46,15 +46,15 @@ COURSES = [
         "school": "Tepper",
         "built": True,
         "color": "c-ink",
-        "one_liner": "Work with social and visual data without pretending the model is the decision.",
-        "blurb": "A course I built for Tepper MBA students who need to use modern AI on text, networks, images, and other unstructured sources. We treat models as instruments: you should be able to explain what they did, where they fail, and whether the output is ready for a business decision. Python-first, with ethics in the same labs as the code.",
+        "one_liner": "Using AI on text, networks, and images, and knowing when the output is ready for a decision.",
+        "blurb": "I built this course for Tepper MBA students who need to use current AI methods on text, networks, images, and other unstructured data. We treat each model as a measuring instrument. Students should be able to say what it did, where it fails, and whether its output is good enough to act on. The labs are in Python, and we discuss ethics in the same labs as the code.",
         "offerings": [
             "Developed for Fall 2025",
             "Fall 2025 full-time",
             "Fall 2025 online hybrid",
             "Summer 2026",
         ],
-        "materials": "Notebooks and workshop notes live on the teaching materials page as I make them public.",
+        "materials": "I post notebooks and workshop notes on the materials page as they become public.",
     },
     {
         "slug": "70-377",
@@ -64,10 +64,10 @@ COURSES = [
         "school": "Tepper / CMU Qatar",
         "built": True,
         "color": "c-wine",
-        "one_liner": "How to hire, grow, and evaluate technical people without managing by vibes.",
-        "blurb": "A micro-course I developed on managing technical talent: assessing skill, designing work, and building teams that can actually ship. Built for undergraduates and taught as a new offering at CMU Qatar in Fall 2025.",
+        "one_liner": "How to hire, develop, and evaluate technical people using evidence instead of instinct.",
+        "blurb": "A micro-course I developed on managing technical talent: how to assess skill, how to design the work, and how to build teams that deliver. I wrote it for undergraduates, and it ran for the first time at CMU Qatar in Fall 2025.",
         "offerings": ["Developed October 2025", "Fall 2025 CMU Qatar"],
-        "materials": "Course outline available to enrolled students; public excerpts go on the materials page.",
+        "materials": "The course outline is available to enrolled students. Public excerpts will go on the materials page.",
     },
     {
         "slug": "msba-math-skills-workshop",
@@ -78,10 +78,10 @@ COURSES = [
         "school": "Tepper",
         "built": True,
         "color": "c-clay",
-        "one_liner": "The math MSBA students need in place before the quantitative core starts.",
-        "blurb": "A workshop I developed for Summer 2026 for incoming MSBA students. The aim is that students arrive at the program's quantitative courses with the mathematics already in hand, rather than learning it alongside the statistics.",
+        "one_liner": "The math incoming MSBA students need before the quantitative core begins.",
+        "blurb": "A workshop I developed for incoming MSBA students in Summer 2026. The goal is for students to start the program's quantitative courses with the mathematics already in place, so they are not learning it at the same time as the statistics.",
         "offerings": ["Developed for Summer 2026"],
-        "materials": "Workshop notes will be posted as I stabilize them for reuse.",
+        "materials": "I will post the workshop notes once they are ready for reuse.",
     },
     {
         "slug": "45-851",
@@ -91,8 +91,8 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-rust",
-        "one_liner": "Find structure in messy business data, then decide whether to trust it.",
-        "blurb": "The MBA data mining course: clustering, classification, evaluation, and the habit of asking what the model is for. Labs are Python. The point is not to collect algorithms. It is to leave with a workflow you can take into a messy dataset on Monday.",
+        "one_liner": "Finding structure in messy business data, then deciding whether to trust it.",
+        "blurb": "The MBA data mining course. It covers clustering, classification, and model evaluation, and it keeps asking what each model is for. Labs are in Python. The goal is not a long list of algorithms. It is a workflow students can apply to an unfamiliar dataset the week after the course ends.",
         "offerings": [
             "Fall 2023",
             "Fall 2024 full-time",
@@ -100,7 +100,7 @@ COURSES = [
             "Spring 2025 online hybrid",
             "Fall 2025",
         ],
-        "materials": "Public notebooks and video walkthroughs are collected under Teaching materials.",
+        "materials": "Public notebooks and video walkthroughs are collected on the materials page.",
     },
     {
         "slug": "45-885",
@@ -110,8 +110,8 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-olive",
-        "one_liner": "Make a chart that changes what someone does on Monday.",
-        "blurb": "Visualization as a decision tool, not decoration. Students design charts and dashboards that survive contact with executives, and they learn enough perceptual and statistical ground to know when a graphic is lying.",
+        "one_liner": "Charts and dashboards designed to change a decision.",
+        "blurb": "Visualization as a tool for making decisions. Students design charts and dashboards for executive audiences, and they learn enough about perception and statistics to spot a graphic that misleads.",
         "offerings": [
             "Spring 2024",
             "Spring 2025 full-time",
@@ -119,7 +119,7 @@ COURSES = [
             "Fall 2025",
             "Spring 2026",
         ],
-        "materials": "Worked examples, redesign critiques, and Tableau/Python pairings on the materials page.",
+        "materials": "Worked examples, chart redesigns, and paired Tableau and Python versions are on the materials page.",
     },
     {
         "slug": "46-885",
@@ -129,10 +129,10 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-pine",
-        "one_liner": "Explore first, then visualize like you mean it.",
-        "blurb": "The MSBA companion to visualization: exploratory analysis, chart design, dashboards, and the communication layer that makes a finding usable.",
+        "one_liner": "Exploratory analysis first, then charts that make the finding clear.",
+        "blurb": "The MSBA counterpart to the visualization course. It covers exploratory analysis, chart design, dashboards, and how to present a finding so that someone can use it.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
-        "materials": "See Teaching materials for notebooks shared outside Canvas.",
+        "materials": "Notebooks I share outside Canvas are on the materials page.",
     },
     {
         "slug": "46-880",
@@ -142,10 +142,10 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-slate",
-        "one_liner": "The quantitative floor every later analytics course stands on.",
+        "one_liner": "The statistics every later analytics course depends on.",
         "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning.",
         "offerings": ["Fall 2024 full-time"],
-        "materials": "Public excerpts go on the materials page as they are cleared.",
+        "materials": "Public excerpts will go on the materials page once they are cleared.",
     },
     {
         "slug": "46-887",
@@ -155,10 +155,10 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-copper",
-        "one_liner": "Machine learning that has to survive a business constraint, not just a Kaggle score.",
-        "blurb": "Applied machine learning for MSBA students: pipelines, evaluation, and the translation from a fitted model to an operational decision.",
+        "one_liner": "Machine learning that has to work under real business constraints, not just score well on a leaderboard.",
+        "blurb": "Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.",
         "offerings": ["Spring 2026"],
-        "materials": "Lab notebooks posted to Teaching materials as they are cleared for public use.",
+        "materials": "Lab notebooks will go on the materials page once they are cleared for public use.",
     },
     {
         "slug": "90-803",
@@ -168,10 +168,10 @@ COURSES = [
         "school": "Heinz College",
         "built": False,
         "color": "c-navy",
-        "one_liner": "The Python machine learning foundation Heinz students need for policy work.",
-        "blurb": "Selected teaching at Heinz College. A twelve-unit foundation in machine learning with Python for students who will apply these methods to public policy and management problems.",
+        "one_liner": "Machine learning in Python for students headed into policy and management work.",
+        "blurb": "A twelve-unit course at Heinz College that teaches machine learning with Python to students who will apply it to public policy and management problems.",
         "offerings": ["Spring 2026 full-time"],
-        "materials": "Heinz students get the full set on Canvas; public excerpts go on the materials page.",
+        "materials": "Heinz students get the full materials on Canvas. Public excerpts will go on the materials page.",
     },
 ]
 
@@ -297,7 +297,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
   <meta name="twitter:image" content="{OG_IMAGE}">
   <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
-  <link rel="alternate" type="application/atom+xml" title="Ben Collier — news" href="{root}feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="Ben Collier: news" href="{root}feed.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -326,7 +326,7 @@ def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="{root}designs/">Five designs</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -469,25 +469,19 @@ def build_home():
         <div>
           <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
           <h1>Ben Collier</h1>
-          <p class="lede">I teach people to build, evaluate, and ship data systems — at Tepper, at Heinz, and in the field.</p>
-          <p class="role">Tepper School of Business, Carnegie Mellon University. Selected courses at Heinz College.</p>
+          <p class="lede">I teach business analytics and machine learning at Carnegie Mellon, and I still build AI and data systems outside the classroom.</p>
+          <p class="role">Tepper School of Business, with selected courses at Heinz College.</p>
         </div>
       </section>
 
       <div class="bio">
-        <p>My primary appointment is at Tepper, where I teach across the MBA, MS in Business Analytics, and undergraduate programs. I also teach selected courses at Heinz College. The work is applied: Python workflows, statistical reasoning, and the ethical judgment you need when a model meets a real organization.</p>
-        <p>Before returning to the faculty I led data science at Duolingo and at UPMC. That practice work — now through Hot Metal Data and gAIm Systems — is what I bring into the classroom. I build courses and advise MSBA capstones.</p>
-      </div>
-
-      <div class="notice-strip">
-        <strong>Five new designs are up for review.</strong>
-        <span>The same content in five completely different design directions, live side by side.</span>
-        <a href="designs/">Compare all five &rarr;</a>
+        <p>Most of my teaching is at Tepper, in the MBA, the MS in Business Analytics, and the undergraduate program. I also teach at Heinz College. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
+        <p>Before joining Tepper I led data science at Duolingo and at UPMC. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MSBA capstone teams.</p>
       </div>
 
       <div class="tiles">
         <a class="tile" href="courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
-        <a class="tile" href="projects/"><div class="n">02</div><strong>Projects</strong><span>Fun things I build for my classes.</span></a>
+        <a class="tile" href="projects/"><div class="n">02</div><strong>Projects</strong><span>Things I build for my classes.</span></a>
         <a class="tile" href="cv/"><div class="n">03</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
         <a class="tile" href="practice/"><div class="n">04</div><strong>Practice</strong><span>Hot Metal Data and gAIm Systems.</span></a>
       </div>
@@ -501,7 +495,7 @@ def build_home():
         <li>
           <time datetime="2026-06-10">Jun 10, 2026</time>
           <div class="post">
-            <p>Grateful to receive the George Leland Bach Teaching Award — chosen by vote of the graduating MBA class. Many thanks to the students of the Class of 2026.</p>
+            <p>Grateful to receive the George Leland Bach Teaching Award, chosen by vote of the graduating MBA class. Many thanks to the students of the Class of 2026.</p>
             <div class="people"><span>Tepper MBA Class of 2026</span></div>
           </div>
         </li>
@@ -532,7 +526,7 @@ def build_courses_index():
     body = f"""
       <p class="kicker">Teaching</p>
       <h1>Courses</h1>
-      <p class="lede">Built ones first, then the ones I currently teach.</p>
+      <p class="lede">Courses I designed come first, followed by the ones I teach.</p>
 
       <h2>Courses I built</h2>
       <div class="grid">{built}</div>
@@ -597,7 +591,7 @@ def build_cv():
         <div class="cv-head">
           <p><strong>Ben Collier</strong> · Assistant Teaching Professor of Business Analytics</p>
           <p>Tepper School of Business, Carnegie Mellon University · also Heinz College</p>
-          <p><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a> · <a href="mailto:ben@collier.phd">ben@collier.phd</a> · <a href="{HOST}/">ben.collier.phd</a></p>
+          <p><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a> · <a href="mailto:ben@collier.phd">ben@collier.phd</a> · <a href="{HOST}/">{DOMAIN_LABEL}</a></p>
         </div>
         {md_to_html(md)}
       </article>
@@ -619,23 +613,23 @@ def build_materials():
     body = """
       <p class="kicker">Teaching artifacts</p>
       <h1>Teaching materials</h1>
-      <p class="lede">Video, notebooks, and workshop content — the public layer of the courses. Enrolled students still get the full set on Canvas.</p>
+      <p class="lede">Videos, notebooks, and workshop material I can share publicly. Enrolled students get the complete set on Canvas.</p>
 
       <h2>Video series</h2>
-      <div class="empty">No public playlist yet. When I publish walkthroughs for data mining, visualization, and the AI methods course, they land here.</div>
+      <div class="empty">There is no public playlist yet. Walkthroughs for data mining, visualization, and the AI methods course will appear here when I publish them.</div>
 
       <h2>Notebooks</h2>
       <ul class="materials">
-        <li><strong>Data mining labs.</strong> Python notebooks for clustering, classification, and evaluation.</li>
-        <li><strong>Visualization redesigns.</strong> Before/after chart critiques paired with Tableau and Python.</li>
-        <li><strong>AI methods for social and visual data.</strong> Course I built. Notebooks release as the offering settles.</li>
+        <li><strong>Data mining labs.</strong> Python notebooks on clustering, classification, and evaluation.</li>
+        <li><strong>Visualization redesigns.</strong> Before-and-after chart critiques, each done in both Tableau and Python.</li>
+        <li><strong>AI methods for social and visual data.</strong> Notebooks from the course I built, released as each offering settles.</li>
       </ul>
 
       <h2>Workshops</h2>
       <ul class="materials">
-        <li><strong>MSBA Math Skills Workshop</strong> — developed for Summer 2026.</li>
-        <li><strong>Business Analytics Summer Summit</strong> — instructor, 2024 and 2025.</li>
-        <li><strong>Hot Metal Data workshops</strong> — corporate training outlines on request.</li>
+        <li><strong>MSBA Math Skills Workshop</strong>, developed for Summer 2026.</li>
+        <li><strong>Business Analytics Summer Summit</strong>, where I taught in 2024 and 2025.</li>
+        <li><strong>Hot Metal Data workshops</strong>. Outlines of my corporate training are available on request.</li>
       </ul>
 """
     write(
@@ -652,10 +646,10 @@ def build_materials():
     hub = """
       <p class="kicker">Teaching</p>
       <h1>Teaching</h1>
-      <p class="lede">Courses I built, projects I show in class, and the materials that travel with them.</p>
+      <p class="lede">Courses I built, projects I show in class, and the materials that go with them.</p>
       <div class="tiles">
-        <a class="tile" href="../courses/"><div class="n">01</div><strong>Courses</strong><span>Built, taught, student projects.</span></a>
-        <a class="tile" href="../projects/"><div class="n">02</div><strong>Projects</strong><span>Fun things built for class.</span></a>
+        <a class="tile" href="../courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
+        <a class="tile" href="../projects/"><div class="n">02</div><strong>Projects</strong><span>Things I build for class.</span></a>
         <a class="tile" href="../materials/"><div class="n">03</div><strong>Materials</strong><span>Notebooks, video, workshops.</span></a>
         <a class="tile" href="../cv/"><div class="n">04</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
       </div>
@@ -695,7 +689,7 @@ def build_portfolio(portfolio):
     body = f"""
       <p class="kicker">Portfolio</p>
       <h1>Projects</h1>
-      <p class="lede">Things I build to show my classes what the tools can do now. Small, playable, and honest about how they were made. More are coming.</p>
+      <p class="lede">Small projects I build to show my classes what current AI tools can do. Each one works, and each repo shows how it was made. More are on the way.</p>
       <div class="portfolio">{items}</div>
 """
     write(
@@ -704,7 +698,7 @@ def build_portfolio(portfolio):
             "../",
             "projects",
             "Projects · Ben Collier",
-            "Fun projects Ben Collier builds for his classes, with source, prompts, and build logs.",
+            "Projects Ben Collier builds for his classes, with source code, prompts, and build logs.",
             "projects/",
             body,
         ),
@@ -715,18 +709,18 @@ def build_practice():
     body = """
       <p class="kicker">Applied work</p>
       <h1>Practice</h1>
-      <p class="lede">Industry work that feeds the classroom.</p>
+      <p class="lede">The industry work behind my teaching.</p>
 
       <h2>Hot Metal Data</h2>
-      <p class="prose-width">Applied analytics consulting and corporate training — use-case discovery, model development, and teaching teams to apply the work themselves. Pittsburgh-born. Also listed in some directories as Hot Metal AI.</p>
+      <p class="prose-width">My consulting and corporate training practice. The work runs from finding the right use case, to building the model, to teaching a team to carry it on without me. Some directories list it as Hot Metal AI.</p>
 
       <h2>gAIm Systems</h2>
-      <p class="prose-width">Senior Director of AI and Data Science. Tools so sports organizations can recruit, develop, and assemble teams with something better than folklore. <a href="https://gaimsystems.com">gaimsystems.com</a>.</p>
+      <p class="prose-width">I am Senior Director of AI and Data Science. We build tools that help sports organizations recruit players, develop them, and put teams together on evidence rather than folklore. <a href="https://gaimsystems.com">gaimsystems.com</a></p>
 
       <h2>Earlier</h2>
       <ul class="prose-width">
-        <li><strong>Duolingo</strong> — Staff / Lead data scientist. Experimentation, monetization analytics, forecasting around the IPO and Duolingo Max.</li>
-        <li><strong>UPMC</strong> — Senior Director of Data Science. Founding data scientist on a joint venture with IBM Watson Health; led CognitiveRx, later acquired by Premier.</li>
+        <li><strong>Duolingo</strong>. Staff and lead data scientist, working on experimentation, monetization analytics, and forecasting around the IPO and the launch of Duolingo Max.</li>
+        <li><strong>UPMC</strong>. Senior Director of Data Science. I was the founding data scientist on a joint venture with IBM Watson Health and led CognitiveRx, which Premier later acquired.</li>
       </ul>
 """
     write(
@@ -746,7 +740,7 @@ def build_news():
     body = f"""
       <p class="kicker">Log</p>
       <h1>News</h1>
-      <p class="lede">A dated running log. Cheap to maintain, and the fastest way to show the site is alive.</p>
+      <p class="lede">A dated log of teaching, advising, and practice.</p>
       {news_items()}
       <h2>LinkedIn</h2>
       <ol class="feed" id="linkedin-all"></ol>
@@ -768,7 +762,7 @@ def build_contact():
     body = f"""
       <p class="kicker">Office</p>
       <h1>Contact</h1>
-      <p class="lede">Email is the reliable door. Students: put the course number in the subject line.</p>
+      <p class="lede">Email is the most reliable way to reach me. Students, please put the course number in the subject line.</p>
       <ul class="contact-list">
         <li><span>CMU email</span><div><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></div></li>
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
@@ -808,7 +802,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/", "designs/"]
+    paths = ["", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -858,7 +852,7 @@ def build_feed():
         "feed.xml",
         '<?xml version="1.0" encoding="utf-8"?>\n'
         '<feed xmlns="http://www.w3.org/2005/Atom">\n'
-        f"  <title>Ben Collier — news</title>\n"
+        f"  <title>Ben Collier: news</title>\n"
         f"  <subtitle>Teaching, advising, and applied work.</subtitle>\n"
         f'  <link href="{HOST}/feed.xml" rel="self"/>\n'
         f'  <link href="{HOST}/"/>\n'
@@ -885,7 +879,7 @@ def main():
     build_sitemap()
     build_robots()
     build_feed()
-    print(f"done — absolute URLs point at {HOST}")
+    print(f"done: absolute URLs point at {HOST}")
 
 
 if __name__ == "__main__":

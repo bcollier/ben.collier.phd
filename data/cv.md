@@ -6,7 +6,7 @@ Also teaches selected courses at Heinz College
 
 Tepper Quad, Office 5135 · 4765 Forbes Avenue · Pittsburgh, PA 15213  
 bcollier@cmu.edu · bcollier@andrew.cmu.edu · ben@collier.phd  
-https://ben.collier.phd · https://www.linkedin.com/in/bcollierphd  
+https://collier.phd · https://www.linkedin.com/in/bcollierphd  
 ORCID: 0000-0002-4651-7684
 
 ## Academic appointments
@@ -32,47 +32,47 @@ ORCID: 0000-0002-4651-7684
 
 ### Courses built
 
-- **45-884 AI Methods for Social and Visual Data** (MBA) — developed for Fall 2025; full-time and online hybrid
-- **70-377 Managing and Assessing Tech Talent and Organizations** (undergraduate) — micro-course developed for Fall 2025, Carnegie Mellon University in Qatar
-- **70-445 Artificial Intelligence for Business Leaders** (undergraduate) — developed for Fall 2026
-- **MSBA Math Skills Workshop** — developed for Summer 2026
+- **45-884 AI Methods for Social and Visual Data** (MBA): developed for Fall 2025; full-time and online hybrid
+- **70-377 Managing and Assessing Tech Talent and Organizations** (undergraduate): micro-course developed for Fall 2025, Carnegie Mellon University in Qatar
+- **70-445 Artificial Intelligence for Business Leaders** (undergraduate): developed for Fall 2026
+- **MSBA Math Skills Workshop**: developed for Summer 2026
 
 ### MBA courses
 
-- **45-851 Data Mining** — Fall 2023, Spring 2024, Fall 2024 (full-time), Spring 2025 (online hybrid), Fall 2025
-- **45-885 Data Visualization** — Spring 2024, Spring 2025 (full-time and online hybrid), Fall 2025, Spring 2026
-- **45-884 AI Methods for Social and Visual Data** — Fall 2025 (full-time and online hybrid), Summer 2026
+- **45-851 Data Mining**: Fall 2023, Spring 2024, Fall 2024 (full-time), Spring 2025 (online hybrid), Fall 2025
+- **45-885 Data Visualization**: Spring 2024, Spring 2025 (full-time and online hybrid), Fall 2025, Spring 2026
+- **45-884 AI Methods for Social and Visual Data**: Fall 2025 (full-time and online hybrid), Summer 2026
 
 ### MSBA courses
 
-- **46-880 Introduction to Probability and Statistics** — Fall 2024 (full-time)
-- **46-885 Data Exploration and Visualization** — Spring 2025 (online hybrid), Spring 2026
-- **46-887 Machine Learning for Business Applications** — Spring 2026
+- **46-880 Introduction to Probability and Statistics**: Fall 2024 (full-time)
+- **46-885 Data Exploration and Visualization**: Spring 2025 (online hybrid), Spring 2026
+- **46-887 Machine Learning for Business Applications**: Spring 2026
 - **46-994 MSBA Independent Study**
-- **MSBA Math Skills Workshop** — Summer 2026
+- **MSBA Math Skills Workshop**: Summer 2026
 
 ### Heinz College
 
-- **90-803 Machine Learning Foundations with Python** (Public Policy and Management) — Spring 2026
+- **90-803 Machine Learning Foundations with Python** (Public Policy and Management): Spring 2026
 
 ### Undergraduate courses
 
-- **70-445 Artificial Intelligence for Business Leaders** — Fall 2026, Tepper School of Business
-- **70-377 Managing and Assessing Tech Talent and Organizations** — Fall 2025 (micro-course), Carnegie Mellon University in Qatar
-- **Organizational Behavior** — Summer 2011 (Pittsburgh); Fall 2012, Fall 2013, Fall 2014, Spring 2016, Fall 2016 (Carnegie Mellon University in Qatar)
-- **Negotiations and Conflict Resolution** — Spring 2013, Carnegie Mellon University in Qatar
-- **Empirical Research Methods** — Spring 2013, Carnegie Mellon University in Qatar
-- **Business Technology Consulting** — Spring 2014, Spring 2015, Carnegie Mellon University in Qatar
-- **Digital Marketing and Social Media Strategy** — Spring 2014, Spring 2015, Fall 2015, Carnegie Mellon University in Qatar
-- **Managing Across Cultures** — Spring 2016, Fall 2016, Carnegie Mellon University in Qatar
+- **70-445 Artificial Intelligence for Business Leaders**: Fall 2026, Tepper School of Business
+- **70-377 Managing and Assessing Tech Talent and Organizations**: Fall 2025 (micro-course), Carnegie Mellon University in Qatar
+- **Organizational Behavior**: Summer 2011 (Pittsburgh); Fall 2012, Fall 2013, Fall 2014, Spring 2016, Fall 2016 (Carnegie Mellon University in Qatar)
+- **Negotiations and Conflict Resolution**: Spring 2013, Carnegie Mellon University in Qatar
+- **Empirical Research Methods**: Spring 2013, Carnegie Mellon University in Qatar
+- **Business Technology Consulting**: Spring 2014, Spring 2015, Carnegie Mellon University in Qatar
+- **Digital Marketing and Social Media Strategy**: Spring 2014, Spring 2015, Fall 2015, Carnegie Mellon University in Qatar
+- **Managing Across Cultures**: Spring 2016, Fall 2016, Carnegie Mellon University in Qatar
 
 ### Executive education, Carnegie Mellon University in Qatar
 
-- **Negotiation and Conflict Resolution** — Spring 2014, Fall 2014, Spring 2016
-- **Dynamic Organizational Leadership** — Fall 2014
-- **Decision Making in Groups and Organizations** — Fall 2014
-- **Managing Groups and Teams** — Spring 2015
-- **Innovation in Groups and Teams** — Fall 2015
+- **Negotiation and Conflict Resolution**: Spring 2014, Fall 2014, Spring 2016
+- **Dynamic Organizational Leadership**: Fall 2014
+- **Decision Making in Groups and Organizations**: Fall 2014
+- **Managing Groups and Teams**: Spring 2015
+- **Innovation in Groups and Teams**: Fall 2015
 
 ### Advising
 

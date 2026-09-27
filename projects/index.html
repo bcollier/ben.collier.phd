@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects · Ben Collier</title>
-  <meta name="description" content="Fun projects Ben Collier builds for his classes, with source, prompts, and build logs.">
+  <meta name="description" content="Projects Ben Collier builds for his classes, with source code, prompts, and build logs.">
   <meta name="author" content="Ben Collier">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Ben Collier">
   <meta property="og:title" content="Projects · Ben Collier">
-  <meta property="og:description" content="Fun projects Ben Collier builds for his classes, with source, prompts, and build logs.">
+  <meta property="og:description" content="Projects Ben Collier builds for his classes, with source code, prompts, and build logs.">
   <meta property="og:url" content="https://bcollier.github.io/ben.collier.phd/projects/">
   <meta property="og:image" content="https://bcollier.github.io/ben.collier.phd/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -21,11 +21,11 @@
   <meta property="og:image:alt" content="Ben Collier, Assistant Teaching Professor of Business Analytics, Tepper School of Business">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Projects · Ben Collier">
-  <meta name="twitter:description" content="Fun projects Ben Collier builds for his classes, with source, prompts, and build logs.">
+  <meta name="twitter:description" content="Projects Ben Collier builds for his classes, with source code, prompts, and build logs.">
   <meta name="twitter:image" content="https://bcollier.github.io/ben.collier.phd/assets/og.png">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-  <link rel="alternate" type="application/atom+xml" title="Ben Collier — news" href="../feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="Ben Collier: news" href="../feed.xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -50,14 +50,14 @@
 
       <p class="kicker">Portfolio</p>
       <h1>Projects</h1>
-      <p class="lede">Things I build to show my classes what the tools can do now. Small, playable, and honest about how they were made. More are coming.</p>
+      <p class="lede">Small projects I build to show my classes what current AI tools can do. Each one works, and each repo shows how it was made. More are on the way.</p>
       <div class="portfolio"><article class="portfolio-item" id="ignatius-at-home">
   <a href="https://bcollier.github.io/ignatius-hw4-web/"><img class="shot" src="../assets/portfolio/ignatius-at-home.jpg" alt="A day of the retreat Come and See as a two-page spread: Duccio's Calling of Peter and Andrew on the left, and on the right the title Follow Me, Mark 1:16–20, the day's grace and the passage with a large first letter" width="1600" height="881" loading="lazy"></a>
   <div class="body">
     <div class="meta">Web app · Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render · September 2026</div>
     <h2>Ignatius at Home</h2>
-    <p>I'm making the Spiritual Exercises this year in daily life, a retreat that arrives as weekly handout PDFs. This app turns material like that (a handout, a few passages, a photo of verses, or just an idea such as "the parables of Jesus, seven days") into a guided audio retreat prayed one day at a time. Each day follows lectio divina: the passage read four times, a reflection for the heart, a deep dive into the text's history and original language researched on the web, silence between two bells, and a painting to pray with. Around it: a spoken companion to talk the day over in real time, guided practices with timed silences and journaling, and an evening Examen that can be written around your own life. Built for 15-113, Effective Coding with AI, as the course's server-side project on Render.</p>
-    <p>It was built spec first: a design spec and build plan before any code, then a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, with every prompt logged. The judgements that mattered: the model plans the days and writes around the text, but never writes scripture, which is copied from the person's own material or fetched from the public-domain World English Bible; it is free for anyone, on an academic cloud's open models, free Microsoft voices and the free tiers of six search services, with Claude and ElevenLabs as the paid tier; the notes a person writes about themselves are hidden from anyone else, even in the build logs of the shared examples; and most of the late work was the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and a guided session stalled whenever the screen turned off.</p>
+    <p>This year I am making the Spiritual Exercises in daily life, a retreat that comes as weekly handout PDFs. This app takes material like that, whether a handout, a few passages, a photo of verses, or just an idea such as "the parables of Jesus, seven days", and turns it into a guided audio retreat you pray one day at a time. Each day follows lectio divina. You hear the passage read four times, then a reflection, then a closer look at the text's history and original language, researched on the web. After that come silence between two bells and a painting to pray with. The app also has a spoken companion to talk the day over with in real time, guided practices with timed silences and journaling, and an evening Examen that can be written around your own life. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.</p>
+    <p>I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes around the text, but it never writes scripture. Scripture is copied from the person's own material or fetched from the public-domain World English Bible. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.</p>
     <p class="links"><a href="https://bcollier.github.io/ignatius-hw4-web/">Try it</a> · <a href="https://github.com/bcollier/ignatius-hw4-web">Source, screenshots, and prompt log on GitHub</a> · <a href="https://github.com/bcollier/ignatius-hw4-api">Backend and architecture</a> · <a href="https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md">The original design spec</a></p>
   </div>
 </article>
@@ -66,9 +66,9 @@
   <div class="body">
     <div class="meta">Web app · Python, Flask, Claude Code, the NHL API, OpenAI · September 2026</div>
     <h2>Rink Rivals</h2>
-    <p>Type two NHL players and get their careers side by side: every regular-season statistic with the leader highlighted, each man's draft position and trophy case, and a season-by-season chart of their production. Then, if you want it settled, an LLM reads the whole comparison and declares a winner — it has to commit to a pick, defend it, and state the best argument against itself. Built for 15-113, Effective Coding with AI, as a study in what a small app owes the person reading it.</p>
-    <p>The interesting work was refusing to do things. The NHL's search endpoint does not rank by relevance — "Marc-Andre Fleury" returns Marc-Andre Dorion first — so taking the first match silently renders the wrong career and never errors; a scoring function fixes it and a regression test asserts the endpoint still misbehaves. Skaters and goalies share almost no statistics, so the app declines to compare them rather than printing numbers that are true and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, and longevity cannot masquerade as skill. The OpenAI key stays server-side: GitHub Pages has no server to hold a secret, and GitHub Secrets are build-time variables that would bake the key into the published JavaScript.</p>
-    <p class="note">This is the small, public, self-contained version. Separately I have built a much more substantial hockey platform, now being demonstrated to NCAA Division I college hockey programs for use by coaches, managers, scouts and players. That codebase and its login are private, so they are not linked here. It runs multiple coordinating agents and a data-analysis agent working over a hockey database of more than 6 GB. Happy to demo it in person to anyone interested in hockey API work at that scale.</p>
+    <p>Type in two NHL players and see their careers side by side: every regular-season statistic with the leader highlighted, each player's draft position and trophies, and a season-by-season chart of their production. If you want it settled, a language model reads the whole comparison and picks a winner. It has to commit, explain the pick, and give the strongest argument against it. I built it for 15-113, Effective Coding with AI, as a study in what a small app owes the person using it.</p>
+    <p>Most of the interesting work was deciding what the app should refuse to do. The NHL's search endpoint does not rank results by relevance. A search for "Marc-Andre Fleury" returns Marc-Andre Dorion first, so taking the top result quietly shows the wrong career without any error. A scoring function fixes that, and a regression test checks that the endpoint still behaves this way. Skaters and goalies share almost no statistics, so the app declines to compare them rather than print numbers that are accurate and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, which keeps a long career from passing for a great one. The OpenAI key stays on the server. GitHub Pages has no server to hold a secret, and GitHub Secrets are build-time variables that would end up in the published JavaScript.</p>
+    <p class="note">This is the small, public version. I have also built a much larger hockey platform that is now being demonstrated to NCAA Division I programs for their coaches, managers, scouts, and players. Its code and login are private, so they are not linked here. It runs several coordinating agents and a data-analysis agent over a hockey database of more than 6 GB. I am happy to demo it in person for anyone interested in hockey data work at that scale.</p>
     <p class="links"><a href="https://github.com/bcollier/nhl-player-compare">Source, tests, and prompt log on GitHub</a> · <a href="https://github.com/bcollier/nhl-player-compare#the-apis-used">How the two APIs are called</a></p>
   </div>
 </article>
@@ -77,8 +77,8 @@
   <div class="body">
     <div class="meta">Browser game · Kiro, Claude Code, three.js · September 2026</div>
     <h2>Charlie Road</h2>
-    <p>A browser replica of Crossy Road with Charlie, our nine-year-old cocker spaniel, in the chicken's place. It keeps the bones of the original (the voxel look, one hop per input, endless roads, rivers, and railways, a camera that punishes dawdling) and swaps in what matters to him: tennis balls instead of coins, a bark that stops traffic, squirrels to chase, his real outfits as unlocks, a giant caterpillar toy worth five balls, and a squirrel-piloted flying saucer where the eagle used to be.</p>
-    <p>The first version came out of thirty minutes in class with Kiro: five iterations from colored rectangles to a fake-isometric board that never quite worked. The rebuild took an evening at home with Claude Code. I measured the camera angle from real gameplay screenshots, wrote a spec with machine-checkable acceptance criteria and fairness rules for the world generator, and let an autonomous run build it block by block, checking each block by stepping the simulation through a debug harness rather than trusting a screenshot. A second round after playing it added the bark, the saucer, combos, a daily challenge, and a shareable trading card. Every prompt, decision, and build step is in the repo.</p>
+    <p>A browser version of Crossy Road starring Charlie, our nine-year-old cocker spaniel, in place of the chicken. It keeps what makes the original work: the voxel look, one hop per input, endless roads, rivers, and railways, and a camera that punishes dawdling. Then it adds what matters to Charlie: tennis balls instead of coins, a bark that stops traffic, squirrels to chase, his real outfits as unlocks, a giant caterpillar toy worth five balls, and a flying saucer piloted by a squirrel where the eagle used to be.</p>
+    <p>The first version came from thirty minutes in class with Kiro. It went through five iterations, from colored rectangles to a fake-isometric board that never quite worked. I rebuilt it in an evening at home with Claude Code. I measured the camera angle from real gameplay screenshots and wrote a spec with acceptance criteria a machine could check, plus fairness rules for the world generator. Then I let an autonomous run build it one block at a time, checking each block by stepping the simulation through a debug harness instead of trusting a screenshot. After I played it, a second round added the bark, the saucer, combos, a daily challenge, and a shareable trading card. Every prompt, decision, and build step is in the repo.</p>
     <p class="links"><a href="https://bcollier.github.io/charlie-road/">Play it</a> · <a href="https://bcollier.github.io/charlie-road/v1/">Play the 30-minute class prototype</a> · <a href="https://github.com/bcollier/charlie-road">Source, prompts, and build log on GitHub</a> · <a href="https://youtu.be/4csO6aQQAdw">Gameplay video</a></p>
   </div>
 </article>
@@ -87,15 +87,15 @@
   <div class="body">
     <div class="meta">Experiment · Python, Claude Code, 16 language models · September 2026</div>
     <h2>Can a computer pass an IQ test?</h2>
-    <p>Three programs, written eight years apart, sit the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still turns up in hiring. A student's 2017 course project, run without changing a character, scores 34. A rule-based expert system I wrote this year with no language model, about 300 candidate if-then rules and a learned ranker, scores 59 in under a minute on a laptop. A current language model, sent the puzzle sheet and every cell as images, scores 93. Random guessing gets 13.</p>
-    <p>Sixteen language models from nine companies ran the identical puzzles with the identical prompt, so the write-up can compare accuracy, cost, and speed side by side: four models tied at 92 while their prices differed almost five to one, five scored below the program with no AI in it, and one release changed how the model works at answer time and moved the score more than two years of scaling on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the reason why is the most useful lesson in the repo. Every number is generated from the raw results by a script, and every instruction that produced it is quoted in the prompt history.</p>
+    <p>Three programs, written eight years apart, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A student's 2017 course project, run exactly as written, scores 34. A rule-based expert system I wrote this year scores 59 in under a minute on a laptop. It uses no language model, just about 300 candidate if-then rules and a learned ranker. A current language model, given the puzzle sheet and every cell as images, scores 93. Random guessing scores 13.</p>
+    <p>Sixteen language models from nine companies ran the same puzzles with the same prompt, so the write-up compares accuracy, cost, and speed directly. Four models tied at 92 while their prices differed by almost five to one. Five scored below the program with no AI in it. One release changed how the model works at answer time, and that moved its score more than two years of scaling did on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the explanation is the most useful lesson in the repo. A script generates every number from the raw results, and the prompt history quotes every instruction that produced them.</p>
     <p class="links"><a href="https://github.com/bcollier/claude-ravens-demo">Read the write-up and browse the code on GitHub</a> · <a href="https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md">Prompt history</a></p>
   </div>
 </article></div>
     </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="../">ben.collier.phd</a> · <a href="../designs/">Five designs</a> · <a href="../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="../js/config.js"></script>

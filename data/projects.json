@@ -1,5 +1,5 @@
 {
-  "note": "Course sample projects and advised work. Named students appear when they opt in. Studio samples are representative posted work from the courses — replace or rename as real teams allow.",
+  "note": "Course sample projects and advised work. Named students appear when they opt in. Studio samples are representative posted work from the courses. Replace or rename as real teams allow.",
   "projects": [
     {
       "id": "mining-retail-segments",
@@ -114,7 +114,7 @@
       "students": [
         "MSBA team"
       ],
-      "summary": "A power and uncertainty brief for a product A/B test — the statistics course as a management deliverable.",
+      "summary": "A power and uncertainty brief for a product A/B test: the statistics course as a management deliverable.",
       "image": "assets/projects/probability.svg",
       "link": ""
     },

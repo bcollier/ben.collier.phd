@@ -1,6 +1,6 @@
 {
   "note": "Single source of truth for absolute URLs. Until the custom domain resolves, canonical/OG/sitemap URLs must point at the live github.io address, or search engines and LinkedIn follow a dead link. scripts/enable_domain.sh flips domain_live when DNS is ready.",
-  "custom_domain": "ben.collier.phd",
+  "custom_domain": "collier.phd",
   "pages_url": "https://bcollier.github.io/ben.collier.phd",
   "domain_live": false,
   "author": "Ben Collier",
