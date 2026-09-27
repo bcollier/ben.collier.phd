@@ -1,4 +1,4 @@
-# ben.collier.phd
+# collier.phd
 
 Faculty site for [Ben Collier](https://www.linkedin.com/in/bcollierphd), Assistant Teaching Professor of Business Analytics at the Tepper School of Business, Carnegie Mellon University.
 
@@ -9,8 +9,8 @@ dependencies. See [Build](#build).
 - **Host:** GitHub Pages, from `main` at the repo root
 - **Live now:** <https://bcollier.github.io/ben.collier.phd/>
 - **Compare the designs:** <https://bcollier.github.io/ben.collier.phd/designs/>
-- **Final URL:** `https://ben.collier.phd` (attach later — see below)
-- **Apex:** `collier.phd` redirects to `ben.collier.phd`
+- **Final URL:** `https://collier.phd`, with `www.collier.phd` redirecting to it. See [Custom domain](#custom-domain).
+- **15-113 submission:** frozen as the [`cs15-113-submission`](https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission) tag. The six designs, both session logs, and `PROMPTS.md` below describe that version.
 
 ---
 
@@ -168,7 +168,7 @@ One thing to expect in the diff: every run stamps `<lastmod>` in `sitemap.xml`
 with today's date, so that file shows as changed even when nothing else did.
 
 The `designs/` pages are hand-written and are not generated. `build.py` never
-touches them; it only lists `designs/` in the sitemap.
+touches them. They were part of the 15-113 submission and are no longer linked from the site or listed in the sitemap.
 
 ## Local preview
 
@@ -204,17 +204,21 @@ Then **Settings → Pages → Deploy from a branch → `main` → `/ (root)`**. 
 
 Hand in the `github.io` URL that Settings → Pages shows.
 
-## Custom domain (do this second)
+## Custom domain
 
-There is deliberately **no `CNAME` file in the repo yet**. Attaching a custom domain makes GitHub Pages redirect the `github.io` URL to that domain — which would break the link you turn in for class. Ship on `github.io` first.
+The site is served at the apex, `collier.phd`. Attaching it makes GitHub Pages redirect the `github.io` URL to the domain, so the version handed in for 15-113 is kept as the `cs15-113-submission` tag rather than as a live URL.
 
-When you are ready, add DNS at your registrar for `collier.phd`:
+At the DNS host for `collier.phd` (Google Cloud DNS nameservers), replace the existing A record, which points at an old server, with GitHub's four addresses, and add `www`:
 
 | Type | Name | Value |
 | --- | --- | --- |
-| `CNAME` | `ben` | `bcollier.github.io` |
+| `A` | `@` | `185.199.108.153` |
+| `A` | `@` | `185.199.109.153` |
+| `A` | `@` | `185.199.110.153` |
+| `A` | `@` | `185.199.111.153` |
+| `CNAME` | `www` | `bcollier.github.io` |
 
-and a permanent (301) redirect: `collier.phd` → `https://ben.collier.phd/`. A Cloudflare Redirect Rule does this in one step. GitHub Pages only supports one custom domain per site, which is why the apex is a DNS-level redirect rather than a second `CNAME` file.
+GitHub redirects `www.collier.phd` to `collier.phd` on its own once both are in place.
 
 Then:
 
@@ -222,7 +226,7 @@ Then:
 ./scripts/enable_domain.sh
 ```
 
-That writes `CNAME`, pushes, sets the Pages domain, and enables HTTPS enforcement.
+Run it on a branch. It writes `CNAME`, flips `domain_live`, rebuilds, commits, pushes the branch, and sets the Pages domain with HTTPS enforced. Open and merge the PR right after, because the Pages domain setting takes effect immediately.
 
 ## Paste / update content
 
