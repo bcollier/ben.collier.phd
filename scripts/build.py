@@ -571,7 +571,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("cv/", "cv", "cv")}
         {item("news/", "news", "news")}
         {item("contact/", "contact", "contact")}
-        <a class="nav-cta" href="{root}consult/"{' aria-current="page"' if active == "consult" else ""}>Book a call</a>
+        <a class="nav-cta" href="{root}book/"{' aria-current="page"' if active == "book" else ""}>Book a call</a>
       </nav>
     </header>
     <main id="main">
@@ -582,7 +582,7 @@ def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="{root}consult/">Work with me</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="{root}consult/">Consulting</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -753,8 +753,7 @@ def build_home():
 
       <div class="book-row">
         {book_link("freeChat", "Book a free 15-minute chat", "")}
-        {book_link("paidHour", f"Book a consulting hour, {HOURLY_RATE}", "", "btn")}
-        <a href="consult/">How I work with teams</a>
+        <a class="btn" href="consult/">Consulting and custom education</a>
       </div>
 
       <div class="tiles">
@@ -1098,8 +1097,73 @@ def build_advising():
 def build_consult():
     body = f"""
       <p class="kicker">Consulting</p>
-      <h1>Work with me</h1>
-      <p class="lede">I help teams decide where AI and analytics will pay off, then make the work hold up: models that survive a business constraint, metrics people trust, and data teams that can carry the work on without me.</p>
+      <h1>Consulting and custom education</h1>
+      <p class="lede">I help organizations decide where AI and analytics will pay off, make the work hold up, and teach their people to carry it on. The work runs through my practice, Hot Metal Data.</p>
+
+      <div class="kinds">
+        <section class="kind" id="education">
+          <p class="offer-meta">Custom education</p>
+          <h2>Training built on your data</h2>
+          <p>Workshops and courses for technical teams and executives, built around your own problems rather than a public dataset. Hands-on labs, not lectures.</p>
+          <h3>Formats</h3>
+          <ul>
+            <li>One- to three-day workshops, on site or online</li>
+            <li>Multi-week programs for technology leaders and executives</li>
+            <li>Versions of my Carnegie Mellon courses adapted for a team: AI for business leaders, data mining, visualization, and AI methods for text and images</li>
+          </ul>
+          <h3>Examples</h3>
+          <ul>
+            <li>Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</li>
+            <li>Workshops on chatbot development, data programming, SQL and NoSQL, data mining, cloud infrastructure, and agile development.</li>
+            <li>The MSBA Math Skills Workshop, a self-paced course I designed and recorded for incoming Carnegie Mellon MSBA students.</li>
+          </ul>
+        </section>
+
+        <section class="kind" id="ai-data">
+          <p class="offer-meta">AI and data consulting</p>
+          <h2>Decisions, models, and metrics that hold up</h2>
+          <p>From deciding which AI projects are worth funding to reviewing a model before it carries a real decision.</p>
+          <h3>Formats</h3>
+          <ul>
+            <li><strong>AI use-case review.</strong> About two weeks. A written go or no-go on the projects you are considering, with a build plan for the ones worth doing.</li>
+            <li><strong>Model or metric review.</strong> About one week. I read the code, data, and evaluation, and tell you where it breaks.</li>
+            <li><strong>Hands-on build.</strong> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</li>
+          </ul>
+          <h3>Examples</h3>
+          <ul>
+            <li>At UPMC, as founding data scientist on a joint venture with IBM Watson Health, a model that predicts drug price spikes and shortages for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. It became CognitiveRx, which Premier acquired.</li>
+            <li>At Duolingo, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
+            <li>A recommendation engine for healthcare specialist referrals, built for a healthcare client.</li>
+            <li>At gAIm Systems, AI tools that help sports organizations recruit, develop, and assemble players.</li>
+          </ul>
+        </section>
+      </div>
+
+      <p class="prose-width">I also advise MSBA capstone teams working with companies such as Westinghouse, RBC Wealth Management, and Swank Construction. <a href="../advising/">See those projects</a>.</p>
+
+      <div class="book-row">
+        <a class="btn primary" href="../book/">Book time</a>
+        <span class="muted">Start with a free 15-minute chat.</span>
+      </div>
+"""
+    write(
+        "consult/index.html",
+        page(
+            "../",
+            "consult",
+            "Consulting · Ben Collier",
+            "Custom education and AI and data consulting from Ben Collier: workshops built on your data, AI use-case reviews, and model and metric reviews.",
+            "consult/",
+            body,
+        ),
+    )
+
+
+def build_book():
+    body = f"""
+      <p class="kicker">Book time</p>
+      <h1>Book a call</h1>
+      <p class="lede">Start with a free intro chat, or book a working hour on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.</p>
 
       <div class="offers">
         <section class="offer">
@@ -1121,44 +1185,26 @@ def build_consult():
         </section>
       </div>
 
-      <h2>Recent work</h2>
-      <ul class="proof">
-        <li><strong>Hospital pharmacy pricing.</strong> At UPMC I was the founding data scientist on a joint venture with IBM Watson Health. We built a model that predicts drug price spikes and shortages for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. It became CognitiveRx, which Premier acquired.</li>
-        <li><strong>Consumer subscription growth.</strong> At Duolingo I worked on experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
-        <li><strong>AI for sports organizations.</strong> As Senior Director of AI and Data Science at gAIm Systems I build tools that help teams recruit, develop, and assemble players.</li>
-        <li><strong>Teams I have advised</strong> on MSBA capstone projects worked with Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, and others. <a href="../advising/">See the projects</a>.</li>
-      </ul>
-      <p class="prose-width muted">George Leland Bach Teaching Award, Tepper School of Business, 2026.</p>
-
       <h2>Which option fits</h2>
       <ul class="prose-width">
         <li><strong>Not sure yet?</strong> Start with the intro chat. It is free, and most people leave it knowing whether they need anything more.</li>
         <li><strong>One specific decision or blocker?</strong> A consulting hour is usually enough.</li>
-        <li><strong>A project that needs weeks, not an hour?</strong> Book the intro chat and we will scope one of the engagements below.</li>
+        <li><strong>Training for a team, or a project that needs weeks?</strong> Book the intro chat and we will scope <a href="../consult/#education">custom education</a> or <a href="../consult/#ai-data">AI and data consulting</a>.</li>
       </ul>
-
-      <h2>Larger engagements</h2>
-      <div class="shapes">
-        <section><h3>AI use-case review</h3><p>About two weeks. A written go or no-go on the AI projects you are considering, with a build plan for the ones worth doing.</p></section>
-        <section><h3>Model or metric review</h3><p>About one week. I read the code, data, and evaluation behind a model or metric that is about to carry a real decision, and tell you where it breaks.</p></section>
-        <section><h3>Team workshop</h3><p>One to three days, built on your own data. Hands-on labs in Python, evaluation, and AI workflows, adapted from the courses I teach at Carnegie Mellon.</p></section>
-      </div>
-      <p class="prose-width">These run through my practice, Hot Metal Data, and are priced after an intro chat.</p>
 
       <p class="prose-width">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>
 """
     write(
-        "consult/index.html",
+        "book/index.html",
         page(
             "../",
-            "consult",
-            "Work with me · Ben Collier",
-            f"Book a free 15-minute chat or a {HOURLY_RATE} consulting hour with Ben Collier on AI, machine learning, and analytics.",
-            "consult/",
+            "book",
+            "Book a call · Ben Collier",
+            "Book a free 15-minute intro chat or a consulting hour with Ben Collier.",
+            "book/",
             body,
         ),
     )
-
 
 def build_news():
     body = f"""
@@ -1192,7 +1238,7 @@ def build_contact():
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
         <li><span>Site</span><div><a href="../">{DOMAIN_LABEL}</a></div></li>
         <li><span>Office</span><div>Tepper School of Business<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
-        <li><span>Consulting</span><div>{book_link("freeChat", "Book a free 15-minute chat", "../", "")} · {book_link("paidHour", f"Book a consulting hour ({HOURLY_RATE})", "../", "")}</div></li>
+        <li><span>Consulting</span><div>{book_link("freeChat", "Book a free 15-minute chat", "../", "")} · <a href="../consult/">Consulting and custom education</a></div></li>
         <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@andrew.cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
@@ -1227,7 +1273,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "advising/", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -1300,6 +1346,7 @@ def main():
     build_materials()
     build_practice()
     build_consult()
+    build_book()
     build_advising()
     build_news()
     build_contact()
