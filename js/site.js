@@ -69,8 +69,14 @@
   fetch(root + "data/linkedin.json")
     .then(function (r) { return r.json(); })
     .then(function (data) {
-      const posts = data.posts || [];
-      renderPosts(posts, document.getElementById("linkedin-recent"), { limit: 5 });
+      // Newest first. The home page shows only the last year, so an old post
+      // never sits there looking like recent news.
+      const posts = (data.posts || []).slice().sort(function (a, b) {
+        return a.date < b.date ? 1 : -1;
+      });
+      const yearAgo = new Date(Date.now() - 365 * 24 * 3600 * 1000).toISOString().slice(0, 10);
+      const recent = posts.filter(function (p) { return p.date >= yearAgo; });
+      renderPosts(recent, document.getElementById("linkedin-recent"), { limit: 5 });
       renderPosts(posts, document.getElementById("linkedin-all"));
     })
     .catch(function () {
