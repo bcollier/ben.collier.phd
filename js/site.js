@@ -1,8 +1,17 @@
 (function () {
   const root = document.documentElement.getAttribute("data-root") || "";
 
-  // Booking buttons carry a prefilled mailto as their href. When a booking
-  // URL is configured in js/config.js, point them at it instead.
+  // The personal address is never written into the HTML (see hide_email in
+  // scripts/build.py). Assemble it here so visitors see a normal link.
+  const user = "ben", domain = "collier" + "." + "phd";
+  const address = user + "@" + domain;
+  document.querySelectorAll(".eml").forEach(function (el) {
+    el.textContent = address;
+    if (el.tagName === "A") el.href = "mailto:" + address;
+  });
+
+  // Booking buttons: a configured Cal.com or Calendly URL wins; otherwise an
+  // email with the subject prefilled.
   const booking = (window.SITE && window.SITE.booking) || {};
   document.querySelectorAll("a[data-book]").forEach(function (a) {
     const url = booking[a.getAttribute("data-book")];
@@ -10,7 +19,13 @@
       a.href = url;
       a.target = "_blank";
       a.rel = "noopener";
-      if (a.dataset.liveLabel) a.textContent = a.dataset.liveLabel;
+      if (a.dataset.liveLabel) {
+        a.textContent = a.dataset.liveLabel;
+        if (a.getAttribute("data-book") === "studentHours" && a.nextSibling) a.nextSibling.textContent = " with me for office hours.";
+      }
+    } else if (a.dataset.subject) {
+      const body = "Hi Ben,\n\nI'd like to book a " + a.dataset.subject.toLowerCase() + ". A little about what I'm working on:\n\n";
+      a.href = "mailto:" + address + "?subject=" + encodeURIComponent(a.dataset.subject) + "&body=" + encodeURIComponent(body);
     }
   });
   if (booking.paidHour) {

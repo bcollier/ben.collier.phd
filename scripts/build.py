@@ -434,14 +434,14 @@ HOURLY_RATE = "$450"
 
 def book_link(kind: str, label: str, root: str, cls: str = "btn primary") -> str:
     """A booking button. Until a Cal.com URL is set in js/config.js it is an
-    honest "Email to book" link with a prefilled message; js/site.js swaps in the
-    URL and the live label ("Book ...") once one is configured."""
-    from urllib.parse import quote
+    honest "Email to book" link; js/site.js builds the email (the address is
+    never written into the page, to keep it from address harvesters) and
+    swaps in the URL and live label once one is configured. Without
+    JavaScript it falls back to the contact page."""
     subject = {"freeChat": "Free 15-minute chat", "paidHour": "Consulting hour"}[kind]
-    body = "Hi Ben,\n\nI'd like to book a " + subject.lower() + ". A little about what I'm working on:\n\n"
-    href = f"mailto:{BOOK_EMAIL}?subject={quote(subject)}&body={quote(body)}"
     fallback = "Email to " + label[0].lower() + label[1:]
-    return f'<a class="{cls}" data-book="{kind}" data-live-label="{esc(label)}" href="{esc(href)}">{esc(fallback)}</a>'
+    return (f'<a class="{cls}" data-book="{kind}" data-subject="{esc(subject)}" '
+            f'data-live-label="{esc(label)}" href="{root}contact/">{esc(fallback)}</a>')
 
 
 def load_json(name: str):
@@ -598,7 +598,22 @@ def page(root, active, title, desc, canon, body, jsonld="") -> str:
     return header(root, active, title, desc, canon, jsonld) + body + footer(root)
 
 
+PERSONAL_EMAIL = "ben@collier.phd"
+
+
+def hide_email(html: str) -> str:
+    """Replace the personal address with markup that js/site.js turns back
+    into a working link. The finished page shows ben@collier.phd, but the HTML
+    never contains it, which defeats most address-harvesting scrapers."""
+    user, domain = PERSONAL_EMAIL.split("@")
+    tag = f'<a class="eml" data-u="{user}" data-d="{domain}">{user} [at] {domain}</a>'
+    html = html.replace(f'<a href="mailto:{PERSONAL_EMAIL}">{PERSONAL_EMAIL}</a>', tag)
+    return html.replace(PERSONAL_EMAIL, tag)
+
+
 def write(rel, content: str):
+    if rel.endswith(".html"):
+        content = hide_email(content)
     path = ROOT / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
@@ -674,7 +689,6 @@ def person_jsonld() -> str:
         "url": f"{HOST}/",
         "image": OG_IMAGE,
         "jobTitle": SITE["job_title"],
-        "email": f"mailto:{SITE['email']}",
         "worksFor": {
             "@type": "CollegeOrUniversity",
             "name": "Carnegie Mellon University",
@@ -1178,7 +1192,7 @@ def build_contact():
         <li><span>Site</span><div><a href="../">{DOMAIN_LABEL}</a></div></li>
         <li><span>Office</span><div>Tepper School of Business<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
         <li><span>Consulting</span><div>{book_link("freeChat", "Book a free 15-minute chat", "../", "")} · {book_link("paidHour", f"Book a consulting hour ({HOURLY_RATE})", "../", "")}</div></li>
-        <li><span>Students</span><div>Email me two times that work for office hours and I will confirm one.</div></li>
+        <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@andrew.cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
         <li><span>ORCID</span><div><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></div></li>
