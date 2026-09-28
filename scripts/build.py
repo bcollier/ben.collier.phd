@@ -47,7 +47,7 @@ COURSES = [
         "materials": "There is no required textbook. Enrolled students find the materials on Canvas.",
         "history": [
             "I started designing this course in February 2026 and taught it for the first time on August 25, 2026. It is open to undergraduates with no prerequisites. About forty students enrolled in the first section, and several had already used AI at work during a summer internship.",
-            "My first plan spent several weeks on the history and hardware of AI and saved agents for the end of the term. Before the term began I moved agents up to week five, and they have become the thread that runs through the rest of the course. I am rebuilding the later weeks around one pattern: choose a use case, build it, deploy it, then try to break it.",
+            "My first plan built the opening weeks around Pedro Domingos' The Master Algorithm and included a block on AI hardware and compute. Before the term began I dropped the hardware block, added a session on rules, search, and expert systems, and moved agentic AI and software development with AI assistance up to weeks five and six, so students work with agents before the course turns to AI in each business function.",
         ],
         "topics": [
             "What AI is, and why now",
@@ -65,9 +65,9 @@ COURSES = [
             "Governance, risk, and regulation",
         ],
         "story": [
-            "Business students build and ship real software. In the agents lab, students assembled a customer support team of AI agents for a fictional outdoor retailer, a manager and three specialists, then ran an evaluation set against it to find where it failed. The later weeks follow one pattern: choose a use case, build it, deploy it to a live URL, then try to break it.",
+            "The course is organized around the decisions a manager has to make about AI, in three parts. The first is how AI works, from expert systems to large language models. The second is working with AI agents, including a lab where students built a customer support team of agents for a fictional outdoor retailer and tested it to find where it failed. The third is AI across marketing, finance, people analytics, operations, and strategy, with the ethics, economics, and regulation that decide whether adoption lasts.",
             "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. An eight-year-old hand-written solver scored 34 of 96 on Raven's Matrices. The language model solver scored about 86, and claimed 99% confidence on every answer.",
-            "Students learn to say where AI creates value in terms a board would accept. A fraud vendor with a 99% accurate model can still lose its client money, and students work out when and why."
+            "Students learn to judge where AI creates value and to defend a recommendation to executives. Much of the work is written that way: response memos, a briefing on a current AI topic, and in-class exercises such as deciding whether a fraud vendor with a 99% accurate model is worth buying, which turns out to depend on how rare the fraud is."
         ],
         "projects": {"intro": "The first final projects are due in December 2026, in three tracks: an AI investment committee for a real public company, building and breaking an AI agent, and trying to make $100 with an AI-enabled business. Revenue is not the grade. A team that earns nothing and can explain exactly why will outscore a team that earns $200 without insight.", "types": []},
     },
@@ -384,7 +384,7 @@ COURSES = [
 NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
     # Newest first.
-    ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Its thread is AI agents: students build them, deploy them, and then try to break them."),
+    ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
     ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
     ("2026-08", "Finished recording the MSBA Math Skills Workshop, a self-paced course for incoming MSBA students that runs from algebra through gradient descent, PCA, and statistical inference."),
     ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
@@ -736,7 +736,7 @@ def build_home():
 
       <div class="bio">
         <p>Most of my teaching is at Tepper, in the MBA, the MS in Business Analytics, and the undergraduate program. I also teach at Heinz College. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I led data science at Duolingo and at UPMC. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MSBA capstone teams.</p>
+        <p>Before joining Tepper I was a staff data scientist at Duolingo and led data science at UPMC. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MSBA capstone teams.</p>
       </div>
 
       <div class="book-row">
