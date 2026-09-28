@@ -77,7 +77,7 @@ ORCID: 0000-0002-4651-7684
 ### Advising
 
 - Advisor, two MSBA capstone teams, both partnering with Westinghouse, Spring 2026
-- Advisor, five MSBA capstone teams (20 students) partnering with Saratoga, RBC, Swank, Deloitte, and Confirmed, Spring 2025
+- Advisor, five MSBA capstone teams (20 students) partnering with Saratoga, RBC, Swank, Confirmed, and a large consulting firm, Spring 2025
 - Technical advisor for several MSBA capstone teams and advisor to one team, Spring 2024
 - MSBA Independent Study supervisor
 - Faculty advisor for undergraduate independent studies in Organizational Behavior, Carnegie Mellon University in Qatar: *Qatari Females in Leadership: Examining Motivation and Social Capital Influences* (Fall 2012); *Social Media Marketing: Theory and Evidence from Olympic Bid Campaigns* (Fall 2012); *A Cultural Analysis of Leadership and Influence: A Qualitative Comparison of Western and Middle Eastern Leadership Approaches* (Spring 2013); *Designing Leadership Development Programs for Women in the Gulf* (Spring 2014)

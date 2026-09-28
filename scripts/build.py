@@ -8,6 +8,10 @@ import re
 from datetime import date, datetime
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from advising_art import draw as draw_art  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 
 SITE = json.loads((ROOT / "data" / "site.json").read_text(encoding="utf-8"))
@@ -562,6 +566,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("courses/", "courses", "courses")}
         {item("materials/", "materials", "materials")}
         {item("projects/", "projects", "projects")}
+        {item("advising/", "advising", "advising")}
         {item("practice/", "practice", "practice")}
         {item("cv/", "cv", "cv")}
         {item("news/", "news", "news")}
@@ -1021,6 +1026,55 @@ def build_practice():
     )
 
 
+def build_advising():
+    data = load_json("advising.json")
+    terms = []
+    for pj in data["projects"]:
+        if pj["term"] not in terms:
+            terms.append(pj["term"])
+    sections = []
+    for term in terms:
+        cards = []
+        for i, pj in enumerate(x for x in data["projects"] if x["term"] == term):
+            methods = "".join(f"<li>{esc(m)}</li>" for m in pj["methods"])
+            art = draw_art(pj["art"], f"Diagram representing the project: {esc(pj['title'])}", i)
+            cards.append(f"""        <article class="advised">
+          {art}
+          <div class="body">
+            <p class="meta">{esc(pj['kind'])} · {esc(pj['partner'])} · {esc(pj['industry'])}</p>
+            <h3>{esc(pj['title'])}</h3>
+            <p>{esc(pj['summary'])}</p>
+            <ul class="methods">{methods}</ul>
+          </div>
+        </article>""")
+        sections.append(f"      <h2>{term}</h2>\n" + "\n".join(cards))
+    earlier = "".join(
+        f"<li><span>{esc(e['term'])}</span> {esc(e['title'])}. <em>{esc(e['place'])}</em></li>" for e in data["earlier"]
+    )
+    n = len(data["projects"])
+    body = f"""
+      <p class="kicker">Advising</p>
+      <h1>Capstones and independent studies</h1>
+      <p class="lede">Since 2024 I have advised MSBA capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students' names and without the partners' data.</p>
+{chr(10).join(sections)}
+
+      <h2>Earlier advising</h2>
+      <p class="prose-width">Independent studies I advised while teaching organizational behavior, mostly at Carnegie Mellon's campus in Qatar.</p>
+      <ul class="earlier-list">{earlier}</ul>
+"""
+    write(
+        "advising/index.html",
+        page(
+            "../",
+            "advising",
+            "Advising · Ben Collier",
+            "MSBA capstone projects and independent studies Ben Collier has advised, with Westinghouse, RBC, Swank, SaratogaRIM, Confirmed, Marinus Analytics, 412 Food Rescue, and others.",
+            "advising/",
+            body,
+        ),
+    )
+
+
 def build_consult():
     body = f"""
       <p class="kicker">Consulting</p>
@@ -1139,7 +1193,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths = ["", "consult/", "advising/", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -1212,6 +1266,7 @@ def main():
     build_materials()
     build_practice()
     build_consult()
+    build_advising()
     build_news()
     build_contact()
     build_404()
