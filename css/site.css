@@ -626,6 +626,19 @@ nav.primary a.nav-cta {
 nav.primary a.nav-cta:hover,
 nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); border-color: var(--accent-ink); color: var(--paper); text-decoration: none; }
 
+/* Advised projects: an original diagram beside each description. */
+.advised { display: grid; grid-template-columns: minmax(0, 20rem) 1fr; gap: 1.2rem 1.5rem; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.advised .advising-art { width: 100%; height: auto; display: block; border-radius: 3px; }
+.advised .meta { font-size: 0.82rem; color: var(--ink-soft); letter-spacing: 0.03em; margin: 0 0 0.3rem; }
+.advised h3 { margin: 0 0 0.45rem; }
+.advised p { margin: 0 0 0.6rem; max-width: 40rem; }
+.methods { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.methods li { font-size: 0.78rem; border: 1px solid var(--rule); padding: 0.1rem 0.5rem; border-radius: 999px; color: var(--ink-soft); }
+.earlier-list { list-style: none; padding: 0; max-width: 44rem; }
+.earlier-list li { padding: 0.45rem 0; border-bottom: 1px solid var(--rule); }
+.earlier-list span { font-variant-numeric: tabular-nums; color: var(--ink-soft); display: inline-block; min-width: 7.5rem; }
+@media (max-width: 40rem) { .advised { grid-template-columns: 1fr; } }
+
 /* Consulting offers. */
 .offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; max-width: 56rem; }
 .offer { background: var(--white); border: 1px solid var(--rule); padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
