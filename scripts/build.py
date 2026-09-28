@@ -425,6 +425,20 @@ HERO_ALT = {
 }
 
 
+BOOK_EMAIL = "ben@collier.phd"
+HOURLY_RATE = "$450"
+
+
+def book_link(kind: str, label: str, root: str, cls: str = "btn primary") -> str:
+    """A booking button. Its href is a prefilled email; js/site.js swaps in the
+    Cal.com URL from js/config.js when one is configured."""
+    from urllib.parse import quote
+    subject = {"freeChat": "Free 15-minute chat", "paidHour": "Consulting hour"}[kind]
+    body = "Hi Ben,\n\nI'd like to book a " + subject.lower() + ". A little about what I'm working on:\n\n"
+    href = f"mailto:{BOOK_EMAIL}?subject={quote(subject)}&body={quote(body)}"
+    return f'<a class="{cls}" data-book="{kind}" href="{esc(href)}">{label}</a>'
+
+
 def load_json(name: str):
     return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
 
@@ -552,6 +566,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("cv/", "cv", "cv")}
         {item("news/", "news", "news")}
         {item("contact/", "contact", "contact")}
+        <a class="nav-cta" href="{root}consult/"{' aria-current="page"' if active == "consult" else ""}>Book a call</a>
       </nav>
     </header>
     <main id="main">
@@ -562,7 +577,7 @@ def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="{root}consult/">Work with me</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -715,6 +730,12 @@ def build_home():
       <div class="bio">
         <p>Most of my teaching is at Tepper, in the MBA, the MS in Business Analytics, and the undergraduate program. I also teach at Heinz College. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
         <p>Before joining Tepper I led data science at Duolingo and at UPMC. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MSBA capstone teams.</p>
+      </div>
+
+      <div class="book-row">
+        {book_link("freeChat", "Book a free 15-minute chat", "")}
+        {book_link("paidHour", f"Book a consulting hour, {HOURLY_RATE}", "", "btn")}
+        <a href="consult/">How I work with teams</a>
       </div>
 
       <div class="tiles">
@@ -965,13 +986,18 @@ def build_portfolio(portfolio):
 
 
 def build_practice():
-    body = """
+    body = f"""
       <p class="kicker">Applied work</p>
       <h1>Practice</h1>
       <p class="lede">The industry work behind my teaching.</p>
 
       <h2>Hot Metal Data</h2>
       <p class="prose-width">My consulting and corporate training practice. The work runs from finding the right use case, to building the model, to teaching a team to carry it on without me. Some directories list it as Hot Metal AI.</p>
+
+      <div class="book-row">
+        {book_link("freeChat", "Book a free 15-minute chat", "../")}
+        <a href="../consult/">Consulting hours and larger engagements</a>
+      </div>
 
       <h2>gAIm Systems</h2>
       <p class="prose-width">I am Senior Director of AI and Data Science. We build tools that help sports organizations recruit players, develop them, and put teams together on evidence rather than folklore. <a href="https://gaimsystems.com">gaimsystems.com</a></p>
@@ -990,6 +1016,57 @@ def build_practice():
             "Practice · Ben Collier",
             "Hot Metal Data, gAIm Systems, and earlier applied data science.",
             "practice/",
+            body,
+        ),
+    )
+
+
+def build_consult():
+    body = f"""
+      <p class="kicker">Consulting</p>
+      <h1>Work with me</h1>
+      <p class="lede">I help teams decide where AI and analytics will pay off, then make the work hold up: models that survive a business constraint, metrics people trust, and data teams that can carry the work on without me.</p>
+
+      <div class="offers">
+        <section class="offer">
+          <p class="offer-meta">15 minutes · online · free</p>
+          <h2>Intro chat</h2>
+          <p>A short call to see whether I can help. Tell me what you are working on, and I will tell you plainly whether it is a fit and what a sensible first step would be.</p>
+          {book_link("freeChat", "Book a free chat", "../")}
+        </section>
+        <section class="offer">
+          <p class="offer-meta">60 minutes · online · {HOURLY_RATE}</p>
+          <h2>Consulting hour</h2>
+          <p>One working session on a decision you are stuck on: a model that will not hold up, a metric nobody trusts, an AI use case you are not sure is worth building, or a hiring bar for a data team.</p>
+          <ul>
+            <li>Live session on Zoom or Google Meet</li>
+            <li>A one-page written recommendation within two business days</li>
+            <li>Paid when you book</li>
+          </ul>
+          {book_link("paidHour", "Book a consulting hour", "../")}
+        </section>
+      </div>
+
+      <h2>Larger engagements</h2>
+      <p class="prose-width">Model and analysis reviews, AI pilots, and team workshops run through my practice, Hot Metal Data, and are scoped after an intro chat. Workshops are built on your own data and problems, and they are hands-on labs rather than lectures.</p>
+
+      <h2>What I bring</h2>
+      <ul class="prose-width">
+        <li>Industry data science leadership at Duolingo, through its IPO and the launch of Duolingo Max, and at UPMC, where I was the founding data scientist on a joint venture with IBM Watson Health.</li>
+        <li>Current AI work as Senior Director of AI and Data Science at gAIm Systems.</li>
+        <li>Teaching machine learning, data mining, visualization, and AI to MBA, MSBA, and undergraduate students at Carnegie Mellon's Tepper School, and advising MSBA capstone teams with companies.</li>
+      </ul>
+
+      <p class="prose-width">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>
+"""
+    write(
+        "consult/index.html",
+        page(
+            "../",
+            "consult",
+            "Work with me · Ben Collier",
+            f"Book a free 15-minute chat or a {HOURLY_RATE} consulting hour with Ben Collier on AI, machine learning, and analytics.",
+            "consult/",
             body,
         ),
     )
@@ -1027,7 +1104,8 @@ def build_contact():
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
         <li><span>Site</span><div><a href="../">{DOMAIN_LABEL}</a></div></li>
         <li><span>Office</span><div>Tepper School of Business<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
-        <li><span>Office hours</span><div id="calendly-slot">Email me two times that work and I will confirm one.</div></li>
+        <li><span>Consulting</span><div>{book_link("freeChat", "Book a free 15-minute chat", "../", "")} · {book_link("paidHour", f"Book a consulting hour ({HOURLY_RATE})", "../", "")}</div></li>
+        <li><span>Students</span><div>Email me two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
         <li><span>ORCID</span><div><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></div></li>
@@ -1061,7 +1139,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths = ["", "consult/", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -1133,6 +1211,7 @@ def main():
     build_portfolio(portfolio)
     build_materials()
     build_practice()
+    build_consult()
     build_news()
     build_contact()
     build_404()

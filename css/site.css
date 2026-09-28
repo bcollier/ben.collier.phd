@@ -605,6 +605,35 @@ button:focus-visible {
 }
 
 .btn:hover { border-color: var(--accent); color: var(--accent-ink); }
+a.btn { display: inline-block; text-decoration: none; font-weight: 600; padding: 0.6rem 1.05rem; border-radius: 3px; }
+/* The primary booking button. --accent-ink passes 4.5:1 with paper text in
+   both themes; the hover darkens it further. */
+.btn.primary { background: var(--accent-ink); border-color: var(--accent-ink); color: var(--paper); }
+.btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--paper); }
+
+/* Booking row under the home and practice introductions. */
+.book-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1.1rem; margin: 1.6rem 0 0.4rem; }
+
+/* "Book a call" in the header: the one link styled as an action. */
+nav.primary a.nav-cta {
+  color: var(--accent-ink);
+  font-weight: 600;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  padding: 0.05rem 0.6rem;
+  text-decoration: none;
+}
+nav.primary a.nav-cta:hover,
+nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); border-color: var(--accent-ink); color: var(--paper); text-decoration: none; }
+
+/* Consulting offers. */
+.offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; max-width: 56rem; }
+.offer { background: var(--white); border: 1px solid var(--rule); padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
+.offer h2 { margin: 0 0 0.4rem; }
+.offer p { margin: 0 0 0.8rem; }
+.offer ul { margin: 0 0 1.1rem; padding-left: 1.1rem; }
+.offer .btn { margin-top: auto; align-self: flex-start; }
+.offer-meta { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
 
 @media print {
   .no-print { display: none !important; }

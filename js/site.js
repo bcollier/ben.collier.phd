@@ -1,11 +1,17 @@
 (function () {
   const root = document.documentElement.getAttribute("data-root") || "";
 
-  const calendly = window.SITE && window.SITE.calendly;
-  const slot = document.getElementById("calendly-slot");
-  if (slot && calendly) {
-    slot.innerHTML = '<a href="' + calendly + '">Book a time</a>';
-  }
+  // Booking buttons carry a prefilled mailto as their href. When a booking
+  // URL is configured in js/config.js, point them at it instead.
+  const booking = (window.SITE && window.SITE.booking) || {};
+  document.querySelectorAll("a[data-book]").forEach(function (a) {
+    const url = booking[a.getAttribute("data-book")];
+    if (url) {
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+    }
+  });
 
   function renderPosts(posts, mount, opts) {
     if (!mount) return;
