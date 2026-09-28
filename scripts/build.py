@@ -392,7 +392,6 @@ NEWS = [
     ("2026-05-04", "Taught AI Methods for Social and Visual Data for the second time, rebuilt for the summer with one live session a week and hands-on Python videos for every module."),
     ("2026-04-30", "Talked with Tepper for a Faculty Spotlight on what students learn in the MSBA, and why I describe business analytics as a decathlon.", "https://www.youtube.com/watch?v=UxBPkez6Mc4"),
     ("2026-03-11", "Started teaching 46-887 Machine Learning for Business Applications to the in-person MSBA cohort, redesigned around AWS. Students take a model from S3 through SageMaker to a database they run themselves and a live dashboard."),
-    ("2026-03", "Named an AWS Academy Educator."),
     ("2026-01-13", "Started teaching 90-803 Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints."),
     ("2026-01", "Advising two MSBA capstone teams this spring."),
     ("2025-10-22", "Taught 70-377 Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture."),
