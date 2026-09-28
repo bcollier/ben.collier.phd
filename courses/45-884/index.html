@@ -58,7 +58,7 @@
         <a href="../../courses/" aria-current="page">courses</a>
         <a href="../../projects/">projects</a>
         <a href="../../advising/">advising</a>
-        <a href="../../practice/">practice</a>
+        <a href="../../consult/">consulting</a>
         <a href="../../cv/">cv</a>
         <a href="../../news/">news</a>
         <a href="../../contact/">contact</a>
@@ -74,32 +74,33 @@
         <div class="thumb hero c-ink"><canvas data-hero="vit" role="img" aria-label="Animation: an image split into patches passes up a transformer stack and becomes a caption"></canvas><span>45-884</span></div>
         <p class="lede">Using AI on text, networks, and images, and knowing when the output is ready for a decision.</p>
         <p>I built this course for Tepper MBA students who need to use current AI methods on text, networks, images, and other unstructured data. We treat each model as a measuring instrument. Students should be able to say what it did, where it fails, and whether its output is good enough to act on. The labs are in Python, and we discuss ethics in the same labs as the code.</p>
-        <h2>What makes this course different</h2>
+        
+        <h2>Topics</h2>
+        <ol><li>AI models and unstructured data: Python, JSON, calling a model's API, and prompt engineering</li><li>Natural language processing fundamentals</li><li>Text mining for business insight, with retrieval over company filings and vector databases</li><li>Computer vision fundamentals: object detection with YOLO, ResNet, and vision transformers</li><li>Mining visual data, with a case comparing Tesla Vision and Waymo's sensor fusion</li><li>Agentic AI and AI workflows, including building a first agent in n8n</li><li>Emerging tools: evaluations, LLM-as-judge, and MCP</li></ol>
+        <h2>How the course works</h2>
         <p>There are no prerequisites and no model training. Students use foundation models from OpenAI, Anthropic, Google, and Meta on text, images, and agent workflows, and the course teaches the Python, JSON, and API calls they need along the way.</p>
         <p>Every lab compares models. Students classify product reviews with three models and weigh cost against accuracy, chain two agents that score semiconductor companies' risk from their filings, and in the computer vision class send one photograph through three generations of vision: YOLO boxes, ResNet labels, then a multimodal model that returns a shelf-restocking report as JSON.</p>
         <p>Each class opens with AI Methods in the News, a student briefing on a product or a debate from the last six months. In Fall 2025 the agents module closed with Prasad Chalasani, co-founder of the Langroid agent framework.</p>
+        <h2>Final projects</h2>
+        <p>Final projects start from a real business question. Students show how their prompts changed and compare models before settling on one. In Summer 2026, seven of the nineteen projects were built with real companies or organizations, and three are already in use. Projects from Fall 2025 and Summer 2026, grouped by type, with one example each.</p>
+        <ul class="project-types"><li><div class="bar-head"><strong>Social listening and sentiment</strong><span class="count">7</span></div><div class="bar" style="width:100%"></div><span class="example">Reddit sentiment through an aircraft maker's safety crisis, set against its stock price</span></li><li><div class="bar-head"><strong>Finance and investing</strong><span class="count">5</span></div><div class="bar" style="width:71%"></div><span class="example">An autonomous equity analyst triggered from a watchlist</span></li><li><div class="bar-head"><strong>Career, hiring, and advising agents</strong><span class="count">4</span></div><div class="bar" style="width:57%"></div><span class="example">A five-agent job-fit scorer with a skeptical hiring-manager critic</span></li><li><div class="bar-head"><strong>Agentic workflow automation</strong><span class="count">3</span></div><div class="bar" style="width:43%"></div><span class="example">Automating client outreach for a real-estate agent in n8n</span></li><li><div class="bar-head"><strong>AI governance and ethics</strong><span class="count">3</span></div><div class="bar" style="width:43%"></div><span class="example">Human oversight of AI in intelligence analysis</span></li><li><div class="bar-head"><strong>Document and transcript extraction</strong><span class="count">2</span></div><div class="bar" style="width:29%"></div><span class="example">Turning sales-call transcripts into buyer intelligence</span></li><li><div class="bar-head"><strong>Computer vision in the field</strong><span class="count">1</span></div><div class="bar" style="width:14%"></div><span class="example">An offline tool that helps bomb-disposal teams identify ordnance</span></li><li><div class="bar-head"><strong>Mergers and corporate culture</strong><span class="count">1</span></div><div class="bar" style="width:14%"></div><span class="example">Predicting merger success from culture fit in annual reports</span></li></ul>
         <h2>How the course developed</h2>
         <p>I began building this course in December 2024 and first taught it in Fall 2025 to MBA and other master's students. It covers the data most business analytics courses skip: text, images, and the output of language models.</p>
         <p>For Summer 2026 I rebuilt it for a part-time format, with one live session a week and a set of hands-on videos I recorded for each module. They run from a first Python lesson through retrieval over company filings, computer vision, and agent workflows. For Fall 2026 I moved agentic AI earlier in the term, and students now get a summary and a cleaned transcript after each class.</p>
-        <h2>Topics</h2>
-        <ol><li>AI models and unstructured data: Python, JSON, calling a model's API, and prompt engineering</li><li>Natural language processing fundamentals</li><li>Text mining for business insight, with retrieval over company filings and vector databases</li><li>Computer vision fundamentals: object detection with YOLO, ResNet, and vision transformers</li><li>Mining visual data, with a case comparing Tesla Vision and Waymo's sensor fusion</li><li>Agentic AI and AI workflows, including building a first agent in n8n</li><li>Emerging tools: evaluations, LLM-as-judge, and MCP</li></ol>
-        <h2>Final projects</h2>
-        <p>Final projects start from a real business question. Students show how their prompts changed and compare models before settling on one. In Summer 2026, seven of the nineteen projects were built with real companies or organizations, and three are already in use. These are the kinds of projects from Fall 2025 and Summer 2026.</p>
-        <ul class="project-types"><li><strong>Social listening and sentiment</strong> <span class="count">7 projects</span><br><span class="example">Reddit sentiment through an aircraft maker's safety crisis, set against its stock price</span></li><li><strong>Finance and investing</strong> <span class="count">5 projects</span><br><span class="example">An autonomous equity analyst triggered from a watchlist</span></li><li><strong>Career, hiring, and advising agents</strong> <span class="count">4 projects</span><br><span class="example">A five-agent job-fit scorer with a skeptical hiring-manager critic</span></li><li><strong>Agentic workflow automation</strong> <span class="count">3 projects</span><br><span class="example">Automating client outreach for a real-estate agent in n8n</span></li><li><strong>AI governance and ethics</strong> <span class="count">3 projects</span><br><span class="example">Human oversight of AI in intelligence analysis</span></li><li><strong>Document and transcript extraction</strong> <span class="count">2 projects</span><br><span class="example">Turning sales-call transcripts into buyer intelligence</span></li><li><strong>Computer vision in the field</strong> <span class="count">1 project</span><br><span class="example">An offline tool that helps bomb-disposal teams identify ordnance</span></li><li><strong>Mergers and corporate culture</strong> <span class="count">1 project</span><br><span class="example">Predicting merger success from culture fit in annual reports</span></li></ul>
         <h2>Offerings</h2>
-        <ul><li>Developed for Fall 2025</li><li>Fall 2025 full-time</li><li>Fall 2025 online hybrid</li><li>Summer 2026</li><li>Fall 2026</li></ul>
-        <h2>Materials</h2>
-        <p>Enrolled students get the notebooks and recordings on Canvas. Public excerpts will be added to this page.</p>
+        <ul class="chips"><li class="chip term">Fall 2025 full-time</li><li class="chip hybrid">Fall 2025 online hybrid</li><li class="chip term">Summer 2026</li><li class="chip term">Fall 2026</li></ul>
+        <p class="muted">Enrolled students get the notebooks and recordings on Canvas.</p>
       </article>
       <aside class="course-cta prose-width">
-        <p><strong>Want this adapted for your team?</strong> I run versions of my courses as hands-on workshops built on a company's own data.</p>
-        <a class="btn primary" data-book="freeChat" data-subject="Free 15-minute chat" data-live-label="Book a free 15-minute chat" href="../../contact/">Email to book a free 15-minute chat</a>
+        <p>I also teach versions of this material to company teams, using their own data. <a href="../../consult/#education">Custom education</a></p>
+        <a class="btn primary" href="../../book/">Book a free 15-minute call</a>
       </aside>
+
       <p><a href="../">All courses</a></p>
     </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="../../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="../../consult/">Consulting</a> · <a href="../../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="../../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">Version submitted for 15-113 (2026)</a> · <a href="../../consult/">Consulting</a> · <a href="../../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="../../js/config.js"></script>

@@ -40,7 +40,7 @@
         <a href="../courses/">courses</a>
         <a href="../projects/" aria-current="page">projects</a>
         <a href="../advising/">advising</a>
-        <a href="../practice/">practice</a>
+        <a href="../consult/">consulting</a>
         <a href="../cv/">cv</a>
         <a href="../news/">news</a>
         <a href="../contact/">contact</a>
@@ -51,14 +51,15 @@
 
       <p class="kicker">Portfolio</p>
       <h1>Projects</h1>
-      <p class="lede">Small projects I build to show my classes what current AI tools can do. Each one works, and each repo shows how it was made. More are on the way.</p>
+      <p class="lede">Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.</p>
       <div class="portfolio"><article class="portfolio-item" id="ignatius-at-home">
   <a href="https://bcollier.github.io/ignatius-hw4-web/"><img class="shot" src="../assets/portfolio/ignatius-at-home.jpg" alt="Three iPhone screens from Ignatius at Home: the home page continuing the retreat's third day, Living Water, with Bloch's painting of the woman at the well; the guided prayer player reading the day's reflection, with its progress through the day's parts; and the retreat page with its days and the painting" width="1200" height="1600" loading="lazy"></a>
   <div class="body">
     <div class="meta">Web app · Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render · September 2026</div>
     <h2>Ignatius at Home</h2>
-    <p>This year I am making the Spiritual Exercises in daily life, a retreat that comes as weekly handout PDFs. This app takes material like that, whether a handout, a few passages, a photo of verses, or just an idea such as "the parables of Jesus, seven days", and turns it into a guided audio retreat you pray one day at a time. Each day follows lectio divina. You hear the passage read four times, then a reflection, then a closer look at the text's history and original language, researched on the web. After that come silence between two bells and a painting to pray with. The app also has a spoken companion to talk the day over with in real time, guided practices with timed silences and journaling, and an evening Examen that can be written around your own life. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.</p>
-    <p>I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes around the text, but it never writes scripture. Scripture is copied from the person's own material or fetched from the public-domain World English Bible. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.</p>
+    
+    <p>An app that turns retreat material, such as a handout, a few passages, or just an idea like "the parables of Jesus, seven days", into a guided audio retreat prayed one day at a time. Each day follows lectio divina: the passage read four times, a reflection, a closer look at the text's history and original language, silence between two bells, and a painting to pray with. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.</p>
+    <ul class="decisions"><li>The model plans each day and writes around the text, but never writes scripture. Scripture comes from the person's own material or the public-domain World English Bible.</li><li>It is free for anyone: open models on an academic cloud, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier.</li><li>Notes a person writes about themselves stay private, even in the build logs of the shared examples.</li></ul>
     <p class="links"><a href="https://bcollier.github.io/ignatius-hw4-web/">Try it</a> · <a href="https://github.com/bcollier/ignatius-hw4-web">Source, screenshots, and prompt log on GitHub</a> · <a href="https://github.com/bcollier/ignatius-hw4-api">Backend and architecture</a> · <a href="https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md">The original design spec</a></p>
   </div>
 </article>
@@ -67,6 +68,7 @@
   <div class="body">
     <div class="meta">Web app · Python, Flask, Claude Code, the NHL API, OpenAI · September 2026</div>
     <h2>Rink Rivals</h2>
+    
     <p>Type in two NHL players and see their careers side by side: every regular-season statistic with the leader highlighted, each player's draft position and trophies, and a season-by-season chart of their production. If you want it settled, a language model reads the whole comparison and picks a winner. It has to commit, explain the pick, and give the strongest argument against it. I built it for 15-113, Effective Coding with AI, as a study in what a small app owes the person using it.</p>
     <p>Most of the interesting work was deciding what the app should refuse to do. The NHL's search endpoint does not rank results by relevance. A search for "Marc-Andre Fleury" returns Marc-Andre Dorion first, so taking the top result quietly shows the wrong career without any error. A scoring function fixes that, and a regression test checks that the endpoint still behaves this way. Skaters and goalies share almost no statistics, so the app declines to compare them rather than print numbers that are accurate and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, which keeps a long career from passing for a great one. The OpenAI key stays on the server. GitHub Pages has no server to hold a secret, and GitHub Secrets are build-time variables that would end up in the published JavaScript.</p>
     <p class="note">This is the small, public version. I have also built a much larger hockey platform that is now being demonstrated to NCAA Division I programs for their coaches, managers, scouts, and players. Its code and login are private, so they are not linked here. It runs several coordinating agents and a data-analysis agent over a hockey database of more than 6 GB. I am happy to demo it in person for anyone interested in hockey data work at that scale.</p>
@@ -78,6 +80,7 @@
   <div class="body">
     <div class="meta">Browser game · Kiro, Claude Code, three.js · September 2026</div>
     <h2>Charlie Road</h2>
+    
     <p>A browser version of Crossy Road starring Charlie, our nine-year-old cocker spaniel, in place of the chicken. It keeps what makes the original work: the voxel look, one hop per input, endless roads, rivers, and railways, and a camera that punishes dawdling. Then it adds what matters to Charlie: tennis balls instead of coins, a bark that stops traffic, squirrels to chase, his real outfits as unlocks, a giant caterpillar toy worth five balls, and a flying saucer piloted by a squirrel where the eagle used to be.</p>
     <p>The first version came from thirty minutes in class with Kiro. It went through five iterations, from colored rectangles to a fake-isometric board that never quite worked. I rebuilt it in an evening at home with Claude Code. I measured the camera angle from real gameplay screenshots and wrote a spec with acceptance criteria a machine could check, plus fairness rules for the world generator. Then I let an autonomous run build it one block at a time, checking each block by stepping the simulation through a debug harness instead of trusting a screenshot. After I played it, a second round added the bark, the saucer, combos, a daily challenge, and a shareable trading card. Every prompt, decision, and build step is in the repo.</p>
     <p class="links"><a href="https://bcollier.github.io/charlie-road/">Play it</a> · <a href="https://bcollier.github.io/charlie-road/v1/">Play the 30-minute class prototype</a> · <a href="https://github.com/bcollier/charlie-road">Source, prompts, and build log on GitHub</a> · <a href="https://youtu.be/4csO6aQQAdw">Gameplay video</a></p>
@@ -88,7 +91,8 @@
   <div class="body">
     <div class="meta">Experiment · Python, Claude Code, 16 language models · September 2026</div>
     <h2>Can a computer pass an IQ test?</h2>
-    <p>Three programs, written eight years apart, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A student's 2017 course project, run exactly as written, scores 34. A rule-based expert system I wrote this year scores 59 in under a minute on a laptop. It uses no language model, just about 300 candidate if-then rules and a learned ranker. A current language model, given the puzzle sheet and every cell as images, scores 93. Random guessing scores 13.</p>
+    <ul class="stats small"><li><strong>13</strong><span>random guessing</span></li><li><strong>34</strong><span>a student's 2017 program</span></li><li><strong>59</strong><span>expert system, no language model</span></li><li><strong>93</strong><span>current language model</span></li></ul>
+    <p>Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A current language model, given the puzzle sheet and every cell as images, nearly aces it.</p>
     <p>Sixteen language models from nine companies ran the same puzzles with the same prompt, so the write-up compares accuracy, cost, and speed directly. Four models tied at 92 while their prices differed by almost five to one. Five scored below the program with no AI in it. One release changed how the model works at answer time, and that moved its score more than two years of scaling did on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the explanation is the most useful lesson in the repo. A script generates every number from the raw results, and the prompt history quotes every instruction that produced them.</p>
     <p class="links"><a href="https://github.com/bcollier/claude-ravens-demo">Read the write-up and browse the code on GitHub</a> · <a href="https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md">Prompt history</a></p>
   </div>
@@ -96,7 +100,7 @@
     </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="../consult/">Consulting</a> · <a href="../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">Version submitted for 15-113 (2026)</a> · <a href="../consult/">Consulting</a> · <a href="../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="../js/config.js"></script>

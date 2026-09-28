@@ -360,10 +360,11 @@ table.roster td {
   .course-hero .thumb { height: 13rem; }
 }
 
-.project-types { list-style: none; padding: 0; margin: 0.6rem 0 1.4rem; display: grid; gap: 0.7rem; }
-.project-types li { border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 0.8rem; }
-.project-types .count { font-size: 0.85rem; color: var(--ink-soft); margin-left: 0.3rem; }
-.project-types .example { color: var(--ink-soft); font-style: italic; }
+.project-types { list-style: none; padding: 0; margin: 0.8rem 0 1.4rem; display: grid; gap: 0.9rem; }
+.project-types .bar-head { display: flex; justify-content: space-between; gap: 1rem; }
+.project-types .count { font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+.project-types .bar { height: 0.45rem; background: var(--accent); border-radius: 2px; margin: 0.25rem 0 0.3rem; }
+.project-types .example { color: var(--ink-soft); font-style: italic; font-size: 0.95rem; }
 
 .materials li { margin-bottom: 0.7rem; }
 
@@ -647,6 +648,39 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .shapes p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
 .course-cta { border: 1px solid var(--rule); background: var(--white); padding: 1rem 1.2rem; margin: 2.2rem 0 1rem; }
 .course-cta p { margin: 0 0 0.8rem; }
+
+/* Stat tiles (home, projects). */
+.stats { list-style: none; padding: 0; margin: 1.8rem 0 0.6rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.8rem; }
+.stats li { background: var(--white); border: 1px solid var(--rule); padding: 0.9rem 1rem; display: grid; gap: 0.2rem; }
+.stats strong { font-family: Fraunces, Georgia, serif; font-size: 2rem; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+.stats span { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.35; }
+.stats.small { grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); margin: 0.6rem 0 0.8rem; }
+.stats.small strong { font-size: 1.5rem; }
+.decisions { padding-left: 1.1rem; }
+.decisions li { margin-bottom: 0.4rem; }
+
+/* Offerings as term chips. */
+.chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip { border: 1px solid var(--rule); background: var(--white); padding: 0.2rem 0.65rem; border-radius: 999px; font-size: 0.88rem; }
+.chip.hybrid { border-color: var(--accent); }
+.chip.evening, .chip.qatar { border-style: dashed; }
+
+/* Worked exercise panel on a course page. */
+.panel { border: 1px solid var(--rule); background: var(--white); padding: 1rem 1.2rem; margin: 1.2rem 0; }
+.panel figcaption { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.5rem; }
+.panel table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+.panel th, .panel td { text-align: left; padding: 0.3rem 0; border-bottom: 1px solid var(--rule); font-weight: 400; }
+.panel td { text-align: right; font-weight: 600; }
+.panel p { margin: 0.7rem 0 0; }
+
+/* Career timeline on /consult/. */
+.timeline { list-style: none; padding: 0; max-width: 46rem; border-left: 2px solid var(--rule); margin: 0.8rem 0 1rem; }
+.timeline li { position: relative; padding: 0.35rem 0 0.8rem 1.2rem; }
+.timeline li::before { content: ""; position: absolute; left: -0.4rem; top: 0.75rem; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--accent); }
+.timeline span { display: block; font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.timeline strong { display: block; }
+
+.partners { color: var(--ink-soft); max-width: 44rem; }
 
 /* Kinds of consulting on /consult/. */
 .kinds { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.2rem; margin: 2rem 0 1.4rem; max-width: 64rem; }

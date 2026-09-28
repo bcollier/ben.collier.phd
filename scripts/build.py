@@ -41,7 +41,6 @@ COURSES = [
         "one_liner": "Where AI creates value in a business, where it does not, and how to explain the difference to the people paying for it.",
         "blurb": "An undergraduate course on how AI is changing organizations and the decisions managers make. The first part covers how AI works, from expert systems to machine learning, neural networks, and large language models. The second part puts students to work with AI agents on business problems. The third looks at AI in marketing, finance, people analytics, operations, and strategy, and at the ethics, economics, and regulation that decide whether adoption lasts. The semester project has three tracks. Teams can act as an AI investment committee for a real public company, build and red-team an AI agent, or try to earn $100 with a business that uses AI.",
         "offerings": [
-            "Designed February to August 2026",
             "Fall 2026",
         ],
         "materials": "There is no required textbook. Enrolled students find the materials on Canvas.",
@@ -64,10 +63,11 @@ COURSES = [
             "The economics of AI, and AI strategy",
             "Governance, risk, and regulation",
         ],
+        "panel": '<figure class="panel"><figcaption>In-class exercise: the 99% accurate fraud vendor</figcaption><table><tr><th>Transactions a day</th><td>100,000</td></tr><tr><th>Fraud rate</th><td>0.5%</td></tr><tr><th>Transactions the model flags</th><td>1,490</td></tr><tr><th>Flags that are real fraud</th><td>495</td></tr><tr><th>Cost of a review / a missed fraud</th><td>$12 / $400</td></tr></table><p>At a 0.5% fraud rate, buying pays. Sell the same model to a client with 0.01% fraud and the decision flips.</p></figure>',
         "story": [
-            "The course is organized around the decisions a manager has to make about AI, in three parts. The first is how AI works, from expert systems to large language models. The second is working with AI agents, including a lab where students built a customer support team of agents for a fictional outdoor retailer and tested it to find where it failed. The third is AI across marketing, finance, people analytics, operations, and strategy, with the ethics, economics, and regulation that decide whether adoption lasts.",
-            "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. An eight-year-old hand-written solver scored 34 of 96 on Raven's Matrices. The language model solver scored about 86, and claimed 99% confidence on every answer.",
-            "Students learn to judge where AI creates value and to defend a recommendation to executives. Much of the work is written that way: response memos, a briefing on a current AI topic, and in-class exercises such as deciding whether a fraud vendor with a 99% accurate model is worth buying, which turns out to depend on how rare the fraud is."
+            "The agents lab sits at the center of the course. Students build a customer support team of AI agents for a fictional outdoor retailer, a manager and three specialists, then test it to find where it fails.",
+            "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. A solver a student wrote by hand in 2017 scored 34 of 96 on Raven's Matrices. By the end of class the language model solver had about 86, and it claimed 99% confidence on every answer. The finished version, on the projects page, scores 93.",
+            "Students learn to judge where AI creates value and to defend a recommendation to executives. Much of the work is written that way: response memos, a briefing on a current AI topic, and in-class exercises like the fraud vendor above."
         ],
         "projects": {"intro": "The first final projects are due in December 2026, in three tracks: an AI investment committee for a real public company, building and breaking an AI agent, and trying to make $100 with an AI-enabled business. Revenue is not the grade. A team that earns nothing and can explain exactly why will outscore a team that earns $200 without insight.", "types": []},
     },
@@ -83,13 +83,12 @@ COURSES = [
         "one_liner": "Using AI on text, networks, and images, and knowing when the output is ready for a decision.",
         "blurb": "I built this course for Tepper MBA students who need to use current AI methods on text, networks, images, and other unstructured data. We treat each model as a measuring instrument. Students should be able to say what it did, where it fails, and whether its output is good enough to act on. The labs are in Python, and we discuss ethics in the same labs as the code.",
         "offerings": [
-            "Developed for Fall 2025",
             "Fall 2025 full-time",
             "Fall 2025 online hybrid",
             "Summer 2026",
             "Fall 2026",
         ],
-        "materials": "Enrolled students get the notebooks and recordings on Canvas. Public excerpts will be added to this page.",
+        "materials": "Enrolled students get the notebooks and recordings on Canvas.",
         "history": [
             "I began building this course in December 2024 and first taught it in Fall 2025 to MBA and other master's students. It covers the data most business analytics courses skip: text, images, and the output of language models.",
             "For Summer 2026 I rebuilt it for a part-time format, with one live session a week and a set of hands-on videos I recorded for each module. They run from a first Python lesson through retrieval over company filings, computer vision, and agent workflows. For Fall 2026 I moved agentic AI earlier in the term, and students now get a summary and a cleaned transcript after each class.",
@@ -108,7 +107,7 @@ COURSES = [
             "Every lab compares models. Students classify product reviews with three models and weigh cost against accuracy, chain two agents that score semiconductor companies' risk from their filings, and in the computer vision class send one photograph through three generations of vision: YOLO boxes, ResNet labels, then a multimodal model that returns a shelf-restocking report as JSON.",
             "Each class opens with AI Methods in the News, a student briefing on a product or a debate from the last six months. In Fall 2025 the agents module closed with Prasad Chalasani, co-founder of the Langroid agent framework."
         ],
-        "projects": {"intro": "Final projects start from a real business question. Students show how their prompts changed and compare models before settling on one. In Summer 2026, seven of the nineteen projects were built with real companies or organizations, and three are already in use. These are the kinds of projects from Fall 2025 and Summer 2026.", "types": [["Social listening and sentiment", 7, "Reddit sentiment through an aircraft maker's safety crisis, set against its stock price"], ["Finance and investing", 5, "An autonomous equity analyst triggered from a watchlist"], ["Career, hiring, and advising agents", 4, "A five-agent job-fit scorer with a skeptical hiring-manager critic"], ["Agentic workflow automation", 3, "Automating client outreach for a real-estate agent in n8n"], ["AI governance and ethics", 3, "Human oversight of AI in intelligence analysis"], ["Document and transcript extraction", 2, "Turning sales-call transcripts into buyer intelligence"], ["Computer vision in the field", 1, "An offline tool that helps bomb-disposal teams identify ordnance"], ["Mergers and corporate culture", 1, "Predicting merger success from culture fit in annual reports"]]},
+        "projects": {"intro": "Final projects start from a real business question. Students show how their prompts changed and compare models before settling on one. In Summer 2026, seven of the nineteen projects were built with real companies or organizations, and three are already in use. Projects from Fall 2025 and Summer 2026, grouped by type, with one example each.", "types": [["Social listening and sentiment", 7, "Reddit sentiment through an aircraft maker's safety crisis, set against its stock price"], ["Finance and investing", 5, "An autonomous equity analyst triggered from a watchlist"], ["Career, hiring, and advising agents", 4, "A five-agent job-fit scorer with a skeptical hiring-manager critic"], ["Agentic workflow automation", 3, "Automating client outreach for a real-estate agent in n8n"], ["AI governance and ethics", 3, "Human oversight of AI in intelligence analysis"], ["Document and transcript extraction", 2, "Turning sales-call transcripts into buyer intelligence"], ["Computer vision in the field", 1, "An offline tool that helps bomb-disposal teams identify ordnance"], ["Mergers and corporate culture", 1, "Predicting merger success from culture fit in annual reports"]]},
     },
     {
         "slug": "70-377",
@@ -120,9 +119,8 @@ COURSES = [
         "built": True,
         "color": "c-wine",
         "one_liner": "How to hire, develop, and evaluate technical people using evidence instead of instinct.",
-        "blurb": "A micro-course I developed on managing technical talent: how to assess skill, how to design the work, and how to build teams that deliver. I wrote it for undergraduates, and it ran for the first time at CMU Qatar in Fall 2025.",
+        "blurb": "A micro-course I developed on managing technical talent: how to interview for technical and data roles, onboard new hires, run technical projects with OKRs, and manage performance. I wrote it for undergraduates, and it ran for the first time at CMU Qatar in Fall 2025.",
         "offerings": [
-            "Proposed February 2025",
             "Fall 2025, CMU Qatar",
         ],
         "materials": "Enrolled students received the materials on Canvas.",
@@ -156,7 +154,6 @@ COURSES = [
         "one_liner": "The math incoming MSBA students need before the quantitative core begins.",
         "blurb": "A workshop I developed for incoming MSBA students in Summer 2026. The goal is for students to start the program's quantitative courses with the mathematics already in place, so they are not learning it at the same time as the statistics.",
         "offerings": [
-            "Built December 2025 to August 2026",
             "Summer 2026",
         ],
         "materials": "Incoming MSBA students take the workshop on Canvas.",
@@ -172,8 +169,8 @@ COURSES = [
             "Statistical inference: sampling distributions, confidence intervals, and hypothesis tests",
         ],
         "story": [
-            "The math every later course assumes, framed the way analysts will use it. Calculus ends with gradient descent and the sigmoid. Linear algebra ends with the normal equations, PCA, and PageRank. Probability works through a fraud alert that is 99% sensitive and still right only 9% of the time at a 0.5% base rate.",
-            "I wrote the scope and sequence with the MSBA core faculty, working backward from what their courses need, and recorded every lesson in the studio, writing each problem out by hand. Before recording, every equation was checked symbolically."
+            "Each module ends where an analytics course picks up. Calculus ends with gradient descent and the sigmoid. Linear algebra ends with the normal equations, PCA, and PageRank. Probability works through a fraud alert that is 99% sensitive and still right only 9% of the time at a 0.5% base rate.",
+            "I wrote the scope and sequence with the MSBA core faculty, working backward from what their courses need. Before recording, I checked every equation symbolically."
         ],
     },
     {
@@ -186,7 +183,7 @@ COURSES = [
         "built": False,
         "color": "c-rust",
         "one_liner": "Finding structure in messy business data, then deciding whether to trust it.",
-        "blurb": "The MBA data mining course. It covers clustering, classification, and model evaluation, and it keeps asking what each model is for. Labs are in Python. The goal is not a long list of algorithms. It is a workflow students can apply to an unfamiliar dataset the week after the course ends.",
+        "blurb": "Tepper's MBA data mining course, which I have taught six times since 2023. It covers clustering, PCA, regression, classification, forecasting, and text, with labs in Python, and it keeps asking what each model is for. Labs are in Python. The goal is not a long list of algorithms. It is a workflow students can apply to an unfamiliar dataset the week after the course ends.",
         "offerings": [
             "Fall 2023 full-time",
             "Spring 2024 online hybrid",
@@ -195,10 +192,10 @@ COURSES = [
             "Fall 2025 full-time",
             "Fall 2025 online hybrid",
         ],
-        "materials": "Enrolled students get the notebooks and video walkthroughs on Canvas. Public excerpts will be added to this page.",
+        "materials": "Enrolled students get the notebooks and video walkthroughs on Canvas.",
         "history": [
             "I first taught Data Mining in Fall 2023, as an adjunct, to full-time MBA students. I taught it every fall and spring through Fall 2025, in both the full-time and the online hybrid programs.",
-            "The first version was in R. For the Spring 2024 online hybrid section I scripted and recorded a video module for each topic. In Fall 2024 I moved the whole course to Python and then re-recorded the videos, and Fall 2025 added principal component analysis. The course is organized around the questions data mining answers in a business: which customers are alike, what something is worth, which class a case falls into, what happens next, and what a pile of text says.",
+            "The first version was in R. For the Spring 2024 online hybrid section I scripted and recorded a video module for each topic. In Fall 2024 I moved the whole course to Python and then re-recorded the videos, and Fall 2025 added principal component analysis.",
         ],
         "topics": [
             "Data exploration and visualization in Python",
@@ -212,10 +209,9 @@ COURSES = [
         ],
         "story": [
             "The course is organized around business questions, not algorithms. Each module opens with one a manager would ask: which customers look alike, what a house will sell for, who is about to leave, what customers are saying in their reviews. The first class is a case from my own work, predicting drug price spikes for a 40-hospital health system that buys $1.5 billion of pharmaceuticals a year, followed from the business question to a commercial product.",
-            "Students work the way analysts work now. Labs are in Python in Colab, generative AI is allowed, and teams hand in their AI chat transcripts with the work. The classification project is a prediction competition: every team scores a holdout file, I grade the predictions against the true labels, and the top fifth earn extra credit.",
-            "What students take away is a workflow for an unfamiliar dataset: explore it, choose a method, decide whether to trust the result, and explain it to someone who does not care about the method."
+            "Students work the way analysts work now. Labs are in Python in Colab, generative AI is allowed, and teams hand in their AI chat transcripts with the work. The classification project is a prediction competition: every team scores a holdout file, I grade the predictions against the true labels, and the top fifth earn extra credit."
         ],
-        "projects": {"intro": "In the final project, teams bring their own business question and data, often from their own employer, and answer it with a method from the course. These are the most common kinds among the projects from Spring 2024, Fall 2024, and Spring 2025.", "types": [["Finance, markets, and credit risk", 6, "Do a CEO's posts move an electric carmaker's stock price?"], ["Sports analytics", 5, "Predicting baseball Hall of Fame induction from career statistics"], ["Healthcare and wellbeing", 5, "Does wearing a fitness tracker go with better health?"], ["Customer segmentation and retail", 4, "Segmenting 85 grocery stores by their department sales mix"], ["Transportation and mobility", 4, "Where should Pennsylvania put new EV chargers?"], ["Churn, retention, and satisfaction", 3, "Predicting and segmenting airline passenger satisfaction"], ["Real estate and places", 3, "What drives Airbnb nightly prices in New York?"], ["Economic forecasting", 2, "Forecasting US retail sales with Prophet"], ["Media and entertainment", 2, "What predicts a song's stream count?"]]},
+        "projects": {"intro": "In the final project, teams bring their own business question and data, often from their own employer, and answer it with a method from the course. Projects from Spring 2024, Fall 2024, and Spring 2025, grouped by type, with one example each.", "types": [["Finance, markets, and credit risk", 6, "Do a CEO's posts move an electric carmaker's stock price?"], ["Sports analytics", 5, "Predicting baseball Hall of Fame induction from career statistics"], ["Healthcare and wellbeing", 5, "Does wearing a fitness tracker go with better health?"], ["Customer segmentation and retail", 4, "Segmenting 85 grocery stores by their department sales mix"], ["Transportation and mobility", 4, "Where should Pennsylvania put new EV chargers?"], ["Churn, retention, and satisfaction", 3, "Predicting and segmenting airline passenger satisfaction"], ["Real estate and places", 3, "What drives Airbnb nightly prices in New York?"], ["Economic forecasting", 2, "Forecasting US retail sales with Prophet"], ["Media and entertainment", 2, "What predicts a song's stream count?"]]},
     },
     {
         "slug": "45-885",
@@ -227,7 +223,7 @@ COURSES = [
         "built": False,
         "color": "c-olive",
         "one_liner": "Charts and dashboards designed to change a decision.",
-        "blurb": "Visualization as a tool for making decisions. Students design charts and dashboards for executive audiences, and they learn enough about perception and statistics to spot a graphic that misleads.",
+        "blurb": "A Tableau course for MBA students on designing charts and dashboards for executives, and on spotting graphics that mislead. Students design charts and dashboards for executive audiences, and they learn enough about perception and statistics to spot a graphic that misleads.",
         "offerings": [
             "Spring 2024 evening",
             "Spring 2025 full-time",
@@ -236,7 +232,7 @@ COURSES = [
             "Spring 2026 full-time",
             "Spring 2026 online hybrid",
         ],
-        "materials": "Enrolled students get the Tableau workbooks and screencast lessons on Canvas. Public examples will be added to this page.",
+        "materials": "Enrolled students get the Tableau workbooks and screencast lessons on Canvas.",
         "history": [
             "I took over Data Visualization in Spring 2024 with an evening section. At the time the course mixed Tableau with R and ggplot2. Since Spring 2025 it has been a Tableau course that needs no programming, and for the online hybrid students I recorded a library of about fifty short screencast lessons.",
             "In Fall 2025 I split each week into a lecture and a lab and gave visual design, typography, and color sessions of their own. The final project is a recorded data story of five to seven minutes.",
@@ -253,9 +249,9 @@ COURSES = [
         "story": [
             "No programming is required. Students start as Tableau beginners and finish with calculated fields, parameters, maps, interactive dashboards, and animation. Along the way they rebuild Hans Rosling's Gapminder bubble chart from raw World Bank tables.",
             "Every class opens with a team critiquing a data story published in the last six months, in the Financial Times, the Wall Street Journal, The Economist, or ProPublica, and remaking two or three of its charts. Before presenting, teams test their redesign with an AI Data Visualization Coach, a custom GPT I built with my colleague Zoey Jiang. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.",
-            "Most visualization courses stop at dashboards. This one keeps going into clustering, network graphs, and explainable AI, because that is where analysts now have to show their work."
+            "After dashboards, the course covers clustering, network graphs, and explainable AI, so students can chart what a model found and why."
         ],
-        "projects": {"intro": "The final project is a Tableau workbook with an interactive dashboard and a recorded video that tells its story. Students choose their own question or one of two public datasets. These are the kinds of projects from Spring 2024 and Spring 2025.", "types": [["Netflix content strategy", 10, "Where Netflix's catalog grew, country by country"], ["Public sector, policy, and society", 10, "Neighborhood income change by zip code in a US metro"], ["Economics, labor, and prices", 5, "Why eggs got expensive: 50 years of food prices"], ["Business performance dashboards", 5, "Does discounting drive profit? An executive retail dashboard"], ["Media and the creator economy", 4, "What drives YouTube creator revenue?"], ["Climate and environment", 4, "25 years of warming, city by city"], ["Sports", 2, "Does payroll buy wins in baseball?"], ["Consumer products", 2, "Do electric cars deliver their certified range?"]]},
+        "projects": {"intro": "The final project is a Tableau workbook with an interactive dashboard and a recorded video that tells its story. Students choose their own question or one of two public datasets. Projects from Spring 2024 and Spring 2025, grouped by type, with one example each.", "types": [["Netflix content strategy", 10, "Where Netflix's catalog grew, country by country"], ["Public sector, policy, and society", 10, "Neighborhood income change by zip code in a US metro"], ["Economics, labor, and prices", 5, "Why eggs got expensive: 50 years of food prices"], ["Business performance dashboards", 5, "Does discounting drive profit? An executive retail dashboard"], ["Media and the creator economy", 4, "What drives YouTube creator revenue?"], ["Climate and environment", 4, "25 years of warming, city by city"], ["Sports", 2, "Does payroll buy wins in baseball?"], ["Consumer products", 2, "Do electric cars deliver their certified range?"]]},
     },
     {
         "slug": "46-885",
@@ -266,12 +262,12 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-pine",
-        "one_liner": "Exploratory analysis first, then charts that make the finding clear.",
-        "blurb": "The MSBA counterpart to the visualization course. It covers exploratory analysis, chart design, dashboards, and how to present a finding so that someone can use it.",
+        "one_liner": "The MSBA's Tableau course: chart design, data stories, dashboards, and visualization for machine learning.",
+        "blurb": "The MSBA counterpart to 45-885 Data Visualization: seven weekly modules in Tableau, with the same labs, weekly data stories, and AI coach as the MBA course, ending on explainable AI and visualization for machine learning.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
         "materials": "Enrolled students get the workbooks and lessons on Canvas.",
         "history": [
-            "The MSBA version of the visualization course. I first taught it in Spring 2025 and again in Spring 2026, with one session a week. It follows the same seven modules as the MBA course, all in Tableau, and ends with the same recorded data story.",
+            "I first taught it in Spring 2025 and again in Spring 2026, with one session a week. It follows the MBA online hybrid syllabus module for module, with typography and color folded into the design sessions, and ends with the same recorded data story.",
         ],
         "topics": [
             "Design of visual information, and Tableau fundamentals",
@@ -283,7 +279,7 @@ COURSES = [
             "Explainable AI and visualization for machine learning",
         ],
         "story": [
-            "The MSBA section of the visualization course, taught in Tableau with the same labs, the same weekly data stories, and the same AI coach. It ends on explainable AI and visualization for machine learning, which is where analytics students will need charts most."
+            "Students use the same labs, weekly data stories, and AI coach as the MBA sections. The last module covers explainable AI and visualization for machine learning, so the course ends where their machine learning courses begin."
         ],
     },
     {
@@ -295,10 +291,10 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-slate",
-        "one_liner": "The statistics every later analytics course depends on.",
-        "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning.",
+        "one_liner": "Probability and inference taught twice over, in Excel and in Python, through business decisions.",
+        "blurb": "The first quantitative course in the full-time MSBA: probability, distributions, sampling, estimation, hypothesis tests, and regression.",
         "offerings": ["Fall 2024 full-time"],
-        "materials": "Enrolled students get the problem sets and walkthrough videos on Canvas.",
+        "materials": "Students received the problem sets and walkthrough videos on Canvas.",
         "history": [
             "I taught the MSBA's first-term statistics course in Fall 2024, in two morning sections. I reworked the slide decks I inherited and used Excel and Python alongside the textbook, so that every idea had both a formula and a working example.",
         ],
@@ -313,7 +309,7 @@ COURSES = [
         ],
         "story": [
             "Every distribution is taught twice, once with its Excel formula and once with its Python call, and nearly every example is a business decision: overbooking a flight, a cosmetics launch whose chance of success moves from 30% to 60% after a market test, tea bottles that must hold 750 ml. Sessions open with a puzzle or a question from quant interviews.",
-            "Halfway through the mini I changed the pace: more worked examples in class, practice sets with solutions, a short written summary of each module, and walkthrough videos for the hardest problems."
+            "Halfway through the seven-week term I changed the pace: more worked examples in class, practice sets with solutions, a short written summary of each module, and walkthrough videos for the hardest problems."
         ],
     },
     {
@@ -325,12 +321,12 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-copper",
-        "one_liner": "Machine learning that has to work under real business constraints, not just score well on a leaderboard.",
-        "blurb": "Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.",
+        "one_liner": "Taking a model out of the notebook and into a working business system on AWS.",
+        "blurb": "Applied machine learning for MSBA students, built around a cloud pipeline on AWS.",
         "offerings": ["Spring 2026"],
         "materials": "Enrolled students get the lab notebooks on Canvas.",
         "history": [
-            "I redesigned this MSBA course for Spring 2026 around a question that is easy to leave for later: how a model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.",
+            "I redesigned this MSBA course for Spring 2026 around one question: how a trained model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.",
         ],
         "topics": [
             "From machine learning models to AI systems",
@@ -343,7 +339,7 @@ COURSES = [
         ],
         "story": [
             "The course takes models out of the notebook and into production. Students put data in S3, score it with Lambda and SageMaker, write predictions to a database they provision themselves on RDS, and read them live in Tableau or Streamlit.",
-            "It is honest about accuracy. The fraud lab starts from a model that is 99.9% accurate because it never flags fraud, then works through class weights, SMOTE, and isolation forests on a precision-recall leaderboard. In ML Project Triage, teams sit on an insurer's strategy board with money for two of six proposals, among them a drone moonshot with no data and a pricing engine that would be illegal in most states.",
+            "Accuracy is the first number students learn to distrust. The fraud lab opens with a one-line model that never flags fraud and is still 99.8% accurate, then works through class weights, SMOTE, and isolation forests on a precision-recall leaderboard. In ML Project Triage, teams sit on an insurer's strategy board with money for two of six proposals, among them a drone moonshot with no data and a pricing engine that would be illegal in most states.",
             "The team project is a working proof of concept: a model, a cloud database of its predictions, and a dashboard, shown in a live demo."
         ],
     },
@@ -357,7 +353,7 @@ COURSES = [
         "built": False,
         "color": "c-navy",
         "one_liner": "Machine learning in Python for students headed into policy and management work.",
-        "blurb": "A twelve-unit course at Heinz College that teaches machine learning with Python to students who will apply it to public policy and management problems.",
+        "blurb": "A full-semester course at Heinz College that teaches machine learning with Python to students who will apply it to public policy and management problems.",
         "offerings": ["Spring 2026 full-time"],
         "materials": "Heinz students get the full materials on Canvas.",
         "history": [
@@ -376,7 +372,7 @@ COURSES = [
         ],
         "story": [
             "Every method is framed as a policy question: which households in a broadband subsidy program are about to drop out, how to route thousands of student loan complaints, whether a language model and a person agree on how serious a complaint is. In the language model project, students have a model sort complaints into six policy categories and measure its agreement with other models using Cohen's kappa.",
-            "I replaced the single end-of-term project with four applied projects spread across the semester, in clustering, classification, language models, and computer vision, plus a midterm project for a public agency or nonprofit. A CMU alum working as a product data scientist gave a guest lecture on machine learning for product decisions."
+            "Instead of one end-of-term project, students do four applied projects across the semester (clustering, classification, language models, and computer vision), a midterm project for a public agency or nonprofit, and a final project with a three- to five-minute pitch. A CMU alum working as a product data scientist gave a guest lecture on machine learning for product decisions."
         ],
     },
 ]
@@ -395,7 +391,7 @@ NEWS = [
     ("2026-01-13", "Started teaching 90-803 Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints."),
     ("2026-01", "Advising two MSBA capstone teams this spring."),
     ("2025-10-22", "Taught 70-377 Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture."),
-    ("2025-10", "Taught Data Mining in person and online hybrid in the same mini, and added principal component analysis to the course."),
+    ("2025-10", "Taught Data Mining in person and online hybrid in the same seven-week term, and added principal component analysis to the course."),
     ("2025-08-26", "Taught the first class of 45-884 AI Methods for Social and Visual Data, a course I built for MBA and master's students on text, images, and AI agents, using foundation models rather than training them."),
     ("2025-05", "Joined gAIm Systems as Senior Director of AI and Data Science."),
     ("2025-05", "Proud of this spring's Data Mining final projects: teams brought their own questions, from predicting baseball Hall of Fame induction to siting EV chargers in Pennsylvania."),
@@ -409,7 +405,7 @@ NEWS = [
     ("2024-05", "Proud of the first Data Mining final projects: sixteen online hybrid MBA teams, many working on data from their own employers."),
     ("2024-03-13", "Started teaching 45-885 Data Visualization with an evening MBA section, mixing Tableau with R and ggplot2."),
     ("2024-03", "Taught Data Mining for the second time, rebuilt for the online hybrid MBA with a recorded video module for each topic and a self-directed final project in place of the exam."),
-    ("2024-01", "Advised four MSBA capstone projects."),
+    ("2024-01", "Advising three MSBA capstone teams this spring, with Tindoori Labs, Marinus Analytics, and 412 Food Rescue."),
     ("2023-10-25", "Started teaching 45-851 Data Mining to full-time MBA students as an adjunct, redesigning it around business questions, with labs in R and tidymodels."),
 ]
 
@@ -432,13 +428,18 @@ BOOK_EMAIL = "ben@collier.phd"
 HOURLY_RATE = "$450"
 
 
+def book_call(root: str, cls: str = "btn primary") -> str:
+    """The one booking entry point used across the site. It always goes to /book/."""
+    return f'<a class="{cls}" href="{root}book/">Book a free 15-minute call</a>'
+
+
 def book_link(kind: str, label: str, root: str, cls: str = "btn primary") -> str:
     """A booking button. Until a Cal.com URL is set in js/config.js it is an
     honest "Email to book" link; js/site.js builds the email (the address is
     never written into the page, to keep it from address harvesters) and
     swaps in the URL and live label once one is configured. Without
     JavaScript it falls back to the contact page."""
-    subject = {"freeChat": "Free 15-minute chat", "paidHour": "Consulting hour"}[kind]
+    subject = {"freeChat": "Free 15-minute call", "paidHour": "Consulting hour"}[kind]
     fallback = "Email to " + label[0].lower() + label[1:]
     return (f'<a class="{cls}" data-book="{kind}" data-subject="{esc(subject)}" '
             f'data-live-label="{esc(label)}" href="{root}contact/">{esc(fallback)}</a>')
@@ -567,7 +568,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("courses/", "courses", "courses")}
         {item("projects/", "projects", "projects")}
         {item("advising/", "advising", "advising")}
-        {item("practice/", "practice", "practice")}
+        {item("consult/", "consulting", "consult")}
         {item("cv/", "cv", "cv")}
         {item("news/", "news", "news")}
         {item("contact/", "contact", "contact")}
@@ -582,7 +583,7 @@ def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="{root}consult/">Consulting</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">Version submitted for 15-113 (2026)</a> · <a href="{root}consult/">Consulting</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -742,46 +743,33 @@ def build_home():
           <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
           <h1>Ben Collier</h1>
           <p class="lede">I teach AI and business analytics at Carnegie Mellon's Tepper School, and help companies put them to work.</p>
-          <p class="role">I also teach selected courses at Heinz College.</p>
         </div>
       </section>
 
       <div class="bio">
         <p>Most of my teaching is at Tepper, in the MBA, the MS in Business Analytics, and the undergraduate program. I also teach at Heinz College. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at Duolingo and led data science at UPMC. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MSBA capstone teams.</p>
+        <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MSBA capstone teams.</p>
       </div>
 
       <div class="book-row">
-        {book_link("freeChat", "Book a free 15-minute chat", "")}
+        {book_call("")}
         <a class="btn" href="consult/">Consulting and custom education</a>
       </div>
 
-      <div class="tiles">
-        <a class="tile" href="courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
-        <a class="tile" href="projects/"><div class="n">02</div><strong>Projects</strong><span>Things I build for my classes.</span></a>
-        <a class="tile" href="cv/"><div class="n">03</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
-        <a class="tile" href="practice/"><div class="n">04</div><strong>Practice</strong><span>Hot Metal Data and gAIm Systems.</span></a>
-      </div>
+      <ul class="stats">
+        <li><strong>{sum(1 for c in COURSES if c["built"])}</strong><span>courses I designed from scratch</span></li>
+        <li><strong>{len(COURSES)}</strong><span>courses taught at Carnegie Mellon since 2023</span></li>
+        <li><strong>{len(load_json("advising.json")["projects"])}</strong><span>capstones and independent studies advised since 2024</span></li>
+        <li><strong>2026</strong><span>George Leland Bach Teaching Award, voted by the MBA class</span></li>
+      </ul>
 
       <h2>Courses I built</h2>
       <div class="grid" style="margin-top:1rem">{cards}</div>
       <p><a href="courses/">All courses</a></p>
 
-      <h2>Recent posts from LinkedIn</h2>
-      <ol class="feed" id="linkedin-recent">
-        <li>
-          <time datetime="2026-06-10">Jun 10, 2026</time>
-          <div class="post">
-            <p>Grateful to receive the George Leland Bach Teaching Award, chosen by vote of the graduating MBA class. Many thanks to the students of the Class of 2026.</p>
-            <div class="people"><span>Tepper MBA Class of 2026</span></div>
-          </div>
-        </li>
-      </ol>
-      <p><a href="news/">All posts</a> · <a href="https://www.linkedin.com/in/bcollierphd">Follow on LinkedIn</a></p>
-
       <h2>News</h2>
       {news_items(5)}
-      <p><a href="news/">Older notes</a> · <a href="cv/">Full CV</a></p>
+      <p><a href="news/">All news</a> · <a href="cv/">Full CV</a></p>
 """
     write(
         "index.html",
@@ -803,12 +791,12 @@ def build_courses_index():
     body = f"""
       <p class="kicker">Teaching</p>
       <h1>Courses</h1>
-      <p class="lede">Courses I designed come first, followed by the ones I teach.</p>
+      <p class="lede">Courses I designed from scratch, then courses I took over and rebuilt.</p>
 
       <h2>Courses I built</h2>
       <div class="grid">{built}</div>
 
-      <h2>Courses I teach</h2>
+      <h2>Courses I took over and rebuilt</h2>
       <div class="grid">{taught}</div>
 
 """
@@ -825,9 +813,16 @@ def build_courses_index():
     )
 
 
+# Courses with an obvious version for company teams get a closing prompt.
+CORPORATE_VERSIONS = {"70-445", "45-884", "45-851", "45-885", "46-887"}
+
+
 def build_course_pages():
     for c in COURSES:
-        offerings = "".join(f"<li>{o}</li>" for o in c["offerings"])
+        def chip(o):
+            kind = "hybrid" if "hybrid" in o else "evening" if "evening" in o else "qatar" if "Qatar" in o else "term"
+            return f'<li class="chip {kind}">{o}</li>'
+        offerings = "".join(chip(o) for o in c["offerings"])
         history = ""
         if c.get("history"):
             paras = "".join(f"        <p>{p}</p>\n" for p in c["history"])
@@ -835,12 +830,15 @@ def build_course_pages():
         story = ""
         if c.get("story"):
             paras = "".join(f"        <p>{p}</p>\n" for p in c["story"])
-            story = f"        <h2>What makes this course different</h2>\n{paras}"
+            story = f"        <h2>How the course works</h2>\n{paras}"
         projects = ""
         pj = c.get("projects")
         if pj:
+            top = max([n for _, n, _ in pj["types"]] or [1])
             rows = "".join(
-                f'<li><strong>{t}</strong> <span class="count">{n} project{"s" if n != 1 else ""}</span><br><span class="example">{ex}</span></li>'
+                f'<li><div class="bar-head"><strong>{t}</strong><span class="count">{n}</span></div>'
+                f'<div class="bar" style="width:{max(6, round(100 * n / top))}%"></div>'
+                f'<span class="example">{ex}</span></li>'
                 for t, n, ex in pj["types"]
             )
             lst = f'        <ul class="project-types">{rows}</ul>\n' if rows else ""
@@ -850,6 +848,13 @@ def build_course_pages():
             items = "".join(f"<li>{t}</li>" for t in c["topics"])
             topics = f"        <h2>Topics</h2>\n        <ol>{items}</ol>\n"
         built = '<span class="badge built">Course I built</span>' if c["built"] else ""
+        cta = ""
+        if c["slug"] in CORPORATE_VERSIONS:
+            cta = f"""      <aside class="course-cta prose-width">
+        <p>I also teach versions of this material to company teams, using their own data. <a href="../../consult/#education">Custom education</a></p>
+        {book_call("../../")}
+      </aside>
+"""
         body = f"""
       <article class="course-hero prose-width">
         <p class="kicker">{c['school']} · {c['program']}</p>
@@ -858,15 +863,12 @@ def build_course_pages():
         <div class="thumb hero {c['color']}"><canvas data-hero="{c['hero']}" role="img" aria-label="{esc(HERO_ALT[c['hero']])}"></canvas><span>{course_label(c)}</span></div>
         <p class="lede">{c['one_liner']}</p>
         <p>{c['blurb']}</p>
-{story}{history}{topics}{projects}        <h2>Offerings</h2>
-        <ul>{offerings}</ul>
-        <h2>Materials</h2>
-        <p>{c['materials']}</p>
+        {c.get('panel', '')}
+{topics}{story}{projects}{history}        <h2>Offerings</h2>
+        <ul class="chips">{offerings}</ul>
+        <p class="muted">{c['materials']}</p>
       </article>
-      <aside class="course-cta prose-width">
-        <p><strong>Want this adapted for your team?</strong> I run versions of my courses as hands-on workshops built on a company's own data.</p>
-        {book_link("freeChat", "Book a free 15-minute chat", "../../")}
-      </aside>
+{cta}
       <p><a href="../">All courses</a></p>
 """
         write(
@@ -907,31 +909,6 @@ def build_cv():
     )
 
 
-def build_teaching():
-    hub = """
-      <p class="kicker">Teaching</p>
-      <h1>Teaching</h1>
-      <p class="lede">Courses I built, projects I show in class, and the student work I advise.</p>
-      <div class="tiles">
-        <a class="tile" href="../courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
-        <a class="tile" href="../projects/"><div class="n">02</div><strong>Projects</strong><span>Things I build for class.</span></a>
-        <a class="tile" href="../advising/"><div class="n">03</div><strong>Advising</strong><span>Capstones and independent studies.</span></a>
-        <a class="tile" href="../cv/"><div class="n">04</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
-      </div>
-"""
-    write(
-        "teaching/index.html",
-        page(
-            "../",
-            "courses",
-            "Teaching · Ben Collier",
-            "Teaching hub: courses, projects, advising, CV.",
-            "teaching/",
-            hub,
-        ),
-    )
-
-
 def portfolio_card(p, root):
     links = " · ".join(f'<a href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
     # Optional aside: context that is not the project itself, such as related
@@ -942,8 +919,9 @@ def portfolio_card(p, root):
   <div class="body">
     <div class="meta">{esc(p['kind'])} · {esc(p['tools'])} · {esc(p['date'])}</div>
     <h2>{esc(p['title'])}</h2>
+    {''.join(['<ul class="stats small">'] + [f'<li><strong>{v}</strong><span>{k}</span></li>' for k, v in p.get('stats', [])] + ['</ul>']) if p.get('stats') else ''}
     <p>{p['summary']}</p>
-    <p>{p['process']}</p>
+    {('<ul class="decisions">' + ''.join(f'<li>{d}</li>' for d in p['decisions']) + '</ul>') if p.get('decisions') else f"<p>{p['process']}</p>"}
 {note}    <p class="links">{links}</p>
   </div>
 </article>"""
@@ -954,7 +932,7 @@ def build_portfolio(portfolio):
     body = f"""
       <p class="kicker">Portfolio</p>
       <h1>Projects</h1>
-      <p class="lede">Small projects I build to show my classes what current AI tools can do. Each one works, and each repo shows how it was made. More are on the way.</p>
+      <p class="lede">Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.</p>
       <div class="portfolio">{items}</div>
 """
     write(
@@ -971,40 +949,15 @@ def build_portfolio(portfolio):
 
 
 def build_practice():
-    body = f"""
-      <p class="kicker">Applied work</p>
-      <h1>Practice</h1>
-      <p class="lede">The industry work behind my teaching.</p>
-
-      <h2>Hot Metal Data</h2>
-      <p class="prose-width">My consulting and corporate training practice. The work runs from finding the right use case, to building the model, to teaching a team to carry it on without me. Some directories list it as Hot Metal AI.</p>
-
-      <div class="book-row">
-        {book_link("freeChat", "Book a free 15-minute chat", "../")}
-        <a href="../consult/">Consulting hours and larger engagements</a>
-      </div>
-
-      <h2>gAIm Systems</h2>
-      <p class="prose-width">I am Senior Director of AI and Data Science. We build tools that help sports organizations recruit players, develop them, and put teams together on evidence rather than folklore. <a href="https://gaimsystems.com">gaimsystems.com</a></p>
-
-      <h2>Earlier</h2>
-      <ul class="prose-width">
-        <li><strong>Duolingo</strong>. Staff and lead data scientist, working on experimentation, monetization analytics, and forecasting around the IPO and the launch of Duolingo Max.</li>
-        <li><strong>UPMC</strong>. Senior Director of Data Science. I was the founding data scientist on a joint venture with IBM Watson Health and led CognitiveRx, which Premier later acquired.</li>
-      </ul>
-"""
+    """Practice was merged into Consulting. Keep the old URL working."""
     write(
         "practice/index.html",
-        page(
-            "../",
-            "practice",
-            "Practice · Ben Collier",
-            "Hot Metal Data, gAIm Systems, and earlier applied data science.",
-            "practice/",
-            body,
-        ),
+        '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'
+        '<title>Consulting · Ben Collier</title>'
+        f'<link rel="canonical" href="{HOST}/consult/">'
+        '<meta http-equiv="refresh" content="0; url=../consult/#background">'
+        '</head><body><p><a href="../consult/#background">This page moved to Consulting.</a></p></body></html>\n',
     )
-
 
 def build_advising():
     data = load_json("advising.json")
@@ -1036,6 +989,7 @@ def build_advising():
       <p class="kicker">Advising</p>
       <h1>Capstones and independent studies</h1>
       <p class="lede">Since 2024 I have advised MSBA capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students' names and without the partners' data.</p>
+      <p class="partners">Partners include Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, Confirmed, Marinus Analytics, 412 Food Rescue, Tindoori Labs, and a large consulting firm.</p>
 {chr(10).join(sections)}
 
       <h2>Earlier advising</h2>
@@ -1059,30 +1013,31 @@ def build_consult():
     body = f"""
       <p class="kicker">Consulting</p>
       <h1>Consulting and custom education</h1>
-      <p class="lede">I help organizations decide where AI and analytics will pay off, make the work hold up, and teach their people to carry it on. The work runs through my practice, Hot Metal Data.</p>
+      <p class="lede">I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, Hot Metal Data.</p>
 
       <div class="kinds">
         <section class="kind" id="education">
           <p class="offer-meta">Custom education</p>
           <h2>Training built on your data</h2>
-          <p>Workshops and courses for technical teams and executives, built around your own problems rather than a public dataset. Hands-on labs, not lectures.</p>
+          <p>Workshops and courses for technical teams and executives, built around your own data and problems. Most of the time is spent in hands-on labs.</p>
           <h3>Formats</h3>
           <ul>
             <li>One- to three-day workshops, on site or online</li>
             <li>Multi-week programs for technology leaders and executives</li>
-            <li>Versions of my Carnegie Mellon courses adapted for a team: AI for business leaders, data mining, visualization, and AI methods for text and images</li>
+            <li>Material from my Carnegie Mellon courses adapted for a team: AI for business leaders, data mining, visualization, and AI methods for text and images</li>
+            <li>Recorded, self-paced courses</li>
           </ul>
           <h3>Examples</h3>
           <ul>
             <li>Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</li>
             <li>Workshops on chatbot development, data programming, SQL and NoSQL, data mining, cloud infrastructure, and agile development.</li>
-            <li>The MSBA Math Skills Workshop, a self-paced course I designed and recorded for incoming Carnegie Mellon MSBA students.</li>
+            <li>The kind of recorded course I can build for a team: the <a href="../courses/msba-math-skills-workshop/">MSBA Math Skills Workshop</a>, about thirty short videos I scripted and recorded for incoming Carnegie Mellon MSBA students.</li>
           </ul>
         </section>
 
         <section class="kind" id="ai-data">
           <p class="offer-meta">AI and data consulting</p>
-          <h2>Decisions, models, and metrics that hold up</h2>
+          <h2>Reviews and builds</h2>
           <p>From deciding which AI projects are worth funding to reviewing a model before it carries a real decision.</p>
           <h3>Formats</h3>
           <ul>
@@ -1090,12 +1045,15 @@ def build_consult():
             <li><strong>Model or metric review.</strong> About one week. I read the code, data, and evaluation, and tell you where it breaks.</li>
             <li><strong>Hands-on build.</strong> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</li>
           </ul>
-          <h3>Examples</h3>
+          <h3>Through Hot Metal Data</h3>
           <ul>
-            <li>At UPMC, as founding data scientist on a joint venture with IBM Watson Health, a model that predicts drug price spikes and shortages for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. It became CognitiveRx, which Premier acquired.</li>
-            <li>At Duolingo, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
             <li>A recommendation engine for healthcare specialist referrals, built for a healthcare client.</li>
-            <li>At gAIm Systems, AI tools that help sports organizations recruit, develop, and assemble players.</li>
+          </ul>
+          <h3>In industry roles</h3>
+          <ul>
+            <li>At UPMC's Pensiamo, as founding data scientist on a joint venture with IBM Watson Health, I did the machine learning research and built the production pipelines for CognitiveRx, a drug price and shortage tool for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. Premier later acquired it.</li>
+            <li>At Duolingo, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
+            <li>At gAIm Systems, AI tools and research studies that help sports teams recruit players, develop them, and build rosters.</li>
           </ul>
         </section>
       </div>
@@ -1104,8 +1062,19 @@ def build_consult():
 
       <div class="book-row">
         <a class="btn primary" href="../book/">Book time</a>
-        <span class="muted">Start with a free 15-minute chat.</span>
+        <span class="muted">Most engagements start with a free 15-minute call.</span>
       </div>
+
+      <h2 id="background">Background</h2>
+      <ol class="timeline">
+        <li><span>2025 to now</span><strong>gAIm Systems</strong> Senior Director of AI and Data Science</li>
+        <li><span>2023 to now</span><strong>Tepper School of Business, Carnegie Mellon</strong> Assistant Teaching Professor of Business Analytics, after starting as an adjunct in Fall 2023</li>
+        <li><span>2020 to 2023</span><strong>Duolingo</strong> Senior, lead, then staff data scientist, on monetization</li>
+        <li><span>2018 to now</span><strong>Hot Metal Data</strong> Founder. Analytics consulting and corporate training, alongside everything else</li>
+        <li><span>2016 to 2020</span><strong>UPMC's Pensiamo</strong> Data scientist, then Senior Director of Data Science</li>
+        <li><span>2012 to 2016</span><strong>Carnegie Mellon University in Qatar</strong> Assistant Teaching Professor of Organizational Behavior, and co-director of executive education</li>
+      </ol>
+      <p><a href="../cv/">Full CV</a></p>
 """
     write(
         "consult/index.html",
@@ -1124,14 +1093,14 @@ def build_book():
     body = f"""
       <p class="kicker">Book time</p>
       <h1>Book a call</h1>
-      <p class="lede">Start with a free intro chat, or book a working hour on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.</p>
+      <p class="lede">Start with a free intro call, or book a working hour on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.</p>
 
       <div class="offers">
         <section class="offer">
           <p class="offer-meta">15 minutes · online · free</p>
-          <h2>Intro chat</h2>
+          <h2>Intro call</h2>
           <p>A short call to see whether I can help. Tell me what you are working on, and I will tell you plainly whether it is a fit and what a sensible first step would be.</p>
-          {book_link("freeChat", "Book a free chat", "../")}
+          {book_link("freeChat", "Book a free 15-minute call", "../")}
         </section>
         <section class="offer">
           <p class="offer-meta">60 minutes · online · {HOURLY_RATE}</p>
@@ -1148,9 +1117,9 @@ def build_book():
 
       <h2>Which option fits</h2>
       <ul class="prose-width">
-        <li><strong>Not sure yet?</strong> Start with the intro chat. It is free, and most people leave it knowing whether they need anything more.</li>
+        <li><strong>Not sure yet?</strong> Start with the intro call. It is free, and by the end you will know whether you need anything more.</li>
         <li><strong>One specific decision or blocker?</strong> A consulting hour is usually enough.</li>
-        <li><strong>Training for a team, or a project that needs weeks?</strong> Book the intro chat and we will scope <a href="../consult/#education">custom education</a> or <a href="../consult/#ai-data">AI and data consulting</a>.</li>
+        <li><strong>Training for a team, or a project that needs weeks?</strong> Book the intro call and we will scope <a href="../consult/#education">custom education</a> or <a href="../consult/#ai-data">AI and data consulting</a>.</li>
       </ul>
 
       <p class="prose-width">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>
@@ -1169,11 +1138,11 @@ def build_book():
 
 def build_news():
     body = f"""
-      <p class="kicker">Log</p>
+      <p class="kicker">Teaching and practice</p>
       <h1>News</h1>
       <p class="lede">A dated log of teaching, advising, and practice.</p>
       {news_items()}
-      <h2>LinkedIn</h2>
+      <h2>On LinkedIn</h2>
       <ol class="feed" id="linkedin-all"></ol>
 """
     write(
@@ -1191,15 +1160,13 @@ def build_news():
 
 def build_contact():
     body = f"""
-      <p class="kicker">Office</p>
       <h1>Contact</h1>
       <p class="lede">Email is the most reliable way to reach me. Students, please put the course number in the subject line.</p>
       <ul class="contact-list">
         <li><span>CMU email</span><div><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></div></li>
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
-        <li><span>Site</span><div><a href="../">{DOMAIN_LABEL}</a></div></li>
-        <li><span>Office</span><div>Tepper School of Business<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
-        <li><span>Consulting</span><div>{book_link("freeChat", "Book a free 15-minute chat", "../", "")} · <a href="../consult/">Consulting and custom education</a></div></li>
+{'        <li><span>Site</span><div><a href="../">' + DOMAIN_LABEL + '</a></div></li>' + chr(10) if SITE.get("domain_live") else ""}        <li><span>Office</span><div>Tepper School of Business<br>Carnegie Mellon University<br>5000 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
+        <li><span>Consulting</span><div>{book_call("../", "")} · <a href="../consult/">Consulting and custom education</a></div></li>
         <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@andrew.cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
@@ -1234,7 +1201,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "cv/", "news/", "contact/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -1304,7 +1271,6 @@ def main():
     build_course_pages()
     build_cv()
     build_portfolio(portfolio)
-    build_teaching()
     build_practice()
     build_consult()
     build_book()

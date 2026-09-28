@@ -78,7 +78,7 @@ ORCID: 0000-0002-4651-7684
 
 - Advisor, two MSBA capstone teams, both partnering with Westinghouse, Spring 2026
 - Advisor, five MSBA capstone teams (20 students) partnering with Saratoga, RBC, Swank, Confirmed, and a large consulting firm, Spring 2025
-- Technical advisor for several MSBA capstone teams and advisor to one team, Spring 2024
+- Advisor, three MSBA capstone teams partnering with Tindoori Labs, Marinus Analytics, and 412 Food Rescue, Spring 2024
 - MSBA Independent Study supervisor
 - Faculty advisor for undergraduate independent studies in Organizational Behavior, Carnegie Mellon University in Qatar: *Qatari Females in Leadership: Examining Motivation and Social Capital Influences* (Fall 2012); *Social Media Marketing: Theory and Evidence from Olympic Bid Campaigns* (Fall 2012); *A Cultural Analysis of Leadership and Influence: A Qualitative Comparison of Western and Middle Eastern Leadership Approaches* (Spring 2013); *Designing Leadership Development Programs for Women in the Gulf* (Spring 2014)
 - Co-advisor, undergraduate senior thesis *Social Networks and Promotion in Online Environments*, with Robert Kraut, Spring 2010
@@ -116,9 +116,9 @@ ORCID: 0000-0002-4651-7684
 
 ## Industry experience
 
-- **Senior Director of AI and Data Science**, gAIm Systems, May 2025–present. Builds AI tools and research studies that help sports teams reimagine how they recruit and develop players, predict potential, and build teams.
-- **Founder and Principal Data Scientist**, Hot Metal AI (Hot Metal Data), Oct 2018–present. Analytics consulting and corporate training. Taught on-site and hybrid professional development courses for technology leaders and executives at Optum, AT&T, Cox Communications, and RapidScale. Ran one- to three-day workshops on chatbot development, data programming, SQL and NoSQL, data mining, infrastructure and the cloud, and agile development. Built a recommendation engine for healthcare specialist referrals for a healthcare client.
-- **Staff Data Scientist**, Duolingo, Feb 2020–Jun 2023. Senior Data Scientist (Feb 2020–Sep 2021), Lead Data Scientist (Sep 2021–Oct 2022), Staff Data Scientist (Oct 2022–Jun 2023). Led the monetization data science team: financial forecasting, user retention prediction, ad platform optimization, and the key performance metrics for the 2021 initial public offering. Recruited, trained, and managed data scientists as the team grew from three to fifteen. Designed and analyzed large-scale A/B tests across more than 70 million users. Presented findings and recommendations to the CEO and executive team that shaped the product roadmap.
+- **Senior Director of AI and Data Science**, gAIm Systems, May 2025–present. Builds AI tools and research studies that help sports teams recruit players, develop them, and build rosters.
+- **Founder and Principal Data Scientist**, Hot Metal Data (listed in some directories as Hot Metal AI), Oct 2018–present. Analytics consulting and corporate training. Taught on-site and hybrid professional development courses for technology leaders and executives at Optum, AT&T, Cox Communications, and RapidScale. Ran one- to three-day workshops on chatbot development, data programming, SQL and NoSQL, data mining, infrastructure and the cloud, and agile development. Built a recommendation engine for healthcare specialist referrals for a healthcare client.
+- **Staff Data Scientist**, Duolingo, Feb 2020–Jun 2023. Senior Data Scientist (Feb 2020–Sep 2021), Lead Data Scientist (Sep 2021–Oct 2022), Staff Data Scientist (Oct 2022–Jun 2023). Lead, then staff, data scientist on monetization: financial forecasting, user retention prediction, ad platform optimization, and the key performance metrics for the 2021 initial public offering. Helped hire and train data scientists as the team grew from three to fifteen. Designed and analyzed large-scale A/B tests across more than 70 million users. Presented A/B test results to the CEO and executive team.
 - **Senior Director of Data Science**, UPMC / Pensiamo, Sep 2017–Feb 2020; Data Scientist, Sep 2016–Sep 2017. Founding data scientist for a joint venture with IBM Watson Health applying AI to the healthcare supply chain. Conducted machine learning research and built production pipelines for CognitiveRx, a drug price prediction and drug shortage tool later acquired by Premier. Hired and managed a team of PhD-level healthcare data scientists. Designed data pipelines and analytic tools for managing a $1.2 billion fleet of 175,000 medical devices across the UPMC system. Built the Databricks infrastructure for large-scale aggregation, cleaning, and machine learning in Python and Spark.
 
 ### Earlier research and industry roles
@@ -206,7 +206,7 @@ ORCID: 0000-0002-4651-7684
 
 ## Links
 
-- Site: https://ben.collier.phd
+- Site: https://collier.phd
 - CMU Scholars: https://scholars.cmu.edu/473-ben-collier
 - Google Scholar: https://scholar.google.com/citations?user=xaB1sR0AAAAJ
 - LinkedIn: https://www.linkedin.com/in/bcollierphd
