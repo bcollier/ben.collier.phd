@@ -27,6 +27,7 @@ BUILT = date.today().isoformat()
 COURSES = [
     {
         "slug": "70-445",
+        "hero": "agents",
         "number": "70-445",
         "title": "Artificial Intelligence for Business Leaders",
         "program": "Undergraduate",
@@ -34,12 +35,41 @@ COURSES = [
         "built": True,
         "color": "c-navy",
         "one_liner": "Where AI creates value in a business, where it does not, and how to explain the difference to the people paying for it.",
-        "blurb": "An undergraduate course on how AI is changing organizations and the decisions managers make. The first half covers how machine learning, neural networks, and large language models work, along with the data, chips, and compute costs underneath them. The second half looks at AI in marketing, sales, finance, operations, people analytics, and strategy, and at the ethics, governance, and regulation that decide whether adoption lasts. Most class time is active: exercises, short cases, memos written for executives, and student briefings on current AI news. The semester project has three tracks. Teams can act as an AI investment committee for a real public company, build and red-team an AI agent, or try to earn $100 with a business that uses AI.",
-        "offerings": ["Developed for Fall 2026", "Fall 2026"],
+        "blurb": "An undergraduate course on how AI is changing organizations and the decisions managers make. The first part covers how AI works, from expert systems to machine learning, neural networks, and large language models. The second part puts students to work with AI agents on business problems. The third looks at AI in marketing, finance, people analytics, operations, and strategy, and at the ethics, economics, and regulation that decide whether adoption lasts. The semester project has three tracks. Teams can act as an AI investment committee for a real public company, build and red-team an AI agent, or try to earn $100 with a business that uses AI.",
+        "offerings": [
+            "Designed February to August 2026",
+            "Fall 2026",
+        ],
         "materials": "There is no required textbook. Enrolled students find the materials on Canvas.",
+        "history": [
+            "I started designing this course in February 2026 and taught it for the first time on August 25, 2026. It is open to undergraduates with no prerequisites. About forty students enrolled in the first section, and several had already used AI at work during a summer internship.",
+            "My first plan spent several weeks on the history and hardware of AI and saved agents for the end of the term. Before the term began I moved agents up to week five, and they have become the thread that runs through the rest of the course. I am rebuilding the later weeks around one pattern: choose a use case, build it, deploy it, then try to break it.",
+        ],
+        "topics": [
+            "What AI is, and why now",
+            "A short history of AI",
+            "Rules, search, and expert systems",
+            "The five tribes of machine learning",
+            "Machine learning fundamentals",
+            "Neural networks and deep learning",
+            "How large language models work",
+            "Agentic AI and AI workflows, with a lab building a multi-agent customer support system",
+            "Software development with AI assistance",
+            "AI in marketing, finance, people analytics, and operations",
+            "Bias and fairness",
+            "The economics of AI, and AI strategy",
+            "Governance, risk, and regulation",
+        ],
+        "story": [
+            "Business students build and ship real software. In the agents lab, students assembled a customer support team of AI agents for a fictional outdoor retailer, a manager and three specialists, then ran an evaluation set against it to find where it failed. The later weeks follow one pattern: choose a use case, build it, deploy it to a live URL, then try to break it.",
+            "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. An eight-year-old hand-written solver scored 34 of 96 on Raven's Matrices. The language model solver scored about 86, and claimed 99% confidence on every answer.",
+            "Students learn to say where AI creates value in terms a board would accept. A fraud vendor with a 99% accurate model can still lose its client money, and students work out when and why."
+        ],
+        "projects": {"intro": "The first final projects are due in December 2026, in three tracks: an AI investment committee for a real public company, building and breaking an AI agent, and trying to make $100 with an AI-enabled business. Revenue is not the grade. A team that earns nothing and can explain exactly why will outscore a team that earns $200 without insight.", "types": []},
     },
     {
         "slug": "45-884",
+        "hero": "vit",
         "number": "45-884",
         "title": "AI Methods for Social and Visual Data",
         "program": "MBA",
@@ -53,11 +83,32 @@ COURSES = [
             "Fall 2025 full-time",
             "Fall 2025 online hybrid",
             "Summer 2026",
+            "Fall 2026",
         ],
         "materials": "I post notebooks and workshop notes on the materials page as they become public.",
+        "history": [
+            "I began building this course in December 2024 and first taught it in Fall 2025 to MBA and other master's students. It covers the data most business analytics courses skip: text, images, and the output of language models.",
+            "For Summer 2026 I rebuilt it for a part-time format, with one live session a week and a set of hands-on videos I recorded for each module. They run from a first Python lesson through retrieval over company filings, computer vision, and agent workflows. For Fall 2026 I moved agentic AI earlier in the term, and students now get a summary and a cleaned transcript after each class.",
+        ],
+        "topics": [
+            "AI models and unstructured data: Python, JSON, calling a model's API, and prompt engineering",
+            "Natural language processing fundamentals",
+            "Text mining for business insight, with retrieval over company filings and vector databases",
+            "Computer vision fundamentals: object detection with YOLO, ResNet, and vision transformers",
+            "Mining visual data, with a case comparing Tesla Vision and Waymo's sensor fusion",
+            "Agentic AI and AI workflows, including building a first agent in n8n",
+            "Emerging tools: evaluations, LLM-as-judge, and MCP",
+        ],
+        "story": [
+            "There are no prerequisites and no model training. Students use foundation models from OpenAI, Anthropic, Google, and Meta on text, images, and agent workflows, and the course teaches the Python, JSON, and API calls they need along the way.",
+            "Every lab compares models. Students classify product reviews with three models and weigh cost against accuracy, chain two agents that score semiconductor companies' risk from their filings, and in the computer vision class send one photograph through three generations of vision: YOLO boxes, ResNet labels, then a multimodal model that returns a shelf-restocking report as JSON.",
+            "Each class opens with AI Methods in the News, a student briefing on a product or a debate from the last six months. In Fall 2025 the agents module closed with Prasad Chalasani, co-founder of the Langroid agent framework."
+        ],
+        "projects": {"intro": "Final projects start from a real business question. Students show how their prompts changed and compare models before settling on one. In Summer 2026, seven of the nineteen projects were built with real companies or organizations, and three are already in use. These are the kinds of projects from Fall 2025 and Summer 2026.", "types": [["Social listening and sentiment", 7, "Reddit sentiment through an aircraft maker's safety crisis, set against its stock price"], ["Finance and investing", 5, "An autonomous equity analyst triggered from a watchlist"], ["Career, hiring, and advising agents", 4, "A five-agent job-fit scorer with a skeptical hiring-manager critic"], ["Agentic workflow automation", 3, "Automating client outreach for a real-estate agent in n8n"], ["AI governance and ethics", 3, "Human oversight of AI in intelligence analysis"], ["Document and transcript extraction", 2, "Turning sales-call transcripts into buyer intelligence"], ["Computer vision in the field", 1, "An offline tool that helps bomb-disposal teams identify ordnance"], ["Mergers and corporate culture", 1, "Predicting merger success from culture fit in annual reports"]]},
     },
     {
         "slug": "70-377",
+        "hero": "teams",
         "number": "70-377",
         "title": "Managing and Assessing Tech Talent and Organizations",
         "program": "Undergraduate",
@@ -66,11 +117,31 @@ COURSES = [
         "color": "c-wine",
         "one_liner": "How to hire, develop, and evaluate technical people using evidence instead of instinct.",
         "blurb": "A micro-course I developed on managing technical talent: how to assess skill, how to design the work, and how to build teams that deliver. I wrote it for undergraduates, and it ran for the first time at CMU Qatar in Fall 2025.",
-        "offerings": ["Developed October 2025", "Fall 2025 CMU Qatar"],
+        "offerings": [
+            "Proposed February 2025",
+            "Fall 2025, CMU Qatar",
+        ],
         "materials": "The course outline is available to enrolled students. Public excerpts will go on the materials page.",
+        "history": [
+            "I proposed this micro-course to Carnegie Mellon in Qatar in February 2025 and taught it in Fall 2025. Most sessions met on Zoom in the evening, Doha time, and the middle block met in person in Doha over three days. It was open to technical and business students with no prerequisites.",
+        ],
+        "topics": [
+            "Interviewing for software development roles, including AI-driven assessment",
+            "Interviewing for data and quantitative roles",
+            "Case and behavioral interviews",
+            "Onboarding technical talent: the first ninety days",
+            "Running technical projects and leading an effective team",
+            "Project management with work breakdown structures and OKRs",
+            "Managing performance, promotion, and termination",
+        ],
+        "story": [
+            "Students sit on both sides of the interview table. In live mock interviews on Zoom they rotate through interviewer, candidate, and observer, using the formats large tech companies use: live coding, data take-homes, case interviews, and behavioral interviews. Candidates may solve the coding problems in a spreadsheet, so business students take part alongside computer science students.",
+            "The in-person week in Doha turned to teams and culture. Groups allocated a $120 million fund across twenty proposals, analyzed a Harvard case on a global team at Sun Microsystems, and rescued a failing mobile banking project by cutting its scope and writing recovery OKRs."
+        ],
     },
     {
         "slug": "msba-math-skills-workshop",
+        "hero": "descent",
         "number": "",
         "label": "MSBA",
         "title": "MSBA Math Skills Workshop",
@@ -80,11 +151,30 @@ COURSES = [
         "color": "c-clay",
         "one_liner": "The math incoming MSBA students need before the quantitative core begins.",
         "blurb": "A workshop I developed for incoming MSBA students in Summer 2026. The goal is for students to start the program's quantitative courses with the mathematics already in place, so they are not learning it at the same time as the statistics.",
-        "offerings": ["Developed for Summer 2026"],
+        "offerings": [
+            "Built December 2025 to August 2026",
+            "Summer 2026",
+        ],
         "materials": "I will post the workshop notes once they are ready for reuse.",
+        "history": [
+            "A self-paced online course for incoming MSBA students, built with Tepper's learning technologies team between December 2025 and August 2026. I recorded every lesson, about thirty short videos across six modules, each pairing slides with worked problems written out by hand.",
+        ],
+        "topics": [
+            "Algebra fundamentals and functions",
+            "Calculus for analytics: derivatives, optimization, and gradient descent",
+            "Linear algebra for data analytics: matrices, eigenvalues, least squares, PCA, and PageRank",
+            "Descriptive statistics",
+            "Probability foundations",
+            "Statistical inference: sampling distributions, confidence intervals, and hypothesis tests",
+        ],
+        "story": [
+            "The math every later course assumes, framed the way analysts will use it. Calculus ends with gradient descent and the sigmoid. Linear algebra ends with the normal equations, PCA, and PageRank. Probability works through a fraud alert that is 99% sensitive and still right only 9% of the time at a 0.5% base rate.",
+            "I wrote the scope and sequence with the MSBA core faculty, working backward from what their courses need, and recorded every lesson in the studio, writing each problem out by hand. Before recording, every equation was checked symbolically."
+        ],
     },
     {
         "slug": "45-851",
+        "hero": "kmeans",
         "number": "45-851",
         "title": "Data Mining",
         "program": "MBA",
@@ -94,16 +184,38 @@ COURSES = [
         "one_liner": "Finding structure in messy business data, then deciding whether to trust it.",
         "blurb": "The MBA data mining course. It covers clustering, classification, and model evaluation, and it keeps asking what each model is for. Labs are in Python. The goal is not a long list of algorithms. It is a workflow students can apply to an unfamiliar dataset the week after the course ends.",
         "offerings": [
-            "Fall 2023",
+            "Fall 2023 full-time",
+            "Spring 2024 online hybrid",
             "Fall 2024 full-time",
-            "Spring 2024",
             "Spring 2025 online hybrid",
-            "Fall 2025",
+            "Fall 2025 full-time",
+            "Fall 2025 online hybrid",
         ],
         "materials": "Public notebooks and video walkthroughs are collected on the materials page.",
+        "history": [
+            "I first taught Data Mining in Fall 2023, as an adjunct, to full-time MBA students. I taught it every fall and spring through Fall 2025, in both the full-time and the online hybrid programs.",
+            "The first version was in R. For the Spring 2024 online hybrid section I scripted and recorded a video module for each topic. In Fall 2024 I moved the whole course to Python and then re-recorded the videos, and Fall 2025 added principal component analysis. The course is organized around the questions data mining answers in a business: which customers are alike, what something is worth, which class a case falls into, what happens next, and what a pile of text says.",
+        ],
+        "topics": [
+            "Data exploration and visualization in Python",
+            "Clustering, with a lab",
+            "Principal component analysis",
+            "Regression, with a lab",
+            "Classification, with a lab",
+            "Forecasting with time series data",
+            "Natural language processing, with a lab",
+            "Neural networks and large language models",
+        ],
+        "story": [
+            "The course is organized around business questions, not algorithms. Each module opens with one a manager would ask: which customers look alike, what a house will sell for, who is about to leave, what customers are saying in their reviews. The first class is a case from my own work, predicting drug price spikes for a 40-hospital health system that buys $1.5 billion of pharmaceuticals a year, followed from the business question to a commercial product.",
+            "Students work the way analysts work now. Labs are in Python in Colab, generative AI is allowed, and teams hand in their AI chat transcripts with the work. The classification project is a prediction competition: every team scores a holdout file, I grade the predictions against the true labels, and the top fifth earn extra credit.",
+            "What students take away is a workflow for an unfamiliar dataset: explore it, choose a method, decide whether to trust the result, and explain it to someone who does not care about the method."
+        ],
+        "projects": {"intro": "In the final project, teams bring their own business question and data, often from their own employer, and answer it with a method from the course. These are the most common kinds among the projects from Spring 2024, Fall 2024, and Spring 2025.", "types": [["Finance, markets, and credit risk", 6, "Do a CEO's posts move an electric carmaker's stock price?"], ["Sports analytics", 5, "Predicting baseball Hall of Fame induction from career statistics"], ["Healthcare and wellbeing", 5, "Does wearing a fitness tracker go with better health?"], ["Customer segmentation and retail", 4, "Segmenting 85 grocery stores by their department sales mix"], ["Transportation and mobility", 4, "Where should Pennsylvania put new EV chargers?"], ["Churn, retention, and satisfaction", 3, "Predicting and segmenting airline passenger satisfaction"], ["Real estate and places", 3, "What drives Airbnb nightly prices in New York?"], ["Economic forecasting", 2, "Forecasting US retail sales with Prophet"], ["Media and entertainment", 2, "What predicts a song's stream count?"]]},
     },
     {
         "slug": "45-885",
+        "hero": "charts",
         "number": "45-885",
         "title": "Data Visualization",
         "program": "MBA",
@@ -113,16 +225,37 @@ COURSES = [
         "one_liner": "Charts and dashboards designed to change a decision.",
         "blurb": "Visualization as a tool for making decisions. Students design charts and dashboards for executive audiences, and they learn enough about perception and statistics to spot a graphic that misleads.",
         "offerings": [
-            "Spring 2024",
+            "Spring 2024 evening",
             "Spring 2025 full-time",
             "Spring 2025 online hybrid",
-            "Fall 2025",
-            "Spring 2026",
+            "Fall 2025 full-time",
+            "Spring 2026 full-time",
+            "Spring 2026 online hybrid",
         ],
-        "materials": "Worked examples, chart redesigns, and paired Tableau and Python versions are on the materials page.",
+        "materials": "Worked examples and chart redesigns are on the materials page.",
+        "history": [
+            "I took over Data Visualization in Spring 2024 with an evening section. At the time the course mixed Tableau with R and ggplot2. Since Spring 2025 it has been a Tableau course that needs no programming, and for the online hybrid students I recorded a library of about fifty short screencast lessons.",
+            "In Fall 2025 I split each week into a lecture and a lab and gave visual design, typography, and color sessions of their own. The final project is a recorded data story of five to seven minutes.",
+        ],
+        "topics": [
+            "Design of visual information, and Tableau fundamentals",
+            "Principles of visual design, and storytelling with data",
+            "Typography, color, and calculations in Tableau",
+            "Visualizing spatial data",
+            "Dashboards and interactive displays",
+            "Clustering and social network graphs",
+            "Explainable AI, data preparation, and animation",
+        ],
+        "story": [
+            "No programming is required. Students start as Tableau beginners and finish with calculated fields, parameters, maps, interactive dashboards, and animation. Along the way they rebuild Hans Rosling's Gapminder bubble chart from raw World Bank tables.",
+            "Every class opens with a team critiquing a data story published in the last six months, in the Financial Times, the Wall Street Journal, The Economist, or ProPublica, and remaking two or three of its charts. Before presenting, teams test their redesign with an AI Data Visualization Coach, a custom GPT I built with my colleague Zoey Jiang. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.",
+            "Most visualization courses stop at dashboards. This one keeps going into clustering, network graphs, and explainable AI, because that is where analysts now have to show their work."
+        ],
+        "projects": {"intro": "The final project is a Tableau workbook with an interactive dashboard and a recorded video that tells its story. Students choose their own question or one of two public datasets. These are the kinds of projects from Spring 2024 and Spring 2025.", "types": [["Netflix content strategy", 10, "Where Netflix's catalog grew, country by country"], ["Public sector, policy, and society", 10, "Neighborhood income change by zip code in a US metro"], ["Economics, labor, and prices", 5, "Why eggs got expensive: 50 years of food prices"], ["Business performance dashboards", 5, "Does discounting drive profit? An executive retail dashboard"], ["Media and the creator economy", 4, "What drives YouTube creator revenue?"], ["Climate and environment", 4, "25 years of warming, city by city"], ["Sports", 2, "Does payroll buy wins in baseball?"], ["Consumer products", 2, "Do electric cars deliver their certified range?"]]},
     },
     {
         "slug": "46-885",
+        "hero": "brush",
         "number": "46-885",
         "title": "Data Exploration and Visualization",
         "program": "MSBA",
@@ -133,9 +266,25 @@ COURSES = [
         "blurb": "The MSBA counterpart to the visualization course. It covers exploratory analysis, chart design, dashboards, and how to present a finding so that someone can use it.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
         "materials": "Notebooks I share outside Canvas are on the materials page.",
+        "history": [
+            "The MSBA version of the visualization course. I first taught it in Spring 2025 and again in Spring 2026, with one session a week. It follows the same seven modules as the MBA course, all in Tableau, and ends with the same recorded data story.",
+        ],
+        "topics": [
+            "Design of visual information, and Tableau fundamentals",
+            "Storytelling with data",
+            "Calculations, parameters, and trends in Tableau",
+            "Visualizing spatial data",
+            "Dashboards and interactive displays",
+            "Clustering and social network graphs",
+            "Explainable AI and visualization for machine learning",
+        ],
+        "story": [
+            "The MSBA section of the visualization course, taught in Tableau with the same labs, the same weekly data stories, and the same AI coach. It ends on explainable AI and visualization for machine learning, which is where analytics students will need charts most."
+        ],
     },
     {
         "slug": "46-880",
+        "hero": "galton",
         "number": "46-880",
         "title": "Introduction to Probability and Statistics",
         "program": "MSBA",
@@ -146,9 +295,26 @@ COURSES = [
         "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning.",
         "offerings": ["Fall 2024 full-time"],
         "materials": "Public excerpts will go on the materials page once they are cleared.",
+        "history": [
+            "I taught the MSBA's first-term statistics course in Fall 2024, in two morning sections. I reworked the slide decks I inherited and used Excel and Python alongside the textbook, so that every idea had both a formula and a working example.",
+        ],
+        "topics": [
+            "Probability and Bayes' theorem",
+            "Discrete and continuous random variables and their distributions",
+            "The normal distribution and joint distributions",
+            "Sampling and the central limit theorem",
+            "Interval estimation",
+            "Hypothesis testing",
+            "Regression, and inference with regression",
+        ],
+        "story": [
+            "Every distribution is taught twice, once with its Excel formula and once with its Python call, and nearly every example is a business decision: overbooking a flight, a cosmetics launch whose chance of success moves from 30% to 60% after a market test, tea bottles that must hold 750 ml. Sessions open with a puzzle or a question from quant interviews.",
+            "Halfway through the mini I changed the pace: more worked examples in class, practice sets with solutions, a short written summary of each module, and walkthrough videos for the hardest problems."
+        ],
     },
     {
         "slug": "46-887",
+        "hero": "pipeline",
         "number": "46-887",
         "title": "Machine Learning for Business Applications",
         "program": "MSBA",
@@ -159,9 +325,27 @@ COURSES = [
         "blurb": "Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.",
         "offerings": ["Spring 2026"],
         "materials": "Lab notebooks will go on the materials page once they are cleared for public use.",
+        "history": [
+            "I redesigned this MSBA course for Spring 2026 around a question that is easy to leave for later: how a model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.",
+        ],
+        "topics": [
+            "From machine learning models to AI systems",
+            "Integrating models into business services, with a cloud setup lab",
+            "Evaluating, testing, and monitoring machine learning systems",
+            "Natural language processing and large language models",
+            "Imbalanced classification and anomaly detection",
+            "Time series forecasting, with a cloud-connected Tableau dashboard",
+            "Reinforcement learning",
+        ],
+        "story": [
+            "The course takes models out of the notebook and into production. Students put data in S3, score it with Lambda and SageMaker, write predictions to a database they provision themselves on RDS, and read them live in Tableau or Streamlit.",
+            "It is honest about accuracy. The fraud lab starts from a model that is 99.9% accurate because it never flags fraud, then works through class weights, SMOTE, and isolation forests on a precision-recall leaderboard. In ML Project Triage, teams sit on an insurer's strategy board with money for two of six proposals, among them a drone moonshot with no data and a pricing engine that would be illegal in most states.",
+            "The team project is a working proof of concept: a model, a cloud database of its predictions, and a dashboard, shown in a live demo."
+        ],
     },
     {
         "slug": "90-803",
+        "hero": "network",
         "number": "90-803",
         "title": "Machine Learning Foundations with Python",
         "program": "Public Policy & Management",
@@ -172,6 +356,24 @@ COURSES = [
         "blurb": "A twelve-unit course at Heinz College that teaches machine learning with Python to students who will apply it to public policy and management problems.",
         "offerings": ["Spring 2026 full-time"],
         "materials": "Heinz students get the full materials on Canvas. Public excerpts will go on the materials page.",
+        "history": [
+            "I took over this Heinz College course in Spring 2026 and rebuilt it as fourteen modules, each pairing a lecture with a lab. It runs from clustering and regression through A/B testing to language models and computer vision. It ends with a teaching case I wrote comparing Tesla's camera-only approach to self-driving with Waymo's sensor fusion.",
+        ],
+        "topics": [
+            "Machine learning and analytics in organizations",
+            "Clustering, factor reduction, and feature engineering",
+            "Regression and classification",
+            "Model evaluation and hyperparameter tuning",
+            "Forecasting with time series data",
+            "A/B testing and multi-armed bandits",
+            "Natural language processing and neural networks",
+            "Large language models, and text mining with them",
+            "Computer vision, and the Tesla Vision vs. Waymo case",
+        ],
+        "story": [
+            "Every method is framed as a policy question: which households in a broadband subsidy program are about to drop out, how to route thousands of student loan complaints, whether a language model and a person agree on how serious a complaint is. In the language model project, students have a model sort complaints into six policy categories and measure its agreement with other models using Cohen's kappa.",
+            "I replaced the single end-of-term project with four applied projects spread across the semester, in clustering, classification, language models, and computer vision, plus a midterm project for a public agency or nonprofit. A CMU alum working as a product data scientist gave a guest lecture on machine learning for product decisions."
+        ],
     },
 ]
 
@@ -189,6 +391,20 @@ NEWS = [
     ("2024-06", "Taught in the Business Analytics Summer Summit."),
     ("2024-01", "Advised four MSBA capstone projects."),
 ]
+
+
+HERO_ALT = {
+    "kmeans": "Animation: k-means clustering moves four centroids until the clusters settle",
+    "vit": "Animation: an image split into patches passes up a transformer stack and becomes a caption",
+    "agents": "Animation: an orchestrator agent sends work to research, CRM, email, evaluation, and code tools in turn",
+    "charts": "Animation: one dataset changes from a bar chart to a scatter plot to a slope graph",
+    "brush": "Animation: brushing points in a scatter plot highlights the same records in a histogram",
+    "galton": "Animation: balls fall through a Galton board and the bins build a normal curve",
+    "pipeline": "Animation: data flows from storage through training to a model API and a dashboard",
+    "network": "Animation: a signal passes forward through the layers of a neural network",
+    "descent": "Animation: gradient descent steps down a loss surface toward the minimum",
+    "teams": "Animation: scattered people come together into four teams",
+}
 
 
 def load_json(name: str):
@@ -333,6 +549,7 @@ def footer(root: str) -> str:
   </div>
   <script src="{root}js/config.js"></script>
   <script src="{root}js/site.js"></script>
+  <script src="{root}js/course-hero.js" defer></script>
 </body>
 </html>
 """
@@ -362,7 +579,7 @@ def course_name(c) -> str:
 def course_card(c, root):
     built = '<span class="badge built">Built</span>' if c["built"] else ""
     return f"""<a class="card" href="{root}courses/{c['slug']}/">
-  <div class="thumb {c['color']}"><span>{course_label(c)}</span></div>
+  <div class="thumb {c['color']}"><canvas data-hero="{c['hero']}" data-static aria-hidden="true"></canvas><span>{course_label(c)}</span></div>
   <div class="body">
     <div class="meta">{built}<span>{c['program']} · {c['school']}</span></div>
     <h3>{c['title']}</h3>
@@ -553,16 +770,37 @@ def build_courses_index():
 def build_course_pages():
     for c in COURSES:
         offerings = "".join(f"<li>{o}</li>" for o in c["offerings"])
+        history = ""
+        if c.get("history"):
+            paras = "".join(f"        <p>{p}</p>\n" for p in c["history"])
+            history = f"        <h2>How the course developed</h2>\n{paras}"
+        story = ""
+        if c.get("story"):
+            paras = "".join(f"        <p>{p}</p>\n" for p in c["story"])
+            story = f"        <h2>What makes this course different</h2>\n{paras}"
+        projects = ""
+        pj = c.get("projects")
+        if pj:
+            rows = "".join(
+                f'<li><strong>{t}</strong> <span class="count">{n} project{"s" if n != 1 else ""}</span><br><span class="example">{ex}</span></li>'
+                for t, n, ex in pj["types"]
+            )
+            lst = f'        <ul class="project-types">{rows}</ul>\n' if rows else ""
+            projects = f"        <h2>Final projects</h2>\n        <p>{pj['intro']}</p>\n{lst}"
+        topics = ""
+        if c.get("topics"):
+            items = "".join(f"<li>{t}</li>" for t in c["topics"])
+            topics = f"        <h2>Topics</h2>\n        <ol>{items}</ol>\n"
         built = '<span class="badge built">Course I built</span>' if c["built"] else ""
         body = f"""
       <article class="course-hero prose-width">
         <p class="kicker">{c['school']} · {c['program']}</p>
         <h1>{course_name(c)}</h1>
         <p>{built}</p>
-        <div class="thumb {c['color']}">{course_label(c)}</div>
+        <div class="thumb hero {c['color']}"><canvas data-hero="{c['hero']}" role="img" aria-label="{esc(HERO_ALT[c['hero']])}"></canvas><span>{course_label(c)}</span></div>
         <p class="lede">{c['one_liner']}</p>
         <p>{c['blurb']}</p>
-        <h2>Recent offerings</h2>
+{story}{history}{topics}{projects}        <h2>Offerings</h2>
         <ul>{offerings}</ul>
         <h2>Materials</h2>
         <p>{c['materials']} <a href="../../materials/">Teaching materials</a>.</p>
@@ -624,7 +862,7 @@ def build_materials():
       <h2>Notebooks</h2>
       <ul class="materials">
         <li><strong>Data mining labs.</strong> Python notebooks on clustering, classification, and evaluation.</li>
-        <li><strong>Visualization redesigns.</strong> Before-and-after chart critiques, each done in both Tableau and Python.</li>
+        <li><strong>Visualization redesigns.</strong> Before-and-after chart critiques in Tableau.</li>
         <li><strong>AI methods for social and visual data.</strong> Notebooks from the course I built, released as each offering settles.</li>
       </ul>
 
