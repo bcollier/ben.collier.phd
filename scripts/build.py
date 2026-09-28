@@ -891,11 +891,6 @@ def build_cv():
       <h1>CV</h1>
       <p class="lede">Appointments, teaching, courses built, advising, and practice.</p>
       <article class="cv">
-        <div class="cv-head">
-          <p><strong>Ben Collier</strong> · Assistant Teaching Professor of Business Analytics</p>
-          <p>Tepper School of Business, Carnegie Mellon University · also Heinz College</p>
-          <p><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a> · <a href="mailto:ben@collier.phd">ben@collier.phd</a> · <a href="{HOST}/">{DOMAIN_LABEL}</a></p>
-        </div>
         {md_to_html(md)}
       </article>
 """
