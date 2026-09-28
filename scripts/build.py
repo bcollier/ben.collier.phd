@@ -34,9 +34,31 @@ COURSES = [
         "built": True,
         "color": "c-navy",
         "one_liner": "Where AI creates value in a business, where it does not, and how to explain the difference to the people paying for it.",
-        "blurb": "An undergraduate course on how AI is changing organizations and the decisions managers make. The first half covers how machine learning, neural networks, and large language models work, along with the data, chips, and compute costs underneath them. The second half looks at AI in marketing, sales, finance, operations, people analytics, and strategy, and at the ethics, governance, and regulation that decide whether adoption lasts. Most class time is active: exercises, short cases, memos written for executives, and student briefings on current AI news. The semester project has three tracks. Teams can act as an AI investment committee for a real public company, build and red-team an AI agent, or try to earn $100 with a business that uses AI.",
-        "offerings": ["Developed for Fall 2026", "Fall 2026"],
+        "blurb": "An undergraduate course on how AI is changing organizations and the decisions managers make. The first part covers how AI works, from expert systems to machine learning, neural networks, and large language models. The second part puts students to work with AI agents on business problems. The third looks at AI in marketing, finance, people analytics, operations, and strategy, and at the ethics, economics, and regulation that decide whether adoption lasts. The semester project has three tracks. Teams can act as an AI investment committee for a real public company, build and red-team an AI agent, or try to earn $100 with a business that uses AI.",
+        "offerings": [
+            "Designed February to August 2026",
+            "Fall 2026",
+        ],
         "materials": "There is no required textbook. Enrolled students find the materials on Canvas.",
+        "history": [
+            "I started designing this course in February 2026 and taught it for the first time on August 25, 2026. It is open to undergraduates with no prerequisites. About forty students enrolled in the first section, and several had already used AI at work during a summer internship.",
+            "My first plan spent several weeks on the history and hardware of AI and saved agents for the end of the term. Before the term began I moved agents up to week five, and they have become the thread that runs through the rest of the course. I am rebuilding the later weeks around one pattern: choose a use case, build it, deploy it, then try to break it.",
+        ],
+        "topics": [
+            "What AI is, and why now",
+            "A short history of AI",
+            "Rules, search, and expert systems",
+            "The five tribes of machine learning",
+            "Machine learning fundamentals",
+            "Neural networks and deep learning",
+            "How large language models work",
+            "Agentic AI and AI workflows, with a lab building a multi-agent customer support system",
+            "Software development with AI assistance",
+            "AI in marketing, finance, people analytics, and operations",
+            "Bias and fairness",
+            "The economics of AI, and AI strategy",
+            "Governance, risk, and regulation",
+        ],
     },
     {
         "slug": "45-884",
@@ -53,8 +75,22 @@ COURSES = [
             "Fall 2025 full-time",
             "Fall 2025 online hybrid",
             "Summer 2026",
+            "Fall 2026",
         ],
         "materials": "I post notebooks and workshop notes on the materials page as they become public.",
+        "history": [
+            "I began building this course in December 2024 and first taught it in Fall 2025 to MBA and other master's students. It covers the data most business analytics courses skip: text, images, and the output of language models.",
+            "For Summer 2026 I rebuilt it for a part-time format, with one live session a week and a set of hands-on videos I recorded for each module. They run from a first Python lesson through retrieval over company filings, computer vision, and agent workflows. For Fall 2026 I moved agentic AI earlier in the term, and students now get a summary and a cleaned transcript after each class.",
+        ],
+        "topics": [
+            "AI models and unstructured data: Python, JSON, calling a model's API, and prompt engineering",
+            "Natural language processing fundamentals",
+            "Text mining for business insight, with retrieval over company filings and vector databases",
+            "Computer vision fundamentals: object detection with YOLO, ResNet, and vision transformers",
+            "Mining visual data, with a case comparing Tesla Vision and Waymo's sensor fusion",
+            "Agentic AI and AI workflows, including building a first agent in n8n",
+            "Emerging tools: evaluations, LLM-as-judge, and MCP",
+        ],
     },
     {
         "slug": "70-377",
@@ -66,8 +102,23 @@ COURSES = [
         "color": "c-wine",
         "one_liner": "How to hire, develop, and evaluate technical people using evidence instead of instinct.",
         "blurb": "A micro-course I developed on managing technical talent: how to assess skill, how to design the work, and how to build teams that deliver. I wrote it for undergraduates, and it ran for the first time at CMU Qatar in Fall 2025.",
-        "offerings": ["Developed October 2025", "Fall 2025 CMU Qatar"],
+        "offerings": [
+            "Proposed February 2025",
+            "Fall 2025, CMU Qatar",
+        ],
         "materials": "The course outline is available to enrolled students. Public excerpts will go on the materials page.",
+        "history": [
+            "I proposed this micro-course to Carnegie Mellon in Qatar in February 2025 and taught it in Fall 2025. Most sessions met on Zoom in the evening, Doha time, and the middle block met in person in Doha over three days. It was open to technical and business students with no prerequisites.",
+        ],
+        "topics": [
+            "Interviewing for software development roles, including AI-driven assessment",
+            "Interviewing for data and quantitative roles",
+            "Case and behavioral interviews",
+            "Onboarding technical talent: the first ninety days",
+            "Running technical projects and leading an effective team",
+            "Project management with work breakdown structures and OKRs",
+            "Managing performance, promotion, and termination",
+        ],
     },
     {
         "slug": "msba-math-skills-workshop",
@@ -80,8 +131,22 @@ COURSES = [
         "color": "c-clay",
         "one_liner": "The math incoming MSBA students need before the quantitative core begins.",
         "blurb": "A workshop I developed for incoming MSBA students in Summer 2026. The goal is for students to start the program's quantitative courses with the mathematics already in place, so they are not learning it at the same time as the statistics.",
-        "offerings": ["Developed for Summer 2026"],
+        "offerings": [
+            "Built December 2025 to August 2026",
+            "Summer 2026",
+        ],
         "materials": "I will post the workshop notes once they are ready for reuse.",
+        "history": [
+            "A self-paced online course for incoming MSBA students, built with Tepper's learning technologies team between December 2025 and August 2026. I recorded every lesson, about thirty short videos across six modules, each pairing slides with worked problems written out by hand.",
+        ],
+        "topics": [
+            "Algebra fundamentals and functions",
+            "Calculus for analytics: derivatives, optimization, and gradient descent",
+            "Linear algebra for data analytics: matrices, eigenvalues, least squares, PCA, and PageRank",
+            "Descriptive statistics",
+            "Probability foundations",
+            "Statistical inference: sampling distributions, confidence intervals, and hypothesis tests",
+        ],
     },
     {
         "slug": "45-851",
@@ -94,13 +159,28 @@ COURSES = [
         "one_liner": "Finding structure in messy business data, then deciding whether to trust it.",
         "blurb": "The MBA data mining course. It covers clustering, classification, and model evaluation, and it keeps asking what each model is for. Labs are in Python. The goal is not a long list of algorithms. It is a workflow students can apply to an unfamiliar dataset the week after the course ends.",
         "offerings": [
-            "Fall 2023",
+            "Fall 2023 full-time",
+            "Spring 2024 online hybrid",
             "Fall 2024 full-time",
-            "Spring 2024",
             "Spring 2025 online hybrid",
-            "Fall 2025",
+            "Fall 2025 full-time",
+            "Fall 2025 online hybrid",
         ],
         "materials": "Public notebooks and video walkthroughs are collected on the materials page.",
+        "history": [
+            "I first taught Data Mining in Fall 2023, as an adjunct, to full-time MBA students. I taught it every fall and spring through Fall 2025, in both the full-time and the online hybrid programs.",
+            "The first version was in R. For the Spring 2024 online hybrid section I scripted and recorded a video module for each topic. In Fall 2024 I moved the whole course to Python and then re-recorded the videos, and Fall 2025 added principal component analysis. The course is organized around the questions data mining answers in a business: which customers are alike, what something is worth, which class a case falls into, what happens next, and what a pile of text says.",
+        ],
+        "topics": [
+            "Data exploration and visualization in Python",
+            "Clustering, with a lab",
+            "Principal component analysis",
+            "Regression, with a lab",
+            "Classification, with a lab",
+            "Forecasting with time series data",
+            "Natural language processing, with a lab",
+            "Neural networks and large language models",
+        ],
     },
     {
         "slug": "45-885",
@@ -113,13 +193,27 @@ COURSES = [
         "one_liner": "Charts and dashboards designed to change a decision.",
         "blurb": "Visualization as a tool for making decisions. Students design charts and dashboards for executive audiences, and they learn enough about perception and statistics to spot a graphic that misleads.",
         "offerings": [
-            "Spring 2024",
+            "Spring 2024 evening",
             "Spring 2025 full-time",
             "Spring 2025 online hybrid",
-            "Fall 2025",
-            "Spring 2026",
+            "Fall 2025 full-time",
+            "Spring 2026 full-time",
+            "Spring 2026 online hybrid",
         ],
-        "materials": "Worked examples, chart redesigns, and paired Tableau and Python versions are on the materials page.",
+        "materials": "Worked examples and chart redesigns are on the materials page.",
+        "history": [
+            "I took over Data Visualization in Spring 2024 with an evening section. At the time the course mixed Tableau with R and ggplot2. Since Spring 2025 it has been a Tableau course that needs no programming, and for the online hybrid students I recorded a library of about fifty short screencast lessons.",
+            "In Fall 2025 I split each week into a lecture and a lab and gave visual design, typography, and color sessions of their own. The final project is a recorded data story of five to seven minutes.",
+        ],
+        "topics": [
+            "Design of visual information, and Tableau fundamentals",
+            "Principles of visual design, and storytelling with data",
+            "Typography, color, and calculations in Tableau",
+            "Visualizing spatial data",
+            "Dashboards and interactive displays",
+            "Clustering and social network graphs",
+            "Explainable AI, data preparation, and animation",
+        ],
     },
     {
         "slug": "46-885",
@@ -133,6 +227,18 @@ COURSES = [
         "blurb": "The MSBA counterpart to the visualization course. It covers exploratory analysis, chart design, dashboards, and how to present a finding so that someone can use it.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
         "materials": "Notebooks I share outside Canvas are on the materials page.",
+        "history": [
+            "The MSBA version of the visualization course. I first taught it in Spring 2025 and again in Spring 2026, with one session a week. It follows the same seven modules as the MBA course, all in Tableau, and ends with the same recorded data story.",
+        ],
+        "topics": [
+            "Design of visual information, and Tableau fundamentals",
+            "Storytelling with data",
+            "Calculations, parameters, and trends in Tableau",
+            "Visualizing spatial data",
+            "Dashboards and interactive displays",
+            "Clustering and social network graphs",
+            "Explainable AI and visualization for machine learning",
+        ],
     },
     {
         "slug": "46-880",
@@ -146,6 +252,18 @@ COURSES = [
         "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning.",
         "offerings": ["Fall 2024 full-time"],
         "materials": "Public excerpts will go on the materials page once they are cleared.",
+        "history": [
+            "I taught the MSBA's first-term statistics course in Fall 2024, in two morning sections. I reworked the slide decks I inherited and used Excel and Python alongside the textbook, so that every idea had both a formula and a working example.",
+        ],
+        "topics": [
+            "Probability and Bayes' theorem",
+            "Discrete and continuous random variables and their distributions",
+            "The normal distribution and joint distributions",
+            "Sampling and the central limit theorem",
+            "Interval estimation",
+            "Hypothesis testing",
+            "Regression, and inference with regression",
+        ],
     },
     {
         "slug": "46-887",
@@ -159,6 +277,18 @@ COURSES = [
         "blurb": "Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.",
         "offerings": ["Spring 2026"],
         "materials": "Lab notebooks will go on the materials page once they are cleared for public use.",
+        "history": [
+            "I redesigned this MSBA course for Spring 2026 around a question that is easy to leave for later: how a model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.",
+        ],
+        "topics": [
+            "From machine learning models to AI systems",
+            "Integrating models into business services, with a cloud setup lab",
+            "Evaluating, testing, and monitoring machine learning systems",
+            "Natural language processing and large language models",
+            "Imbalanced classification and anomaly detection",
+            "Time series forecasting, with a cloud-connected Tableau dashboard",
+            "Reinforcement learning",
+        ],
     },
     {
         "slug": "90-803",
@@ -172,6 +302,20 @@ COURSES = [
         "blurb": "A twelve-unit course at Heinz College that teaches machine learning with Python to students who will apply it to public policy and management problems.",
         "offerings": ["Spring 2026 full-time"],
         "materials": "Heinz students get the full materials on Canvas. Public excerpts will go on the materials page.",
+        "history": [
+            "I took over this Heinz College course in Spring 2026 and rebuilt it as fourteen modules, each pairing a lecture with a lab. It runs from clustering and regression through A/B testing to language models and computer vision. It ends with a teaching case I wrote comparing Tesla's camera-only approach to self-driving with Waymo's sensor fusion.",
+        ],
+        "topics": [
+            "Machine learning and analytics in organizations",
+            "Clustering, factor reduction, and feature engineering",
+            "Regression and classification",
+            "Model evaluation and hyperparameter tuning",
+            "Forecasting with time series data",
+            "A/B testing and multi-armed bandits",
+            "Natural language processing and neural networks",
+            "Large language models, and text mining with them",
+            "Computer vision, and the Tesla Vision vs. Waymo case",
+        ],
     },
 ]
 
@@ -550,6 +694,14 @@ def build_courses_index():
 def build_course_pages():
     for c in COURSES:
         offerings = "".join(f"<li>{o}</li>" for o in c["offerings"])
+        history = ""
+        if c.get("history"):
+            paras = "".join(f"        <p>{p}</p>\n" for p in c["history"])
+            history = f"        <h2>How the course developed</h2>\n{paras}"
+        topics = ""
+        if c.get("topics"):
+            items = "".join(f"<li>{t}</li>" for t in c["topics"])
+            topics = f"        <h2>Topics</h2>\n        <ol>{items}</ol>\n"
         built = '<span class="badge built">Course I built</span>' if c["built"] else ""
         body = f"""
       <article class="course-hero prose-width">
@@ -559,7 +711,7 @@ def build_course_pages():
         <div class="thumb {c['color']}">{course_label(c)}</div>
         <p class="lede">{c['one_liner']}</p>
         <p>{c['blurb']}</p>
-        <h2>Recent offerings</h2>
+{history}{topics}        <h2>Offerings</h2>
         <ul>{offerings}</ul>
         <h2>Materials</h2>
         <p>{c['materials']} <a href="../../materials/">Teaching materials</a>.</p>
@@ -621,7 +773,7 @@ def build_materials():
       <h2>Notebooks</h2>
       <ul class="materials">
         <li><strong>Data mining labs.</strong> Python notebooks on clustering, classification, and evaluation.</li>
-        <li><strong>Visualization redesigns.</strong> Before-and-after chart critiques, each done in both Tableau and Python.</li>
+        <li><strong>Visualization redesigns.</strong> Before-and-after chart critiques in Tableau.</li>
         <li><strong>AI methods for social and visual data.</strong> Notebooks from the course I built, released as each offering settles.</li>
       </ul>
 
