@@ -565,7 +565,6 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
       <a class="wordmark" href="{root}">Ben Collier</a>
       <nav class="primary" aria-label="Primary">
         {item("courses/", "courses", "courses")}
-        {item("materials/", "materials", "materials")}
         {item("projects/", "projects", "projects")}
         {item("advising/", "advising", "advising")}
         {item("practice/", "practice", "practice")}
@@ -812,6 +811,8 @@ def build_courses_index():
 
       <h2>Courses I teach</h2>
       <div class="grid">{taught}</div>
+
+      <p>Notebooks, videos, and workshop material from these courses are collected on the <a href="../materials/">teaching materials</a> page.</p>
 """
     write(
         "courses/index.html",
@@ -940,7 +941,7 @@ def build_materials():
         "materials/index.html",
         page(
             "../",
-            "materials",
+            "courses",
             "Teaching materials · Ben Collier",
             "Public teaching materials: videos, notebooks, and workshops.",
             "materials/",
