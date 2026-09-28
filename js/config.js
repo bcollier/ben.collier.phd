@@ -5,6 +5,6 @@ window.SITE = {
   booking: {
     freeChat: "",   // free 15-minute intro chat
     paidHour: "",   // $450 consulting hour, paid at booking through Stripe
-    studentHours: "", // Calendly link for 30-minute student appointments
+    studentHours: "https://calendly.com/bencollierphd", // 30-minute student appointments
   }
 };
