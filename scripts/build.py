@@ -379,17 +379,35 @@ COURSES = [
 
 NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
-    ("2026-08-25", "First day of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built."),
+    # Newest first.
+    ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Its thread is AI agents: students build them, deploy them, and then try to break them."),
+    ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
+    ("2026-08", "Finished recording the MSBA Math Skills Workshop, a self-paced course for incoming MSBA students that runs from algebra through gradient descent, PCA, and statistical inference."),
     ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
+    ("2026-06", "Really proud of this summer's AI Methods final projects. Three of the nineteen are already in use, and they range from social listening on an aircraft maker's safety crisis to an offline tool that helps bomb-disposal teams identify ordnance."),
+    ("2026-05-04", "Taught AI Methods for Social and Visual Data for the second time, rebuilt for the summer with one live session a week and hands-on Python videos for every module."),
     ("2026-04-30", "Talked with Tepper for a Faculty Spotlight on what students learn in the MSBA, and why I describe business analytics as a decathlon.", "https://www.youtube.com/watch?v=UxBPkez6Mc4"),
+    ("2026-03-11", "Started teaching 46-887 Machine Learning for Business Applications to the in-person MSBA cohort, redesigned around AWS. Students take a model from S3 through SageMaker to a database they run themselves and a live dashboard."),
     ("2026-03", "Named an AWS Academy Educator."),
+    ("2026-01-13", "Started teaching 90-803 Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints."),
     ("2026-01", "Advising two MSBA capstone teams this spring."),
-    ("2025-08", "First offering of AI Methods for Social and Visual Data, a course I built for the MBA."),
+    ("2025-10-22", "Taught 70-377 Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture."),
+    ("2025-10", "Taught Data Mining in person and online hybrid in the same mini, and added principal component analysis to the course."),
+    ("2025-08-26", "Taught the first class of 45-884 AI Methods for Social and Visual Data, a course I built for MBA and master's students on text, images, and AI agents, using foundation models rather than training them."),
     ("2025-05", "Joined gAIm Systems as Senior Director of AI and Data Science."),
+    ("2025-05", "Proud of this spring's Data Mining final projects: teams brought their own questions, from predicting baseball Hall of Fame induction to siting EV chargers in Pennsylvania."),
+    ("2025-03", "This spring's Data Visualization final projects were 29 recorded data stories, from Netflix's global catalog to city-by-city warming and public-sector dashboards."),
+    ("2025-01-13", "Rebuilt Data Visualization entirely in Tableau for its second run, added clustering, network graphs, and explainable AI, and recorded about fifty short screencast lessons. Also started teaching its MSBA counterpart, 46-885."),
     ("2025-01", "Advised five MSBA capstone projects."),
+    ("2024-10", "Taught Data Mining for the third time and moved it from R to Python, adding time series forecasting and a session on building data-driven products to clustering, regression, classification, and text mining."),
+    ("2024-08-26", "Started teaching 46-880 Introduction to Probability and Statistics, the first quantitative course in the full-time MSBA, pairing every distribution with its Excel formula and its Python call."),
     ("2024-08", "Joined Tepper as Assistant Teaching Professor of Business Analytics."),
     ("2024-06", "Taught in the Business Analytics Summer Summit."),
+    ("2024-05", "Proud of the first Data Mining final projects: sixteen online hybrid MBA teams, many working on data from their own employers."),
+    ("2024-03-13", "Started teaching 45-885 Data Visualization with an evening MBA section, mixing Tableau with R and ggplot2."),
+    ("2024-03", "Taught Data Mining for the second time, rebuilt for the online hybrid MBA with a recorded video module for each topic and a self-directed final project in place of the exam."),
     ("2024-01", "Advised four MSBA capstone projects."),
+    ("2023-10-25", "Started teaching 45-851 Data Mining to full-time MBA students as an adjunct, redesigning it around business questions, with labs in R and tidymodels."),
 ]
 
 
