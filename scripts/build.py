@@ -60,6 +60,12 @@ COURSES = [
             "The economics of AI, and AI strategy",
             "Governance, risk, and regulation",
         ],
+        "story": [
+            "Business students build and ship real software. In the agents lab, students assembled a customer support team of AI agents for a fictional outdoor retailer, a manager and three specialists, then ran an evaluation set against it to find where it failed. The later weeks follow one pattern: choose a use case, build it, deploy it to a live URL, then try to break it.",
+            "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. An eight-year-old hand-written solver scored 34 of 96 on Raven's Matrices. The language model solver scored about 86, and claimed 99% confidence on every answer.",
+            "Students learn to say where AI creates value in terms a board would accept. A fraud vendor with a 99% accurate model can still lose its client money, and students work out when and why."
+        ],
+        "projects": {"intro": "The first final projects are due in December 2026, in three tracks: an AI investment committee for a real public company, building and breaking an AI agent, and trying to make $100 with an AI-enabled business. Revenue is not the grade. A team that earns nothing and can explain exactly why will outscore a team that earns $200 without insight.", "types": []},
     },
     {
         "slug": "45-884",
@@ -93,6 +99,12 @@ COURSES = [
             "Agentic AI and AI workflows, including building a first agent in n8n",
             "Emerging tools: evaluations, LLM-as-judge, and MCP",
         ],
+        "story": [
+            "There are no prerequisites and no model training. Students use foundation models from OpenAI, Anthropic, Google, and Meta on text, images, and agent workflows, and the course teaches the Python, JSON, and API calls they need along the way.",
+            "Every lab compares models. Students classify product reviews with three models and weigh cost against accuracy, chain two agents that score semiconductor companies' risk from their filings, and in the computer vision class send one photograph through three generations of vision: YOLO boxes, ResNet labels, then a multimodal model that returns a shelf-restocking report as JSON.",
+            "Each class opens with AI Methods in the News, a student briefing on a product or a debate from the last six months. In Fall 2025 the agents module closed with Prasad Chalasani, co-founder of the Langroid agent framework."
+        ],
+        "projects": {"intro": "Final projects start from a real business question. Students show how their prompts changed and compare models before settling on one. In Summer 2026, seven of the nineteen projects were built with real companies or organizations, and three are already in use. These are the kinds of projects from Fall 2025 and Summer 2026.", "types": [["Social listening and sentiment", 7, "Reddit sentiment through an aircraft maker's safety crisis, set against its stock price"], ["Finance and investing", 5, "An autonomous equity analyst triggered from a watchlist"], ["Career, hiring, and advising agents", 4, "A five-agent job-fit scorer with a skeptical hiring-manager critic"], ["Agentic workflow automation", 3, "Automating client outreach for a real-estate agent in n8n"], ["AI governance and ethics", 3, "Human oversight of AI in intelligence analysis"], ["Document and transcript extraction", 2, "Turning sales-call transcripts into buyer intelligence"], ["Computer vision in the field", 1, "An offline tool that helps bomb-disposal teams identify ordnance"], ["Mergers and corporate culture", 1, "Predicting merger success from culture fit in annual reports"]]},
     },
     {
         "slug": "70-377",
@@ -122,6 +134,10 @@ COURSES = [
             "Project management with work breakdown structures and OKRs",
             "Managing performance, promotion, and termination",
         ],
+        "story": [
+            "Students sit on both sides of the interview table. In live mock interviews on Zoom they rotate through interviewer, candidate, and observer, using the formats large tech companies use: live coding, data take-homes, case interviews, and behavioral interviews. Candidates may solve the coding problems in a spreadsheet, so business students take part alongside computer science students.",
+            "The in-person week in Doha turned to teams and culture. Groups allocated a $120 million fund across twenty proposals, analyzed a Harvard case on a global team at Sun Microsystems, and rescued a failing mobile banking project by cutting its scope and writing recovery OKRs."
+        ],
     },
     {
         "slug": "msba-math-skills-workshop",
@@ -150,6 +166,10 @@ COURSES = [
             "Descriptive statistics",
             "Probability foundations",
             "Statistical inference: sampling distributions, confidence intervals, and hypothesis tests",
+        ],
+        "story": [
+            "The math every later course assumes, framed the way analysts will use it. Calculus ends with gradient descent and the sigmoid. Linear algebra ends with the normal equations, PCA, and PageRank. Probability works through a fraud alert that is 99% sensitive and still right only 9% of the time at a 0.5% base rate.",
+            "I wrote the scope and sequence with the MSBA core faculty, working backward from what their courses need, and recorded every lesson in the studio, writing each problem out by hand. Before recording, every equation was checked symbolically."
         ],
     },
     {
@@ -186,6 +206,12 @@ COURSES = [
             "Natural language processing, with a lab",
             "Neural networks and large language models",
         ],
+        "story": [
+            "The course is organized around business questions, not algorithms. Each module opens with one a manager would ask: which customers look alike, what a house will sell for, who is about to leave, what customers are saying in their reviews. The first class is a case from my own work, predicting drug price spikes for a 40-hospital health system that buys $1.5 billion of pharmaceuticals a year, followed from the business question to a commercial product.",
+            "Students work the way analysts work now. Labs are in Python in Colab, generative AI is allowed, and teams hand in their AI chat transcripts with the work. The classification project is a prediction competition: every team scores a holdout file, I grade the predictions against the true labels, and the top fifth earn extra credit.",
+            "What students take away is a workflow for an unfamiliar dataset: explore it, choose a method, decide whether to trust the result, and explain it to someone who does not care about the method."
+        ],
+        "projects": {"intro": "In the final project, teams bring their own business question and data, often from their own employer, and answer it with a method from the course. These are the most common kinds among the projects from Spring 2024, Fall 2024, and Spring 2025.", "types": [["Finance, markets, and credit risk", 6, "Do a CEO's posts move an electric carmaker's stock price?"], ["Sports analytics", 5, "Predicting baseball Hall of Fame induction from career statistics"], ["Healthcare and wellbeing", 5, "Does wearing a fitness tracker go with better health?"], ["Customer segmentation and retail", 4, "Segmenting 85 grocery stores by their department sales mix"], ["Transportation and mobility", 4, "Where should Pennsylvania put new EV chargers?"], ["Churn, retention, and satisfaction", 3, "Predicting and segmenting airline passenger satisfaction"], ["Real estate and places", 3, "What drives Airbnb nightly prices in New York?"], ["Economic forecasting", 2, "Forecasting US retail sales with Prophet"], ["Media and entertainment", 2, "What predicts a song's stream count?"]]},
     },
     {
         "slug": "45-885",
@@ -220,6 +246,12 @@ COURSES = [
             "Clustering and social network graphs",
             "Explainable AI, data preparation, and animation",
         ],
+        "story": [
+            "No programming is required. Students start as Tableau beginners and finish with calculated fields, parameters, maps, interactive dashboards, and animation. Along the way they rebuild Hans Rosling's Gapminder bubble chart from raw World Bank tables.",
+            "Every class opens with a team critiquing a data story published in the last six months, in the Financial Times, the Wall Street Journal, The Economist, or ProPublica, and remaking two or three of its charts. Before presenting, teams test their redesign with an AI Data Visualization Coach, a custom GPT I built with my colleague Zoey Jiang. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.",
+            "Most visualization courses stop at dashboards. This one keeps going into clustering, network graphs, and explainable AI, because that is where analysts now have to show their work."
+        ],
+        "projects": {"intro": "The final project is a Tableau workbook with an interactive dashboard and a recorded video that tells its story. Students choose their own question or one of two public datasets. These are the kinds of projects from Spring 2024 and Spring 2025.", "types": [["Netflix content strategy", 10, "Where Netflix's catalog grew, country by country"], ["Public sector, policy, and society", 10, "Neighborhood income change by zip code in a US metro"], ["Economics, labor, and prices", 5, "Why eggs got expensive: 50 years of food prices"], ["Business performance dashboards", 5, "Does discounting drive profit? An executive retail dashboard"], ["Media and the creator economy", 4, "What drives YouTube creator revenue?"], ["Climate and environment", 4, "25 years of warming, city by city"], ["Sports", 2, "Does payroll buy wins in baseball?"], ["Consumer products", 2, "Do electric cars deliver their certified range?"]]},
     },
     {
         "slug": "46-885",
@@ -245,6 +277,9 @@ COURSES = [
             "Dashboards and interactive displays",
             "Clustering and social network graphs",
             "Explainable AI and visualization for machine learning",
+        ],
+        "story": [
+            "The MSBA section of the visualization course, taught in Tableau with the same labs, the same weekly data stories, and the same AI coach. It ends on explainable AI and visualization for machine learning, which is where analytics students will need charts most."
         ],
     },
     {
@@ -272,6 +307,10 @@ COURSES = [
             "Hypothesis testing",
             "Regression, and inference with regression",
         ],
+        "story": [
+            "Every distribution is taught twice, once with its Excel formula and once with its Python call, and nearly every example is a business decision: overbooking a flight, a cosmetics launch whose chance of success moves from 30% to 60% after a market test, tea bottles that must hold 750 ml. Sessions open with a puzzle or a question from quant interviews.",
+            "Halfway through the mini I changed the pace: more worked examples in class, practice sets with solutions, a short written summary of each module, and walkthrough videos for the hardest problems."
+        ],
     },
     {
         "slug": "46-887",
@@ -297,6 +336,11 @@ COURSES = [
             "Imbalanced classification and anomaly detection",
             "Time series forecasting, with a cloud-connected Tableau dashboard",
             "Reinforcement learning",
+        ],
+        "story": [
+            "The course takes models out of the notebook and into production. Students put data in S3, score it with Lambda and SageMaker, write predictions to a database they provision themselves on RDS, and read them live in Tableau or Streamlit.",
+            "It is honest about accuracy. The fraud lab starts from a model that is 99.9% accurate because it never flags fraud, then works through class weights, SMOTE, and isolation forests on a precision-recall leaderboard. In ML Project Triage, teams sit on an insurer's strategy board with money for two of six proposals, among them a drone moonshot with no data and a pricing engine that would be illegal in most states.",
+            "The team project is a working proof of concept: a model, a cloud database of its predictions, and a dashboard, shown in a live demo."
         ],
     },
     {
@@ -325,6 +369,10 @@ COURSES = [
             "Natural language processing and neural networks",
             "Large language models, and text mining with them",
             "Computer vision, and the Tesla Vision vs. Waymo case",
+        ],
+        "story": [
+            "Every method is framed as a policy question: which households in a broadband subsidy program are about to drop out, how to route thousands of student loan complaints, whether a language model and a person agree on how serious a complaint is. In the language model project, students have a model sort complaints into six policy categories and measure its agreement with other models using Cohen's kappa.",
+            "I replaced the single end-of-term project with four applied projects spread across the semester, in clustering, classification, language models, and computer vision, plus a midterm project for a public agency or nonprofit. A CMU alum working as a product data scientist gave a guest lecture on machine learning for product decisions."
         ],
     },
 ]
@@ -723,6 +771,19 @@ def build_course_pages():
         if c.get("history"):
             paras = "".join(f"        <p>{p}</p>\n" for p in c["history"])
             history = f"        <h2>How the course developed</h2>\n{paras}"
+        story = ""
+        if c.get("story"):
+            paras = "".join(f"        <p>{p}</p>\n" for p in c["story"])
+            story = f"        <h2>What makes this course different</h2>\n{paras}"
+        projects = ""
+        pj = c.get("projects")
+        if pj:
+            rows = "".join(
+                f'<li><strong>{t}</strong> <span class="count">{n} project{"s" if n != 1 else ""}</span><br><span class="example">{ex}</span></li>'
+                for t, n, ex in pj["types"]
+            )
+            lst = f'        <ul class="project-types">{rows}</ul>\n' if rows else ""
+            projects = f"        <h2>Final projects</h2>\n        <p>{pj['intro']}</p>\n{lst}"
         topics = ""
         if c.get("topics"):
             items = "".join(f"<li>{t}</li>" for t in c["topics"])
@@ -736,7 +797,7 @@ def build_course_pages():
         <div class="thumb hero {c['color']}"><canvas data-hero="{c['hero']}" role="img" aria-label="{esc(HERO_ALT[c['hero']])}"></canvas><span>{course_label(c)}</span></div>
         <p class="lede">{c['one_liner']}</p>
         <p>{c['blurb']}</p>
-{history}{topics}        <h2>Offerings</h2>
+{story}{history}{topics}{projects}        <h2>Offerings</h2>
         <ul>{offerings}</ul>
         <h2>Materials</h2>
         <p>{c['materials']} <a href="../../materials/">Teaching materials</a>.</p>

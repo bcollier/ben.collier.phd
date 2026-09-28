@@ -360,6 +360,11 @@ table.roster td {
   .course-hero .thumb { height: 13rem; }
 }
 
+.project-types { list-style: none; padding: 0; margin: 0.6rem 0 1.4rem; display: grid; gap: 0.7rem; }
+.project-types li { border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 0.8rem; }
+.project-types .count { font-size: 0.85rem; color: var(--ink-soft); margin-left: 0.3rem; }
+.project-types .example { color: var(--ink-soft); font-style: italic; }
+
 .materials li { margin-bottom: 0.7rem; }
 
 .empty {
