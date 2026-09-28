@@ -562,7 +562,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
   <a class="skip" href="#main">Skip to content</a>
   <div class="wrap">
     <header class="site">
-      <a class="wordmark" href="{root}">Ben Collier</a>
+      <a class="wordmark" href="{root}">Ben Collier, PhD</a>
       <nav class="primary" aria-label="Primary">
         {item("courses/", "courses", "courses")}
         {item("projects/", "projects", "projects")}
