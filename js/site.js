@@ -10,8 +10,14 @@
       a.href = url;
       a.target = "_blank";
       a.rel = "noopener";
+      if (a.dataset.liveLabel) a.textContent = a.dataset.liveLabel;
     }
   });
+  if (booking.paidHour) {
+    document.querySelectorAll("[data-live-text]").forEach(function (el) {
+      el.textContent = el.getAttribute("data-live-text");
+    });
+  }
 
   function renderPosts(posts, mount, opts) {
     if (!mount) return;

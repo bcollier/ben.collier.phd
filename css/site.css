@@ -639,6 +639,15 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .earlier-list span { font-variant-numeric: tabular-nums; color: var(--ink-soft); display: inline-block; min-width: 7.5rem; }
 @media (max-width: 40rem) { .advised { grid-template-columns: 1fr; } }
 
+/* Consulting proof, engagement shapes, and the course-page prompt. */
+.proof { list-style: none; padding: 0; margin: 0.8rem 0 0.6rem; max-width: 44rem; display: grid; gap: 0.8rem; }
+.proof li { border-left: 3px solid var(--accent); padding-left: 0.9rem; }
+.shapes { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.9rem; max-width: 56rem; margin: 0.8rem 0; }
+.shapes section { border: 1px solid var(--rule); background: var(--white); padding: 1rem 1.1rem; }
+.shapes p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+.course-cta { border: 1px solid var(--rule); background: var(--white); padding: 1rem 1.2rem; margin: 2.2rem 0 1rem; }
+.course-cta p { margin: 0 0 0.8rem; }
+
 /* Consulting offers. */
 .offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; max-width: 56rem; }
 .offer { background: var(--white); border: 1px solid var(--rule); padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }

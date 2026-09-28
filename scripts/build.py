@@ -434,13 +434,15 @@ HOURLY_RATE = "$450"
 
 
 def book_link(kind: str, label: str, root: str, cls: str = "btn primary") -> str:
-    """A booking button. Its href is a prefilled email; js/site.js swaps in the
-    Cal.com URL from js/config.js when one is configured."""
+    """A booking button. Until a Cal.com URL is set in js/config.js it is an
+    honest "Email to book" link with a prefilled message; js/site.js swaps in the
+    URL and the live label ("Book ...") once one is configured."""
     from urllib.parse import quote
     subject = {"freeChat": "Free 15-minute chat", "paidHour": "Consulting hour"}[kind]
     body = "Hi Ben,\n\nI'd like to book a " + subject.lower() + ". A little about what I'm working on:\n\n"
     href = f"mailto:{BOOK_EMAIL}?subject={quote(subject)}&body={quote(body)}"
-    return f'<a class="{cls}" data-book="{kind}" href="{esc(href)}">{label}</a>'
+    fallback = "Email to " + label[0].lower() + label[1:]
+    return f'<a class="{cls}" data-book="{kind}" data-live-label="{esc(label)}" href="{esc(href)}">{esc(fallback)}</a>'
 
 
 def load_json(name: str):
@@ -728,7 +730,7 @@ def build_home():
           <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
           <h1>Ben Collier</h1>
           <p class="lede">I teach business analytics and machine learning at Carnegie Mellon, and I still build AI and data systems outside the classroom.</p>
-          <p class="role">Tepper School of Business, with selected courses at Heinz College.</p>
+          <p class="role">Tepper School of Business, with selected courses at Heinz College. I also help companies decide where AI and analytics will pay off.</p>
         </div>
       </section>
 
@@ -849,6 +851,10 @@ def build_course_pages():
         <h2>Materials</h2>
         <p>{c['materials']} <a href="../../materials/">Teaching materials</a>.</p>
       </article>
+      <aside class="course-cta prose-width">
+        <p><strong>Want this adapted for your team?</strong> I run versions of my courses as hands-on workshops built on a company's own data.</p>
+        {book_link("freeChat", "Book a free 15-minute chat", "../../")}
+      </aside>
       <p><a href="../">All courses</a></p>
 """
         write(
@@ -1095,21 +1101,35 @@ def build_consult():
           <ul>
             <li>Live session on Zoom or Google Meet</li>
             <li>A one-page written recommendation within two business days</li>
-            <li>Paid when you book</li>
+            <li data-live-text="Paid when you book">Invoiced before we meet</li>
           </ul>
           {book_link("paidHour", "Book a consulting hour", "../")}
         </section>
       </div>
 
-      <h2>Larger engagements</h2>
-      <p class="prose-width">Model and analysis reviews, AI pilots, and team workshops run through my practice, Hot Metal Data, and are scoped after an intro chat. Workshops are built on your own data and problems, and they are hands-on labs rather than lectures.</p>
-
-      <h2>What I bring</h2>
-      <ul class="prose-width">
-        <li>Industry data science leadership at Duolingo, through its IPO and the launch of Duolingo Max, and at UPMC, where I was the founding data scientist on a joint venture with IBM Watson Health.</li>
-        <li>Current AI work as Senior Director of AI and Data Science at gAIm Systems.</li>
-        <li>Teaching machine learning, data mining, visualization, and AI to MBA, MSBA, and undergraduate students at Carnegie Mellon's Tepper School, and advising MSBA capstone teams with companies.</li>
+      <h2>Recent work</h2>
+      <ul class="proof">
+        <li><strong>Hospital pharmacy pricing.</strong> At UPMC I was the founding data scientist on a joint venture with IBM Watson Health. We built a model that predicts drug price spikes and shortages for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. It became CognitiveRx, which Premier acquired.</li>
+        <li><strong>Consumer subscription growth.</strong> At Duolingo I worked on experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
+        <li><strong>AI for sports organizations.</strong> As Senior Director of AI and Data Science at gAIm Systems I build tools that help teams recruit, develop, and assemble players.</li>
+        <li><strong>Teams I have advised</strong> on MSBA capstone projects worked with Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, and others. <a href="../advising/">See the projects</a>.</li>
       </ul>
+      <p class="prose-width muted">George Leland Bach Teaching Award, Tepper School of Business, 2026.</p>
+
+      <h2>Which option fits</h2>
+      <ul class="prose-width">
+        <li><strong>Not sure yet?</strong> Start with the intro chat. It is free, and most people leave it knowing whether they need anything more.</li>
+        <li><strong>One specific decision or blocker?</strong> A consulting hour is usually enough.</li>
+        <li><strong>A project that needs weeks, not an hour?</strong> Book the intro chat and we will scope one of the engagements below.</li>
+      </ul>
+
+      <h2>Larger engagements</h2>
+      <div class="shapes">
+        <section><h3>AI use-case review</h3><p>About two weeks. A written go or no-go on the AI projects you are considering, with a build plan for the ones worth doing.</p></section>
+        <section><h3>Model or metric review</h3><p>About one week. I read the code, data, and evaluation behind a model or metric that is about to carry a real decision, and tell you where it breaks.</p></section>
+        <section><h3>Team workshop</h3><p>One to three days, built on your own data. Hands-on labs in Python, evaluation, and AI workflows, adapted from the courses I teach at Carnegie Mellon.</p></section>
+      </div>
+      <p class="prose-width">These run through my practice, Hot Metal Data, and are priced after an intro chat.</p>
 
       <p class="prose-width">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>
 """
