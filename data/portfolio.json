@@ -11,7 +11,7 @@
       "image_alt": "Three iPhone screens from Ignatius at Home: the home page continuing the retreat's third day, Living Water, with Bloch's painting of the woman at the well; the guided prayer player reading the day's reflection, with its progress through the day's parts; and the retreat page with its days and the painting",
       "image_width": 1200,
       "image_height": 1600,
-      "summary": "This year I am making the Spiritual Exercises in daily life, a retreat that comes as weekly handout PDFs. This app takes material like that, whether a handout, a few passages, a photo of verses, or just an idea such as \"the parables of Jesus, seven days\", and turns it into a guided audio retreat you pray one day at a time. Each day follows lectio divina. You hear the passage read four times, then a reflection, then a closer look at the text's history and original language, researched on the web. After that come silence between two bells and a painting to pray with. The app also has a spoken companion to talk the day over with in real time, guided practices with timed silences and journaling, and an evening Examen that can be written around your own life. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.",
+      "summary": "An app that turns retreat material, such as a handout, a few passages, or just an idea like \"the parables of Jesus, seven days\", into a guided audio retreat prayed one day at a time. Each day follows lectio divina: the passage read four times, a reflection, a closer look at the text's history and original language, silence between two bells, and a painting to pray with. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.",
       "process": "I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes around the text, but it never writes scripture. Scripture is copied from the person's own material or fetched from the public-domain World English Bible. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.",
       "links": [
         {
@@ -30,6 +30,11 @@
           "label": "The original design spec",
           "href": "https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md"
         }
+      ],
+      "decisions": [
+        "The model plans each day and writes around the text, but never writes scripture. Scripture comes from the person's own material or the public-domain World English Bible.",
+        "It is free for anyone: open models on an academic cloud, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier.",
+        "Notes a person writes about themselves stay private, even in the build logs of the shared examples."
       ]
     },
     {
@@ -97,7 +102,7 @@
       "image_width": 902,
       "image_height": 664,
       "image_alt": "A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options",
-      "summary": "Three programs, written eight years apart, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A student's 2017 course project, run exactly as written, scores 34. A rule-based expert system I wrote this year scores 59 in under a minute on a laptop. It uses no language model, just about 300 candidate if-then rules and a learned ranker. A current language model, given the puzzle sheet and every cell as images, scores 93. Random guessing scores 13.",
+      "summary": "Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A current language model, given the puzzle sheet and every cell as images, nearly aces it.",
       "process": "Sixteen language models from nine companies ran the same puzzles with the same prompt, so the write-up compares accuracy, cost, and speed directly. Four models tied at 92 while their prices differed by almost five to one. Five scored below the program with no AI in it. One release changed how the model works at answer time, and that moved its score more than two years of scaling did on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the explanation is the most useful lesson in the repo. A script generates every number from the raw results, and the prompt history quotes every instruction that produced them.",
       "links": [
         {
@@ -108,6 +113,24 @@
           "label": "Prompt history",
           "href": "https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md"
         }
+      ],
+      "stats": [
+        [
+          "random guessing",
+          13
+        ],
+        [
+          "a student's 2017 program",
+          34
+        ],
+        [
+          "expert system, no language model",
+          59
+        ],
+        [
+          "current language model",
+          93
+        ]
       ]
     }
   ]

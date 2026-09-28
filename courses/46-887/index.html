@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>46-887 Machine Learning for Business Applications · Ben Collier</title>
-  <meta name="description" content="Machine learning that has to work under real business constraints, not just score well on a leaderboard.">
+  <meta name="description" content="Taking a model out of the notebook and into a working business system on AWS.">
   <meta name="author" content="Ben Collier">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
@@ -13,7 +13,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Ben Collier">
   <meta property="og:title" content="46-887 Machine Learning for Business Applications · Ben Collier">
-  <meta property="og:description" content="Machine learning that has to work under real business constraints, not just score well on a leaderboard.">
+  <meta property="og:description" content="Taking a model out of the notebook and into a working business system on AWS.">
   <meta property="og:url" content="https://bcollier.github.io/ben.collier.phd/courses/46-887/">
   <meta property="og:image" content="https://bcollier.github.io/ben.collier.phd/assets/og.png">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
   <meta property="og:image:alt" content="Ben Collier, Assistant Teaching Professor of Business Analytics, Tepper School of Business">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="46-887 Machine Learning for Business Applications · Ben Collier">
-  <meta name="twitter:description" content="Machine learning that has to work under real business constraints, not just score well on a leaderboard.">
+  <meta name="twitter:description" content="Taking a model out of the notebook and into a working business system on AWS.">
   <meta name="twitter:image" content="https://bcollier.github.io/ben.collier.phd/assets/og.png">
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
@@ -34,7 +34,7 @@
   "@context": "https://schema.org",
   "@type": "Course",
   "name": "46-887 Machine Learning for Business Applications",
-  "description": "Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.",
+  "description": "Applied machine learning for MSBA students, built around a cloud pipeline on AWS.",
   "url": "https://bcollier.github.io/ben.collier.phd/courses/46-887/",
   "provider": {
     "@type": "CollegeOrUniversity",
@@ -58,7 +58,7 @@
         <a href="../../courses/" aria-current="page">courses</a>
         <a href="../../projects/">projects</a>
         <a href="../../advising/">advising</a>
-        <a href="../../practice/">practice</a>
+        <a href="../../consult/">consulting</a>
         <a href="../../cv/">cv</a>
         <a href="../../news/">news</a>
         <a href="../../contact/">contact</a>
@@ -72,30 +72,31 @@
         <h1>46-887 Machine Learning for Business Applications</h1>
         <p></p>
         <div class="thumb hero c-copper"><canvas data-hero="pipeline" role="img" aria-label="Animation: data flows from storage through training to a model API and a dashboard"></canvas><span>46-887</span></div>
-        <p class="lede">Machine learning that has to work under real business constraints, not just score well on a leaderboard.</p>
-        <p>Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.</p>
-        <h2>What makes this course different</h2>
-        <p>The course takes models out of the notebook and into production. Students put data in S3, score it with Lambda and SageMaker, write predictions to a database they provision themselves on RDS, and read them live in Tableau or Streamlit.</p>
-        <p>It is honest about accuracy. The fraud lab starts from a model that is 99.9% accurate because it never flags fraud, then works through class weights, SMOTE, and isolation forests on a precision-recall leaderboard. In ML Project Triage, teams sit on an insurer's strategy board with money for two of six proposals, among them a drone moonshot with no data and a pricing engine that would be illegal in most states.</p>
-        <p>The team project is a working proof of concept: a model, a cloud database of its predictions, and a dashboard, shown in a live demo.</p>
-        <h2>How the course developed</h2>
-        <p>I redesigned this MSBA course for Spring 2026 around a question that is easy to leave for later: how a model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.</p>
+        <p class="lede">Taking a model out of the notebook and into a working business system on AWS.</p>
+        <p>Applied machine learning for MSBA students, built around a cloud pipeline on AWS.</p>
+        
         <h2>Topics</h2>
         <ol><li>From machine learning models to AI systems</li><li>Integrating models into business services, with a cloud setup lab</li><li>Evaluating, testing, and monitoring machine learning systems</li><li>Natural language processing and large language models</li><li>Imbalanced classification and anomaly detection</li><li>Time series forecasting, with a cloud-connected Tableau dashboard</li><li>Reinforcement learning</li></ol>
+        <h2>How the course works</h2>
+        <p>The course takes models out of the notebook and into production. Students put data in S3, score it with Lambda and SageMaker, write predictions to a database they provision themselves on RDS, and read them live in Tableau or Streamlit.</p>
+        <p>Accuracy is the first number students learn to distrust. The fraud lab opens with a one-line model that never flags fraud and is still 99.8% accurate, then works through class weights, SMOTE, and isolation forests on a precision-recall leaderboard. In ML Project Triage, teams sit on an insurer's strategy board with money for two of six proposals, among them a drone moonshot with no data and a pricing engine that would be illegal in most states.</p>
+        <p>The team project is a working proof of concept: a model, a cloud database of its predictions, and a dashboard, shown in a live demo.</p>
+        <h2>How the course developed</h2>
+        <p>I redesigned this MSBA course for Spring 2026 around one question: how a trained model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.</p>
         <h2>Offerings</h2>
-        <ul><li>Spring 2026</li></ul>
-        <h2>Materials</h2>
-        <p>Enrolled students get the lab notebooks on Canvas.</p>
+        <ul class="chips"><li class="chip term">Spring 2026</li></ul>
+        <p class="muted">Enrolled students get the lab notebooks on Canvas.</p>
       </article>
       <aside class="course-cta prose-width">
-        <p><strong>Want this adapted for your team?</strong> I run versions of my courses as hands-on workshops built on a company's own data.</p>
-        <a class="btn primary" data-book="freeChat" data-subject="Free 15-minute chat" data-live-label="Book a free 15-minute chat" href="../../contact/">Email to book a free 15-minute chat</a>
+        <p>I also teach versions of this material to company teams, using their own data. <a href="../../consult/#education">Custom education</a></p>
+        <a class="btn primary" href="../../book/">Book a free 15-minute call</a>
       </aside>
+
       <p><a href="../">All courses</a></p>
     </main>
     <footer class="site">
       <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="../../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">15-113 version</a> · <a href="../../consult/">Consulting</a> · <a href="../../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div><a href="../../">collier.phd</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">Version submitted for 15-113 (2026)</a> · <a href="../../consult/">Consulting</a> · <a href="../../feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
     </footer>
   </div>
   <script src="../../js/config.js"></script>
