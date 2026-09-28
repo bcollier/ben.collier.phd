@@ -27,6 +27,7 @@ BUILT = date.today().isoformat()
 COURSES = [
     {
         "slug": "70-445",
+        "hero": "agents",
         "number": "70-445",
         "title": "Artificial Intelligence for Business Leaders",
         "program": "Undergraduate",
@@ -62,6 +63,7 @@ COURSES = [
     },
     {
         "slug": "45-884",
+        "hero": "vit",
         "number": "45-884",
         "title": "AI Methods for Social and Visual Data",
         "program": "MBA",
@@ -94,6 +96,7 @@ COURSES = [
     },
     {
         "slug": "70-377",
+        "hero": "teams",
         "number": "70-377",
         "title": "Managing and Assessing Tech Talent and Organizations",
         "program": "Undergraduate",
@@ -122,6 +125,7 @@ COURSES = [
     },
     {
         "slug": "msba-math-skills-workshop",
+        "hero": "descent",
         "number": "",
         "label": "MSBA",
         "title": "MSBA Math Skills Workshop",
@@ -150,6 +154,7 @@ COURSES = [
     },
     {
         "slug": "45-851",
+        "hero": "kmeans",
         "number": "45-851",
         "title": "Data Mining",
         "program": "MBA",
@@ -184,6 +189,7 @@ COURSES = [
     },
     {
         "slug": "45-885",
+        "hero": "charts",
         "number": "45-885",
         "title": "Data Visualization",
         "program": "MBA",
@@ -217,6 +223,7 @@ COURSES = [
     },
     {
         "slug": "46-885",
+        "hero": "brush",
         "number": "46-885",
         "title": "Data Exploration and Visualization",
         "program": "MSBA",
@@ -242,6 +249,7 @@ COURSES = [
     },
     {
         "slug": "46-880",
+        "hero": "galton",
         "number": "46-880",
         "title": "Introduction to Probability and Statistics",
         "program": "MSBA",
@@ -267,6 +275,7 @@ COURSES = [
     },
     {
         "slug": "46-887",
+        "hero": "pipeline",
         "number": "46-887",
         "title": "Machine Learning for Business Applications",
         "program": "MSBA",
@@ -292,6 +301,7 @@ COURSES = [
     },
     {
         "slug": "90-803",
+        "hero": "network",
         "number": "90-803",
         "title": "Machine Learning Foundations with Python",
         "program": "Public Policy & Management",
@@ -331,6 +341,20 @@ NEWS = [
     ("2024-06", "Taught in the Business Analytics Summer Summit."),
     ("2024-01", "Advised four MSBA capstone projects."),
 ]
+
+
+HERO_ALT = {
+    "kmeans": "Animation: k-means clustering moves four centroids until the clusters settle",
+    "vit": "Animation: an image split into patches passes up a transformer stack and becomes a caption",
+    "agents": "Animation: an orchestrator agent sends work to research, CRM, email, evaluation, and code tools in turn",
+    "charts": "Animation: one dataset changes from a bar chart to a scatter plot to a slope graph",
+    "brush": "Animation: brushing points in a scatter plot highlights the same records in a histogram",
+    "galton": "Animation: balls fall through a Galton board and the bins build a normal curve",
+    "pipeline": "Animation: data flows from storage through training to a model API and a dashboard",
+    "network": "Animation: a signal passes forward through the layers of a neural network",
+    "descent": "Animation: gradient descent steps down a loss surface toward the minimum",
+    "teams": "Animation: scattered people come together into four teams",
+}
 
 
 def load_json(name: str):
@@ -475,6 +499,7 @@ def footer(root: str) -> str:
   </div>
   <script src="{root}js/config.js"></script>
   <script src="{root}js/site.js"></script>
+  <script src="{root}js/course-hero.js" defer></script>
 </body>
 </html>
 """
@@ -504,7 +529,7 @@ def course_name(c) -> str:
 def course_card(c, root):
     built = '<span class="badge built">Built</span>' if c["built"] else ""
     return f"""<a class="card" href="{root}courses/{c['slug']}/">
-  <div class="thumb {c['color']}"><span>{course_label(c)}</span></div>
+  <div class="thumb {c['color']}"><canvas data-hero="{c['hero']}" data-static aria-hidden="true"></canvas><span>{course_label(c)}</span></div>
   <div class="body">
     <div class="meta">{built}<span>{c['program']} · {c['school']}</span></div>
     <h3>{c['title']}</h3>
@@ -708,7 +733,7 @@ def build_course_pages():
         <p class="kicker">{c['school']} · {c['program']}</p>
         <h1>{course_name(c)}</h1>
         <p>{built}</p>
-        <div class="thumb {c['color']}">{course_label(c)}</div>
+        <div class="thumb hero {c['color']}"><canvas data-hero="{c['hero']}" role="img" aria-label="{esc(HERO_ALT[c['hero']])}"></canvas><span>{course_label(c)}</span></div>
         <p class="lede">{c['one_liner']}</p>
         <p>{c['blurb']}</p>
 {history}{topics}        <h2>Offerings</h2>
