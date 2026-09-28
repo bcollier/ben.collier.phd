@@ -89,7 +89,7 @@ COURSES = [
             "Summer 2026",
             "Fall 2026",
         ],
-        "materials": "I post notebooks and workshop notes on the materials page as they become public.",
+        "materials": "Enrolled students get the notebooks and recordings on Canvas. Public excerpts will be added to this page.",
         "history": [
             "I began building this course in December 2024 and first taught it in Fall 2025 to MBA and other master's students. It covers the data most business analytics courses skip: text, images, and the output of language models.",
             "For Summer 2026 I rebuilt it for a part-time format, with one live session a week and a set of hands-on videos I recorded for each module. They run from a first Python lesson through retrieval over company filings, computer vision, and agent workflows. For Fall 2026 I moved agentic AI earlier in the term, and students now get a summary and a cleaned transcript after each class.",
@@ -125,7 +125,7 @@ COURSES = [
             "Proposed February 2025",
             "Fall 2025, CMU Qatar",
         ],
-        "materials": "The course outline is available to enrolled students. Public excerpts will go on the materials page.",
+        "materials": "Enrolled students received the materials on Canvas.",
         "history": [
             "I proposed this micro-course to Carnegie Mellon in Qatar in February 2025 and taught it in Fall 2025. Most sessions met on Zoom in the evening, Doha time, and the middle block met in person in Doha over three days. It was open to technical and business students with no prerequisites.",
         ],
@@ -159,7 +159,7 @@ COURSES = [
             "Built December 2025 to August 2026",
             "Summer 2026",
         ],
-        "materials": "I will post the workshop notes once they are ready for reuse.",
+        "materials": "Incoming MSBA students take the workshop on Canvas.",
         "history": [
             "A self-paced online course for incoming MSBA students, built with Tepper's learning technologies team between December 2025 and August 2026. I recorded every lesson, about thirty short videos across six modules, each pairing slides with worked problems written out by hand.",
         ],
@@ -195,7 +195,7 @@ COURSES = [
             "Fall 2025 full-time",
             "Fall 2025 online hybrid",
         ],
-        "materials": "Public notebooks and video walkthroughs are collected on the materials page.",
+        "materials": "Enrolled students get the notebooks and video walkthroughs on Canvas. Public excerpts will be added to this page.",
         "history": [
             "I first taught Data Mining in Fall 2023, as an adjunct, to full-time MBA students. I taught it every fall and spring through Fall 2025, in both the full-time and the online hybrid programs.",
             "The first version was in R. For the Spring 2024 online hybrid section I scripted and recorded a video module for each topic. In Fall 2024 I moved the whole course to Python and then re-recorded the videos, and Fall 2025 added principal component analysis. The course is organized around the questions data mining answers in a business: which customers are alike, what something is worth, which class a case falls into, what happens next, and what a pile of text says.",
@@ -236,7 +236,7 @@ COURSES = [
             "Spring 2026 full-time",
             "Spring 2026 online hybrid",
         ],
-        "materials": "Worked examples and chart redesigns are on the materials page.",
+        "materials": "Enrolled students get the Tableau workbooks and screencast lessons on Canvas. Public examples will be added to this page.",
         "history": [
             "I took over Data Visualization in Spring 2024 with an evening section. At the time the course mixed Tableau with R and ggplot2. Since Spring 2025 it has been a Tableau course that needs no programming, and for the online hybrid students I recorded a library of about fifty short screencast lessons.",
             "In Fall 2025 I split each week into a lecture and a lab and gave visual design, typography, and color sessions of their own. The final project is a recorded data story of five to seven minutes.",
@@ -269,7 +269,7 @@ COURSES = [
         "one_liner": "Exploratory analysis first, then charts that make the finding clear.",
         "blurb": "The MSBA counterpart to the visualization course. It covers exploratory analysis, chart design, dashboards, and how to present a finding so that someone can use it.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
-        "materials": "Notebooks I share outside Canvas are on the materials page.",
+        "materials": "Enrolled students get the workbooks and lessons on Canvas.",
         "history": [
             "The MSBA version of the visualization course. I first taught it in Spring 2025 and again in Spring 2026, with one session a week. It follows the same seven modules as the MBA course, all in Tableau, and ends with the same recorded data story.",
         ],
@@ -298,7 +298,7 @@ COURSES = [
         "one_liner": "The statistics every later analytics course depends on.",
         "blurb": "Probability, inference, and the statistical reasoning MSBA students need before they reach machine learning.",
         "offerings": ["Fall 2024 full-time"],
-        "materials": "Public excerpts will go on the materials page once they are cleared.",
+        "materials": "Enrolled students get the problem sets and walkthrough videos on Canvas.",
         "history": [
             "I taught the MSBA's first-term statistics course in Fall 2024, in two morning sections. I reworked the slide decks I inherited and used Excel and Python alongside the textbook, so that every idea had both a formula and a working example.",
         ],
@@ -328,7 +328,7 @@ COURSES = [
         "one_liner": "Machine learning that has to work under real business constraints, not just score well on a leaderboard.",
         "blurb": "Applied machine learning for MSBA students: building pipelines, evaluating models, and turning a fitted model into an operational decision.",
         "offerings": ["Spring 2026"],
-        "materials": "Lab notebooks will go on the materials page once they are cleared for public use.",
+        "materials": "Enrolled students get the lab notebooks on Canvas.",
         "history": [
             "I redesigned this MSBA course for Spring 2026 around a question that is easy to leave for later: how a model becomes part of a working business system. Mondays are lecture and Wednesdays are lab. Students build pipelines on AWS, put the results in Tableau or Streamlit dashboards, and finish with a team project demo.",
         ],
@@ -359,7 +359,7 @@ COURSES = [
         "one_liner": "Machine learning in Python for students headed into policy and management work.",
         "blurb": "A twelve-unit course at Heinz College that teaches machine learning with Python to students who will apply it to public policy and management problems.",
         "offerings": ["Spring 2026 full-time"],
-        "materials": "Heinz students get the full materials on Canvas. Public excerpts will go on the materials page.",
+        "materials": "Heinz students get the full materials on Canvas.",
         "history": [
             "I took over this Heinz College course in Spring 2026 and rebuilt it as fourteen modules, each pairing a lecture with a lab. It runs from clustering and regression through A/B testing to language models and computer vision. It ends with a teaching case I wrote comparing Tesla's camera-only approach to self-driving with Waymo's sensor fusion.",
         ],
@@ -811,7 +811,6 @@ def build_courses_index():
       <h2>Courses I teach</h2>
       <div class="grid">{taught}</div>
 
-      <p>Notebooks, videos, and workshop material from these courses are collected on the <a href="../materials/">teaching materials</a> page.</p>
 """
     write(
         "courses/index.html",
@@ -862,7 +861,7 @@ def build_course_pages():
 {story}{history}{topics}{projects}        <h2>Offerings</h2>
         <ul>{offerings}</ul>
         <h2>Materials</h2>
-        <p>{c['materials']} <a href="../../materials/">Teaching materials</a>.</p>
+        <p>{c['materials']}</p>
       </article>
       <aside class="course-cta prose-width">
         <p><strong>Want this adapted for your team?</strong> I run versions of my courses as hands-on workshops built on a company's own data.</p>
@@ -913,48 +912,15 @@ def build_cv():
     )
 
 
-def build_materials():
-    body = """
-      <p class="kicker">Teaching artifacts</p>
-      <h1>Teaching materials</h1>
-      <p class="lede">Videos, notebooks, and workshop material I can share publicly. Enrolled students get the complete set on Canvas.</p>
-
-      <h2>Video series</h2>
-      <div class="empty">There is no public playlist yet. Walkthroughs for data mining, visualization, and the AI methods course will appear here when I publish them.</div>
-
-      <h2>Notebooks</h2>
-      <ul class="materials">
-        <li><strong>Data mining labs.</strong> Python notebooks on clustering, classification, and evaluation.</li>
-        <li><strong>Visualization redesigns.</strong> Before-and-after chart critiques in Tableau.</li>
-        <li><strong>AI methods for social and visual data.</strong> Notebooks from the course I built, released as each offering settles.</li>
-      </ul>
-
-      <h2>Workshops</h2>
-      <ul class="materials">
-        <li><strong>MSBA Math Skills Workshop</strong>, developed for Summer 2026.</li>
-        <li><strong>Business Analytics Summer Summit</strong>, where I taught in 2024 and 2025.</li>
-        <li><strong>Hot Metal Data workshops</strong>. Outlines of my corporate training are available on request.</li>
-      </ul>
-"""
-    write(
-        "materials/index.html",
-        page(
-            "../",
-            "courses",
-            "Teaching materials · Ben Collier",
-            "Public teaching materials: videos, notebooks, and workshops.",
-            "materials/",
-            body,
-        ),
-    )
+def build_teaching():
     hub = """
       <p class="kicker">Teaching</p>
       <h1>Teaching</h1>
-      <p class="lede">Courses I built, projects I show in class, and the materials that go with them.</p>
+      <p class="lede">Courses I built, projects I show in class, and the student work I advise.</p>
       <div class="tiles">
         <a class="tile" href="../courses/"><div class="n">01</div><strong>Courses</strong><span>What I built and what I teach.</span></a>
         <a class="tile" href="../projects/"><div class="n">02</div><strong>Projects</strong><span>Things I build for class.</span></a>
-        <a class="tile" href="../materials/"><div class="n">03</div><strong>Materials</strong><span>Notebooks, video, workshops.</span></a>
+        <a class="tile" href="../advising/"><div class="n">03</div><strong>Advising</strong><span>Capstones and independent studies.</span></a>
         <a class="tile" href="../cv/"><div class="n">04</div><strong>CV</strong><span>Full curriculum vitae.</span></a>
       </div>
 """
@@ -964,7 +930,7 @@ def build_materials():
             "../",
             "courses",
             "Teaching · Ben Collier",
-            "Teaching hub: courses, projects, materials, CV.",
+            "Teaching hub: courses, projects, advising, CV.",
             "teaching/",
             hub,
         ),
@@ -1273,7 +1239,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "materials/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "practice/", "cv/", "news/", "contact/", "teaching/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -1343,7 +1309,7 @@ def main():
     build_course_pages()
     build_cv()
     build_portfolio(portfolio)
-    build_materials()
+    build_teaching()
     build_practice()
     build_consult()
     build_book()
