@@ -648,6 +648,14 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .course-cta { border: 1px solid var(--rule); background: var(--white); padding: 1rem 1.2rem; margin: 2.2rem 0 1rem; }
 .course-cta p { margin: 0 0 0.8rem; }
 
+/* Kinds of consulting on /consult/. */
+.kinds { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.2rem; margin: 2rem 0 1.4rem; max-width: 64rem; }
+.kind { background: var(--white); border: 1px solid var(--rule); padding: 1.3rem 1.4rem 1.2rem; }
+.kind h2 { margin: 0 0 0.5rem; }
+.kind h3 { font-size: 1rem; margin: 1.1rem 0 0.35rem; }
+.kind ul { margin: 0; padding-left: 1.1rem; }
+.kind li { margin-bottom: 0.35rem; }
+
 /* Consulting offers. */
 .offers { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem; margin: 2rem 0 1rem; max-width: 56rem; }
 .offer { background: var(--white); border: 1px solid var(--rule); padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.2rem; }
