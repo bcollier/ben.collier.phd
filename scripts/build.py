@@ -378,8 +378,10 @@ COURSES = [
 ]
 
 NEWS = [
+    # (date, text) or (date, text, link). A link makes the item point somewhere.
     ("2026-08-25", "First day of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built."),
     ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
+    ("2026-04-30", "Talked with Tepper for a Faculty Spotlight on what students learn in the MSBA, and why I describe business analytics as a decathlon.", "https://www.youtube.com/watch?v=UxBPkez6Mc4"),
     ("2026-03", "Named an AWS Academy Educator."),
     ("2026-01", "Advising two MSBA capstone teams this spring."),
     ("2025-08", "First offering of AI Methods for Social and Visual Data, a course I built for the MBA."),
@@ -614,10 +616,11 @@ def rfc3339(iso: str) -> str:
 def news_items(limit=None):
     items = NEWS if limit is None else NEWS[:limit]
     out = ['<ol class="feed">']
-    for iso, text in items:
+    for iso, text, *link in items:
+        more = f' <a href="{esc(link[0])}">Watch the video</a>' if link else ""
         out.append(
             f'<li><time datetime="{iso}">{human_date(iso)}</time>'
-            f'<div class="post"><p>{text}</p></div></li>'
+            f'<div class="post"><p>{text}{more}</p></div></li>'
         )
     out.append("</ol>")
     return "\n".join(out)
@@ -1074,12 +1077,13 @@ def build_robots():
 
 def build_feed():
     entries = []
-    for iso, text in NEWS:
+    for iso, text, *link in NEWS:
         stamp = rfc3339(iso)
+        href = link[0] if link else f"{HOST}/news/"
         entries.append(
             "  <entry>\n"
             f"    <title>{esc(text)}</title>\n"
-            f'    <link href="{HOST}/news/"/>\n'
+            f'    <link href="{esc(href)}"/>\n'
             f"    <id>tag:{DOMAIN_LABEL},{iso.split('-')[0]}:news/{iso}</id>\n"
             f"    <updated>{stamp}</updated>\n"
             f"    <summary>{esc(text)}</summary>\n"
