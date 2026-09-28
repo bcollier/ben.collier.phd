@@ -32,16 +32,16 @@ ORCID: 0000-0002-4651-7684
 
 ### Courses built
 
-- **45-884 AI Methods for Social and Visual Data** (MBA): developed for Fall 2025; full-time and online hybrid
+- **45-884 AI Methods for Social and Visual Data** (MBA): developed for Fall 2025; full-time and online hybrid; redesigned for Summer 2026
 - **70-377 Managing and Assessing Tech Talent and Organizations** (undergraduate): micro-course developed for Fall 2025, Carnegie Mellon University in Qatar
 - **70-445 Artificial Intelligence for Business Leaders** (undergraduate): developed for Fall 2026
 - **MSBA Math Skills Workshop**: developed for Summer 2026
 
 ### MBA courses
 
-- **45-851 Data Mining**: Fall 2023, Spring 2024, Fall 2024 (full-time), Spring 2025 (online hybrid), Fall 2025
-- **45-885 Data Visualization**: Spring 2024, Spring 2025 (full-time and online hybrid), Fall 2025, Spring 2026
-- **45-884 AI Methods for Social and Visual Data**: Fall 2025 (full-time and online hybrid), Summer 2026
+- **45-851 Data Mining**: Fall 2023 (full-time), Spring 2024 (online hybrid), Fall 2024 (full-time), Spring 2025 (online hybrid), Fall 2025 (full-time and online hybrid)
+- **45-885 Data Visualization**: Spring 2024 (evening), Spring 2025 (full-time and online hybrid), Fall 2025, Spring 2026 (full-time and online hybrid)
+- **45-884 AI Methods for Social and Visual Data**: Fall 2025 (full-time and online hybrid), Summer 2026, Fall 2026
 
 ### MSBA courses
 
