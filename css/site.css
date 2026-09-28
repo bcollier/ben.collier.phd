@@ -340,7 +340,7 @@ table.roster td {
 }
 
 .course-hero .thumb {
-  height: 8rem;
+  height: 17rem;
   margin: 0 0 1.4rem;
   display: flex;
   align-items: flex-end;
@@ -349,6 +349,21 @@ table.roster td {
   font-family: Fraunces, Georgia, serif;
   font-size: 1.6rem;
 }
+
+/* Course visuals: an animated diagram drawn by js/course-hero.js fills the
+   tile, and the course number sits on top of it. */
+.thumb { position: relative; overflow: hidden; }
+.thumb canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.thumb span, .course-hero .thumb span { position: relative; z-index: 1; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35); }
+.card .thumb canvas { opacity: 0.55; }
+@media (max-width: 40rem) {
+  .course-hero .thumb { height: 13rem; }
+}
+
+.project-types { list-style: none; padding: 0; margin: 0.6rem 0 1.4rem; display: grid; gap: 0.7rem; }
+.project-types li { border-left: 3px solid var(--accent); padding: 0.1rem 0 0.1rem 0.8rem; }
+.project-types .count { font-size: 0.85rem; color: var(--ink-soft); margin-left: 0.3rem; }
+.project-types .example { color: var(--ink-soft); font-style: italic; }
 
 .materials li { margin-bottom: 0.7rem; }
 
