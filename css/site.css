@@ -591,6 +591,11 @@ a.project:hover { border-color: var(--ink); }
   .hero { grid-template-columns: 1fr; }
   .portrait, .portrait-morph { width: 8rem; height: 8rem; }
   .tiles, .stat-row { grid-template-columns: 1fr; }
+  /* Four stats as a compact 2 x 2 block instead of four full-width boxes. */
+  .stats.linked { grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 1.2rem; }
+  .stats.linked a { padding: 0.65rem 0.75rem; }
+  .stats.linked strong { font-size: 1.55rem; }
+  .stats.linked span { font-size: 0.82rem; }
   .feed li, .contact-list li { grid-template-columns: 1fr; gap: 0.2rem; }
   /* Keep the floating header to two short rows: name, then a nav line that
      scrolls sideways instead of wrapping into three or four. */
@@ -717,6 +722,12 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .stats strong { font-family: Fraunces, Georgia, serif; font-size: 2rem; font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
 .stats span { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.35; }
 .stats.small { grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); margin: 0.6rem 0 0.8rem; }
+/* Home stats link to the page behind each number. */
+.stats.linked li { padding: 0; }
+.stats.linked a { display: grid; gap: 0.2rem; align-content: start; height: 100%; padding: 0.9rem 1rem; color: inherit; text-decoration: none; }
+.stats.linked a span::after { content: " \2192"; color: var(--accent-ink); }
+.stats.linked li:hover { border-color: var(--ink); }
+.stats.linked a:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 2px; }
 .stats.small strong { font-size: 1.5rem; }
 .decisions { padding-left: 1.1rem; }
 .decisions li { margin-bottom: 0.4rem; }
