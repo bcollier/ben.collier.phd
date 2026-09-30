@@ -752,7 +752,7 @@ def build_home():
 
       <div class="bio">
         <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams.</p>
+        <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.</p>
       </div>
 
       <div class="book-row">
@@ -992,7 +992,7 @@ def build_advising():
     body = f"""
       <p class="kicker">Advising</p>
       <h1>Capstones and independent studies</h1>
-      <p class="lede">Since 2024 I have advised MS in Business Analytics capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students' names and without the partners' data.</p>
+      <p class="lede">Since 2024 I have advised MS in Business Analytics capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students' names and without the partners' data. Starting in Spring 2027 I also advise capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.</p>
       <p class="partners">Partners include Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, Confirmed, Marinus Analytics, 412 Food Rescue, Tindoori Labs, and a large consulting firm.</p>
 {chr(10).join(sections)}
 
@@ -1061,7 +1061,7 @@ def build_consult():
         </section>
       </div>
 
-      <p class="prose-width">I also advise MS in Business Analytics capstone teams working with companies such as Westinghouse, RBC Wealth Management, and Swank Construction. <a href="../advising/">See those projects</a>.</p>
+      <p class="prose-width">I also advise MS in Business Analytics capstone teams working with companies such as Westinghouse, RBC Wealth Management, and Swank Construction, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>. <a href="../advising/">See those projects</a>.</p>
 
       <div class="book-row">
         <a class="btn primary" href="../book/">Book time</a>

@@ -76,6 +76,7 @@ ORCID: 0000-0002-4651-7684
 
 ### Advising
 
+- Advisor, MBA Business Analytics track capstone teams (45-959 Business Analytics Capstone), starting Spring 2027
 - Advisor, two MS in Business Analytics capstone teams, both partnering with Westinghouse, Spring 2026
 - Advisor, five MS in Business Analytics capstone teams (20 students) partnering with Saratoga, RBC, Swank, Confirmed, and a large consulting firm, Spring 2025
 - Advisor, three MS in Business Analytics capstone teams partnering with Tindoori Labs, Marinus Analytics, and 412 Food Rescue, Spring 2024
