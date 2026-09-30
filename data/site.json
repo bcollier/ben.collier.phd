@@ -2,7 +2,7 @@
   "note": "Single source of truth for absolute URLs. Until the custom domain resolves, canonical/OG/sitemap URLs must point at the live github.io address, or search engines and LinkedIn follow a dead link. scripts/enable_domain.sh flips domain_live when DNS is ready.",
   "custom_domain": "collier.phd",
   "pages_url": "https://bcollier.github.io/ben.collier.phd",
-  "domain_live": false,
+  "domain_live": true,
   "author": "Ben Collier",
   "job_title": "Assistant Teaching Professor of Business Analytics",
   "org": "Tepper School of Business, Carnegie Mellon University",
