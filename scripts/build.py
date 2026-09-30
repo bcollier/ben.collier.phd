@@ -752,7 +752,7 @@ def build_home():
 
       <div class="bio">
         <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.</p>
+        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.</p>
       </div>
 
       <div class="book-row">
@@ -1054,9 +1054,9 @@ def build_consult():
           </ul>
           <h3>In industry roles</h3>
           <ul>
-            <li>At UPMC's Pensiamo, as founding data scientist on a joint venture with IBM Watson Health, I did the machine learning research and built the production pipelines for CognitiveRx, a drug price and shortage tool for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. Premier later acquired it.</li>
-            <li>At Duolingo, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
-            <li>At gAIm Systems, AI tools and research studies that help sports teams recruit players, develop them, and build rosters.</li>
+            <li>At <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, as founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>, I did the machine learning research and built the production pipelines for CognitiveRx, a drug price and shortage tool for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. <a href="https://premierinc.com/">Premier</a> later acquired it.</li>
+            <li>At <a href="https://www.duolingo.com/">Duolingo</a>, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
+            <li>At <a href="https://www.gaimsystems.com/">gAIm Systems</a>, AI tools and research studies that help sports teams recruit players, develop them, and build rosters.</li>
           </ul>
         </section>
       </div>
