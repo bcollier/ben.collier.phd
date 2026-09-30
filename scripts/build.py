@@ -66,7 +66,7 @@ COURSES = [
         "panel": '<figure class="panel"><figcaption>In-class exercise: the 99% accurate fraud vendor</figcaption><table><tr><th>Transactions a day</th><td>100,000</td></tr><tr><th>Fraud rate</th><td>0.5%</td></tr><tr><th>Transactions the model flags</th><td>1,490</td></tr><tr><th>Flags that are real fraud</th><td>495</td></tr><tr><th>Cost of a review / a missed fraud</th><td>$12 / $400</td></tr></table><p>At a 0.5% fraud rate, buying pays. Sell the same model to a client with 0.01% fraud and the decision flips.</p></figure>',
         "story": [
             "The agents lab sits at the center of the course. Students build a customer support team of AI agents for a fictional outdoor retailer, a manager and three specialists, then test it to find where it fails.",
-            "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. A solver a student wrote by hand in 2017 scored 34 of 96 on Raven's Matrices. By the end of class the language model solver had about 86, and it claimed 99% confidence on every answer. The finished version, on the projects page, scores 93.",
+            "The history of AI is taught through its predictions and its failures, with a lot of Pittsburgh in it: Newell and Simon's Logic Theorist, the Navlab van, XCON. In the third class a coding agent built puzzle solvers live while students placed their bets. A solver a student wrote by hand in 2017 scored 34 of 96 on Raven's Matrices. By the end of class the language model solver had about 86, and it claimed 99% confidence on every answer. The finished version, on the Coding with AI Projects page, scores 93.",
             "Students learn to judge where AI creates value and to defend a recommendation to executives. Much of the work is written that way: response memos, a briefing on a current AI topic, and in-class exercises like the fraud vendor above."
         ],
         "projects": {"intro": "The first final projects are due in December 2026, in three tracks: an AI investment committee for a real public company, building and breaking an AI agent, and trying to make $100 with an AI-enabled business. Revenue is not the grade. A team that earns nothing and can explain exactly why will outscore a team that earns $200 without insight.", "types": []},
@@ -566,7 +566,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
       <a class="wordmark" href="{root}">Ben Collier, PhD</a>
       <nav class="primary" aria-label="Primary">
         {item("courses/", "courses", "courses")}
-        {item("projects/", "projects", "projects")}
+        {item("projects/", "coding with AI projects", "projects")}
         {item("advising/", "advising", "advising")}
         {item("consult/", "consulting", "consult")}
         {item("cv/", "cv", "cv")}
@@ -931,7 +931,7 @@ def build_portfolio(portfolio):
     items = "\n".join(portfolio_card(p, "../") for p in portfolio)
     body = f"""
       <p class="kicker">Portfolio</p>
-      <h1>Projects</h1>
+      <h1>Coding with AI Projects</h1>
       <p class="lede">Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.</p>
       <div class="portfolio">{items}</div>
 """
@@ -940,8 +940,8 @@ def build_portfolio(portfolio):
         page(
             "../",
             "projects",
-            "Projects · Ben Collier",
-            "Projects Ben Collier builds for his classes, with source code, prompts, and build logs.",
+            "Coding with AI Projects · Ben Collier",
+            "Coding with AI projects Ben Collier builds for his classes, with source code, prompts, and build logs.",
             "projects/",
             body,
         ),
@@ -1190,7 +1190,7 @@ def build_404():
     body = """
       <h1>Page not found</h1>
       <p class="lede">That URL is not on this site.</p>
-      <p><a href="./">Home</a> · <a href="./courses/">Courses</a> · <a href="./projects/">Projects</a> · <a href="./cv/">CV</a></p>
+      <p><a href="./">Home</a> · <a href="./courses/">Courses</a> · <a href="./projects/">Coding with AI Projects</a> · <a href="./cv/">CV</a></p>
 """
     write(
         "404.html",
