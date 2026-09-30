@@ -562,8 +562,8 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <div class="wrap">
-    <header class="site">
-      <a class="wordmark" href="{root}">Ben Collier, PhD</a>
+    <header class="site{' home' if active == 'home' and canon == '' else ''}">
+      <a class="wordmark" href="{root}"><img class="mini-portrait" src="{root}assets/portrait-hedcut.png" width="360" height="360" alt=""><span>Ben Collier, PhD</span></a>
       <nav class="primary" aria-label="Primary">
         {item("courses/", "courses", "courses")}
         {item("projects/", "coding with AI projects", "projects")}
@@ -589,6 +589,7 @@ def footer(root: str) -> str:
   <script src="{root}js/config.js"></script>
   <script src="{root}js/site.js"></script>
   <script src="{root}js/course-hero.js" defer></script>
+  <script src="{root}js/portrait-dock.js" defer></script>
 </body>
 </html>
 """
@@ -738,7 +739,10 @@ def build_home():
     cards = "\n".join(course_card(c, "") for c in built)
     body = f"""
       <section class="hero">
-        <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
+        <div class="portrait-morph">
+          <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier" fetchpriority="high">
+          <img class="portrait hedcut" src="assets/portrait-hedcut.png" width="360" height="360" alt="">
+        </div>
         <div>
           <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
           <h1>Ben Collier</h1>

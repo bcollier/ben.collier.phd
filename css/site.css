@@ -8,6 +8,7 @@
   --accent-ink: #9a3c10;
   --accent-hover: #8f350c;
   --white: #fbf8f2;
+  --newsprint: #f3efe6;
   /* Text on the coloured course tiles. Stays light in both themes: the tiles
      keep their colour, so --white (a surface token) would invert underneath it. */
   --thumb-ink: #fbf8f2;
@@ -19,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* In-page anchors land below the sticky header, not under it. */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -59,17 +62,33 @@ a:hover { color: var(--accent-hover); }
 
 .prose-width { max-width: var(--prose); }
 
+/* The header floats above the page as it scrolls. Its background runs the
+   full window width (the shadow and clip-path trick) while its content stays
+   inside .wrap. --mini is the docked hedcut's size; --dock (0 to 1) is set by
+   js/portrait-dock.js on the home page and is 1 everywhere else. */
 header.site {
+  --mini: 2.75;
+  --dock: 1;
+  position: sticky;
+  top: 0;
+  z-index: 30;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  padding: 1.4rem 0 1.1rem;
+  gap: 0.6rem 1.5rem;
+  padding: 0.85rem 0 0.8rem;
+  background: var(--paper);
+  box-shadow: 0 0 0 100vmax var(--paper);
+  clip-path: inset(0 -100vmax);
   border-bottom: 1px solid var(--rule);
   flex-wrap: wrap;
 }
 
+header.site.home { --dock: 0; }
+
 .wordmark {
+  display: inline-flex;
+  align-items: center;
   font-family: Fraunces, Georgia, serif;
   font-size: 1.35rem;
   font-weight: 500;
@@ -78,6 +97,23 @@ header.site {
   text-decoration: none;
   letter-spacing: -0.02em;
 }
+
+/* The small stippled portrait beside the wordmark. On the home page it opens
+   up as the big portrait flies in, so the name slides right to make room. */
+.mini-portrait {
+  width: calc(var(--dock) * var(--mini) * 1rem);
+  height: calc(var(--mini) * 1rem);
+  margin-right: calc(var(--dock) * 0.65rem);
+  border-radius: 50%;
+  object-fit: cover;
+  /* Newsprint stays light in both themes, so the ink dots always show. */
+  background: var(--newsprint);
+  box-shadow: 0 0 0 1px var(--rule);
+  opacity: 1;
+}
+
+header.site.home .mini-portrait { opacity: 0; }
+header.site.home.docked .mini-portrait { opacity: 1; }
 
 .wordmark:hover { color: var(--accent); }
 
@@ -152,6 +188,21 @@ h3 { font-size: 1.2rem; margin: 0 0 0.35rem; }
   align-items: start;
   margin-bottom: 2.2rem;
 }
+
+/* Home hero: the colour photo with the hedcut stacked on top, fully
+   transparent until the visitor scrolls. It rises above the sticky header
+   while it travels into it. */
+.portrait-morph {
+  position: relative;
+  z-index: 40;
+  width: 10rem;
+  height: 10rem;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.portrait-morph .portrait { position: absolute; inset: 0; }
+.portrait-morph .hedcut { opacity: 0; background: var(--newsprint); }
 
 .portrait {
   width: 10rem;
@@ -538,10 +589,21 @@ a.project:hover { border-color: var(--ink); }
 
 @media (max-width: 640px) {
   .hero { grid-template-columns: 1fr; }
-  .portrait { width: 8rem; height: 8rem; }
+  .portrait, .portrait-morph { width: 8rem; height: 8rem; }
   .tiles, .stat-row { grid-template-columns: 1fr; }
   .feed li, .contact-list li { grid-template-columns: 1fr; gap: 0.2rem; }
-  header.site { padding-top: 1rem; }
+  /* Keep the floating header to two short rows: name, then a nav line that
+     scrolls sideways instead of wrapping into three or four. */
+  header.site { --mini: 2.3; padding-top: 0.7rem; padding-bottom: 0.55rem; row-gap: 0.35rem; }
+  header.site .wordmark { font-size: 1.2rem; }
+  nav.primary {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    scrollbar-width: none;
+  }
+  nav.primary::-webkit-scrollbar { display: none; }
   .wrap { width: min(var(--page), calc(100% - 1.6rem)); }
 }
 

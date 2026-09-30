@@ -66,8 +66,8 @@
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <div class="wrap">
-    <header class="site">
-      <a class="wordmark" href="">Ben Collier, PhD</a>
+    <header class="site home">
+      <a class="wordmark" href=""><img class="mini-portrait" src="assets/portrait-hedcut.png" width="360" height="360" alt=""><span>Ben Collier, PhD</span></a>
       <nav class="primary" aria-label="Primary">
         <a href="courses/">courses</a>
         <a href="projects/">coding with AI projects</a>
@@ -82,7 +82,10 @@
     <main id="main">
 
       <section class="hero">
-        <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
+        <div class="portrait-morph">
+          <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier" fetchpriority="high">
+          <img class="portrait hedcut" src="assets/portrait-hedcut.png" width="360" height="360" alt="">
+        </div>
         <div>
           <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
           <h1>Ben Collier</h1>
@@ -164,5 +167,6 @@
   <script src="js/config.js"></script>
   <script src="js/site.js"></script>
   <script src="js/course-hero.js" defer></script>
+  <script src="js/portrait-dock.js" defer></script>
 </body>
 </html>
