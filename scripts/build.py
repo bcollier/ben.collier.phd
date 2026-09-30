@@ -476,7 +476,8 @@ def md_to_html(md: str) -> str:
             if in_ul:
                 out.append("</ul>")
                 in_ul = False
-            out.append(f"<h2>{inline(line[3:])}</h2>")
+            slug = re.sub(r"[^a-z0-9]+", "-", line[3:].lower()).strip("-")
+            out.append(f'<h2 id="{slug}">{inline(line[3:])}</h2>')
             continue
         if line.startswith("- "):
             if not in_ul:
@@ -760,11 +761,11 @@ def build_home():
         <a class="btn" href="consult/">Consulting and custom education</a>
       </div>
 
-      <ul class="stats">
-        <li><strong>{sum(1 for c in COURSES if c["built"])}</strong><span>courses I designed from scratch</span></li>
-        <li><strong>{len(COURSES)}</strong><span>courses taught at Carnegie Mellon since 2023</span></li>
-        <li><strong>{len(load_json("advising.json")["projects"])}</strong><span>capstones and independent studies advised since 2024</span></li>
-        <li><strong>2026</strong><span>George Leland Bach Teaching Award, voted by the MBA class</span></li>
+      <ul class="stats linked">
+        <li><a href="courses/#built"><strong>{sum(1 for c in COURSES if c["built"])}</strong><span>courses I designed from scratch</span></a></li>
+        <li><a href="courses/"><strong>{len(COURSES)}</strong><span>courses taught at Carnegie Mellon since 2023</span></a></li>
+        <li><a href="advising/"><strong>{len(load_json("advising.json")["projects"])}</strong><span>capstones and independent studies advised since 2024</span></a></li>
+        <li><a href="cv/#honors-and-awards"><strong>2026</strong><span>George Leland Bach Teaching Award, voted by the MBA class</span></a></li>
       </ul>
 
       <h2>Courses I built</h2>
@@ -797,7 +798,7 @@ def build_courses_index():
       <h1>Courses</h1>
       <p class="lede">Courses I designed from scratch, then courses I took over and rebuilt.</p>
 
-      <h2>Courses I built</h2>
+      <h2 id="built">Courses I built</h2>
       <div class="grid">{built}</div>
 
       <h2>Courses I took over and rebuilt</h2>
