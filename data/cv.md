@@ -35,7 +35,7 @@ ORCID: 0000-0002-4651-7684
 - **45-884 AI Methods for Social and Visual Data** (MBA): developed for Fall 2025; full-time and online hybrid; redesigned for Summer 2026
 - **70-377 Managing and Assessing Tech Talent and Organizations** (undergraduate): micro-course developed for Fall 2025, Carnegie Mellon University in Qatar
 - **70-445 Artificial Intelligence for Business Leaders** (undergraduate): developed for Fall 2026
-- **MSBA Math Skills Workshop**: developed for Summer 2026
+- **MS in Business Analytics Math Skills Workshop**: developed for Summer 2026
 
 ### MBA courses
 
@@ -43,13 +43,13 @@ ORCID: 0000-0002-4651-7684
 - **45-885 Data Visualization**: Spring 2024 (evening), Spring 2025 (full-time and online hybrid), Fall 2025, Spring 2026 (full-time and online hybrid)
 - **45-884 AI Methods for Social and Visual Data**: Fall 2025 (full-time and online hybrid), Summer 2026, Fall 2026
 
-### MSBA courses
+### MS in Business Analytics courses
 
 - **46-880 Introduction to Probability and Statistics**: Fall 2024 (full-time)
 - **46-885 Data Exploration and Visualization**: Spring 2025 (online hybrid), Spring 2026
 - **46-887 Machine Learning for Business Applications**: Spring 2026
-- **46-994 MSBA Independent Study**
-- **MSBA Math Skills Workshop**: Summer 2026
+- **46-994 MS in Business Analytics Independent Study**
+- **MS in Business Analytics Math Skills Workshop**: Summer 2026
 
 ### Heinz College
 
@@ -76,10 +76,10 @@ ORCID: 0000-0002-4651-7684
 
 ### Advising
 
-- Advisor, two MSBA capstone teams, both partnering with Westinghouse, Spring 2026
-- Advisor, five MSBA capstone teams (20 students) partnering with Saratoga, RBC, Swank, Confirmed, and a large consulting firm, Spring 2025
-- Advisor, three MSBA capstone teams partnering with Tindoori Labs, Marinus Analytics, and 412 Food Rescue, Spring 2024
-- MSBA Independent Study supervisor
+- Advisor, two MS in Business Analytics capstone teams, both partnering with Westinghouse, Spring 2026
+- Advisor, five MS in Business Analytics capstone teams (20 students) partnering with Saratoga, RBC, Swank, Confirmed, and a large consulting firm, Spring 2025
+- Advisor, three MS in Business Analytics capstone teams partnering with Tindoori Labs, Marinus Analytics, and 412 Food Rescue, Spring 2024
+- MS in Business Analytics Independent Study supervisor
 - Faculty advisor for undergraduate independent studies in Organizational Behavior, Carnegie Mellon University in Qatar: *Qatari Females in Leadership: Examining Motivation and Social Capital Influences* (Fall 2012); *Social Media Marketing: Theory and Evidence from Olympic Bid Campaigns* (Fall 2012); *A Cultural Analysis of Leadership and Influence: A Qualitative Comparison of Western and Middle Eastern Leadership Approaches* (Spring 2013); *Designing Leadership Development Programs for Women in the Gulf* (Spring 2014)
 - Co-advisor, undergraduate senior thesis *Social Networks and Promotion in Online Environments*, with Robert Kraut, Spring 2010
 
@@ -166,7 +166,7 @@ ORCID: 0000-0002-4651-7684
 ### Tepper School of Business
 
 - Business Analytics Teaching Track Hiring Committee, 2025
-- MSBA Curriculum Review Committee, 2024–
+- MS in Business Analytics Curriculum Review Committee, 2024–
 - Business Analytics Summer Summit Planning Committee, 2024–
 - Business Analytics Summer Summit Instructor, 2024 and 2025
 - Faculty Advisor, MS in Business Analytics Capstone, 2024–
