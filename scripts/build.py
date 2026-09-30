@@ -751,7 +751,7 @@ def build_home():
       </section>
 
       <div class="bio">
-        <p>Most of my teaching is at Tepper, in the MBA, the MS in Business Analytics, and the undergraduate program. I also teach at Heinz College. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
+        <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
         <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams.</p>
       </div>
 
