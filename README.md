@@ -208,7 +208,7 @@ Hand in the `github.io` URL that Settings → Pages shows.
 
 The site is served at the apex, `collier.phd`. Attaching it makes GitHub Pages redirect the `github.io` URL to the domain, so the version handed in for 15-113 is kept as the `cs15-113-submission` tag rather than as a live URL.
 
-At the DNS host for `collier.phd` (Google Cloud DNS nameservers), replace the existing A record, which points at an old server, with GitHub's four addresses, and add `www`:
+DNS for `collier.phd` is managed at Squarespace Domains (account.squarespace.com → Domains → collier.phd → DNS). It has no API, so records are edited by hand. The records below have been in place since 30 September 2026:
 
 | Type | Name | Value |
 | --- | --- | --- |
