@@ -1024,7 +1024,6 @@ def build_consult():
           <ul>
             <li>One- to three-day workshops, on site or online</li>
             <li>Multi-week programs for technology leaders and executives</li>
-            <li>Material from my Carnegie Mellon courses adapted for a team: AI for business leaders, data mining, visualization, and AI methods for text and images</li>
             <li>Recorded, self-paced courses</li>
           </ul>
           <h3>Examples</h3>
