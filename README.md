@@ -307,7 +307,7 @@ block; rasterising needs `rsvg-convert` (`brew install librsvg`).
 - **Courses** — built and taught
 - **Materials** — notebooks, video, workshops
 - **Projects** — fun projects built for classes, generated from `data/portfolio.json`
-- **Practice** — Hot Metal Data, gAIm Systems
+- **Practice** — Hot Metal AI, gAIm Systems
 - **CV** — generated from `data/cv.md`
 - **News** — dated log
 - **Contact** — email, office, Calendly hook

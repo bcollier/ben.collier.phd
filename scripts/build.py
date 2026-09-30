@@ -752,7 +752,7 @@ def build_home():
 
       <div class="bio">
         <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal Data. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams.</p>
+        <p>Before joining Tepper I was a staff data scientist at Duolingo and Senior Director of Data Science at UPMC's Pensiamo, where I was the founding data scientist on a joint venture with IBM Watson Health. I still do that work, as Senior Director of AI and Data Science at gAIm Systems and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams.</p>
       </div>
 
       <div class="book-row">
@@ -1017,7 +1017,7 @@ def build_consult():
     body = f"""
       <p class="kicker">Consulting</p>
       <h1>Consulting and custom education</h1>
-      <p class="lede">I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, Hot Metal Data.</p>
+      <p class="lede">I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, Hot Metal AI.</p>
 
       <div class="kinds">
         <section class="kind" id="education">
@@ -1048,7 +1048,7 @@ def build_consult():
             <li><strong>Model or metric review.</strong> About one week. I read the code, data, and evaluation, and tell you where it breaks.</li>
             <li><strong>Hands-on build.</strong> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</li>
           </ul>
-          <h3>Through Hot Metal Data</h3>
+          <h3>Through Hot Metal AI</h3>
           <ul>
             <li>A recommendation engine for healthcare specialist referrals, built for a healthcare client.</li>
           </ul>
@@ -1073,7 +1073,7 @@ def build_consult():
         <li><span>2025 to now</span><strong>gAIm Systems</strong> Senior Director of AI and Data Science</li>
         <li><span>2023 to now</span><strong>Tepper School of Business, Carnegie Mellon</strong> Assistant Teaching Professor of Business Analytics, after starting as an adjunct in Fall 2023</li>
         <li><span>2020 to 2023</span><strong>Duolingo</strong> Senior, lead, then staff data scientist, on monetization</li>
-        <li><span>2018 to now</span><strong>Hot Metal Data</strong> Founder. Analytics consulting and corporate training, alongside everything else</li>
+        <li><span>2018 to now</span><strong>Hot Metal AI</strong> Founder. Analytics consulting and corporate training, alongside everything else</li>
         <li><span>2016 to 2020</span><strong>UPMC's Pensiamo</strong> Data scientist, then Senior Director of Data Science</li>
         <li><span>2012 to 2016</span><strong>Carnegie Mellon University in Qatar</strong> Assistant Teaching Professor of Organizational Behavior, and co-director of executive education</li>
       </ol>
