@@ -159,7 +159,11 @@ ORCID: 0000-0002-4651-7684
 
 - Business Analytics Track Information Session, Tepper MBA program, Carnegie Mellon University, September 29, 2026
 - Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students, Tepper AI-Exchange, Carnegie Mellon University, August 7, 2026
-- Perspectives on Analytics, BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business, August 22, 2025
+- Perspectives on Analytics, BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business, August 22, 2025 and August 21, 2026
+- Managing Groups and Teams: Strategies for Collaborative Excellence, Community Partner Workshop, Carnegie Mellon University in Qatar, November 2025
+- AI tools lecture for doctoral students, Colloquium on AI for Business, Tepper School of Business, March 7, 2025
+- Using Statistics to Estimate the Unknown, Business Analytics Summer Summit, Tepper School of Business, May 2025
+- Using Statistics to Solve Business Problems, Business Analytics Summer Summit, Tepper School of Business, June 2024
 - Conversation on the MS in Business Analytics program, Tepper School of Business video, 2026. https://cmu.is/4tcxTyj
 - Creating a Culture for Innovation in Teams, RasGas Company, 2015
 - Digital Marketing for Entrepreneurs, International Telecommunication Union World Conference (United Nations specialized agency for ICT), 2014

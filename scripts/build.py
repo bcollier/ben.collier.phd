@@ -1238,9 +1238,10 @@ def build_talks():
       <h2>Earlier talks</h2>
       <ul class="earlier-list">
         <li><span>Sep 2026</span> Business Analytics track information session. <em>Tepper MBA program</em></li>
-        <li><span>Aug 2025</span> Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></li>
-        <li><span>2025</span> Traditional AI: data mining and data visualization. <em>Colloquium on AI for Business, Tepper School of Business</em></li>
-        <li><span>2025</span> Using statistics to estimate the unknown, and to solve business problems. <em>Business Analytics Summer Summit, Tepper School of Business</em></li>
+        <li><span>2025, 2026</span> Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></li>
+        <li><span>Nov 2025</span> Managing groups and teams: strategies for collaborative excellence. <em>Community partner workshop, Carnegie Mellon University in Qatar</em></li>
+        <li><span>Mar 2025</span> Traditional AI: data mining and data visualization, and AI tools for research. <em>Colloquium on AI for Business, Tepper School of Business</em></li>
+        <li><span>2024, 2025</span> Using statistics to solve business problems, and to estimate the unknown. <em>Business Analytics Summer Summit, Tepper School of Business</em></li>
         <li><span>2015</span> Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></li>
         <li><span>2014</span> Digital marketing for entrepreneurs. <em>International Telecommunication Union World Conference</em></li>
         <li><span>2014</span> Leadership in groups and organizations. <em>Cultivate Leadership Workshop, Hamad Bin Khalifa University</em></li>
