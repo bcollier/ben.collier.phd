@@ -632,6 +632,36 @@
     });
   }
 
+  /* ---------- advising prints: the diagram inks itself in, and a click turns the print over ---------- */
+  function prints() {
+    var arts = document.querySelectorAll(".art-print .advising-art");
+    Array.prototype.forEach.call(arts, function (svg) {
+      var els = svg.querySelectorAll("line, polyline, path, circle, rect, ellipse, polygon, text"), k = 0;
+      Array.prototype.forEach.call(els, function (el, i) {
+        if (el.closest("defs")) return;
+        if (el.tagName === "rect" && el.getAttribute("width") === svg.viewBox.baseVal.width + "") return;  // the print's background
+        var d = Math.min(0.55 + k++ * 0.035, 1.9);
+        var stroke = el.getAttribute("stroke"), fill = el.getAttribute("fill");
+        var line = stroke && stroke !== "none" && (!fill || fill === "none") && el.tagName !== "text" &&
+          !el.getAttribute("stroke-dasharray") && !el.getAttribute("marker-end") && el.getTotalLength;
+        if (line) {
+          el.classList.add("trace");
+          el.style.setProperty("--len", Math.ceil(el.getTotalLength()) + 2);
+        } else el.classList.add("pop");
+        el.style.setProperty("--d", d + "s");
+      });
+    });
+    var flips = document.querySelectorAll(".art-print .flip");
+    Array.prototype.forEach.call(flips, function (b) {
+      b.addEventListener("click", function () {
+        var fig = b.parentNode, on = !fig.classList.contains("flipped");
+        fig.classList.toggle("flipped", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+        b.setAttribute("aria-label", on ? "Turn the print back" : "Turn the print over");
+      });
+    });
+  }
+
   /* ---------- on phones the tabs scroll sideways: bring the current one into view ---------- */
   function currentTab() {
     var tabs = document.querySelector(".tabs"), cur = tabs && tabs.querySelector("a[aria-current]");
@@ -645,6 +675,7 @@
     currentTab();
     drawCharts(false);
     overlays();
+    prints();
     arm();
     dock();
     stacks();
