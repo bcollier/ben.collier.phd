@@ -7,17 +7,19 @@
   "number": "70-311",
   "title": "Organizational Behavior",
   "program": "Undergraduate",
-  "school": "CMU Qatar",
+  "school": "CMU Qatar and Pittsburgh",
   "era": "cmuq",
   "one_liner": "Motivation, teams, decisions, negotiation, leadership, and change, taught through Harvard cases and simulations.",
-  "blurb": "This was the core organizational behavior course for business students at CMU Qatar, and the course I taught most during my years in Doha. I built it around cases and simulations: Lincoln Electric and SAS for motivation, an Everest simulation and the Carter Racing exercise for team decisions, live negotiations, and a change simulation at the end. Each year I replaced more lecture time with exercises, so students spent most of class applying a concept rather than hearing about it. Students finished by analyzing a real company of their choosing with the course's frameworks.",
+  "blurb": "This was the core organizational behavior course for business students, and the course I taught most: first in Pittsburgh as a PhD student, then every year in Doha, and again in Pittsburgh in 2016. I built it around cases and simulations: Lincoln Electric and SAS for motivation, an Everest simulation and the Carter Racing exercise for team decisions, live negotiations, and a change simulation at the end. Each year I replaced more lecture time with exercises, so students spent most of class applying a concept rather than hearing about it. Students finished by analyzing a real company of their choosing with the course's frameworks.",
   "offerings": [
-   "Fall 2012 (2 sections)",
-   "Fall 2013 (2 sections)",
-   "Fall 2014 (2 sections)",
-   "Spring 2016 (1 section)"
+   "Summer 2011 (Pittsburgh)",
+   "Fall 2012 (Doha, 2 sections)",
+   "Fall 2013 (Doha, 2 sections)",
+   "Fall 2014 (Doha, 2 sections)",
+   "Spring 2016 (Doha, 1 section)",
+   "Fall 2016 (Pittsburgh, 1 section)"
   ],
-  "scale": "About 70 to 90 students a year across two sections",
+  "scale": "About 70 to 90 students a year in Doha across two sections, and 56 in Pittsburgh in Fall 2016",
   "color": "c-copper",
   "order": 1
  },
