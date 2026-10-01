@@ -785,3 +785,13 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 }
 .notice-strip span{color:var(--ink-soft);flex:1;min-width:14rem}
 .notice-strip a{white-space:nowrap;font-weight:600}
+
+/* Talks: one article per talk, slides in a responsive grid. */
+.talk { border-top: 1px solid var(--rule); padding-top: 1.4rem; margin-top: 2rem; }
+.talk .meta { font-size: 0.85rem; color: var(--ink-soft); letter-spacing: 0.02em; margin: 0 0 0.3rem; }
+.talk h2 { margin-top: 0; }
+.talk h3 { margin-top: 1.4rem; }
+.slides { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; margin: 0.8rem 0 0.4rem; }
+.slides figure { margin: 0; }
+.slides img { width: 100%; border: 1px solid var(--rule); background: #fff; }
+.slides figcaption { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.4rem; line-height: 1.4; }
