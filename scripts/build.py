@@ -1086,9 +1086,9 @@ def build_consult():
       <ol class="timeline">
         <li><span>2025 to now</span><strong>gAIm Systems</strong> Senior Director of AI and Data Science</li>
         <li><span>2023 to now</span><strong>Tepper School of Business, Carnegie Mellon</strong> Assistant Teaching Professor of Business Analytics, after starting as an adjunct in Fall 2023</li>
-        <li><span>2020 to 2023</span><strong>Duolingo</strong> Senior, lead, then staff data scientist, on monetization</li>
+        <li><span>2020 to 2023</span><strong>Duolingo</strong> Staff Data Scientist, on monetization</li>
         <li><span>2018 to now</span><strong>Hot Metal AI</strong> Founder. Analytics consulting and corporate training, alongside everything else</li>
-        <li><span>2016 to 2020</span><strong>UPMC's Pensiamo</strong> Data scientist, then Senior Director of Data Science</li>
+        <li><span>2016 to 2020</span><strong>UPMC's Pensiamo</strong> Senior Director of Data Science</li>
         <li><span>2012 to 2016</span><strong>Carnegie Mellon University in Qatar</strong> Assistant Teaching Professor of Organizational Behavior, and co-director of executive education</li>
       </ol>
       <p><a href="../cv/">Full CV</a></p>

@@ -120,8 +120,8 @@ ORCID: 0000-0002-4651-7684
 
 - **Senior Director of AI and Data Science**, gAIm Systems, May 2025–present. Builds AI tools and research studies that help sports teams recruit players, develop them, and build rosters.
 - **Founder and Principal Data Scientist**, Hot Metal AI, Oct 2018–present. Analytics consulting and corporate training. Taught on-site and hybrid professional development courses for technology leaders and executives at Optum, AT&T, Cox Communications, and RapidScale. Ran one- to three-day workshops on chatbot development, data programming, SQL and NoSQL, data mining, infrastructure and the cloud, and agile development. Built a recommendation engine for healthcare specialist referrals for a healthcare client.
-- **Staff Data Scientist**, Duolingo, Feb 2020–Jun 2023. Senior Data Scientist (Feb 2020–Sep 2021), Lead Data Scientist (Sep 2021–Oct 2022), Staff Data Scientist (Oct 2022–Jun 2023). Lead, then staff, data scientist on monetization: financial forecasting, user retention prediction, ad platform optimization, and the key performance metrics for the 2021 initial public offering. Helped hire and train data scientists as the team grew from three to fifteen. Designed and analyzed large-scale A/B tests across more than 70 million users. Presented A/B test results to the CEO and executive team.
-- **Senior Director of Data Science**, UPMC / Pensiamo, Sep 2017–Feb 2020; Data Scientist, Sep 2016–Sep 2017. Founding data scientist for a joint venture with IBM Watson Health applying AI to the healthcare supply chain. Conducted machine learning research and built production pipelines for CognitiveRx, a drug price prediction and drug shortage tool later acquired by Premier. Hired and managed a team of PhD-level healthcare data scientists. Designed data pipelines and analytic tools for managing a $1.2 billion fleet of 175,000 medical devices across the UPMC system. Built the Databricks infrastructure for large-scale aggregation, cleaning, and machine learning in Python and Spark.
+- **Staff Data Scientist**, Duolingo, Feb 2020–Jun 2023. Data science for monetization: financial forecasting, user retention prediction, ad platform optimization, and the key performance metrics for the 2021 initial public offering. Helped hire and train data scientists as the team grew from three to fifteen. Designed and analyzed large-scale A/B tests across more than 70 million users. Presented A/B test results to the CEO and executive team.
+- **Senior Director of Data Science**, UPMC / Pensiamo, Sep 2016–Feb 2020. Founding data scientist for a joint venture with IBM Watson Health applying AI to the healthcare supply chain. Conducted machine learning research and built production pipelines for CognitiveRx, a drug price prediction and drug shortage tool later acquired by Premier. Hired and managed a team of PhD-level healthcare data scientists. Designed data pipelines and analytic tools for managing a $1.2 billion fleet of 175,000 medical devices across the UPMC system. Built the Databricks infrastructure for large-scale aggregation, cleaning, and machine learning in Python and Spark.
 
 ### Earlier research and industry roles
 
@@ -148,6 +148,7 @@ ORCID: 0000-0002-4651-7684
 
 ### Teaching presentations
 
+- Collier, B. (2026, August 7). Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students. *Tepper AI-Exchange*, Tepper School of Business, Carnegie Mellon University.
 - Collier, B., & Jiang, Z. (2025, June 5). AI Data Visualization Coach. *Teaching with AI Conference*, Kellogg School of Management, Northwestern University.
 
 ### Practitioner publications
@@ -158,7 +159,6 @@ ORCID: 0000-0002-4651-7684
 ## Invited talks and media
 
 - Business Analytics Track Information Session, Tepper MBA program, Carnegie Mellon University, September 29, 2026
-- Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students, Tepper AI-Exchange, Carnegie Mellon University, August 7, 2026
 - Perspectives on Analytics, BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business, August 22, 2025 and August 21, 2026
 - Managing Groups and Teams: Strategies for Collaborative Excellence, Community Partner Workshop, Carnegie Mellon University in Qatar, November 2025
 - AI tools lecture for doctoral students, Colloquium on AI for Business, Tepper School of Business, March 7, 2025
