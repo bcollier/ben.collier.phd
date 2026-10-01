@@ -382,6 +382,7 @@ NEWS = [
     # Newest first.
     ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
     ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
+    ("2026-08-07", "Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.", "talks/", "Slides and summary"),
     ("2026-08", "Finished recording the MS in Business Analytics Math Skills Workshop, a self-paced course for incoming MS in Business Analytics students that runs from algebra through gradient descent, PCA, and statistical inference."),
     ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
     ("2026-06", "Really proud of this summer's AI Methods final projects. Three of the nineteen are already in use, and they range from social listening on an aircraft maker's safety crisis to an offline tool that helps bomb-disposal teams identify ordnance."),
@@ -571,6 +572,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("advising/", "advising", "advising")}
         {item("consult/", "consulting", "consult")}
         {item("cv/", "cv", "cv")}
+        {item("talks/", "talks", "talks")}
         {item("news/", "news", "news")}
         {item("contact/", "contact", "contact")}
         <a class="nav-cta" href="{root}book/"{' aria-current="page"' if active == "book" else ""}>Book a call</a>
@@ -669,11 +671,20 @@ def rfc3339(iso: str) -> str:
     return f"{parts[0]}-{parts[1]}-{parts[2]}T12:00:00Z"
 
 
-def news_items(limit=None):
+def news_link(link: str, root: str) -> str:
+    """News links are absolute URLs or site paths like "talks/"."""
+    return link if link.startswith("http") else root + link
+
+
+def news_items(limit=None, root=""):
     items = NEWS if limit is None else NEWS[:limit]
     out = ['<ol class="feed">']
-    for iso, text, *link in items:
-        more = f' <a href="{esc(link[0])}">Watch the video</a>' if link else ""
+    for iso, text, *rest in items:
+        more = ""
+        if rest:
+            label = rest[1] if len(rest) > 1 else "Watch the video"
+            more = f' <a href="{esc(news_link(rest[0], root))}">{label}</a>'
+
         out.append(
             f'<li><time datetime="{iso}">{human_date(iso)}</time>'
             f'<div class="post"><p>{text}{more}</p></div></li>'
@@ -1145,7 +1156,7 @@ def build_news():
       <p class="kicker">Teaching and practice</p>
       <h1>News</h1>
       <p class="lede">A dated log of teaching, advising, and practice.</p>
-      {news_items()}
+      {news_items(root="../")}
       <h2>On LinkedIn</h2>
       <ol class="feed" id="linkedin-all"></ol>
 """
@@ -1157,6 +1168,93 @@ def build_news():
             "News · Ben Collier",
             "Dated notes from teaching, advising, and practice.",
             "news/",
+            body,
+        ),
+    )
+
+
+# Slides from the August 2026 AI-Exchange talk, rendered from Ben's own deck.
+# Only his text slides: no student names or work, no third-party figures.
+TALK_SLIDES = [
+    ("challenges-45884", "The design problem for 45-884: most MBA students had no machine learning course and little Python, and the models change every three to six months."),
+    ("unusual", "What may be unusual about it: half of class time is hands-on, MBA students learn RAG chunking and vision transformers, and there are 20 quizzes in seven weeks."),
+    ("ai-in-the-news", "AI in the News: each class opens with a student briefing on a story from the last six months. Starred topics were requested by faculty."),
+    ("takeaways", "What the final projects showed: real evaluations, models caught failing, and three projects already in use."),
+    ("challenges-70445", "The design problem for 70-445: no prerequisites, first-years through seniors, and it has to feel like a business course, not a generic AI course."),
+    ("outcomes-70445", "Learning outcomes for 70-445 Artificial Intelligence for Business Leaders."),
+]
+
+
+def talk_slide(name: str, cap: str) -> str:
+    src = f"../assets/talks/ai-exchange-2026-{name}.jpg"
+    return (
+        f'          <figure>\n'
+        f'            <a href="{src}"><img src="{src}" width="1200" height="675" loading="lazy" alt="Slide: {esc(cap)}"></a>\n'
+        f'            <figcaption>{cap}</figcaption>\n'
+        f'          </figure>'
+    )
+
+
+def build_talks():
+    slides = "\n".join(talk_slide(n, c) for n, c in TALK_SLIDES)
+    body = f"""
+      <p class="kicker">Talks</p>
+      <h1>Talks</h1>
+      <p class="lede">Talks and workshops on building AI courses, teaching with AI, and putting analytics to work.</p>
+
+      <article class="talk">
+        <p class="meta">August 7, 2026 · Tepper AI-Exchange · Carnegie Mellon University, Pittsburgh</p>
+        <h2>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</h2>
+        <div class="prose-width">
+          <p>Over the past year I designed and taught a new MBA elective, <a href="../courses/45-884/">AI Methods for Social and Visual Data</a>, and I was developing an undergraduate course, <a href="../courses/70-445/">Artificial Intelligence for Business Leaders</a>, launching that fall. In this talk I shared what has worked well in the MBA classroom, from assignment design to helping students build hands-on skills with modern AI tools, along with what I was changing or trying differently in the new undergraduate course. I also gave a brief introduction to a large randomized controlled trial of AI in the classroom that I am taking part in, and what we hope to learn from it about how AI actually affects student outcomes.</p>
+          <p>The session closed as a discussion with the faculty in the room: what they would add to the undergraduate course, what did not fit, and how Tepper should approach a flagship AI course for undergraduates.</p>
+        </div>
+        <h3>Selected slides</h3>
+        <div class="slides">
+{slides}
+        </div>
+      </article>
+
+      <article class="talk">
+        <p class="meta">June 5, 2025 · Teaching with AI Summer Workshop · Kellogg School of Management, Northwestern University</p>
+        <h2>AI Data Visualization Coach</h2>
+        <div class="prose-width">
+          <p>A flash talk with my colleague Zoey Jiang on the custom GPT we built for <a href="../courses/45-885/">Data Visualization</a>. Before presenting a chart redesign, teams test it with the coach. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.</p>
+          <p><a href="https://www.kellogg.northwestern.edu/events/conference/teaching-with-ai/">Workshop program</a></p>
+        </div>
+      </article>
+
+      <article class="talk">
+        <p class="meta">April 30, 2026 · Tepper School of Business</p>
+        <h2>Faculty Spotlight: what students learn in the MS in Business Analytics</h2>
+        <div class="prose-width">
+          <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
+          <p><a href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
+        </div>
+      </article>
+
+      <h2>Earlier talks</h2>
+      <ul class="earlier-list">
+        <li><span>2025</span> Traditional AI: data mining and data visualization. <em>Colloquium on AI for Business, Tepper School of Business</em></li>
+        <li><span>2025</span> Using statistics to estimate the unknown, and to solve business problems. <em>Business Analytics Summer Summit, Tepper School of Business</em></li>
+        <li><span>2015</span> Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></li>
+        <li><span>2014</span> Digital marketing for entrepreneurs. <em>International Telecommunication Union World Conference</em></li>
+        <li><span>2014</span> Leadership in groups and organizations. <em>Cultivate Leadership Workshop, Hamad Bin Khalifa University</em></li>
+      </ul>
+
+      <div class="book-row">
+        <a class="btn primary" href="../book/">Ask about a talk or workshop</a>
+        <span class="muted">I speak to faculty, executive, and industry audiences about AI in business and in the classroom.</span>
+      </div>
+"""
+    write(
+        "talks/index.html",
+        page(
+            "../",
+            "talks",
+            "Talks · Ben Collier",
+            "Talks by Ben Collier on building AI courses, teaching with AI, and business analytics, with slides.",
+            "talks/",
             body,
         ),
     )
@@ -1205,7 +1303,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "cv/", "news/", "contact/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/"]
     paths += [f"courses/{c['slug']}/" for c in COURSES]
     return paths
 
@@ -1239,9 +1337,9 @@ def build_robots():
 
 def build_feed():
     entries = []
-    for iso, text, *link in NEWS:
+    for iso, text, *rest in NEWS:
         stamp = rfc3339(iso)
-        href = link[0] if link else f"{HOST}/news/"
+        href = news_link(rest[0], f"{HOST}/") if rest else f"{HOST}/news/"
         entries.append(
             "  <entry>\n"
             f"    <title>{esc(text)}</title>\n"
@@ -1280,6 +1378,7 @@ def main():
     build_book()
     build_advising()
     build_news()
+    build_talks()
     build_contact()
     build_404()
     build_sitemap()

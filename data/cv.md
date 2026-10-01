@@ -156,7 +156,7 @@ ORCID: 0000-0002-4651-7684
 
 ## Invited talks and media
 
-- Lessons learned from teaching AI Methods for Social and Visual Data, Tepper AI Exchange, Carnegie Mellon University, 2026
+- Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students, Tepper AI-Exchange, Carnegie Mellon University, August 7, 2026
 - Conversation on the MS in Business Analytics program, Tepper School of Business video, 2026. https://cmu.is/4tcxTyj
 - Creating a Culture for Innovation in Teams, RasGas Company, 2015
 - Digital Marketing for Entrepreneurs, International Telecommunication Union World Conference (United Nations specialized agency for ICT), 2014
