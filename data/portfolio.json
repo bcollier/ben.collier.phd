@@ -44,7 +44,7 @@
       "date": "September 2026",
       "tools": "Python, Flask, Claude Code, the NHL API, OpenAI",
       "image": "assets/portfolio/rink-rivals.png",
-      "image_alt": "Rink Rivals comparing Sidney Crosby and Alex Ovechkin, with trophy badges and a season-by-season points chart",
+      "image_alt": "Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted",
       "summary": "Type in two NHL players and see their careers side by side: every regular-season statistic with the leader highlighted, each player's draft position and trophies, and a season-by-season chart of their production. If you want it settled, a language model reads the whole comparison and picks a winner. It has to commit, explain the pick, and give the strongest argument against it. I built it for 15-113, Effective Coding with AI, as a study in what a small app owes the person using it.",
       "process": "Most of the interesting work was deciding what the app should refuse to do. The NHL's search endpoint does not rank results by relevance. A search for \"Marc-Andre Fleury\" returns Marc-Andre Dorion first, so taking the top result quietly shows the wrong career without any error. A scoring function fixes that, and a regression test checks that the endpoint still behaves this way. Skaters and goalies share almost no statistics, so the app declines to compare them rather than print numbers that are accurate and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, which keeps a long career from passing for a great one. The OpenAI key stays on the server. GitHub Pages has no server to hold a secret, and GitHub Secrets are build-time variables that would end up in the published JavaScript.",
       "links": [
@@ -58,7 +58,7 @@
         }
       ],
       "image_width": 1600,
-      "image_height": 1724,
+      "image_height": 900,
       "note": "This is the small, public version. I have also built a much larger hockey platform that is now being demonstrated to NCAA Division I programs for their coaches, managers, scouts, and players. Its code and login are private, so they are not linked here. It runs several coordinating agents and a data-analysis agent over a hockey database of more than 6 GB. I am happy to demo it in person for anyone interested in hockey data work at that scale."
     },
     {

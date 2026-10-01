@@ -542,7 +542,6 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
-      <div>© {date.today().year} Ben Collier. A personal site; views are my own, not Carnegie Mellon University's.</div>
       <div><a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
     </footer>
   </div>
