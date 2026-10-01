@@ -6,7 +6,7 @@ Also teaches selected courses at Heinz College
 
 Tepper Quad, Office 5135 · 4765 Forbes Avenue · Pittsburgh, PA 15213  
 [bcollier@cmu.edu](mailto:bcollier@cmu.edu) · ben@collier.phd  
-https://collier.phd · https://www.linkedin.com/in/bcollierphd  
+https://collier.phd · https://www.linkedin.com/in/bcollierphd · [CMU Scholars profile](https://scholars.cmu.edu/473-ben-collier/professional)  
 ORCID: 0000-0002-4651-7684
 
 ## Academic appointments
