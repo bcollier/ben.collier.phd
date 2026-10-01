@@ -26,17 +26,26 @@
     landPaths = svg.append("g").selectAll("path").data(countries).join("path")
       .attr("class", function (d) { return byId.has(String(+d.id)) ? "g-land visited" : "g-land"; })
       .attr("d", path)
-      .on("mouseenter", function (e, d) { const p = byId.get(String(+d.id)); if (p) show(p); })
-      .on("mouseleave", softHide)
       .on("click", function (e, d) { const p = byId.get(String(+d.id)); if (p) pin(p); });
     dotNodes = svg.append("g").selectAll("g").data(places).join("g").attr("class", "g-dot m-dot")
       .attr("transform", function (p) { const xy = projection([p.lon, p.lat]); p._xy = xy; return "translate(" + xy[0] + "," + xy[1] + ")"; })
       .attr("tabindex", 0).attr("role", "button").attr("aria-label", function (p) { return p.name + ": photos"; })
-      .on("mouseenter", function (e, p) { show(p); })
-      .on("mouseleave", softHide)
       .on("focus", function (e, p) { show(p); })
       .on("click", function (e, p) { pin(p); })
       .on("keydown", function (e, p) { if (e.key === "Enter" || e.key === " ") { pin(p); e.preventDefault(); } });
+    // One pointer tracker instead of per-shape enter/leave events: the nearest
+    // dot within reach wins, otherwise the visited country under the pointer.
+    let target = null;
+    svg.on("pointermove", function (e) {
+      const m = d3.pointer(e);
+      let best = null, dist = 16;
+      places.forEach(function (p) { const d = Math.hypot(p._xy[0] - m[0], p._xy[1] - m[1]); if (d < dist) { dist = d; best = p; } });
+      if (!best && e.target.__data__ && e.target.classList.contains("visited")) best = byId.get(String(+e.target.__data__.id));
+      if (best === target) return;
+      target = best;
+      if (best) show(best); else softHide();
+    });
+    svg.on("pointerleave", function () { target = null; softHide(); });
     dotNodes.append("circle").attr("class", "hit").attr("r", 9);
     dotNodes.append("circle").attr("class", "pulse").attr("r", 7);
     dotNodes.append("circle").attr("class", "core").attr("r", function (p) { return 3 + Math.min(3, Math.log10(p.count)); });
@@ -46,48 +55,72 @@
     return p.years.length ? (p.years[0] === p.years[1] ? p.years[0] : p.years[0] + " to " + p.years[1]) : "";
   }
 
+  // The card docks in the empty South Pacific corner instead of covering the
+  // map. A leader line draws from the dot to the card, the card rises in, and
+  // its thumbnails follow one after another. Hover has a short intent delay so
+  // sweeping the pointer across Europe does not flicker.
+  let leader = null, intent = null;
   function show(p) {
     clearTimeout(hideTimer);
     if (pinned && pinned !== p) return;
-    if (shown !== p) {
-      shown = p;
-      pop.innerHTML = '<div class="mp-head"><strong>' + p.name + '</strong><span>' + years(p) + '</span></div><div class="mp-thumbs">' +
+    clearTimeout(intent);
+    intent = setTimeout(function () { render(p); }, shown ? 60 : 110);
+  }
+  function render(p) {
+    if (shown === p) { reveal(); return; }
+    const swap = !!shown;
+    shown = p;
+    const fill = function () {
+      pop.innerHTML = '<div class="mp-head"><strong>' + p.name + '</strong><span>' + [years(p), p.photos.length + (p.photos.length === 1 ? " photo" : " photos")].filter(Boolean).join(" · ") + '</span></div><div class="mp-thumbs">' +
         p.photos.slice(0, 8).map(function (ph, i) {
-          return '<button type="button" data-i="' + i + '" aria-label="' + p.name + ', ' + ph.place + '"><img src="' + root + ph.src.replace(".webp", "-t.webp") + '" alt=""></button>';
+          return '<button type="button" data-i="' + i + '" style="--i:' + i + '" aria-label="' + p.name + ', ' + ph.place + '"><img src="' + root + ph.src.replace(".webp", "-t.webp") + '" alt=""></button>';
         }).join("") + "</div>";
       pop.querySelectorAll("button").forEach(function (b) {
         b.addEventListener("click", function () { open(p, +b.dataset.i); });
       });
-      place(p);
-      if (dotNodes) dotNodes.classed("on", function (d) { return d === p; });
-    }
-    pop.hidden = false;
+      pop.classList.remove("swap"); void pop.offsetWidth; pop.classList.add("swap");
+      reveal();
+      drawLeader(p);
+    };
+    if (swap && pop.classList.contains("show")) { pop.classList.add("out"); setTimeout(function () { pop.classList.remove("out"); fill(); }, 140); }
+    else fill();
+    if (dotNodes) dotNodes.classed("on", function (d) { return d === p; });
   }
+  function reveal() { pop.hidden = false; void pop.offsetWidth; pop.classList.add("show"); }
 
-  // Put the popup beside the dot, flipped to stay inside the map.
-  function place(p) {
-    const box = mount.getBoundingClientRect(), wbox = wrap.getBoundingClientRect();
-    const k = box.width / W;
-    const x = (box.left - wbox.left) + p._xy[0] * k, y = (box.top - wbox.top) + p._xy[1] * k;
-    pop.style.left = "0px"; pop.style.top = "0px"; pop.hidden = false;
-    const pw = pop.offsetWidth, ph = pop.offsetHeight;
-    let left = x + 14, top = y - ph / 2;
-    if (left + pw > wbox.width) left = x - pw - 14;
-    left = Math.max(4, Math.min(wbox.width - pw - 4, left));
-    top = Math.max(4, Math.min(wbox.height - ph - 4, top));
-    pop.style.left = left + "px"; pop.style.top = top + "px";
+  // A curved line from the dot to the card's nearest corner, drawn on.
+  function drawLeader(p) {
+    if (!leader) leader = svg.append("path").attr("class", "m-leader");
+    const box = mount.getBoundingClientRect(), cb = pop.getBoundingClientRect();
+    if (!box.width || getComputedStyle(pop).position !== "absolute") { leader.attr("d", null); return; }
+    const k = W / box.width;
+    const cx = (cb.right - box.left) * k, cy = (cb.top - box.top) * k + 18;
+    const [x, y] = p._xy;
+    const mx = (x + cx) / 2, my = Math.min(y, cy) - 40;
+    leader.attr("d", "M" + x + "," + y + " Q" + mx + "," + my + " " + cx + "," + cy);
+    const len = leader.node().getTotalLength();
+    leader.interrupt().attr("stroke-dasharray", len).attr("stroke-dashoffset", len).style("opacity", 1)
+      .transition().duration(520).ease(d3.easeCubicOut).attr("stroke-dashoffset", 0);
   }
 
   function softHide() {
+    clearTimeout(intent);
     if (pinned) return;
-    hideTimer = setTimeout(function () { pop.hidden = true; shown = null; if (dotNodes) dotNodes.classed("on", false); }, 250);
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(function () {
+      pop.classList.remove("show"); shown = null;
+      if (leader) leader.transition().duration(200).style("opacity", 0);
+      if (dotNodes) dotNodes.classed("on", false);
+      setTimeout(function () { if (!shown) pop.hidden = true; }, 260);
+    }, 700);
   }
   pop.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
   pop.addEventListener("mouseleave", softHide);
 
   function pin(p) {
     pinned = null;
-    show(p);
+    clearTimeout(intent); clearTimeout(hideTimer);
+    render(p);
     pinned = p;
     pop.classList.add("pinned");
     document.querySelectorAll(".country-list button").forEach(function (b) { b.classList.toggle("on", b.dataset.cc === p.cc); });
@@ -125,7 +158,7 @@
       wrap.hidden = globe;
       document.getElementById("view-globe").hidden = !globe;
       if (globe && !globeStarted && window.startGlobe) { globeStarted = true; window.startGlobe(); }
-      pinned = null; pop.hidden = true; shown = null;
+      pinned = null; pop.classList.remove("show"); pop.hidden = true; shown = null; if (leader) leader.style("opacity", 0);
     });
   });
 })();
