@@ -138,7 +138,7 @@ https://collier.phd · https://www.linkedin.com/in/bcollierphd · [CMU Scholars 
 ### Peer-reviewed publications and conference proceedings
 
 - Bear, J. B., & Collier, B. (2016). Where are the Women in Wikipedia? Understanding the Different Psychological Experiences of Men and Women in Wikipedia. *Sex Roles*, 74(5–6), 254–265. https://doi.org/10.1007/s11199-015-0573-y
-  Featured in [Harvard Business Review](https://hbr.org/2016/06/why-do-so-few-women-edit-wikipedia), June 2016. Also covered by [ATTN:](https://archive.attn.com/stories/8908/study-shows-gender-gap-on-wikipedia) and [Wiki Education](https://wikiedu.org/blog/2016/11/09/women-wikipedia/), and discussed in Wikipedia's article on [gender bias on Wikipedia](https://en.wikipedia.org/wiki/Gender_bias_on_Wikipedia).
+  Featured in [Harvard Business Review](https://hbr.org/2016/06/why-do-so-few-women-edit-wikipedia), June 2016 ([archived copy](https://web.archive.org/web/20260923090551/hbr.org/2016/06/why-do-so-few-women-edit-wikipedia)): “Women reported feeling less confident about their expertise, less comfortable with editing others’ work.” Also covered by [ATTN:](https://archive.attn.com/stories/8908/study-shows-gender-gap-on-wikipedia) and [Wiki Education](https://wikiedu.org/blog/2016/11/09/women-wikipedia/), and discussed in Wikipedia's article on [gender bias on Wikipedia](https://en.wikipedia.org/wiki/Gender_bias_on_Wikipedia).
 - Turan, N., & Collier, B. (2014). Gender and Negotiation in Leadership Roles: Extending Advocacy Effects to Women in Leadership Positions. *Annual Meeting of the International Association for Conflict Management*, Leiden, Netherlands.
 - Collier, B., & Kraut, R. (2012). Leading the Collective: Social Capital and the Development of Leaders in Core-Periphery Organizations. *Collective Intelligence*, Cambridge, MA. https://doi.org/10.48550/arXiv.1204.3682
   Summarized in the [Wikimedia Research Newsletter](https://meta.wikimedia.org/wiki/Research:Newsletter/2012/May), May 2012.
@@ -170,7 +170,7 @@ https://collier.phd · https://www.linkedin.com/in/bcollierphd · [CMU Scholars 
 - Conversation on the MS in Business Analytics program, Tepper School of Business video, 2026. https://cmu.is/4tcxTyj
 - Named as the new professor teaching business analytics in the MBA program, [Meet Carnegie Mellon Tepper's MBA Class of 2026](https://poetsandquants.com/2025/01/10/meet-carnegie-mellon-teppers-mba-class-of-2026/2/), Poets & Quants, January 10, 2025
 - Quoted on CMU-Q's executive and professional education program, [CMU-Q news](https://www.qatar.cmu.edu/news/more-than-700-participants-complete-cmu-qs-executive-and-professional-education-program/), June 24, 2015
-- Research with Julia Bear featured in [Why Do So Few Women Edit Wikipedia?](https://hbr.org/2016/06/why-do-so-few-women-edit-wikipedia), by Nicole Torres, Harvard Business Review, June 2, 2016
+- Research with Julia Bear featured in [Why Do So Few Women Edit Wikipedia?](https://hbr.org/2016/06/why-do-so-few-women-edit-wikipedia), by Nicole Torres, Harvard Business Review ([archived copy](https://web.archive.org/web/20260923090551/hbr.org/2016/06/why-do-so-few-women-edit-wikipedia)), June 2, 2016
 - Creating a Culture for Innovation in Teams, RasGas Company, 2015
 - Digital Marketing for Entrepreneurs, International Telecommunication Union World Conference (United Nations specialized agency for ICT), 2014
 - Leadership in Groups and Organizations, Cultivate Leadership Workshop, Hamad Bin Khalifa University, 2014
