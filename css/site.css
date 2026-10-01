@@ -546,27 +546,139 @@ a.project:hover { border-color: var(--ink); }
 .project p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; flex: 1; }
 .project .who { margin-top: 0.7rem; font-size: 0.85rem; color: var(--ink); }
 
-.cv {
-  max-width: 46rem;
+/* ---------------------------------------------------------------------------
+   CV. Header card, career timeline, sticky section index, and per-section
+   layouts (timeline, cards, citations, columns). Built by build_cv().
+   --------------------------------------------------------------------------- */
+.cv-head {
+  display: grid;
+  grid-template-columns: 7.5rem minmax(0, 1fr);
+  gap: 1.2rem 1.8rem;
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--accent-ink);
+  padding: 1.6rem 1.8rem;
+}
+.cv-head h1 { margin: 0 0 0.35rem; }
+.cv-portrait { width: 7.5rem; height: 7.5rem; border-radius: 50%; object-fit: cover; object-position: center 20%; box-shadow: 0 0 0 1px var(--rule); }
+.cv-roles { margin: 0 0 0.9rem; font-family: Fraunces, Georgia, serif; font-size: 1.12rem; line-height: 1.4; }
+.cv-contact { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.cv-contact li { font-size: 0.86rem; background: var(--paper); border: 1px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.7rem; overflow-wrap: anywhere; }
+.cv-actions { margin: 1rem 0 0; }
+
+/* Career at a glance. */
+.cv-glance { margin: 1.6rem 0 0.4rem; }
+.cv-glance figcaption { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.6rem; }
+.glance-scroll { overflow-x: auto; }
+.glance { min-width: 40rem; display: grid; gap: 0.4rem; }
+.lane { display: grid; grid-template-columns: 6.2rem minmax(0, 1fr); align-items: center; gap: 0.6rem; }
+.lane-name { font-size: 0.8rem; color: var(--ink-soft); text-align: right; }
+.track { position: relative; height: 1.9rem; background: var(--paper-2); border-radius: 4px; }
+.band { position: absolute; top: 0.15rem; bottom: 0.15rem; border-radius: 3px; color: #fbf8f2; text-decoration: none; font-size: 0.76rem; font-weight: 600; display: flex; align-items: center; padding: 0 0.45rem; overflow: hidden; white-space: nowrap; transition: transform 0.15s, box-shadow 0.15s; }
+.band span { overflow: hidden; text-overflow: ellipsis; }
+.band.academia { background: #2f4a6b; }
+.band.industry { background: #8a3b12; }
+.band.consulting { background: #5b6b3a; }
+.band:hover, .band:focus-visible { transform: translateY(-1px); box-shadow: 0 3px 8px rgb(0 0 0 / 0.25); color: #fff; }
+.track.degrees { background: none; border-bottom: 1px dashed var(--rule); border-radius: 0; }
+.degree { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--accent-ink); }
+.degree span { position: absolute; left: 50%; transform: translateX(-50%); top: -1.15rem; font-size: 0.72rem; color: var(--ink); font-weight: 600; white-space: nowrap; }
+.track.ticks { height: 1.1rem; background: none; }
+.track.ticks span { position: absolute; transform: translateX(-50%); font-size: 0.72rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+/* Section index beside the CV on wide screens, chips above it on narrow. */
+.cv-layout { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 1.4rem; }
+.cv-toc ol { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.cv-toc a { display: block; font-size: 0.86rem; color: var(--ink-soft); text-decoration: none; border: 1px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.7rem; background: var(--white); }
+.cv-toc a:hover { color: var(--accent-ink); border-color: var(--accent-ink); }
+.cv-toc a[aria-current] { color: var(--paper); background: var(--accent-ink); border-color: var(--accent-ink); }
+@media (min-width: 64rem) {
+  .cv-layout { grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2.5rem; }
+  .cv-toc { position: sticky; top: 5.5rem; align-self: start; }
+  .cv-toc ol { flex-direction: column; flex-wrap: nowrap; gap: 0.1rem; border-left: 2px solid var(--rule); }
+  .cv-toc a { border: 0; border-radius: 0; background: none; padding: 0.3rem 0 0.3rem 0.85rem; margin-left: -2px; border-left: 2px solid transparent; }
+  .cv-toc a[aria-current] { background: none; color: var(--ink); border-left-color: var(--accent-ink); font-weight: 600; }
 }
 
-.cv h2 {
-  margin-top: 2rem;
-  padding-top: 0.6rem;
-  border-top: 1px solid var(--rule);
-  font-size: 1.25rem;
+/* Sections. */
+.cv { max-width: 52rem; }
+.cv-sec { padding-top: 0.4rem; margin-bottom: 2.4rem; }
+.cv-sec > h2 { margin: 0 0 1rem; font-size: 1.55rem; display: flex; align-items: baseline; gap: 0.7rem; }
+.cv-sec > h2::after { content: ""; flex: 1; border-bottom: 1px solid var(--rule); transform: translateY(-0.3rem); }
+.cv-sub h3 { font-size: 1.02rem; margin: 0 0 0.6rem; color: var(--accent-ink); }
+.cv-list { list-style: none; padding: 0; margin: 0; }
+.cv-list p { margin: 0.25rem 0 0; color: var(--ink-soft); font-size: 0.95rem; }
+.cv-list .when { font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.cv-list a.pill { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.05em; text-decoration: none; border: 1px solid var(--accent-ink); border-radius: 999px; padding: 0 0.5rem; margin-left: 0.25rem; vertical-align: 0.1em; }
+.cv-list a.pill:hover { background: var(--accent-ink); color: var(--paper); }
+
+/* Plain and compact lists: one line per entry, date at the right. */
+.cv-list.plain .entry, .cv-list.compact .entry { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.1rem 1rem; padding: 0.4rem 0; border-bottom: 1px solid var(--rule); }
+.cv-list.plain .when, .cv-list.compact .when { order: 2; text-align: right; white-space: nowrap; }
+.cv-list.compact { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); column-gap: 1.5rem; }
+
+/* Timeline: a rule down the left, a dot per entry, the dates leading. */
+.cv-list.timeline { border-left: 2px solid var(--rule); margin-left: 0.4rem; }
+.cv-list.timeline .entry { position: relative; padding: 0 0 1.1rem 1.4rem; display: grid; gap: 0.1rem; }
+.cv-list.timeline .entry::before { content: ""; position: absolute; left: -0.45rem; top: 0.3rem; width: 0.8rem; height: 0.8rem; border-radius: 50%; background: var(--paper); border: 2px solid var(--accent-ink); }
+.cv-list.timeline .entry.dated:first-child::before { background: var(--accent-ink); }
+.cv-list.timeline .when { font-weight: 600; color: var(--accent-ink); }
+.cv-list.timeline .head { font-size: 1.02rem; }
+.cv-list .head .title { display: block; }
+.cv-list .head .org { display: block; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* Cards: education and honors. */
+.cv-list.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: 0.8rem; }
+.cv-list.cards .entry { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 0.9rem 1rem; display: flex; flex-direction: column; gap: 0.35rem; }
+.cv-list.cards .when { align-self: flex-start; background: var(--paper-2); border-radius: 999px; padding: 0.05rem 0.6rem; font-weight: 600; color: var(--ink); }
+.cv-list.cards strong.title { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 1.12rem; display: block; }
+
+/* Citations: numbered, hanging, with Ben's name picked out. */
+.cv-list.citations { counter-reset: cite; }
+.cv-list.citations .entry { counter-increment: cite; position: relative; padding: 0.55rem 0 0.55rem 2.2rem; border-bottom: 1px solid var(--rule); }
+.cv-list.citations .entry::before { content: counter(cite); position: absolute; left: 0; top: 0.6rem; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--paper-2); font-size: 0.75rem; display: grid; place-items: center; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.cv-list.citations b { color: var(--accent-ink); font-weight: 600; }
+
+/* Columns: teaching and service subsections as a grid of panels. */
+.cv-subs.columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(21rem, 1fr)); gap: 1rem; }
+.cv-subs.columns .cv-sub { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 1rem 1.1rem; }
+.cv-subs.columns .cv-list.plain .entry:last-child { border-bottom: 0; }
+.cv-subs.citations .cv-sub + .cv-sub { margin-top: 1.4rem; }
+
+/* Links: buttons. */
+.cv-list.links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cv-list.links .entry { background: var(--white); border: 1px solid var(--rule); border-radius: 4px; padding: 0.4rem 0.8rem; font-size: 0.9rem; overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .cv-head { grid-template-columns: 1fr; padding: 1.2rem; }
+  .cv-portrait { width: 5.5rem; height: 5.5rem; }
+  .glance { min-width: 32rem; }
+  .lane { grid-template-columns: 4.4rem minmax(0, 1fr); gap: 0.4rem; }
+  .band { font-size: 0.7rem; padding: 0 0.3rem; }
+  .cv-subs.columns { grid-template-columns: 1fr; }
+  .cv-list.plain .entry, .cv-list.compact .entry { grid-template-columns: 1fr; }
+  .cv-list.plain .when, .cv-list.compact .when { order: 0; text-align: left; }
 }
 
-.cv h3 {
-  margin: 1.4rem 0 0.4rem;
-  font-size: 1.05rem;
+/* Paper version: one column, no navigation or timeline, black on white. */
+@media print {
+  header.site, .cv-toc, .cv-glance, .cv-actions, .cv-portrait { display: none !important; }
+  .cv-head, .cv-subs.columns .cv-sub, .cv-list.cards .entry { border: 0; background: none; padding: 0; }
+  .cv-head { display: block; border-bottom: 2px solid #000; padding-bottom: 0.6rem; }
+  .cv-contact li { border: 0; padding: 0 0.6rem 0 0; background: none; }
+  .cv-layout { display: block; margin: 0; }
+  .cv { max-width: none; }
+  .cv-sec { margin-bottom: 1.2rem; break-inside: auto; }
+  .cv-list .entry { break-inside: avoid; }
+  .cv-list.cards, .cv-subs.columns { display: block; }
+  .cv-list.timeline { border: 0; margin: 0; }
+  .cv-list.timeline .entry { padding-left: 0; }
+  .cv-list.timeline .entry::before, .cv-list.citations .entry::before { display: none; }
+  .cv-list.citations .entry { padding-left: 0; }
+  .cv-list a.pill { border: 0; padding: 0; }
+  body, .cv-list p, .cv-list .when, .cv-sub h3, .cv-list.timeline .when { color: #000 !important; }
 }
-
-.cv ul { padding-left: 1.15rem; }
-.cv li { margin: 0.35rem 0; }
-.cv p { margin: 0.4rem 0; }
-.cv .cv-head { margin-bottom: 1.4rem; }
-.cv .cv-head p { margin: 0.2rem 0; color: var(--ink-soft); }
 
 .paper-list { list-style: none; padding: 0; margin: 0; }
 .paper-list li {

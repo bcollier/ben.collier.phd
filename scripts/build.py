@@ -452,51 +452,6 @@ def load_json(name: str):
     return json.loads((ROOT / "data" / name).read_text(encoding="utf-8"))
 
 
-def md_to_html(md: str) -> str:
-    lines = md.strip().splitlines()
-    out = []
-    in_ul = False
-    for raw in lines:
-        line = raw.rstrip()
-        if not line.strip():
-            if in_ul:
-                out.append("</ul>")
-                in_ul = False
-            continue
-        if line.startswith("# "):
-            if in_ul:
-                out.append("</ul>")
-                in_ul = False
-            # Skip top H1; page already has a title.
-            continue
-        if line.startswith("### "):
-            if in_ul:
-                out.append("</ul>")
-                in_ul = False
-            out.append(f"<h3>{inline(line[4:])}</h3>")
-            continue
-        if line.startswith("## "):
-            if in_ul:
-                out.append("</ul>")
-                in_ul = False
-            slug = re.sub(r"[^a-z0-9]+", "-", line[3:].lower()).strip("-")
-            out.append(f'<h2 id="{slug}">{inline(line[3:])}</h2>')
-            continue
-        if line.startswith("- "):
-            if not in_ul:
-                out.append("<ul>")
-                in_ul = True
-            out.append(f"<li>{inline(line[2:])}</li>")
-            continue
-        if in_ul:
-            out.append("</ul>")
-            in_ul = False
-        out.append(f"<p>{inline(line)}</p>")
-    if in_ul:
-        out.append("</ul>")
-    return "\n".join(out)
-
-
 def inline(text: str) -> str:
     text = (
         text.replace("&", "&amp;")
@@ -903,26 +858,263 @@ def build_course_pages():
         )
 
 
+# ---------------------------------------------------------------------------
+# CV. data/cv.md stays plain Markdown; this turns it into a structured page:
+# a header card, a career timeline, a section index, and section layouts
+# chosen by section (timeline, cards, citations, columns). Every word of the
+# CV is still real text in the HTML, so the page reads and indexes as a CV.
+# ---------------------------------------------------------------------------
+
+_MON = r"(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?"
+_SEASON = r"(?:Spring|Summer|Fall|Winter)"
+_POINT = rf"(?:(?:{_MON}|{_SEASON})\s+)?(?:\d{{1,2}},\s+)?\d{{4}}"
+_RANGE = rf"(?:{_MON}\s*–\s*{_MON}\s+\d{{4}}|{_POINT}(?:\s*[–-]\s*(?:{_POINT}|present))?–?)"
+_WHEN = rf"{_RANGE}(?:(?:,\s*|\s+and\s+){_RANGE})*"
+_ENTRY = re.compile(rf"^(?P<head>.+?),\s*(?P<when>{_WHEN})(?P<rest>(?:[.,]\s.*)?|\.?)$")
+
+# Section layouts, by section id (the slug of its "## " heading).
+CV_LAYOUT = {
+    "academic-appointments": "timeline",
+    "industry-experience": "timeline",
+    "education": "cards",
+    "honors-and-awards": "cards",
+    "teaching": "columns",
+    "publications-and-presentations": "citations",
+    "invited-talks-and-media": "timeline",
+    "academic-service": "columns",
+    "professional-affiliations": "compact",
+    "community": "compact",
+    "links": "links",
+}
+
+# Career at a glance: (lane, label, start, end, section it jumps to).
+CV_NOW = 2026.8
+CV_BANDS = [
+    ("Academia", "PhD, Carnegie Mellon", 2007.6, 2012.4, "education"),
+    ("Academia", "CMU Qatar faculty", 2012.6, 2016.95, "academic-appointments"),
+    ("Academia", "Tepper faculty", 2023.8, CV_NOW, "academic-appointments"),
+    ("Industry", "UPMC Pensiamo", 2016.7, 2020.1, "industry-experience"),
+    ("Industry", "Duolingo", 2020.1, 2023.45, "industry-experience"),
+    ("Industry", "gAIm", 2025.35, CV_NOW, "industry-experience"),
+    ("Consulting", "Hot Metal AI", 2018.8, CV_NOW, "industry-experience"),
+]
+CV_DEGREES = [("BBA", 2004.4), ("MBA", 2007.4), ("MS", 2009.4), ("PhD", 2012.4)]
+CV_SPAN = (2004.0, 2027.0)
+
+
+def _slug(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def _course_links(html: str) -> str:
+    """Link course names in the CV to their course pages."""
+    for c in COURSES:
+        name = course_name(c)
+        html = html.replace(f"<strong>{name}</strong>",
+                            f'<strong><a href="../courses/{c["slug"]}/">{name}</a></strong>')
+    return html
+
+
+def _doi_buttons(html: str) -> str:
+    """Bare DOI and arXiv links become small labelled buttons."""
+    return re.sub(r'<a href="(https://doi\.org/[^"]+)">[^<]+</a>',
+                  r'<a class="pill" href="\1">DOI</a>', html)
+
+
+def _cv_items(lines):
+    """Group "- " list lines with their indented continuation lines."""
+    items = []
+    for line in lines:
+        if line.startswith("- "):
+            items.append([line[2:].rstrip()])
+        elif line.startswith("  ") and items and line.strip():
+            items[-1].append(line.strip())
+    return items
+
+
+# Course lists carry their own term lists ("Fall 2025, Summer 2026"); pulling
+# a date column out of those would split them mid-list.
+CV_NO_DATES = {"courses-built", "mba-courses", "ms-in-business-analytics-courses",
+               "heinz-college", "undergraduate-courses",
+               "executive-education-carnegie-mellon-university-in-qatar"}
+
+
+def _cv_entry(parts, layout, dates=True):
+    first, more = parts[0], parts[1:]
+    m = _ENTRY.match(first) if dates else None
+    when, head, desc = "", first, ""
+    if m and layout != "citations":
+        head, when = m.group("head"), m.group("when")
+        rest = m.group("rest").lstrip(".,").strip()
+        desc = rest
+    body = [inline(d) for d in ([desc] if desc else []) + more]
+    tm = re.match(r"^\*\*(.+?)\*\*,\s*(.+)$", head) if layout in ("timeline", "cards") else None
+    if tm:
+        # "**Role**, Organization" reads as a title line and an organization line.
+        head_html = (f'<strong class="title">{inline(tm.group(1))}</strong>'
+                     f'<span class="org">{inline(tm.group(2))}</span>')
+    else:
+        head_html = _doi_buttons(_course_links(inline(head)))
+    desc_html = "".join(f"<p>{_doi_buttons(b)}</p>" for b in body)
+    if layout == "citations":
+        head_html = head_html.replace("Collier, B.", "<b>Collier, B.</b>")
+    when_html = f'<span class="when">{esc(when)}</span>' if when else ""
+    return f'<li class="entry{" dated" if when else ""}">{when_html}<div class="what"><div class="head">{head_html}</div>{desc_html}</div></li>'
+
+
+def _cv_list(lines, layout, dates=True):
+    items = _cv_items(lines)
+    if not items:
+        return ""
+    return f'<ul class="cv-list {layout}">' + "".join(_cv_entry(i, layout, dates) for i in items) + "</ul>"
+
+
+def _cv_section(title, lines):
+    sid = _slug(title)
+    layout = CV_LAYOUT.get(sid, "plain")
+    # Split into an intro list and "### " subsections.
+    subs, cur, intro = [], None, []
+    for line in lines:
+        if line.startswith("### "):
+            cur = [line[4:].strip(), []]
+            subs.append(cur)
+        elif cur is not None:
+            cur[1].append(line)
+        else:
+            intro.append(line)
+    sub_layout = {"columns": "plain", "citations": "citations"}.get(layout, layout)
+    inner = _cv_list(intro, layout)
+    if subs:
+        blocks = "".join(
+            f'<div class="cv-sub"><h3 id="{_slug(h)}">{inline(h)}</h3>{_cv_list(ls, sub_layout, _slug(h) not in CV_NO_DATES)}</div>'
+            for h, ls in subs
+        )
+        inner += f'<div class="cv-subs {layout}">{blocks}</div>'
+    return sid, f'<section class="cv-sec" id="{sid}" aria-labelledby="h-{sid}"><h2 id="h-{sid}">{inline(title)}</h2>{inner}</section>'
+
+
+def _cv_glance():
+    lo, hi = CV_SPAN
+    pct = lambda y: round(100 * (y - lo) / (hi - lo), 2)
+    lanes = []
+    for lane in ["Academia", "Industry", "Consulting"]:
+        bars = "".join(
+            f'<a class="band {_slug(lane)}" href="#{sec}" style="left:{pct(a)}%;width:{pct(b) - pct(a)}%" '
+            f'title="{esc(label)}, {int(a)} to {"now" if b >= CV_NOW else int(b)}"><span>{esc(label)}</span></a>'
+            for ln, label, a, b, sec in CV_BANDS if ln == lane
+        )
+        lanes.append(f'<div class="lane"><span class="lane-name">{lane}</span><div class="track">{bars}</div></div>')
+    dots = "".join(
+        f'<a class="degree" href="#education" style="left:{pct(y)}%" title="{d}, {int(y)}"><span>{d}</span></a>'
+        for d, y in CV_DEGREES
+    )
+    lanes.append(f'<div class="lane"><span class="lane-name">Degrees</span><div class="track degrees">{dots}</div></div>')
+    ticks = "".join(f'<span style="left:{pct(y)}%">{y}</span>' for y in range(2004, 2027, 4))
+    return (
+        '<figure class="cv-glance" aria-label="Career at a glance, 2004 to now">'
+        '<figcaption>Career at a glance</figcaption>'
+        f'<div class="glance-scroll"><div class="glance">{"".join(lanes)}'
+        f'<div class="lane axis"><span class="lane-name"></span><div class="track ticks">{ticks}</div></div></div></div>'
+        '</figure>'
+    )
+
+
+def _cv_header(lines):
+    groups, cur = [], []
+    for line in lines:
+        if line.startswith("# "):
+            continue
+        if not line.strip():
+            if cur:
+                groups.append(cur)
+                cur = []
+            continue
+        cur.append(line.rstrip())
+    if cur:
+        groups.append(cur)
+    roles = "<br>".join(inline(l) for l in groups[0]) if groups else ""
+    chips = []
+    for g in groups[1:]:
+        for line in g:
+            for part in line.split(" · "):
+                part = part.strip()
+                if part.startswith("http"):
+                    label = re.sub(r"^https?://(www\.)?", "", part).rstrip("/")
+                    chips.append(f'<li><a href="{esc(part)}">{esc(label)}</a></li>')
+                else:
+                    chips.append(f"<li>{inline(part)}</li>")
+    return f"""
+      <header class="cv-head">
+        <img class="cv-portrait" src="../assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
+        <div>
+          <p class="kicker">Curriculum vitae</p>
+          <h1>Ben Collier, PhD</h1>
+          <p class="cv-roles">{roles}</p>
+          <ul class="cv-contact">{"".join(chips)}</ul>
+          <p class="cv-actions"><button type="button" class="btn" data-print>Print or save as PDF</button></p>
+        </div>
+      </header>"""
+
+
+def cv_jsonld() -> str:
+    data = {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "url": f"{HOST}/cv/",
+        "name": "Ben Collier, PhD: curriculum vitae",
+        "mainEntity": {
+            "@type": "Person",
+            "@id": f"{HOST}/#person",
+            "name": SITE["author"],
+            "honorificSuffix": "PhD",
+            "jobTitle": SITE["job_title"],
+            "worksFor": {"@type": "CollegeOrUniversity", "name": "Carnegie Mellon University"},
+            "alumniOf": [
+                {"@type": "CollegeOrUniversity", "name": "Carnegie Mellon University"},
+                {"@type": "CollegeOrUniversity", "name": "University of Wisconsin–Madison"},
+                {"@type": "CollegeOrUniversity", "name": "University of Wisconsin–Whitewater"},
+            ],
+            "award": ["George Leland Bach Teaching Award, Tepper School of Business, 2026"],
+            "sameAs": SITE["same_as"],
+        },
+    }
+    return json.dumps(data, indent=2)
+
+
 def build_cv():
     md = (ROOT / "data" / "cv.md").read_text(encoding="utf-8")
-    # Keep a short head above the converted body.
-    body = f"""
-      <p class="kicker">Curriculum vitae</p>
-      <h1>CV</h1>
-      <p class="lede">Appointments, teaching, courses built, advising, and practice.</p>
-      <article class="cv">
-        {md_to_html(md)}
-      </article>
+    lines = md.splitlines()
+    first = next(i for i, l in enumerate(lines) if l.startswith("## "))
+    header = _cv_header(lines[:first])
+    sections, cur = [], None
+    for line in lines[first:]:
+        if line.startswith("## "):
+            cur = [line[3:].strip(), []]
+            sections.append(cur)
+        elif cur is not None:
+            cur[1].append(line)
+    rendered = [_cv_section(title, ls) for title, ls in sections]
+    toc = "".join(f'<li><a href="#{sid}">{inline(title)}</a></li>' for (title, _), (sid, _) in zip(sections, rendered))
+    body = f"""{header}
+      {_cv_glance()}
+      <div class="cv-layout">
+        <nav class="cv-toc" aria-label="CV sections"><ol>{toc}</ol></nav>
+        <article class="cv">
+          {"".join(html for _, html in rendered)}
+        </article>
+      </div>
+      <script src="../js/cv.js" defer></script>
 """
     write(
         "cv/index.html",
         page(
             "../",
             "cv",
-            "CV · Ben Collier",
-            "Curriculum vitae for Ben Collier, Assistant Teaching Professor of Business Analytics at Carnegie Mellon.",
+            "CV · Ben Collier, PhD",
+            "Curriculum vitae for Ben Collier, PhD, Assistant Teaching Professor of Business Analytics at Carnegie Mellon's Tepper School of Business: appointments, teaching, advising, awards, industry experience, publications, and talks.",
             "cv/",
             body,
+            cv_jsonld(),
         ),
     )
 
