@@ -543,7 +543,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
-      <div><a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
+      <div><a href="{root}travel/">Travel</a> · <a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -1833,6 +1833,33 @@ def build_contact():
     )
 
 
+def build_travel():
+    data = load_json("travel.json")
+    places = data["countries"]
+    chips = "".join(
+        f'<li><button type="button" data-cc="{p["cc"]}">{esc(p["name"])}</button></li>' for p in sorted(places, key=lambda p: p["name"])
+    )
+    blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    body = f"""
+      <p class="kicker">Travel</p>
+      <h1>Places I have been</h1>
+      <p class="lede lede-wide">{len(places)} countries so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.</p>
+      <div class="travel">
+        <div id="globe" class="globe"></div>
+        <aside id="globe-card" class="globe-card" aria-live="polite" hidden></aside>
+      </div>
+      <ul class="country-list">{chips}</ul>
+      <script type="application/json" id="travel-data">{blob}</script>
+      <script src="../assets/vendor/d3.min.js" defer></script>
+      <script src="../assets/vendor/topojson-client.min.js" defer></script>
+      <script src="../js/travel.js" defer></script>
+"""
+    write(
+        "travel/index.html",
+        page("../", "travel", "Travel · Ben Collier", f"{len(places)} countries, mapped from my photos.", "travel/", body),
+    )
+
+
 def build_404():
     body = """
       <h1>Page not found</h1>
@@ -1847,7 +1874,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/", "travel/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
@@ -1924,6 +1951,7 @@ def main():
     build_news()
     build_talks()
     build_contact()
+    build_travel()
     build_404()
     build_sitemap()
     build_robots()

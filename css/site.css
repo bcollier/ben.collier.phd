@@ -1244,3 +1244,62 @@ a.news-vis:hover .play { background: var(--accent-ink); }
 @media (prefers-color-scheme: dark) {
   .news-vis.slides img, .news-vis.photo img { filter: brightness(0.93); }
 }
+
+/* Travel: the globe on the left, the photo card on the right; on narrow
+   screens the card drops below the globe. */
+.travel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  margin: 1.4rem 0 1.6rem;
+}
+.globe { max-width: 40rem; width: 100%; margin: 0 auto; touch-action: none; cursor: grab; }
+.globe:active { cursor: grabbing; }
+.globe svg { display: block; width: 100%; height: auto; overflow: visible; }
+.g-ocean { fill: var(--white); stroke: var(--rule); stroke-width: 1; }
+.g-grat { fill: none; stroke: var(--rule); stroke-width: 0.5; opacity: 0.7; }
+.g-land { fill: var(--paper-2); stroke: var(--paper); stroke-width: 0.5; }
+.g-land.visited { fill: color-mix(in srgb, var(--accent) 45%, var(--paper-2)); cursor: pointer; transition: fill 0.2s ease; }
+.g-land.visited:hover { fill: color-mix(in srgb, var(--accent) 70%, var(--paper-2)); }
+.g-dot { cursor: pointer; outline: none; }
+.g-dot .core { fill: var(--accent-ink); stroke: var(--white); stroke-width: 1.6; transition: r 0.2s ease; }
+.g-dot .pulse { fill: var(--accent); opacity: 0; transform-box: fill-box; transform-origin: center; }
+.g-dot.on .pulse, .g-dot:hover .pulse, .g-dot:focus-visible .pulse { animation: g-pulse 1.6s ease-out infinite; }
+.g-dot.on .core { fill: var(--accent); }
+@keyframes g-pulse { from { opacity: 0.55; transform: scale(0.6); } to { opacity: 0; transform: scale(2.2); } }
+
+.globe-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  box-shadow: 0 18px 40px -26px rgba(27, 23, 20, 0.55);
+  padding: 0.9rem;
+}
+.gc-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.6rem; }
+.gc-head strong { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 1.5rem; letter-spacing: -0.02em; }
+.gc-head span { color: var(--ink-soft); font-size: 0.88rem; text-align: right; }
+.gc-stage { position: relative; aspect-ratio: 4 / 3; background: var(--paper-2); overflow: hidden; }
+.gc-stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.03); transition: opacity 0.8s ease, transform 3.5s ease-out; }
+.gc-stage img.on { opacity: 1; transform: scale(1); }
+.gc-cap { position: absolute; left: 0.5rem; bottom: 0.5rem; background: rgba(23, 19, 15, 0.7); color: #fbf8f2; font-size: 0.78rem; padding: 0.15rem 0.5rem; border-radius: 2px; }
+.gc-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.4rem, 1fr)); gap: 0.35rem; margin-top: 0.5rem; }
+.gc-thumbs button { padding: 0; border: 2px solid transparent; background: none; cursor: pointer; aspect-ratio: 1; overflow: hidden; }
+.gc-thumbs button img { width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: opacity 0.2s ease; }
+.gc-thumbs button.on { border-color: var(--accent); }
+.gc-thumbs button.on img, .gc-thumbs button:hover img { opacity: 1; }
+
+.country-list { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.country-list button {
+  font: inherit; font-size: 0.9rem; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--white); color: var(--ink);
+  padding: 0.25rem 0.7rem; border-radius: 999px;
+}
+.country-list button:hover { border-color: var(--accent); }
+.country-list button.on { background: var(--accent-ink); border-color: var(--accent-ink); color: var(--paper); }
+
+@media (max-width: 52rem) {
+  .travel { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gc-stage img { transform: none; }
+}
