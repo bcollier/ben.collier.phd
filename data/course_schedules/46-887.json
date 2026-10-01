@@ -1,0 +1,273 @@
+{
+ "slug": "46-887",
+ "term": "Spring 2026, Mini 4",
+ "meets": "Mondays (lecture) and Wednesdays (lab)",
+ "unit_label": "Week",
+ "schedule": [
+  {
+   "part": "Part I: From models to systems"
+  },
+  {
+   "date": "2026-03-09",
+   "week": 1,
+   "topic": "No class: spring break",
+   "kind": "break"
+  },
+  {
+   "date": "2026-03-11",
+   "week": 1,
+   "topic": "Course Introduction: From ML Models to AI Systems",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/46-887/s01-1.webp",
+     "caption": "CRISP-DM: the loop every data mining project runs through"
+    },
+    {
+     "src": "assets/courses/46-887/s01-2.webp",
+     "caption": "Motivating example: a 40-hospital system buying $1.5 billion of drugs a year with three to five buyers"
+    },
+    {
+     "src": "assets/courses/46-887/s01-3.webp",
+     "caption": "EpiPen and insulin prices: the business problem behind the model"
+    },
+    {
+     "src": "assets/courses/46-887/s01-4.webp",
+     "caption": "The finished tool: 93.8% accuracy on price increases, 76% on shortage alerts"
+    },
+    {
+     "src": "assets/courses/46-887/s01-5.webp",
+     "caption": "Gartner's five levels of data and analytics maturity"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-16",
+   "week": 2,
+   "topic": "Integrating ML Models into Business Services",
+   "kind": "lecture",
+   "note": "Group exercise: ML Project Triage",
+   "slides": [
+    {
+     "src": "assets/courses/46-887/s02-1.webp",
+     "caption": "The business value test: make money, save money, or save time"
+    },
+    {
+     "src": "assets/courses/46-887/s02-2.webp",
+     "caption": "Why ML initiatives fail more often than ordinary software projects"
+    },
+    {
+     "src": "assets/courses/46-887/s02-3.webp",
+     "caption": "The data maturity journey: don't try ML before the foundation is built"
+    },
+    {
+     "src": "assets/courses/46-887/s02-4.webp",
+     "caption": "Batch versus online prediction"
+    },
+    {
+     "src": "assets/courses/46-887/s02-5.webp",
+     "caption": "ML Project Triage: an insurer's strategy board can fund two of six proposals"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-18",
+   "week": 2,
+   "topic": "Lab: AWS Cloud Setup and ML Pipeline Components",
+   "kind": "exercise",
+   "note": "S3, Lambda, SageMaker, and a MySQL database on RDS"
+  },
+  {
+   "date": "2026-03-23",
+   "week": 3,
+   "topic": "Evaluation, Performance, and Testing ML Systems",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/46-887/s03-1.webp",
+     "caption": "Weak supervision: labeling spam with rules, lookups, and other models' votes"
+    },
+    {
+     "src": "assets/courses/46-887/s03-2.webp",
+     "caption": "Active learning: label only the examples the model needs next"
+    },
+    {
+     "src": "assets/courses/46-887/s03-3.webp",
+     "caption": "Calm's batch pipeline: fresh recommendations for every user every two days"
+    },
+    {
+     "src": "assets/courses/46-887/s03-4.webp",
+     "caption": "Online prediction: the app asks, the prediction service answers"
+    },
+    {
+     "src": "assets/courses/46-887/s03-5.webp",
+     "caption": "To understand APIs, we need pizza"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-25",
+   "week": 3,
+   "topic": "Lab: Building a Cloud Data Pipeline",
+   "kind": "exercise",
+   "note": "Train a churn model, store it in S3, score new customers into RDS"
+  },
+  {
+   "part": "Part II: Methods for business problems"
+  },
+  {
+   "date": "2026-03-30",
+   "week": 4,
+   "topic": "Natural Language Processing and Large Language Models",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/46-887/s04-1.webp",
+     "caption": "Structured versus unstructured data: about 80% of enterprise data is text, images, and audio"
+    },
+    {
+     "src": "assets/courses/46-887/s04-2.webp",
+     "caption": "The building blocks of language, from sounds to meaning"
+    },
+    {
+     "src": "assets/courses/46-887/s04-3.webp",
+     "caption": "N-grams: one, two, and three words at a time"
+    },
+    {
+     "src": "assets/courses/46-887/s04-4.webp",
+     "caption": "Words as vectors: age and gender as two dimensions"
+    },
+    {
+     "src": "assets/courses/46-887/s04-5.webp",
+     "caption": "Sentiment analysis turns product reviews into positive, neutral, and negative"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-01",
+   "week": 4,
+   "topic": "Lab: Natural Language Processing and Large Language Models",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-04-03",
+   "week": 4,
+   "topic": "Midpoint project presentations (recorded on Zoom)",
+   "kind": "presentations",
+   "label": "Due Apr 3"
+  },
+  {
+   "date": "2026-04-08",
+   "week": 5,
+   "topic": "Lab: Using an LLM for digital marketing",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-04-13",
+   "week": 6,
+   "topic": "Time Series Forecasting for Business",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/46-887/s06-1.webp",
+     "caption": "U.S. retail sales: trend and seasonality in one line"
+    },
+    {
+     "src": "assets/courses/46-887/s06-2.webp",
+     "caption": "Five shapes of demand: noise, curves, trends, and seasons"
+    },
+    {
+     "src": "assets/courses/46-887/s06-3.webp",
+     "caption": "Google's stock price after differencing: the trend is gone"
+    },
+    {
+     "src": "assets/courses/46-887/s06-4.webp",
+     "caption": "Duolingo's growth model: forecasting users who are new, at risk, or coming back"
+    },
+    {
+     "src": "assets/courses/46-887/s06-5.webp",
+     "caption": "Prophet splits a series into trend, yearly and weekly seasonality, and holidays"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-15",
+   "week": 6,
+   "topic": "Lab: Forecasting Pipeline and Cloud-Connected Tableau",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-04-20",
+   "week": 7,
+   "topic": "Imbalanced Classification and Anomaly Detection",
+   "kind": "lecture",
+   "note": "In-class exercise: build a credit-card fraud detector",
+   "slides": [
+    {
+     "src": "assets/courses/46-887/s05-1.webp",
+     "caption": "A one-line fraud detector that is right 99.8% of the time"
+    },
+    {
+     "src": "assets/courses/46-887/s05-2.webp",
+     "caption": "Accuracy lies: 99.8% accurate, zero frauds caught"
+    },
+    {
+     "src": "assets/courses/46-887/s05-3.webp",
+     "caption": "ROC versus precision-recall: which curve do you believe?"
+    },
+    {
+     "src": "assets/courses/46-887/s05-4.webp",
+     "caption": "SMOTE before and after: synthetic points drawn between minority neighbors"
+    },
+    {
+     "src": "assets/courses/46-887/s05-5.webp",
+     "caption": "Isolation Forest: anomalies take only a few random splits to isolate"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-22",
+   "week": 7,
+   "topic": "Final Project Presentations",
+   "kind": "presentations"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Machine learning projects",
+   "weight": "20%",
+   "description": "Guided technical projects done outside class, graded on a three-point scale. ML Project 1 builds the skeleton of a churn pipeline on AWS: data in S3, scoring in Lambda and SageMaker, predictions written to a MySQL database on RDS. ML Project 2 covers NLP and large language models. ML Project 3 forecasts daily peak demand and total energy for ten PJM power load areas with Prophet, writes forecasts and error metrics to RDS, and reads them in Streamlit or Tableau. An optional fourth project is the Tesla vs. Waymo case."
+  },
+  {
+   "name": "Weekly Canvas quizzes",
+   "weight": "20%",
+   "description": "Ten questions on the prior week's lecture and lab, two attempts, no generative AI."
+  },
+  {
+   "name": "Class participation",
+   "weight": "15%",
+   "description": "A short in-class quiz on most Mondays and a submitted lab notebook on most Wednesdays, graded for completion. The two lowest scores are dropped."
+  },
+  {
+   "name": "Project proposal and update memos",
+   "weight": "5%",
+   "description": "A three-page proposal in week 2 naming the business question, a published ML solution to a similar problem, and a dataset, followed by two written progress memos: data and cloud set up by week 3, the full pipeline running by week 6."
+  },
+  {
+   "name": "Midpoint presentation",
+   "weight": "5%",
+   "description": "A five-minute recorded team presentation of data, method, cloud setup, and first results. Each team gives written feedback to three other teams."
+  },
+  {
+   "name": "Final presentation and demo",
+   "weight": "15%",
+   "description": "An eight-minute team presentation with a live walkthrough of the working system: model, cloud database of predictions, and dashboard."
+  },
+  {
+   "name": "Final report and code",
+   "weight": "20%",
+   "description": "A 10 to 15 page report on the business problem, data, method, cloud architecture, results, and reflections, with a documented code repository. Teams of two to five rate each other's contribution."
+  }
+ ],
+ "projects": []
+}

@@ -67,6 +67,8 @@ committed, so what is in the repo is exactly what is served.
 | `data/cv.md` | CV source, rendered to `/cv/`. |
 | `data/students.json` | Student roster and advised papers. |
 | `data/projects.json` | Sample student projects per course. |
+| `data/course_schedules/<slug>.json` | Week-by-week schedule, five slides per session, major assignments, and the anonymized final-project list for a course page. Slide images live in `assets/courses/<slug>/` (1280x720 WebP plus a `-t` 320px thumbnail). A course with a file here gets the schedule section instead of its plain Topics list. |
+| `js/course-schedule.js` | Plays the active session's slides on course pages. |
 | `data/linkedin.json` | Imported LinkedIn posts. Read at runtime by `js/site.js`. |
 | `css/site.css` | All styles. |
 | `js/config.js` | Calendly URL and other site config. |
@@ -109,6 +111,9 @@ python3 scripts/build.py
   address on purpose: a canonical tag aimed at a domain that does not resolve
   tells search engines the real page is a dead link.
 - Never publish a student's name, photo, or project without explicit permission.
+  Final-project lists in `data/course_schedules/` carry no student names, and
+  any project that could identify a student, a private client, or internal
+  employer data is described generically.
   Placeholder entries in `data/students.json` stay placeholders until a student
   opts in.
 - Do not invent courses, awards, publications, or student outcomes. If a fact is

@@ -1,0 +1,499 @@
+{
+ "slug": "45-884",
+ "term": "Fall 2026, Mini 1",
+ "meets": "Mondays and Wednesdays",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "date": "2026-08-24",
+   "topic": "Introduction to AI Models and Unstructured Data",
+   "kind": "lecture",
+   "week": 1,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s01-1.webp",
+     "caption": "Business data looks less like a spreadsheet and more like this"
+    },
+    {
+     "src": "assets/courses/45-884/s01-2.webp",
+     "caption": "Traditional machine learning versus foundation models"
+    },
+    {
+     "src": "assets/courses/45-884/s01-3.webp",
+     "caption": "Structured versus unstructured data"
+    },
+    {
+     "src": "assets/courses/45-884/s01-4.webp",
+     "caption": "Images are numbers: a handwritten 3 as a grid of pixels"
+    },
+    {
+     "src": "assets/courses/45-884/s01-5.webp",
+     "caption": "Training a model is more like compressing the internet"
+    }
+   ]
+  },
+  {
+   "date": "2026-08-26",
+   "topic": "Python, JSON, and calling an API; prompt engineering; building a CEO Scorecard agent",
+   "kind": "exercise",
+   "week": 1
+  },
+  {
+   "date": "2026-08-31",
+   "topic": "Natural Language Processing Fundamentals",
+   "kind": "lecture",
+   "week": 2,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s03-1.webp",
+     "caption": "Applications of natural language processing in business"
+    },
+    {
+     "src": "assets/courses/45-884/s03-2.webp",
+     "caption": "From unstructured web text to structured sequences"
+    },
+    {
+     "src": "assets/courses/45-884/s03-3.webp",
+     "caption": "Stemming versus lemmatization"
+    },
+    {
+     "src": "assets/courses/45-884/s03-4.webp",
+     "caption": "Word embeddings: words as vectors"
+    },
+    {
+     "src": "assets/courses/45-884/s03-5.webp",
+     "caption": "Measuring emotion in text with pretrained models"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-02",
+   "topic": "Data structures for AI work, Python control flow and functions",
+   "kind": "exercise",
+   "week": 2
+  },
+  {
+   "date": "2026-09-07",
+   "topic": "No class: CMU holiday",
+   "kind": "break",
+   "week": 3
+  },
+  {
+   "date": "2026-09-09",
+   "topic": "Text Mining for Business Insight: semiconductor risk from company filings",
+   "kind": "lecture",
+   "week": 3,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s05-1.webp",
+     "caption": "Word embeddings and the geometry of meaning"
+    },
+    {
+     "src": "assets/courses/45-884/s05-2.webp",
+     "caption": "Mental arithmetic: why models need tokens to think"
+    },
+    {
+     "src": "assets/courses/45-884/s05-3.webp",
+     "caption": "Reinforcement learning from human feedback"
+    },
+    {
+     "src": "assets/courses/45-884/s05-4.webp",
+     "caption": "DeepSeek improves with each step of reasoning"
+    },
+    {
+     "src": "assets/courses/45-884/s05-5.webp",
+     "caption": "A basic retrieval-augmented generation pipeline"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-14",
+   "topic": "Computer Vision Fundamentals",
+   "kind": "lecture",
+   "week": 4,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s06-1.webp",
+     "caption": "CheXNet: a 121-layer network reading chest X-rays"
+    },
+    {
+     "src": "assets/courses/45-884/s06-2.webp",
+     "caption": "Object detection on a city street"
+    },
+    {
+     "src": "assets/courses/45-884/s06-3.webp",
+     "caption": "Segmentation: labeling every pixel"
+    },
+    {
+     "src": "assets/courses/45-884/s06-4.webp",
+     "caption": "A vertical edge detection kernel at work"
+    },
+    {
+     "src": "assets/courses/45-884/s06-5.webp",
+     "caption": "Vision Transformers: attention applied to image patches"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-16",
+   "topic": "Computer vision demos: YOLO, ResNet, Vision Transformers, social media applications",
+   "kind": "exercise",
+   "week": 4
+  },
+  {
+   "date": "2026-09-21",
+   "topic": "Agentic AI and AI Workflows",
+   "kind": "lecture",
+   "week": 5,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s08-1.webp",
+     "caption": "OpenClaw: from side project to industry story"
+    },
+    {
+     "src": "assets/courses/45-884/s08-2.webp",
+     "caption": "What is an agent harness?"
+    },
+    {
+     "src": "assets/courses/45-884/s08-3.webp",
+     "caption": "From a single AI agent to agentic AI"
+    },
+    {
+     "src": "assets/courses/45-884/s08-4.webp",
+     "caption": "Agentic reasoning design patterns"
+    },
+    {
+     "src": "assets/courses/45-884/s08-5.webp",
+     "caption": "Model Context Protocol, clearly explained"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-23",
+   "topic": "Building an interactive multi-agent workflow",
+   "kind": "exercise",
+   "week": 5,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s09-1.webp",
+     "caption": "Lab: starting a new n8n workflow from a blank canvas"
+    },
+    {
+     "src": "assets/courses/45-884/s09-2.webp",
+     "caption": "Lab: adding the first AI agent node"
+    },
+    {
+     "src": "assets/courses/45-884/s09-3.webp",
+     "caption": "Lab: giving the agent memory"
+    },
+    {
+     "src": "assets/courses/45-884/s09-4.webp",
+     "caption": "Lab: wiring specialist agents to a support manager"
+    },
+    {
+     "src": "assets/courses/45-884/s09-5.webp",
+     "caption": "Lab: the finished multi-agent support team"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-28",
+   "topic": "Mining Visual Data for Business Insight",
+   "kind": "lecture",
+   "week": 6,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s10-1.webp",
+     "caption": "A joint embedding space for images and text"
+    },
+    {
+     "src": "assets/courses/45-884/s10-2.webp",
+     "caption": "Image retrieval with embeddings"
+    },
+    {
+     "src": "assets/courses/45-884/s10-3.webp",
+     "caption": "CoCa: contrastive captioners for image-text understanding"
+    },
+    {
+     "src": "assets/courses/45-884/s10-4.webp",
+     "caption": "Training a diffusion model: from noise to image"
+    },
+    {
+     "src": "assets/courses/45-884/s10-5.webp",
+     "caption": "What about bias in image generation?"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-30",
+   "topic": "Case: Tesla Vision vs. Waymo Sensor Fusion",
+   "kind": "case",
+   "week": 6,
+   "slides": [
+    {
+     "src": "assets/courses/45-884/s11-1.webp",
+     "caption": "Tesla Vision versus Waymo Fusion: two bets on autonomy"
+    },
+    {
+     "src": "assets/courses/45-884/s11-2.webp",
+     "caption": "Waymo's sensors against Tesla's cameras"
+    },
+    {
+     "src": "assets/courses/45-884/s11-3.webp",
+     "caption": "What each sensor can and cannot see"
+    },
+    {
+     "src": "assets/courses/45-884/s11-4.webp",
+     "caption": "Robotaxi programs and where they operate"
+    },
+    {
+     "src": "assets/courses/45-884/s11-5.webp",
+     "caption": "Night driving: what a camera actually sees"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-05",
+   "topic": "Final Project Presentations",
+   "kind": "presentations",
+   "week": 7
+  },
+  {
+   "date": "2026-10-07",
+   "topic": "Final Project Presentations",
+   "kind": "presentations",
+   "week": 7
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Final project",
+   "weight": "20%",
+   "description": "Individually or in groups, students either define their own business question to answer with AI methods or take one of the questions I set, such as earnings-call analysis or a brand's social media. Deliverables are an 8 to 10 page report on the process and findings and a 3 to 7 minute presentation in the last week."
+  },
+  {
+   "name": "Lab 1: Python and foundation models",
+   "weight": "Labs 20%",
+   "description": "Build a chatbot that evaluates CEOs, wire it to several foundation models through their APIs, customize it with prompt engineering, and compare how the models behave."
+  },
+  {
+   "name": "Lab 2: Natural language processing",
+   "description": "As a product manager for a snack brand, classify Amazon reviews with TextBlob and with foundation models, score each review for follow-up and predicted rating, and weigh accuracy against a real API budget."
+  },
+  {
+   "name": "Lab 3: Text mining for business insight",
+   "description": "As a financial analyst, run a two-agent pipeline over filings from AMD, NVIDIA, Micron, Intel, and Broadcom: a rating agent scores firm and industry risks, a synthesis agent writes the sector report. Then point it at an industry of your choice."
+  },
+  {
+   "name": "Lab 4: Mining visual data",
+   "description": "Zero-shot classification of ImageNet subsets with a vision model to see where accuracy holds and where it falls apart, then use a Vision Transformer to pull marketing features out of social media images."
+  },
+  {
+   "name": "AI Methods in the News",
+   "weight": "15%",
+   "description": "Teams open class with an 8 to 15 minute briefing on an AI product or debate from the last six months, connected to the methods in the course and fully sourced."
+  },
+  {
+   "name": "Quizzes",
+   "weight": "25%",
+   "description": "Six weekly Canvas quizzes on the prior module."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Summer 2026",
+   "items": [
+    {
+     "subject": "Index-fund investing education (consumer fintech tutor)",
+     "approach": "Agentic tutor (router + four specialist agents, SQLite memory, deterministic Python for all math); LoRA fine-tune of Qwen2.5-1.5B on 827 distilled, decontamination-checked pairs; 100-scenario held-out eval run across 8 frontier and local model configurations; follow-on SFT and DPO experiments",
+     "description": "Asked whether a small, locally fine-tuned model could be a reliable index-fund education tutor; the LoRA fine-tune lifted held-out eval accuracy from 63% to 75% and halved over-refusal, while further SFT and DPO on a stronger base model regressed performance."
+    },
+    {
+     "subject": "Sales-call intelligence for a B2B partnerships firm",
+     "approach": "Hand-coded codebook, then a 5-model LLM bakeoff, then strict JSON schemas with mandatory verbatim evidence; custom eval harness; deployed as a connected agent with Fireflies and Google Drive MCP connectors and 8 packaged skills",
+     "description": "Years of real sales calls mined for buyer questions, objections, and commitments. A five-model bakeoff caught one model fabricating quotes; the final pipeline required verbatim evidence for every claim and reached 99%+ grounding precision."
+    },
+    {
+     "subject": "Boeing 737 MAX (Reddit discussion vs. BA stock price)",
+     "approach": "LLM classification of 375 Reddit posts by three independent model families (1,125 LLM calls, 98.5% completion); inter-model agreement as a reliability measure (86% on sentiment) and majority-vote consensus labels; timeline overlay against monthly stock data",
+     "description": "Between the two 737 MAX crashes, net Reddit sentiment fell to -0.59 and reputation-risk posts tripled while BA stock climbed 22.5% to an all-time high; the team concluded the signal is coincident rather than leading, suited to crisis monitoring rather than trading."
+    },
+    {
+     "subject": "Offline explosive ordnance identification",
+     "approach": "Fully offline, on-device pipeline: trained CNN + DINOv2 embedding retrieval over ~10,000 reference images + a doctrine-driven vision-language model pass, cross-checked; abstention and confidently-wrong scored as outcomes; A/B test of a triage pipeline",
+     "description": "An on-device ordnance-ID tool for field teams without connectivity, where frontier models refuse the task. It reached 82% category accuracy offline, within two points of a cloud model."
+    },
+    {
+     "subject": "Carbon modeling for a climate-tech startup's grant application",
+     "approach": "Search-retrieve-extract LLM pipeline over public benchmarks; nine versioned runs with a forensic error log; dual-model, range-based cross-checks; a method lock to stop silent data drift",
+     "description": "Estimated CO2e per apartment turnover from public benchmarks. Over nine versioned runs extraction success rose from 3.6% to 70%, and a cross-model check caught a 1,000x unit error."
+    },
+    {
+     "subject": "Human oversight of AI in military intelligence decision-making (policy paper with experiment)",
+     "approach": "15 intelligence scenarios built from declassified material, run across 4 frontier models; hallucinations coded by two raters (kappa 0.81); prompt-architecture conditions (chain-of-thought + per-claim confidence) and an adversarial injected-contradiction condition",
+     "description": "Tested prompt architecture as a governance lever: chain-of-thought plus per-claim confidence cut hallucination from 34-41% to 0-8%, but when contradictions were injected, models fabricated reconciling narratives instead of flagging them up to 52% of the time."
+    },
+    {
+     "subject": "Equity research on public companies (earnings calls, SEC EDGAR filings)",
+     "approach": "Self-hosted n8n + Docker agent triggered by a Google Sheets watchlist; pulls earnings-call transcripts, EDGAR filings and allowlisted research; tiered model routing (cheap model preprocesses, stronger model synthesizes); 5-tier source hierarchy; seven system-prompt iterations; publishes reports to a self-hosted blog and email",
+     "description": "Built an autonomous equity-analyst agent that turns a ticker into a sourced research report; a mis-wired wait node caused a 3.5-hour runaway loop, and re-architecting from polling to webhooks cut cost per report 75%, from $4.74 to $1.20."
+    },
+    {
+     "subject": "Video game player reviews on Steam (for game development teams)",
+     "approach": "OpenAI LLM filtering and issue extraction over ~5,000 Steam reviews; weighted actionability scoring; automatic Trello ticket creation with summaries and acceptance criteria",
+     "description": "Filtered 5,000 reviews down to under 100 developer-useful ones and auto-generated prioritized Trello tickets; the headline finding was that about 98% of review volume is written for players, not developers."
+    },
+    {
+     "subject": "Automaker customer feedback on Reddit",
+     "approach": "Scraped 9 GM subreddits (2,867 posts, 7,900 comments); comment-level LLM classification with a 17-field schema; three-model comparison; web app with theme clustering and trend detection",
+     "description": "Nearly 8,000 Reddit comments from nine automaker subreddits classified for product managers. Comparing three models exposed each one's consistent hidden bias; the prototype became a working web app."
+    },
+    {
+     "subject": "Business school elective course advising (CMU Tepper)",
+     "approach": "Resume and goal statement in, top-5 elective recommendations out, scored on a weighted rubric (skills, career, interests); Google Opal vs. n8n and multiple models compared head to head; human-in-the-loop fallback to advisors",
+     "description": "Prototyped an AI course-recommendation advisor to supplement short, requirements-focused advising appointments, comparing no-code platforms and models."
+    },
+    {
+     "subject": "Root-cause analysis in a bearing plant",
+     "approach": "Root-cause deep-dive assistant over five plant source systems, including Spanish-language operator notes; agentic orchestration attempted and abandoned for a 'Python computes, LLM narrates' design",
+     "description": "An assistant over five plant systems, including Spanish-language operator notes. Agentic orchestration failed; a deterministic design correctly traced a 40.5-point availability gap to a single grinding machine."
+    },
+    {
+     "subject": "Job search: candidate-to-job fit scoring",
+     "approach": "Five-stage multi-modal agentic pipeline (candidate profile from resume, GitHub, LinkedIn, Google Scholar; live job postings in text/PDF/image) with an adversarial hiring-manager critic agent",
+     "description": "Extended a background-check agent into a job-search and fit-scoring tool, and diagnosed LLM score compression: model fit scores clustered at 62-87 versus human scores ranging 10-95."
+    },
+    {
+     "subject": "MBA resume-to-job matching",
+     "approach": "Three-agent pipeline with frozen JSON contracts between agents; hybrid deterministic + LLM scoring; tested on five MBA personas (example resumes)",
+     "description": "Matched MBA resumes to live job postings with about 96% on-target retrieval across five personas and zero dead links by construction."
+    },
+    {
+     "subject": "Workplace climate survey comments",
+     "approach": "LLM classification pipeline compared against a lexicon baseline on real, de-identified survey comments, with a privacy layer",
+     "description": "An LLM pipeline for the open-ended section of a de-identified workplace survey. A lexicon baseline flagged 2 negative comments; the LLM pipeline found 17 worth acting on."
+    },
+    {
+     "subject": "Credit card fraud detection for smaller card issuers (public Kaggle transactions data)",
+     "approach": "LightGBM vs. logistic regression on ~1.3M transactions with training-only downsampling (1:5 and 1:10); threshold and risk-tier analysis; LLM reporting layer comparing Llama 4 Scout, GPT-OSS 120B and Gemma 4 31B fed structured analysis packets via OpenRouter",
+     "description": "Asked whether AI can help issuers prioritize fraud review and automate reporting; LightGBM at a 1:5 ratio performed best, and the three LLM-written reports agreed on core findings, differing mainly in depth (about 400 to 1,000+ words)."
+    },
+    {
+     "subject": "Facial recognition in consumer devices (smart glasses, doorbell cameras)",
+     "approach": "Policy and strategy analysis: privacy-risk model, stakeholder map, review of biometric-privacy regulation (BIPA, EU AI Act); no predictive model built",
+     "description": "Asked whether companies can capture facial-recognition benefits without losing consumer trust; concluded the sharpest unresolved risk is consent for bystanders who never agreed to be scanned, and proposed four deployment recommendations."
+    },
+    {
+     "subject": "Pricing a home as-is",
+     "approach": "Google Opal no-code multi-step workflow: vision analysis of listing photos, web-searched repair cost ranges, comparable-sales after-repair value, then list price and seller net; iterative prompt revisions",
+     "description": "A no-code workflow that reads listing photos, prices repairs, and suggests an as-is list price. On a live listing one run landed mid-range of the real offers; other runs drifted high, which became the main lesson."
+    },
+    {
+     "subject": "Environmental impact of AI (data center water and carbon)",
+     "approach": "Claude-assisted research synthesis and stakeholder-mapping framework",
+     "description": "Mapped the stakeholders in AI's water and power footprint and recommended actions for each to reduce consumption and improve carbon-footprint transparency."
+    },
+    {
+     "subject": "Job search scorecard",
+     "approach": "Python notebook: resume parsing and job search; GPT-4o (compared against Llama Scout) resume-to-job matching with structured JSON output; DuckDuckGo-sourced employer sentiment; composite opportunity score",
+     "description": "Resume-to-posting matching with GPT-4o and Llama, plus employer sentiment. GPT-4o gave the strongest recommendations; matching was too literal about prior industry."
+    }
+   ]
+  },
+  {
+   "term": "Fall 2025",
+   "items": [
+    {
+     "subject": "M&A cultural compatibility (Delta-Northwest, Daimler-Chrysler, Korean Air-Asiana)",
+     "approach": "LLM extraction of five cultural dimensions from 10 years of pre-merger news, press releases and annual reports; pairwise cultural-fit scores benchmarked against known merger outcomes",
+     "description": "Asked whether pre-merger language predicts integration success; the successful Delta-Northwest merger scored 0.73 vs. 0.62 for the failed Daimler-Chrysler, and Korean Air-Asiana scored a moderate 0.67 with gaps in leadership tone and adaptability."
+    },
+    {
+     "subject": "Fantasy Premier League team selection (English Premier League player data)",
+     "approach": "Deterministic ranking of historical player statistics (six seasons, reduced to one) combined with LLM reasoning (GPT-4o, DeepSeek-R1 and a third model) on form, fixtures and team balance",
+     "description": "Built an AI team builder; GPT-4o gave the most balanced and interpretable selections, DeepSeek was creative but less consistent, and the full multi-season dataset proved too large for the models to process reliably."
+    },
+    {
+     "subject": "MBA job search (resume-to-role matching)",
+     "approach": "NLP skill extraction, embeddings and retrieval-augmented generation over ~300 curated postings and five anonymized resumes; LLM-generated fit explanations and outreach suggestions; published prototype website",
+     "description": "Prototyped a 'career co-pilot' that matches MBA candidates to roles, explains the fit and suggests next steps; the authors present the small dataset as a conceptual demonstration rather than an empirical validation."
+    },
+    {
+     "subject": "Corporate credit agreements filed with the SEC (EX-10)",
+     "approach": "GPT-5-mini at temperature 0 (Gemini Pro also tested) filling an auditable 5-factor scorecard with supporting quotes, collapsed into a Borrower Favorability Index",
+     "description": "Across 20 credit agreements the AI handled first-pass review with about 75-80% accuracy (about 85% factor-level agreement in a 10-agreement spot check), implying roughly 50% savings on first-pass legal cost; most agreements scored borrower-friendly, reflecting investment-grade borrowers."
+    },
+    {
+     "subject": "Travel planning (flight price optimization and itineraries)",
+     "approach": "Amadeus flight-offers API enumerating all round-trip date pairs to find the cheapest fare, then an OpenAI GPT model generating a day-by-day itinerary, dining tiers and budget",
+     "description": "Built an assistant that finds the cheapest round trip within flexible date windows in about 30 seconds and writes a full itinerary; the authors note API coverage could bias results toward major airlines."
+    },
+    {
+     "subject": "Earnings-call 'mention' prediction markets (Kalshi)",
+     "approach": "LLM probability estimates (GPT-OSS and Llama 4 Scout via JetStream) from historical earnings-call transcripts plus recent headlines (Defeat-Beta API), with a structured-JSON reasoning prompt; backtested trading simulation",
+     "description": "Asked whether LLMs give an edge on whether a phrase will be said on an earnings call; in a 583-trade simulation, NO trades were profitable (+3.12 cents average) while YES trades lost money (-6.33 cents average)."
+    },
+    {
+     "subject": "B2B sales outreach (first-touch emails)",
+     "approach": "Rule-based Python pipeline in Colab producing three personalized email variants per lead; draft-only with human review; LLM personalization planned as a next step",
+     "description": "Generated 30 personalized, compliance-constrained drafts for 10 sample leads, with automated sending deliberately disabled."
+    },
+    {
+     "subject": "10-K and 10-Q filings (IBM, Microsoft) for interview preparation",
+     "approach": "Retrieval-augmented generation: OpenAI text-embedding-3-large + FAISS vector retrieval, chunked filings, citation-enforced summarization",
+     "description": "Built a tool that turns 100-200 page SEC filings into cited talking points for MBA interview prep, tested on IBM and Microsoft filings."
+    },
+    {
+     "subject": "Customer-support automation (returns, cancellations, information requests)",
+     "approach": "OpenAI Agent Builder / AgentKit multi-agent workflow (guardrail, intent classifier, specialist agents) embedded in a custom website via ChatKit",
+     "description": "Demonstrated a multi-agent customer-support workflow that classifies intent and routes to specialist agents, deployed to a live website."
+    },
+    {
+     "subject": "Executive competitive intelligence for a semiconductor CEO (proposal use case: Intel)",
+     "approach": "Multi-agent LLM synthesis (Gemini 1.5 Pro; GPT-5 used to help build) orchestrated with Google Cloud Run/Workflows and FastAPI, with automated PDF report generation",
+     "description": "Prototyped a pipeline that turns memo-style inputs on finance, energy, regulation and technology into executive summaries and action plans delivered as PDF briefings."
+    },
+    {
+     "subject": "Product-launch social reactions (e.g., Starbucks, iPhone, Tesla) on Twitter/X",
+     "approach": "Text-first classifier for excitement, skepticism and backlash, plus vision cues; Engagement Velocity metric and Buzz Risk Score with red/amber/green bands; Streamlit dashboard",
+     "description": "Found that backlash spreads materially faster than excitement in the first 24-48 hours after a launch and that about 70% of engagement accrues within 72 hours."
+    },
+    {
+     "subject": "New York Times coverage of the Russia-Ukraine war",
+     "approach": "NYT Article Search API; entity-level VADER sentiment on titles, abstracts and lead paragraphs; comparison before and after February 2022",
+     "description": "Mentions of Russia were more often critical than mentions of Ukraine, though all four entities and their leaders skewed critical, and the pattern was similar before and after the invasion."
+    },
+    {
+     "subject": "ESG strategy of ExxonMobil, BP and Shell",
+     "approach": "Two-agent pipeline: Llama 4 Scout for extraction and scoring, GPT-OSS-120B for synthesis, over 10-K/20-F filings and sustainability reports; custom transition-readiness and risk indices",
+     "description": "Tested media perceptions against disclosures: ExxonMobil scored highest on transition readiness ('pragmatic and improving'), BP was 'ambitious but volatile', and Shell 'balanced and credible'."
+    },
+    {
+     "subject": "rhode (celebrity-founded skincare brand) on Instagram",
+     "approach": "400+ public Instagram posts classified by the Llama 4 Scout vision-language model (JetStream) for sentiment, aesthetic, product focus, virality and reputation risk; prompt iteration and comparison with GPT-5, Gemini 1.5 Pro and Claude 3 Opus",
+     "description": "The brand's strongest community signal clustered around 'glazed skin selfie' imagery with positive tone, while rare negative sentiment centered on packaging quality and product scarcity."
+    },
+    {
+     "subject": "Real estate client communications",
+     "approach": "n8n dual-trigger workflow: LLM parses transcribed client interviews into a 43-column client profile, ingests MLS exports and off-market emails, matches listings to clients and drafts personalized emails behind a human-in-the-loop 'trust safety gate'",
+     "description": "An n8n workflow that turns transcribed client interviews into a structured buyer profile and screens new listings against it, cutting manual review from over 30 minutes to under 3 per listing."
+    },
+    {
+     "subject": "Home buying and property valuation (AI startup concept)",
+     "approach": "Address-in web app combining public property, school, crime and demographic data with an LLM-written report and fair-value range; freemium startup plan",
+     "description": "Pitched and prototyped an instant property report that classifies a home's list price as underpriced, fair or overpriced."
+    },
+    {
+     "subject": "Corporate treasury: which bills to pay",
+     "approach": "Google Opal no-code workflow over AI-generated mock transactions: liquidity evaluation, pay-or-defer rules, escalation logic, cash-flow simulation and summary reports",
+     "description": "A no-code assistant over mock transactions that decides which bills can be paid safely and escalates when cash coverage runs short."
+    },
+    {
+     "subject": "LinkedIn Premium subscriber churn",
+     "approach": "~300 public Reddit and Trustpilot comments plus synthetic behavioral data for 500 users; TF-IDF and K-means topic clustering; churn classifier; ReAct-style LLM prompts for next-best-action retention nudges",
+     "description": "The churn model reached about 75% accuracy on synthetic data, and ReAct prompting produced more structured churn explanations and actions than broad prompts."
+    }
+   ]
+  }
+ ]
+}

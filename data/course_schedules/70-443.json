@@ -1,0 +1,529 @@
+{
+ "slug": "70-443",
+ "term": "Spring 2015",
+ "meets": "Mondays and Wednesdays",
+ "unit_label": "Week",
+ "meta": {
+  "number": "70-443",
+  "title": "Digital Marketing and Social Media Strategy",
+  "program": "Undergraduate",
+  "school": "CMU Qatar",
+  "era": "cmuq",
+  "one_liner": "Search, social, and the digital marketing mix, taught through cases and real clients.",
+  "blurb": "This was the first time the course was taught at CMU Qatar, and about half the students came from Information Systems and half from Business Administration. In 2014 students spent Thursdays working for real clients, from the university's own marketing office to a board game store in Pittsburgh, doing search engine optimization, social media campaigns, and user-generated content. In 2015 I rebuilt it as a case course in four modules, from the digital landscape through advertising and promotion, the other three P's, and how traditional firms make the move to digital. Students also ran a search and analytics audit for a small Doha business with Google Analytics and AdWords.",
+  "offerings": [
+   "Spring 2014",
+   "Spring 2015",
+   "Fall 2015 (online)"
+  ],
+  "scale": "19 students in 2014 and 14 in 2015",
+  "color": "c-pine",
+  "order": 5
+ },
+ "schedule": [
+  {
+   "part": "Module 1: The digital landscape"
+  },
+  {
+   "date": "2015-01-12",
+   "week": 1,
+   "topic": "Introduction and course overview",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s01-1.webp",
+     "caption": "Social media marketing is easy, just get a Twitter account and do stuff"
+    },
+    {
+     "src": "assets/courses/70-443/s01-2.webp",
+     "caption": "A bank invites questions on Twitter with #AskJPM"
+    },
+    {
+     "src": "assets/courses/70-443/s01-3.webp",
+     "caption": "Digital marketing: Barnes & Noble versus Amazon"
+    },
+    {
+     "src": "assets/courses/70-443/s01-4.webp",
+     "caption": "The pieces of a social media strategy"
+    }
+   ]
+  },
+  {
+   "date": "2015-01-14",
+   "week": 1,
+   "topic": "Case: Procter & Gamble, marketing capabilities",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s02-1.webp",
+     "caption": "The four P's of marketing"
+    },
+    {
+     "src": "assets/courses/70-443/s02-2.webp",
+     "caption": "The man your man could smell like"
+    },
+    {
+     "src": "assets/courses/70-443/s02-5.webp",
+     "caption": "2010 is the year of getting Facebook followers, later we will figure out what to do with them"
+    }
+   ]
+  },
+  {
+   "date": "2015-01-19",
+   "week": 2,
+   "topic": "Case: L'Oréal, global brand, local knowledge",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s03-1.webp",
+     "caption": "Customer relationships: get, keep, grow"
+    },
+    {
+     "src": "assets/courses/70-443/s03-2.webp",
+     "caption": "Products tailored to each region of the world"
+    },
+    {
+     "src": "assets/courses/70-443/s03-3.webp",
+     "caption": "Place: a multichannel player in beauty"
+    },
+    {
+     "src": "assets/courses/70-443/s03-4.webp",
+     "caption": "The old consumer decision cycle was a funnel"
+    },
+    {
+     "src": "assets/courses/70-443/s03-5.webp",
+     "caption": "The new consumer decision journey is a loop"
+    }
+   ]
+  },
+  {
+   "date": "2015-01-21",
+   "week": 2,
+   "topic": "Case: Amazon, Apple, Facebook, and Google",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s04-1.webp",
+     "caption": "Four companies, four phones"
+    },
+    {
+     "src": "assets/courses/70-443/s04-2.webp",
+     "caption": "Search, Siri, and Facebook's Graph Search"
+    },
+    {
+     "src": "assets/courses/70-443/s04-3.webp",
+     "caption": "Facebook versus the Google Display Network"
+    },
+    {
+     "src": "assets/courses/70-443/s04-4.webp",
+     "caption": "Cloud computing and storage"
+    },
+    {
+     "src": "assets/courses/70-443/s04-5.webp",
+     "caption": "Apple's Ping: a social network that closed"
+    }
+   ]
+  },
+  {
+   "date": "2015-01-26",
+   "week": 3,
+   "topic": "Case: Harvard Business School Executive Education, balancing online and offline marketing",
+   "kind": "case"
+  },
+  {
+   "date": "2015-01-28",
+   "week": 3,
+   "topic": "Case: BBVA Compass, marketing resource allocation",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s05-1.webp",
+     "caption": "Traditional marketing: impressions, a black box, then purchases"
+    },
+    {
+     "src": "assets/courses/70-443/s05-2.webp",
+     "caption": "Search engine marketing: every step is measured"
+    },
+    {
+     "src": "assets/courses/70-443/s05-3.webp",
+     "caption": "Attributing new accounts to online and offline ad spending"
+    },
+    {
+     "src": "assets/courses/70-443/s05-4.webp",
+     "caption": "An approach to optimizing a search campaign"
+    },
+    {
+     "src": "assets/courses/70-443/s05-5.webp",
+     "caption": "Choosing a strategy for each search publisher"
+    }
+   ]
+  },
+  {
+   "date": "2015-02-02",
+   "week": 4,
+   "topic": "Search engine optimization",
+   "kind": "lecture",
+   "note": "Taught in place of the Bluefin Labs case on the printed schedule",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s06-2.webp",
+     "caption": "FiiO, a headphone amplifier maker that lost its own search results"
+    },
+    {
+     "src": "assets/courses/70-443/s06-3.webp",
+     "caption": "On-page factors are about a quarter of search results"
+    },
+    {
+     "src": "assets/courses/70-443/s06-4.webp",
+     "caption": "Search partnerships: Google and Google+, Bing and Facebook"
+    },
+    {
+     "src": "assets/courses/70-443/s06-5.webp",
+     "caption": "Social search: content recommended by friends"
+    }
+   ]
+  },
+  {
+   "date": "2015-02-04",
+   "week": 4,
+   "topic": "Case: Barnes & Noble versus Amazon",
+   "kind": "case"
+  },
+  {
+   "date": "2015-02-09",
+   "week": 5,
+   "topic": "Case: United Breaks Guitars",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s07-1.webp",
+     "caption": "How harmful was this video to the United brand?"
+    },
+    {
+     "src": "assets/courses/70-443/s07-2.webp",
+     "caption": "Airline customer satisfaction, 1996 to 2009"
+    },
+    {
+     "src": "assets/courses/70-443/s07-3.webp",
+     "caption": "United's stock price against the S&P after the video"
+    },
+    {
+     "src": "assets/courses/70-443/s07-4.webp",
+     "caption": "News and social media activity per day, July 2009"
+    },
+    {
+     "src": "assets/courses/70-443/s07-5.webp",
+     "caption": "Viral is a function of friends, pass-along, and cycle time"
+    }
+   ]
+  },
+  {
+   "part": "Module 2: Digital advertising and promotion"
+  },
+  {
+   "date": "2015-02-16",
+   "week": 6,
+   "topic": "Case: Groupon for local businesses",
+   "kind": "case"
+  },
+  {
+   "date": "2015-02-18",
+   "week": 6,
+   "topic": "Case: Mekanism, engineering viral marketing",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s08-1.webp",
+     "caption": "Mekanism's Windows Vista launch campaign"
+    },
+    {
+     "src": "assets/courses/70-443/s08-2.webp",
+     "caption": "Fire bullets, then cannonballs"
+    },
+    {
+     "src": "assets/courses/70-443/s08-3.webp",
+     "caption": "A branded web series for a beverage brand"
+    },
+    {
+     "src": "assets/courses/70-443/s08-4.webp",
+     "caption": "A formula for total reach from viral spread"
+    },
+    {
+     "src": "assets/courses/70-443/s08-5.webp",
+     "caption": "Mekanism's strategy: seed with influencers, tell stories, make sharing easy"
+    }
+   ]
+  },
+  {
+   "date": "2015-02-23",
+   "week": 7,
+   "topic": "Case: the Ford Fiesta Movement",
+   "kind": "case"
+  },
+  {
+   "date": "2015-02-25",
+   "week": 7,
+   "topic": "Case: HubSpot, inbound marketing",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s10-1.webp",
+     "caption": "Inbound marketing in HubSpot's own words"
+    },
+    {
+     "src": "assets/courses/70-443/s10-2.webp",
+     "caption": "What is inbound marketing?"
+    },
+    {
+     "src": "assets/courses/70-443/s10-3.webp",
+     "caption": "HubSpot's three decisions: which customers, which pricing, inbound only or not"
+    }
+   ]
+  },
+  {
+   "date": "2015-03-02",
+   "week": 8,
+   "topic": "Spring break",
+   "kind": "break"
+  },
+  {
+   "date": "2015-03-09",
+   "week": 9,
+   "topic": "Case: YouTube for brands",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s11-1.webp",
+     "caption": "Television still gets most ad spending. How would you change that?"
+    },
+    {
+     "src": "assets/courses/70-443/s11-2.webp",
+     "caption": "Online video ads cost nearly double a national TV spot per thousand views"
+    },
+    {
+     "src": "assets/courses/70-443/s11-3.webp",
+     "caption": "YouTube, Hulu, and Netflix circling the TV networks"
+    },
+    {
+     "src": "assets/courses/70-443/s11-4.webp",
+     "caption": "Content strategy for the World Cup 2022 organizers"
+    },
+    {
+     "src": "assets/courses/70-443/s11-5.webp",
+     "caption": "What works on YouTube for Lego, Red Bull, and CoverGirl?"
+    }
+   ]
+  },
+  {
+   "date": "2015-03-11",
+   "week": 9,
+   "topic": "Case: Dumb Ways to Die, advertising train safety",
+   "kind": "case"
+  },
+  {
+   "part": "Module 3: Digital product, place, and price"
+  },
+  {
+   "date": "2015-03-16",
+   "week": 10,
+   "topic": "Case: managing online reviews on TripAdvisor",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s12-1.webp",
+     "caption": "Why has TripAdvisor been so successful?"
+    },
+    {
+     "src": "assets/courses/70-443/s12-2.webp",
+     "caption": "TripAdvisor versus Yelp"
+    },
+    {
+     "src": "assets/courses/70-443/s12-3.webp",
+     "caption": "How does TripAdvisor stop people gaming the system?"
+    },
+    {
+     "src": "assets/courses/70-443/s12-4.webp",
+     "caption": "A platform balanced between users and hotels"
+    },
+    {
+     "src": "assets/courses/70-443/s12-5.webp",
+     "caption": "Restaurants, vacation rentals, flights, or China?"
+    }
+   ]
+  },
+  {
+   "date": "2015-03-18",
+   "week": 10,
+   "topic": "Case: freemium pricing at Dropbox",
+   "kind": "case"
+  },
+  {
+   "date": "2015-03-23",
+   "week": 11,
+   "topic": "Case: Channel 7 Boston",
+   "kind": "case"
+  },
+  {
+   "date": "2015-03-25",
+   "week": 11,
+   "topic": "Case: Catalina in the digital age",
+   "kind": "case"
+  },
+  {
+   "date": "2015-03-30",
+   "week": 12,
+   "topic": "Case: Bank of America mobile banking",
+   "kind": "case"
+  },
+  {
+   "date": "2015-04-01",
+   "week": 12,
+   "topic": "Case: online marketing at Big Skinny",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s13-1.webp",
+     "caption": "Big Skinny started by selling wallets at street fairs"
+    },
+    {
+     "src": "assets/courses/70-443/s13-2.webp",
+     "caption": "A display ad on the New York Times site"
+    },
+    {
+     "src": "assets/courses/70-443/s13-3.webp",
+     "caption": "'Hate thick wallets?' on a motorcycle site"
+    },
+    {
+     "src": "assets/courses/70-443/s13-4.webp",
+     "caption": "Sponsored search results by keyword"
+    },
+    {
+     "src": "assets/courses/70-443/s13-5.webp",
+     "caption": "Don't follow measurements blindly"
+    }
+   ]
+  },
+  {
+   "part": "Module 4: Transitioning to digital"
+  },
+  {
+   "date": "2015-04-06",
+   "week": 13,
+   "topic": "Case: Take-Two Interactive",
+   "kind": "case"
+  },
+  {
+   "date": "2015-04-08",
+   "week": 13,
+   "topic": "Case: Coca-Cola's case for creative transformation",
+   "kind": "case"
+  },
+  {
+   "date": "2015-04-13",
+   "week": 14,
+   "topic": "Case: the New York Times paywall",
+   "kind": "case"
+  },
+  {
+   "date": "2015-04-15",
+   "week": 14,
+   "topic": "Case: Google in China",
+   "kind": "case"
+  },
+  {
+   "date": "2015-04-20",
+   "week": 15,
+   "topic": "Case: Nettwerk, digital marketing in the music industry",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-443/s14-1.webp",
+     "caption": "Music industry revenue by source, 1998 to 2011"
+    },
+    {
+     "src": "assets/courses/70-443/s14-2.webp",
+     "caption": "How music was acquired: 65% unpaid"
+    },
+    {
+     "src": "assets/courses/70-443/s14-3.webp",
+     "caption": "The anatomy of the long tail"
+    },
+    {
+     "src": "assets/courses/70-443/s14-4.webp",
+     "caption": "Head and long tail"
+    },
+    {
+     "src": "assets/courses/70-443/s14-5.webp",
+     "caption": "What a major label does, from scouting to the fan"
+    }
+   ]
+  },
+  {
+   "date": "2015-04-22",
+   "week": 15,
+   "topic": "Review and course discussion",
+   "kind": "lecture"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Search and analytics audit",
+   "description": "In groups of two or three, students worked with the website of a small Doha dog-services business using Google Analytics, Webmaster Tools, and AdWords: understand the client's objectives and keywords, analyze traffic, propose search improvements, and plan a paid search campaign, in an 8 to 12 page report."
+  },
+  {
+   "name": "Air France search campaign analysis",
+   "description": "Using the Air France Internet Marketing case and its campaign data, groups identified the metrics that matter, judged which search publishers to fund or drop, and recommended keywords and an overall digital mix."
+  },
+  {
+   "name": "Case write-ups",
+   "weight": "40%",
+   "description": "A reflection paper at the end of each of the four modules, two individual and two in groups."
+  },
+  {
+   "name": "Participation and quizzes",
+   "weight": "40%",
+   "description": "Case discussion is the course, so participation was 30%, with short in-class and online quizzes for the other 10%."
+  },
+  {
+   "name": "Final exam",
+   "weight": "20%",
+   "description": "A digital marketing case handed out 48 hours ahead, with analysis questions answered in the exam."
+  },
+  {
+   "name": "Real-world client project (2014)",
+   "description": "In 2014, groups worked all semester for a real organization, presenting three times: a search engine marketing plan, a social media campaign, and a user-generated content idea, graded on understanding of the client and quality of analysis."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2014: client projects",
+   "items": [
+    {
+     "subject": "CMU Qatar Marketing and Public Relations",
+     "approach": "Search engine optimization, sponsored search, social media",
+     "description": "Audited the university website's metadata, alt tags, and inbound links against other Education City campuses, proposed English and Arabic keywords for the Computer Science and Information Systems programs with cost-per-click estimates, and planned social media around orientation, events, and an alumni blog."
+    },
+    {
+     "subject": "A board game store in Pittsburgh",
+     "approach": "Website review, social media campaign, user-generated content",
+     "description": "Set up Instagram and Twitter accounts, linked them to the store's Facebook page, and promoted its Tabletop Day event with hashtags and game quizzes. The owner reported about 200 visitors that day and sales four times the previous year's event. The team proposed a photo contest with the café across the street."
+    },
+    {
+     "subject": "An Arabic-learning games startup for young children",
+     "approach": "Competitor analysis, SEO, AdWords, social media",
+     "description": "Compared the site's domain authority with two competitors, rewrote its title and meta description, recommended AdWords keywords with a budget, and suggested inbound links from Doha schools."
+    },
+    {
+     "subject": "A children's nursery in Doha",
+     "approach": "SEO and social media",
+     "description": "Fixed spelling and on-page content, added meta tags, got the site indexed by Google, and built the social strategy around the nursery's inactive Facebook page."
+    },
+    {
+     "subject": "An architecture and design consultancy",
+     "approach": "On-page and off-page SEO, social media, user-generated content",
+     "description": "Added meta tags so the firm appeared in searches for its own name, studied competitors' keywords, and found design and architecture sites to link to it, aiming at Qatar, Amsterdam, and Lebanon."
+    }
+   ]
+  }
+ ]
+}

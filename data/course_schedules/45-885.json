@@ -1,0 +1,505 @@
+{
+ "slug": "45-885",
+ "term": "Spring 2026, Mini 3",
+ "meets": "Mondays and Wednesdays",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "date": "2026-01-12",
+   "week": 1,
+   "topic": "Course overview and design of visual information",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s01-1.webp",
+     "caption": "What's wrong with this picture? A 3D Broadway ticket chart"
+    },
+    {
+     "src": "assets/courses/45-885/s01-2.webp",
+     "caption": "Count the 3s: pre-attentive attributes tell the eye where to look"
+    },
+    {
+     "src": "assets/courses/45-885/s01-3.webp",
+     "caption": "Color does the work: seven of the top ten design concerns highlighted in red"
+    },
+    {
+     "src": "assets/courses/45-885/s01-4.webp",
+     "caption": "Enclosure: shading sets the forecast apart from the actuals"
+    },
+    {
+     "src": "assets/courses/45-885/s01-5.webp",
+     "caption": "Minard's map of Napoleon's march on Moscow, original and redrawn"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-14",
+   "week": 1,
+   "topic": "Tableau Desktop fundamentals",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-01-19",
+   "week": 2,
+   "topic": "No class: Martin Luther King Jr. Day",
+   "kind": "break"
+  },
+  {
+   "date": "2026-01-21",
+   "week": 2,
+   "topic": "Storytelling with data",
+   "kind": "lecture",
+   "note": "Lab 1 due",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s04-1.webp",
+     "caption": "The big idea: your point of view and what is at stake, in one complete sentence"
+    },
+    {
+     "src": "assets/courses/45-885/s04-2.webp",
+     "caption": "New client tier share: a table with the bars built in"
+    },
+    {
+     "src": "assets/courses/45-885/s04-3.webp",
+     "caption": "Four ways to show the same survey result: pies, bars, stacked bars, slopegraph"
+    },
+    {
+     "src": "assets/courses/45-885/s04-4.webp",
+     "caption": "Monthly attrition, with color and shading tying each note to its bars"
+    },
+    {
+     "src": "assets/courses/45-885/s04-5.webp",
+     "caption": "Decluttered: indirect sales missed the time-to-close goal three times"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-26",
+   "week": 3,
+   "topic": "Principles of visual design",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s05-1.webp",
+     "caption": "The forecast stripped to what matters: a high of 75, a low of 37"
+    },
+    {
+     "src": "assets/courses/45-885/s05-2.webp",
+     "caption": "Tufte's five laws of data-ink, with a low and a high data-ink bar chart"
+    },
+    {
+     "src": "assets/courses/45-885/s05-3.webp",
+     "caption": "Sparklines: word-sized graphics for glucose, respiration, and temperature"
+    },
+    {
+     "src": "assets/courses/45-885/s05-4.webp",
+     "caption": "Germany's population pyramid for 2022"
+    },
+    {
+     "src": "assets/courses/45-885/s05-5.webp",
+     "caption": "Apple's income statement drawn as a waterfall of bars"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-28",
+   "week": 3,
+   "topic": "Data visualization in Tableau",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-02-02",
+   "week": 4,
+   "topic": "Typography, color, and computation for data visualization",
+   "kind": "lecture",
+   "note": "Lab 2 due",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s07-1.webp",
+     "caption": "The anatomy of a typeface: x-height, ascender, baseline, descender"
+    },
+    {
+     "src": "assets/courses/45-885/s07-2.webp",
+     "caption": "Same words, different typefaces, different feeling"
+    },
+    {
+     "src": "assets/courses/45-885/s07-3.webp",
+     "caption": "Iraq's bloody toll and Iraq deaths on the decline: same data, opposite framing"
+    },
+    {
+     "src": "assets/courses/45-885/s07-4.webp",
+     "caption": "Five jobs color does in a chart: sequential, diverging, categorical, highlight, alert"
+    },
+    {
+     "src": "assets/courses/45-885/s07-5.webp",
+     "caption": "Traffic-light colors as someone with deuteranopia sees them"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-04",
+   "week": 4,
+   "topic": "Calculations in Tableau",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-02-09",
+   "week": 5,
+   "topic": "Visualizing spatial data",
+   "kind": "lecture",
+   "note": "Lab 3 due",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s09-1.webp",
+     "caption": "Remove to improve: the anti-bacon map before and after"
+    },
+    {
+     "src": "assets/courses/45-885/s09-2.webp",
+     "caption": "Pop, soda, or coke? Generic soft drink names by county"
+    },
+    {
+     "src": "assets/courses/45-885/s09-3.webp",
+     "caption": "The 2020 election by county: is most of the country Republican?"
+    },
+    {
+     "src": "assets/courses/45-885/s09-4.webp",
+     "caption": "A hex tile map gives every state the same size"
+    },
+    {
+     "src": "assets/courses/45-885/s09-5.webp",
+     "caption": "A density map of US tornado touchdowns built in Tableau"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-11",
+   "week": 5,
+   "topic": "Visualizing spatial data",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-02-16",
+   "week": 6,
+   "topic": "Dashboards and interactive displays",
+   "kind": "lecture",
+   "note": "Lab 4 due",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s11-1.webp",
+     "caption": "Dashboards roll up by level: strategic for the CEO, tactical for managers, operational for teams"
+    },
+    {
+     "src": "assets/courses/45-885/s11-2.webp",
+     "caption": "Low effectiveness: a balanced scorecard built from gauges"
+    },
+    {
+     "src": "assets/courses/45-885/s11-3.webp",
+     "caption": "Eye tracking on the web: the F-shaped scanning pattern"
+    },
+    {
+     "src": "assets/courses/45-885/s11-4.webp",
+     "caption": "Tableau's eye-tracking study: big numbers draw the eye"
+    },
+    {
+     "src": "assets/courses/45-885/s11-5.webp",
+     "caption": "What the eye-tracking A/B tests found: placement and font size matter, left or right and contrast do not"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-18",
+   "week": 6,
+   "topic": "Dashboards and interactive displays",
+   "kind": "exercise"
+  },
+  {
+   "date": "2026-02-23",
+   "week": 7,
+   "topic": "Clustering and social network graphs",
+   "kind": "lecture",
+   "note": "Final project proposal due",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s13-1.webp",
+     "caption": "Plain, spicy, or extra chunky: the pasta sauce story behind segmentation"
+    },
+    {
+     "src": "assets/courses/45-885/s13-2.webp",
+     "caption": "Same data, different algorithms, very different clusters"
+    },
+    {
+     "src": "assets/courses/45-885/s13-3.webp",
+     "caption": "A Game of Thrones character network"
+    },
+    {
+     "src": "assets/courses/45-885/s13-4.webp",
+     "caption": "Milgram's small-world experiment: about six steps between any two people"
+    },
+    {
+     "src": "assets/courses/45-885/s13-5.webp",
+     "caption": "US political blogs link mostly to their own side (Adamic and Glance, 2005)"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-25",
+   "week": 7,
+   "topic": "Explainable AI, data preparation, and visual animation",
+   "kind": "lecture",
+   "note": "Final project due March 1",
+   "slides": [
+    {
+     "src": "assets/courses/45-885/s14-1.webp",
+     "caption": "Where ImageNet's 14 million labeled images come from, by country"
+    },
+    {
+     "src": "assets/courses/45-885/s14-2.webp",
+     "caption": "LIME shows the model calling a husky a wolf because of the snow"
+    },
+    {
+     "src": "assets/courses/45-885/s14-3.webp",
+     "caption": "SHAP values: how each feature pushes a mushroom toward poisonous"
+    },
+    {
+     "src": "assets/courses/45-885/s14b-1.webp",
+     "caption": "Inner, left, right, and full outer joins"
+    },
+    {
+     "src": "assets/courses/45-885/s14b-2.webp",
+     "caption": "Rebuilding Gapminder's animated bubble chart in Tableau"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Final visualization project",
+   "weight": "30%",
+   "description": "Individually or in pairs, students answer their own business question or take one of two set datasets (daily city temperatures or the Netflix catalog). They hand in a Tableau workbook with an interactive dashboard, the cleaned data, and a 5 to 7 minute recorded video that tells the story. A one to two page proposal comes due in the last module."
+  },
+  {
+   "name": "Lab 1: Design of visual information",
+   "weight": "Labs 40%",
+   "description": "No software yet. Students critique and redesign weak charts, including two published charts claiming college no longer pays off, then critique and redo a chart they made themselves before the course."
+  },
+  {
+   "name": "Lab 2: Data visualization with Tableau",
+   "description": "With a DonorsChoose extract where each row is a donation, students sort measures from dimensions, build a dual-axis chart of donations by grade level, write a students-reached-per-dollar calculated field, map donations by state, add a moving average, and report one insight of their own."
+  },
+  {
+   "name": "Lab 3: Calculations in Tableau",
+   "description": "Using avocado sales data, students build table calculations such as percent of total by market and FIXED and EXCLUDE level of detail expressions, and explain how filters interact with them."
+  },
+  {
+   "name": "Lab 4: Visualizing spatial data",
+   "description": "Did Austin's 2015 Uber ban hurt demand for Airbnb listings that are harder to reach? Students map transit and walk scores, map the change in demand from 2015 to 2016, and cluster listings by location in Tableau."
+  },
+  {
+   "name": "Data story analysis",
+   "weight": "10%",
+   "description": "Once in the term, a small team opens class with a data story published in the last six months, critiques two or three of its charts with principles from the course, and presents remade versions. Before presenting, teams test the redesign with the AI Data Visualization Coach."
+  },
+  {
+   "name": "Class participation",
+   "weight": "20%",
+   "description": "Credit in each of the seven modules for in-class quizzes, Tableau workbooks submitted from the lab sessions, or follow-along activities."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2025",
+   "items": [
+    {
+     "subject": "Netflix content by country and genre",
+     "approach": "Kaggle Netflix titles; Tableau Prep split/pivot of multi-country field, genre grouping; treemap country selector driving line charts",
+     "description": "Compared TV vs. movie output and genre mix across countries; selecting a country (e.g., UK) showed movies dominating over time, with a 2019-2020 dip attributed to the pandemic."
+    },
+    {
+     "subject": "Neighborhood income change by zip code",
+     "approach": "Census ACS median income; calculated percent-change fields; filled maps, heat-map coloring, linked table with click-to-filter",
+     "description": "Mapped how median household income shifted by zip code (zooming into Pittsburgh) to raise questions about gentrification and local disparities."
+    },
+    {
+     "subject": "Netflix TV vs. movies and kids content",
+     "approach": "Kaggle Netflix titles; genres regrouped; bar, line, stacked bar charts and a geospatial map with an interactive bar chart",
+     "description": "Explored how Netflix's TV/movie mix and children's content shifted over time and where content originates (US, India, UK dominant)."
+    },
+    {
+     "subject": "YouTube channel revenue drivers",
+     "approach": "YouTube dataset with sparse columns removed; binned metrics, scatter plots with trend lines, text tables, dashboard filters",
+     "description": "Asked which factors drive creator revenue; trend lines and binned views showed which metrics correlate with revenue, with subscribers as the second most important factor."
+    },
+    {
+     "subject": "Racial disparities in Nashville traffic stops",
+     "approach": "Stanford Open Policing Project data filtered to 2011-2018; demographic charts, stop-density map, day/hour views, year filter and race highlighting",
+     "description": "Compared stop rates and outcomes (warnings, citations, arrests) by race against Nashville census demographics and tracked declines in stops alongside a 2014 Tennessee bill."
+    },
+    {
+     "subject": "MLB payroll vs. wins",
+     "approach": "Baseball Reference wins blended with Spotrac payroll; bar-line combo, scatter with efficiency line, heat map, cost-per-win table; team selector across views",
+     "description": "Showed diminishing returns to payroll, flagging the Yankees as least and the Rays/Pirates as most cost-efficient per win, with COVID-season adjustments."
+    },
+    {
+     "subject": "NYC subway ridership recovery after COVID",
+     "approach": "MTA turnstile data; line and area charts, station map sized/colored by ridership and recovery, click/hover filtering",
+     "description": "Compared post- vs. pre-COVID ridership (about 75% recovery headline), rush-hour vs. off-peak shifts, and station-level outliers, linking changes to hybrid work and tourism."
+    },
+    {
+     "subject": "U.S. defense procurement spending",
+     "approach": "DoD Green Book, SIPRI, and contract-award data reshaped to long format in constant FY25 dollars; line, stacked area, and bar charts with year/branch/category filters",
+     "description": "Tracked total procurement, branch allocations (including the new Space Force), category growth in software and cyber, and top contractors' market share."
+    },
+    {
+     "subject": "Recycling trends for circular products",
+     "approach": "U.S. EPA waste-stream data; time series and bar charts, parameter-driven threshold sliders, year and goods-type filters with some views held unfiltered",
+     "description": "Identified materials (paper, iron-based metals) with enough recycled volume to support circular product development, contrasting declines such as newspapers."
+    },
+    {
+     "subject": "Gender gaps in STEM education",
+     "approach": "World Bank indicators on education spending, STEM enrollment, and gender parity (GPI), merged and cleaned; choropleth, line, bar, scatter; calculated field estimating female STEM graduates",
+     "description": "Contrasted girls' academic performance with lower STEM enrollment, mapped education spending, and related government spending to gender parity, ending with policy calls to action."
+    },
+    {
+     "subject": "Nurse staffing cost savings in Canadian healthcare",
+     "approach": "Published staffing-shortage and agency-fee figures; parameter inputs for nurses, days, and shifts; side-by-side cost comparison",
+     "description": "A what-if dashboard comparing the cost of filling nursing shifts directly against staffing agencies."
+    },
+    {
+     "subject": "Marvel films and comics",
+     "approach": "MCU box office (2008-2019) plus Marvel comics character data, outliers filtered and missing values recoded; split-view dashboard with year-range and hero-gender filters",
+     "description": "Paired MCU revenue/profit trends with new comic character introductions to suggest which emerging heroes could anchor future films."
+    },
+    {
+     "subject": "Netflix content production trends",
+     "approach": "Kaggle Netflix titles with multi-value fields split, outliers removed, genres grouped; seasonality, global distribution, release-vs-added charts; date and genre filters",
+     "description": "Examined movies vs. TV, leading countries, genres and directors, COVID effects on additions, and older-title licensing, closing with content-strategy recommendations."
+    },
+    {
+     "subject": "Where disabled veterans live",
+     "approach": "VA disability data merged with USDA county statistics and census data; maps, scatterplot with adjustable scale, top/bottom-10 sorted bars, state filter",
+     "description": "Found disproportionate concentrations of disabled veterans in Southern states (e.g., Georgia) relative to total veteran counts and tied this to VA resource allocation."
+    },
+    {
+     "subject": "Super Bowl prediction myth-busting",
+     "approach": "NFL regular-season team, quarterback, and Super Bowl stats from multiple sources; scatter plots, treemaps, bubble charts, summary tiles, conference/division filters",
+     "description": "Used offense, defense, and special-teams data to argue the Eagles were underrated relative to near-unanimous media picks for the Chiefs."
+    },
+    {
+     "subject": "Supply-chain order analysis for a quotations team",
+     "approach": "Sales and vendor data joined in Tableau; custom bins, treemap, log-scale dual-axis chart, route map, KPI ribbon",
+     "description": "Answered a sales team's questions about order sizes, product lines, and shipping routes."
+    },
+    {
+     "subject": "Executive dashboards for a retail superstore",
+     "approach": "Kaggle Superstore data; calculated YoY metrics, forecasting, top/bottom-N lists, filters by year/region/category",
+     "description": "Built separate CEO, CMO, and COO dashboards with role-specific KPIs such as forecasts, discount-profit relationships, and shipping modes."
+    },
+    {
+     "subject": "Netflix catalog strategy",
+     "approach": "Kaggle Netflix titles with manual cleaning of multi-country and duration fields; bar charts, trend lines, map; filters by type, rating, country",
+     "description": "Showed rapid catalog growth after 2017, top genres and producing countries, and typical movie runtimes, recommending more family and localized content."
+    },
+    {
+     "subject": "Global warming by region and season",
+     "approach": "Kaggle daily city temperatures (1995-2019), incomplete years excluded; slope graphs, time-lapse map, monthly seasonal breakdowns with region/country filters",
+     "description": "Showed which regions and months warmed most, contrasting slightly warmer winters with hotter summers and linking to agriculture (e.g., Florida crops)."
+    },
+    {
+     "subject": "Netflix international content strategy",
+     "approach": "Kaggle Netflix titles; regional genre and rating views with region/country/genre drill-down",
+     "description": "Framed a content-strategy decision showing mature-rated content dominance in the US vs. other markets and Bollywood's weight in India, recommending more focus on India."
+    },
+    {
+     "subject": "Road roughness and traffic accidents",
+     "approach": "National Transportation Atlas Database incl. International Roughness Index; maps plus bar charts with clickable state and road-type filters",
+     "description": "Found road roughness was not the primary accident driver, with 'other road users' the dominant cause, and discussed implications for transportation planning."
+    },
+    {
+     "subject": "Netflix global expansion",
+     "approach": "Kaggle Netflix titles with expanded multi-country records and manually curated location data; geospatial map with movie/TV and country comparisons",
+     "description": "Traced Netflix's international expansion, including investment-driven production spikes in India and a TV focus in Japan."
+    },
+    {
+     "subject": "Federal student loans and interest rates",
+     "approach": "U.S. Dept. of Education loan data blended with Census population; per-capita normalization, interest-rate averages, state map selector vs. national average",
+     "description": "Showed a negative relationship between interest rates and loan disbursements and framed the dashboard as a forecasting tool for universities' enrollment and budgets."
+    }
+   ]
+  },
+  {
+   "term": "Spring 2024",
+   "items": [
+    {
+     "subject": "Netflix TV shows vs. movies",
+     "approach": "netflix_titles.csv plus Netflix 2023 engagement report and 10-K data; country comparisons and a correlation analysis",
+     "description": "Argued TV shows are growing globally and correlated TV share with operating income, claiming TV is more efficient per title than movies."
+    },
+    {
+     "subject": "Global food trends and restaurants",
+     "approach": "Credited external datasets on food inflation and consumer preferences; trend visuals",
+     "description": "Showed food inflation reducing restaurant share of wallet and younger consumers moving to healthier options, with suggestions for how restaurants adapt."
+    },
+    {
+     "subject": "Global terrorism 1990-2020",
+     "approach": "Three decades of attack data; totals, country maps, and attacks by organization",
+     "description": "Showed terrorism spiked then recently dropped, that the Iraq/Afghanistan wars drove much of the count, and that attacks are not confined to one region."
+    },
+    {
+     "subject": "Garment factory productivity and incentives",
+     "approach": "Garment factory productivity data (actual vs. targeted, overtime, incentives) by department and team",
+     "description": "Found higher incentives associated with lower productivity for some teams and recommended restructuring the incentive program."
+    },
+    {
+     "subject": "Global warming",
+     "approach": "Daily city temperature data (predefined climate project); heat maps, line graphs, box plots",
+     "description": "Compared 1995 and 2019 averages and regional variability to show gradual warming, with some recent regional declines."
+    },
+    {
+     "subject": "Spotify revenue and Premium",
+     "approach": "Spotify financials, subscriber and ARPU metrics; revenue/profit trend charts",
+     "description": "Traced revenue and gross profit growth and compared Premium vs. ad revenue around a 2022 change."
+    },
+    {
+     "subject": "EV certified vs. actual range in South Korea",
+     "approach": "Public test results from a YouTube channel's standardized route vs. Ministry of Environment certified ranges; ratio by brand and weight class",
+     "description": "Showed actual ranges often exceed certified ones with wide variation by manufacturer and weight class, with suggestions for the regulator."
+    },
+    {
+     "subject": "Netflix content strategy",
+     "approach": "Kaggle Netflix titles; library growth and average duration by country of production",
+     "description": "Showed library growth slowing after 2019 amid streaming competition, faster movie than TV growth, and duration patterns across top countries."
+    },
+    {
+     "subject": "High-growth careers",
+     "approach": "Occupational employment change and projection data, automation potential, education requirements",
+     "description": "Identified occupations with high projected growth and low automation risk to guide students' career choices."
+    },
+    {
+     "subject": "Netflix originals and MPAA ratings",
+     "approach": "Market data on Netflix expansion, original-content investment, Disney+ ad revenue, PG-13 box office share",
+     "description": "Argued that few Netflix originals are rated PG or below and proposed steps on ratings strategy."
+    },
+    {
+     "subject": "Formula 1 greats of the decade",
+     "approach": "A decade of F1 results; wins and pole positions by driver and circuit",
+     "description": "Compared Hamilton and Verstappen to name the recent 'G.O.A.T.', with context on regulation changes."
+    },
+    {
+     "subject": "NYC restaurant inspections",
+     "approach": "NYC Open Data (Dept. of Health) inspection records, 2021-2023; trend, borough grade distribution, violation trends",
+     "description": "Found steady average scores, more A grades in Manhattan, and a slight rise in bio-hazard violations."
+    },
+    {
+     "subject": "Capital vs. labor productivity and GDP",
+     "approach": "World Bank capital stock and real GDP data; comparisons of the U.S., China, and Nigeria",
+     "description": "Asked how capital and labor productivity relate to GDP and attributed sustained U.S. productivity to investment in education and technology."
+    },
+    {
+     "subject": "Watch company simulation operations",
+     "approach": "Data from a 12-period MBA capstone business simulation, visualized in Tableau; world map of market share, revenue/ROIC bars, capital structure",
+     "description": "Told the story of the team's simulated company's global market share, financial performance, and capital structure versus competitors."
+    }
+   ]
+  }
+ ]
+}

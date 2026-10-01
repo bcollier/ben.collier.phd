@@ -1,0 +1,413 @@
+{
+ "slug": "46-880",
+ "term": "Fall 2024, Mini 1",
+ "meets": "Mondays and Wednesdays, two morning sections",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "part": "Part I: Probability"
+  },
+  {
+   "date": "2024-08-26",
+   "week": 1,
+   "topic": "Introduction to Probability",
+   "kind": "lecture",
+   "note": "Chapter 4",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s01-1.webp",
+     "caption": "How likely is it that two people in today's class share a birthday?"
+    },
+    {
+     "src": "assets/courses/46-880/s01-2.webp",
+     "caption": "A 40-hospital system buying $1.5 billion of drugs a year with three to five buyers"
+    },
+    {
+     "src": "assets/courses/46-880/s01-3.webp",
+     "caption": "Reframing the hospital's drug price and shortage worries as probability questions"
+    },
+    {
+     "src": "assets/courses/46-880/s01-4.webp",
+     "caption": "Law of total probability: split A across B and not-B"
+    },
+    {
+     "src": "assets/courses/46-880/s01-5.webp",
+     "caption": "Tesla batteries and self-driving: a conditional probability from a joint table"
+    }
+   ]
+  },
+  {
+   "date": "2024-08-28",
+   "week": 1,
+   "topic": "Bayes' Theorem and Discrete Random Variables",
+   "kind": "lecture",
+   "note": "Chapter 5",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s02-1.webp",
+     "caption": "Bayes' theorem on a COVID-19 test: a positive result means only a 47% chance of infection"
+    },
+    {
+     "src": "assets/courses/46-880/s02-2.webp",
+     "caption": "Arrow Cosmetics: a good market test moves the chance of high demand from 30% to 60%"
+    },
+    {
+     "src": "assets/courses/46-880/s02-3.webp",
+     "caption": "The product of two four-sided dice, as a table and as a bar chart"
+    },
+    {
+     "src": "assets/courses/46-880/s02-4.webp",
+     "caption": "Expected growth of Microsoft stock: multiply across, sum down"
+    },
+    {
+     "src": "assets/courses/46-880/s02-5.webp",
+     "caption": "Mixing two stocks: how portfolio weights trade expected return against risk"
+    }
+   ]
+  },
+  {
+   "date": "2024-09-02",
+   "week": 2,
+   "topic": "No class: Labor Day",
+   "kind": "break"
+  },
+  {
+   "date": "2024-09-04",
+   "week": 2,
+   "topic": "Discrete Probability Distributions",
+   "kind": "lecture",
+   "note": "Binomial, geometric, and Poisson. Chapter 5",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s03-1.webp",
+     "caption": "52 factorial: a shuffled deck is almost certainly in an order no one has seen"
+    },
+    {
+     "src": "assets/courses/46-880/s03-2.webp",
+     "caption": "Every binomial question twice: BINOM.DIST in Excel, stats.binom in Python"
+    },
+    {
+     "src": "assets/courses/46-880/s03-3.webp",
+     "caption": "Sell 20 tickets for 18 seats: what is the chance the plane is overbooked?"
+    },
+    {
+     "src": "assets/courses/46-880/s03-4.webp",
+     "caption": "Tranching four risky loans: who gets paid first when borrowers default"
+    },
+    {
+     "src": "assets/courses/46-880/s03-5.webp",
+     "caption": "Poisson arrivals at Amazon: at most 50 customers in two minutes"
+    }
+   ]
+  },
+  {
+   "date": "2024-09-09",
+   "week": 3,
+   "topic": "Continuous Random Variables",
+   "kind": "lecture",
+   "note": "Chapter 6",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s04-1.webp",
+     "caption": "The world is awful, much better, and can be much better, all at once"
+    },
+    {
+     "src": "assets/courses/46-880/s04-2.webp",
+     "caption": "A breakdown on a 10-mile pipeline: why any single point has probability zero"
+    },
+    {
+     "src": "assets/courses/46-880/s04-3.webp",
+     "caption": "For a continuous variable, probability is area under the curve"
+    },
+    {
+     "src": "assets/courses/46-880/s04-4.webp",
+     "caption": "Reading the same answer off the cumulative distribution function"
+    },
+    {
+     "src": "assets/courses/46-880/s04-5.webp",
+     "caption": "Bid 0.4 against two uniform bidders and you win 16% of the time"
+    }
+   ]
+  },
+  {
+   "date": "2024-09-11",
+   "week": 3,
+   "topic": "Continuous Probability Distributions",
+   "kind": "lecture",
+   "note": "Uniform, exponential, and normal. Chapter 6",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s05-1.webp",
+     "caption": "The exponential distribution: time until the next arrival, at three rates"
+    },
+    {
+     "src": "assets/courses/46-880/s05-2.webp",
+     "caption": "Adult heights for women and men: two overlapping normal curves"
+    },
+    {
+     "src": "assets/courses/46-880/s05-3.webp",
+     "caption": "Quarterly revenue as a normal variable: the chance of a bad quarter"
+    },
+    {
+     "src": "assets/courses/46-880/s05-4.webp",
+     "caption": "From one standard deviation to six: where Six Sigma gets its name"
+    },
+    {
+     "src": "assets/courses/46-880/s05-5.webp",
+     "caption": "Every distribution in the course on one page, with its mean and variance"
+    }
+   ]
+  },
+  {
+   "date": "2024-09-16",
+   "week": 4,
+   "topic": "Normal Distribution and Joint Distributions",
+   "kind": "lecture",
+   "note": "Includes the lognormal. Chapters 5 and 6",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s06-1.webp",
+     "caption": "Value at risk: the loss you beat 95% of the time"
+    },
+    {
+     "src": "assets/courses/46-880/s06-2.webp",
+     "caption": "Income, stock prices, house prices, insurance claims: data with a lognormal shape"
+    },
+    {
+     "src": "assets/courses/46-880/s06-3.webp",
+     "caption": "Quantiles for every distribution, in Excel and in Python"
+    },
+    {
+     "src": "assets/courses/46-880/s06-4.webp",
+     "caption": "Customer retention curves for Netflix, Blue Apron, and others"
+    },
+    {
+     "src": "assets/courses/46-880/s06-5.webp",
+     "caption": "Small cap or large cap: how correlation changes the risk of a 50/50 portfolio"
+    }
+   ]
+  },
+  {
+   "part": "Part II: Statistical Inference"
+  },
+  {
+   "date": "2024-09-18",
+   "week": 4,
+   "topic": "Central Limit Theorem and Sampling",
+   "kind": "lecture",
+   "note": "Chapter 7",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s07-1.webp",
+     "caption": "Probability runs from process to data; statistics runs back the other way"
+    },
+    {
+     "src": "assets/courses/46-880/s07-2.webp",
+     "caption": "Average more dice and the distribution of the mean turns normal"
+    },
+    {
+     "src": "assets/courses/46-880/s07-3.webp",
+     "caption": "Whatever shape the population takes, the sample mean ends up normal"
+    },
+    {
+     "src": "assets/courses/46-880/s07-4.webp",
+     "caption": "A control chart for a candy-filling machine: sample means against control limits"
+    },
+    {
+     "src": "assets/courses/46-880/s07-5.webp",
+     "caption": "Pure Leaf bottles should hold 750 ml. How far can a sample mean drift?"
+    }
+   ]
+  },
+  {
+   "date": "2024-09-23",
+   "week": 5,
+   "topic": "Interval Estimation",
+   "kind": "lecture",
+   "note": "Chapter 8",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s08-1.webp",
+     "caption": "A Jane Street interview puzzle: what is the right to reroll a die worth?"
+    },
+    {
+     "src": "assets/courses/46-880/s08-2.webp",
+     "caption": "Bias: how far an estimator's average lands from the true value"
+    },
+    {
+     "src": "assets/courses/46-880/s08-3.webp",
+     "caption": "Inference: from a sample we can see to a population we cannot"
+    },
+    {
+     "src": "assets/courses/46-880/s08-4.webp",
+     "caption": "The 2024 national polling average, with its band of uncertainty"
+    },
+    {
+     "src": "assets/courses/46-880/s08-5.webp",
+     "caption": "A confidence interval for the mean, with the z value in Excel and Python"
+    }
+   ]
+  },
+  {
+   "date": "2024-09-25",
+   "week": 5,
+   "topic": "Hypothesis Testing",
+   "kind": "lecture",
+   "note": "Chapter 9",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s09-1.webp",
+     "caption": "How many Pennsylvanians to poll for a 2.5% margin of error: 2,654"
+    },
+    {
+     "src": "assets/courses/46-880/s09-2.webp",
+     "caption": "The t distribution: fatter tails with fewer degrees of freedom"
+    },
+    {
+     "src": "assets/courses/46-880/s09-3.webp",
+     "caption": "The null hypothesis works like innocent until proven guilty"
+    },
+    {
+     "src": "assets/courses/46-880/s09-4.webp",
+     "caption": "A sample mean of 20.44 mpg is too unlikely if the true mean is 25"
+    },
+    {
+     "src": "assets/courses/46-880/s09-5.webp",
+     "caption": "The p-value for the car mileage claim in one Excel formula: 0.3%"
+    }
+   ]
+  },
+  {
+   "part": "Part III: Regression"
+  },
+  {
+   "date": "2024-09-30",
+   "week": 6,
+   "topic": "Regression Analysis",
+   "kind": "lecture",
+   "note": "Chapter 14",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s10-1.webp",
+     "caption": "A quant interview question: is a coin that lands heads 550 times in 1,000 biased?"
+    },
+    {
+     "src": "assets/courses/46-880/s10-2.webp",
+     "caption": "Same correlation, different slopes: r = 0.67 in both plots"
+    },
+    {
+     "src": "assets/courses/46-880/s10-3.webp",
+     "caption": "Price against carat for 17 diamonds, the running regression example"
+    },
+    {
+     "src": "assets/courses/46-880/s10-4.webp",
+     "caption": "Reading Excel's regression output: R squared and the sums of squares"
+    },
+    {
+     "src": "assets/courses/46-880/s10-5.webp",
+     "caption": "Six assumptions of linear regression, each with a pass and a fail"
+    }
+   ]
+  },
+  {
+   "date": "2024-10-02",
+   "week": 6,
+   "topic": "Inference with Regression",
+   "kind": "lecture",
+   "note": "Chapter 15",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s11-1.webp",
+     "caption": "Three friends in Seattle say it's raining, and each lies a third of the time"
+    },
+    {
+     "src": "assets/courses/46-880/s11-2.webp",
+     "caption": "Where the confidence interval for the slope sits in Excel's regression output"
+    },
+    {
+     "src": "assets/courses/46-880/s11-3.webp",
+     "caption": "A diamond dealer claims $5,000 per carat. Does the data back that up?"
+    },
+    {
+     "src": "assets/courses/46-880/s11-4.webp",
+     "caption": "Estimating Johnson and Johnson's beta with the capital asset pricing model"
+    },
+    {
+     "src": "assets/courses/46-880/s11-5.webp",
+     "caption": "The 95% prediction interval widens away from the center of the data"
+    }
+   ]
+  },
+  {
+   "date": "2024-10-07",
+   "week": 7,
+   "topic": "Advanced Hypothesis Testing and Regression",
+   "kind": "lecture",
+   "note": "Log transformations, two-sample tests, and tests of variance. Chapters 10 and 14",
+   "slides": [
+    {
+     "src": "assets/courses/46-880/s12-1.webp",
+     "caption": "Take logs of price and carat and the diamond data falls on a line"
+    },
+    {
+     "src": "assets/courses/46-880/s12-2.webp",
+     "caption": "Moore's law as a semi-log regression: transistors grow about 2.6% a month"
+    },
+    {
+     "src": "assets/courses/46-880/s12-3.webp",
+     "caption": "Have the same drivers test both cars and the driver effect cancels out"
+    },
+    {
+     "src": "assets/courses/46-880/s12-4.webp",
+     "caption": "The Prempro trial: was the gap in dementia cases more than chance?"
+    },
+    {
+     "src": "assets/courses/46-880/s12-5.webp",
+     "caption": "The chi-square distribution, for testing a claim about variance"
+    }
+   ]
+  },
+  {
+   "date": "2024-10-09",
+   "week": 7,
+   "topic": "Review Session",
+   "kind": "exercise",
+   "note": "Practice problems worked in class before the final"
+  },
+  {
+   "date": "2024-10-11",
+   "week": 7,
+   "topic": "Final Exam",
+   "kind": "exercise",
+   "label": "Oct 11 to 13",
+   "note": "Open book, on Canvas"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Problem sets",
+   "weight": "40%",
+   "description": "Six weekly sets of business problems, solved in Excel or Python and submitted on Canvas. Students could work through them with their assigned MSBA group but submitted individually. The problems include who wins a seven-game World Series, how long it takes to roll doubles to get out of jail in Monopoly, how many ambulances a service needs when calls arrive every 75 minutes on average, value at risk for a portfolio, lognormal insurance claims, and whether coffee and soda prices move together."
+  },
+  {
+   "name": "Final exam",
+   "weight": "60%",
+   "description": "An open-book, open-notes exam taken on Canvas in the final exam period, with questions modeled on the problem sets, quizzes, and class examples."
+  },
+  {
+   "name": "In-class quizzes",
+   "weight": "Extra credit, up to 20%",
+   "description": "Fifteen to twenty one-point quizzes taken on laptops during class, using the ideas covered that day."
+  },
+  {
+   "name": "Section quizzes",
+   "weight": "Extra credit, up to 9%",
+   "description": "Three optional Canvas quizzes, each covering the previous two weeks of material."
+  },
+  {
+   "name": "Practice sets, summaries, and walkthrough videos",
+   "description": "Added halfway through the term: practice problem sets with solutions for interval estimation, hypothesis testing, and regression, a written summary of each module and a combined formula sheet, and recorded walkthroughs of the harder problems, such as the airline overbooking expected value problem."
+  }
+ ],
+ "projects": []
+}

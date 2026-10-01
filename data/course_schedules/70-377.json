@@ -1,0 +1,278 @@
+{
+ "slug": "70-377",
+ "term": "Fall 2025, Mini 2, CMU Qatar",
+ "meets": "Wednesdays on Zoom, plus three in-person sessions in Doha",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "date": "2025-10-22",
+   "topic": "Interviewing Approaches and Strategies for Software Development Roles",
+   "kind": "lecture",
+   "week": 1,
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s01-1.webp",
+     "caption": "Stages of the employee life cycle"
+    },
+    {
+     "src": "assets/courses/70-377/s01-2.webp",
+     "caption": "What is competency mapping?"
+    },
+    {
+     "src": "assets/courses/70-377/s01-3.webp",
+     "caption": "A product designer competency map"
+    },
+    {
+     "src": "assets/courses/70-377/s01-4.webp",
+     "caption": "The standard references for system design interviews"
+    },
+    {
+     "src": "assets/courses/70-377/s01-5.webp",
+     "caption": "How to answer a system design interview question"
+    }
+   ]
+  },
+  {
+   "date": "2025-10-29",
+   "topic": "Interviewing Approaches and Strategies for Data and Quantitative Roles",
+   "kind": "lecture",
+   "week": 2,
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s02-1.webp",
+     "caption": "From descriptive to prescriptive analytics"
+    },
+    {
+     "src": "assets/courses/70-377/s02-2.webp",
+     "caption": "Descriptive analytics: how is the business operating?"
+    },
+    {
+     "src": "assets/courses/70-377/s02-3.webp",
+     "caption": "The skills that separate data roles"
+    },
+    {
+     "src": "assets/courses/70-377/s02-4.webp",
+     "caption": "How Amazon, Google, and Facebook interview data scientists"
+    },
+    {
+     "src": "assets/courses/70-377/s02-5.webp",
+     "caption": "A/B testing at Cookie Cats"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-05",
+   "topic": "Case Interviews and Behavioral Interviews",
+   "kind": "lecture",
+   "week": 3,
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s03-1.webp",
+     "caption": "Case: A/B testing at Cookie Cats"
+    },
+    {
+     "src": "assets/courses/70-377/s03-2.webp",
+     "caption": "Warm-up: is Volvo really the safest car in America?"
+    },
+    {
+     "src": "assets/courses/70-377/s03-3.webp",
+     "caption": "Breaking a 20% profit decline into revenue and costs"
+    },
+    {
+     "src": "assets/courses/70-377/s03-4.webp",
+     "caption": "The profit framework"
+    },
+    {
+     "src": "assets/courses/70-377/s03-5.webp",
+     "caption": "Segment your numbers before you explain them"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-17",
+   "topic": "Running Technical Projects: creating an innovative culture",
+   "kind": "lecture",
+   "week": 4,
+   "note": "In person, Doha",
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s04-1.webp",
+     "caption": "Reading the Mind in the Eyes: a test of social sensitivity"
+    },
+    {
+     "src": "assets/courses/70-377/s04-2.webp",
+     "caption": "McGrath's circumplex of group tasks"
+    },
+    {
+     "src": "assets/courses/70-377/s04-3.webp",
+     "caption": "When teams have to speak up: the cockpit"
+    },
+    {
+     "src": "assets/courses/70-377/s04-4.webp",
+     "caption": "Moderate task conflict is good for performance"
+    },
+    {
+     "src": "assets/courses/70-377/s04-5.webp",
+     "caption": "Hofstede's dimensions: the United States, UAE, and Japan"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-19",
+   "topic": "Running Technical Projects: Doha Foundation group decision case",
+   "kind": "case",
+   "week": 4,
+   "note": "In person, Doha",
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s05-1.webp",
+     "caption": "Doha Foundation case: allocate $120 million"
+    },
+    {
+     "src": "assets/courses/70-377/s05-2.webp",
+     "caption": "The rational decision model"
+    },
+    {
+     "src": "assets/courses/70-377/s05-3.webp",
+     "caption": "Dialectical inquiry: argue both sides on purpose"
+    },
+    {
+     "src": "assets/courses/70-377/s05-4.webp",
+     "caption": "The stoplight approach to group ratings"
+    },
+    {
+     "src": "assets/courses/70-377/s05-5.webp",
+     "caption": "The best-member method"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-22",
+   "topic": "Running Technical Projects: effective teams and development methodologies",
+   "kind": "lecture",
+   "week": 4,
+   "note": "In person, Doha. Four-hour Saturday session",
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s06a-1.webp",
+     "caption": "Social facilitation: we ride faster with an audience"
+    },
+    {
+     "src": "assets/courses/70-377/s06a-2.webp",
+     "caption": "Potential versus actual productivity as groups grow"
+    },
+    {
+     "src": "assets/courses/70-377/s06a-4.webp",
+     "caption": "Tuckman's stages: forming, storming, norming, performing"
+    },
+    {
+     "src": "assets/courses/70-377/s06b-1.webp",
+     "caption": "The fundamental tradeoff: predictability versus agility"
+    },
+    {
+     "src": "assets/courses/70-377/s06b-4.webp",
+     "caption": "Agile: find and fix defects early and cheaply"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-26",
+   "topic": "Project Management and Setting Objectives (OKRs)",
+   "kind": "lecture",
+   "week": 5,
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s07-1.webp",
+     "caption": "The project manager's four levers: schedule, scope, cost, quality"
+    },
+    {
+     "src": "assets/courses/70-377/s07-2.webp",
+     "caption": "Workplans should be dynamic, like a hurricane forecast"
+    },
+    {
+     "src": "assets/courses/70-377/s07-3.webp",
+     "caption": "Is this project in trouble? Reading a Gantt chart"
+    },
+    {
+     "src": "assets/courses/70-377/s07-4.webp",
+     "caption": "Planning and tracking a Scrum project on the wall"
+    },
+    {
+     "src": "assets/courses/70-377/s07-5.webp",
+     "caption": "A short history of OKRs, from Drucker to Google"
+    }
+   ]
+  },
+  {
+   "date": "2025-12-03",
+   "topic": "Managing Performance, Promotion, and Termination",
+   "kind": "lecture",
+   "week": 6,
+   "slides": [
+    {
+     "src": "assets/courses/70-377/s08-1.webp",
+     "caption": "The performance management lifecycle in tech"
+    },
+    {
+     "src": "assets/courses/70-377/s08-2.webp",
+     "caption": "Role clarity: the foundation"
+    },
+    {
+     "src": "assets/courses/70-377/s08-3.webp",
+     "caption": "Identifying strong performance"
+    },
+    {
+     "src": "assets/courses/70-377/s08-4.webp",
+     "caption": "How to use performance improvement plans well"
+    },
+    {
+     "src": "assets/courses/70-377/s08-5.webp",
+     "caption": "Layoffs in tech"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Mock interviews and reflections",
+   "weight": "50%",
+   "description": "Students rotate through interviewer, candidate, and observer in three rounds: a coding interview, a data task built on the Cookie Cats mobile game A/B test, and a consulting-style case (Heartcorp, pricing a new cardiac stent). The interviewer scores the candidate against a rubric, and everyone writes a one to two page reflection on what the other side of the table taught them."
+  },
+  {
+   "name": "Onboarding plan",
+   "description": "A two to three page 30/60/90-day onboarding guide for a new technical hire, built around a small first win, or a critique and redesign of a real company's public onboarding program such as GitLab's."
+  },
+  {
+   "name": "Group case analyses",
+   "weight": "40%",
+   "description": "Cases worked in teams during the in-person week in Doha. In the Doha Foundation case, a funding board has $120 million and twenty reviewed proposals; each group uses an assigned decision method, from the rational model to dialectical inquiry to Delphi, and reports what it learned about deciding across cultures. In Managing a Global Team, a 45-person support team at Sun Microsystems spread across four countries misses an outage; teams diagnose the root causes and present a 30-day plan. Project Phoenix is a mobile banking app at month four of six, with 70% of the budget spent and 40% of the features done."
+  },
+  {
+   "name": "Management reflection",
+   "weight": "10%",
+   "description": "A short paper on the strategy and tactics each student will use when they manage technical people."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Group case: Managing a Global Team at Sun Microsystems, Fall 2025",
+   "items": [
+    {
+     "subject": "Team 1",
+     "approach": "Root causes, a 30-day plan, and one long-term change",
+     "description": "One team traced the outage to unclear cross-site ownership, cultural misreadings and leadership communication. It recommended a single global escalation protocol, rebuilding the support queue with cross-site validation, a leads-only international meeting, site-by-site trust conversations and letting sites act without waiting for the U.S., with a global team charter of shared norms as the long-term change."
+    },
+    {
+     "subject": "Team 2",
+     "approach": "Root causes, a 30-day plan, and one long-term change",
+     "description": "A second team blamed the absence of global process ownership, over-reliance on the U.S. team and cultural friction. It proposed manager-level cross-site reviews, sharing decisions with all sites at once, one emergency rule, a single owner for customer data and a rotating time-zone meeting schedule (U.S.-, Asia- and Euro-Asia-priority slots), plus an annual rotating in-person retreat and a unified Global Operations Playbook."
+    },
+    {
+     "subject": "Team 3",
+     "approach": "Root causes, a 30-day plan, and one long-term change",
+     "description": "A third team stressed low trust, perceived inequity in task allocation and pay, and weak cultural awareness. It recommended a weekly global sync at rotating times with local pre-meetings, giving high-visibility work to the India and UAE sites, documenting decisions within 24 hours, a clear outage process and regional listening sessions with 1:1s, plus a company-wide 'Global Operating System' as the long-term change."
+    }
+   ]
+  }
+ ]
+}

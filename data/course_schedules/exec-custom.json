@@ -1,0 +1,197 @@
+{
+ "slug": "exec-custom",
+ "term": "2015 to 2025",
+ "meets": "Half-day workshops and short programs, on site or at CMU-Q",
+ "unit_label": "Session",
+ "meta": {
+  "number": "Custom",
+  "title": "Custom Workshops and Programs",
+  "program": "Custom executive education",
+  "school": "CMU Qatar and Tepper",
+  "era": "exec-ed",
+  "one_liner": "Workshops built for one organization's audience, from an energy company to a university's senior staff to a government bureau",
+  "blurb": "Alongside the open-enrollment courses I built shorter sessions for specific audiences. They reuse the same experiential core (a simulation first, then the research) but the cases and examples change for the room. The groups and teams workshop has lasted the longest: it started as a guest lecture for an energy company in 2015 and I ran it again in Doha in 2025 for community partners and for a government bureau.",
+  "offerings": [
+   "RasGas guest lecture (2015)",
+   "CMU-Q senior staff retreat, Munich (August 2015)",
+   "Business Analytics Summer Summit (2024, 2025)",
+   "CMU-Q community partner workshop (November 2025)",
+   "Civil Service Bureau workshop (November 2025)"
+  ],
+  "color": "c-copper",
+  "order": 5
+ },
+ "schedule": [
+  {
+   "date": "2015-03-18",
+   "week": 1,
+   "label": "March 2015",
+   "topic": "Creating a culture for innovative teams (guest lecture for RasGas)",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/exec-custom/s01-1.webp",
+     "caption": "High-stakes teams: why speaking up matters in the cockpit"
+    },
+    {
+     "src": "assets/courses/exec-custom/s01-2.webp",
+     "caption": "Moderate task conflict is good for creative performance"
+    },
+    {
+     "src": "assets/courses/exec-custom/s01-3.webp",
+     "caption": "Psychological safety: the shared belief that the team is safe for risk taking"
+    },
+    {
+     "src": "assets/courses/exec-custom/s01-4.webp",
+     "caption": "Organizational culture and national culture shape team behavior"
+    },
+    {
+     "src": "assets/courses/exec-custom/s01-5.webp",
+     "caption": "Innovation requires taking risks and hearing from everyone"
+    }
+   ]
+  },
+  {
+   "part": "Senior staff retreat, Munich"
+  },
+  {
+   "date": "2015-08-09",
+   "week": 2,
+   "label": "Munich, day 1",
+   "topic": "Senior leadership workshop: team simulation and team development",
+   "kind": "exercise",
+   "note": "Morning session for the campus's senior staff leadership team",
+   "slides": [
+    {
+     "src": "assets/courses/exec-custom/s02-1.webp",
+     "caption": "Planning a leadership retreat: what about learning to lead horses?"
+    },
+    {
+     "src": "assets/courses/exec-custom/s02-2.webp",
+     "caption": "Why participant-centered learning instead of all lecture"
+    },
+    {
+     "src": "assets/courses/exec-custom/s02-3.webp",
+     "caption": "Forming, storming, norming, performing"
+    },
+    {
+     "src": "assets/courses/exec-custom/s02-4.webp",
+     "caption": "Groupthink and polarization come from abnormal task and group roles"
+    },
+    {
+     "src": "assets/courses/exec-custom/s02-5.webp",
+     "caption": "The hardest parts of managing a team, ranked"
+    }
+   ]
+  },
+  {
+   "date": "2015-08-10",
+   "week": 3,
+   "label": "Munich, day 2",
+   "topic": "Decisions under uncertainty and psychological safety",
+   "kind": "exercise",
+   "note": "Carter Racing simulation and debrief",
+   "slides": [
+    {
+     "src": "assets/courses/exec-custom/s03-1.webp",
+     "caption": "Team simulation: race or withdraw before the big race"
+    },
+    {
+     "src": "assets/courses/exec-custom/s03-2.webp",
+     "caption": "Trust breaks the link between task conflict and relationship conflict"
+    },
+    {
+     "src": "assets/courses/exec-custom/s03-3.webp",
+     "caption": "Competing versus supporting cultures"
+    },
+    {
+     "src": "assets/courses/exec-custom/s03-4.webp",
+     "caption": "Takeaway: more information breeds confidence, so run a pre-mortem"
+    },
+    {
+     "src": "assets/courses/exec-custom/s03-5.webp",
+     "caption": "Build a culture of psychological safety so people can innovate"
+    }
+   ]
+  },
+  {
+   "date": "2024-06-04",
+   "week": 4,
+   "label": "BASS 2024",
+   "topic": "Using statistics to solve business problems: A/B testing and the Cookie Cats case",
+   "kind": "lecture",
+   "note": "Business Analytics Summer Summit at Tepper, a summer program for students considering the MS in Business Analytics",
+   "slides": [
+    {
+     "src": "assets/courses/exec-custom/s05-1.webp",
+     "caption": "A/B testing: split the audience and compare conversion"
+    },
+    {
+     "src": "assets/courses/exec-custom/s05-2.webp",
+     "caption": "Daily active users as the core digital metric"
+    },
+    {
+     "src": "assets/courses/exec-custom/s05-3.webp",
+     "caption": "LTV to CAC: what a customer is worth versus what it costs to get one"
+    },
+    {
+     "src": "assets/courses/exec-custom/s05-4.webp",
+     "caption": "Trading off two metrics: more conversions, fewer daily users"
+    },
+    {
+     "src": "assets/courses/exec-custom/s05-5.webp",
+     "caption": "The Cookie Cats case: where should the first gate go?"
+    }
+   ]
+  },
+  {
+   "date": "2025-05-14",
+   "week": 5,
+   "label": "BASS 2025",
+   "topic": "Business Analytics Summer Summit: faculty lead",
+   "kind": "presentations",
+   "note": "I planned the curriculum and coordinated faculty for the May 14 to 21 program, including a student analytics project with an industry partner"
+  },
+  {
+   "part": "Doha, November 2025"
+  },
+  {
+   "date": "2025-11-19",
+   "week": 6,
+   "topic": "Managing groups and teams: strategies for collaborative excellence (community partner workshop at CMU-Q)",
+   "kind": "lecture",
+   "note": "Half-day workshop, 8:30 to 12:30, with certificates",
+   "slides": [
+    {
+     "src": "assets/courses/exec-custom/s04-1.webp",
+     "caption": "Evidence-based management: what the research says works"
+    },
+    {
+     "src": "assets/courses/exec-custom/s04-2.webp",
+     "caption": "Should your team adopt stack ranking?"
+    },
+    {
+     "src": "assets/courses/exec-custom/s04-3.webp",
+     "caption": "Collective intelligence: a group's ability to solve a wide range of problems together"
+    },
+    {
+     "src": "assets/courses/exec-custom/s04-4.webp",
+     "caption": "Diverse information helps when the team believes diversity is useful"
+    },
+    {
+     "src": "assets/courses/exec-custom/s04-5.webp",
+     "caption": "Building smarter teams: equal participation and psychological safety"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-23",
+   "week": 6,
+   "topic": "Managing groups and teams workshop for the Civil Service Bureau",
+   "kind": "lecture",
+   "note": "The same workshop, delivered on site for a government audience"
+  }
+ ],
+ "assignments": [],
+ "projects": []
+}

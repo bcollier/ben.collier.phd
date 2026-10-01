@@ -1,0 +1,112 @@
+{
+ "slug": "exec-leadership",
+ "term": "Fall 2014 (September 28 to 30)",
+ "meets": "Three mornings, 8:00 to 1:00, at CMU-Q",
+ "unit_label": "Day",
+ "meta": {
+  "number": "Exec Ed",
+  "title": "Dynamic Organizational Leadership",
+  "program": "Executive Education (open enrollment)",
+  "school": "CMU Qatar",
+  "era": "exec-ed",
+  "one_liner": "How organizations build leaders, and how leaders build teams that speak up",
+  "blurb": "This was the opening course of the 2014 to 2015 executive education season, taught with Tom Emerson and Starling Hunter. My two sessions covered leadership development and leading teams. For the first I wrote a short case set in a Gulf investment bank, and small groups had to design its leadership development program using assessment, challenge, and support. The second used the Reading the Mind in the Eyes test, the collective intelligence research, and IDEO's shopping cart project to get at psychological safety.",
+  "offerings": [
+   "Fall 2014 (September 28 to 30)"
+  ],
+  "color": "c-wine",
+  "order": 4
+ },
+ "schedule": [
+  {
+   "date": "2014-09-28",
+   "week": 1,
+   "label": "Day 1",
+   "topic": "What makes an effective leader",
+   "kind": "lecture",
+   "note": "Taught by Tom Emerson"
+  },
+  {
+   "date": "2014-09-28",
+   "week": 1,
+   "label": "Day 1",
+   "topic": "Leadership development in organizations, with the Tajer Holdings case",
+   "kind": "case",
+   "note": "Groups of three to five design a leadership development program for a fictional MENA investment bank",
+   "slides": [
+    {
+     "src": "assets/courses/exec-leadership/s01-1.webp",
+     "caption": "No institution can survive if it needs geniuses or supermen to manage it"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s01-2.webp",
+     "caption": "GE, Shell, Goldman Sachs, LG, Unilever: firms known for growing leaders"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s01-3.webp",
+     "caption": "Tajer Holdings: the case I wrote for this course"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s01-4.webp",
+     "caption": "Effective developmental experiences combine assessment, challenge, and support"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s01-5.webp",
+     "caption": "The 70-20-10 rule: most development happens on the job"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-29",
+   "week": 2,
+   "label": "Day 2",
+   "topic": "Leading groups and teams",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/exec-leadership/s02-1.webp",
+     "caption": "Reading the Mind in the Eyes: pick the word that fits each pair of eyes"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s02-2.webp",
+     "caption": "The team task circumplex: generate, choose, negotiate, execute"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s02-3.webp",
+     "caption": "How would you redesign the shopping cart in five days?"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s02-4.webp",
+     "caption": "Psychological safety: a shared belief that the team is safe for interpersonal risk"
+    },
+    {
+     "src": "assets/courses/exec-leadership/s02-5.webp",
+     "caption": "What psychological safety looks like when people describe their own team"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-29",
+   "week": 2,
+   "label": "Day 2",
+   "topic": "Hiring, motivating, and leading in entrepreneurial companies",
+   "kind": "lecture",
+   "note": "Taught by Tom Emerson"
+  },
+  {
+   "date": "2014-09-30",
+   "week": 3,
+   "label": "Day 3",
+   "topic": "Leadership networks: what the org chart cannot reveal",
+   "kind": "lecture",
+   "note": "Taught by Starling Hunter"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Tajer Holdings board plan",
+   "description": "Small groups play the bank's leadership development advisory committee and present a plan that runs from strategy, to capabilities, to competencies, to development experiences."
+  }
+ ],
+ "projects": []
+}

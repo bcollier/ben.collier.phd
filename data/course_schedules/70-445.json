@@ -1,0 +1,446 @@
+{
+ "slug": "70-445",
+ "term": "Fall 2026",
+ "meets": "Tuesdays and Thursdays",
+ "unit_label": "Week",
+ "schedule": [
+  {
+   "part": "Part I: AI Foundations"
+  },
+  {
+   "date": "2026-08-25",
+   "topic": "Course Introduction: What is AI, and why now?",
+   "kind": "lecture",
+   "week": 1,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s01-1.webp",
+     "caption": "AI, machine learning, deep learning, generative AI: how the terms nest"
+    },
+    {
+     "src": "assets/courses/70-445/s01-2.webp",
+     "caption": "The volume of data created worldwide, 2010 to 2028"
+    },
+    {
+     "src": "assets/courses/70-445/s01-3.webp",
+     "caption": "Clustering: finding groups nobody labeled"
+    },
+    {
+     "src": "assets/courses/70-445/s01-4.webp",
+     "caption": "Traditional machine learning versus foundation models"
+    },
+    {
+     "src": "assets/courses/70-445/s01-5.webp",
+     "caption": "Expect a lot more general capability across every area of knowledge"
+    }
+   ]
+  },
+  {
+   "date": "2026-08-27",
+   "topic": "A Short History of AI",
+   "kind": "lecture",
+   "week": 1,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s02-1.webp",
+     "caption": "The Mechanical Turk, 1770: the first AI hoax"
+    },
+    {
+     "src": "assets/courses/70-445/s02-2.webp",
+     "caption": "Deep Blue versus Garry Kasparov, 1997"
+    },
+    {
+     "src": "assets/courses/70-445/s02-3.webp",
+     "caption": "AlphaFold and the 2024 Nobel Prize in Chemistry"
+    },
+    {
+     "src": "assets/courses/70-445/s02-4.webp",
+     "caption": "CMU Navlab, 1986: a self-driving van built a few hundred yards from class"
+    },
+    {
+     "src": "assets/courses/70-445/s02-5.webp",
+     "caption": "Amara's law: we overestimate the short run and underestimate the long run"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-01",
+   "topic": "Rules, Search, and Expert Systems",
+   "kind": "lecture",
+   "week": 2,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s03-1.webp",
+     "caption": "Herbert Simon predicted a chess champion in 10 years. It took 40."
+    },
+    {
+     "src": "assets/courses/70-445/s03-2.webp",
+     "caption": "Search: every move is a branch in a tree of states"
+    },
+    {
+     "src": "assets/courses/70-445/s03-3.webp",
+     "caption": "Deep Blue beat Kasparov in 1997 with search at enormous scale"
+    },
+    {
+     "src": "assets/courses/70-445/s03-4.webp",
+     "caption": "The ELIZA effect: people read minds into machines"
+    },
+    {
+     "src": "assets/courses/70-445/s03-5.webp",
+     "caption": "XCON at Digital Equipment saved a reported $25 to 40 million a year"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-03",
+   "topic": "The Five Tribes of Machine Learning",
+   "kind": "lecture",
+   "week": 2,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s04-1.webp",
+     "caption": "Jevons paradox: cheaper coal meant more coal burned, not less"
+    },
+    {
+     "src": "assets/courses/70-445/s04-2.webp",
+     "caption": "The Five Tribes of machine learning"
+    },
+    {
+     "src": "assets/courses/70-445/s04-3.webp",
+     "caption": "Muffin or chihuahua? You can spot it. Now write the rule."
+    },
+    {
+     "src": "assets/courses/70-445/s04-4.webp",
+     "caption": "Backpropagation: feel the slope, step downhill, repeat"
+    },
+    {
+     "src": "assets/courses/70-445/s04-5.webp",
+     "caption": "NASA's evolved antenna: search found a shape nobody would draw"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-08",
+   "topic": "Machine Learning Fundamentals",
+   "kind": "lecture",
+   "week": 3,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s05-1.webp",
+     "caption": "Plain, spicy, or extra chunky: how Prego found its segments"
+    },
+    {
+     "src": "assets/courses/70-445/s05-2.webp",
+     "caption": "Market segmentation by geography, demographics, psychographics, and behavior"
+    },
+    {
+     "src": "assets/courses/70-445/s05-3.webp",
+     "caption": "Clustering algorithms behave very differently on the same data"
+    },
+    {
+     "src": "assets/courses/70-445/s05-4.webp",
+     "caption": "Bias versus variance: finding the sweet spot"
+    },
+    {
+     "src": "assets/courses/70-445/s05-5.webp",
+     "caption": "Decision trees: the vocabulary of roots, splits, and leaves"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-10",
+   "topic": "Neural Networks and Deep Learning",
+   "kind": "lecture",
+   "week": 3,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s06-1.webp",
+     "caption": "Images are numbers: a handwritten 3 as a grid of pixels"
+    },
+    {
+     "src": "assets/courses/70-445/s06-2.webp",
+     "caption": "Hidden layers between the pixels and the answer"
+    },
+    {
+     "src": "assets/courses/70-445/s06-3.webp",
+     "caption": "Spotting a lion: easy for people, hard for machines"
+    },
+    {
+     "src": "assets/courses/70-445/s06-4.webp",
+     "caption": "Forward propagation and backpropagation"
+    },
+    {
+     "src": "assets/courses/70-445/s06-5.webp",
+     "caption": "Adversarial examples: tiny noise, completely different answer"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-15",
+   "topic": "No class",
+   "kind": "break",
+   "week": 4
+  },
+  {
+   "date": "2026-09-17",
+   "topic": "How Large Language Models Work",
+   "kind": "lecture",
+   "week": 4,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s07-1.webp",
+     "caption": "Word embeddings: words as points in space"
+    },
+    {
+     "src": "assets/courses/70-445/s07-2.webp",
+     "caption": "Training a model is more like compressing the internet"
+    },
+    {
+     "src": "assets/courses/70-445/s07-3.webp",
+     "caption": "How to train your ChatGPT: pretraining, then fine-tuning"
+    },
+    {
+     "src": "assets/courses/70-445/s07-4.webp",
+     "caption": "Scaling laws: more parameters, data, and compute, predictably better"
+    },
+    {
+     "src": "assets/courses/70-445/s07-5.webp",
+     "caption": "The LLM as an operating system"
+    }
+   ]
+  },
+  {
+   "part": "Part II: Working with AI Agents to Solve Business Problems"
+  },
+  {
+   "date": "2026-09-22",
+   "topic": "Agentic AI and AI Workflows",
+   "kind": "lecture",
+   "week": 5,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s08-1.webp",
+     "caption": "Google search interest in AI agents and agentic AI"
+    },
+    {
+     "src": "assets/courses/70-445/s08-2.webp",
+     "caption": "Inside an agent system: channels, gateway, model, tools, memory"
+    },
+    {
+     "src": "assets/courses/70-445/s08-3.webp",
+     "caption": "Agent = model + harness"
+    },
+    {
+     "src": "assets/courses/70-445/s08-4.webp",
+     "caption": "Agentic reasoning design patterns: reflection, tool use, planning, collaboration"
+    },
+    {
+     "src": "assets/courses/70-445/s08-5.webp",
+     "caption": "Model Context Protocol: one standard plug for every tool"
+    }
+   ]
+  },
+  {
+   "date": "2026-09-24",
+   "topic": "Agentic AI and AI Workflows",
+   "kind": "exercise",
+   "week": 5
+  },
+  {
+   "date": "2026-09-29",
+   "topic": "Software Development with AI Assistance",
+   "kind": "lecture",
+   "week": 6,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s10-1.webp",
+     "caption": "AI writes code fast. Without a spec, it writes risk just as fast."
+    },
+    {
+     "src": "assets/courses/70-445/s10-2.webp",
+     "caption": "An app works like a restaurant: front of house, kitchen, pantry"
+    },
+    {
+     "src": "assets/courses/70-445/s10-3.webp",
+     "caption": "Retrieval-augmented generation: search by meaning, then answer"
+    },
+    {
+     "src": "assets/courses/70-445/s10-4.webp",
+     "caption": "A visual spec in the wild: escaping the AI template look"
+    },
+    {
+     "src": "assets/courses/70-445/s10-5.webp",
+     "caption": "What to test: the pyramid, plus security tests and AI evals"
+    }
+   ]
+  },
+  {
+   "date": "2026-10-01",
+   "topic": "Software Development with AI Assistance",
+   "kind": "exercise",
+   "week": 6,
+   "slides": [
+    {
+     "src": "assets/courses/70-445/s11-1.webp",
+     "caption": "Today: spec, build, check, save, deploy, twice"
+    },
+    {
+     "src": "assets/courses/70-445/s11-2.webp",
+     "caption": "Why a manager cares where the code lives"
+    },
+    {
+     "src": "assets/courses/70-445/s11-3.webp",
+     "caption": "Codex: the agent inside the editor"
+    },
+    {
+     "src": "assets/courses/70-445/s11-4.webp",
+     "caption": "Vercel: from repository to live URL, automatically"
+    },
+    {
+     "src": "assets/courses/70-445/s11-5.webp",
+     "caption": "Where the class API key may and may not live"
+    }
+   ]
+  },
+  {
+   "part": "Part III: AI and Business"
+  },
+  {
+   "date": "2026-10-06",
+   "topic": "AI in Marketing",
+   "kind": "lecture",
+   "week": 7
+  },
+  {
+   "date": "2026-10-08",
+   "topic": "AI in Marketing",
+   "kind": "exercise",
+   "week": 7
+  },
+  {
+   "date": "2026-10-12",
+   "topic": "Fall break",
+   "kind": "break",
+   "week": 7,
+   "label": "Oct 12–16"
+  },
+  {
+   "date": "2026-10-20",
+   "topic": "AI in Finance",
+   "kind": "lecture",
+   "week": 8,
+   "note": "Guest lecture"
+  },
+  {
+   "date": "2026-10-22",
+   "topic": "AI in Finance",
+   "kind": "exercise",
+   "week": 8
+  },
+  {
+   "date": "2026-10-27",
+   "topic": "AI in HR and People Analytics",
+   "kind": "lecture",
+   "week": 9
+  },
+  {
+   "date": "2026-10-29",
+   "topic": "AI in HR and People Analytics",
+   "kind": "exercise",
+   "week": 9
+  },
+  {
+   "date": "2026-11-03",
+   "topic": "No class: Democracy Day",
+   "kind": "break",
+   "week": 10
+  },
+  {
+   "date": "2026-11-05",
+   "topic": "AI Ethics: Bias and Fairness",
+   "kind": "lecture",
+   "week": 10
+  },
+  {
+   "date": "2026-11-10",
+   "topic": "AI in Operations and Supply Chain",
+   "kind": "lecture",
+   "week": 11
+  },
+  {
+   "date": "2026-11-12",
+   "topic": "AI in Operations and Supply Chain",
+   "kind": "exercise",
+   "week": 11
+  },
+  {
+   "date": "2026-11-17",
+   "topic": "The Economics of AI",
+   "kind": "lecture",
+   "week": 12
+  },
+  {
+   "date": "2026-11-19",
+   "topic": "AI Strategy and Competitive Advantage",
+   "kind": "lecture",
+   "week": 12
+  },
+  {
+   "date": "2026-11-24",
+   "topic": "Governance, Risk, and Regulation",
+   "kind": "lecture",
+   "week": 13
+  },
+  {
+   "date": "2026-11-26",
+   "topic": "No class: Thanksgiving",
+   "kind": "break",
+   "week": 13
+  },
+  {
+   "date": "2026-12-01",
+   "topic": "Group Project Presentations",
+   "kind": "presentations",
+   "week": 14
+  },
+  {
+   "date": "2026-12-03",
+   "topic": "Group Project Presentations and Course Wrap-Up",
+   "kind": "presentations",
+   "week": 14
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Final project",
+   "weight": "20%",
+   "description": "Teams of two to four pick one of three tracks. In the AI Investment Committee track, the team acts as the AI steering committee of a real public company, working only from public sources: diagnose the business and its readiness, score a portfolio of use cases, prototype the lead idea, cost out build versus buy, register the risks, and defend a recommendation to the board in December. In Building and Breaking an AI Agent, teams design an agent that supports a recurring business decision, then red-team another team's agent and say exactly where it breaks. In Make $100, teams start an AI-enabled business and earn real revenue. The grade is the insight, not the money: a team that earns nothing and can explain precisely why will outscore one that earns two hundred dollars and cannot."
+  },
+  {
+   "name": "Homework",
+   "weight": "20%",
+   "description": "Hands-on exercises outside class. Homework 1, Predictions, asks students to autopsy a famous AI prediction (what exactly was claimed, what happened, why it went right or wrong) and then make a checkable prediction of their own, with peer review. Homework 2, Machine Learning Principles, is all in the browser: train a small neural network on churn-shaped data in TensorFlow Playground, train an image classifier and find the photos that fool it, cost out a real AI experiment, and watch a tokenizer turn text into numbers."
+  },
+  {
+   "name": "Current Topics in AI presentation",
+   "weight": "10%",
+   "description": "Teams of two to four open a class with an 8 to 10 minute briefing: either a deep dive on an AI product launched or piloted in the last six months (the customer problem, data and methods, safety, competition), or a fair, sourced explainer of a live AI debate such as copyright and training data."
+  },
+  {
+   "name": "Reading and video response memos",
+   "weight": "10%",
+   "description": "One-page responses to a prompt. Memo 1 follows the 3Blue1Brown deep learning series and asks what a trained network actually learned, and what it does when handed pure static."
+  },
+  {
+   "name": "Quizzes",
+   "weight": "20%",
+   "description": "A short weekly quiz on Canvas covering the prior week, three attempts, no AI unless stated."
+  },
+  {
+   "name": "Participation and in-class exercises",
+   "weight": "20%",
+   "description": "Most sessions include a graded exercise: assigning cases to the five tribes, the 99-percent-accurate vendor, building an agent workflow, and shipping an app from spec to live URL."
+  }
+ ],
+ "projects": []
+}

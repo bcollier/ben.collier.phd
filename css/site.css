@@ -938,3 +938,236 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .video-thumb .play::after { content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 0.85rem 0 0.85rem 1.4rem; border-color: transparent transparent transparent #fbf8f2; }
 .video-thumb:hover .play, .video-thumb:focus-visible .play { background: var(--accent-ink); }
 .video-thumb .duration { position: absolute; right: 0.6rem; bottom: 0.6rem; background: rgb(23 19 15 / 0.78); color: #fbf8f2; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.45rem; border-radius: 3px; }
+/* ---------------------------------------------------------------------------
+   Week by week. The schedule runs down the left; the stage on the right stays
+   in view and plays five slides from whichever session is mid-window
+   (js/course-schedule.js). On phones the stage pins under the header and the
+   list scrolls beneath it.
+   --------------------------------------------------------------------------- */
+
+.schedule { margin-top: 2.6rem; }
+.schedule > h2 { margin-top: 0; }
+.schedule > p { max-width: var(--prose); }
+
+.sched-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: 0 2.4rem;
+  align-items: start;
+}
+
+.sched-list { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+
+.sched-part {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 1.6rem 0 0.5rem;
+  border-bottom: 1px solid var(--ink);
+}
+.sched-part:first-child { padding-top: 0.4rem; }
+
+.sched-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6.6rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 0.8rem 0.6rem 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 0.35s ease, opacity 0.35s ease;
+}
+.sched-row::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.7rem; bottom: 0.7rem;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: 50% 50%;
+  transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.sched-row.has-slides { cursor: pointer; }
+.sched-row.has-slides:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: -2px; }
+.sched-row.is-active { background: var(--white); }
+.sched-row.is-active::before { transform: scaleY(1); }
+.sched-row.break { color: var(--ink-soft); }
+.sched-row.break .sched-topic { font-style: italic; }
+.sched-row.is-past:not(.is-active) .sched-when { opacity: 0.72; }
+
+.sched-when { display: flex; flex-direction: column; gap: 0.1rem; font-size: 0.86rem; color: var(--ink-soft); }
+.sched-when time { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.sched-next {
+  align-self: flex-start;
+  margin-top: 0.3rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--accent-ink);
+  padding: 0.1rem 0.45rem;
+  border-radius: 2px;
+}
+
+.sched-what { min-width: 0; }
+.sched-topic { font-weight: 600; }
+.sched-tag {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  padding: 0 0.4rem;
+  border-radius: 2px;
+  vertical-align: 0.12em;
+}
+.sched-tag.case, .sched-tag.exercise { color: var(--accent-ink); border-color: var(--accent); }
+.sched-note { display: block; font-size: 0.86rem; color: var(--ink-soft); }
+
+.sched-strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.3rem;
+  margin-top: 0.55rem;
+}
+.sched-strip img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  background: #fff;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.sched-row.is-active .sched-strip img { opacity: 1; }
+.sched-strip img.is-on { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 2px 0 var(--accent); }
+
+/* The stage */
+.stage {
+  position: sticky;
+  top: var(--stage-top, 5.6rem);
+  margin: 0;
+}
+.stage-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 0 var(--rule), 0 18px 40px -24px rgba(27, 23, 20, 0.45);
+}
+.stage-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(1.012);
+  transition: opacity 0.8s ease, transform 4.5s ease-out;
+  will-change: opacity, transform;
+}
+.stage-img.is-on { opacity: 1; transform: scale(1); }
+.stage.swap .stage-frame { animation: stage-swap 0.55s cubic-bezier(0.2, 0.7, 0.2, 1); }
+@keyframes stage-swap {
+  from { transform: translateY(6px); opacity: 0.6; }
+  to   { transform: none; opacity: 1; }
+}
+
+.stage figcaption { display: grid; gap: 0.15rem; padding: 0.75rem 0.1rem 0; }
+.stage-when { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.stage-topic { font-family: Fraunces, Georgia, serif; font-weight: 500; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.2; }
+.stage-caption { color: var(--ink-soft); min-height: 1.55em; }
+
+.stage-pips { display: flex; gap: 0.35rem; margin-top: 0.45rem; }
+.stage-pips button {
+  position: relative;
+  flex: 1;
+  max-width: 3.4rem;
+  height: 1rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.stage-pips button::before,
+.stage-pips button::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  background: var(--rule);
+}
+.stage-pips button::after { background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; }
+.stage-pips button.is-on::after { transform: scaleX(1); }
+.stage-pips.run button.is-on::after { animation: pip-fill var(--hold, 3200ms) linear; }
+@keyframes pip-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+@media (max-width: 56rem) {
+  .sched-grid { grid-template-columns: minmax(0, 1fr); }
+  .stage {
+    order: -1;
+    z-index: 5;
+    background: var(--paper);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stage figcaption { padding-top: 0.45rem; }
+  .stage-topic { font-size: 1.02rem; }
+  .stage-caption { font-size: 0.9rem; }
+  .sched-strip { display: none; }
+}
+@media (max-width: 40rem) {
+  .sched-row { grid-template-columns: 5.2rem minmax(0, 1fr); gap: 0.6rem; padding-left: 0.7rem; }
+  .stage-when { display: none; }
+}
+
+/* Assignments and the full project list */
+.assignments { list-style: none; padding: 0; margin: 0.6rem 0 0; }
+.assignments li { padding: 0.85rem 0; border-top: 1px solid var(--rule); }
+.assignments li:last-child { border-bottom: 1px solid var(--rule); }
+.assignments p { margin: 0.25rem 0 0; }
+.asg-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+.asg-weight { font-variant-numeric: tabular-nums; color: var(--ink-soft); font-size: 0.92rem; white-space: nowrap; }
+
+.proj-term { border-top: 1px solid var(--rule); padding: 0.4rem 0; }
+.proj-term:last-of-type { border-bottom: 1px solid var(--rule); }
+.proj-term summary { cursor: pointer; font-weight: 600; padding: 0.35rem 0; }
+.proj-term summary .count { font-weight: 400; color: var(--ink-soft); margin-left: 0.4rem; }
+.proj-term ul { margin: 0.3rem 0 0.8rem; padding-left: 1.1rem; }
+.proj-term li { margin-bottom: 0.55rem; }
+.proj-approach { display: block; font-size: 0.9rem; color: var(--ink-soft); }
+
+@media (prefers-color-scheme: dark) {
+  .stage-frame { box-shadow: 0 0 0 1px var(--rule); }
+  .stage-img, .sched-strip img { filter: brightness(0.93); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-img { transform: none; transition: none; }
+  .stage.swap .stage-frame { animation: none; }
+}
+
+@media print {
+  .stage { display: none; }
+  .sched-grid { display: block; }
+}
+
+/* Courses index: the executive education band and the CMU Qatar archive sit
+   below the current courses, set apart so the eras read as separate. */
+.edu-band, .era { margin-top: 3.6rem; padding-top: 2rem; border-top: 2px solid var(--ink); }
+.edu-band > h2, .era > h2 { margin-top: 0.2rem; }
+.edu-band .stats { margin-bottom: 1.6rem; }
+.edu-cta { margin-top: 1.4rem; }
+.era .card .thumb { filter: saturate(0.75); }
+.scale-note {
+  display: inline-block;
+  font-weight: 600;
+  border-left: 3px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 0.7rem;
+  margin: 0 0 1rem;
+}

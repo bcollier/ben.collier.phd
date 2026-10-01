@@ -1,0 +1,668 @@
+{
+ "slug": "70-342",
+ "term": "Fall 2016 (Pittsburgh)",
+ "meets": "Tuesdays and Thursdays",
+ "unit_label": "Week",
+ "meta": {
+  "number": "70-342",
+  "title": "Managing Across Cultures",
+  "program": "Undergraduate",
+  "school": "CMU Qatar and Pittsburgh",
+  "era": "cmuq",
+  "one_liner": "How culture shapes management, taught through cases from the Gulf, China, India, the Americas, Europe, and Africa.",
+  "blurb": "I created this course at CMU Qatar for students who expected to work in an unfamiliar country or a multicultural team, which in Doha meant nearly everyone. We used Hofstede, GLOBE, and Hall as tools, then worked through cases region by region: SickKids in Qatar, Al Jazeera's US launch, Vodafone during the Egyptian revolution, guanxi in Chinese hiring, Enron's Dabhol plant in India. Students taught each other through panels on cultures they knew, then researched and briefed the class on one they did not.",
+  "offerings": [
+   "Spring 2016 (Doha, 1 section)",
+   "Fall 2016 (Pittsburgh, 1 section)"
+  ],
+  "scale": "About 20 students in Doha and 57 in Pittsburgh",
+  "color": "c-pine",
+  "order": 3
+ },
+ "schedule": [
+  {
+   "part": "Part I: Key issues in global management"
+  },
+  {
+   "date": "2016-08-30",
+   "week": 1,
+   "topic": "Introduction and course overview",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s01-1.webp",
+     "caption": "Hofstede's three levels of mental programming: human nature, culture, personality"
+    },
+    {
+     "src": "assets/courses/70-342/s01-2.webp",
+     "caption": "A Pakistani manager taking over a team in Singapore with members from the UAE and Lebanon"
+    },
+    {
+     "src": "assets/courses/70-342/s01-3.webp",
+     "caption": "Hiring at a bank in China, where guanxi matters"
+    },
+    {
+     "src": "assets/courses/70-342/s01-4.webp",
+     "caption": "What is wasta, and how does it shape business in the Middle East?"
+    },
+    {
+     "src": "assets/courses/70-342/s01-5.webp",
+     "caption": "The cases span four continents, from Pakistan to Rwanda"
+    }
+   ]
+  },
+  {
+   "date": "2016-09-01",
+   "week": 1,
+   "topic": "Cultural dimensions: Hofstede, tight and loose cultures, Hall",
+   "kind": "lecture",
+   "note": "Reading: Cultural Knowledge, chapter 2 of Cultural Intelligence",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s02-1.webp",
+     "caption": "Your Chinese host apologizing that the food is not the very best"
+    },
+    {
+     "src": "assets/courses/70-342/s02-2.webp",
+     "caption": "How tight is your state? Social norms vary even inside one country"
+    },
+    {
+     "src": "assets/courses/70-342/s02-3.webp",
+     "caption": "Indulgence versus restraint around the world"
+    },
+    {
+     "src": "assets/courses/70-342/s02-4.webp",
+     "caption": "The US, the UAE, and India on Hofstede's dimensions"
+    },
+    {
+     "src": "assets/courses/70-342/s02-5.webp",
+     "caption": "Countries plotted on power distance and individualism"
+    }
+   ]
+  },
+  {
+   "date": "2016-09-06",
+   "week": 2,
+   "topic": "Case: Tariq Khan at Tek",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s03-1.webp",
+     "caption": "(Re)Building a Global Team: Tariq Khan at Tek"
+    },
+    {
+     "src": "assets/courses/70-342/s03-2.webp",
+     "caption": "Eighteen languages, many time zones, and a team in conflict"
+    },
+    {
+     "src": "assets/courses/70-342/s03-3.webp",
+     "caption": "Teams act as consultants advising Tariq before he takes the job"
+    },
+    {
+     "src": "assets/courses/70-342/s03-4.webp",
+     "caption": "Language: should Tariq make English the standard?"
+    },
+    {
+     "src": "assets/courses/70-342/s03-5.webp",
+     "caption": "Team conflict: how should Tariq handle a heated dispute?"
+    }
+   ]
+  },
+  {
+   "date": "2016-09-08",
+   "week": 2,
+   "topic": "Case: Tariq Khan at Tek (continued)",
+   "kind": "case"
+  },
+  {
+   "date": "2016-09-13",
+   "week": 3,
+   "topic": "Case: Greg James at Sun Microsystems",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s05-1.webp",
+     "caption": "Hall's high-context and low-context cultures compared"
+    },
+    {
+     "src": "assets/courses/70-342/s05-2.webp",
+     "caption": "Hofstede's dimensions mapped to GLOBE's"
+    },
+    {
+     "src": "assets/courses/70-342/s05-3.webp",
+     "caption": "Country clusters according to GLOBE"
+    },
+    {
+     "src": "assets/courses/70-342/s05-4.webp",
+     "caption": "Schwartz's value survey"
+    },
+    {
+     "src": "assets/courses/70-342/s05-5.webp",
+     "caption": "What Greg James did next: weekly worldwide meetings and case management tools"
+    }
+   ]
+  },
+  {
+   "part": "Part II: The Middle East"
+  },
+  {
+   "date": "2016-09-15",
+   "week": 3,
+   "topic": "Case: SickKids Qatar",
+   "kind": "case",
+   "note": "Reading: Arabic Cluster: A Bridge Between East and West",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s06-1.webp",
+     "caption": "The Arabic cluster: GLOBE scores as they are versus as they should be"
+    },
+    {
+     "src": "assets/courses/70-342/s06-2.webp",
+     "caption": "Should SickKids respond to Qatar's request for proposals?"
+    },
+    {
+     "src": "assets/courses/70-342/s06-3.webp",
+     "caption": "A PESTLE analysis of entering a new market"
+    },
+    {
+     "src": "assets/courses/70-342/s06-4.webp",
+     "caption": "The SickKids SWOT exhibit"
+    },
+    {
+     "src": "assets/courses/70-342/s06-5.webp",
+     "caption": "You don't know how a client works until you are there full time"
+    }
+   ]
+  },
+  {
+   "date": "2016-09-20",
+   "week": 4,
+   "topic": "Case: Al Jazeera Goes Global",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s07-1.webp",
+     "caption": "Al Jazeera hires you to adapt its culture to the US. What do you advise?"
+    },
+    {
+     "src": "assets/courses/70-342/s07-2.webp",
+     "caption": "Can a news network headquartered in Qatar be trusted by Americans?"
+    },
+    {
+     "src": "assets/courses/70-342/s07-3.webp",
+     "caption": "Al Jazeera America announces it will shut down"
+    },
+    {
+     "src": "assets/courses/70-342/s07-4.webp",
+     "caption": "The end of Al Jazeera America"
+    },
+    {
+     "src": "assets/courses/70-342/s07-5.webp",
+     "caption": "A British sensibility that did not translate to American cable news"
+    }
+   ]
+  },
+  {
+   "date": "2016-09-22",
+   "week": 4,
+   "topic": "In-class exercise: Doha Foundation",
+   "kind": "exercise"
+  },
+  {
+   "date": "2016-09-27",
+   "week": 5,
+   "topic": "Case: Vodafone Egypt",
+   "kind": "case",
+   "note": "Assignment 1 due",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s09-1.webp",
+     "caption": "Hosni Mubarak and Hatem Dowidar, CEO of Vodafone Egypt"
+    },
+    {
+     "src": "assets/courses/70-342/s09-2.webp",
+     "caption": "The UN guiding principles on business and human rights"
+    },
+    {
+     "src": "assets/courses/70-342/s09-3.webp",
+     "caption": "Three lenses for an ethical call: deontology, consequences, virtue"
+    },
+    {
+     "src": "assets/courses/70-342/s09-4.webp",
+     "caption": "Legal and ethical are different axes"
+    },
+    {
+     "src": "assets/courses/70-342/s09-5.webp",
+     "caption": "Amnesty International's response to the network shutdown"
+    }
+   ]
+  },
+  {
+   "part": "Part III: China and Asia"
+  },
+  {
+   "date": "2016-09-29",
+   "week": 5,
+   "topic": "Introduction to China",
+   "kind": "lecture",
+   "note": "Reading: Talent Holds the Key to Winning in China",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s10-1.webp",
+     "caption": "Brits Get Rich in China: British entrepreneurs try selling in China"
+    },
+    {
+     "src": "assets/courses/70-342/s10-2.webp",
+     "caption": "The kitchen seller who expected Chinese prices to sell themselves"
+    },
+    {
+     "src": "assets/courses/70-342/s10-3.webp",
+     "caption": "Recession at home sends British businesses to China"
+    },
+    {
+     "src": "assets/courses/70-342/s10-4.webp",
+     "caption": "China and the United States on Hofstede's dimensions"
+    },
+    {
+     "src": "assets/courses/70-342/s10-5.webp",
+     "caption": "China, the US, and the average on a single radar chart"
+    }
+   ]
+  },
+  {
+   "date": "2016-10-04",
+   "week": 6,
+   "topic": "Case: Zhu Dandan",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s11-1.webp",
+     "caption": "Confucian virtues that still shape Chinese workplaces"
+    },
+    {
+     "src": "assets/courses/70-342/s11-2.webp",
+     "caption": "Face: reputation across work, family, and society"
+    },
+    {
+     "src": "assets/courses/70-342/s11-3.webp",
+     "caption": "Guanxi: more than networking"
+    },
+    {
+     "src": "assets/courses/70-342/s11-4.webp",
+     "caption": "The finance department org chart in 2007"
+    },
+    {
+     "src": "assets/courses/70-342/s11-5.webp",
+     "caption": "The same department in 2012, after four promotions in five years"
+    }
+   ]
+  },
+  {
+   "date": "2016-10-06",
+   "week": 6,
+   "topic": "Case: Intel in China",
+   "kind": "case"
+  },
+  {
+   "date": "2016-10-11",
+   "week": 7,
+   "topic": "Business in Asia: Alpha Beta global negotiation exercise",
+   "kind": "exercise",
+   "note": "Assignment 2 (Intel in China) due",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s18-1.webp",
+     "caption": "Alpha Inc buys robots. Beta Inc makes them"
+    },
+    {
+     "src": "assets/courses/70-342/s18-2.webp",
+     "caption": "What to do when you face an intercultural negotiation"
+    },
+    {
+     "src": "assets/courses/70-342/s18-3.webp",
+     "caption": "Culture as an iceberg: behavior on top, assumptions underneath"
+    },
+    {
+     "src": "assets/courses/70-342/s18-4.webp",
+     "caption": "How cultural values shape negotiation strategy"
+    },
+    {
+     "src": "assets/courses/70-342/s18-5.webp",
+     "caption": "Culture shapes preferences and strategy, which shape the outcome"
+    }
+   ]
+  },
+  {
+   "date": "2016-10-13",
+   "week": 7,
+   "topic": "Case: Recruitment at Sunwah Bank in China",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s14-1.webp",
+     "caption": "Why invite the hiring manager to an expensive dinner?"
+    },
+    {
+     "src": "assets/courses/70-342/s14-2.webp",
+     "caption": "Is it ethical to advertise 12 jobs when you are hiring 22?"
+    },
+    {
+     "src": "assets/courses/70-342/s14-3.webp",
+     "caption": "Signs that merit-based hiring is gaining ground in China"
+    },
+    {
+     "src": "assets/courses/70-342/s14-4.webp",
+     "caption": "Outcome: ten of the advertised jobs went to guanxi candidates"
+    },
+    {
+     "src": "assets/courses/70-342/s14-5.webp",
+     "caption": "What an American company would call corruption"
+    }
+   ]
+  },
+  {
+   "part": "Part IV: India"
+  },
+  {
+   "date": "2016-10-18",
+   "week": 8,
+   "topic": "Introduction to India",
+   "kind": "lecture",
+   "note": "Reading: Leadership Lessons from India"
+  },
+  {
+   "date": "2016-10-20",
+   "week": 8,
+   "topic": "In-class exercise: Enco",
+   "kind": "exercise",
+   "note": "Reading: Dual Identity: Indians as Customers, Competitors, and Collaborators",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s16-1.webp",
+     "caption": "Decision I: Enco faces threats from the BJP"
+    },
+    {
+     "src": "assets/courses/70-342/s16-2.webp",
+     "caption": "Decision II: the Dabhol plant becomes a campaign issue"
+    },
+    {
+     "src": "assets/courses/70-342/s16-3.webp",
+     "caption": "Decision IV: the government cancels the project"
+    },
+    {
+     "src": "assets/courses/70-342/s16-4.webp",
+     "caption": "Decision V: Maharashtra offers to renegotiate"
+    },
+    {
+     "src": "assets/courses/70-342/s16-5.webp",
+     "caption": "Enco is Enron, and the plant is Dabhol"
+    }
+   ]
+  },
+  {
+   "date": "2016-10-25",
+   "week": 9,
+   "topic": "Case: Silvio Napoli at Schindler India",
+   "kind": "case",
+   "note": "Assignment 3 due"
+  },
+  {
+   "date": "2016-10-27",
+   "week": 9,
+   "topic": "In-class exercise: cultural immersion",
+   "kind": "exercise"
+  },
+  {
+   "date": "2016-11-01",
+   "week": 10,
+   "topic": "Exercise debrief",
+   "kind": "lecture"
+  },
+  {
+   "part": "Part V: The Americas, Europe, and Africa"
+  },
+  {
+   "date": "2016-11-03",
+   "week": 10,
+   "topic": "Mexico. Case: Sarah James in Mexico",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s20-1.webp",
+     "caption": "Should Sarah have changed her diet to fit her host family?"
+    },
+    {
+     "src": "assets/courses/70-342/s20-2.webp",
+     "caption": "When working or traveling abroad, I have restrictions on..."
+    },
+    {
+     "src": "assets/courses/70-342/s20-3.webp",
+     "caption": "Advising Sarah on food, transport, and money"
+    },
+    {
+     "src": "assets/courses/70-342/s20-4.webp",
+     "caption": "What should the professor running the program do?"
+    },
+    {
+     "src": "assets/courses/70-342/s20-5.webp",
+     "caption": "Was this a successful experience for Sarah?"
+    }
+   ]
+  },
+  {
+   "date": "2016-11-08",
+   "week": 11,
+   "topic": "Brazil. Case: Dell's Dilemma in Brazil",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s21-1.webp",
+     "caption": "Why does Dell want to invest in Brazil?"
+    },
+    {
+     "src": "assets/courses/70-342/s21-2.webp",
+     "caption": "Why Brazil: market size, tariffs, and tax wars between states"
+    },
+    {
+     "src": "assets/courses/70-342/s21-3.webp",
+     "caption": "Why Rio Grande do Sul made Dell's short list"
+    },
+    {
+     "src": "assets/courses/70-342/s21-4.webp",
+     "caption": "Leave Brazil, pick another state, or negotiate with the governor?"
+    },
+    {
+     "src": "assets/courses/70-342/s21-5.webp",
+     "caption": "Outcome: Dell negotiated, and the plant opened in 1999"
+    }
+   ]
+  },
+  {
+   "date": "2016-11-10",
+   "week": 11,
+   "topic": "Germany. Case: Wolfgang Keller at Königsbräu-TAK",
+   "kind": "case"
+  },
+  {
+   "date": "2016-11-15",
+   "week": 12,
+   "topic": "France. Case: Liberté, Égalité, Sororité: How Should France Achieve Boardroom Parité?",
+   "kind": "case",
+   "note": "Assignment 4 (Leading Across Cultures at Michelin) due",
+   "slides": [
+    {
+     "src": "assets/courses/70-342/s23-1.webp",
+     "caption": "10.5% of CAC 40 board members were women"
+    },
+    {
+     "src": "assets/courses/70-342/s23-2.webp",
+     "caption": "Norway's approach: strict government quotas"
+    },
+    {
+     "src": "assets/courses/70-342/s23-3.webp",
+     "caption": "The US is no better at 10.6%"
+    },
+    {
+     "src": "assets/courses/70-342/s23-4.webp",
+     "caption": "France sets a quota for women on big company boards"
+    },
+    {
+     "src": "assets/courses/70-342/s23-5.webp",
+     "caption": "Germany passes its own boardroom quota"
+    }
+   ]
+  },
+  {
+   "date": "2016-11-17",
+   "week": 12,
+   "topic": "South Africa. Case: South African Airways",
+   "kind": "case"
+  },
+  {
+   "date": "2016-11-22",
+   "week": 13,
+   "topic": "Rwanda. Case: RD Technology: Treading Water in Africa",
+   "kind": "case"
+  },
+  {
+   "date": "2016-11-24",
+   "week": 13,
+   "topic": "Thanksgiving break",
+   "kind": "break"
+  },
+  {
+   "date": "2016-11-29",
+   "week": 14,
+   "topic": "Final presentations",
+   "kind": "presentations"
+  },
+  {
+   "date": "2016-12-01",
+   "week": 14,
+   "topic": "Final presentations",
+   "kind": "presentations"
+  },
+  {
+   "date": "2016-12-06",
+   "week": 15,
+   "topic": "Final presentations",
+   "kind": "presentations"
+  },
+  {
+   "date": "2016-12-08",
+   "week": 15,
+   "topic": "Final presentations",
+   "kind": "presentations"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Group case analysis papers",
+   "weight": "40%",
+   "description": "Four papers written in groups of three, five to seven pages each: Vodafone Egypt (a PESTLE analysis, then whether to obey the government's order to shut down the network and send its SMS messages), Intel in China (Hofstede and GLOBE, face, guanxi, and managing a dual identity), Silvio Napoli at Schindler India (coaching a new expatriate general manager), and Leading Across Cultures at Michelin."
+  },
+  {
+   "name": "Panel presentation",
+   "weight": "10%",
+   "description": "Groups of three to five presented 10 to 15 minutes at the start of class on what others should know about doing business in a culture they knew well, or one from the course cases."
+  },
+  {
+   "name": "Final project",
+   "weight": "20%",
+   "description": "Multicultural teams chose a country none of them had history with, interviewed at least one person who had lived there, and gave a polished 20 to 25 minute orientation for managers about to move there on long-term assignment: greetings, meetings, negotiation, expatriate problems, government, and management tips."
+  },
+  {
+   "name": "Classroom engagement",
+   "weight": "30%",
+   "description": "Case discussion, in-class exercises such as the Alpha Beta negotiation and Enco, and peer evaluations after group work."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2016 (Doha)",
+   "items": [
+    {
+     "subject": "Australia",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "France",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Germany",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Russia",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Turkey",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    }
+   ]
+  },
+  {
+   "term": "Fall 2016 (Pittsburgh)",
+   "items": [
+    {
+     "subject": "Argentina",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Bangladesh",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Belgium",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Colombia",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Denmark",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "France",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Netherlands",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Pakistan",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Russia",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Singapore",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Spain",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Sweden",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "Turkey",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    },
+    {
+     "subject": "United Kingdom",
+     "approach": "Unfamiliar-culture briefing for managers about to relocate, built on at least five sources and an interview with someone who has lived there"
+    }
+   ]
+  }
+ ]
+}
