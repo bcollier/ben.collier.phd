@@ -55,13 +55,39 @@
       const source = p.url
         ? '<div class="source"><a href="' + escapeAttr(p.url) + '">View on LinkedIn</a></div>'
         : "";
+      // Keep the post's own paragraph breaks, and fold long posts so a full
+      // feed on /news/ stays scannable.
+      const paras = String(p.text || "").split(/\n\s*\n/).map(function (para) {
+        return "<p>" + linkify(escapeHtml(para.trim())).replace(/\n/g, "<br>") + "</p>";
+      }).join("");
+      const long = String(p.text || "").length > LONG_POST;
+      const body = long
+        ? '<div class="body clamped">' + paras + '</div><button type="button" class="more" aria-expanded="false">Show more</button>'
+        : '<div class="body">' + paras + "</div>";
       return (
         "<li>" +
         "<time datetime=\"" + escapeAttr(p.date) + "\">" + formatDate(p.date) + "</time>" +
-        '<div class="post"><p>' + escapeHtml(p.text) + "</p>" +
+        '<div class="post">' + body +
         peopleBlock + source + "</div></li>"
       );
     }).join("");
+
+    mount.querySelectorAll("button.more").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const open = btn.previousElementSibling.classList.toggle("clamped") === false;
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        btn.textContent = open ? "Show less" : "Show more";
+      });
+    });
+  }
+
+  const LONG_POST = 360;
+
+  // Turns bare http(s) URLs in already-escaped text into links.
+  function linkify(html) {
+    return html.replace(/https?:\/\/[^\s<]+[^\s<.,!?;:)]/g, function (url) {
+      return '<a href="' + url.replace(/"/g, "&quot;") + '">' + url + "</a>";
+    });
   }
 
   function formatDate(iso) {
