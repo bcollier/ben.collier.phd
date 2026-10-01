@@ -5,7 +5,7 @@ Tepper School of Business, Carnegie Mellon University
 Also teaches selected courses at Heinz College  
 
 Tepper Quad, Office 5135 · 4765 Forbes Avenue · Pittsburgh, PA 15213  
-bcollier@cmu.edu · bcollier@andrew.cmu.edu · ben@collier.phd  
+[bcollier@cmu.edu](mailto:bcollier@cmu.edu) · ben@collier.phd  
 https://collier.phd · https://www.linkedin.com/in/bcollierphd  
 ORCID: 0000-0002-4651-7684
 

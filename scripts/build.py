@@ -1270,11 +1270,11 @@ def build_contact():
       <h1>Contact</h1>
       <p class="lede">Email is the most reliable way to reach me. Students, please put the course number in the subject line.</p>
       <ul class="contact-list">
-        <li><span>CMU email</span><div><a href="mailto:bcollier@andrew.cmu.edu">bcollier@andrew.cmu.edu</a></div></li>
+        <li><span>CMU email</span><div><a href="mailto:bcollier@cmu.edu">bcollier@cmu.edu</a></div></li>
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
 {'        <li><span>Site</span><div><a href="../">' + DOMAIN_LABEL + '</a></div></li>' + chr(10) if SITE.get("domain_live") else ""}        <li><span>Office</span><div>Office 5135, Tepper Quad<br>Tepper School of Business, Carnegie Mellon University<br>4765 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
         <li><span>Consulting</span><div>{book_call("../", "")} · <a href="../consult/">Consulting and custom education</a></div></li>
-        <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@andrew.cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
+        <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
         <li><span>ORCID</span><div><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></div></li>
