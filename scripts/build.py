@@ -1441,6 +1441,11 @@ def build_talks():
         <h2>Faculty Spotlight: what students learn in the MS in Business Analytics</h2>
         <div class="prose-width">
           <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
+          <a class="video-thumb" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">
+            <img src="../assets/talks/faculty-spotlight-2026.jpg" width="1280" height="720" loading="lazy" alt="Ben Collier explaining a point during the Tepper Faculty Spotlight conversation">
+            <span class="play" aria-hidden="true"></span>
+            <span class="duration">11 min</span>
+          </a>
           <p><a href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
         </div>
       </article>
