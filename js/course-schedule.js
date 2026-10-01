@@ -1,194 +1,161 @@
-// Week-by-week schedule on course pages. The session nearest the middle of the
-// window becomes active, and the stage plays its five slides. Every image is
-// decoded before it is shown, so a crossfade never lands on a half-loaded
-// frame. Without JavaScript the rows keep their thumbnail strips and the
-// stage shows the first slide.
+// Week by week on course pages. The schedule runs down the left; the projector
+// on the right stays in view and shows the slides of whichever session is in
+// the middle of the window, or under the pointer, or focused. Its strip of
+// five thumbnails picks a slide, and it steps through them on its own unless
+// the visitor prefers reduced motion or is pointing at it.
+//
+// Without this script every row keeps its own thumbnail strip, and the
+// projector shows the first session's first slide.
 (function () {
-  const section = document.querySelector("[data-schedule]");
-  if (!section) return;
-  const stage = section.querySelector(".stage");
-  const rows = Array.from(section.querySelectorAll(".sched-row.has-slides"));
-  if (!stage || !rows.length) return;
+  "use strict";
+  var list = document.querySelector(".weeks");
+  var view = document.querySelector(".projector");
+  if (!list || !view) return;
 
-  const imgs = stage.querySelectorAll(".stage-img");
-  const whenEl = stage.querySelector(".stage-when");
-  const topicEl = stage.querySelector(".stage-topic");
-  const captionEl = stage.querySelector(".stage-caption");
-  const pipsEl = stage.querySelector(".stage-pips");
-  const still = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const HOLD = 3200;
+  var main = view.querySelector(".proj-main");
+  var topic = view.querySelector(".proj-topic");
+  var when = view.querySelector(".proj-cap b");
+  var say = view.querySelector(".proj-say");
+  var strip = view.querySelector(".proj-strip");
+  var rows = Array.prototype.slice.call(list.querySelectorAll(".wk.has-slides"));
+  if (!rows.length) return;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var HOLD = 3600;
 
-  const decks = rows.map(function (row) {
-    return Array.from(row.querySelectorAll(".sched-strip img")).map(function (t) {
-      return { src: t.dataset.full, caption: t.dataset.caption, thumb: t };
+  var decks = rows.map(function (row) {
+    return Array.prototype.map.call(row.querySelectorAll(".wk-strip img"), function (t) {
+      return { full: t.getAttribute("data-full"), thumb: t.getAttribute("src"), caption: t.getAttribute("data-caption") || "", el: t };
     });
   });
 
-  // Each full-size slide is fetched and decoded once, then reused.
-  const ready = new Map();
+  var active = -1, slide = 0, timer = null, paused = false, token = 0, visible = true;
+
+  // Each full-size slide is fetched and decoded once before it is shown, so
+  // the projector never lands on a half-loaded frame.
+  var ready = {};
   function load(src) {
-    if (!ready.has(src)) {
-      const im = new Image();
-      // decode() can stall in a background tab, so a plain load (or a short
-      // timeout) is allowed to win the race.
-      const loaded = new Promise(function (res) {
-        im.onload = im.onerror = function () { setTimeout(res, 120); };
-        setTimeout(res, 2500);
+    if (!ready[src]) {
+      ready[src] = new Promise(function (res) {
+        var im = new Image();
+        var done = function () { res(src); };
+        im.onload = im.onerror = done;
+        setTimeout(done, 2500);
+        im.src = src;
+        if (im.decode) im.decode().then(done, function () {});
       });
-      im.src = src;
-      const decoded = im.decode ? im.decode().catch(function () {}) : loaded;
-      ready.set(src, Promise.race([decoded, loaded]).then(function () { return src; }));
     }
-    return ready.get(src);
-  }
-  function warm(i) {
-    if (decks[i]) decks[i].forEach(function (s) { load(s.src); });
+    return ready[src];
   }
 
-  let active = -1, slide = 0, front = 0, timer = null, paused = false, token = 0;
-
-  function pips(n) {
-    pipsEl.innerHTML = "";
-    for (let i = 0; i < n; i++) {
-      const b = document.createElement("button");
+  function buildStrip(i) {
+    strip.innerHTML = "";
+    decks[i].forEach(function (s, k) {
+      var b = document.createElement("button");
       b.type = "button";
-      b.setAttribute("aria-label", "Slide " + (i + 1) + " of " + n);
-      b.addEventListener("click", function () { show(i, true); });
-      pipsEl.appendChild(b);
-    }
+      b.setAttribute("aria-label", "Slide " + (k + 1) + " of " + decks[i].length + ": " + s.caption);
+      b.innerHTML = '<img src="' + s.thumb + '" alt="" width="160" height="90">';
+      b.addEventListener("click", function () { pick(k, true); });
+      strip.appendChild(b);
+    });
   }
 
   function mark() {
-    pipsEl.querySelectorAll("button").forEach(function (b, i) {
-      b.classList.toggle("is-on", i === slide);
-      b.setAttribute("aria-current", i === slide ? "true" : "false");
+    Array.prototype.forEach.call(strip.querySelectorAll("button"), function (b, k) {
+      b.setAttribute("aria-pressed", String(k === slide));
     });
-    decks[active].forEach(function (s, i) { s.thumb.classList.toggle("is-on", i === slide); });
-    stage.style.setProperty("--hold", HOLD + "ms");
-    pipsEl.classList.remove("run");
-    void pipsEl.offsetWidth; // restart the progress fill on the current pip
-    if (!paused && !still.matches) pipsEl.classList.add("run");
+    decks[active].forEach(function (s, k) { s.el.classList.toggle("is-on", k === slide); });
   }
 
-  function show(i, byHand) {
-    const deck = decks[active];
-    slide = (i + deck.length) % deck.length;
-    const s = deck[slide];
-    const mine = ++token;
-    load(s.src).then(function () {
-      if (mine !== token) return; // a newer request already won
-      const next = imgs[1 - front], cur = imgs[front];
-      next.src = s.src;
-      next.alt = s.caption;
-      next.removeAttribute("aria-hidden");
-      cur.setAttribute("aria-hidden", "true");
-      cur.alt = "";
-      next.classList.add("is-on");
-      cur.classList.remove("is-on");
-      front = 1 - front;
-      captionEl.textContent = s.caption;
-      mark();
-      load(deck[(slide + 1) % deck.length].src);
+  function pick(k, byHand) {
+    var deck = decks[active];
+    slide = (k + deck.length) % deck.length;
+    var s = deck[slide], mine = ++token;
+    mark();
+    say.textContent = s.caption;
+    main.classList.add("fading");
+    load(s.full).then(function () {
+      if (mine !== token) return;
+      main.src = s.full;
+      main.alt = s.caption;
+      main.removeAttribute("loading");
+      main.classList.remove("fading");
+      load(deck[(slide + 1) % deck.length].full);
     });
-    schedule(byHand ? HOLD * 1.5 : HOLD);
+    schedule(byHand ? HOLD * 1.6 : HOLD);
   }
 
   function schedule(ms) {
     clearTimeout(timer);
-    if (paused || still.matches) return;
-    timer = setTimeout(function () { show(slide + 1); }, ms);
+    if (paused || still || !visible) return;
+    timer = setTimeout(function () { pick(slide + 1); }, ms);
   }
 
   function activate(i) {
     if (i === active || i < 0) return;
-    if (active >= 0) rows[active].classList.remove("is-active");
+    if (active >= 0) rows[active].classList.remove("on");
     active = i;
-    const row = rows[i];
-    row.classList.add("is-active");
-    whenEl.textContent = row.querySelector("time").textContent + " · " + row.querySelector(".sched-when span").textContent;
-    topicEl.textContent = row.querySelector(".sched-topic").textContent;
-    pips(decks[i].length);
-    stage.classList.remove("swap");
-    void stage.offsetWidth;
-    stage.classList.add("swap");
-    show(0);
-    warm(i + 1);
-    warm(i - 1);
+    var row = rows[i];
+    row.classList.add("on");
+    when.textContent = row.querySelector("time").textContent;
+    topic.textContent = row.querySelector(".wk-t").textContent;
+    buildStrip(i);
+    pick(0);
+    if (decks[i + 1]) load(decks[i + 1][0].full);
   }
-
-  // The active session is the one under a focus line: mid-window on wide
-  // screens, and mid-way through the space left below the pinned stage on
-  // phones, where the stage sits on top of the list.
-  const header = document.querySelector("header.site");
-  const stacked = window.matchMedia("(max-width: 56rem)");
-  function pin() {
-    const h = header ? header.getBoundingClientRect().height : 0;
-    section.style.setProperty("--stage-top", Math.round(h + 8) + "px");
-  }
-  let queued = false;
-  function pick() {
-    queued = false;
-    let line = window.innerHeight / 2;
-    if (stacked.matches) {
-      const bottom = stage.getBoundingClientRect().bottom;
-      line = bottom + (window.innerHeight - bottom) / 2;
-    }
-    let best = -1, dist = Infinity;
-    rows.forEach(function (r, i) {
-      const b = r.getBoundingClientRect();
-      const d = line < b.top ? b.top - line : line > b.bottom ? line - b.bottom : 0;
-      if (d < dist) { dist = d; best = i; }
-    });
-    const box = section.querySelector(".sched-list").getBoundingClientRect();
-    if (box.bottom > 0 && box.top < window.innerHeight) activate(best);
-  }
-  function queue() { if (!queued) { queued = true; requestAnimationFrame(pick); } }
-  window.addEventListener("scroll", queue, { passive: true });
-  window.addEventListener("resize", function () { pin(); queue(); });
-  pin();
 
   rows.forEach(function (r, i) {
     r.addEventListener("mouseenter", function () { activate(i); });
     r.addEventListener("focus", function () { activate(i); });
-    r.querySelectorAll(".sched-strip img").forEach(function (t, k) {
-      t.addEventListener("click", function () { activate(i); show(k, true); });
-    });
+    r.addEventListener("click", function () { activate(i); });
   });
+
+  // Scrolling: the session crossing the middle band of the window takes over.
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) activate(rows.indexOf(e.target)); });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    rows.forEach(function (r) { io.observe(r); });
+    new IntersectionObserver(function (es) {
+      visible = es[0].isIntersecting;
+      if (visible) schedule(HOLD); else clearTimeout(timer);
+    }).observe(view);
+  }
 
   function pause(on) {
     paused = on;
-    stage.classList.toggle("is-paused", on);
-    if (on) { clearTimeout(timer); pipsEl.classList.remove("run"); }
-    else if (active >= 0) { mark(); schedule(HOLD); }
+    if (on) clearTimeout(timer); else schedule(HOLD);
   }
-  stage.addEventListener("mouseenter", function () { pause(true); });
-  stage.addEventListener("mouseleave", function () { pause(false); });
-  stage.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") { show(slide + 1, true); e.preventDefault(); }
-    if (e.key === "ArrowLeft") { show(slide - 1, true); e.preventDefault(); }
+  view.addEventListener("mouseenter", function () { pause(true); });
+  view.addEventListener("mouseleave", function () { pause(false); });
+  view.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") { pick(slide + 1, true); e.preventDefault(); }
+    if (e.key === "ArrowLeft") { pick(slide - 1, true); e.preventDefault(); }
   });
   document.addEventListener("visibilitychange", function () { pause(document.hidden); });
 
-  // Mark where the term is today: past sessions dim slightly, and the next
-  // class gets a label. Computed in the browser so it never goes stale.
-  const now = new Date();
-  const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, "0"), String(now.getDate()).padStart(2, "0")].join("-");
-  let upcoming = null;
-  section.querySelectorAll(".sched-row").forEach(function (r) {
-    if (r.dataset.date < today) r.classList.add("is-past");
-    else if (!upcoming && !r.classList.contains("break")) upcoming = r;
+  // Where the term is today: past dates dim a little, and today's session (or
+  // the next one, mid-term) gets a note in the margin. Worked out in the
+  // browser so it never goes stale.
+  var now = new Date();
+  var today = [now.getFullYear(), ("0" + (now.getMonth() + 1)).slice(-2), ("0" + now.getDate()).slice(-2)].join("-");
+  var all = list.querySelectorAll(".wk"), upcoming = null, anyPast = false, todayRow = null;
+  Array.prototype.forEach.call(all, function (r) {
+    var d = r.getAttribute("data-date") || "";
+    if (d === today) todayRow = r;
+    if (d < today) { r.classList.add("is-past"); anyPast = true; }
+    else if (!upcoming && !r.classList.contains("off")) upcoming = r;
   });
-  const anyPast = section.querySelector(".sched-row.is-past");
-  if (upcoming && anyPast) {
-    const tag = document.createElement("span");
-    tag.className = "sched-next";
-    tag.textContent = "Next class";
-    upcoming.querySelector(".sched-when").appendChild(tag);
+  var flag = todayRow || (anyPast && upcoming);
+  if (flag) {
+    var tn = document.createElement("span");
+    tn.className = "note today-note";
+    tn.setAttribute("aria-hidden", "true");
+    tn.textContent = flag === todayRow ? "← today!" : "← next class";
+    flag.appendChild(tn);
   }
 
   // Start on the most recent session with slides, or the first one.
-  let start = 0;
-  rows.forEach(function (r, i) { if (r.dataset.date <= today) start = i; });
+  var start = 0;
+  rows.forEach(function (r, i) { if ((r.getAttribute("data-date") || "") <= today) start = i; });
   activate(start);
-  warm(start);
 })();
