@@ -691,8 +691,8 @@ def course_name(c) -> str:
 
 
 # The pen doodle in the corner of each course's index card.
-HERO_ICON = {"agents": "net", "network": "net", "vit": "vision", "teams": "org", "descent": "bowl",
-             "kmeans": "scatter", "charts": "bars", "brush": "bars", "galton": "bell", "pipeline": "flow"}
+HERO_ICON = {"agents": "agent", "network": "net", "vit": "vision", "teams": "org", "descent": "bowl",
+             "kmeans": "scatter", "charts": "bars", "brush": "explore", "galton": "bell", "pipeline": "flow"}
 CARD_ROT = [-1.4, 1, -0.7, 1.6, -1.1, 0.8, -1.6, 1.2]
 
 

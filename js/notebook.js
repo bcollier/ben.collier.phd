@@ -298,6 +298,21 @@
           ink(svg, lineD(r[0], 72, r[0], r[1], 0.3) + lineD(r[0], r[1], r[0] + 14, r[1], 0.3).replace("M", "L") + lineD(r[0] + 14, r[1], r[0] + 14, 72, 0.3).replace("M", "L"), o(0.2 + i * 0.1, 1.8));
         });
         ink(svg, "M80 8 l7 -6 l7 6", o(0.9, 2)).style.color = "var(--red)";
+      } else if (kind === "agent") {
+        // a chat bubble with an agent at work, and a spark where it acts
+        ink(svg, "M14 12 Q10 12 10 18 L10 46 Q10 52 16 52 L30 52 L24 68 L44 52 L76 52 Q82 52 82 46 L82 18 Q82 12 76 12 Z", o(0, 2));
+        [30, 46, 62].forEach(function (x, i) {
+          var c = E("circle", { cx: x, cy: 32, r: 3.6, class: "dot" }, svg);
+          c.style.fill = "var(--ink)"; c.style.setProperty("--d", (b + 0.6 + i * 0.15) + "s");
+        });
+        var ar = arrowD(86, 30, 102, 22, 6, 6); ink(svg, ar[0], o(0.9, 1.8)); ink(svg, ar[1], o(1.05, 1.8));
+        ink(svg, "M108 4 L108 20 M100 12 L116 12 M102.5 6.5 L113.5 17.5 M113.5 6.5 L102.5 17.5", o(1.2, 2)).style.color = "var(--red)";
+      } else if (kind === "explore") {
+        // a line chart with a magnifying glass over the interesting bit
+        ink(svg, lineD(6, 72, 112, 71, 0.4), o(0, 1.6)); ink(svg, lineD(6, 72, 7, 8, 0.4), o(0.1, 1.6));
+        ink(svg, curve([[10, 60], [24, 52], [36, 56], [48, 40], [58, 44], [70, 22], [82, 34], [96, 30], [110, 38]]), o(0.25, 2));
+        ink(svg, loopD(70, 30, 15, 15, 0.4), o(0.8, 2.4)).style.color = "var(--red)";
+        ink(svg, lineD(81, 41, 96, 58, 0.3), o(1.1, 3.6)).style.color = "var(--red)";
       } else if (kind === "bell") {
         var bp = []; for (var bi = 0; bi <= 24; bi++) { var bx = 8 + bi * 4.4; bp.push([bx, 70 - 56 * Math.exp(-Math.pow((bx - 60) / 18, 2)) + J(0.5)]); }
         ink(svg, lineD(6, 71, 114, 71, 0.4), o(0, 1.6));
