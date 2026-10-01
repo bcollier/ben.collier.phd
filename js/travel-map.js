@@ -30,11 +30,31 @@
       .on("click", function (e, d) { const p = byId.get(String(+d.id)); if (p) pin(p); });
     places.forEach(function (p) { p._xy = projection([p.lon, p.lat]); });
 
+    // Some countries' photos sit almost on top of a neighbour's (Rome and the
+    // Vatican, Copenhagen and Malmo, Singapore and Johor Bahru). Those twins
+    // are nudged apart along their real bearing by a fixed number of screen
+    // pixels at every zoom, so both dots stay visible and clickable.
+    const TWIN = 4, SEP = 16;
+    places.forEach(function (p) {
+      p._nudge = [0, 0];
+      places.forEach(function (q) {
+        if (q === p) return;
+        const dx = p._xy[0] - q._xy[0], dy = p._xy[1] - q._xy[1], d = Math.hypot(dx, dy);
+        if (d >= TWIN) return;
+        const ux = d ? dx / d : (p.name < q.name ? -1 : 1), uy = d ? dy / d : 0;
+        p._nudge[0] += ux * SEP / 2; p._nudge[1] += uy * SEP / 2;
+      });
+    });
+    pos = function (p, k) { return [p._xy[0] + p._nudge[0] / k, p._xy[1] + p._nudge[1] / k]; };
+
     // Labels go on the side away from a close neighbour, and at full view a
     // label only shows when the dot has room around it.
     places.forEach(function (p) {
       const near = places.filter(function (q) { return q !== p && Math.hypot(q._xy[0] - p._xy[0], q._xy[1] - p._xy[1]) < 45; });
-      p._roomy = near.length === 0;
+      // At full view, a dot with at most two neighbours gets a label when the
+      // greedy placement below finds room (Australia beside New Zealand,
+      // Iceland near the British Isles); crowded Europe waits for the zoom.
+      p._roomy = near.length <= 2;
       const right = near.filter(function (q) { return q._xy[0] >= p._xy[0] && Math.abs(q._xy[1] - p._xy[1]) < 12; }).length;
       const left = near.filter(function (q) { return q._xy[0] < p._xy[0] && Math.abs(q._xy[1] - p._xy[1]) < 12; }).length;
       p._left = right > left || (right > 0 && right === left && p.count < 100);
@@ -68,7 +88,7 @@
     // Greedy label placement at a given zoom: try right, left, above, below,
     // and skip a spot that would collide with a label or dot already placed.
     function placeLabels(v, show) {
-      const boxes = [], at = function (p) { return [(p._xy[0] - v.x) * v.k, (p._xy[1] - v.y) * v.k]; };
+      const boxes = [], at = function (p) { const q = pos(p, v.k); return [(q[0] - v.x) * v.k, (q[1] - v.y) * v.k]; };
       places.forEach(function (p) { const s = at(p); boxes.push([s[0] - 5, s[1] - 5, s[0] + 5, s[1] + 5]); });
       const hit = function (b) { return boxes.some(function (o) { return b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]; }); };
       const order = places.filter(show).sort(function (a, b) { return b.count - a.count; });
@@ -90,7 +110,7 @@
     function apply(v) {
       const tx = W / 2 - v.x * v.k, ty = H / 2 - v.y * v.k;
       world.attr("transform", "translate(" + tx + "," + ty + ") scale(" + v.k + ")");
-      dotNodes.attr("transform", function (p) { return "translate(" + p._xy[0] + "," + p._xy[1] + ") scale(" + (1 / v.k) + ")"; });
+      dotNodes.attr("transform", function (p) { const q = pos(p, v.k); return "translate(" + q[0] + "," + q[1] + ") scale(" + (1 / v.k) + ")"; });
       landPaths.style("stroke-width", 0.4 / v.k);
       view = v;
       if (shown) placeLeader(shown);
@@ -110,7 +130,7 @@
       if (c && (!zone || Math.hypot(c.x - zone.x, c.y - zone.y) > 20)) { zone = c; zoomTo({ k: c.k, x: c.x, y: c.y }); }
       else if (!c && zone) { zone = null; zoomTo({ k: 1, x: W / 2, y: H / 2 }); }
     };
-    toScreen = function (p) { return [W / 2 + (p._xy[0] - view.x) * view.k, H / 2 + (p._xy[1] - view.y) * view.k]; };
+    toScreen = function (p) { const q = pos(p, view.k); return [W / 2 + (q[0] - view.x) * view.k, H / 2 + (q[1] - view.y) * view.k]; };
     apply(view);
     labelsFor(view);
 
@@ -120,7 +140,7 @@
     svg.on("pointermove", function (e) {
       const m = d3.pointer(e, world.node());
       let best = null, dist = 16 / view.k;
-      places.forEach(function (p) { const d = Math.hypot(p._xy[0] - m[0], p._xy[1] - m[1]); if (d < dist) { dist = d; best = p; } });
+      places.forEach(function (p) { const q = pos(p, view.k), d = Math.hypot(q[0] - m[0], q[1] - m[1]); if (d < dist) { dist = d; best = p; } });
       if (!best && e.target.__data__ && e.target.classList.contains("visited")) best = byId.get(String(+e.target.__data__.id));
       if (zone && !pinned && Math.hypot(m[0] - zone.x, m[1] - zone.y) > zone.r && (!best || zone.members.indexOf(best) < 0)) {
         zone = null; zoomTo({ k: 1, x: W / 2, y: H / 2 });
@@ -136,7 +156,7 @@
   });
 
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let zoomFor = function () {}, toScreen = function (p) { return p._xy; };
+  let zoomFor = function () {}, toScreen = function (p) { return p._xy; }, pos = function (p) { return p._xy; };
 
   function years(p) {
     return p.years.length ? (p.years[0] === p.years[1] ? p.years[0] : p.years[0] + " to " + p.years[1]) : "";
