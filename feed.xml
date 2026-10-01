@@ -15,11 +15,53 @@
     <summary>Led the information session for MBA students considering the Business Analytics track.</summary>
   </entry>
   <entry>
+    <title>Opened the 70-445 agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.</title>
+    <link href="https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy"/>
+    <id>tag:collier.phd,2026:news/2026-09-24</id>
+    <updated>2026-09-24T12:00:00Z</updated>
+    <summary>Opened the 70-445 agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.</summary>
+  </entry>
+  <entry>
+    <title>Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.</title>
+    <link href="https://www.thedartmouth.com/article/2026/09/schnell-ai-writing"/>
+    <id>tag:collier.phd,2026:news/2026-09-24</id>
+    <updated>2026-09-24T12:00:00Z</updated>
+    <summary>Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.</summary>
+  </entry>
+  <entry>
     <title>Became faculty coordinator of the MBA Business Analytics track at Tepper.</title>
     <link href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics"/>
     <id>tag:collier.phd,2026:news/2026-09</id>
     <updated>2026-09-01T12:00:00Z</updated>
     <summary>Became faculty coordinator of the MBA Business Analytics track at Tepper.</summary>
+  </entry>
+  <entry>
+    <title>Opened 70-445 with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.</title>
+    <link href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/"/>
+    <id>tag:collier.phd,2026:news/2026-09-10</id>
+    <updated>2026-09-10T12:00:00Z</updated>
+    <summary>Opened 70-445 with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.</summary>
+  </entry>
+  <entry>
+    <title>Same class, darker headline: an Anthropic alignment lead put the chance that AI kills all humans within a decade at more than 10 percent. We set it next to the p(doom) numbers other AI leaders have given, and a week later the class gave its own. The median was 20 percent.</title>
+    <link href="https://www.forbes.com/sites/siladityaray/2026/09/09/anthropic-alignment-lead-warns-ai-could-kill-all-humans-as-researcher-quits/"/>
+    <id>tag:collier.phd,2026:news/2026-09-10</id>
+    <updated>2026-09-10T12:00:00Z</updated>
+    <summary>Same class, darker headline: an Anthropic alignment lead put the chance that AI kills all humans within a decade at more than 10 percent. We set it next to the p(doom) numbers other AI leaders have given, and a week later the class gave its own. The median was 20 percent.</summary>
+  </entry>
+  <entry>
+    <title>Started 70-445 on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.</title>
+    <link href="https://www.foxbusiness.com/technology/nvidia-ceo-jensen-huang-declares-agi-has-arrived-after-openai-unveils-gpt-6-astra"/>
+    <id>tag:collier.phd,2026:news/2026-09-08</id>
+    <updated>2026-09-08T12:00:00Z</updated>
+    <summary>Started 70-445 on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.</summary>
+  </entry>
+  <entry>
+    <title>Opened the history of AI in 70-445 with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.</title>
+    <link href="https://techstartups.com/2026/08/26/top-tech-news-today-august-26-2026-amazon-anthropic-google-microsoft-waymo-more/"/>
+    <id>tag:collier.phd,2026:news/2026-08-27</id>
+    <updated>2026-08-27T12:00:00Z</updated>
+    <summary>Opened the history of AI in 70-445 with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.</summary>
   </entry>
   <entry>
     <title>Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives.</title>
