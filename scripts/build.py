@@ -551,7 +551,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
-      <div><a href="{root}travel/">Travel</a> · <a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
+      <div><a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
@@ -1355,6 +1355,31 @@ def _cv_glance():
     )
 
 
+DIRECTIONS = "https://www.google.com/maps/dir/?api=1&destination=" + "Tepper+School+of+Business,+4765+Forbes+Ave,+Pittsburgh,+PA+15213"
+
+
+def office_pop(root: str, label: str) -> str:
+    """The office chip opens an animated map of campus with Tepper Quad marked.
+    The SVG is drawn once by scripts/make_campus_map.py from OpenStreetMap."""
+    svg = (ROOT / "assets" / "campus" / "campus-map.svg").read_text(encoding="utf-8")
+    return (f'<li class="place-pop"><button type="button" class="pp-trigger" aria-expanded="false">{esc(label)}</button>'
+            f'<div class="pp-card pp-map" role="dialog" aria-label="Campus map">{svg}'
+            f'<p class="pp-note">Tepper Quad is on Forbes Avenue. Office 5135 is on the fifth floor. '
+            f'<a href="{DIRECTIONS}">Directions</a></p></div></li>')
+
+
+def address_pop(root: str, label: str) -> str:
+    """The street address opens a photo of the building and a directions link."""
+    return (f'<li class="place-pop"><button type="button" class="pp-trigger" aria-expanded="false">{esc(label)}</button>'
+            f'<div class="pp-card pp-photo" role="dialog" aria-label="Tepper Quad">'
+            f'<img src="{root}assets/campus/tepper-quad.webp" width="720" height="450" alt="Tepper Quad, the glass-fronted home of the Tepper School of Business on Forbes Avenue" loading="lazy">'
+            f'<p class="pp-note"><strong>Tepper Quad</strong>, 4765 Forbes Avenue. <a href="{DIRECTIONS}">Get directions in Google Maps</a></p>'
+            f'<p class="pp-credit">Photo: Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_University_Tepper_School_of_Business.jpg">CC BY-SA 2.0</a></p></div></li>')
+
+
+PLACE_POPS = {"Tepper Quad, Office 5135": office_pop, "4765 Forbes Avenue": address_pop}
+
+
 def _cv_header(lines):
     groups, cur = [], []
     for line in lines:
@@ -1377,6 +1402,8 @@ def _cv_header(lines):
                 if part.startswith("http"):
                     label = re.sub(r"^https?://(www\.)?", "", part).rstrip("/")
                     chips.append(f'<li><a href="{esc(part)}">{esc(label)}</a></li>')
+                elif part in PLACE_POPS:
+                    chips.append(PLACE_POPS[part]("../", part))
                 else:
                     chips.append(f"<li>{inline(part)}</li>")
     return f"""
@@ -1440,6 +1467,7 @@ def build_cv():
         </article>
       </div>
       <script src="../js/cv.js" defer></script>
+      <script src="../js/place-pop.js" defer></script>
 """
     write(
         "cv/index.html",
