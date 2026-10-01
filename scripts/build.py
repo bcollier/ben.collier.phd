@@ -477,6 +477,7 @@ NAV = [
     ("advising/", "advising", "advising", "#a9d8a1"),
     ("consult/", "consulting", "consult", "#f3a391"),
     ("cv/", "cv", "cv", "#cdb8e8"),
+    ("strengths/", "strengths", "strengths", "#ffd2a8"),
     ("talks/", "talks", "talks", "#8ed3c7"),
     ("travel/", "travel", "travel", "#c9dd92"),
     ("news/", "news", "news", "#f5b5c8"),
@@ -2410,6 +2411,149 @@ def build_contact():
     )
 
 
+# ---------------------------------------------------------------------------
+# Strengths: what two Gallup StrengthsFinder results (2009, 2014) say about
+# how I work, checked against what I have actually done. Theme definitions
+# are paraphrased; the reports themselves stay private.
+# ---------------------------------------------------------------------------
+
+SF_DOMAIN = {"Intellection": "think", "Learner": "think", "Input": "think", "Futuristic": "think",
+             "Achiever": "exec", "Individualization": "rel"}
+SF_DOMAIN_NAME = {"think": "Strategic thinking", "exec": "Executing", "rel": "Relationship building", "infl": "Influencing"}
+SF_RANKS = [  # theme, 2009 rank, 2014 rank (None = outside the top five)
+    ("Input", 1, 4), ("Learner", 2, 3), ("Individualization", 3, None),
+    ("Intellection", 4, 1), ("Achiever", 5, 2), ("Futuristic", None, 5),
+]
+
+
+def strengths_chart() -> str:
+    """Slope chart of the two top-five rankings, drawn as notebook ink."""
+    x0, x1, y = 150, 430, lambda r: 64 + (r - 1) * 44 if r else 300
+    out = ['<svg class="sf-chart" viewBox="0 0 580 330" role="img" aria-label="How my top five themes moved between 2009 and 2014. '
+           'Intellection rose from fourth to first, Achiever from fifth to second, Learner slipped from second to third, Input from first to fourth. '
+           'Individualization left the top five and Futuristic entered it at fifth.">',
+           f'<text class="sf-yr" x="{x0}" y="30" text-anchor="middle">2009</text>',
+           f'<text class="sf-yr" x="{x1}" y="30" text-anchor="middle">2014</text>',
+           f'<line class="sf-out" x1="40" x2="540" y1="282" y2="282"/>',
+           f'<text class="sf-outlab" x="290" y="320" text-anchor="middle">outside the top five</text>']
+    for i, (name, a, b) in enumerate(SF_RANKS):
+        dom = SF_DOMAIN[name]
+        ya, yb = y(a), y(b)
+        d = 0.3 + 0.25 * i
+        out.append(f'<path class="ink sf-line {dom}" pathLength="1000" style="--d:{d:.2f}s;--dur:1.1s" '
+                   f'd="M{x0},{ya} C{x0 + 110},{ya} {x1 - 110},{yb} {x1},{yb}"/>')
+        for x, r, side in ((x0, a, "end"), (x1, b, "start")):
+            yy = y(r)
+            out.append(f'<circle class="dot sf-pt {dom}{" ghost" if not r else ""}" cx="{x}" cy="{yy}" r="6" style="--d:{d + 0.2:.2f}s"/>')
+            if r:
+                lx = x - 16 if side == "end" else x + 16
+                out.append(f'<text class="sf-name fade" x="{lx}" y="{yy + 5}" text-anchor="{side}" style="--d:{d + 0.3:.2f}s">'
+                           f'<tspan class="sf-rk">{r}</tspan> {name}</text>')
+    out.append("</svg>")
+    return "".join(out)
+
+
+SF_THEMES = [
+    ("Intellection", 4, 1, "I like to think, and I need time alone to do it.",
+     "Gallup describes Intellection as a constant mental hum: people who need room to reflect, who argue with themselves to test an idea, and who would rather be in at the start of a project than handed it at the end.",
+     ["It was my top theme in 2014, the year I was teaching organizational behavior and running executive programs in Doha.",
+      "The part of building a course I enjoy most is the design: deciding what students should be able to do at the end, then working backward to each session.",
+      "My PhD was a long reflection on how leaders emerge in open communities like Wikipedia, which still shapes how I think about teams."]),
+    ("Achiever", 5, 2, "Every day starts at zero, and I need to finish something by the end of it.",
+     "Achievers measure a good day by what got done. The drive restarts every morning, which brings stamina and a steady whisper of discontent.",
+     ["I rebuild courses on almost every run: Data Visualization moved entirely into Tableau with about fifty short screencast lessons, and Data Mining moved from R to Python.",
+      "At CMU Qatar I taught a full undergraduate load while co-directing executive education, including three-day programs for up to 114 managers.",
+      "In 2009, writing about my first results, I joked that a PhD student needed a strength called EnjoysWorkingVeryHardForLittlePay."]),
+    ("Learner", 2, 3, "The trip from not knowing to knowing is the part I enjoy.",
+     "Learners are drawn to the process of getting good at something more than to the credential at the end. New subjects and fast-changing fields energize them.",
+     ["When I moved from teaching organizational behavior into data science, I did it by taking the ten-course Data Science Specialization in 2015.",
+      "I took graduate computer science courses through Georgia Tech's online program in 2018 and 2019, while working full time.",
+      "In 2026 I took Effective Coding with AI as a student. Several of the projects on this site came out of it."]),
+    ("Input", 1, 4, "I collect things: books, articles, data, examples.",
+     "People strong in Input are curious collectors who keep things because one day they might be useful. The test's own warning is that input without output goes stale.",
+     ["My reading library has more than a thousand ebooks, and I have kept a dated folder for every project since 2012.",
+      "I save AI news as I read it. That habit turned into AI in the News, the student briefings that open my classes.",
+      "This website is partly an answer to the warning: a place to turn what I have collected into something other people can use."]),
+    ("Futuristic", None, 5, "I spend a lot of time thinking about what comes next.",
+     "Futuristic people are pulled forward by a detailed picture of what could be, and they use that picture to energize the people around them.",
+     ["It entered my top five in 2014. Two years later I left academia for data science at UPMC and then Duolingo, and came back to teach AI.",
+      "My newest courses, AI Methods for Social and Visual Data and Artificial Intelligence for Business Leaders, are built around what is changing.",
+      "I ask each class for its odds on AI going very well and very badly. This fall's median answers were 30 percent and 20 percent."]),
+    ("Individualization", 3, None, "Everyone is different, and the differences are the point.",
+     "Individualization is a gift for noticing what is distinct about each person and how different people can fit together.",
+     ["It was third in 2009 and outside the top five in 2014, but I do not think it went anywhere. My 2014 Achiever description was mostly about listening and recognizing other people.",
+      "My executive programs in Doha drew managers from 25 organizations, from ministries to banks to an airline, and the work was making one room useful to all of them.",
+      "Advising capstones is the same skill: every team, partner, and question is different."]),
+]
+
+
+def strengths_rank_tag(a, b) -> str:
+    fmt = lambda r: f"#{r}" if r else "not top 5"
+    return f'<span class="sf-tag">2009 {fmt(a)} &rarr; 2014 {fmt(b)}</span>'
+
+
+def build_strengths():
+    body = page_head("Strengths", "Strengths",
+                     "I have taken Gallup's StrengthsFinder twice: in 2009 as a PhD student in Pittsburgh, and in 2014 as a professor in Doha. "
+                     "Four of the same five themes came back both times. This page is what they say about how I work, checked against what I have actually done.",
+                     stamp="Two tests &middot; five years apart")
+    domains = "".join(
+        f'<li class="{k}"><span class="sf-n">{n}</span><span class="sf-dl">{SF_DOMAIN_NAME[k]}</span></li>'
+        for k, n in (("think", "4 of 5"), ("exec", "1 of 5"), ("rel", "1 in 2009"), ("infl", "none"))
+    )
+    body += sec(2, "sf-snap", "2009 and 2014", "Two snapshots", f"""    <div class="sf-snap">
+      <figure class="sf-fig fade">{strengths_chart()}</figure>
+      <div class="prose">
+        <p>StrengthsFinder ranks 34 themes of talent for each person and reports the top five. My two lists share four themes: <strong>Input, Learner, Intellection, and Achiever</strong>. What moved is the order and one name at the edge.</p>
+        <p>In 2009 my profile led with collecting and learning. By 2014 it led with thinking and finishing, <strong>Futuristic</strong> had arrived, and <strong>Individualization</strong> had dropped out.</p>
+        <p>Gallup groups the themes into four domains. Mine sit almost entirely in one of them.</p>
+        <ul class="sf-domains">{domains}</ul>
+        <p class="note">no influencing themes, either time &darr;</p>
+      </div>
+    </div>""")
+    stick = [
+        ("Collect, then think", "Input and Intellection: I gather widely, then go quiet and work out what it means.", "", -2.5),
+        ("Learning is the work", "Learner and Achiever: getting good at something new is how I make progress.", "pink", 2),
+        ("Then look ahead", "Futuristic: once I understand something, I want to know where it is going.", "", -1.5),
+    ]
+    notes = "".join(
+        f'<div class="sticky land sf-stick{(" " + c) if c else ""}" style="--rot:{r}deg;--d:{0.2 + 0.2 * i:.1f}s"><span class="big">{h}</span><span class="sub">{s}</span></div>'
+        for i, (h, s, c, r) in enumerate(stick)
+    )
+    body += sec(3, "sf-short", "If you only read one part", "The short version", f'    <div class="sf-sticks">{notes}</div>')
+    cards = ""
+    for i, (name, a, b, line, gallup, evidence) in enumerate(SF_THEMES):
+        dom = SF_DOMAIN[name]
+        ev = "".join(f"<li>{e}</li>" for e in evidence)
+        cards += f"""      <article class="sf-card {dom} deal" style="--rot:{CARD_ROT[i % len(CARD_ROT)] * 0.5}deg;--d:{0.15 + 0.1 * i:.2f}s">
+        <span class="tape tc"></span>
+        <p class="sf-dom">{SF_DOMAIN_NAME[dom]}</p>
+        <h3>{name}</h3>
+        {strengths_rank_tag(a, b)}
+        <p class="sf-line">{line}</p>
+        <p class="sf-gallup">{gallup}</p>
+        <ul class="dashes">{ev}</ul>
+      </article>
+"""
+    body += sec(4, "sf-themes", "Each theme, with evidence", "Theme by theme", f'    <div class="sf-cards">\n{cards}    </div>')
+    work = [
+        ("Ask me a question and you may get a reading list.", "Input and Learner"),
+        ("Bring me in early. I am most useful when we are still deciding what problem we are solving.", "Intellection"),
+        ("I like to finish something every day, and I keep improving things after they ship.", "Achiever"),
+        ("I will talk about where things are going. Hold me to the concrete next step.", "Futuristic"),
+        ("I persuade with evidence and examples, not force of personality.", "no influencing themes"),
+    ]
+    items = "".join(f'<li><span>{w}</span><em>{why}</em></li>' for w, why in work)
+    body += sec(5, "sf-work", "For students, colleagues, and clients", "Working with me", f'    <ul class="sf-work">{items}</ul>')
+    body += sec(6, "sf-test", "Read with care", "What the test can and cannot tell you", """    <div class="prose">
+      <p>StrengthsFinder ranks your themes against each other, not against other people. A theme at number six is still strong; it just did not make the list. Themes near the cut line can trade places between sittings, so Individualization slipping out in 2014 is partly a real change and partly the noise you would expect from any self-report measure.</p>
+      <p>I teach organizational behavior and statistics, so I hold both of those thoughts at once. I used StrengthsFinder with my own students at CMU Qatar in 2014, as a starting point for a leadership assignment rather than a verdict. That is how I read my own results too.</p>
+      <p class="muted">Theme descriptions on this page are my paraphrases of Gallup's. CliftonStrengths and StrengthsFinder are trademarks of Gallup, Inc. I wrote about my first results in <a href="https://ocis.wordpress.com/2009/03/10/strengthsfinder/">a short post in 2009</a>.</p>
+    </div>""")
+    write("strengths/index.html", page("../", "strengths", "Strengths · Ben Collier",
+                                       "What two StrengthsFinder results, five years apart, say about how I work.", "strengths/", body))
+
+
 def build_travel():
     data = load_json("travel.json")
     places = data["countries"]
@@ -2464,7 +2608,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/", "travel/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/", "travel/", "strengths/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
@@ -2542,6 +2686,7 @@ def main():
     build_talks()
     build_contact()
     build_travel()
+    build_strengths()
     build_404()
     build_sitemap()
     build_robots()
