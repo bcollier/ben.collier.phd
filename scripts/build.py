@@ -587,8 +587,8 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 def footer(root: str) -> str:
     return f"""    </main>
     <footer class="site">
-      <div>Ben Collier · Tepper School of Business · Carnegie Mellon University</div>
-      <div><a href="{root or './'}">{DOMAIN_LABEL}</a> · <a href="https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission">Version submitted for 15-113 (2026)</a> · <a href="{root}consult/">Consulting</a> · <a href="{root}feed.xml">News feed</a> · <a href="https://github.com/bcollier/ben.collier.phd">Source</a></div>
+      <div>© {date.today().year} Ben Collier. A personal site; views are my own, not Carnegie Mellon University's.</div>
+      <div><a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
     </footer>
   </div>
   <script src="{root}js/config.js"></script>
