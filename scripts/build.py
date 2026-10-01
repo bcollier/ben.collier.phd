@@ -421,20 +421,6 @@ NEWS = [
 ]
 
 
-HERO_ALT = {
-    "kmeans": "Animation: k-means clustering moves four centroids until the clusters settle",
-    "vit": "Animation: an image split into patches passes up a transformer stack and becomes a caption",
-    "agents": "Animation: an orchestrator agent sends work to research, CRM, email, evaluation, and code tools in turn",
-    "charts": "Animation: one dataset changes from a bar chart to a scatter plot to a slope graph",
-    "brush": "Animation: brushing points in a scatter plot highlights the same records in a histogram",
-    "galton": "Animation: balls fall through a Galton board and the bins build a normal curve",
-    "pipeline": "Animation: data flows from storage through training to a model API and a dashboard",
-    "network": "Animation: a signal passes forward through the layers of a neural network",
-    "descent": "Animation: gradient descent steps down a loss surface toward the minimum",
-    "teams": "Animation: scattered people come together into four teams",
-}
-
-
 BOOK_EMAIL = "ben@collier.phd"
 HOURLY_RATE = "$450"
 
@@ -484,15 +470,60 @@ def esc(text: str) -> str:
     )
 
 
-def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: str) -> str:
-    def item(href, label, key):
+# Index tabs across the top of every page, in order, each with its own colour.
+NAV = [
+    ("courses/", "courses", "courses", "#f6c453"),
+    ("projects/", "coding with AI projects", "projects", "#9ccbea"),
+    ("advising/", "advising", "advising", "#a9d8a1"),
+    ("consult/", "consulting", "consult", "#f3a391"),
+    ("cv/", "cv", "cv", "#cdb8e8"),
+    ("talks/", "talks", "talks", "#8ed3c7"),
+    ("travel/", "travel", "travel", "#c9dd92"),
+    ("news/", "news", "news", "#f5b5c8"),
+    ("contact/", "contact", "contact", "#e9dfc4"),
+]
+
+FONTS = ("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600"
+         "&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400"
+         "&family=Young+Serif&display=swap")
+
+# Runs before first paint. It arms the scroll-in drawing only when the page
+# can actually play it, and disarms it if js/notebook.js never arrives, so the
+# page is never left blank.
+ARM = ('<script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;'
+       'c.add("nb");if(r||!("IntersectionObserver" in window)){c.add("static")}else{c.add("js-anim")}'
+       'setTimeout(function(){if(!window.__nb){c.remove("js-anim");c.remove("nb")}},4000)})(document.documentElement)</script>')
+
+
+def sheet_head(root: str, crumbs) -> str:
+    """The notebook page's header fields: subject, and where the page is filed.
+    crumbs is a list of (label, href or None). Two or more become a breadcrumb."""
+    if not crumbs:
+        crumbs = [("teaching and practice", None)]
+    parts = [f'<a href="{root}{h}">{esc(l)}</a>' if h is not None else esc(l) for l, h in crumbs]
+    trail = " / ".join(parts)
+    filed = (f'<nav class="field crumbs" aria-label="Breadcrumb">Filed under <span class="val">{trail}</span></nav>'
+             if len(crumbs) > 1 else f'<span class="field" aria-hidden="true">Filed under <span class="val">{trail}</span></span>')
+    return f"""  <div class="sheet-head">
+    <span class="field" aria-hidden="true">Subject <span class="val">AI and business analytics</span></span>
+    {filed}
+  </div>
+"""
+
+
+def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: str,
+           crumbs=None, body_class: str = "") -> str:
+    def item(href, label, key, color):
         current = ' aria-current="page"' if active == key else ""
-        return f'<a href="{root}{href}"{current}>{label}</a>'
+        return f'<li style="--c:{color}"><a href="{root}{href}"{current}>{label}</a></li>'
 
     url = f"{HOST}/{canon}"
     ld = (
         f'\n  <script type="application/ld+json">{jsonld}</script>' if jsonld else ""
     )
+    tabs = "\n        ".join(item(*n) for n in NAV)
+    book_current = ' aria-current="page"' if active == "book" else ""
+    cls = f' class="{body_class}"' if body_class else ""
     return f"""<!DOCTYPE html>
 <html lang="en" data-root="{root}">
 <head>
@@ -501,9 +532,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
   <title>{esc(title)}</title>
   <meta name="description" content="{esc(desc)}">
   <meta name="author" content="{esc(SITE['author'])}">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#22302b">
   <link rel="canonical" href="{url}">
   <meta property="og:type" content="{'profile' if canon == '' else 'article'}">
   <meta property="og:site_name" content="{esc(SITE['author'])}">
@@ -521,52 +550,112 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
   <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
   <link rel="alternate" type="application/atom+xml" title="Ben Collier: news" href="{root}feed.xml">
+  {ARM}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="{FONTS}">
+  <noscript><link rel="stylesheet" href="{FONTS}"></noscript>
   <link rel="stylesheet" href="{root}css/site.css">{ld}
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="wrap">
-    <header class="site{' home' if active == 'home' and canon == '' else ''}">
-      <a class="wordmark" href="{root}"><img class="mini-portrait" src="{root}assets/portrait-hedcut.png" width="360" height="360" alt=""><span>Ben Collier, PhD</span></a>
-      <nav class="primary" aria-label="Primary">
-        {item("courses/", "courses", "courses")}
-        {item("projects/", "coding with AI projects", "projects")}
-        {item("advising/", "advising", "advising")}
-        {item("consult/", "consulting", "consult")}
-        {item("cv/", "cv", "cv")}
-        {item("talks/", "talks", "talks")}
-        {item("travel/", "travel", "travel")}
-        {item("news/", "news", "news")}
-        {item("contact/", "contact", "contact")}
-        <a class="nav-cta" href="{root}book/"{' aria-current="page"' if active == "book" else ""}>Book a call</a>
-      </nav>
-    </header>
-    <main id="main">
-"""
-
-
-def footer(root: str) -> str:
-    return f"""    </main>
-    <footer class="site">
-      <div><a href="{root}consult/">Consulting</a> · <a href="{root}contact/">Contact</a></div>
-    </footer>
+<body{cls}>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="{root or './'}" aria-label="Ben Collier, PhD, home">
+      <span class="badge"><img src="{root}assets/portrait-hedcut.png" alt="" width="46" height="46" loading="lazy"><svg data-chart="ring"></svg></span>
+      <span>Ben Collier, PhD</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        {tabs}
+      </ul>
+    </nav>
+    <a class="sticky-cta" href="{root}book/"{book_current}><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
   </div>
-  <script src="{root}js/config.js"></script>
-  <script src="{root}js/site.js"></script>
-  <script src="{root}js/course-hero.js" defer></script>
-  <script src="{root}js/course-schedule.js" defer></script>
-  <script src="{root}js/news-visuals.js" defer></script>
-  <script src="{root}js/portrait-dock.js" defer></script>
+</header>
+
+<main id="main" class="sheet">
+{sheet_head(root, crumbs)}"""
+
+
+def footer(root: str, scripts: str = "") -> str:
+    return f"""</main>
+
+<footer class="foot">
+  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier</p>
+  <nav aria-label="Footer">
+    <a href="{root}consult/">Consulting</a>
+    <a href="{root}contact/">Contact</a>
+    <a href="{root}feed.xml">RSS</a>
+  </nav>
+</footer>
+<script src="{root}js/config.js"></script>
+<script src="{root}js/site.js"></script>
+<script src="{root}js/notebook.js" defer></script>{scripts}
 </body>
 </html>
 """
 
 
-def page(root, active, title, desc, canon, body, jsonld="") -> str:
-    return header(root, active, title, desc, canon, jsonld) + body + footer(root)
+def page(root, active, title, desc, canon, body, jsonld="", crumbs=None, body_class="", scripts="") -> str:
+    """crumbs: where the page is filed, for the sheet header. scripts: extra
+    page-specific <script> tags, appended after the shared ones."""
+    if crumbs is None and active not in ("home", ""):
+        label = next((n[1] for n in NAV if n[2] == active), active)
+        crumbs = [(label, None)]
+    return (header(root, active, title, desc, canon, jsonld, crumbs, body_class)
+            + body + footer(root, scripts))
+
+
+# ---------------------------------------------------------------------------
+# Notebook pieces shared by every page: hand-drawn underlines, numbered
+# sections, piles of taped slide prints.
+# ---------------------------------------------------------------------------
+
+def u_last(text: str, d: float = 0.3, cls: str = "u") -> str:
+    """Escape a heading and put a hand-drawn underline under its last word."""
+    head, _, last = text.rpartition(" ")
+    span = f'<span class="{cls}" data-d="{d}">{esc(last)}</span>'
+    return f"{esc(head)} {span}" if head else span
+
+
+def sec(no: int, sid: str, kicker: str, title: str, inner: str, cls: str = "", title_html: str = "") -> str:
+    """A numbered notebook section with a kicker and an underlined heading."""
+    kick = f'<p class="kicker">{kicker}</p>' if kicker else ""
+    return (f'\n  <section class="sec reveal{(" " + cls) if cls else ""}" aria-labelledby="{sid}">'
+            f'<span class="sec-no" aria-hidden="true">No. {no:02d}</span>{kick}'
+            f'<h2 id="{sid}">{title_html or u_last(title)}</h2>\n{inner}\n  </section>\n')
+
+
+def page_head(kicker: str, title: str, lede: str = "", extra: str = "", stamp: str = "") -> str:
+    """The opening block of an inside page: kicker, big underlined title, lede."""
+    st = f'<p class="stamp thunk" style="--d:.15s">{stamp}</p>' if stamp else ""
+    kick = f'<p class="kicker">{kicker}</p>' if kicker else ""
+    led = f'<p class="lede">{lede}</p>' if lede else ""
+    return (f'\n  <section class="page-head reveal">{st}{kick}<h1>{u_last(title, 0.4, "u u2")}</h1>'
+            f'{led}{extra}</section>\n')
+
+
+PRINT_ROT = [-2.5, 2, -1, 3, -3]
+
+
+def stack(srcs, label: str, tag: str = "", cls: str = "stack") -> str:
+    """A pile of taped prints. js/notebook.js lifts the top one off every few
+    seconds; without it the pile simply rests with the first print on top."""
+    prints = "".join(
+        f'<span class="print" style="--r:{PRINT_ROT[i % 5]}deg"><img src="{s}" alt="" width="320" height="180" loading="lazy" decoding="async"></span>'
+        for i, s in enumerate(srcs)
+    )
+    t = f'<span class="stack-tag">{esc(tag)}</span>' if tag else ""
+    return f'<span class="{cls}" role="img" aria-label="{esc(label)}"><span class="stack-tape"></span>{prints}{t}</span>'
+
+
+def sticky(href: str, big: str, sub: str = "", cls: str = "", rot: float = -3, d: float = 1, tape: bool = False) -> str:
+    """A sticky note that is a link. Lands with a small bounce when drawn."""
+    s = f'<span class="sub">{sub}</span>' if sub else ""
+    t = '<span class="tape tc"></span>' if tape else ""
+    return (f'<a class="sticky land{(" " + cls) if cls else ""}" href="{href}" style="--rot:{rot}deg;--d:{d}s">'
+            f'{t}<span class="big">{big}</span>{s}</a>')
 
 
 PERSONAL_EMAIL = "ben@collier.phd"
@@ -601,15 +690,34 @@ def course_name(c) -> str:
     return f"{c['number']} {c['title']}".strip()
 
 
-def course_card(c, root):
-    built = '<span class="badge built">Built</span>' if c["built"] else ""
-    return f"""<a class="card" href="{root}courses/{c['slug']}/">
-  <div class="thumb {c['color']}"><canvas data-hero="{c['hero']}" data-static aria-hidden="true"></canvas><span>{course_label(c)}</span></div>
-  <div class="body">
-    <div class="meta">{built}<span>{c['program']} · {c['school']}</span></div>
-    <h3>{c['title']}</h3>
-    <p>{c['one_liner']}</p>
-  </div>
+# The pen doodle in the corner of each course's index card.
+HERO_ICON = {"agents": "net", "network": "net", "vit": "vision", "teams": "org", "descent": "bowl",
+             "kmeans": "scatter", "charts": "bars", "brush": "bars", "galton": "bell", "pipeline": "flow"}
+CARD_ROT = [-1.4, 1, -0.7, 1.6, -1.1, 0.8, -1.6, 1.2]
+
+
+def course_level(c) -> str:
+    bits = [b for b in (c.get("program"), c.get("school")) if b]
+    return " · ".join(bits) or ERA_KICKER.get(c.get("era"), "")
+
+
+def course_card(c, root, i: int = 0):
+    """An index card for a course: number, level, a pile of its slides, title, one line."""
+    slides = course_visual_slides(c["slug"], 0)
+    pile = ""
+    if slides:
+        pile = stack([root + thumb_src(sl["src"]) for sl in slides],
+                     f"Slides from {course_name(c)}, starting with: {slides[0]['caption']}")
+    icon = HERO_ICON.get(c.get("hero"), "net")
+    doodle = f'<svg class="ic-doodle{" corner" if pile else ""}" data-chart="icon" data-icon="{icon}" data-d="{0.8 + 0.2 * (i % 4):.1f}"></svg>'
+    return f"""<a class="icard deal" href="{root}courses/{c['slug']}/" style="--rot:{CARD_ROT[i % len(CARD_ROT)]}deg;--d:{0.2 + 0.15 * (i % 4):.2f}s">
+  <span class="tape tc"></span>
+  <span class="ic-top"><span class="code">{esc(course_label(c))}</span><span class="lvl">{esc(course_level(c))}</span></span>
+  {pile}
+  <h3>{c['title']}</h3>
+  <p>{c['one_liner']}</p>
+  {doodle}
+  <span class="go">course page</span>
 </a>
 """
 
@@ -699,13 +807,17 @@ NEWS_VISUALS = {
 }
 
 NEWS_ICONS = {
-    # 24x24 line icons, stroked in the tile's text color.
+    # 24x24 line icons, drawn in pen on a small index card.
     "track": '<path d="M4 19c4-1 5-6 8-7s6 1 8-3"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="9" r="1.6"/><path d="M14 4l6 5-6 0"/>',
     "capstone": '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/><path d="M22 9v6"/>',
     "role": '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M3 13h18"/>',
     "summit": '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
 }
-ICON_COLORS = {"track": "c-navy", "capstone": "c-pine", "role": "c-ink", "summit": "c-clay"}
+
+# Phrases in news items that get a highlighter swipe.
+NEWS_MARKS = {"1.7 percent": "p", "$100 million of compute": "p", "The median was 20 percent": "p"}
+
+THUMB_ROT = [2, -2, 1.5, -1.5, 2.5, -1]
 
 
 def course_visual_slides(slug: str, offset: int):
@@ -723,32 +835,53 @@ def course_visual_slides(slug: str, offset: int):
 
 
 def news_visual(text: str, slugs, root: str, index: int, href: str) -> str:
+    """A taped picture beside a news item: the story's own image, a pile of
+    slides from the course it mentions (with the story image on top when there
+    is one), a video still, or a small pen icon card."""
     spec = next((v for k, v in NEWS_VISUALS.items() if k in text), None)
+    rot = THUMB_ROT[index % len(THUMB_ROT)]
+    course = next((c for c in linkable_courses() if slugs and c["slug"] == slugs[0]), None)
+    slides = course_visual_slides(course["slug"], index * 2) if course else []
+    tag_attrs = f'href="{esc(href)}" tabindex="-1"' if href else ""
+    if spec and spec.get("img") and slides and not spec.get("video"):
+        srcs = [root + spec["img"]] + [root + thumb_src(sl["src"]) for sl in slides[:4]]
+        pile = stack(srcs, f'{spec["alt"]}, then slides from {course_name(course)}', course_label(course), "stack news-stack")
+        el = "a" if href else "span"
+        return f'<{el} class="thumb has-stack" {tag_attrs} style="--rot:{rot}deg">{pile}</{el}>'
     if spec and spec.get("img"):
-        play = '<span class="play" aria-hidden="true"></span>' if spec.get("video") else ""
+        play = '<span class="vplay" aria-hidden="true"></span>' if spec.get("video") else ""
         inner = f'<img src="{root}{spec["img"]}" alt="{esc(spec["alt"])}" width="480" height="270" loading="lazy">{play}'
-        return f'<a class="news-vis photo" href="{esc(href or "#")}" tabindex="-1">{inner}</a>' if href else f'<div class="news-vis photo">{inner}</div>'
-    if not spec and slugs:
-        slides = course_visual_slides(slugs[0], index * 2)
-        if slides:
-            c = next(c for c in linkable_courses() if c["slug"] == slugs[0])
-            imgs = "".join(
-                f'<img src="{root}{thumb_src(s["src"])}" alt="{esc(s["caption"]) if i == 0 else ""}" width="320" height="180" loading="lazy" decoding="async"{" class=on" if i == 0 else ""}>'
-                for i, s in enumerate(slides)
-            )
-            return (f'<a class="news-vis slides" href="{root}courses/{c["slug"]}/" tabindex="-1" aria-label="Slides from {esc(course_name(c))}">'
-                    f'{imgs}<span class="tag {c["color"]}">{esc(course_label(c))}</span></a>')
+        el = "a" if href else "span"
+        return f'<{el} class="thumb" {tag_attrs} style="--rot:{rot}deg">{inner}</{el}>'
+    if slides:
+        srcs = [root + thumb_src(sl["src"]) for sl in slides]
+        pile = stack(srcs, f"Slides from {course_name(course)}", course_label(course), "stack news-stack")
+        return (f'<a class="thumb has-stack" href="{root}courses/{course["slug"]}/" tabindex="-1" style="--rot:{rot}deg">{pile}</a>')
     if spec and spec.get("icon"):
         icon = spec["icon"]
-        return (f'<div class="news-vis icon {ICON_COLORS[icon]}" aria-hidden="true">'
+        return (f'<span class="thumb icon" aria-hidden="true" style="--rot:{rot}deg">'
                 f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{NEWS_ICONS[icon]}</svg>'
-                f'<span>{esc(spec["label"])}</span></div>')
+                f'<span>{esc(spec["label"])}</span></span>')
     return ""
 
 
+SHORT_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def log_date(iso: str) -> str:
+    """2026-06-10 -> Jun 10, 2026. 2026-03 -> Mar 2026."""
+    parts = iso.split("-")
+    if len(parts) == 3:
+        return f"{SHORT_MONTHS[int(parts[1]) - 1]} {int(parts[2])}, {parts[0]}"
+    if len(parts) == 2:
+        return f"{SHORT_MONTHS[int(parts[1]) - 1]} {parts[0]}"
+    return iso
+
+
 def news_items(limit=None, root=""):
+    """The dated log: date in red pen, the note, a taped picture on the right."""
     items = NEWS if limit is None else NEWS[:limit]
-    out = ['<ol class="feed news">']
+    out = ['<ol class="log">']
     for index, (iso, text, *rest) in enumerate(items):
         more = ""
         href = ""
@@ -758,10 +891,13 @@ def news_items(limit=None, root=""):
             more = f' <a href="{esc(href)}">{label}</a>'
         slugs = []
         body = link_courses(text, root, slugs)
+        for phrase, colour in NEWS_MARKS.items():
+            body = body.replace(phrase, f'<mark class="{colour}">{phrase}</mark>', 1)
         visual = news_visual(text, slugs, root, index, href)
+        d = f' style="--d:{0.3 + 0.15 * index:.2f}s"' if index < 8 else ""
         out.append(
-            f'<li{" class=has-vis" if visual else ""}><time datetime="{iso}">{human_date(iso)}</time>'
-            f'<div class="post"><p>{body}{more}</p></div>{visual}</li>'
+            f'<li class="fade"{d}><time datetime="{iso}">{log_date(iso)}</time>'
+            f'<p>{body}{more}</p>{visual}</li>'
         )
     out.append("</ol>")
     return "\n".join(out)
@@ -820,46 +956,215 @@ def course_jsonld(c) -> str:
     return json.dumps(data, indent=2)
 
 
+# Where the problems come from: the sketched career timeline on the home page.
+# (label, start, end or 0 for ongoing, colour, full name for the table version)
+CAREER = [
+    ("CMU Qatar, teaching + exec ed", 2012, 2016, "#cdb8e8", "Carnegie Mellon University in Qatar, Assistant Teaching Professor and co-director of executive education"),
+    ("UPMC's Pensiamo", 2016, 2020, "#f3a391", "UPMC's Pensiamo, Senior Director of Data Science"),
+    ("Hot Metal AI, my practice", 2018, 0, "#f6c453", "Hot Metal AI, founder"),
+    ("Duolingo", 2020, 2023, "#a9d8a1", "Duolingo, Staff Data Scientist"),
+    ("Tepper, Carnegie Mellon", 2023, 0, "#9ccbea", "Tepper School of Business, Carnegie Mellon"),
+    ("gAIm Systems", 2025, 0, "#8ed3c7", "gAIm Systems, Senior Director of AI and Data Science"),
+]
+
+NUMBER_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"]
+
+
+def number_word(n: int) -> str:
+    return NUMBER_WORDS[n] if 0 <= n < len(NUMBER_WORDS) else str(n)
+
+
+def season_of(iso: str):
+    y, *rest = iso.split("-")
+    if not rest:
+        return None
+    m = int(rest[0])
+    return y, "spring" if m <= 5 else "summer" if m <= 8 else "fall"
+
+
+def news_note(items) -> str:
+    """A margin note when the latest items all come from one term."""
+    seasons = {season_of(i[0]) for i in items}
+    if len(seasons) != 1 or None in seasons:
+        return ""
+    (y, term), = seasons
+    when = f"this {term}" if season_of(BUILT[:7]) == (y, term) else f"{term} {y}"
+    return f'<p class="note news-note fade" style="--d:.8s">all from {when}</p>'
+
+
 def build_home():
     built = [c for c in COURSES if c["built"]]
-    cards = "\n".join(course_card(c, "") for c in built)
+    cards = "\n".join(course_card(c, "", i) for i, c in enumerate(built))
+    n_built, n_taught = len(built), len(COURSES)
+    n_adv = len(load_json("advising.json")["projects"])
+    rows = json.dumps([[a, b, c, d] for a, b, c, d, _ in CAREER])
+    table = "".join(f"<tr><th>{esc(full)}</th><td>{a} to {b or 'now'}</td></tr>" for _, a, b, _, full in CAREER)
+    latest = NEWS[:5]
     body = f"""
-      <section class="hero">
-        <div class="portrait-morph">
-          <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier" fetchpriority="high">
-          <img class="portrait hedcut" src="assets/portrait-hedcut.png" width="360" height="360" alt="">
+  <section class="hero reveal" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <p class="stamp thunk" style="--d:.15s">Assistant Teaching Professor of Business Analytics</p>
+      <h1 id="hero-title">Ben Collier</h1>
+      <p class="lede">I teach <mark style="--d:.5s">AI and business analytics</mark> at Carnegie Mellon's Tepper School, and help companies <span class="u u2" data-d="1.2">put them to work</span>.</p>
+      <p class="hero-more">The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the <span class="circ" data-d="1.7">notebook</span>.</p>
+      <div class="cta-row">
+        {sticky("book/", 'Book a free <span class="nw">15-minute call &rarr;</span>', rot=-3, d=1)}
+        <a class="go" href="consult/">Consulting and custom education</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <figure class="polaroid portrait-morph" style="--rot:3deg">
+        <span class="tape tl"></span><span class="tape tr"></span>
+        <div class="ph">
+          <img class="photo" src="assets/portrait.jpg" alt="Ben Collier, smiling, in a tweed jacket and red tie" width="500" height="500" fetchpriority="high">
+          <img class="hedcut" src="assets/portrait-hedcut.png" alt="" width="360" height="360" loading="lazy">
+        </div>
+        <figcaption>hi, I'm Ben!</figcaption>
+      </figure>
+      <figure class="figcard needs-js" style="--rot:-3.5deg">
+        <span class="tape tc"></span>
+        <svg data-chart="kmeans" data-d="0.8"></svg>
+        <figcaption class="figcap">fig. 1 &middot; k-means clustering, from Data Mining</figcaption>
+      </figure>
+      <p class="note hero-note fade needs-js" style="--d:3.4s">&uarr; three clusters, no labels needed</p>
+    </div>
+  </section>
+
+  <section class="sec bio reveal" aria-labelledby="bio-title">
+    <span class="sec-no" aria-hidden="true">No. 02</span>
+    <p class="kicker">About</p>
+    <h2 id="bio-title">From industry to the <span class="u" data-d=".3">classroom</span>, and back</h2>
+    <div class="bio-grid">
+      <div class="prose">
+        <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>.</p>
+        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the <mark class="b" style="--d:.6s">founding data scientist</mark> on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. <mark class="g" style="--d:1s">The problems I bring into class come from that work.</mark></p>
+        <p>I also advise MS in Business Analytics capstone teams. Since September 2026 I have been the faculty coordinator of Tepper's <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>, and starting in Spring 2027 I also advise its capstone teams.</p>
+      </div>
+      <figure class="tl-fig">
+        <svg data-chart="timeline" data-d="0.5" data-rows="{esc(rows)}"></svg>
+        <figcaption class="figcap needs-js">fig. 2 &middot; where the problems come from, 2012 to now</figcaption>
+        <table class="tl-table"><caption>Career timeline</caption>{table}</table>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec reveal" aria-labelledby="stats-title">
+    <span class="sec-no" aria-hidden="true">No. 03</span>
+    <p class="kicker">By the numbers</p>
+    <h2 id="stats-title">So far, in <span class="u" data-d=".3">tally marks</span></h2>
+    <div class="stats">
+      <a class="stat" href="courses/#built">
+        <span class="n"><span class="count" data-to="{n_built}" data-d=".2">{n_built}</span></span>
+        <svg data-chart="tally" data-n="{n_built}" data-d="0.3"></svg>
+        <span class="l">courses I designed from scratch</span>
+        <span class="more">see them</span>
+      </a>
+      <a class="stat" href="courses/">
+        <span class="n"><span class="count" data-to="{n_taught}" data-d=".35">{n_taught}</span></span>
+        <svg data-chart="tally" data-n="{n_taught}" data-d="0.6"></svg>
+        <span class="l">courses taught at Carnegie Mellon since 2023</span>
+        <span class="more">all courses</span>
+      </a>
+      <a class="stat" href="advising/">
+        <span class="n"><span class="count" data-to="{n_adv}" data-d=".5">{n_adv}</span></span>
+        <svg data-chart="tally" data-n="{n_adv}" data-d="1.1"></svg>
+        <span class="l">capstones and independent studies advised since 2024</span>
+        <span class="more">advising</span>
+      </a>
+      <a class="stat award" href="cv/#honors-and-awards">
+        <span class="n"><span class="thunk yr" style="--d:1.6s">2026</span></span>
+        <svg data-chart="award" data-d="1.8"></svg>
+        <span class="l">George Leland Bach Teaching Award, voted by the MBA class</span>
+        <span class="more">on the cv</span>
+      </a>
+    </div>
+    <div class="mnote stat-note hide-sm fade" style="--d:2.6s">
+      <p class="note red">voted by students!</p>
+      <svg class="arrow" width="70" height="60" data-arrow="8 6 52 50 -14 10" data-d="2.8" style="left:150px;top:6px;color:var(--red)"></svg>
+    </div>
+  </section>
+
+  <section class="sec reveal" aria-labelledby="courses-title">
+    <span class="sec-no" aria-hidden="true">No. 04</span>
+    <p class="kicker">Teaching</p>
+    <h2 id="courses-title">Courses I <span class="u" data-d=".3">built</span></h2>
+    <div class="mnote courses-note fade" style="--d:.9s">
+      <p class="note">all {number_word(n_built)} designed<br>from scratch</p>
+      <svg class="arrow" width="90" height="70" data-arrow="10 10 70 58 -18 11" data-d="1.1"></svg>
+    </div>
+    <div class="cards">
+{cards}
+    </div>
+    <p class="after"><a class="go" href="courses/">All courses</a></p>
+  </section>
+
+  <section class="sec reveal" aria-labelledby="work-title">
+    <span class="sec-no" aria-hidden="true">No. 05</span>
+    <div class="pad">
+      <p class="kicker">Consulting and custom education</p>
+      <h2 id="work-title">Work with <span class="u" data-d=".3">me</span></h2>
+      <p class="pad-intro">I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, <mark style="--d:.7s">Hot Metal AI</mark>.</p>
+      <div class="pad-grid">
+        <div>
+          <h3>Reviews and builds</h3>
+          <ul class="checks">
+            <li><svg data-chart="check" data-d="0.9"></svg><span><b>AI use-case review.</b> About two weeks. A written go or no-go on the projects you are considering, with a build plan for the ones worth doing.</span></li>
+            <li><svg data-chart="check" data-d="1.2"></svg><span><b>Model or metric review.</b> About one week. I read the code, data, and evaluation, and tell you where it breaks.</span></li>
+            <li><svg data-chart="check" data-d="1.5"></svg><span><b>Hands-on build.</b> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</span></li>
+          </ul>
         </div>
         <div>
-          <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
-          <h1>Ben Collier</h1>
-          <p class="lede">I teach AI and business analytics at Carnegie Mellon's Tepper School, and help companies put them to work.</p>
+          <h3>Training built on your data</h3>
+          <p>Workshops and courses for technical teams and executives, built around your own data and problems. Most of the time is spent in hands-on labs.</p>
+          <ul class="dashes">
+            <li>One- to three-day workshops, on site or online</li>
+            <li>Multi-week programs for technology leaders and executives</li>
+            <li>Recorded, self-paced courses</li>
+          </ul>
+          <p class="small">Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</p>
         </div>
-      </section>
-
-      <div class="bio">
-        <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams. Since September 2026 I have been the faculty coordinator of Tepper's <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>, and starting in Spring 2027 I also advise its capstone teams.</p>
+        <div class="pad-cta">
+          {sticky("book/", "Book a call &rarr;", "Most engagements start with a free 15-minute call.", "pink", 3, 1.4, True)}
+          <a class="go" href="consult/">More on consulting</a>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="book-row">
-        {book_call("")}
-        <a class="btn" href="consult/">Consulting and custom education</a>
+  <section class="sec reveal" aria-labelledby="news-title">
+    <span class="sec-no" aria-hidden="true">No. 06</span>
+    <p class="kicker">News</p>
+    <h2 id="news-title">Recent <span class="u" data-d=".3">entries</span></h2>
+    {news_note(latest)}
+    {news_items(5)}
+    <p class="after"><a class="go" href="news/">All news</a> &nbsp; <a class="go" href="cv/">Full CV</a></p>
+  </section>
+
+  <section class="sec talks reveal" aria-labelledby="talks-title">
+    <span class="sec-no" aria-hidden="true">No. 07</span>
+    <div class="talks-grid">
+      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=UxBPkez6Mc4" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the Faculty Spotlight video on YouTube, 11 minutes">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <span class="ph"><img src="assets/talks/faculty-spotlight-2026.jpg" alt="Ben Collier in conversation on a bench in Tepper's atrium, gesturing as he explains" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">Faculty Spotlight &middot; April 30, 2026 &middot; 11 min</span>
+      </a>
+      <div class="talks-text">
+        <p class="kicker">Talks</p>
+        <h2 id="talks-title">Business analytics as a <span class="u u2" data-d=".5">decathlon</span></h2>
+        <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
+        <div class="also">
+          <p class="note">also on the talks page</p>
+          <ul>
+            <li><span class="when">Aug 2026 &middot; Tepper AI-Exchange</span>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</li>
+            <li><span class="when">Jun 2025 &middot; Kellogg, Northwestern</span>AI Data Visualization Coach</li>
+          </ul>
+          <p><a class="go" href="talks/">All talks</a></p>
+        </div>
       </div>
-
-      <ul class="stats linked">
-        <li><a href="courses/#built"><strong>{sum(1 for c in COURSES if c["built"])}</strong><span>courses I designed from scratch</span></a></li>
-        <li><a href="courses/"><strong>{len(COURSES)}</strong><span>courses taught at Carnegie Mellon since 2023</span></a></li>
-        <li><a href="advising/"><strong>{len(load_json("advising.json")["projects"])}</strong><span>capstones and independent studies advised since 2024</span></a></li>
-        <li><a href="cv/#honors-and-awards"><strong>2026</strong><span>George Leland Bach Teaching Award, voted by the MBA class</span></a></li>
-      </ul>
-
-      <h2>Courses I built</h2>
-      <div class="grid" style="margin-top:1rem">{cards}</div>
-      <p><a href="courses/">All courses</a></p>
-
-      <h2>News</h2>
-      {news_items(5)}
-      <p><a href="news/">All news</a> · <a href="cv/">Full CV</a></p>
+    </div>
+  </section>
 """
     write(
         "index.html",
@@ -871,11 +1176,12 @@ def build_home():
             "",
             body,
             person_jsonld(),
+            body_class="home",
         ),
     )
 
 
-def education_sections(root: str) -> str:
+def education_sections(root: str, no: int) -> str:
     """Executive education first, as the selling section, then the CMU Qatar
     archive. Both come from data/course_schedules files with a meta block, and
     the headline numbers from data/education_stats.json when it exists."""
@@ -886,47 +1192,30 @@ def education_sections(root: str) -> str:
     stats = json.loads(stats_file.read_text(encoding="utf-8")) if stats_file.exists() else {}
     if execs or stats:
         tiles = "".join(
-            f'<li><strong>{esc(n)}</strong><span>{esc(label)}</span></li>' for n, label in stats.get("stats", [])
+            f'<li class="stat"><span class="n">{esc(n)}</span><span class="l">{esc(label)}</span></li>' for n, label in stats.get("stats", [])
         )
-        cards = "\n".join(course_card(c, root) for c in execs)
-        out += f"""
-      <section class="edu-band" id="executive">
-        <p class="kicker">For organizations</p>
-        <h2>Executive and custom education</h2>
-        <p class="prose-width">{stats.get("intro", "Programs I have designed and taught for executives and company teams.")}</p>
-        {f'<ul class="stats">{tiles}</ul>' if tiles else ""}
-        <div class="grid">{cards}</div>
-        <p class="edu-cta"><a class="btn primary" href="{root}consult/#education">Plan a program for your team</a></p>
-      </section>
-"""
+        cards = "\n".join(course_card(c, root, i) for i, c in enumerate(execs))
+        inner = f"""    <p class="prose">{stats.get("intro", "Programs I have designed and taught for executives and company teams.")}</p>
+    {f'<ul class="stats static-stats">{tiles}</ul>' if tiles else ""}
+    <div class="cards">{cards}</div>
+    <div class="cta-row">{sticky(f"{root}consult/#education", "Plan a program for your team &rarr;", rot=-2, d=.4)}</div>"""
+        out += sec(no, "executive", "For organizations", "Executive and custom education", inner)
+        no += 1
     if cmuq:
-        cards = "\n".join(course_card(c, root) for c in cmuq)
-        out += f"""
-      <section class="era" id="cmu-qatar">
-        <p class="kicker">Earlier teaching</p>
-        <h2>Organizational behavior at CMU Qatar, 2012 to 2016</h2>
-        <p class="prose-width">My first appointment at Carnegie Mellon was as Assistant Teaching Professor of Organizational Behavior at the Qatar campus, where I also co-directed executive and continuing education. These are the undergraduate courses I taught there, each with its full schedule and slides.</p>
-        <div class="grid">{cards}</div>
-      </section>
-"""
+        cards = "\n".join(course_card(c, root, i) for i, c in enumerate(cmuq))
+        inner = f"""    <p class="prose">My first appointment at Carnegie Mellon was as Assistant Teaching Professor of Organizational Behavior at the Qatar campus, where I also co-directed executive and continuing education. These are the undergraduate courses I taught there, each with its full schedule and slides.</p>
+    <div class="cards era">{cards}</div>"""
+        out += sec(no, "cmu-qatar", "Earlier teaching", "Organizational behavior at CMU Qatar, 2012 to 2016", inner)
     return out
 
 
 def build_courses_index():
-    built = "\n".join(course_card(c, "../") for c in COURSES if c["built"])
-    taught = "\n".join(course_card(c, "../") for c in COURSES if not c["built"])
-    body = f"""
-      <p class="kicker">Teaching</p>
-      <h1>Courses</h1>
-      <p class="lede">Courses I designed from scratch, then courses I took over and rebuilt.</p>
-
-      <h2 id="built">Courses I built</h2>
-      <div class="grid">{built}</div>
-
-      <h2>Courses I took over and rebuilt</h2>
-      <div class="grid">{taught}</div>
-{education_sections("../")}
-"""
+    built = "\n".join(course_card(c, "../", i) for i, c in enumerate(c for c in COURSES if c["built"]))
+    taught = "\n".join(course_card(c, "../", i) for i, c in enumerate(c for c in COURSES if not c["built"]))
+    body = page_head("Teaching", "Courses", "Courses I designed from scratch, then courses I took over and rebuilt.")
+    body += sec(2, "built", "Designed from scratch", "Courses I built", f'    <div class="cards">{built}</div>')
+    body += sec(3, "taught", "Taken over and rebuilt", "Courses I took over and rebuilt", f'    <div class="cards">{taught}</div>')
+    body += education_sections("../", 4)
     write(
         "courses/index.html",
         page(
@@ -1001,7 +1290,7 @@ def course_kicker(c) -> str:
 
 
 def scale_note(c) -> str:
-    return f'<p class="scale-note">{esc(c["scale"])}</p>\n        ' if c.get("scale") else ""
+    return f'<p class="scale-note note red">{esc(c["scale"])}</p>\n      ' if c.get("scale") else ""
 
 
 def load_schedule(slug: str):
@@ -1020,76 +1309,198 @@ def thumb_src(src: str) -> str:
     return src[: -len(".webp")] + "-t.webp"
 
 
-def schedule_section(s, root: str) -> str:
-    """The week-by-week table, with a slide stage that js/course-schedule.js
-    plays for whichever session is in view. Every row with slides also carries
-    its own thumbnail strip, so the page reads fine without JavaScript."""
+# Notebook touches for particular course pages. Every phrase here is already
+# in the course's own copy above; this only says which words get a highlighter
+# or an underline, which slides are taped into the hero, and which figure sits
+# beside "How the course works".
+COURSE_INK = {
+    "45-884": {
+        "mark": "knowing when the output is ready for a decision",
+        "u": "measuring instrument",
+        "facts": ["No prerequisites", "No model training", "Labs in Python"],
+        "note": "treat the model as an instrument:<br>what did it measure?",
+        "hero": ["s01-1", "s06-3", "s10-1"],
+        "fig": "gens",
+        "fig_cap": "one photograph, three generations of vision",
+        "story_mark": "Every lab compares models.",
+        "labs_note": "all in Python",
+        "projects_mark": "seven of the nineteen projects were built with real companies or organizations, and three are already in use.",
+        "history_intro": 'It covers the data most business analytics courses skip: <mark class="b" style="--d:.5s">text, images, and the output of language models.</mark>',
+        "timeline": [
+            ("Dec 2024", "Began building the course."),
+            ("Fall 2025", "First taught, to MBA and other master's students."),
+            ("Summer 2026", "Rebuilt for a part-time format, with one live session a week and a set of hands-on videos I recorded for each module. They run from a first Python lesson through retrieval over company filings, computer vision, and agent workflows."),
+            ("Fall 2026", "Moved agentic AI earlier in the term. Students now get a summary and a cleaned transcript after each class."),
+        ],
+    },
+    "70-445": {"mark": "how to explain the difference to the people paying for it", "u": "AI agents",
+               "story_mark": "Students build a customer support team of AI agents"},
+    "70-377": {"mark": "using evidence instead of instinct", "u": "OKRs"},
+    "msba-math-skills-workshop": {"mark": "before the quantitative core begins", "u": "already in place"},
+    "45-851": {"mark": "deciding whether to trust it", "u": "workflow"},
+    "45-885": {"mark": "designed to change a decision", "u": "spot a graphic that misleads"},
+}
+
+KIND_CLASS = {"exercise": "ex", "case": "case", "break": "off", "presentations": "pres"}
+SLIDE_ROT = [-5, 4, -1.5]
+LAZY = ' loading="lazy"'
+
+
+def ink_phrase(html: str, phrase, tag: str) -> str:
+    """Wrap the first occurrence of phrase in a highlighter or underline."""
+    if not phrase or phrase not in html:
+        return html
+    if tag == "mark":
+        return html.replace(phrase, f'<mark style="--d:.7s">{phrase}</mark>', 1)
+    if tag == "mark-g":
+        return html.replace(phrase, f'<mark class="g" style="--d:.6s">{phrase}</mark>', 1)
+    return html.replace(phrase, f'<span class="u" data-d="1.3">{phrase}</span>', 1)
+
+
+def session_rows(s):
+    return [r for r in (s or {}).get("schedule", []) if r.get("slides")]
+
+
+def hero_slides(c, s):
+    """Three slides for the course hero: from the start, the middle, and the end of the term."""
+    rows = session_rows(s)
+    every = {sl["src"].rsplit("/", 1)[-1][:-5]: sl for r in rows for sl in r["slides"]}
+    want = COURSE_INK.get(c["slug"], {}).get("hero")
+    if want:
+        return [every[k] for k in want if k in every]
+    if not rows:
+        return []
+    picks, seen = [], set()
+    for ri, si in ((0, 0), (len(rows) // 2, 2), (len(rows) - 1, 0), (0, 2), (0, 4)):
+        r = rows[ri]["slides"]
+        sl = r[min(si, len(r) - 1)]
+        if sl["src"] not in seen:
+            seen.add(sl["src"])
+            picks.append(sl)
+        if len(picks) == 3:
+            break
+    return picks
+
+
+def schedule_section(s, root: str, no: int) -> str:
+    """The week-by-week list, with a projector that js/course-schedule.js keeps
+    on whichever session is in view. Every row with slides carries its own
+    thumbnail strip, shown on phones and whenever the script is not running."""
     unit = s.get("unit_label", "Week")
-    rows = []
+    title = {"Day": "Day by day", "Session": "Session by session"}.get(unit, "Week by week")
+    rows, prev, k = [], object(), 0
     for r in s["schedule"]:
         if "part" in r:
-            rows.append(f'<li class="sched-part">{esc(r["part"])}</li>')
+            rows.append(f'<li class="wk-part">{esc(r["part"])}</li>')
             continue
         kind = r.get("kind", "lecture")
         tag = KIND_TAGS.get(kind)
-        tag_html = f' <span class="sched-tag {kind}">{tag}</span>' if tag else ""
-        note = f'<span class="sched-note">{esc(r["note"])}</span>' if r.get("note") else ""
+        tag_html = f'<span class="wk-tag {KIND_CLASS.get(kind, "")}">{tag}</span>' if tag else ""
+        note = f'<span class="wk-note">{esc(r["note"])}</span>' if r.get("note") else ""
         when = esc(r.get("label") or short_date(r["date"]))
-        week = f'{unit} {r["week"]}' if r.get("week") else ""
-        strip = ""
+        week = r.get("week")
+        mod = f'{unit[0]}{week}' if week else ""
+        newmod = week != prev
+        prev = week
+        strip = has = ""
         if r.get("slides"):
             imgs = "".join(
                 f'<img src="{root}{thumb_src(sl["src"])}" data-full="{root}{sl["src"]}" data-caption="{esc(sl["caption"])}" '
                 f'alt="{esc(sl["caption"])}" width="320" height="180" loading="lazy" decoding="async">'
                 for sl in r["slides"]
             )
-            strip = f'<div class="sched-strip">{imgs}</div>'
-        cls = f"sched-row {kind}" + (" has-slides" if r.get("slides") else "")
+            strip = f'<span class="wk-strip">{imgs}</span>'
+            has = f'<span class="wk-has" aria-hidden="true">{len(r["slides"])} slides</span>'
+        cls = "wk fade" + (" newmod" if newmod else "") + (" off" if kind == "break" else "") + (" has-slides" if r.get("slides") else "")
         tab = ' tabindex="0"' if r.get("slides") else ""
         rows.append(
-            f'<li class="{cls}" data-date="{r["date"]}"{tab}>'
-            f'<div class="sched-when"><time datetime="{r["date"]}">{when}</time><span>{week}</span></div>'
-            f'<div class="sched-what"><span class="sched-topic">{esc(r["topic"])}</span>{tag_html}{note}{strip}</div>'
-            f"</li>"
+            f'<li class="{cls}" style="--d:{min(1.2, 0.1 + 0.05 * k):.2f}s" data-date="{r["date"]}"{tab}>'
+            f'<time datetime="{r["date"]}">{when}</time><span class="wk-m">{mod}</span>'
+            f'<span class="wk-body"><span class="wk-t">{esc(r["topic"])}</span>{tag_html}{has}{note}{strip}</span></li>'
         )
-    first = next((r for r in s["schedule"] if r.get("slides")), None)
-    stage = ""
+        k += 1
+    first = next(iter(session_rows(s)), None)
+    projector, intro = "", ""
     if first:
         sl = first["slides"][0]
-        stage = f"""<figure class="stage" aria-label="Slides from the session in view">
-          <div class="stage-frame">
-            <img class="stage-img is-on" src="{root}{sl['src']}" alt="{esc(sl['caption'])}" width="1280" height="720">
-            <img class="stage-img" alt="" width="1280" height="720" aria-hidden="true">
-          </div>
-          <figcaption>
-            <span class="stage-when">{esc(short_date(first['date']))}</span>
-            <strong class="stage-topic">{esc(first['topic'])}</strong>
-            <span class="stage-caption" aria-live="polite">{esc(sl['caption'])}</span>
-            <span class="stage-pips" role="group" aria-label="Choose a slide"></span>
-          </figcaption>
-        </figure>"""
-    return f"""
-      <section class="schedule" data-schedule>
-        <h2>Week by week</h2>
-        <p class="muted">{esc(s['term'])} · {esc(s['meets'])}. Scroll the schedule and the slides follow along: five from each session, picked from the decks I taught from.</p>
-        <div class="sched-grid">
-          <ol class="sched-list">{''.join(rows)}</ol>
-          {stage}
+        when = esc(first.get("label") or short_date(first["date"]))
+        projector = f"""      <aside class="projector" aria-label="Slides from the selected session">
+        <div class="proj-frame">
+          <span class="tape tr"></span>
+          <img class="proj-main" src="{root}{sl['src']}" alt="{esc(sl['caption'])}" width="1280" height="720" loading="lazy">
         </div>
-      </section>
-"""
+        <p class="proj-cap"><b>{when}</b> <span class="proj-topic">{esc(first['topic'])}</span></p>
+        <p class="proj-say" aria-live="polite">{esc(sl['caption'])}</p>
+        <div class="proj-strip" role="group" aria-label="Choose a slide"></div>
+        <p class="note proj-note">hover a session,<br>or just keep scrolling</p>
+      </aside>"""
+        intro = '    <p class="prose muted">Scroll the schedule and the slides follow along: five from each session, picked from the decks I taught from.</p>\n'
+    inner = f"""{intro}    <div class="sched{'' if first else ' solo'}" data-schedule>
+      <ol class="weeks">{''.join(rows)}</ol>
+{projector}
+    </div>"""
+    return sec(no, "wk-title", f"{esc(s['term'])} &middot; {esc(s['meets'])}", title, inner)
 
 
-def assignments_section(s) -> str:
-    if not s or not s.get("assignments"):
+PCT = re.compile(r"^(?:(.+?)\s)?(\d+)%$")
+
+
+def assignments_section(s, no: int, fig: int, labs_note: str = "") -> str:
+    """Weights as a hand-drawn bar chart, the weighted pieces as index cards,
+    and any group (Labs 20%, Projects 40%) as a row of cards of its own."""
+    items = (s or {}).get("assignments") or []
+    if not items:
         return ""
-    items = "".join(
-        f'<li><div class="asg-head"><strong>{esc(a["name"])}</strong>'
-        + (f'<span class="asg-weight">{esc(a["weight"])}</span>' if a.get("weight") else "")
-        + f'</div><p>{esc(a["description"])}</p></li>'
-        for a in s["assignments"]
+    groups, singles, bars, cur = [], [], [], None
+    for a in items:
+        w = (a.get("weight") or "").strip()
+        m = PCT.match(w)
+        if m and m.group(1):
+            cur = {"name": m.group(1), "pct": int(m.group(2)), "items": [a]}
+            groups.append(cur)
+            bars.append((cur["name"], int(m.group(2))))
+            continue
+        if not w and cur is not None:
+            cur["items"].append(a)
+            continue
+        cur = None
+        if m:
+            bars.append((a["name"], int(m.group(2))))
+        singles.append((a, w))
+    rots = [-1, 0.8, -0.5, 1.1, -0.9, 0.6]
+    cards = "".join(
+        f'<article class="acard deal" style="--rot:{rots[i % 6]}deg;--d:{0.3 + 0.15 * (i % 6):.2f}s"><h3><span>{esc(a["name"])}</span>'
+        + (f' <span class="pct{"" if PCT.match(w) else " soft"}">{esc(w)}</span>' if w else "")
+        + f'</h3><p>{esc(a["description"])}</p></article>'
+        for i, (a, w) in enumerate(singles)
     )
-    return f'        <h2>Major assignments</h2>\n        <ul class="assignments">{items}</ul>\n'
+    chart = ""
+    if len(bars) >= 2:
+        top = max(v for _, v in bars)
+        rows = "".join(
+            f'<li class="bar-row"><span class="bl"><b>{esc(n)}</b></span><span class="bar-val">{v}%</span>'
+            f'<svg class="bar" data-chart="bar" data-v="{v}" data-max="{top}" data-label="{v}%" data-i="{20 + i}" data-d="{0.3 + 0.2 * i:.2f}" data-color="var(--red)"></svg></li>'
+            for i, (n, v) in enumerate(bars)
+        )
+        chart = (f'<figure class="weights"><ul class="bars">{rows}</ul>'
+                 f'<figcaption class="figcap">fig. {fig} &middot; weight of each major assignment in the grade</figcaption></figure>')
+    top_part = ""
+    if chart or cards:
+        top_part = (f'    <div class="as-grid">{chart}<div class="as-cards">{cards}</div></div>' if chart
+                    else f'    <div class="as-cards wide">{cards}</div>')
+    group_html = ""
+    for g in groups:
+        labs = ""
+        for i, a in enumerate(g["items"]):
+            head, sep, rest = a["name"].partition(": ")
+            no_html, h4 = (f'<span class="lab-no">{esc(head)}</span>', rest) if sep else ("", a["name"])
+            labs += (f'<article class="lab deal" style="--rot:{[-1.2, 0.9, -0.6, 1.3][i % 4]}deg;--d:{0.3 + 0.15 * i:.2f}s">'
+                     f'{no_html}<h4>{esc(h4)}</h4><p>{esc(a["description"])}</p></article>')
+        n = len(g["items"])
+        note = f'{number_word(n)} {g["name"].lower()}' + (f", {labs_note}" if labs_note else "")
+        group_html += (f'\n    <h3 class="labs-h">{esc(g["name"])} <span class="pct">{g["pct"]}%</span> <span class="note">{note}</span></h3>'
+                       f'\n    <div class="labs">{labs}</div>')
+    return sec(no, "as-title", "What students hand in", "Major assignments", top_part + group_html)
 
 
 def project_list(s) -> str:
@@ -1098,7 +1509,7 @@ def project_list(s) -> str:
     if not groups:
         return ""
     out = []
-    for i, g in enumerate(groups):
+    for g in groups:
         items = "".join(
             f'<li><strong>{esc(p["subject"])}</strong>'
             + (f'. {esc(p["description"])}' if p.get("description") else "")
@@ -1106,90 +1517,175 @@ def project_list(s) -> str:
             + "</li>"
             for p in g["items"]
         )
-        open_attr = " open" if i == 0 else ""
+        n = len(g["items"])
         out.append(
-            f'<details class="proj-term"{open_attr}><summary>{esc(g["term"])} '
-            f'<span class="count">{len(g["items"])} projects</span></summary><ul>{items}</ul></details>'
+            f'<details class="proj-term"><summary><span class="term">{esc(g["term"])}</span> '
+            f'<span class="pcount">{n} project{"" if n == 1 else "s"}</span></summary><ul>{items}</ul></details>'
         )
-    return '        <p class="muted">Every project, by term.</p>\n        ' + "\n        ".join(out) + "\n"
+    return '    <p class="muted every">Every project, by term.</p>\n    <div class="terms">' + "".join(out) + "</div>\n"
+
+
+BAR_COLORS = ["var(--pen)", "var(--red)", "#2e7d4f", "#7a4fb0"]
+
+
+def course_figure(c, s, fig: int, root: str) -> str:
+    """The figure beside "How the course works": a drawn diagram where there is
+    one, the course's worked exercise, or one slide taped to the page."""
+    ink = COURSE_INK.get(c["slug"], {})
+    if ink.get("fig"):
+        return (f'<figure class="figcard gens-card needs-js" style="--rot:1.5deg"><span class="tape tc"></span>'
+                f'<svg data-chart="{ink["fig"]}" data-d="0.5"></svg>'
+                f'<figcaption class="figcap">fig. {fig} &middot; {ink["fig_cap"]}</figcaption></figure>')
+    if c.get("panel"):
+        return f'<div class="figcard panel-card" style="--rot:1.2deg"><span class="tape tc"></span>{c["panel"]}</div>'
+    rows = session_rows(s)
+    if not rows:
+        return ""
+    used = {sl["src"] for sl in hero_slides(c, s)}
+    pick = next((sl for r in rows[len(rows) // 3:] + rows for sl in r["slides"][1:] + r["slides"][:1] if sl["src"] not in used), None)
+    if not pick:
+        return ""
+    return (f'<figure class="slide-fig drop" style="--rot:1.5deg;--d:.3s"><span class="tape tr"></span>'
+            f'<img src="{root}{pick["src"]}" alt="{esc(pick["caption"])}" width="1280" height="720" loading="lazy">'
+            f'<figcaption class="figcap">fig. {fig} &middot; {esc(pick["caption"])}</figcaption></figure>')
 
 
 def build_course_pages():
+    root = "../../"
     for c in ALL_COURSES:
         sched = load_schedule(c["slug"])
+        ink = COURSE_INK.get(c["slug"], {})
+        no, fig = 2, 1
+        body = ""
 
-        def chip(o):
-            kind = "hybrid" if "hybrid" in o else "evening" if "evening" in o else "qatar" if "Qatar" in o else "term"
-            return f'<li class="chip {kind}">{o}</li>'
-        offerings = "".join(chip(o) for o in c["offerings"])
-        history = ""
-        if c.get("history"):
-            paras = "".join(f"        <p>{p}</p>\n" for p in c["history"])
-            history = f"        <h2>How the course developed</h2>\n{paras}"
-        story = ""
-        if c.get("story"):
-            paras = "".join(f"        <p>{p}</p>\n" for p in c["story"])
-            story = f"        <h2>How the course works</h2>\n{paras}"
-        projects = ""
-        pj = c.get("projects")
-        if pj:
-            top = max([n for _, n, _ in pj["types"]] or [1])
-            rows = "".join(
-                f'<li><div class="bar-head"><strong>{t}</strong><span class="count">{n}</span></div>'
-                f'<div class="bar" style="width:{max(6, round(100 * n / top))}%"></div>'
-                f'<span class="example">{ex}</span></li>'
-                for t, n, ex in pj["types"]
+        # Hero: stamps, the course number in outline, the title, three taped slides.
+        slides = hero_slides(c, sched)
+        art = ""
+        if slides:
+            figs = "".join(
+                f'<figure class="slide drop s{i + 1}" style="--rot:{SLIDE_ROT[i]}deg;--d:{0.2 + 0.25 * i:.2f}s"><span class="tape tr"></span>'
+                f'<img src="{root}{sl["src"]}" alt="Slide: {esc(sl["caption"])}" width="1280" height="720"{LAZY if i else ""}></figure>'
+                for i, sl in enumerate(slides)
             )
-            lst = f'        <ul class="project-types">{rows}</ul>\n' if rows else ""
-            projects = f"        <h2>Final projects</h2>\n        <p>{pj['intro']}</p>\n{lst}{project_list(sched)}"
-        if not pj and project_list(sched):
-            projects = f"        <h2>Student work</h2>\n{project_list(sched)}"
-        topics = ""
-        if c.get("topics") and not sched:
+            note = ink.get("note", "slides from the decks<br>I taught from")
+            art = (f'<div class="c-hero-art n{len(slides)}">{figs}'
+                   f'<p class="note c-note fade" style="--d:1.9s">{note}</p></div>')
+        label = course_label(c)
+        seal = '<span class="seal thunk" style="--d:.35s;--rot:8deg">Course<br>I built</span>' if c["built"] else ""
+        sr = f'<span class="sr-only">{esc(c["number"])} </span>' if c["number"] else ""
+        facts = ([sched["term"], sched["meets"]] if sched else []) + ink.get("facts", [])
+        facts_html = "".join(f'<li class="fade" style="--d:{1.2 + 0.1 * i:.1f}s">{esc(f)}</li>' for i, f in enumerate(facts))
+        panel = c.get("panel", "") if not c.get("story") else ""
+        body += f"""
+  <section class="c-hero reveal{'' if art else ' noart'}" aria-labelledby="c-title">
+    <div class="c-hero-text">
+      <p class="c-stamps"><span class="stamp thunk" style="--d:.1s">{course_kicker(c)}</span> {seal}</p>
+      <p class="c-code{' long' if len(label) > 7 else ''}" aria-hidden="true">{esc(label)}</p>
+      <h1 id="c-title">{sr}{c['title']}</h1>
+      <p class="lede">{ink_phrase(c['one_liner'], ink.get('mark'), 'mark')}</p>
+      {scale_note(c)}<p class="c-intro">{ink_phrase(c['blurb'], ink.get('u'), 'u')}</p>
+      {f'<ul class="facts">{facts_html}</ul>' if facts_html else ''}
+      {panel}
+    </div>
+    {art}
+  </section>
+"""
+        if sched:
+            body += schedule_section(sched, root, no)
+            no += 1
+        elif c.get("topics"):
             items = "".join(f"<li>{t}</li>" for t in c["topics"])
-            topics = f"        <h2>Topics</h2>\n        <ol>{items}</ol>\n"
-        built = '<span class="badge built">Course I built</span>' if c["built"] else ""
+            body += sec(no, "topics-title", "Syllabus", "Topics", f'    <ol class="topics">{items}</ol>')
+            no += 1
+
+        if c.get("story"):
+            paras = "".join(f"<p>{ink_phrase(p, ink.get('story_mark'), 'mark-g')}</p>" for p in c["story"])
+            figure = course_figure(c, sched, fig, root)
+            if figure and "figcap" in figure:
+                fig += 1
+            inner = (f'    <div class="how-grid"><div class="prose">{paras}</div>{figure}</div>' if figure
+                     else f'    <div class="prose">{paras}</div>')
+            body += sec(no, "how-title", "Method", "How the course works", inner)
+            no += 1
+
+        asg = assignments_section(sched, no, fig, ink.get("labs_note", ""))
+        if asg:
+            body += asg
+            no += 1
+            if "fig. " in asg:
+                fig += 1
+
+        pj = c.get("projects")
+        plist = project_list(sched)
+        if pj:
+            rows = ""
+            if pj["types"]:
+                top = max(n for _, n, _ in pj["types"])
+                rows = "".join(
+                    f'<li class="bar-row"><span class="bl"><b>{t}</b><span>{ex}</span></span><span class="bar-val">{n}</span>'
+                    f'<svg class="bar" data-chart="bar" data-v="{n}" data-max="{top}" data-i="{i}" data-d="{0.3 + 0.15 * i:.2f}" data-color="{BAR_COLORS[i % 4]}"></svg></li>'
+                    for i, (t, n, ex) in enumerate(pj["types"])
+                )
+                rows = (f'\n    <figure class="cats"><ul class="bars">{rows}</ul>'
+                        f'<figcaption class="figcap">fig. {fig} &middot; projects by type, with one example each</figcaption></figure>\n')
+                fig += 1
+            intro = ink_phrase(pj["intro"], ink.get("projects_mark"), "mark")
+            body += sec(no, "fp-title", "What students built", "Final projects", f'    <p class="prose">{intro}</p>{rows}{plist}')
+            no += 1
+        elif plist:
+            body += sec(no, "fp-title", "What students built", "Student work", plist)
+            no += 1
+
+        # Revision history, then every offering as a chip.
+        hist = ""
+        if ink.get("timeline"):
+            steps = "".join(
+                f'<li class="fade" style="--d:{0.4 + 0.3 * i:.1f}s"><span class="when">{esc(w)}</span><span class="dot-i" aria-hidden="true"></span><p>{t}</p></li>'
+                for i, (w, t) in enumerate(ink["timeline"])
+            )
+            hist = f'    <p class="prose">{ink["history_intro"]}</p>\n    <ol class="hist">{steps}</ol>\n'
+        elif c.get("history"):
+            hist = "".join(f"    <p class=\"prose\">{p}</p>\n" for p in c["history"])
+
+        def chip(o, last):
+            kind = " hy" if "hybrid" in o else ""
+            now = " now" if last and re.search(r"20(2[6-9]|[3-9]\d)", o) else ""
+            return f'<li class="chip{kind}{now}">{esc(o)}</li>'
+        chips = "".join(chip(o, i == len(c["offerings"]) - 1) for i, o in enumerate(c["offerings"]))
+        mats = f'<p class="muted">{c["materials"]}</p>' if c.get("materials") else ""
+        offer_h = "<h3>Offerings</h3>" if hist else ""
+        offer = f'    <div class="offer">{offer_h}<ul class="chips">{chips}</ul>{mats}</div>' if chips or mats else ""
+        if hist:
+            body += sec(no, "hist-title", "Revision history", "How the course developed", hist + offer)
+        elif offer:
+            body += sec(no, "hist-title", "Offerings", "When I taught it", offer)
+
         cta = ""
         if c["slug"] in CORPORATE_VERSIONS:
-            cta = f"""      <aside class="course-cta prose-width">
-        <p>I also teach versions of this material to company teams, using their own data. <a href="../../consult/#education">Custom education</a></p>
-        {book_call("../../")}
-      </aside>
+            cta = f"""    <div class="c-cta-in">
+      <p class="c-cta-text">I also teach versions of this material to company teams, using their own data. <a href="{root}consult/#education">Custom education</a></p>
+      {sticky(f"{root}book/", 'Book a free <span class="nw">15-minute call &rarr;</span>', rot=-2.5, d=.3, tape=True)}
+    </div>
 """
-        # With a schedule, the hero article closes so the week-by-week section
-        # can use the full page width, then the prose column picks up again.
-        split = ""
-        if sched:
-            split = f"""      </article>
-{schedule_section(sched, "../../")}
-      <article class="course-more prose-width">
+        body += f"""
+  <section class="sec c-cta reveal" aria-label="{'Custom education' if cta else 'More courses'}">
+{cta}    <p class="after"><a class="go" href="../">All courses</a></p>
+  </section>
 """
-        body = f"""
-      <article class="course-hero prose-width">
-        <p class="kicker">{course_kicker(c)}</p>
-        <h1>{course_name(c)}</h1>
-        <p>{built}</p>
-        <div class="thumb hero {c['color']}"><canvas data-hero="{c['hero']}" role="img" aria-label="{esc(HERO_ALT[c['hero']])}"></canvas><span>{course_label(c)}</span></div>
-        <p class="lede">{c['one_liner']}</p>
-        {scale_note(c)}<p>{c['blurb']}</p>
-        {c.get('panel', '')}
-{split}{topics}{assignments_section(sched)}{story}{projects}{history}        <h2>Offerings</h2>
-        <ul class="chips">{offerings}</ul>
-        {f'<p class="muted">{c["materials"]}</p>' if c.get("materials") else ""}
-      </article>
-{cta}
-      <p><a href="../">All courses</a></p>
-"""
+        scripts = f'\n<script src="{root}js/course-schedule.js" defer></script>' if session_rows(sched) else ""
         write(
             f"courses/{c['slug']}/index.html",
             page(
-                "../../",
+                root,
                 "courses",
                 f"{course_name(c)} · Ben Collier",
                 c["one_liner"],
                 f"courses/{c['slug']}/",
                 body,
                 course_jsonld(c),
+                crumbs=[("courses", "courses/"), (course_label(c), None)],
+                body_class="course",
+                scripts=scripts,
             ),
         )
 
@@ -1407,16 +1903,16 @@ def _cv_header(lines):
                 else:
                     chips.append(f"<li>{inline(part)}</li>")
     return f"""
-      <header class="cv-head">
-        <img class="cv-portrait" src="../assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier">
-        <div>
-          <p class="kicker">Curriculum vitae</p>
-          <h1>Ben Collier, PhD</h1>
-          <p class="cv-roles">{roles}</p>
-          <ul class="cv-contact">{"".join(chips)}</ul>
-          <p class="cv-actions"><button type="button" class="btn" data-print>Print or save as PDF</button></p>
-        </div>
-      </header>"""
+  <header class="cv-head reveal">
+    <figure class="polaroid cv-portrait" style="--rot:-3deg"><span class="tape tc"></span><img src="../assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier" loading="lazy"></figure>
+    <div class="cv-card">
+      <p class="stamp thunk" style="--d:.15s">Curriculum vitae</p>
+      <h1>Ben Collier, <span class="u u2" data-d=".4">PhD</span></h1>
+      <p class="cv-roles">{roles}</p>
+      <ul class="cv-contact">{"".join(chips)}</ul>
+      <p class="cv-actions"><button type="button" class="btn" data-print>Print or save as PDF</button></p>
+    </div>
+  </header>"""
 
 
 def cv_jsonld() -> str:
@@ -1459,15 +1955,13 @@ def build_cv():
     rendered = [_cv_section(title, ls) for title, ls in sections]
     toc = "".join(f'<li><a href="#{sid}">{inline(title)}</a></li>' for (title, _), (sid, _) in zip(sections, rendered))
     body = f"""{header}
-      {_cv_glance()}
-      <div class="cv-layout">
-        <nav class="cv-toc" aria-label="CV sections"><ol>{toc}</ol></nav>
-        <article class="cv">
-          {"".join(html for _, html in rendered)}
-        </article>
-      </div>
-      <script src="../js/cv.js" defer></script>
-      <script src="../js/place-pop.js" defer></script>
+  <section class="sec glance-sec reveal" aria-label="Career at a glance">{_cv_glance()}</section>
+  <div class="cv-layout">
+    <nav class="cv-toc" aria-label="CV sections"><p class="note">sections</p><ol>{toc}</ol></nav>
+    <article class="cv">
+      {"".join(html for _, html in rendered)}
+    </article>
+  </div>
 """
     write(
         "cv/index.html",
@@ -1479,36 +1973,42 @@ def build_cv():
             "cv/",
             body,
             cv_jsonld(),
+            body_class="cv-page",
+            scripts='\n<script src="../js/cv.js" defer></script>\n<script src="../js/place-pop.js" defer></script>',
         ),
     )
 
 
-def portfolio_card(p, root):
-    links = " · ".join(f'<a href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
+def portfolio_card(p, root, i=0):
+    links = " ".join(f'<a class="go" href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
     # Optional aside: context that is not the project itself, such as related
-    # private work. Rendered muted so it reads as a footnote to the card.
-    note = f'    <p class="note">{p["note"]}</p>\n' if p.get("note") else ""
-    return f"""<article class="portfolio-item" id="{p['id']}">
-  <a href="{esc(p['links'][0]['href'])}"><img class="shot" src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}" loading="lazy"></a>
-  <div class="body">
-    <div class="meta">{esc(p['kind'])} · {esc(p['tools'])} · {esc(p['date'])}</div>
-    <h2>{esc(p['title'])}</h2>
-    {''.join(['<ul class="stats small">'] + [f'<li><strong>{v}</strong><span>{k}</span></li>' for k, v in p.get('stats', [])] + ['</ul>']) if p.get('stats') else ''}
-    <p>{p['summary']}</p>
-    {('<ul class="decisions">' + ''.join(f'<li>{d}</li>' for d in p['decisions']) + '</ul>') if p.get('decisions') else f"<p>{p['process']}</p>"}
-{note}    <p class="links">{links}</p>
-  </div>
-</article>"""
+    # private work. Rendered as a margin note so it reads as a footnote to the card.
+    note = f'    <p class="aside">{p["note"]}</p>\n' if p.get("note") else ""
+    stats = ""
+    if p.get("stats"):
+        stats = '<ul class="mini-stats">' + "".join(f'<li><b>{v}</b><span>{k}</span></li>' for k, v in p["stats"]) + "</ul>"
+    tall = int(p["image_height"]) > int(p["image_width"])
+    rot = [-2, 1.6, -1.2, 2.2][i % 4]
+    decisions = ('<ul class="dashes">' + "".join(f"<li>{d}</li>" for d in p["decisions"]) + "</ul>") if p.get("decisions") else f"<p>{p['process']}</p>"
+    return f"""  <article class="pf reveal{' tall' if tall else ''}" id="{p['id']}">
+    <a class="pf-shot polaroid drop" href="{esc(p['links'][0]['href'])}" style="--rot:{rot}deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}" loading="lazy"></a>
+    <div class="pf-body">
+      <p class="kicker">{esc(p['kind'])} &middot; {esc(p['date'])}</p>
+      <h2>{esc(p['title'])}</h2>
+      <p class="pf-tools">{esc(p['tools'])}</p>
+      {stats}
+      <p>{p['summary']}</p>
+      {decisions}
+{note}      <p class="pf-links">{links}</p>
+    </div>
+  </article>"""
 
 
 def build_portfolio(portfolio):
-    items = "\n".join(portfolio_card(p, "../") for p in portfolio)
-    body = f"""
-      <p class="kicker">Portfolio</p>
-      <h1>Coding with AI Projects</h1>
-      <p class="lede lede-wide">Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.</p>
-      <div class="portfolio">{items}</div>
-"""
+    items = "\n".join(portfolio_card(p, "../", i) for i, p in enumerate(portfolio))
+    body = page_head("Portfolio", "Coding with AI Projects",
+                     "Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.")
+    body += f'  <div class="portfolio">\n{items}\n  </div>\n'
     write(
         "projects/index.html",
         page(
@@ -1527,11 +2027,15 @@ def build_practice():
     write(
         "practice/index.html",
         '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">'
         '<title>Consulting · Ben Collier</title>'
         f'<link rel="canonical" href="{HOST}/consult/">'
         '<meta http-equiv="refresh" content="0; url=../consult/#background">'
-        '</head><body><p><a href="../consult/#background">This page moved to Consulting.</a></p></body></html>\n',
+        '<link rel="stylesheet" href="../css/site.css">'
+        '</head><body><main class="sheet moved"><p class="note">This page moved to '
+        '<a href="../consult/#background">Consulting</a>.</p></main></body></html>\n',
     )
+
 
 def build_advising():
     data = load_json("advising.json")
@@ -1539,37 +2043,34 @@ def build_advising():
     for pj in data["projects"]:
         if pj["term"] not in terms:
             terms.append(pj["term"])
-    sections = []
+    n = len(data["projects"])
+    body = page_head(
+        "Advising", "Capstones and independent studies",
+        f'Since 2024 I have advised MS in Business Analytics capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students\' names and without the partners\' data. Starting in Spring 2027 I also advise capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.',
+        '<p class="partners">Partners include Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, Confirmed, Marinus Analytics, 412 Food Rescue, Tindoori Labs, and a large consulting firm.</p>')
+    no = 2
     for term in terms:
         cards = []
         for i, pj in enumerate(x for x in data["projects"] if x["term"] == term):
             methods = "".join(f"<li>{esc(m)}</li>" for m in pj["methods"])
             art = draw_art(pj["art"], f"Diagram representing the project: {esc(pj['title'])}", i)
-            cards.append(f"""        <article class="advised">
-          {art}
-          <div class="body">
-            <p class="meta">{esc(pj['kind'])} · {esc(pj['partner'])} · {esc(pj['industry'])}</p>
-            <h3>{esc(pj['title'])}</h3>
-            <p>{esc(pj['summary'])}</p>
-            <ul class="methods">{methods}</ul>
-          </div>
-        </article>""")
-        sections.append(f"      <h2>{term}</h2>\n" + "\n".join(cards))
+            rot = [-2, 1.5, -1, 2.4][i % 4]
+            cards.append(f"""    <article class="advised">
+      <figure class="art-print drop" style="--rot:{rot}deg;--d:.2s"><span class="tape tr"></span>{art}</figure>
+      <div class="body">
+        <p class="meta">{esc(pj['kind'])} &middot; {esc(pj['partner'])} &middot; {esc(pj['industry'])}</p>
+        <h3>{esc(pj['title'])}</h3>
+        <p>{esc(pj['summary'])}</p>
+        <ul class="methods">{methods}</ul>
+      </div>
+    </article>""")
+        body += sec(no, f"t-{_slug(term)}", "Advised", term, "\n".join(cards))
+        no += 1
     earlier = "".join(
         f"<li><span>{esc(e['term'])}</span><div>{esc(e['title'])}. <em>{esc(e['place'])}</em></div></li>" for e in data["earlier"]
     )
-    n = len(data["projects"])
-    body = f"""
-      <p class="kicker">Advising</p>
-      <h1>Capstones and independent studies</h1>
-      <p class="lede">Since 2024 I have advised MS in Business Analytics capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students' names and without the partners' data. Starting in Spring 2027 I also advise capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.</p>
-      <p class="partners">Partners include Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, Confirmed, Marinus Analytics, 412 Food Rescue, Tindoori Labs, and a large consulting firm.</p>
-{chr(10).join(sections)}
-
-      <h2>Earlier advising</h2>
-      <p class="prose-width">Independent studies I advised while teaching organizational behavior, mostly at Carnegie Mellon's campus in Qatar.</p>
-      <ul class="earlier-list">{earlier}</ul>
-"""
+    body += sec(no, "earlier", "Before Tepper", "Earlier advising",
+                f'    <p class="prose">Independent studies I advised while teaching organizational behavior, mostly at Carnegie Mellon\'s campus in Qatar.</p>\n    <ul class="earlier-list">{earlier}</ul>')
     write(
         "advising/index.html",
         page(
@@ -1584,74 +2085,80 @@ def build_advising():
 
 
 def build_consult():
-    body = f"""
-      <p class="kicker">Consulting</p>
-      <h1>Consulting and custom education</h1>
-      <p class="lede">I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, Hot Metal AI.</p>
+    body = page_head(
+        "Consulting", "Consulting and custom education",
+        'I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, <mark style="--d:.7s">Hot Metal AI</mark>.',
+        f'<div class="cta-row">{sticky("../book/", "Book a call &rarr;", "Most engagements start with a free 15-minute call.", "pink", -2.5, .8, True)}</div>')
+    body += """
+  <div class="kinds reveal">
+    <section class="kind deal" id="education" style="--rot:-.8deg;--d:.2s">
+      <span class="tape tc"></span>
+      <p class="kicker">Custom education</p>
+      <h2>Training built on your data</h2>
+      <p>Workshops and courses for technical teams and executives, built around your own data and problems. Most of the time is spent in hands-on labs.</p>
+      <h3>Formats</h3>
+      <ul class="dashes">
+        <li>One- to three-day workshops, on site or online</li>
+        <li>Multi-week programs for technology leaders and executives</li>
+        <li>Recorded, self-paced courses</li>
+      </ul>
+      <h3>Examples</h3>
+      <ul class="dashes">
+        <li>Three-day executive programs at Carnegie Mellon University in Qatar on <a href="../courses/exec-negotiation/">negotiation</a>, <a href="../courses/exec-decision-making/">decision making</a>, <a href="../courses/exec-teams/">managing teams</a>, and <a href="../courses/exec-leadership/">leadership</a>, with up to 114 managers in the room from ministries, energy, banking, telecom, aviation, and media.</li>
+        <li><a href="../courses/exec-custom/">Workshops built for one organization</a>: RasGas, a Carnegie Mellon senior staff retreat in Munich, and Qatar's Civil Service Bureau.</li>
+        <li>Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</li>
+        <li>At Carnegie Mellon in Qatar I co-directed executive and professional education. In 2014 to 2015 the program taught 755 participants from more than 30 government and private-sector organizations across Qatar. <a href="https://www.qatar.cmu.edu/news/more-than-700-participants-complete-cmu-qs-executive-and-professional-education-program/">CMU-Q news</a></li>
+        <li>Workshops on chatbot development, data programming, SQL and NoSQL, data mining, cloud infrastructure, and agile development.</li>
+        <li>The kind of recorded course I can build for a team: the <a href="../courses/msba-math-skills-workshop/">MS in Business Analytics Math Skills Workshop</a>, about thirty short videos I scripted and recorded for incoming Carnegie Mellon MS in Business Analytics students.</li>
+      </ul>
+    </section>
 
-      <div class="kinds">
-        <section class="kind" id="education">
-          <p class="offer-meta">Custom education</p>
-          <h2>Training built on your data</h2>
-          <p>Workshops and courses for technical teams and executives, built around your own data and problems. Most of the time is spent in hands-on labs.</p>
-          <h3>Formats</h3>
-          <ul>
-            <li>One- to three-day workshops, on site or online</li>
-            <li>Multi-week programs for technology leaders and executives</li>
-            <li>Recorded, self-paced courses</li>
-          </ul>
-          <h3>Examples</h3>
-          <ul>
-            <li>Three-day executive programs at Carnegie Mellon University in Qatar on <a href="../courses/exec-negotiation/">negotiation</a>, <a href="../courses/exec-decision-making/">decision making</a>, <a href="../courses/exec-teams/">managing teams</a>, and <a href="../courses/exec-leadership/">leadership</a>, with up to 114 managers in the room from ministries, energy, banking, telecom, aviation, and media.</li>
-            <li><a href="../courses/exec-custom/">Workshops built for one organization</a>: RasGas, a Carnegie Mellon senior staff retreat in Munich, and Qatar's Civil Service Bureau.</li>
-            <li>Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</li>
-            <li>At Carnegie Mellon in Qatar I co-directed executive and professional education. In 2014 to 2015 the program taught 755 participants from more than 30 government and private-sector organizations across Qatar. <a href="https://www.qatar.cmu.edu/news/more-than-700-participants-complete-cmu-qs-executive-and-professional-education-program/">CMU-Q news</a></li>
-            <li>Workshops on chatbot development, data programming, SQL and NoSQL, data mining, cloud infrastructure, and agile development.</li>
-            <li>The kind of recorded course I can build for a team: the <a href="../courses/msba-math-skills-workshop/">MS in Business Analytics Math Skills Workshop</a>, about thirty short videos I scripted and recorded for incoming Carnegie Mellon MS in Business Analytics students.</li>
-          </ul>
-        </section>
+    <section class="kind deal" id="ai-data" style="--rot:.7deg;--d:.4s">
+      <span class="tape tc"></span>
+      <p class="kicker">AI and data consulting</p>
+      <h2>Reviews and builds</h2>
+      <p>From deciding which AI projects are worth funding to reviewing a model before it carries a real decision.</p>
+      <h3>Formats</h3>
+      <ul class="checks">
+        <li><svg data-chart="check" data-d="0.6"></svg><span><b>AI use-case review.</b> About two weeks. A written go or no-go on the projects you are considering, with a build plan for the ones worth doing.</span></li>
+        <li><svg data-chart="check" data-d="0.9"></svg><span><b>Model or metric review.</b> About one week. I read the code, data, and evaluation, and tell you where it breaks.</span></li>
+        <li><svg data-chart="check" data-d="1.2"></svg><span><b>Hands-on build.</b> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</span></li>
+      </ul>
+      <h3>Through Hot Metal AI</h3>
+      <ul class="dashes">
+        <li>A recommendation engine for healthcare specialist referrals, built for a healthcare client.</li>
+      </ul>
+      <h3>In industry roles</h3>
+      <ul class="dashes">
+        <li>At <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, as founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>, I did the machine learning research and built the production pipelines for CognitiveRx, a drug price and shortage tool for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. <a href="https://premierinc.com/">Premier</a> later acquired it.</li>
+        <li>At <a href="https://www.duolingo.com/">Duolingo</a>, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
+        <li>At <a href="https://www.gaimsystems.com/">gAIm Systems</a>, AI tools and research studies that help sports teams recruit players, develop them, and build rosters.</li>
+      </ul>
+    </section>
+  </div>
 
-        <section class="kind" id="ai-data">
-          <p class="offer-meta">AI and data consulting</p>
-          <h2>Reviews and builds</h2>
-          <p>From deciding which AI projects are worth funding to reviewing a model before it carries a real decision.</p>
-          <h3>Formats</h3>
-          <ul>
-            <li><strong>AI use-case review.</strong> About two weeks. A written go or no-go on the projects you are considering, with a build plan for the ones worth doing.</li>
-            <li><strong>Model or metric review.</strong> About one week. I read the code, data, and evaluation, and tell you where it breaks.</li>
-            <li><strong>Hands-on build.</strong> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</li>
-          </ul>
-          <h3>Through Hot Metal AI</h3>
-          <ul>
-            <li>A recommendation engine for healthcare specialist referrals, built for a healthcare client.</li>
-          </ul>
-          <h3>In industry roles</h3>
-          <ul>
-            <li>At <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, as founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>, I did the machine learning research and built the production pipelines for CognitiveRx, a drug price and shortage tool for a 40-hospital system buying $1.5 billion of pharmaceuticals a year. <a href="https://premierinc.com/">Premier</a> later acquired it.</li>
-            <li>At <a href="https://www.duolingo.com/">Duolingo</a>, experimentation, monetization analytics, and forecasting through the IPO and the launch of Duolingo Max.</li>
-            <li>At <a href="https://www.gaimsystems.com/">gAIm Systems</a>, AI tools and research studies that help sports teams recruit players, develop them, and build rosters.</li>
-          </ul>
-        </section>
-      </div>
-
-      <p class="prose-width">I also advise MS in Business Analytics capstone teams working with companies such as Westinghouse, RBC Wealth Management, and Swank Construction, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>. <a href="../advising/">See those projects</a>.</p>
-
-      <div class="book-row">
-        <a class="btn primary" href="../book/">Book time</a>
-        <span class="muted">Most engagements start with a free 15-minute call.</span>
-      </div>
-
-      <h2 id="background">Background</h2>
-      <ol class="timeline">
-        <li><span>2025 to now</span><strong>gAIm Systems</strong> Senior Director of AI and Data Science</li>
-        <li><span>2023 to now</span><strong>Tepper School of Business, Carnegie Mellon</strong> Assistant Teaching Professor of Business Analytics, after starting as an adjunct in Fall 2023</li>
-        <li><span>2020 to 2023</span><strong>Duolingo</strong> Staff Data Scientist, on monetization</li>
-        <li><span>2018 to now</span><strong>Hot Metal AI</strong> Founder. Analytics consulting and corporate training, alongside everything else</li>
-        <li><span>2016 to 2020</span><strong>UPMC's Pensiamo</strong> Senior Director of Data Science</li>
-        <li><span>2012 to 2016</span><strong>Carnegie Mellon University in Qatar</strong> Assistant Teaching Professor of Organizational Behavior, and co-director of executive education</li>
-      </ol>
-      <p><a href="../cv/">Full CV</a></p>
+  <section class="sec reveal" aria-label="Advising">
+    <p class="prose">I also advise MS in Business Analytics capstone teams working with companies such as Westinghouse, RBC Wealth Management, and Swank Construction, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>. <a href="../advising/">See those projects</a>.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="../book/">Book time</a>
+      <span class="muted">Most engagements start with a free 15-minute call.</span>
+    </div>
+  </section>
 """
+    bg = [
+        ("2025 to now", "gAIm Systems", "Senior Director of AI and Data Science"),
+        ("2023 to now", "Tepper School of Business, Carnegie Mellon", "Assistant Teaching Professor of Business Analytics, after starting as an adjunct in Fall 2023"),
+        ("2020 to 2023", "Duolingo", "Staff Data Scientist, on monetization"),
+        ("2018 to now", "Hot Metal AI", "Founder. Analytics consulting and corporate training, alongside everything else"),
+        ("2016 to 2020", "UPMC's Pensiamo", "Senior Director of Data Science"),
+        ("2012 to 2016", "Carnegie Mellon University in Qatar", "Assistant Teaching Professor of Organizational Behavior, and co-director of executive education"),
+    ]
+    items = "".join(
+        f'<li class="fade" style="--d:{0.2 + 0.15 * i:.2f}s"><span class="when">{w}</span><span class="dot-i" aria-hidden="true"></span><p><strong>{o}</strong> {r}</p></li>'
+        for i, (w, o, r) in enumerate(bg)
+    )
+    body += sec(3, "background", "Background", "Background",
+                f'    <ol class="vtl">{items}</ol>\n    <p class="after"><a class="go" href="../cv/">Full CV</a></p>')
     write(
         "consult/index.html",
         page(
@@ -1666,40 +2173,38 @@ def build_consult():
 
 
 def build_book():
-    body = f"""
-      <p class="kicker">Book time</p>
-      <h1>Book a call</h1>
-      <p class="lede">Start with a free intro call, or book a working hour on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.</p>
-
-      <div class="offers">
-        <section class="offer">
-          <p class="offer-meta">15 minutes · online · free</p>
-          <h2>Intro call</h2>
-          <p>A short call to see whether I can help. Tell me what you are working on, and I will tell you plainly whether it is a fit and what a sensible first step would be.</p>
-          {book_link("freeChat", "Book a free 15-minute call", "../")}
-        </section>
-        <section class="offer">
-          <p class="offer-meta">60 minutes · online · {HOURLY_RATE}</p>
-          <h2>Consulting hour</h2>
-          <p>One working session on a decision you are stuck on: a model that will not hold up, a metric nobody trusts, an AI use case you are not sure is worth building, or a hiring bar for a data team.</p>
-          <ul>
-            <li>Live session on Zoom or Google Meet</li>
-            <li>A one-page written recommendation within two business days</li>
-            <li data-live-text="Paid when you book">Invoiced before we meet</li>
-          </ul>
-          {book_link("paidHour", "Book a consulting hour", "../")}
-        </section>
-      </div>
-
-      <h2>Which option fits</h2>
-      <ul class="prose-width">
-        <li><strong>Not sure yet?</strong> Start with the intro call. It is free, and by the end you will know whether you need anything more.</li>
-        <li><strong>One specific decision or blocker?</strong> A consulting hour is usually enough.</li>
-        <li><strong>Training for a team, or a project that needs weeks?</strong> Book the intro call and we will scope <a href="../consult/#education">custom education</a> or <a href="../consult/#ai-data">AI and data consulting</a>.</li>
+    body = page_head(
+        "Book time", "Book a call",
+        'Start with a free intro call, or book a working hour on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.')
+    body += f"""
+  <div class="offers reveal">
+    <section class="offer sticky-card land" style="--rot:-2deg;--d:.2s">
+      <span class="tape tc"></span>
+      <p class="kicker">15 minutes &middot; online &middot; free</p>
+      <h2>Intro call</h2>
+      <p>A short call to see whether I can help. Tell me what you are working on, and I will tell you plainly whether it is a fit and what a sensible first step would be.</p>
+      {book_link("freeChat", "Book a free 15-minute call", "../")}
+    </section>
+    <section class="offer sticky-card pink land" style="--rot:1.6deg;--d:.45s">
+      <span class="tape tc"></span>
+      <p class="kicker">60 minutes &middot; online &middot; {HOURLY_RATE}</p>
+      <h2>Consulting hour</h2>
+      <p>One working session on a decision you are stuck on: a model that will not hold up, a metric nobody trusts, an AI use case you are not sure is worth building, or a hiring bar for a data team.</p>
+      <ul class="dashes">
+        <li>Live session on Zoom or Google Meet</li>
+        <li>A one-page written recommendation within two business days</li>
+        <li data-live-text="Paid when you book">Invoiced before we meet</li>
       </ul>
-
-      <p class="prose-width">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>
+      {book_link("paidHour", "Book a consulting hour", "../")}
+    </section>
+  </div>
 """
+    body += sec(2, "fit", "Choosing", "Which option fits", f"""    <ul class="checks prose">
+      <li><svg data-chart="check" data-d="0.4"></svg><span><strong>Not sure yet?</strong> Start with the intro call. It is free, and by the end you will know whether you need anything more.</span></li>
+      <li><svg data-chart="check" data-d="0.7"></svg><span><strong>One specific decision or blocker?</strong> A consulting hour is usually enough.</span></li>
+      <li><svg data-chart="check" data-d="1.0"></svg><span><strong>Training for a team, or a project that needs weeks?</strong> Book the intro call and we will scope <a href="../consult/#education">custom education</a> or <a href="../consult/#ai-data">AI and data consulting</a>.</span></li>
+    </ul>
+    <p class="prose">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>""")
     write(
         "book/index.html",
         page(
@@ -1709,18 +2214,19 @@ def build_book():
             "Book a free 15-minute intro chat or a consulting hour with Ben Collier.",
             "book/",
             body,
+            crumbs=[("book a call", None)],
         ),
     )
 
+
 def build_news():
-    body = f"""
-      <p class="kicker">Teaching and practice</p>
-      <h1>News</h1>
-      <p class="lede">A dated log of teaching, advising, and practice.</p>
-      {news_items(root="../")}
-      <h2>On LinkedIn</h2>
-      <ol class="feed" id="linkedin-all"></ol>
+    body = page_head("Teaching and practice", "News", "A dated log of teaching, advising, and practice.")
+    body += f"""
+  <section class="sec reveal" aria-label="News log">
+    {news_items(root="../")}
+  </section>
 """
+    body += sec(2, "linkedin", "Shared elsewhere", "On LinkedIn", '    <ol class="feed log" id="linkedin-all"></ol>')
     write(
         "news/index.html",
         page(
@@ -1756,84 +2262,67 @@ TALK_SLIDES = {
 }
 
 
-def talk_slide(talk: str, name: str, cap: str) -> str:
+def talk_slide(talk: str, name: str, cap: str, i: int) -> str:
     src = f"../assets/talks/{talk}-{name}.jpg"
+    rot = [-1.8, 1.4, -0.9, 2, -1.4, 1][i % 6]
     return (
-        f'          <figure>\n'
-        f'            <a href="{src}"><img src="{src}" width="1200" height="675" loading="lazy" alt="Slide: {esc(cap)}"></a>\n'
-        f'            <figcaption>{cap}</figcaption>\n'
-        f'          </figure>'
+        f'      <figure class="tprint drop" style="--rot:{rot}deg;--d:{0.15 + 0.12 * i:.2f}s">\n'
+        f'        <span class="tape tc"></span><a href="{src}"><img src="{src}" width="1200" height="675" loading="lazy" alt="Slide: {esc(cap)}"></a>\n'
+        f'        <figcaption>{cap}</figcaption>\n'
+        f'      </figure>'
     )
 
 
 def talk_slides(talk: str) -> str:
-    return "\n".join(talk_slide(talk, n, c) for n, c in TALK_SLIDES[talk])
+    return "\n".join(talk_slide(talk, n, c, i) for i, (n, c) in enumerate(TALK_SLIDES[talk]))
 
 
 def build_talks():
-    slides = talk_slides("ai-exchange-2026")
-    body = f"""
-      <p class="kicker">Talks</p>
-      <h1>Talks</h1>
-      <p class="lede">Talks and workshops on building AI courses, teaching with AI, and putting analytics to work.</p>
-
-      <article class="talk">
-        <p class="meta">August 7, 2026 · Tepper AI-Exchange · Carnegie Mellon University, Pittsburgh</p>
-        <h2>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</h2>
-        <div class="prose-width">
-          <p>Over the past year I designed and taught a new MBA elective, <a href="../courses/45-884/">AI Methods for Social and Visual Data</a>, and I was developing an undergraduate course, <a href="../courses/70-445/">Artificial Intelligence for Business Leaders</a>, launching that fall. In this talk I shared what has worked well in the MBA classroom, from assignment design to helping students build hands-on skills with modern AI tools, along with what I was changing or trying differently in the new undergraduate course. I also gave a brief introduction to a large randomized controlled trial of AI in the classroom that I am taking part in, and what we hope to learn from it about how AI actually affects student outcomes.</p>
-          <p>The session closed as a discussion with the faculty in the room: what they would add to the undergraduate course, what did not fit, and how Tepper should approach a flagship AI course for undergraduates.</p>
-        </div>
-        <h3>Selected slides</h3>
-        <div class="slides">
-{slides}
-        </div>
-      </article>
-
-      <article class="talk">
-        <p class="meta">June 5, 2025 · Teaching with AI Summer Workshop · Kellogg School of Management, Northwestern University</p>
-        <h2>AI Data Visualization Coach</h2>
-        <div class="prose-width">
-          <p>A flash talk with my colleague Zoey Jiang on the custom GPT we built for <a href="../courses/45-885/">Data Visualization</a>. Before presenting a chart redesign, teams test it with the coach. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.</p>
-          <p><a href="https://www.kellogg.northwestern.edu/events/conference/teaching-with-ai/">Workshop program</a></p>
-        </div>
-        <h3>Selected slides</h3>
-        <div class="slides">
+    body = page_head("Talks", "Talks", "Talks and workshops on building AI courses, teaching with AI, and putting analytics to work.")
+    body += sec(2, "talk-aix", "August 7, 2026 &middot; Tepper AI-Exchange &middot; Carnegie Mellon University, Pittsburgh",
+                "Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students", f"""    <div class="prose">
+      <p>Over the past year I designed and taught a new MBA elective, <a href="../courses/45-884/">AI Methods for Social and Visual Data</a>, and I was developing an undergraduate course, <a href="../courses/70-445/">Artificial Intelligence for Business Leaders</a>, launching that fall. In this talk I shared what has worked well in the MBA classroom, from assignment design to helping students build hands-on skills with modern AI tools, along with what I was changing or trying differently in the new undergraduate course. I also gave a brief introduction to a large randomized controlled trial of AI in the classroom that I am taking part in, and what we hope to learn from it about how AI actually affects student outcomes.</p>
+      <p>The session closed as a discussion with the faculty in the room: what they would add to the undergraduate course, what did not fit, and how Tepper should approach a flagship AI course for undergraduates.</p>
+    </div>
+    <h3 class="sub-h">Selected slides</h3>
+    <div class="tslides">
+{talk_slides("ai-exchange-2026")}
+    </div>""", cls="talk")
+    body += sec(3, "talk-kellogg", "June 5, 2025 &middot; Teaching with AI Summer Workshop &middot; Kellogg School of Management, Northwestern University",
+                "AI Data Visualization Coach", f"""    <div class="prose">
+      <p>A flash talk with my colleague Zoey Jiang on the custom GPT we built for <a href="../courses/45-885/">Data Visualization</a>. Before presenting a chart redesign, teams test it with the coach. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.</p>
+      <p><a class="go" href="https://www.kellogg.northwestern.edu/events/conference/teaching-with-ai/">Workshop program</a></p>
+    </div>
+    <h3 class="sub-h">Selected slides</h3>
+    <div class="tslides">
 {talk_slides("kellogg-2025")}
-        </div>
-      </article>
-
-      <article class="talk">
-        <p class="meta">April 30, 2026 · Tepper School of Business</p>
-        <h2>Faculty Spotlight: what students learn in the MS in Business Analytics</h2>
-        <div class="prose-width">
-          <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
-          <a class="video-thumb" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">
-            <img src="../assets/talks/faculty-spotlight-2026.jpg" width="1280" height="720" loading="lazy" alt="Ben Collier explaining a point during the Tepper Faculty Spotlight conversation">
-            <span class="play" aria-hidden="true"></span>
-            <span class="duration">11 min</span>
-          </a>
-          <p><a href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
-        </div>
-      </article>
-
-      <h2>Earlier talks</h2>
-      <ul class="earlier-list">
-        <li><span>Sep 2026</span><div>Business Analytics track information session. <em>Tepper MBA program</em></div></li>
-        <li><span>2025, 2026</span><div>Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></div></li>
-        <li><span>Nov 2025</span><div>Managing groups and teams: strategies for collaborative excellence. <em>Community partner workshop, Carnegie Mellon University in Qatar</em></div></li>
-        <li><span>Mar 2025</span><div>Traditional AI: data mining and data visualization, and AI tools for research. <em>Colloquium on AI for Business, Tepper School of Business</em></div></li>
-        <li><span>2024, 2025</span><div>Using statistics to solve business problems, and to estimate the unknown. <em>Business Analytics Summer Summit, Tepper School of Business</em></div></li>
-        <li><span>2015</span><div>Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></div></li>
-        <li><span>2014</span><div>Digital marketing for entrepreneurs. <em>International Telecommunication Union World Conference</em></div></li>
-        <li><span>2014</span><div>Leadership in groups and organizations. <em>Cultivate Leadership Workshop, Hamad Bin Khalifa University</em></div></li>
-      </ul>
-
-      <div class="book-row">
-        <a class="btn primary" href="../book/">Ask about a talk or workshop</a>
-        <span class="muted">I speak to faculty, executive, and industry audiences about AI in business and in the classroom.</span>
+    </div>""", cls="talk")
+    body += sec(4, "talk-spotlight", "April 30, 2026 &middot; Tepper School of Business",
+                "Faculty Spotlight: what students learn in the MS in Business Analytics", """    <div class="talks-grid">
+      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=UxBPkez6Mc4" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the Faculty Spotlight video on YouTube, 11 minutes">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <span class="ph"><img src="../assets/talks/faculty-spotlight-2026.jpg" width="1280" height="720" loading="lazy" alt="Ben Collier explaining a point during the Tepper Faculty Spotlight conversation"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">Faculty Spotlight &middot; 11 min</span>
+      </a>
+      <div class="prose">
+        <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
       </div>
-"""
+    </div>""", cls="talk")
+    body += sec(5, "earlier-talks", "Before that", "Earlier talks", """    <ul class="earlier-list">
+      <li><span>Sep 2026</span><div>Business Analytics track information session. <em>Tepper MBA program</em></div></li>
+      <li><span>2025, 2026</span><div>Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></div></li>
+      <li><span>Nov 2025</span><div>Managing groups and teams: strategies for collaborative excellence. <em>Community partner workshop, Carnegie Mellon University in Qatar</em></div></li>
+      <li><span>Mar 2025</span><div>Traditional AI: data mining and data visualization, and AI tools for research. <em>Colloquium on AI for Business, Tepper School of Business</em></div></li>
+      <li><span>2024, 2025</span><div>Using statistics to solve business problems, and to estimate the unknown. <em>Business Analytics Summer Summit, Tepper School of Business</em></div></li>
+      <li><span>2015</span><div>Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></div></li>
+      <li><span>2014</span><div>Digital marketing for entrepreneurs. <em>International Telecommunication Union World Conference</em></div></li>
+      <li><span>2014</span><div>Leadership in groups and organizations. <em>Cultivate Leadership Workshop, Hamad Bin Khalifa University</em></div></li>
+    </ul>
+    <div class="cta-row">
+      <a class="btn primary" href="../book/">Ask about a talk or workshop</a>
+      <span class="muted">I speak to faculty, executive, and industry audiences about AI in business and in the classroom.</span>
+    </div>""")
     write(
         "talks/index.html",
         page(
@@ -1848,20 +2337,27 @@ def build_talks():
 
 
 def build_contact():
-    body = f"""
-      <h1>Contact</h1>
-      <p class="lede">Email is the most reliable way to reach me. Students, please put the course number in the subject line.</p>
-      <ul class="contact-list">
+    site_row = ('        <li><span>Site</span><div><a href="../">' + DOMAIN_LABEL + '</a></div></li>\n') if SITE.get("domain_live") else ""
+    body = page_head("", "Contact", "Email is the most reliable way to reach me. Students, please put the course number in the subject line.")
+    body += f"""
+  <section class="sec reveal" aria-label="Contact details">
+    <div class="contact-grid">
+      <ul class="contact-list card-lined deal" style="--rot:-.6deg;--d:.2s">
         <li><span>CMU email</span><div><a href="mailto:bcollier@cmu.edu">bcollier@cmu.edu</a></div></li>
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
-{'        <li><span>Site</span><div><a href="../">' + DOMAIN_LABEL + '</a></div></li>' + chr(10) if SITE.get("domain_live") else ""}        <li><span>Office</span><div>Office 5135, Tepper Quad<br>Tepper School of Business, Carnegie Mellon University<br>4765 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
-        <li><span>Consulting</span><div>{book_call("../", "")} · <a href="../consult/">Consulting and custom education</a></div></li>
+{site_row}        <li><span>Office</span><div>Office 5135, Tepper Quad<br>Tepper School of Business, Carnegie Mellon University<br>4765 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
+        <li><span>Consulting</span><div>{book_call("../", "")} &middot; <a href="../consult/">Consulting and custom education</a></div></li>
         <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
         <li><span>GitHub</span><div><a href="https://github.com/bcollier">github.com/bcollier</a></div></li>
         <li><span>ORCID</span><div><a href="https://orcid.org/0000-0002-4651-7684">0000-0002-4651-7684</a></div></li>
         <li><span>CV</span><div><a href="../cv/">Full CV</a></div></li>
       </ul>
+      <div class="contact-side">
+        {sticky("../book/", 'Book a free <span class="nw">15-minute call &rarr;</span>', rot=3, d=.6, tape=True)}
+      </div>
+    </div>
+  </section>
 """
     write(
         "contact/index.html",
@@ -1883,14 +2379,16 @@ def build_travel():
         f'<li><button type="button" data-cc="{p["cc"]}">{esc(p["name"])}</button></li>' for p in sorted(places, key=lambda p: p["name"])
     )
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
-    body = f"""
-      <p class="kicker">Travel</p>
-      <h1>Places I have been</h1>
-      <p class="lede lede-wide">{len(places)} countries so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.</p>
-      <div class="view-tabs" role="tablist" aria-label="Map or globe">
-        <button type="button" role="tab" aria-selected="true" data-view="map">Map</button>
-        <button type="button" role="tab" aria-selected="false" data-view="globe">Globe</button>
-      </div>
+    body = page_head("Travel", "Places I have been",
+                     f"{len(places)} countries so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.")
+    body += f"""
+  <section class="sec travel-sec" aria-label="Map of places visited">
+    <div class="view-tabs" role="tablist" aria-label="Map or globe">
+      <button type="button" role="tab" aria-selected="true" data-view="map">Map</button>
+      <button type="button" role="tab" aria-selected="false" data-view="globe">Globe</button>
+    </div>
+    <div class="map-card">
+      <span class="tape tr"></span>
       <div id="view-map" class="worldmap-wrap">
         <div id="worldmap" class="worldmap"></div>
         <div id="map-pop" class="map-pop" hidden></div>
@@ -1899,29 +2397,30 @@ def build_travel():
         <div id="globe" class="globe"></div>
         <aside id="globe-card" class="globe-card" aria-live="polite" hidden></aside>
       </div>
-      <dialog id="photo-view" class="photo-view"><img alt=""><p></p><button type="button" aria-label="Close">×</button></dialog>
-      <ul class="country-list">{chips}</ul>
-      <script type="application/json" id="travel-data">{blob}</script>
-      <script src="../assets/vendor/d3.min.js" defer></script>
-      <script src="../assets/vendor/topojson-client.min.js" defer></script>
-      <script src="../js/travel.js" defer></script>
-      <script src="../js/travel-map.js" defer></script>
+    </div>
+    <dialog id="photo-view" class="photo-view"><img alt=""><p></p><button type="button" aria-label="Close">×</button></dialog>
+    <p class="note list-note">or pick a country</p>
+    <ul class="country-list">{chips}</ul>
+    <script type="application/json" id="travel-data">{blob}</script>
+  </section>
 """
+    scripts = ('\n<script src="../assets/vendor/d3.min.js" defer></script>'
+               '\n<script src="../assets/vendor/topojson-client.min.js" defer></script>'
+               '\n<script src="../js/travel.js" defer></script>'
+               '\n<script src="../js/travel-map.js" defer></script>')
     write(
         "travel/index.html",
-        page("../", "travel", "Travel · Ben Collier", f"{len(places)} countries, mapped from my photos.", "travel/", body),
+        page("../", "travel", "Travel · Ben Collier", f"{len(places)} countries, mapped from my photos.", "travel/", body, scripts=scripts),
     )
 
 
 def build_404():
-    body = """
-      <h1>Page not found</h1>
-      <p class="lede">That URL is not on this site.</p>
-      <p><a href="./">Home</a> · <a href="./courses/">Courses</a> · <a href="./projects/">Coding with AI Projects</a> · <a href="./cv/">CV</a></p>
-"""
+    body = page_head("Error 404", "Page not found", "That URL is not on this site.",
+                     '<p class="links-404"><a class="go" href="./">Home</a> <a class="go" href="./courses/">Courses</a> <a class="go" href="./projects/">Coding with AI Projects</a> <a class="go" href="./cv/">CV</a></p>'
+                     '<p class="note red big-note">this page is missing from the notebook</p>')
     write(
         "404.html",
-        page("", "home", "Not found · Ben Collier", "Page not found.", "404.html", body),
+        page("", "404", "Not found · Ben Collier", "Page not found.", "404.html", body, crumbs=[("missing pages", None)]),
     )
 
 
