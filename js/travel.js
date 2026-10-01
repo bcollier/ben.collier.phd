@@ -2,7 +2,7 @@
 // are filled, and each has a dot on the city where most of its photos were
 // taken. Hovering (or tapping) a dot or a visited country opens a card with
 // that country's photos. The globe turns slowly until someone touches it.
-(function () {
+window.startGlobe = function () {
   const mount = document.getElementById("globe");
   const dataEl = document.getElementById("travel-data");
   if (!mount || !dataEl || !window.d3 || !window.topojson) return;
@@ -134,6 +134,7 @@
   // Every country is also a button below the globe, for touch and keyboards.
   document.querySelectorAll(".country-list button").forEach(function (b) {
     b.addEventListener("click", function () {
+      if (document.getElementById("view-globe").hidden) return;
       const p = places.find(function (x) { return x.cc === b.dataset.cc; });
       turnTo(p);
       open(p, null, true);
@@ -143,4 +144,4 @@
 
   open(places[0], null, false);
   if (!still) spinning = true;
-})();
+};

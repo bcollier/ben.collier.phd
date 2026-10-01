@@ -537,6 +537,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         {item("consult/", "consulting", "consult")}
         {item("cv/", "cv", "cv")}
         {item("talks/", "talks", "talks")}
+        {item("travel/", "travel", "travel")}
         {item("news/", "news", "news")}
         {item("contact/", "contact", "contact")}
         <a class="nav-cta" href="{root}book/"{' aria-current="page"' if active == "book" else ""}>Book a call</a>
@@ -1856,15 +1857,25 @@ def build_travel():
       <p class="kicker">Travel</p>
       <h1>Places I have been</h1>
       <p class="lede lede-wide">{len(places)} countries so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.</p>
-      <div class="travel">
+      <div class="view-tabs" role="tablist" aria-label="Map or globe">
+        <button type="button" role="tab" aria-selected="true" data-view="map">Map</button>
+        <button type="button" role="tab" aria-selected="false" data-view="globe">Globe</button>
+      </div>
+      <div id="view-map" class="worldmap-wrap">
+        <div id="worldmap" class="worldmap"></div>
+        <div id="map-pop" class="map-pop" hidden></div>
+      </div>
+      <div id="view-globe" class="travel" hidden>
         <div id="globe" class="globe"></div>
         <aside id="globe-card" class="globe-card" aria-live="polite" hidden></aside>
       </div>
+      <dialog id="photo-view" class="photo-view"><img alt=""><p></p><button type="button" aria-label="Close">×</button></dialog>
       <ul class="country-list">{chips}</ul>
       <script type="application/json" id="travel-data">{blob}</script>
       <script src="../assets/vendor/d3.min.js" defer></script>
       <script src="../assets/vendor/topojson-client.min.js" defer></script>
       <script src="../js/travel.js" defer></script>
+      <script src="../js/travel-map.js" defer></script>
 """
     write(
         "travel/index.html",
