@@ -380,6 +380,8 @@ COURSES = [
 NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
     # Newest first.
+    ("2026-09-29", "Led the information session for MBA students considering the Business Analytics track."),
+    ("2026-09", "Became faculty coordinator of the MBA Business Analytics track at Tepper.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
     ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
     ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
     ("2026-08-07", "Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.", "talks/", "Slides and summary"),
@@ -764,7 +766,7 @@ def build_home():
 
       <div class="bio">
         <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams, and starting in Spring 2027, capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.</p>
+        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams. Since September 2026 I have been the faculty coordinator of Tepper's <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>, and starting in Spring 2027 I also advise its capstone teams.</p>
       </div>
 
       <div class="book-row">
@@ -1235,6 +1237,8 @@ def build_talks():
 
       <h2>Earlier talks</h2>
       <ul class="earlier-list">
+        <li><span>Sep 2026</span> Business Analytics track information session. <em>Tepper MBA program</em></li>
+        <li><span>Aug 2025</span> Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></li>
         <li><span>2025</span> Traditional AI: data mining and data visualization. <em>Colloquium on AI for Business, Tepper School of Business</em></li>
         <li><span>2025</span> Using statistics to estimate the unknown, and to solve business problems. <em>Business Analytics Summer Summit, Tepper School of Business</em></li>
         <li><span>2015</span> Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></li>
