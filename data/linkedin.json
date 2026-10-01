@@ -1,7 +1,65 @@
 {
-  "updated": "2026-09-28",
+  "updated": "2026-09-30",
   "note": "LinkedIn does not offer a public RSS feed. Add posts with scripts/add_linkedin_post.py or by editing this file. The five newest render on the home page and all of them on /news/.",
   "posts": [
+    {
+      "id": "7511080513038848000",
+      "date": "2026-09-30",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7511080513038848000/",
+      "tags": [
+        "news"
+      ],
+      "people": [],
+      "text": "I'm pleased to be here at Carnegie Mellon today. Ken Griffin's $3 billion gift, with $1 billion for Pittsburgh and $2 billion to establish CMU Miami, is the largest single gift in the history of higher education.\n\nCMU Miami will be organized around society's hardest problems rather than academic subjects. That's how the best analytics capstones already work: an industry sponsor brings a real problem, and students draw on whatever disciplines it takes to solve it. Building an entire campus on this idea is bold and innovative, and CMU is the right place to do it.\n\nWell done to President Jahanian and everyone who made this happen. See you at The Cut at noon!\n\nhttps://lnkd.in/gteRhFmD"
+    },
+    {
+      "id": "7495880110957375488",
+      "date": "2026-08-19",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7495880110957375488/",
+      "tags": [
+        "students",
+        "teaching"
+      ],
+      "people": [],
+      "text": "Last semester I taught my first course \"Machine Learning Foundations with Python\" at the Heinz School of Public Policy and was very impressed with the student projects for both the midterm (traditional machine learning) and the final (working with foundation models). One team created a fascinating project clustering crash data in Chicago and built prediction model for the likelihood and severity of future accidents.\n\nWe also run friendly Kaggle-style competitions live in class, and this year's leader set the score for future classes to beat."
+    },
+    {
+      "id": "7495560137777209345",
+      "date": "2026-08-18",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7495560137777209345/",
+      "tags": [
+        "news"
+      ],
+      "people": [
+        "Nicholas Burdette"
+      ],
+      "text": "The replacement of this Pittsburgh bridge with a slide in is the kind of innovation we are so proud of in the city of bridges. Way to go Nicholas Burdette on the design and diligent execution of this enormous project!"
+    },
+    {
+      "id": "7492971558802567168",
+      "date": "2026-08-11",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7492971558802567168/",
+      "tags": [
+        "teaching",
+        "news"
+      ],
+      "people": [
+        "Annie Winkler",
+        "Asia Jackson"
+      ],
+      "text": "Had a great time sitting down with Annie Winkler for this conversation about the Carnegie Mellon MS in Business Analytics program. She asked sharp questions, which made my job easy.\n\nThe decathlon comparison came up because it's the best way I can describe what our students take on. Nobody wins a decathlon by being the best in the world at one event. You win by being strong across all ten. Our students build that same kind of range: statistics, machine learning, programming, visualization, and the communication skills to make it all matter in a business setting.\n\nIf you're considering the program, this video is a good window into how we think about it. Thanks to Annie, Asia Jackson, and the team for putting it together."
+    },
+    {
+      "id": "7492619835949072384",
+      "date": "2026-08-10",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7492619835949072384/",
+      "tags": [
+        "students",
+        "teaching"
+      ],
+      "people": [],
+      "text": "On Friday I gave a short talk at the Tepper AI Exchange about lessons learned from teaching my new course \"AI Methods for Social and Visual Data\". Kyle's project was one of the outstanding projects I highlighted when I talked about how amazed I was at the innovative AI projects that came out of this course. Great work Kyle!"
+    },
     {
       "id": "7470537380123418626",
       "date": "2026-06-10",

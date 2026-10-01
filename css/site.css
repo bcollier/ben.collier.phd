@@ -328,6 +328,25 @@ a.card:hover { border-color: var(--ink); }
 }
 .feed .post { min-width: 0; }
 .feed .post p { margin: 0.15rem 0 0; }
+.feed .post p + p { margin-top: 0.6rem; }
+.feed .post p a { overflow-wrap: anywhere; }
+.feed .post .body.clamped {
+  max-height: 7.5em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+}
+.feed .post button.more {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin-top: 0.3rem;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--accent-ink);
+  cursor: pointer;
+  text-decoration: underline;
+}
 .feed .source {
   font-size: 0.8rem;
   color: var(--ink-soft);
