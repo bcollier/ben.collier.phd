@@ -173,6 +173,7 @@ ORCID: 0000-0002-4651-7684
 
 ### Tepper School of Business
 
+- AI and Teaching Committee, 2026–
 - Marketing Teaching Track Hiring Committee, Spring 2026
 - Business Analytics Teaching Track Hiring Committee, 2025
 - MS in Business Analytics Curriculum Review Committee, 2024–
