@@ -1000,7 +1000,7 @@ def build_advising():
         </article>""")
         sections.append(f"      <h2>{term}</h2>\n" + "\n".join(cards))
     earlier = "".join(
-        f"<li><span>{esc(e['term'])}</span> {esc(e['title'])}. <em>{esc(e['place'])}</em></li>" for e in data["earlier"]
+        f"<li><span>{esc(e['term'])}</span><div>{esc(e['title'])}. <em>{esc(e['place'])}</em></div></li>" for e in data["earlier"]
     )
     n = len(data["projects"])
     body = f"""
@@ -1237,14 +1237,14 @@ def build_talks():
 
       <h2>Earlier talks</h2>
       <ul class="earlier-list">
-        <li><span>Sep 2026</span> Business Analytics track information session. <em>Tepper MBA program</em></li>
-        <li><span>2025, 2026</span> Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></li>
-        <li><span>Nov 2025</span> Managing groups and teams: strategies for collaborative excellence. <em>Community partner workshop, Carnegie Mellon University in Qatar</em></li>
-        <li><span>Mar 2025</span> Traditional AI: data mining and data visualization, and AI tools for research. <em>Colloquium on AI for Business, Tepper School of Business</em></li>
-        <li><span>2024, 2025</span> Using statistics to solve business problems, and to estimate the unknown. <em>Business Analytics Summer Summit, Tepper School of Business</em></li>
-        <li><span>2015</span> Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></li>
-        <li><span>2014</span> Digital marketing for entrepreneurs. <em>International Telecommunication Union World Conference</em></li>
-        <li><span>2014</span> Leadership in groups and organizations. <em>Cultivate Leadership Workshop, Hamad Bin Khalifa University</em></li>
+        <li><span>Sep 2026</span><div>Business Analytics track information session. <em>Tepper MBA program</em></div></li>
+        <li><span>2025, 2026</span><div>Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></div></li>
+        <li><span>Nov 2025</span><div>Managing groups and teams: strategies for collaborative excellence. <em>Community partner workshop, Carnegie Mellon University in Qatar</em></div></li>
+        <li><span>Mar 2025</span><div>Traditional AI: data mining and data visualization, and AI tools for research. <em>Colloquium on AI for Business, Tepper School of Business</em></div></li>
+        <li><span>2024, 2025</span><div>Using statistics to solve business problems, and to estimate the unknown. <em>Business Analytics Summer Summit, Tepper School of Business</em></div></li>
+        <li><span>2015</span><div>Creating a culture for innovation in teams. <em>RasGas Company, Doha</em></div></li>
+        <li><span>2014</span><div>Digital marketing for entrepreneurs. <em>International Telecommunication Union World Conference</em></div></li>
+        <li><span>2014</span><div>Leadership in groups and organizations. <em>Cultivate Leadership Workshop, Hamad Bin Khalifa University</em></div></li>
       </ul>
 
       <div class="book-row">
