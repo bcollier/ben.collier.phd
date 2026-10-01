@@ -8,11 +8,11 @@
       "date": "September 2026",
       "tools": "Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render",
       "image": "assets/portfolio/ignatius-at-home.jpg",
-      "image_alt": "Three iPhone screens from Ignatius at Home: the home page continuing the retreat's third day, Living Water, with Bloch's painting of the woman at the well; the guided prayer player reading the day's reflection, with its progress through the day's parts; and the retreat page with its days and the painting",
+      "image_alt": "Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting",
       "image_width": 1200,
       "image_height": 1600,
-      "summary": "An app that turns retreat material, such as a handout, a few passages, or just an idea like \"the parables of Jesus, seven days\", into a guided audio retreat prayed one day at a time. Each day follows lectio divina: the passage read four times, a reflection, a closer look at the text's history and original language, silence between two bells, and a painting to pray with. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.",
-      "process": "I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes around the text, but it never writes scripture. Scripture is copied from the person's own material or fetched from the public-domain World English Bible. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.",
+      "summary": "A meditation app that turns reading material, such as a handout, a few passages, or just an idea like \"seven days on a theme\", into a guided audio series listened to one day at a time. Each day pairs a reading with a slow, repeated listening, a short reflection, some background on the text, a stretch of quiet between two bells, and a painting to sit with. I built it for 15-113, Effective Coding with AI, as the course's server-side project on Render.",
+      "process": "I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes the guidance around the reading, but it never rewrites the source text: readings come from the person's own material or a public-domain source. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.",
       "links": [
         {
           "label": "Try it",
@@ -32,7 +32,7 @@
         }
       ],
       "decisions": [
-        "The model plans each day and writes around the text, but never writes scripture. Scripture comes from the person's own material or the public-domain World English Bible.",
+        "The model plans each day and writes the guidance around the reading, but never rewrites the source text. Readings come from the person's own material or a public-domain source.",
         "It is free for anyone: open models on an academic cloud, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier.",
         "Notes a person writes about themselves stay private, even in the build logs of the shared examples."
       ]
