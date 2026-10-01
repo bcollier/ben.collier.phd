@@ -910,3 +910,12 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .slides figure { margin: 0; }
 .slides img { width: 100%; border: 1px solid var(--rule); background: #fff; }
 .slides figcaption { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.4rem; line-height: 1.4; }
+
+/* A video still that links out to the video, with a play button over it. */
+.video-thumb { position: relative; display: block; max-width: 40rem; margin: 0.8rem 0 0.4rem; border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 1px var(--rule); }
+.video-thumb img { width: 100%; height: auto; transition: transform 0.3s ease; }
+.video-thumb:hover img, .video-thumb:focus-visible img { transform: scale(1.02); }
+.video-thumb .play { position: absolute; left: 50%; top: 50%; width: 4.5rem; height: 4.5rem; transform: translate(-50%, -50%); border-radius: 50%; background: rgb(23 19 15 / 0.72); box-shadow: 0 6px 20px rgb(0 0 0 / 0.3); transition: background 0.2s; }
+.video-thumb .play::after { content: ""; position: absolute; left: 54%; top: 50%; transform: translate(-50%, -50%); border-style: solid; border-width: 0.85rem 0 0.85rem 1.4rem; border-color: transparent transparent transparent #fbf8f2; }
+.video-thumb:hover .play, .video-thumb:focus-visible .play { background: var(--accent-ink); }
+.video-thumb .duration { position: absolute; right: 0.6rem; bottom: 0.6rem; background: rgb(23 19 15 / 0.78); color: #fbf8f2; font-size: 0.78rem; font-weight: 600; padding: 0.1rem 0.45rem; border-radius: 3px; }
