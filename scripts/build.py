@@ -550,6 +550,7 @@ def footer(root: str) -> str:
   <script src="{root}js/site.js"></script>
   <script src="{root}js/course-hero.js" defer></script>
   <script src="{root}js/course-schedule.js" defer></script>
+  <script src="{root}js/news-visuals.js" defer></script>
   <script src="{root}js/portrait-dock.js" defer></script>
 </body>
 </html>
@@ -642,9 +643,10 @@ def linkable_courses():
     return globals().get("ALL_COURSES", COURSES)
 
 
-def link_courses(text: str, root: str) -> str:
+def link_courses(text: str, root: str, found=None) -> str:
     """Link the first mention of each course in a news item to its page.
-    Longer names win, so "45-885 Data Visualization" links as one phrase."""
+    Longer names win, so "45-885 Data Visualization" links as one phrase.
+    Pass a list as found to collect the slugs mentioned, in order."""
     names = {}
     for c in linkable_courses():
         for name in [course_name(c), c["title"], c.get("number", ""), *COURSE_ALIASES.get(c["slug"], [])]:
@@ -660,23 +662,92 @@ def link_courses(text: str, root: str) -> str:
         if slug in done:
             return m.group(0)
         done.add(slug)
+        if found is not None:
+            found.append(slug)
         return f'<a href="{root}courses/{slug}/">{m.group(0)}</a>'
 
     return pattern.sub(sub, text)
 
 
+# A picture for news items that are not about one course. Keyed by a phrase
+# unique to the item. "video" puts a play button on the still.
+NEWS_VISUALS = {
+    "George Leland Bach": {"img": "assets/news/bach-ceremony.jpg", "video": True, "alt": "The stage at the 2026 Tepper MBA diploma ceremony"},
+    "Faculty Spotlight": {"img": "assets/talks/faculty-spotlight-2026.jpg", "video": True, "alt": "Ben Collier in the Tepper Faculty Spotlight video"},
+    "Tepper reel": {"img": "assets/news/tepper-reel.jpg", "video": True, "alt": "Ben Collier and a colleague on the Tepper Quad stairs in the end-of-Mini-3 reel"},
+    "Tepper AI-Exchange": {"img": "assets/talks/ai-exchange-2026-blooms.jpg", "alt": "Slide from the AI-Exchange talk: how 45-884 maps to Bloom's taxonomy"},
+    "information session": {"icon": "track", "label": "BA track"},
+    "faculty coordinator": {"icon": "track", "label": "BA track"},
+    "capstone": {"icon": "capstone", "label": "Capstones"},
+    "gAIm Systems": {"icon": "role", "label": "gAIm"},
+    "Joined Tepper": {"icon": "role", "label": "Tepper"},
+    "Summer Summit": {"icon": "summit", "label": "BASS"},
+}
+
+NEWS_ICONS = {
+    # 24x24 line icons, stroked in the tile's text color.
+    "track": '<path d="M4 19c4-1 5-6 8-7s6 1 8-3"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="9" r="1.6"/><path d="M14 4l6 5-6 0"/>',
+    "capstone": '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/><path d="M22 9v6"/>',
+    "role": '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/><path d="M3 13h18"/>',
+    "summit": '<path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/>',
+}
+ICON_COLORS = {"track": "c-navy", "capstone": "c-pine", "role": "c-ink", "summit": "c-clay"}
+
+
+def course_visual_slides(slug: str, offset: int):
+    """Five slides spread across a course, starting at a different session for
+    each news item so repeated mentions do not show the same five."""
+    s = load_schedule(slug)
+    if not s:
+        return []
+    rows = [r for r in s["schedule"] if r.get("slides")]
+    picks = []
+    for i in range(min(5, len(rows))):
+        r = rows[(offset + i * max(1, len(rows) // 5)) % len(rows)]
+        picks.append(r["slides"][(offset + i) % len(r["slides"])])
+    return picks
+
+
+def news_visual(text: str, slugs, root: str, index: int, href: str) -> str:
+    spec = next((v for k, v in NEWS_VISUALS.items() if k in text), None)
+    if spec and spec.get("img"):
+        play = '<span class="play" aria-hidden="true"></span>' if spec.get("video") else ""
+        inner = f'<img src="{root}{spec["img"]}" alt="{esc(spec["alt"])}" width="480" height="270" loading="lazy">{play}'
+        return f'<a class="news-vis photo" href="{esc(href or "#")}" tabindex="-1">{inner}</a>' if href else f'<div class="news-vis photo">{inner}</div>'
+    if not spec and slugs:
+        slides = course_visual_slides(slugs[0], index * 2)
+        if slides:
+            c = next(c for c in linkable_courses() if c["slug"] == slugs[0])
+            imgs = "".join(
+                f'<img src="{root}{thumb_src(s["src"])}" alt="{esc(s["caption"]) if i == 0 else ""}" width="320" height="180" loading="lazy" decoding="async"{" class=on" if i == 0 else ""}>'
+                for i, s in enumerate(slides)
+            )
+            return (f'<a class="news-vis slides" href="{root}courses/{c["slug"]}/" tabindex="-1" aria-label="Slides from {esc(course_name(c))}">'
+                    f'{imgs}<span class="tag {c["color"]}">{esc(course_label(c))}</span></a>')
+    if spec and spec.get("icon"):
+        icon = spec["icon"]
+        return (f'<div class="news-vis icon {ICON_COLORS[icon]}" aria-hidden="true">'
+                f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">{NEWS_ICONS[icon]}</svg>'
+                f'<span>{esc(spec["label"])}</span></div>')
+    return ""
+
+
 def news_items(limit=None, root=""):
     items = NEWS if limit is None else NEWS[:limit]
-    out = ['<ol class="feed">']
-    for iso, text, *rest in items:
+    out = ['<ol class="feed news">']
+    for index, (iso, text, *rest) in enumerate(items):
         more = ""
+        href = ""
         if rest:
             label = rest[1] if len(rest) > 1 else "Watch the video"
-            more = f' <a href="{esc(news_link(rest[0], root))}">{label}</a>'
-
+            href = news_link(rest[0], root)
+            more = f' <a href="{esc(href)}">{label}</a>'
+        slugs = []
+        body = link_courses(text, root, slugs)
+        visual = news_visual(text, slugs, root, index, href)
         out.append(
-            f'<li><time datetime="{iso}">{human_date(iso)}</time>'
-            f'<div class="post"><p>{link_courses(text, root)}{more}</p></div></li>'
+            f'<li{" class=has-vis" if visual else ""}><time datetime="{iso}">{human_date(iso)}</time>'
+            f'<div class="post"><p>{body}{more}</p></div>{visual}</li>'
         )
     out.append("</ol>")
     return "\n".join(out)

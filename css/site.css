@@ -1171,3 +1171,76 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
   padding: 0.2rem 0 0.2rem 0.7rem;
   margin: 0 0 1rem;
 }
+
+/* News visuals. Each dated item gets a small 16:9 picture on the right: five
+   slides from the course it mentions (js/news-visuals.js crossfades them for
+   the item mid-window or under the pointer), a video still with a play
+   button, or an icon tile. On phones the picture sits under the text. */
+.feed.news { max-width: 58rem; }
+.feed.news li.has-vis { grid-template-columns: 7.2rem minmax(0, 1fr) 12.5rem; align-items: start; }
+.news-vis {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.news-vis.slides, .news-vis.photo { background: #fff; }
+a.news-vis:hover { transform: translateY(-2px); box-shadow: 0 10px 22px -16px rgba(27, 23, 20, 0.6); }
+.news-vis img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.news-vis.slides img { opacity: 0; transition: opacity 0.7s ease; }
+.news-vis.slides img.on { opacity: 1; }
+.news-vis .tag {
+  position: absolute;
+  left: 0.4rem;
+  bottom: 0.4rem;
+  z-index: 1;
+  color: var(--thumb-ink);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.05rem 0.4rem;
+  border-radius: 2px;
+}
+.news-vis .play {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 2.6rem; height: 2.6rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(23, 19, 15, 0.72);
+  transition: background 0.25s ease;
+}
+.news-vis .play::after {
+  content: "";
+  position: absolute;
+  left: 54%; top: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 0.45rem 0 0.45rem 0.75rem;
+  border-color: transparent transparent transparent #fff;
+}
+a.news-vis:hover .play { background: var(--accent-ink); }
+.news-vis.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  color: var(--thumb-ink);
+  border: 0;
+}
+.news-vis.icon svg { width: 2.2rem; height: 2.2rem; opacity: 0.92; }
+.news-vis.icon span { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; }
+@media (max-width: 46rem) {
+  .feed.news li.has-vis { grid-template-columns: 7.2rem minmax(0, 1fr); }
+  .feed.news li.has-vis .news-vis { grid-column: 2; max-width: 16rem; }
+}
+@media (max-width: 30rem) {
+  .feed.news li.has-vis { grid-template-columns: minmax(0, 1fr); gap: 0.35rem; }
+  .feed.news li.has-vis .news-vis { grid-column: 1; }
+}
+@media (prefers-color-scheme: dark) {
+  .news-vis.slides img, .news-vis.photo img { filter: brightness(0.93); }
+}
