@@ -381,7 +381,13 @@ NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
     # Newest first.
     ("2026-09-29", "Led the information session for MBA students considering the Business Analytics track.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
+    ("2026-09-24", "Opened the 70-445 agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.", "https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy", "The forecasts"),
+    ("2026-09-24", "Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.", "https://www.thedartmouth.com/article/2026/09/schnell-ai-writing", "The story"),
     ("2026-09", "Became faculty coordinator of the MBA Business Analytics track at Tepper.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
+    ("2026-09-10", "Opened 70-445 with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.", "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/", "The story"),
+    ("2026-09-10", "Same class, darker headline: an Anthropic alignment lead put the chance that AI kills all humans within a decade at more than 10 percent. We set it next to the p(doom) numbers other AI leaders have given, and a week later the class gave its own. The median was 20 percent.", "https://www.forbes.com/sites/siladityaray/2026/09/09/anthropic-alignment-lead-warns-ai-could-kill-all-humans-as-researcher-quits/", "The story"),
+    ("2026-09-08", "Started 70-445 on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.", "https://www.foxbusiness.com/technology/nvidia-ceo-jensen-huang-declares-agi-has-arrived-after-openai-unveils-gpt-6-astra", "The story"),
+    ("2026-08-27", "Opened the history of AI in 70-445 with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.", "https://techstartups.com/2026/08/26/top-tech-news-today-august-26-2026-amazon-anthropic-google-microsoft-waymo-more/", "The story"),
     ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
     ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
     ("2026-08-07", "Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.", "talks/", "Slides and summary"),
@@ -672,6 +678,12 @@ def link_courses(text: str, root: str, found=None) -> str:
 # A picture for news items that are not about one course. Keyed by a phrase
 # unique to the item. "video" puts a play button on the still.
 NEWS_VISUALS = {
+    "Mechanical Turk marketplace": {"img": "assets/news/class-mturk.jpg", "alt": "Slide: Amazon is shutting Mechanical Turk after 21 years"},
+    "GPT-6 Astra launch": {"img": "assets/news/class-jensen.jpg", "alt": "Jensen Huang on stage"},
+    "Navier-Stokes": {"img": "assets/news/class-navier.jpg", "alt": "Quanta Magazine illustration of turbulent fluid for the Navier-Stokes story"},
+    "alignment lead": {"img": "assets/news/class-pdoom.jpg", "alt": "The Claude app on a phone"},
+    "superforecasters": {"img": "assets/news/class-forecast.jpg", "alt": "Chart of forecasts against actual AI progress"},
+    "Dartmouth's provost": {"img": "assets/news/class-dartmouth.jpg", "alt": "Illustration from The Dartmouth's story on the provost's writing"},
     "George Leland Bach": {"img": "assets/news/bach-ceremony.jpg", "video": True, "alt": "The stage at the 2026 Tepper MBA diploma ceremony"},
     "Faculty Spotlight": {"img": "assets/talks/faculty-spotlight-2026.jpg", "video": True, "alt": "Ben Collier in the Tepper Faculty Spotlight video"},
     "Tepper reel": {"img": "assets/news/tepper-reel.jpg", "video": True, "alt": "Ben Collier and a colleague on the Tepper Quad stairs in the end-of-Mini-3 reel"},
