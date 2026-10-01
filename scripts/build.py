@@ -582,7 +582,7 @@ def footer(root: str, scripts: str = "") -> str:
     return f"""</main>
 
 <footer class="foot">
-  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier. A personal site; views are my own, not Carnegie Mellon University's.</p>
+  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier</p>
   <nav aria-label="Footer">
     <a href="{root}consult/">Consulting</a>
     <a href="{root}contact/">Contact</a>
