@@ -20,10 +20,8 @@
         "students",
         "teaching"
       ],
-      "people": [
-        "Rizaldy U"
-      ],
-      "text": "Last semester I taught my first course \"Machine Learning Foundations with Python\" at the Heinz School of Public Policy and was very impressed with the student projects for both the midterm (traditional machine learning) and the final (working with foundation models). Rizaldy U and his team created a fascinating project clustering crash data in Chicago and built prediction model for the likelihood and severity of future accidents.\n\nIn addition to his projects, we run some friendly Kaggle-style competitions in the course live in class and Rizaldy is now the scoreboard leader for future classes to beat!"
+      "people": [],
+      "text": "Last semester I taught my first course \"Machine Learning Foundations with Python\" at the Heinz School of Public Policy and was very impressed with the student projects for both the midterm (traditional machine learning) and the final (working with foundation models). One team created a fascinating project clustering crash data in Chicago and built prediction model for the likelihood and severity of future accidents.\n\nWe also run friendly Kaggle-style competitions live in class, and this year's leader set the score for future classes to beat."
     },
     {
       "id": "7495560137777209345",
@@ -59,9 +57,7 @@
         "students",
         "teaching"
       ],
-      "people": [
-        "Kyle Weinstein"
-      ],
+      "people": [],
       "text": "On Friday I gave a short talk at the Tepper AI Exchange about lessons learned from teaching my new course \"AI Methods for Social and Visual Data\". Kyle's project was one of the outstanding projects I highlighted when I talked about how amazed I was at the innovative AI projects that came out of this course. Great work Kyle!"
     },
     {
@@ -77,16 +73,6 @@
         "Tepper MBA Class of 2026"
       ],
       "text": "Grateful to receive the George Leland Bach Teaching Award, chosen by vote of the graduating MBA class. Many thanks to the students of the Class of 2026 for the curiosity, energy, and great conversations you brought to the classroom."
-    },
-    {
-      "id": "6704092479492378624",
-      "date": "2020-08-25",
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:6704092479492378624/",
-      "tags": [
-        "news"
-      ],
-      "people": [],
-      "text": "Duolingo is hiring in Data Science! If you or anyone you know is looking for a role as a Data Scientist, New Graduate apply here: https://lnkd.in/gCYi3jj!"
     }
   ]
 }

@@ -386,7 +386,7 @@ NEWS = [
     ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
     ("2026-08-07", "Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.", "talks/", "Slides and summary"),
     ("2026-08", "Finished recording the MS in Business Analytics Math Skills Workshop, a self-paced course for incoming MS in Business Analytics students that runs from algebra through gradient descent, PCA, and statistical inference."),
-    ("2026-06-10", "George Leland Bach Teaching Award, voted by the MBA Class of 2026."),
+    ("2026-05-09", "Received the George Leland Bach Excellence in Teaching Award, voted by the MBA Class of 2026 and presented at the MBA diploma ceremony.", "https://www.youtube.com/watch?v=wkVLIOVPTbU&t=2890s", "Watch the presentation"),
     ("2026-06", "Really proud of this summer's AI Methods final projects. Three of the nineteen are already in use, and they range from social listening on an aircraft maker's safety crisis to an offline tool that helps bomb-disposal teams identify ordnance."),
     ("2026-05-04", "Taught AI Methods for Social and Visual Data for the second time, rebuilt for the summer with one live session a week and hands-on Python videos for every module."),
     ("2026-04-30", "Talked with Tepper for a Faculty Spotlight on what students learn in the MS in Business Analytics, and why I describe business analytics as a decathlon.", "https://www.youtube.com/watch?v=UxBPkez6Mc4"),
@@ -633,6 +633,37 @@ def news_link(link: str, root: str) -> str:
     return link if link.startswith("http") else root + link
 
 
+# Short names news items use for a course, beyond its catalog title.
+COURSE_ALIASES = {"45-884": ["AI Methods"], "msba-math-skills-workshop": ["Math Skills Workshop"]}
+
+
+def linkable_courses():
+    return globals().get("ALL_COURSES", COURSES)
+
+
+def link_courses(text: str, root: str) -> str:
+    """Link the first mention of each course in a news item to its page.
+    Longer names win, so "45-885 Data Visualization" links as one phrase."""
+    names = {}
+    for c in linkable_courses():
+        for name in [course_name(c), c["title"], c.get("number", ""), *COURSE_ALIASES.get(c["slug"], [])]:
+            if len(name) >= 6:
+                names.setdefault(name, c["slug"])
+    if not names:
+        return text
+    pattern = re.compile("|".join(re.escape(n) for n in sorted(names, key=len, reverse=True)))
+    done = set()
+
+    def sub(m):
+        slug = names[m.group(0)]
+        if slug in done:
+            return m.group(0)
+        done.add(slug)
+        return f'<a href="{root}courses/{slug}/">{m.group(0)}</a>'
+
+    return pattern.sub(sub, text)
+
+
 def news_items(limit=None, root=""):
     items = NEWS if limit is None else NEWS[:limit]
     out = ['<ol class="feed">']
@@ -644,7 +675,7 @@ def news_items(limit=None, root=""):
 
         out.append(
             f'<li><time datetime="{iso}">{human_date(iso)}</time>'
-            f'<div class="post"><p>{text}{more}</p></div></li>'
+            f'<div class="post"><p>{link_courses(text, root)}{more}</p></div></li>'
         )
     out.append("</ol>")
     return "\n".join(out)
