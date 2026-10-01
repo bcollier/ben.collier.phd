@@ -107,7 +107,7 @@ ORCID: 0000-0002-4651-7684
 ## Honors and awards
 
 - **George Leland Bach Teaching Award**, Tepper School of Business, 2026. One faculty member per year, chosen by vote of the graduating MBA class.
-- **Center for Intelligent Business Award**, $10,000 for work on collaborative AI in the classroom, 2024
+- **Center for Intelligent Business Award**, $10,000 for work on collaborative AI in the classroom, 2024. Named a [Collaborative AI Fellow](https://www.cmu.edu/intelligentbusiness/collaborative-ai/index.html).
 - **Research Grant Award**, Qatar Foundation, $200,000, 2012
 - **Doctoral Consortium**, Academy of Management, 2011
 - **United States Army Research** stipend, 2011–2012, for work on collective intelligence in online groups
@@ -138,10 +138,13 @@ ORCID: 0000-0002-4651-7684
 ### Peer-reviewed publications and conference proceedings
 
 - Bear, J. B., & Collier, B. (2016). Where are the Women in Wikipedia? Understanding the Different Psychological Experiences of Men and Women in Wikipedia. *Sex Roles*, 74(5–6), 254–265. https://doi.org/10.1007/s11199-015-0573-y
+  Covered by [ATTN:](https://archive.attn.com/stories/8908/study-shows-gender-gap-on-wikipedia) and [Wiki Education](https://wikiedu.org/blog/2016/11/09/women-wikipedia/), and discussed in Wikipedia's article on [gender bias on Wikipedia](https://en.wikipedia.org/wiki/Gender_bias_on_Wikipedia).
 - Turan, N., & Collier, B. (2014). Gender and Negotiation in Leadership Roles: Extending Advocacy Effects to Women in Leadership Positions. *Annual Meeting of the International Association for Conflict Management*, Leiden, Netherlands.
 - Collier, B., & Kraut, R. (2012). Leading the Collective: Social Capital and the Development of Leaders in Core-Periphery Organizations. *Collective Intelligence*, Cambridge, MA. https://doi.org/10.48550/arXiv.1204.3682
+  Summarized in the [Wikimedia Research Newsletter](https://meta.wikimedia.org/wiki/Research:Newsletter/2012/May), May 2012.
 - Collier, B., & Bear, J. (2012). Conflict, Confidence, or Criticism: An Empirical Examination of the Gender Gap in Wikipedia Contributors. *ACM Conference on Computer-Supported Cooperative Work*, Seattle, WA, 383–392. https://doi.org/10.1145/2145204.2145265
-- Collier, B., Burke, M., Kittur, A., & Kraut, R. (2010). Promoting Good Management: Governance, Promotion, and Leadership in Open Collaboration Communities. *International Conference on Information Systems*, St. Louis, MO.
+  Reviewed in the [Wikipedia Signpost](https://signpost.news/2012-02-27/Recent_research), February 2012.
+- Collier, B., Burke, M., Kittur, A., & Kraut, R. (2010). Promoting Good Management: Governance, Promotion, and Leadership in Open Collaboration Communities. *International Conference on Information Systems*, St. Louis, MO. https://aisel.aisnet.org/icis2010_submissions/220
 - Collier, B., & Hampshire, R. (2010). Sending Mixed Signals: Multilevel Reputation Effects in Peer-to-Peer Lending Markets. *ACM Conference on Computer-Supported Cooperative Work*, Savannah, GA, 197–206. https://doi.org/10.1145/1718918.1718955
 - Collier, B., Burke, M., Kittur, A., & Kraut, R. (2008). Retrospective versus Prospective Evidence for Promotion: The Case of Wikipedia. *Academy of Management Annual Meeting*, Anaheim, CA.
 - Collier, B. (2012). *Leadership Development in Core-Periphery Organizations*. Doctoral dissertation, Carnegie Mellon University.
@@ -165,6 +168,8 @@ ORCID: 0000-0002-4651-7684
 - Using Statistics to Estimate the Unknown, Business Analytics Summer Summit, Tepper School of Business, May 2025
 - Using Statistics to Solve Business Problems, Business Analytics Summer Summit, Tepper School of Business, June 2024
 - Conversation on the MS in Business Analytics program, Tepper School of Business video, 2026. https://cmu.is/4tcxTyj
+- Named as the new professor teaching business analytics in the MBA program, [Meet Carnegie Mellon Tepper's MBA Class of 2026](https://poetsandquants.com/2025/01/10/meet-carnegie-mellon-teppers-mba-class-of-2026/2/), Poets & Quants, January 10, 2025
+- Quoted on CMU-Q's executive and professional education program, [CMU-Q news](https://www.qatar.cmu.edu/news/more-than-700-participants-complete-cmu-qs-executive-and-professional-education-program/), June 24, 2015
 - Creating a Culture for Innovation in Teams, RasGas Company, 2015
 - Digital Marketing for Entrepreneurs, International Telecommunication Union World Conference (United Nations specialized agency for ICT), 2014
 - Leadership in Groups and Organizations, Cultivate Leadership Workshop, Hamad Bin Khalifa University, 2014

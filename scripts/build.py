@@ -406,6 +406,7 @@ NEWS = [
     ("2025-05", "Joined gAIm Systems as Senior Director of AI and Data Science."),
     ("2025-05", "Proud of this spring's Data Mining final projects: teams brought their own questions, from predicting baseball Hall of Fame induction to siting EV chargers in Pennsylvania."),
     ("2025-03", "This spring's Data Visualization final projects were 29 recorded data stories, from Netflix's global catalog to city-by-city warming and public-sector dashboards."),
+    ("2025-01-10", "Poets & Quants profiled Tepper's MBA Class of 2026, and Tepper's director of masters admissions named me as the new professor teaching business analytics in the MBA program.", "https://poetsandquants.com/2025/01/10/meet-carnegie-mellon-teppers-mba-class-of-2026/2/", "Read the profile"),
     ("2025-01-13", "Rebuilt Data Visualization entirely in Tableau for its second run, added clustering, network graphs, and explainable AI, and recorded about fifty short screencast lessons. Also started teaching its MS in Business Analytics counterpart, 46-885."),
     ("2025-01", "Advised five MS in Business Analytics capstone projects."),
     ("2024-10", "Taught Data Mining for the third time and moved it from R to Python, adding time series forecasting and a session on building data-driven products to clustering, regression, classification, and text mining."),
@@ -1576,6 +1577,7 @@ def build_consult():
             <li>Three-day executive programs at Carnegie Mellon University in Qatar on <a href="../courses/exec-negotiation/">negotiation</a>, <a href="../courses/exec-decision-making/">decision making</a>, <a href="../courses/exec-teams/">managing teams</a>, and <a href="../courses/exec-leadership/">leadership</a>, with up to 114 managers in the room from ministries, energy, banking, telecom, aviation, and media.</li>
             <li><a href="../courses/exec-custom/">Workshops built for one organization</a>: RasGas, a Carnegie Mellon senior staff retreat in Munich, and Qatar's Civil Service Bureau.</li>
             <li>Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</li>
+            <li>At Carnegie Mellon in Qatar I co-directed executive and professional education. In 2014 to 2015 the program taught 755 participants from more than 30 government and private-sector organizations across Qatar. <a href="https://www.qatar.cmu.edu/news/more-than-700-participants-complete-cmu-qs-executive-and-professional-education-program/">CMU-Q news</a></li>
             <li>Workshops on chatbot development, data programming, SQL and NoSQL, data mining, cloud infrastructure, and agile development.</li>
             <li>The kind of recorded course I can build for a team: the <a href="../courses/msba-math-skills-workshop/">MS in Business Analytics Math Skills Workshop</a>, about thirty short videos I scripted and recorded for incoming Carnegie Mellon MS in Business Analytics students.</li>
           </ul>
