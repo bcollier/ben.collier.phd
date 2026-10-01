@@ -12,7 +12,7 @@ ORCID: 0000-0002-4651-7684
 ## Academic appointments
 
 - **Assistant Teaching Professor of Business Analytics**, Tepper School of Business, Carnegie Mellon University, Aug 2024–present
-- **Faculty Coordinator, MBA Business Analytics Track**, Tepper School of Business, Carnegie Mellon University, Sep 2026–present. https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics
+- **Faculty Coordinator, [MBA Business Analytics Track](https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics)**, Tepper School of Business, Carnegie Mellon University, Sep 2026–present
 - **Adjunct Professor of Business Analytics**, Tepper School of Business, Carnegie Mellon University, Oct 2023–May 2024
 - **Assistant Teaching Professor of Organizational Behavior; Co-Director of Executive and Continuing Education**, Carnegie Mellon University in Qatar, Aug 2012–Dec 2016
 - **Research Assistant**, Human-Computer Interaction Institute, Carnegie Mellon University, Sep 2008–Aug 2012
