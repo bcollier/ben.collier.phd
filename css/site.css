@@ -175,7 +175,10 @@ h3 { font-size: 1.2rem; margin: 0 0 0.35rem; }
   font-size: clamp(1.25rem, 2.2vw, 1.55rem);
   font-weight: 400;
   line-height: 1.35;
-  max-width: 36rem;
+  /* Wide enough that a long intro does not wrap into a narrow column under a
+     wide headline, still short enough to read (about 70 characters a line). */
+  max-width: 50rem;
+  text-wrap: pretty;
   margin: 0 0 1.2rem;
 }
 .lede.lede-wide { max-width: none; }
@@ -887,7 +890,7 @@ nav.primary a.nav-cta[aria-current="page"] { background: var(--accent-ink); bord
 .timeline span { display: block; font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
 .timeline strong { display: block; }
 
-.partners { color: var(--ink-soft); max-width: 44rem; }
+.partners { color: var(--ink-soft); max-width: 50rem; }
 
 /* Kinds of consulting on /consult/. */
 .kinds { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 1.2rem; margin: 2rem 0 1.4rem; max-width: 64rem; }
@@ -1355,3 +1358,21 @@ a.news-vis:hover .play { background: var(--accent-ink); }
 @media (prefers-reduced-motion: reduce) {
   .map-pop, .map-pop.swap .mp-thumbs button, .map-pop.swap .mp-head { transition: none; animation: none; transform: none; }
 }
+
+/* Country names on the travel map. At full view only roomy dots are named;
+   zooming into a crowded region names every dot in it. */
+.m-label {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--ink);
+  paint-order: stroke;
+  stroke: var(--white);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.m-dot.labelled .m-label { opacity: 1; }
+.m-dot.on .m-label { fill: var(--accent-ink); }
