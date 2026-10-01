@@ -6,9 +6,7 @@
   <title>Ben Collier · Teaching, Tepper School of Business</title>
   <meta name="description" content="Assistant Teaching Professor of Business Analytics at Carnegie Mellon. Courses, projects, and applied work.">
   <meta name="author" content="Ben Collier">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#22302b">
   <link rel="canonical" href="https://collier.phd/">
   <meta property="og:type" content="profile">
   <meta property="og:site_name" content="Ben Collier">
@@ -26,9 +24,11 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="alternate" type="application/atom+xml" title="Ben Collier: news" href="feed.xml">
+  <script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;c.add("nb");if(r||!("IntersectionObserver" in window)){c.add("static")}else{c.add("js-anim")}setTimeout(function(){if(!window.__nb){c.remove("js-anim");c.remove("nb")}},4000)})(document.documentElement)</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..600,0..100,0..1&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Young+Serif&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Young+Serif&display=swap"></noscript>
   <link rel="stylesheet" href="css/site.css">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -63,113 +63,258 @@
   ]
 }</script>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="wrap">
-    <header class="site home">
-      <a class="wordmark" href=""><img class="mini-portrait" src="assets/portrait-hedcut.png" width="360" height="360" alt=""><span>Ben Collier, PhD</span></a>
-      <nav class="primary" aria-label="Primary">
-        <a href="courses/">courses</a>
-        <a href="projects/">coding with AI projects</a>
-        <a href="advising/">advising</a>
-        <a href="consult/">consulting</a>
-        <a href="cv/">cv</a>
-        <a href="talks/">talks</a>
-        <a href="travel/">travel</a>
-        <a href="news/">news</a>
-        <a href="contact/">contact</a>
-        <a class="nav-cta" href="book/">Book a call</a>
-      </nav>
-    </header>
-    <main id="main">
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./" aria-label="Ben Collier, PhD, home">
+      <span class="badge"><img src="assets/portrait-hedcut.png" alt="" width="46" height="46" loading="lazy"><svg data-chart="ring"></svg></span>
+      <span>Ben Collier, PhD</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        <li style="--c:#f6c453"><a href="courses/">courses</a></li>
+        <li style="--c:#9ccbea"><a href="projects/">coding with AI projects</a></li>
+        <li style="--c:#a9d8a1"><a href="advising/">advising</a></li>
+        <li style="--c:#f3a391"><a href="consult/">consulting</a></li>
+        <li style="--c:#cdb8e8"><a href="cv/">cv</a></li>
+        <li style="--c:#8ed3c7"><a href="talks/">talks</a></li>
+        <li style="--c:#c9dd92"><a href="travel/">travel</a></li>
+        <li style="--c:#f5b5c8"><a href="news/">news</a></li>
+        <li style="--c:#e9dfc4"><a href="contact/">contact</a></li>
+      </ul>
+    </nav>
+    <a class="sticky-cta" href="book/"><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
+  </div>
+</header>
 
-      <section class="hero">
-        <div class="portrait-morph">
-          <img class="portrait" src="assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier" fetchpriority="high">
-          <img class="portrait hedcut" src="assets/portrait-hedcut.png" width="360" height="360" alt="">
+<main id="main" class="sheet">
+  <div class="sheet-head">
+    <span class="field" aria-hidden="true">Subject <span class="val">AI and business analytics</span></span>
+    <span class="field" aria-hidden="true">Filed under <span class="val">teaching and practice</span></span>
+  </div>
+
+  <section class="hero reveal" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <p class="stamp thunk" style="--d:.15s">Assistant Teaching Professor of Business Analytics</p>
+      <h1 id="hero-title">Ben Collier</h1>
+      <p class="lede">I teach <mark style="--d:.5s">AI and business analytics</mark> at Carnegie Mellon's Tepper School, and help companies <span class="u u2" data-d="1.2">put them to work</span>.</p>
+      <p class="hero-more">The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the <span class="circ" data-d="1.7">notebook</span>.</p>
+      <div class="cta-row">
+        <a class="sticky land" href="book/" style="--rot:-3deg;--d:1s"><span class="big">Book a free <span class="nw">15-minute call &rarr;</span></span></a>
+        <a class="go" href="consult/">Consulting and custom education</a>
+      </div>
+    </div>
+
+    <div class="hero-art">
+      <figure class="polaroid portrait-morph" style="--rot:3deg">
+        <span class="tape tl"></span><span class="tape tr"></span>
+        <div class="ph">
+          <img class="photo" src="assets/portrait.jpg" alt="Ben Collier, smiling, in a tweed jacket and red tie" width="500" height="500" fetchpriority="high">
+          <img class="hedcut" src="assets/portrait-hedcut.png" alt="" width="360" height="360" loading="lazy">
+        </div>
+        <figcaption>hi, I'm Ben!</figcaption>
+      </figure>
+      <figure class="figcard needs-js" style="--rot:-3.5deg">
+        <span class="tape tc"></span>
+        <svg data-chart="kmeans" data-d="0.8"></svg>
+        <figcaption class="figcap">fig. 1 &middot; k-means clustering, from Data Mining</figcaption>
+      </figure>
+      <p class="note hero-note fade needs-js" style="--d:3.4s">&uarr; three clusters, no labels needed</p>
+    </div>
+  </section>
+
+  <section class="sec bio reveal" aria-labelledby="bio-title">
+    <span class="sec-no" aria-hidden="true">No. 02</span>
+    <p class="kicker">About</p>
+    <h2 id="bio-title">From industry to the <span class="u" data-d=".3">classroom</span>, and back</h2>
+    <div class="bio-grid">
+      <div class="prose">
+        <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>.</p>
+        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the <mark class="b" style="--d:.6s">founding data scientist</mark> on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. <mark class="g" style="--d:1s">The problems I bring into class come from that work.</mark></p>
+        <p>I also advise MS in Business Analytics capstone teams. Since September 2026 I have been the faculty coordinator of Tepper's <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>, and starting in Spring 2027 I also advise its capstone teams.</p>
+      </div>
+      <figure class="tl-fig">
+        <svg data-chart="timeline" data-d="0.5" data-rows="[[&quot;CMU Qatar, teaching + exec ed&quot;, 2012, 2016, &quot;#cdb8e8&quot;], [&quot;UPMC's Pensiamo&quot;, 2016, 2020, &quot;#f3a391&quot;], [&quot;Hot Metal AI, my practice&quot;, 2018, 0, &quot;#f6c453&quot;], [&quot;Duolingo&quot;, 2020, 2023, &quot;#a9d8a1&quot;], [&quot;Tepper, Carnegie Mellon&quot;, 2023, 0, &quot;#9ccbea&quot;], [&quot;gAIm Systems&quot;, 2025, 0, &quot;#8ed3c7&quot;]]"></svg>
+        <figcaption class="figcap needs-js">fig. 2 &middot; where the problems come from, 2012 to now</figcaption>
+        <table class="tl-table"><caption>Career timeline</caption><tr><th>Carnegie Mellon University in Qatar, Assistant Teaching Professor and co-director of executive education</th><td>2012 to 2016</td></tr><tr><th>UPMC's Pensiamo, Senior Director of Data Science</th><td>2016 to 2020</td></tr><tr><th>Hot Metal AI, founder</th><td>2018 to now</td></tr><tr><th>Duolingo, Staff Data Scientist</th><td>2020 to 2023</td></tr><tr><th>Tepper School of Business, Carnegie Mellon</th><td>2023 to now</td></tr><tr><th>gAIm Systems, Senior Director of AI and Data Science</th><td>2025 to now</td></tr></table>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec reveal" aria-labelledby="stats-title">
+    <span class="sec-no" aria-hidden="true">No. 03</span>
+    <p class="kicker">By the numbers</p>
+    <h2 id="stats-title">So far, in <span class="u" data-d=".3">tally marks</span></h2>
+    <div class="stats">
+      <a class="stat" href="courses/#built">
+        <span class="n"><span class="count" data-to="4" data-d=".2">4</span></span>
+        <svg data-chart="tally" data-n="4" data-d="0.3"></svg>
+        <span class="l">courses I designed from scratch</span>
+        <span class="more">see them</span>
+      </a>
+      <a class="stat" href="courses/">
+        <span class="n"><span class="count" data-to="10" data-d=".35">10</span></span>
+        <svg data-chart="tally" data-n="10" data-d="0.6"></svg>
+        <span class="l">courses taught at Carnegie Mellon since 2023</span>
+        <span class="more">all courses</span>
+      </a>
+      <a class="stat" href="advising/">
+        <span class="n"><span class="count" data-to="13" data-d=".5">13</span></span>
+        <svg data-chart="tally" data-n="13" data-d="1.1"></svg>
+        <span class="l">capstones and independent studies advised since 2024</span>
+        <span class="more">advising</span>
+      </a>
+      <a class="stat award" href="cv/#honors-and-awards">
+        <span class="n"><span class="thunk yr" style="--d:1.6s">2026</span></span>
+        <svg data-chart="award" data-d="1.8"></svg>
+        <span class="l">George Leland Bach Teaching Award, voted by the MBA class</span>
+        <span class="more">on the cv</span>
+      </a>
+    </div>
+    <div class="mnote stat-note hide-sm fade" style="--d:2.6s">
+      <p class="note red">voted by students!</p>
+      <svg class="arrow" width="70" height="60" data-arrow="8 6 52 50 -14 10" data-d="2.8" style="left:150px;top:6px;color:var(--red)"></svg>
+    </div>
+  </section>
+
+  <section class="sec reveal" aria-labelledby="courses-title">
+    <span class="sec-no" aria-hidden="true">No. 04</span>
+    <p class="kicker">Teaching</p>
+    <h2 id="courses-title">Courses I <span class="u" data-d=".3">built</span></h2>
+    <div class="mnote courses-note fade" style="--d:.9s">
+      <p class="note">all four designed<br>from scratch</p>
+      <svg class="arrow" width="90" height="70" data-arrow="10 10 70 58 -18 11" data-d="1.1"></svg>
+    </div>
+    <div class="cards">
+<a class="icard deal" href="courses/70-445/" style="--rot:-1.4deg;--d:0.20s">
+  <span class="tape tc"></span>
+  <span class="ic-top"><span class="code">70-445</span><span class="lvl">Undergraduate · Tepper</span></span>
+  <span class="stack" role="img" aria-label="Slides from 70-445 Artificial Intelligence for Business Leaders, starting with: AI, machine learning, deep learning, generative AI: how the terms nest"><span class="stack-tape"></span><span class="print" style="--r:-2.5deg"><img src="assets/courses/70-445/s01-1-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:2deg"><img src="assets/courses/70-445/s03-2-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-1deg"><img src="assets/courses/70-445/s05-3-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:3deg"><img src="assets/courses/70-445/s07-4-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-3deg"><img src="assets/courses/70-445/s10-5-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span></span>
+  <h3>Artificial Intelligence for Business Leaders</h3>
+  <p>Where AI creates value in a business, where it does not, and how to explain the difference to the people paying for it.</p>
+  <svg class="ic-doodle corner" data-chart="icon" data-icon="net" data-d="0.8"></svg>
+  <span class="go">course page</span>
+</a>
+
+<a class="icard deal" href="courses/45-884/" style="--rot:1deg;--d:0.35s">
+  <span class="tape tc"></span>
+  <span class="ic-top"><span class="code">45-884</span><span class="lvl">MBA · Tepper</span></span>
+  <span class="stack" role="img" aria-label="Slides from 45-884 AI Methods for Social and Visual Data, starting with: Business data looks less like a spreadsheet and more like this"><span class="stack-tape"></span><span class="print" style="--r:-2.5deg"><img src="assets/courses/45-884/s01-1-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:2deg"><img src="assets/courses/45-884/s03-2-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-1deg"><img src="assets/courses/45-884/s05-3-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:3deg"><img src="assets/courses/45-884/s06-4-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-3deg"><img src="assets/courses/45-884/s08-5-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span></span>
+  <h3>AI Methods for Social and Visual Data</h3>
+  <p>Using AI on text, networks, and images, and knowing when the output is ready for a decision.</p>
+  <svg class="ic-doodle corner" data-chart="icon" data-icon="vision" data-d="1.0"></svg>
+  <span class="go">course page</span>
+</a>
+
+<a class="icard deal" href="courses/70-377/" style="--rot:-0.7deg;--d:0.50s">
+  <span class="tape tc"></span>
+  <span class="ic-top"><span class="code">70-377</span><span class="lvl">Undergraduate · Tepper / CMU Qatar</span></span>
+  <span class="stack" role="img" aria-label="Slides from 70-377 Managing and Assessing Tech Talent and Organizations, starting with: Stages of the employee life cycle"><span class="stack-tape"></span><span class="print" style="--r:-2.5deg"><img src="assets/courses/70-377/s01-1-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:2deg"><img src="assets/courses/70-377/s02-2-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-1deg"><img src="assets/courses/70-377/s03-3-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:3deg"><img src="assets/courses/70-377/s04-4-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-3deg"><img src="assets/courses/70-377/s05-5-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span></span>
+  <h3>Managing and Assessing Tech Talent and Organizations</h3>
+  <p>How to hire, develop, and evaluate technical people using evidence instead of instinct.</p>
+  <svg class="ic-doodle corner" data-chart="icon" data-icon="org" data-d="1.2"></svg>
+  <span class="go">course page</span>
+</a>
+
+<a class="icard deal" href="courses/msba-math-skills-workshop/" style="--rot:1.6deg;--d:0.65s">
+  <span class="tape tc"></span>
+  <span class="ic-top"><span class="code">Math Skills</span><span class="lvl">MS in Business Analytics · Tepper</span></span>
+  <span class="stack" role="img" aria-label="Slides from MS in Business Analytics Math Skills Workshop, starting with: The Daily Grind: $4,500 a month in fixed costs and a $5 cup. When does it break even?"><span class="stack-tape"></span><span class="print" style="--r:-2.5deg"><img src="assets/courses/msba-math-skills-workshop/s01-1-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:2deg"><img src="assets/courses/msba-math-skills-workshop/s07-2-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-1deg"><img src="assets/courses/msba-math-skills-workshop/s13-3-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:3deg"><img src="assets/courses/msba-math-skills-workshop/s19-4-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-3deg"><img src="assets/courses/msba-math-skills-workshop/s25-5-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span></span>
+  <h3>MS in Business Analytics Math Skills Workshop</h3>
+  <p>The math incoming MS in Business Analytics students need before the quantitative core begins.</p>
+  <svg class="ic-doodle corner" data-chart="icon" data-icon="bowl" data-d="1.4"></svg>
+  <span class="go">course page</span>
+</a>
+
+    </div>
+    <p class="after"><a class="go" href="courses/">All courses</a></p>
+  </section>
+
+  <section class="sec reveal" aria-labelledby="work-title">
+    <span class="sec-no" aria-hidden="true">No. 05</span>
+    <div class="pad">
+      <p class="kicker">Consulting and custom education</p>
+      <h2 id="work-title">Work with <span class="u" data-d=".3">me</span></h2>
+      <p class="pad-intro">I help organizations choose which AI and analytics projects to fund, check the models before they carry a real decision, and train their teams to run the work themselves. I do this through my practice, <mark style="--d:.7s">Hot Metal AI</mark>.</p>
+      <div class="pad-grid">
+        <div>
+          <h3>Reviews and builds</h3>
+          <ul class="checks">
+            <li><svg data-chart="check" data-d="0.9"></svg><span><b>AI use-case review.</b> About two weeks. A written go or no-go on the projects you are considering, with a build plan for the ones worth doing.</span></li>
+            <li><svg data-chart="check" data-d="1.2"></svg><span><b>Model or metric review.</b> About one week. I read the code, data, and evaluation, and tell you where it breaks.</span></li>
+            <li><svg data-chart="check" data-d="1.5"></svg><span><b>Hands-on build.</b> Scoped with you: a prototype, a pipeline, or an evaluation harness your team can keep running.</span></li>
+          </ul>
         </div>
         <div>
-          <p class="kicker">Assistant Teaching Professor of Business Analytics</p>
-          <h1>Ben Collier</h1>
-          <p class="lede">I teach AI and business analytics at Carnegie Mellon's Tepper School, and help companies put them to work.</p>
+          <h3>Training built on your data</h3>
+          <p>Workshops and courses for technical teams and executives, built around your own data and problems. Most of the time is spent in hands-on labs.</p>
+          <ul class="dashes">
+            <li>One- to three-day workshops, on site or online</li>
+            <li>Multi-week programs for technology leaders and executives</li>
+            <li>Recorded, self-paced courses</li>
+          </ul>
+          <p class="small">Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</p>
         </div>
-      </section>
-
-      <div class="bio">
-        <p>Most of my teaching is at <a href="https://www.cmu.edu/tepper/">Tepper</a>, in the <a href="https://www.cmu.edu/tepper/programs/mba/">MBA</a>, the <a href="https://www.cmu.edu/tepper/programs/master-business-analytics/">MS in Business Analytics</a>, and the <a href="https://www.cmu.edu/tepper/programs/undergraduate-programs/">undergraduate program</a>. I also teach at <a href="https://www.heinz.cmu.edu/">Heinz College</a>. The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the notebook.</p>
-        <p>Before joining Tepper I was a staff data scientist at <a href="https://www.duolingo.com/">Duolingo</a> and Senior Director of Data Science at <a href="https://www.upmc.com/">UPMC</a>'s Pensiamo, where I was the founding data scientist on a joint venture with <a href="https://en.wikipedia.org/wiki/IBM_Watson_Health">IBM Watson Health</a>. I still do that work, as Senior Director of AI and Data Science at <a href="https://www.gaimsystems.com/">gAIm Systems</a> and through my consulting practice, Hot Metal AI. The problems I bring into class come from that work. I also advise MS in Business Analytics capstone teams. Since September 2026 I have been the faculty coordinator of Tepper's <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>, and starting in Spring 2027 I also advise its capstone teams.</p>
+        <div class="pad-cta">
+          <a class="sticky land pink" href="book/" style="--rot:3deg;--d:1.4s"><span class="tape tc"></span><span class="big">Book a call &rarr;</span><span class="sub">Most engagements start with a free 15-minute call.</span></a>
+          <a class="go" href="consult/">More on consulting</a>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="book-row">
-        <a class="btn primary" href="book/">Book a free 15-minute call</a>
-        <a class="btn" href="consult/">Consulting and custom education</a>
-      </div>
-
-      <ul class="stats linked">
-        <li><a href="courses/#built"><strong>4</strong><span>courses I designed from scratch</span></a></li>
-        <li><a href="courses/"><strong>10</strong><span>courses taught at Carnegie Mellon since 2023</span></a></li>
-        <li><a href="advising/"><strong>13</strong><span>capstones and independent studies advised since 2024</span></a></li>
-        <li><a href="cv/#honors-and-awards"><strong>2026</strong><span>George Leland Bach Teaching Award, voted by the MBA class</span></a></li>
-      </ul>
-
-      <h2>Courses I built</h2>
-      <div class="grid" style="margin-top:1rem"><a class="card" href="courses/70-445/">
-  <div class="thumb c-navy"><canvas data-hero="agents" data-static aria-hidden="true"></canvas><span>70-445</span></div>
-  <div class="body">
-    <div class="meta"><span class="badge built">Built</span><span>Undergraduate · Tepper</span></div>
-    <h3>Artificial Intelligence for Business Leaders</h3>
-    <p>Where AI creates value in a business, where it does not, and how to explain the difference to the people paying for it.</p>
-  </div>
-</a>
-
-<a class="card" href="courses/45-884/">
-  <div class="thumb c-ink"><canvas data-hero="vit" data-static aria-hidden="true"></canvas><span>45-884</span></div>
-  <div class="body">
-    <div class="meta"><span class="badge built">Built</span><span>MBA · Tepper</span></div>
-    <h3>AI Methods for Social and Visual Data</h3>
-    <p>Using AI on text, networks, and images, and knowing when the output is ready for a decision.</p>
-  </div>
-</a>
-
-<a class="card" href="courses/70-377/">
-  <div class="thumb c-wine"><canvas data-hero="teams" data-static aria-hidden="true"></canvas><span>70-377</span></div>
-  <div class="body">
-    <div class="meta"><span class="badge built">Built</span><span>Undergraduate · Tepper / CMU Qatar</span></div>
-    <h3>Managing and Assessing Tech Talent and Organizations</h3>
-    <p>How to hire, develop, and evaluate technical people using evidence instead of instinct.</p>
-  </div>
-</a>
-
-<a class="card" href="courses/msba-math-skills-workshop/">
-  <div class="thumb c-clay"><canvas data-hero="descent" data-static aria-hidden="true"></canvas><span>Math Skills</span></div>
-  <div class="body">
-    <div class="meta"><span class="badge built">Built</span><span>MS in Business Analytics · Tepper</span></div>
-    <h3>MS in Business Analytics Math Skills Workshop</h3>
-    <p>The math incoming MS in Business Analytics students need before the quantitative core begins.</p>
-  </div>
-</a>
-</div>
-      <p><a href="courses/">All courses</a></p>
-
-      <h2>News</h2>
-      <ol class="feed news">
-<li class=has-vis><time datetime="2026-09-29">September 29, 2026</time><div class="post"><p>Led the information session for MBA students considering the Business Analytics track. <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">About the track</a></p></div><a class="news-vis photo" href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics" tabindex="-1"><img src="assets/news/ba-track-info-session-2026.jpg" alt="Slide from the Business Analytics track information session: 3 core courses, 4 application courses, 1 capstone project" width="480" height="270" loading="lazy"></a></li>
-<li class=has-vis><time datetime="2026-09-24">September 24, 2026</time><div class="post"><p>Opened the <a href="courses/70-445/">70-445</a> agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened. <a href="https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy">The forecasts</a></p></div><a class="news-vis photo" href="https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy" tabindex="-1"><img src="assets/news/class-forecast.jpg" alt="Chart of forecasts against actual AI progress" width="480" height="270" loading="lazy"></a></li>
-<li class=has-vis><time datetime="2026-09-24">September 24, 2026</time><div class="post"><p>Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins. <a href="https://www.thedartmouth.com/article/2026/09/schnell-ai-writing">The story</a></p></div><a class="news-vis photo" href="https://www.thedartmouth.com/article/2026/09/schnell-ai-writing" tabindex="-1"><img src="assets/news/class-dartmouth.jpg" alt="Illustration from The Dartmouth's story on the provost's writing" width="480" height="270" loading="lazy"></a></li>
-<li class=has-vis><time datetime="2026-09">September 2026</time><div class="post"><p>Became faculty coordinator of the MBA Business Analytics track at Tepper. <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">About the track</a></p></div><a class="news-vis photo" href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics" tabindex="-1"><img src="assets/news/ba-track-objectives-2026.jpg" alt="Slide from the Business Analytics track information session: what managers need to know about analytics" width="480" height="270" loading="lazy"></a></li>
-<li class=has-vis><time datetime="2026-09-10">September 10, 2026</time><div class="post"><p>Opened <a href="courses/70-445/">70-445</a> with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize. <a href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/">The story</a></p></div><a class="news-vis photo" href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/" tabindex="-1"><img src="assets/news/class-navier.jpg" alt="Quanta Magazine illustration of turbulent fluid for the Navier-Stokes story" width="480" height="270" loading="lazy"></a></li>
+  <section class="sec reveal" aria-labelledby="news-title">
+    <span class="sec-no" aria-hidden="true">No. 06</span>
+    <p class="kicker">News</p>
+    <h2 id="news-title">Recent <span class="u" data-d=".3">entries</span></h2>
+    <p class="note news-note fade" style="--d:.8s">all from this fall</p>
+    <ol class="log">
+<li class="fade" style="--d:0.30s"><time datetime="2026-09-29">Sep 29, 2026</time><p>Led the information session for MBA students considering the Business Analytics track. <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">About the track</a></p><a class="thumb" href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics" tabindex="-1" style="--rot:2deg"><img src="assets/news/ba-track-info-session-2026.jpg" alt="Slide from the Business Analytics track information session: 3 core courses, 4 application courses, 1 capstone project" width="480" height="270" loading="lazy"></a></li>
+<li class="fade" style="--d:0.45s"><time datetime="2026-09-24">Sep 24, 2026</time><p>Opened the <a href="courses/70-445/">70-445</a> agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at <mark class="p">1.7 percent</mark>, and industry experts at 4.6 percent. Two weeks before class, it happened. <a href="https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy">The forecasts</a></p><a class="thumb has-stack" href="https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy" tabindex="-1" style="--rot:-2deg"><span class="stack news-stack" role="img" aria-label="Chart of forecasts against actual AI progress, then slides from 70-445 Artificial Intelligence for Business Leaders"><span class="stack-tape"></span><span class="print" style="--r:-2.5deg"><img src="assets/news/class-forecast.jpg" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:2deg"><img src="assets/courses/70-445/s03-3-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-1deg"><img src="assets/courses/70-445/s05-4-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:3deg"><img src="assets/courses/70-445/s07-5-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-3deg"><img src="assets/courses/70-445/s10-1-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="stack-tag">70-445</span></span></a></li>
+<li class="fade" style="--d:0.60s"><time datetime="2026-09-24">Sep 24, 2026</time><p>Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins. <a href="https://www.thedartmouth.com/article/2026/09/schnell-ai-writing">The story</a></p><a class="thumb" href="https://www.thedartmouth.com/article/2026/09/schnell-ai-writing" tabindex="-1" style="--rot:1.5deg"><img src="assets/news/class-dartmouth.jpg" alt="Illustration from The Dartmouth's story on the provost's writing" width="480" height="270" loading="lazy"></a></li>
+<li class="fade" style="--d:0.75s"><time datetime="2026-09">Sep 2026</time><p>Became faculty coordinator of the MBA Business Analytics track at Tepper. <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">About the track</a></p><a class="thumb" href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics" tabindex="-1" style="--rot:-1.5deg"><img src="assets/news/ba-track-objectives-2026.jpg" alt="Slide from the Business Analytics track information session: what managers need to know about analytics" width="480" height="270" loading="lazy"></a></li>
+<li class="fade" style="--d:0.90s"><time datetime="2026-09-10">Sep 10, 2026</time><p>Opened <a href="courses/70-445/">70-445</a> with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about <mark class="p">$100 million of compute</mark> to win a $1 million prize. <a href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/">The story</a></p><a class="thumb has-stack" href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/" tabindex="-1" style="--rot:2.5deg"><span class="stack news-stack" role="img" aria-label="Quanta Magazine illustration of turbulent fluid for the Navier-Stokes story, then slides from 70-445 Artificial Intelligence for Business Leaders"><span class="stack-tape"></span><span class="print" style="--r:-2.5deg"><img src="assets/news/class-navier.jpg" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:2deg"><img src="assets/courses/70-445/s10-4-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-1deg"><img src="assets/courses/70-445/s01-5-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:3deg"><img src="assets/courses/70-445/s03-1-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="print" style="--r:-3deg"><img src="assets/courses/70-445/s05-2-t.webp" alt="" width="320" height="180" loading="lazy" decoding="async"></span><span class="stack-tag">70-445</span></span></a></li>
 </ol>
-      <p><a href="news/">All news</a> · <a href="cv/">Full CV</a></p>
-    </main>
-    <footer class="site">
-      <div><a href="consult/">Consulting</a> · <a href="contact/">Contact</a></div>
-    </footer>
-  </div>
-  <script src="js/config.js"></script>
-  <script src="js/site.js"></script>
-  <script src="js/course-hero.js" defer></script>
-  <script src="js/course-schedule.js" defer></script>
-  <script src="js/news-visuals.js" defer></script>
-  <script src="js/portrait-dock.js" defer></script>
+    <p class="after"><a class="go" href="news/">All news</a> &nbsp; <a class="go" href="cv/">Full CV</a></p>
+  </section>
+
+  <section class="sec talks reveal" aria-labelledby="talks-title">
+    <span class="sec-no" aria-hidden="true">No. 07</span>
+    <div class="talks-grid">
+      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=UxBPkez6Mc4" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the Faculty Spotlight video on YouTube, 11 minutes">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <span class="ph"><img src="assets/talks/faculty-spotlight-2026.jpg" alt="Ben Collier in conversation on a bench in Tepper's atrium, gesturing as he explains" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">Faculty Spotlight &middot; April 30, 2026 &middot; 11 min</span>
+      </a>
+      <div class="talks-text">
+        <p class="kicker">Talks</p>
+        <h2 id="talks-title">Business analytics as a <span class="u u2" data-d=".5">decathlon</span></h2>
+        <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
+        <div class="also">
+          <p class="note">also on the talks page</p>
+          <ul>
+            <li><span class="when">Aug 2026 &middot; Tepper AI-Exchange</span>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</li>
+            <li><span class="when">Jun 2025 &middot; Kellogg, Northwestern</span>AI Data Visualization Coach</li>
+          </ul>
+          <p><a class="go" href="talks/">All talks</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><span class="sign">thanks for reading!</span><br>&copy; 2026 Ben Collier. A personal site; views are my own, not Carnegie Mellon University's.</p>
+  <nav aria-label="Footer">
+    <a href="consult/">Consulting</a>
+    <a href="contact/">Contact</a>
+    <a href="feed.xml">RSS</a>
+  </nav>
+</footer>
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script src="js/notebook.js" defer></script>
 </body>
 </html>

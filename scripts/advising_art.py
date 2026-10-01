@@ -2,7 +2,7 @@
 
 Each project in data/advising.json names an `art` key. The drawing depicts the
 idea of the project, never its data or deliverables: nothing here comes from
-the students' work. Same palette as the course visuals in js/course-hero.js.
+the students' work. Each drawing is taped onto the advising page like a print.
 """
 
 from __future__ import annotations
