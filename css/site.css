@@ -942,9 +942,58 @@ html:not(.nb) .wk-strip img { width: 110px; border: 3px solid #fff; box-shadow: 
 /* ---------- Advising ---------- */
 .advised { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 44px; padding: 34px 0; border-top: 2px dashed rgba(29,38,51,.16); align-items: start; }
 .sec h2 + .advised { border-top: 0; padding-top: 6px; }
-.art-print { position: relative; margin: 6px 10px 0 4px; background: #fff; padding: 9px; box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 16px 26px -14px rgba(0,0,0,.45); transform: rotate(var(--rot, -2deg)); }
+/* Each diagram is a print taped to the page. It flips face up as it lands, jiggles when
+   you pick it up, and a click turns it over to the note on the back. */
+.art-print { position: relative; margin: 6px 10px 0 4px; transform: rotate(var(--rot, -2deg)); }
 .art-print .tape.tr { top: -10px; right: -28px; transform: rotate(38deg); width: 80px; height: 24px; }
 .art-print .advising-art, .art-print svg { display: block; width: 100%; height: auto; }
+.art-print .flip { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; font: inherit; color: inherit; text-align: inherit; cursor: default; transform-origin: 70% 0; perspective: 1100px; }
+html.nb .art-print .flip { cursor: pointer; }
+.art-print .flipper { display: grid; transform-style: preserve-3d; transition: transform .75s cubic-bezier(.3,1.25,.5,1); }
+.art-print.flipped .flipper { transform: rotateY(180deg); }
+.art-print .face, .art-print .back { grid-area: 1 / 1; background: #fff; padding: 9px; box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 16px 26px -14px rgba(0,0,0,.45); -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: box-shadow .3s ease; }
+.art-print .back { transform: rotateY(180deg); display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 18px 26px;
+  background: #fffdf7 repeating-linear-gradient(transparent 0 25px, rgba(60,90,160,.16) 25px 26px); font-family: var(--hand); color: var(--pen); }
+.art-print .b-who { font-size: 27px; font-weight: 700; line-height: 1.05; transform: rotate(-2deg); }
+.art-print .b-logo { display: block; max-width: 62%; max-height: 74px; width: auto; height: auto; object-fit: contain; margin: 0 0 6px; transform: rotate(-3deg);
+  padding: 8px 10px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.18); }
+.art-print .back.has-logo .b-who { font-size: 21px; }
+.art-print .b-when { font-size: 19px; line-height: 1.2; color: var(--ink-2); }
+.art-print .b-turn { font-family: var(--mono); font-size: 12px; color: var(--red); margin-top: 10px; }
+html:not(.nb) .art-print .back { display: none; }
+@media (hover: hover) {
+  html.nb .art-print .flip:hover { animation: jiggle .55s ease; }
+  html.nb .art-print .flip:hover .face, html.nb .art-print .flip:hover .back { box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 26px 34px -16px rgba(0,0,0,.5); }
+}
+@keyframes jiggle {
+  0%, 100% { transform: none; }
+  20% { transform: rotate(2.6deg) translateY(-3px); }
+  45% { transform: rotate(-2deg) translateY(-4px); }
+  70% { transform: rotate(1.1deg) translateY(-2px); }
+  88% { transform: rotate(-.5deg); }
+}
+.art-print .flip:focus-visible { outline: 3px solid var(--pen); outline-offset: 6px; }
+/* landing: the print arrives face down and turns over */
+/* landing: the print arrives face down, shows who it was for, then turns over to the work */
+.js-anim .advised.reveal.drawn .art-print .flipper { animation: flipin 2.1s cubic-bezier(.3,1.15,.5,1) .2s backwards; }
+@keyframes flipin { 0%, 48% { transform: rotateY(-180deg); } 100% { transform: rotateY(0); } }
+/* then the diagram inks itself in */
+.trace { stroke-dasharray: var(--len, 1000); stroke-dashoffset: 0; transition: stroke-dashoffset .7s cubic-bezier(.55,.1,.35,1) calc(var(--d, 0s) + 1.5s); }
+.js-anim .reveal:not(.drawn) .trace { stroke-dashoffset: var(--len, 1000); }
+.advising-art .pop { transform-box: fill-box; transform-origin: center; transition: opacity .3s ease calc(var(--d, 0s) + 1.5s), transform .45s cubic-bezier(.3,1.7,.5,1) calc(var(--d, 0s) + 1.5s); }
+.js-anim .reveal:not(.drawn) .advising-art .pop { opacity: 0; transform: scale(.2); }
+/* the kind of project is stamped on; methods pop up like tags */
+.advised .meta .kind { display: table; font-size: 11.5px; padding: 4px 8px 3px; margin: 0 0 10px; letter-spacing: .1em; }
+.methods li { transition: opacity .35s ease var(--d, 0s), transform .5s cubic-bezier(.3,1.6,.5,1) var(--d, 0s); }
+.js-anim .reveal:not(.drawn) .methods li { opacity: 0; transform: translateY(10px) scale(.8) rotate(-4deg); }
+/* the tally note in the margin of the page head */
+.adv-tally { width: 214px; padding: 24px 20px 16px; text-align: center; margin-top: 30px; }
+.adv-tally .big { font-size: 34px; }
+.adv-tally svg { display: block; margin: 8px auto 4px; color: var(--ink); overflow: visible; }
+.adv-tally .since { font-family: var(--hand); font-size: 18px; color: var(--ink-2); }
+@media (min-width: 1180px) {
+  .page-head .adv-tally { position: absolute; top: 60px; right: -130px; margin: 0; }
+}
 .advised .meta { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--red); margin: 0 0 8px; line-height: 1.5; }
 .advised h3 { font-size: 25px; margin: 0 0 12px; }
 .advised p { font-size: 16.5px; max-width: 40em; }
@@ -1015,6 +1064,18 @@ html:not(.nb) .wk-strip img { width: 110px; border: 3px solid #fff; box-shadow: 
 .tprint img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #eee; }
 .tprint figcaption { font-size: 14px; line-height: 1.45; color: var(--ink-2); margin: 10px 4px 0; }
 .talk .talks-grid { margin-top: 10px; }
+.talk-row { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 20px 56px; align-items: start; }
+.talk-row .prose { max-width: 40em; }
+.talk-card { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 14px; margin: 14px 10px 0 0; padding: 26px 22px 22px;
+  background-color: var(--card); background-image: repeating-linear-gradient(transparent 0 27px, rgba(60,90,160,.18) 27px 28px);
+  box-shadow: 0 1px 2px rgba(0,0,0,.14), 0 16px 26px -14px rgba(0,0,0,.4); transform: rotate(var(--rot, 2deg)); }
+.talk-card .tape.tc { width: 76px; margin-left: -38px; top: -13px; height: 24px; }
+.talk-card .tc-k { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--red); padding-top: 5px; }
+.talk-card .tc-v { font-family: var(--hand); font-size: 19px; line-height: 1.25; color: var(--pen); }
+@media (max-width: 900px) {
+  .talk-row { grid-template-columns: 1fr; }
+  .talk-card { max-width: 340px; margin: 10px 0 6px; }
+}
 
 /* ---------- Contact ---------- */
 .contact-grid { display: grid; grid-template-columns: minmax(0, 720px) minmax(0, 1fr); gap: 60px; align-items: start; }

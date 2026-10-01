@@ -2044,21 +2044,33 @@ def build_advising():
         if pj["term"] not in terms:
             terms.append(pj["term"])
     n = len(data["projects"])
+    first = min(int(pj["term"].split()[-1]) for pj in data["projects"])
+    partners = ["Westinghouse", "RBC Wealth Management", "Swank Construction", "SaratogaRIM", "Confirmed",
+                "Marinus Analytics", "412 Food Rescue", "Tindoori Labs"]
+    hl = ["", " g", " b", " p"]
+    marked = ", ".join(f'<mark class="{hl[i % 4].strip()}" style="--d:{0.5 + 0.18 * i:.2f}s">{esc(x)}</mark>'
+                       for i, x in enumerate(partners))
+    tally = (f'<aside class="adv-tally sticky land" style="--rot:3deg;--d:.5s" aria-label="{n} projects since {first}">'
+             f'<span class="tape tc"></span><span class="big"><span class="count" data-to="{n}" data-d=".8">{n}</span> projects</span>'
+             f'<svg data-chart="tally" data-n="{n}" data-d="1"></svg><span class="since">and counting, since {first}</span></aside>')
     body = page_head(
         "Advising", "Capstones and independent studies",
         f'Since 2024 I have advised MS in Business Analytics capstone teams working with companies and nonprofits, and students doing independent studies. {n} projects so far, described here without the students\' names and without the partners\' data. Starting in Spring 2027 I also advise capstone teams in the <a href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics">MBA Business Analytics track</a>.',
-        '<p class="partners">Partners include Westinghouse, RBC Wealth Management, Swank Construction, SaratogaRIM, Confirmed, Marinus Analytics, 412 Food Rescue, Tindoori Labs, and a large consulting firm.</p>')
+        f'<p class="partners">Partners include {marked}, and a large consulting firm.</p>{tally}')
     no = 2
     for term in terms:
         cards = []
         for i, pj in enumerate(x for x in data["projects"] if x["term"] == term):
-            methods = "".join(f"<li>{esc(m)}</li>" for m in pj["methods"])
             art = draw_art(pj["art"], f"Diagram representing the project: {esc(pj['title'])}", i)
             rot = [-2, 1.5, -1, 2.4][i % 4]
-            cards.append(f"""    <article class="advised">
-      <figure class="art-print drop" style="--rot:{rot}deg;--d:.2s"><span class="tape tr"></span>{art}</figure>
+            methods = "".join(f'<li style="--d:{0.9 + 0.12 * k:.2f}s">{esc(m)}</li>' for k, m in enumerate(pj["methods"]))
+            srot = [-3, 2, -1.5, 2.5][i % 4]
+            logo = (f'<img class="b-logo" src="../assets/partners/{pj["logo"]}" alt="" loading="lazy" decoding="async">'
+                    if pj.get("logo") else "")
+            cards.append(f"""    <article class="advised reveal">
+      <figure class="art-print drop" style="--rot:{rot}deg;--d:.1s"><span class="tape tr"></span><button type="button" class="flip" aria-pressed="false" aria-label="Turn the print over"><span class="flipper"><span class="face">{art}</span><span class="back{" has-logo" if pj.get("logo") else ""}" aria-hidden="true">{logo}<span class="b-who">{esc(pj['partner'])}</span><span class="b-when">{esc(term)} &middot; {esc(pj['industry'].lower())}</span><span class="b-turn">&#8634; turn back</span></span></span></button></figure>
       <div class="body">
-        <p class="meta">{esc(pj['kind'])} &middot; {esc(pj['partner'])} &middot; {esc(pj['industry'])}</p>
+        <p class="meta"><span class="kind stamp thunk" style="--rot:{srot}deg;--d:.45s">{esc(pj['kind'])}</span> <span class="fade" style="--d:.6s">{esc(pj['partner'])} &middot; {esc(pj['industry'])}</span></p>
         <h3>{esc(pj['title'])}</h3>
         <p>{esc(pj['summary'])}</p>
         <ul class="methods">{methods}</ul>
@@ -2067,7 +2079,8 @@ def build_advising():
         body += sec(no, f"t-{_slug(term)}", "Advised", term, "\n".join(cards))
         no += 1
     earlier = "".join(
-        f"<li><span>{esc(e['term'])}</span><div>{esc(e['title'])}. <em>{esc(e['place'])}</em></div></li>" for e in data["earlier"]
+        f'<li class="fade" style="--d:{0.3 + 0.12 * k:.2f}s"><span>{esc(e["term"])}</span><div>{esc(e["title"])}. <em>{esc(e["place"])}</em></div></li>'
+        for k, e in enumerate(data["earlier"])
     )
     body += sec(no, "earlier", "Before Tepper", "Earlier advising",
                 f'    <p class="prose">Independent studies I advised while teaching organizational behavior, mostly at Carnegie Mellon\'s campus in Qatar.</p>\n    <ul class="earlier-list">{earlier}</ul>')
@@ -2277,21 +2290,35 @@ def talk_slides(talk: str) -> str:
     return "\n".join(talk_slide(talk, n, c, i) for i, (n, c) in enumerate(TALK_SLIDES[talk]))
 
 
+def talk_card(when: str, event: str, where: str, fmt: str, rot: float = 2) -> str:
+    """The index card pinned beside a talk's write-up: when, where, and what kind of session."""
+    rows = "".join(f'<span class="tc-k">{k}</span><span class="tc-v">{esc(v)}</span>'
+                   for k, v in (("when", when), ("at", event), ("where", where), ("format", fmt)))
+    return (f'<aside class="talk-card land" style="--rot:{rot}deg;--d:.35s" aria-label="Talk details">'
+            f'<span class="tape tc"></span>{rows}</aside>')
+
+
 def build_talks():
     body = page_head("Talks", "Talks", "Talks and workshops on building AI courses, teaching with AI, and putting analytics to work.")
     body += sec(2, "talk-aix", "August 7, 2026 &middot; Tepper AI-Exchange &middot; Carnegie Mellon University, Pittsburgh",
-                "Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students", f"""    <div class="prose">
+                "Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students", f"""    <div class="talk-row">
+    <div class="prose">
       <p>Over the past year I designed and taught a new MBA elective, <a href="../courses/45-884/">AI Methods for Social and Visual Data</a>, and I was developing an undergraduate course, <a href="../courses/70-445/">Artificial Intelligence for Business Leaders</a>, launching that fall. In this talk I shared what has worked well in the MBA classroom, from assignment design to helping students build hands-on skills with modern AI tools, along with what I was changing or trying differently in the new undergraduate course. I also gave a brief introduction to a large randomized controlled trial of AI in the classroom that I am taking part in, and what we hope to learn from it about how AI actually affects student outcomes.</p>
       <p>The session closed as a discussion with the faculty in the room: what they would add to the undergraduate course, what did not fit, and how Tepper should approach a flagship AI course for undergraduates.</p>
+    </div>
+    {talk_card("August 7, 2026", "Tepper AI-Exchange", "Carnegie Mellon University, Pittsburgh", "Faculty talk, then an open discussion", rot=2.2)}
     </div>
     <h3 class="sub-h">Selected slides</h3>
     <div class="tslides">
 {talk_slides("ai-exchange-2026")}
     </div>""", cls="talk")
     body += sec(3, "talk-kellogg", "June 5, 2025 &middot; Teaching with AI Summer Workshop &middot; Kellogg School of Management, Northwestern University",
-                "AI Data Visualization Coach", f"""    <div class="prose">
+                "AI Data Visualization Coach", f"""    <div class="talk-row">
+    <div class="prose">
       <p>A flash talk with my colleague Zoey Jiang on the custom GPT we built for <a href="../courses/45-885/">Data Visualization</a>. Before presenting a chart redesign, teams test it with the coach. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.</p>
       <p><a class="go" href="https://www.kellogg.northwestern.edu/events/conference/teaching-with-ai/">Workshop program</a></p>
+    </div>
+    {talk_card("June 5, 2025", "Teaching with AI Summer Workshop", "Kellogg School of Management, Evanston", "Flash talk, with Zoey Jiang", rot=-2.4)}
     </div>
     <h3 class="sub-h">Selected slides</h3>
     <div class="tslides">
