@@ -1401,12 +1401,12 @@ def build_news():
 # Only his text slides: no student names or work, no third-party figures.
 TALK_SLIDES = {
     "ai-exchange-2026": [
-        ("module-exploration", "Module 1 of 45-884: data exploration and visualization in Python, before any model."),
-        ("module-clustering", "Module 2: clustering, from customer segments to k-means on synthetic data."),
-        ("module-nlp", "Module 5: natural language processing, mining text for what customers say."),
-        ("module-neural", "Module 6: neural networks and large language models, taught from a single neuron up."),
-        ("blooms", "How the course maps to Bloom's taxonomy: quizzes for remembering, labs for applying, the final project and AI in the News for creating."),
-        ("alignment", "Every course piece lines up: learning objectives, assessments, and in-class activities."),
+        ("45884-vit", "From 45-884: MBA students learn how Vision Transformers apply attention to image patches."),
+        ("45884-embedding", "From 45-884: a joint embedding space where images and text sit side by side."),
+        ("45884-waymo", "From 45-884: the Tesla Vision versus Waymo case, cameras against lidar and radar."),
+        ("blooms", "How 45-884 maps to Bloom's taxonomy: quizzes for remembering, labs for applying, the final project and AI in the News for creating."),
+        ("70445-muffin", "From 70-445: muffin or chihuahua? You can spot it. Now write the rule."),
+        ("70445-harness", "From 70-445: agent = model + harness, the idea behind the course's agent unit."),
     ],
     "kellogg-2025": [
         ("setup", "The experiment: treatment teams revise news charts with the AI coach before presenting; control teams revise without it."),
