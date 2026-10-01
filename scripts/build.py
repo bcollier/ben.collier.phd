@@ -950,7 +950,7 @@ def build_portfolio(portfolio):
     body = f"""
       <p class="kicker">Portfolio</p>
       <h1>Coding with AI Projects</h1>
-      <p class="lede">Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.</p>
+      <p class="lede lede-wide">Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.</p>
       <div class="portfolio">{items}</div>
 """
     write(

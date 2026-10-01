@@ -178,6 +178,7 @@ h3 { font-size: 1.2rem; margin: 0 0 0.35rem; }
   max-width: 36rem;
   margin: 0 0 1.2rem;
 }
+.lede.lede-wide { max-width: none; }
 
 .muted { color: var(--ink-soft); }
 
