@@ -380,7 +380,7 @@ COURSES = [
 NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
     # Newest first.
-    ("2026-09-29", "Led the information session for MBA students considering the Business Analytics track."),
+    ("2026-09-29", "Led the information session for MBA students considering the Business Analytics track.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
     ("2026-09", "Became faculty coordinator of the MBA Business Analytics track at Tepper.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
     ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
     ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
