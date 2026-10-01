@@ -5,8 +5,22 @@
   <link href="https://collier.phd/feed.xml" rel="self"/>
   <link href="https://collier.phd/"/>
   <id>https://collier.phd/</id>
-  <updated>2026-08-25T12:00:00Z</updated>
+  <updated>2026-09-29T12:00:00Z</updated>
   <author><name>Ben Collier</name></author>
+  <entry>
+    <title>Led the information session for MBA students considering the Business Analytics track.</title>
+    <link href="https://collier.phd/news/"/>
+    <id>tag:collier.phd,2026:news/2026-09-29</id>
+    <updated>2026-09-29T12:00:00Z</updated>
+    <summary>Led the information session for MBA students considering the Business Analytics track.</summary>
+  </entry>
+  <entry>
+    <title>Became faculty coordinator of the MBA Business Analytics track at Tepper.</title>
+    <link href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics"/>
+    <id>tag:collier.phd,2026:news/2026-09</id>
+    <updated>2026-09-01T12:00:00Z</updated>
+    <summary>Became faculty coordinator of the MBA Business Analytics track at Tepper.</summary>
+  </entry>
   <entry>
     <title>Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives.</title>
     <link href="https://collier.phd/news/"/>
