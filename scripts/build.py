@@ -1369,18 +1369,28 @@ def build_news():
 
 # Slides from the August 2026 AI-Exchange talk, rendered from Ben's own deck.
 # Only his text slides: no student names or work, no third-party figures.
-TALK_SLIDES = [
-    ("challenges-45884", "The design problem for 45-884: most MBA students had no machine learning course and little Python, and the models change every three to six months."),
-    ("unusual", "What may be unusual about it: half of class time is hands-on, MBA students learn RAG chunking and vision transformers, and there are 20 quizzes in seven weeks."),
-    ("ai-in-the-news", "AI in the News: each class opens with a student briefing on a story from the last six months. Starred topics were requested by faculty."),
-    ("takeaways", "What the final projects showed: real evaluations, models caught failing, and three projects already in use."),
-    ("challenges-70445", "The design problem for 70-445: no prerequisites, first-years through seniors, and it has to feel like a business course, not a generic AI course."),
-    ("outcomes-70445", "Learning outcomes for 70-445 Artificial Intelligence for Business Leaders."),
-]
+TALK_SLIDES = {
+    "ai-exchange-2026": [
+        ("module-exploration", "Module 1 of 45-884: data exploration and visualization in Python, before any model."),
+        ("module-clustering", "Module 2: clustering, from customer segments to k-means on synthetic data."),
+        ("module-nlp", "Module 5: natural language processing, mining text for what customers say."),
+        ("module-neural", "Module 6: neural networks and large language models, taught from a single neuron up."),
+        ("blooms", "How the course maps to Bloom's taxonomy: quizzes for remembering, labs for applying, the final project and AI in the News for creating."),
+        ("alignment", "Every course piece lines up: learning objectives, assessments, and in-class activities."),
+    ],
+    "kellogg-2025": [
+        ("setup", "The experiment: treatment teams revise news charts with the AI coach before presenting; control teams revise without it."),
+        ("feedback-theory", "Why feedback can backfire: Kluger and DeNisi's model of where feedback helps and where it hurts."),
+        ("original-pie", "A chart a team brought in, with the strengths and problems they found."),
+        ("coach-suggestions", "The same data after the coach's questions: a diverging bar, direct labels, and color that carries meaning."),
+        ("recommendation", "The coach's recommendation on another team's chart, with what improved and what still needs work."),
+        ("results", "What students reported: 97 percent said the coach gave them incorrect or conflicting feedback at least once, which is part of the lesson."),
+    ],
+}
 
 
-def talk_slide(name: str, cap: str) -> str:
-    src = f"../assets/talks/ai-exchange-2026-{name}.jpg"
+def talk_slide(talk: str, name: str, cap: str) -> str:
+    src = f"../assets/talks/{talk}-{name}.jpg"
     return (
         f'          <figure>\n'
         f'            <a href="{src}"><img src="{src}" width="1200" height="675" loading="lazy" alt="Slide: {esc(cap)}"></a>\n'
@@ -1389,8 +1399,12 @@ def talk_slide(name: str, cap: str) -> str:
     )
 
 
+def talk_slides(talk: str) -> str:
+    return "\n".join(talk_slide(talk, n, c) for n, c in TALK_SLIDES[talk])
+
+
 def build_talks():
-    slides = "\n".join(talk_slide(n, c) for n, c in TALK_SLIDES)
+    slides = talk_slides("ai-exchange-2026")
     body = f"""
       <p class="kicker">Talks</p>
       <h1>Talks</h1>
@@ -1415,6 +1429,10 @@ def build_talks():
         <div class="prose-width">
           <p>A flash talk with my colleague Zoey Jiang on the custom GPT we built for <a href="../courses/45-885/">Data Visualization</a>. Before presenting a chart redesign, teams test it with the coach. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.</p>
           <p><a href="https://www.kellogg.northwestern.edu/events/conference/teaching-with-ai/">Workshop program</a></p>
+        </div>
+        <h3>Selected slides</h3>
+        <div class="slides">
+{talk_slides("kellogg-2025")}
         </div>
       </article>
 
