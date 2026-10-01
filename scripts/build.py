@@ -263,7 +263,7 @@ COURSES = [
         "built": False,
         "color": "c-pine",
         "one_liner": "The MS in Business Analytics program's Tableau course: chart design, data stories, dashboards, and visualization for machine learning.",
-        "blurb": "The MS in Business Analytics counterpart to 45-885 Data Visualization: seven weekly modules in Tableau, with the same labs, weekly data stories, and AI coach as the MBA course, ending on explainable AI and visualization for machine learning.",
+        "blurb": "The MS in Business Analytics counterpart to the MBA course Data Visualization: seven weekly modules in Tableau, with the same labs, weekly data stories, and AI coach as the MBA course, ending on explainable AI and visualization for machine learning.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
         "materials": "Enrolled students get the workbooks and lessons on Canvas.",
         "history": [
@@ -381,43 +381,43 @@ NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
     # Newest first.
     ("2026-09-29", "Led the information session for MBA students considering the Business Analytics track.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
-    ("2026-09-24", "Opened the 70-445 agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.", "https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy", "The forecasts"),
+    ("2026-09-24", "Opened the Artificial Intelligence for Business Leaders agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.", "https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy", "The forecasts"),
     ("2026-09-24", "Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.", "https://www.thedartmouth.com/article/2026/09/schnell-ai-writing", "The story"),
     ("2026-09", "Became faculty coordinator of the MBA Business Analytics track at Tepper.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
-    ("2026-09-10", "Opened 70-445 with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.", "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/", "The story"),
+    ("2026-09-10", "Opened Artificial Intelligence for Business Leaders with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.", "https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/", "The story"),
     ("2026-09-10", "Same class, darker headline: an Anthropic alignment lead put the chance that AI kills all humans within a decade at more than 10 percent. We set it next to the p(doom) numbers other AI leaders have given, and a week later the class gave its own. The median was 20 percent.", "https://www.forbes.com/sites/siladityaray/2026/09/09/anthropic-alignment-lead-warns-ai-could-kill-all-humans-as-researcher-quits/", "The story"),
-    ("2026-09-08", "Started 70-445 on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.", "https://www.foxbusiness.com/technology/nvidia-ceo-jensen-huang-declares-agi-has-arrived-after-openai-unveils-gpt-6-astra", "The story"),
-    ("2026-08-27", "Opened the history of AI in 70-445 with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.", "https://techstartups.com/2026/08/26/top-tech-news-today-august-26-2026-amazon-anthropic-google-microsoft-waymo-more/", "The story"),
-    ("2026-08-25", "Taught the first class of 70-445 Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
-    ("2026-08-24", "Started the third run of 45-884 AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
+    ("2026-09-08", "Started Artificial Intelligence for Business Leaders on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.", "https://www.foxbusiness.com/technology/nvidia-ceo-jensen-huang-declares-agi-has-arrived-after-openai-unveils-gpt-6-astra", "The story"),
+    ("2026-08-27", "Opened the history of AI in Artificial Intelligence for Business Leaders with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.", "https://techstartups.com/2026/08/26/top-tech-news-today-august-26-2026-amazon-anthropic-google-microsoft-waymo-more/", "The story"),
+    ("2026-08-25", "Taught the first class of Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives."),
+    ("2026-08-24", "Started the third run of AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class."),
     ("2026-08-07", "Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.", "talks/", "Slides and summary"),
     ("2026-08", "Finished recording the MS in Business Analytics Math Skills Workshop, a self-paced course for incoming MS in Business Analytics students that runs from algebra through gradient descent, PCA, and statistical inference."),
     ("2026-05-09", "Received the George Leland Bach Excellence in Teaching Award, voted by the MBA Class of 2026 and presented at the MBA diploma ceremony.", "https://www.youtube.com/watch?v=wkVLIOVPTbU&t=2890s", "Watch the presentation"),
     ("2026-06", "Really proud of this summer's AI Methods final projects. Three of the nineteen are already in use, and they range from social listening on an aircraft maker's safety crisis to an offline tool that helps bomb-disposal teams identify ordnance."),
     ("2026-05-04", "Taught AI Methods for Social and Visual Data for the second time, rebuilt for the summer with one live session a week and hands-on Python videos for every module."),
     ("2026-04-30", "Talked with Tepper for a Faculty Spotlight on what students learn in the MS in Business Analytics, and why I describe business analytics as a decathlon.", "https://www.youtube.com/watch?v=UxBPkez6Mc4"),
-    ("2026-03-11", "Started teaching 46-887 Machine Learning for Business Applications to the in-person MS in Business Analytics cohort, redesigned around AWS. Students take a model from S3 through SageMaker to a database they run themselves and a live dashboard."),
+    ("2026-03-11", "Started teaching Machine Learning for Business Applications to the in-person MS in Business Analytics cohort, redesigned around AWS. Students take a model from S3 through SageMaker to a database they run themselves and a live dashboard."),
     ("2026-02-19", "Made a cameo in a Tepper reel for the end of Mini 3: your professor tells a joke that is not funny, but finals are next week. For the record, the jokes are funny.", "https://www.instagram.com/p/DU86OS8Echk/", "Watch on Instagram"),
-    ("2026-01-13", "Started teaching 90-803 Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints."),
+    ("2026-01-13", "Started teaching Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints."),
     ("2026-01", "Advising two MS in Business Analytics capstone teams this spring."),
-    ("2025-10-22", "Taught 70-377 Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture."),
+    ("2025-10-22", "Taught Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture."),
     ("2025-10", "Taught Data Mining in person and online hybrid in the same seven-week term, and added principal component analysis to the course."),
-    ("2025-08-26", "Taught the first class of 45-884 AI Methods for Social and Visual Data, a course I built for MBA and master's students on text, images, and AI agents, using foundation models rather than training them."),
+    ("2025-08-26", "Taught the first class of AI Methods for Social and Visual Data, a course I built for MBA and master's students on text, images, and AI agents, using foundation models rather than training them."),
     ("2025-05", "Joined gAIm Systems as Senior Director of AI and Data Science."),
     ("2025-05", "Proud of this spring's Data Mining final projects: teams brought their own questions, from predicting baseball Hall of Fame induction to siting EV chargers in Pennsylvania."),
     ("2025-03", "This spring's Data Visualization final projects were 29 recorded data stories, from Netflix's global catalog to city-by-city warming and public-sector dashboards."),
     ("2025-01-10", "Poets & Quants profiled Tepper's MBA Class of 2026, and Tepper's director of masters admissions named me as the new professor teaching business analytics in the MBA program.", "https://poetsandquants.com/2025/01/10/meet-carnegie-mellon-teppers-mba-class-of-2026/2/", "Read the profile"),
-    ("2025-01-13", "Rebuilt Data Visualization entirely in Tableau for its second run, added clustering, network graphs, and explainable AI, and recorded about fifty short screencast lessons. Also started teaching its MS in Business Analytics counterpart, 46-885."),
+    ("2025-01-13", "Rebuilt Data Visualization entirely in Tableau for its second run, added clustering, network graphs, and explainable AI, and recorded about fifty short screencast lessons. Also started teaching its MS in Business Analytics counterpart, Data Exploration and Visualization."),
     ("2025-01", "Advised five MS in Business Analytics capstone projects."),
     ("2024-10", "Taught Data Mining for the third time and moved it from R to Python, adding time series forecasting and a session on building data-driven products to clustering, regression, classification, and text mining."),
-    ("2024-08-26", "Started teaching 46-880 Introduction to Probability and Statistics, the first quantitative course in the full-time MS in Business Analytics, pairing every distribution with its Excel formula and its Python call."),
+    ("2024-08-26", "Started teaching Introduction to Probability and Statistics, the first quantitative course in the full-time MS in Business Analytics, pairing every distribution with its Excel formula and its Python call."),
     ("2024-08", "Joined Tepper as Assistant Teaching Professor of Business Analytics."),
     ("2024-06", "Taught in the Business Analytics Summer Summit."),
     ("2024-05", "Proud of the first Data Mining final projects: sixteen online hybrid MBA teams, many working on data from their own employers."),
-    ("2024-03-13", "Started teaching 45-885 Data Visualization with an evening MBA section, mixing Tableau with R and ggplot2."),
+    ("2024-03-13", "Started teaching Data Visualization with an evening MBA section, mixing Tableau with R and ggplot2."),
     ("2024-03", "Taught Data Mining for the second time, rebuilt for the online hybrid MBA with a recorded video module for each topic and a self-directed final project in place of the exam."),
     ("2024-01", "Advising three MS in Business Analytics capstone teams this spring, with Tindoori Labs, Marinus Analytics, and 412 Food Rescue."),
-    ("2023-10-25", "Started teaching 45-851 Data Mining to full-time MBA students as an adjunct, redesigning it around business questions, with labs in R and tidymodels."),
+    ("2023-10-25", "Started teaching Data Mining to full-time MBA students as an adjunct, redesigning it around business questions, with labs in R and tidymodels."),
 ]
 
 
@@ -680,14 +680,24 @@ def write(rel, content: str):
     print("wrote", rel)
 
 
+# Readers do not know catalog numbers, so labels use a short course name.
+# The number appears only as a fact on the course page and on the CV.
+SHORT_NAMES = {
+    "70-445": "AI for Leaders", "45-884": "AI Methods", "70-377": "Tech Talent", "45-851": "Data Mining",
+    "45-885": "Data Viz", "46-885": "Explore & Viz", "46-880": "Prob & Stats", "46-887": "ML in Business",
+    "90-803": "ML Foundations", "70-311": "Org Behavior", "70-321": "Negotiation", "70-342": "Cultures",
+    "70-453": "Consulting", "70-443": "Social Media", "70-323": "Research",
+}
+
+
 def course_label(c) -> str:
-    """Short text for a course thumbnail: the catalog number, or a label for a course without one."""
-    return c["number"] or c.get("label") or c["program"]
+    """Short text for a course thumbnail: a short name, never the catalog number."""
+    return SHORT_NAMES.get(c["slug"]) or c.get("label") or c["program"]
 
 
 def course_name(c) -> str:
-    """Catalog number and title, or just the title when there is no number."""
-    return f"{c['number']} {c['title']}".strip()
+    """The course's full title. Catalog numbers are not used as names."""
+    return c["title"]
 
 
 # The pen doodle in the corner of each course's index card.
@@ -1572,15 +1582,16 @@ def build_course_pages():
                    f'<p class="note c-note fade" style="--d:1.9s">{note}</p></div>')
         label = course_label(c)
         seal = '<span class="seal thunk" style="--d:.35s;--rot:8deg">Course<br>I built</span>' if c["built"] else ""
-        sr = f'<span class="sr-only">{esc(c["number"])} </span>' if c["number"] else ""
+        sr = ""
         facts = ([sched["term"], sched["meets"]] if sched else []) + ink.get("facts", [])
+        if c.get("number"):
+            facts.append(f"Course number {c['number']}")
         facts_html = "".join(f'<li class="fade" style="--d:{1.2 + 0.1 * i:.1f}s">{esc(f)}</li>' for i, f in enumerate(facts))
         panel = c.get("panel", "") if not c.get("story") else ""
         body += f"""
   <section class="c-hero reveal{'' if art else ' noart'}" aria-labelledby="c-title">
     <div class="c-hero-text">
       <p class="c-stamps"><span class="stamp thunk" style="--d:.1s">{course_kicker(c)}</span> {seal}</p>
-      <p class="c-code{' long' if len(label) > 7 else ''}" aria-hidden="true">{esc(label)}</p>
       <h1 id="c-title">{sr}{c['title']}</h1>
       <p class="lede">{ink_phrase(c['one_liner'], ink.get('mark'), 'mark')}</p>
       {scale_note(c)}<p class="c-intro">{ink_phrase(c['blurb'], ink.get('u'), 'u')}</p>
@@ -1741,7 +1752,7 @@ def _slug(text: str) -> str:
 def _course_links(html: str) -> str:
     """Link course names in the CV to their course pages."""
     for c in COURSES:
-        name = course_name(c)
+        name = f"{c['number']} {c['title']}".strip()
         html = html.replace(f"<strong>{name}</strong>",
                             f'<strong><a href="../courses/{c["slug"]}/">{name}</a></strong>')
     return html
@@ -2007,7 +2018,7 @@ def portfolio_card(p, root, i=0):
 def build_portfolio(portfolio):
     items = "\n".join(portfolio_card(p, "../", i) for i, p in enumerate(portfolio))
     body = page_head("Portfolio", "Coding with AI Projects",
-                     "Working projects I built with AI coding tools, several of them for 15-113 Effective Coding with AI. Each repo includes the prompts and build log, and I use them as examples in class.")
+                     "Working projects I built with AI coding tools, several of them for Effective Coding with AI, a Carnegie Mellon course. Each repo includes the prompts and build log, and I use them as examples in class.")
     body += f'  <div class="portfolio">\n{items}\n  </div>\n'
     write(
         "projects/index.html",
@@ -2257,12 +2268,12 @@ def build_news():
 # Only his text slides: no student names or work, no third-party figures.
 TALK_SLIDES = {
     "ai-exchange-2026": [
-        ("45884-vit", "From 45-884: MBA students learn how Vision Transformers apply attention to image patches."),
-        ("45884-embedding", "From 45-884: a joint embedding space where images and text sit side by side."),
-        ("45884-waymo", "From 45-884: the Tesla Vision versus Waymo case, cameras against lidar and radar."),
-        ("blooms", "How 45-884 maps to Bloom's taxonomy: quizzes for remembering, labs for applying, the final project and AI in the News for creating."),
-        ("70445-muffin", "From 70-445: muffin or chihuahua? You can spot it. Now write the rule."),
-        ("70445-harness", "From 70-445: agent = model + harness, the idea behind the course's agent unit."),
+        ("45884-vit", "From AI Methods for Social and Visual Data: MBA students learn how Vision Transformers apply attention to image patches."),
+        ("45884-embedding", "From AI Methods for Social and Visual Data: a joint embedding space where images and text sit side by side."),
+        ("45884-waymo", "From AI Methods for Social and Visual Data: the Tesla Vision versus Waymo case, cameras against lidar and radar."),
+        ("blooms", "How AI Methods for Social and Visual Data maps to Bloom's taxonomy: quizzes for remembering, labs for applying, the final project and AI in the News for creating."),
+        ("70445-muffin", "From Artificial Intelligence for Business Leaders: muffin or chihuahua? You can spot it. Now write the rule."),
+        ("70445-harness", "From Artificial Intelligence for Business Leaders: agent = model + harness, the idea behind the course's agent unit."),
     ],
     "kellogg-2025": [
         ("setup", "The experiment: treatment teams revise news charts with the AI coach before presenting; control teams revise without it."),
