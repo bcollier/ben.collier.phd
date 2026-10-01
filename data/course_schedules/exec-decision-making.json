@@ -1,0 +1,115 @@
+{
+ "slug": "exec-decision-making",
+ "term": "Fall 2014 (November 23 to 25)",
+ "meets": "Three mornings, 8:00 to 1:00, at CMU-Q",
+ "unit_label": "Day",
+ "meta": {
+  "number": "Exec Ed",
+  "title": "Decision Making in Groups and Organizations",
+  "program": "Executive Education (open enrollment)",
+  "school": "CMU Qatar",
+  "era": "exec-ed",
+  "one_liner": "Make a group decision under pressure, then find out what your process missed",
+  "blurb": "I taught this course with John Gasper, a political economist. It opens with Carter Racing, a race-or-withdraw call with incomplete data that turns out to mirror the Challenger launch decision. John's day covers heuristics and biases and how to reduce them. On the last day groups have to split $120 million across non-profit proposals using a structured method (dialectical inquiry, Delphi, stoplight, best member) and defend the result.",
+  "offerings": [
+   "Fall 2014 (November 23 to 25)"
+  ],
+  "scale": "114 participants from 18 organizations",
+  "color": "c-slate",
+  "order": 2
+ },
+ "schedule": [
+  {
+   "date": "2014-11-23",
+   "week": 1,
+   "topic": "Carter Racing: a team decision under uncertainty, and debrief",
+   "kind": "exercise",
+   "slides": [
+    {
+     "src": "assets/courses/exec-decision-making/s01-1.webp",
+     "caption": "The decision: your racing team must race or withdraw"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s01-2.webp",
+     "caption": "Why group decisions are hard: goal conflict, unclear criteria, status, roles"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s01-3.webp",
+     "caption": "Takeaway: the people with the best information may not speak up"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s01-4.webp",
+     "caption": "Takeaway: more information makes people more confident, not more accurate"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s01-5.webp",
+     "caption": "Confirmation bias, overconfidence, and availability come next"
+    }
+   ]
+  },
+  {
+   "date": "2014-11-24",
+   "week": 2,
+   "topic": "Thinking fast: heuristics and biases, and strategies to reduce them",
+   "kind": "lecture",
+   "note": "Taught by John Gasper",
+   "slides": [
+    {
+     "src": "assets/courses/exec-decision-making/s02-1.webp",
+     "caption": "Judge the decision process, not just the outcome"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s02-2.webp",
+     "caption": "Where we donate versus the diseases that kill us"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s02-3.webp",
+     "caption": "Anchoring: list prices moved real estate agents' appraisals"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s02-4.webp",
+     "caption": "Anchoring: little things matter"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s02-5.webp",
+     "caption": "Framing: the same choice described as lives saved or lives lost"
+    }
+   ]
+  },
+  {
+   "date": "2014-11-25",
+   "week": 3,
+   "topic": "Allocating $120 million: group decision methods in practice",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/exec-decision-making/s03-1.webp",
+     "caption": "The case: a foundation must allocate $120 million"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s03-2.webp",
+     "caption": "The rational decision model, step by step"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s03-3.webp",
+     "caption": "Dialectical inquiry: two subgroups argue opposite positions"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s03-4.webp",
+     "caption": "The stoplight approach to narrowing options"
+    },
+    {
+     "src": "assets/courses/exec-decision-making/s03-5.webp",
+     "caption": "Average member: aggregate everyone's independent judgment"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Funding board presentation",
+   "description": "Each group uses an assigned decision method to allocate the foundation's budget across proposals, then presents its allocation and its process to the room."
+  }
+ ],
+ "projects": []
+}

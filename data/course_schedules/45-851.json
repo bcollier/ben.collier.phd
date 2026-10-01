@@ -1,0 +1,570 @@
+{
+ "slug": "45-851",
+ "term": "Fall 2025, Mini 2",
+ "meets": "Tuesdays and Thursdays",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "date": "2025-10-21",
+   "week": 1,
+   "topic": "Course overview and data exploration in Python",
+   "kind": "lecture",
+   "note": "Opens with a case from my own work: predicting drug price spikes for a hospital system",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s01-1.webp",
+     "caption": "Data created worldwide each year, in zettabytes, 2010 to 2028"
+    },
+    {
+     "src": "assets/courses/45-851/s01-2.webp",
+     "caption": "CRISP-DM: the standard process for a data mining project"
+    },
+    {
+     "src": "assets/courses/45-851/s01-3.webp",
+     "caption": "EpiPen and insulin prices: the business problem behind the opening case"
+    },
+    {
+     "src": "assets/courses/45-851/s01-4.webp",
+     "caption": "Building a price spike prediction model from drug, substitute, category, and manufacturer factors"
+    },
+    {
+     "src": "assets/courses/45-851/s01-5.webp",
+     "caption": "Where the model ended up: a commercial pharmacy supply chain tool"
+    }
+   ]
+  },
+  {
+   "date": "2025-10-23",
+   "week": 1,
+   "topic": "Data exploration and visualization in Python",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s02-1.webp",
+     "caption": "Three flat-file formats you meet first: CSV, JSON, and Excel"
+    },
+    {
+     "src": "assets/courses/45-851/s02-2.webp",
+     "caption": "Pulling data from SQL and NoSQL databases"
+    },
+    {
+     "src": "assets/courses/45-851/s02-3.webp",
+     "caption": "How an API hands data from a server to your code"
+    },
+    {
+     "src": "assets/courses/45-851/s02-4.webp",
+     "caption": "Data professionals spend as much as 80% of their time cleaning and organizing data"
+    },
+    {
+     "src": "assets/courses/45-851/s02-5.webp",
+     "caption": "The Python visualization libraries we use"
+    }
+   ]
+  },
+  {
+   "date": "2025-10-28",
+   "week": 2,
+   "topic": "Clustering theory and methods",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s03-1.webp",
+     "caption": "Plain, spicy, or extra chunky: the pasta sauce story behind segmentation"
+    },
+    {
+     "src": "assets/courses/45-851/s03-2.webp",
+     "caption": "K-means, step by step: assign points, move the centroids, repeat"
+    },
+    {
+     "src": "assets/courses/45-851/s03-3.webp",
+     "caption": "The elbow method for choosing the number of clusters"
+    },
+    {
+     "src": "assets/courses/45-851/s03-4.webp",
+     "caption": "Same data, different algorithms, very different clusters"
+    },
+    {
+     "src": "assets/courses/45-851/s03-5.webp",
+     "caption": "K-means versus DBSCAN on spiral-shaped data"
+    }
+   ]
+  },
+  {
+   "date": "2025-10-30",
+   "week": 2,
+   "topic": "Clustering lab",
+   "kind": "exercise"
+  },
+  {
+   "date": "2025-11-04",
+   "week": 3,
+   "topic": "No class: Election Day",
+   "kind": "break"
+  },
+  {
+   "date": "2025-11-06",
+   "week": 3,
+   "topic": "Principal component analysis",
+   "kind": "lecture"
+  },
+  {
+   "date": "2025-11-11",
+   "week": 4,
+   "topic": "Regression theory and methods",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s07-1.webp",
+     "caption": "Reported happiness as a function of income: the simplest regression picture"
+    },
+    {
+     "src": "assets/courses/45-851/s07-2.webp",
+     "caption": "Six assumptions to check before trusting a linear regression"
+    },
+    {
+     "src": "assets/courses/45-851/s07-3.webp",
+     "caption": "Feature engineering: imputation, outliers, encoding, log transforms, scaling"
+    },
+    {
+     "src": "assets/courses/45-851/s07-4.webp",
+     "caption": "A decision tree splits the data into regions, divide and conquer"
+    },
+    {
+     "src": "assets/courses/45-851/s07-5.webp",
+     "caption": "Random forests and gradient boosted trees combine many trees into one prediction"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-13",
+   "week": 4,
+   "topic": "Regression lab",
+   "kind": "exercise"
+  },
+  {
+   "date": "2025-11-18",
+   "week": 5,
+   "topic": "Classification theory and methods",
+   "kind": "lecture",
+   "note": "Flipped and on Zoom that week, using the online hybrid lecture, while I taught at CMU Qatar",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s09-1.webp",
+     "caption": "Churn prediction as a pipeline: past customers train the model, current customers get scored"
+    },
+    {
+     "src": "assets/courses/45-851/s09-2.webp",
+     "caption": "The sweet spot between bias and variance"
+    },
+    {
+     "src": "assets/courses/45-851/s09-3.webp",
+     "caption": "K-fold cross validation: every fold takes a turn as the test set"
+    },
+    {
+     "src": "assets/courses/45-851/s09-4.webp",
+     "caption": "ROC curves and AUC for comparing classifiers"
+    },
+    {
+     "src": "assets/courses/45-851/s09-5.webp",
+     "caption": "Bagging: many trees on bootstrap samples, then a vote"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-20",
+   "week": 5,
+   "topic": "Classification lab",
+   "kind": "exercise"
+  },
+  {
+   "date": "2025-11-25",
+   "week": 6,
+   "topic": "Forecasting with time series data",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s11-1.webp",
+     "caption": "US retail sales: a trend with a seasonal pattern on top"
+    },
+    {
+     "src": "assets/courses/45-851/s11-2.webp",
+     "caption": "Trend, seasonality, and noise: the shapes a time series can take"
+    },
+    {
+     "src": "assets/courses/45-851/s11-3.webp",
+     "caption": "ARIMA as a chain of filters: autoregressive, integrated, moving average"
+    },
+    {
+     "src": "assets/courses/45-851/s11-4.webp",
+     "caption": "Prophet splits a forecast into trend, weekly, and yearly components"
+    },
+    {
+     "src": "assets/courses/45-851/s11-5.webp",
+     "caption": "Duolingo's growth model: users moving between new, current, at-risk, and dormant states"
+    }
+   ]
+  },
+  {
+   "date": "2025-11-27",
+   "week": 6,
+   "topic": "No class: Thanksgiving",
+   "kind": "break"
+  },
+  {
+   "date": "2025-12-02",
+   "week": 7,
+   "topic": "Natural language processing theory and methods",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s13-1.webp",
+     "caption": "Structured versus unstructured data, and why most business data is the second kind"
+    },
+    {
+     "src": "assets/courses/45-851/s13-2.webp",
+     "caption": "From unstructured web text to structured sequences"
+    },
+    {
+     "src": "assets/courses/45-851/s13-3.webp",
+     "caption": "Stemming versus lemmatization"
+    },
+    {
+     "src": "assets/courses/45-851/s13-4.webp",
+     "caption": "Word embeddings: words as vectors, with similar words close together"
+    },
+    {
+     "src": "assets/courses/45-851/s13-5.webp",
+     "caption": "Sentiment analysis: scoring reviews as positive, neutral, or negative"
+    }
+   ]
+  },
+  {
+   "date": "2025-12-04",
+   "week": 7,
+   "topic": "Natural language processing lab",
+   "kind": "exercise"
+  },
+  {
+   "date": "2025-12-09",
+   "week": 8,
+   "topic": "Neural networks and large language models",
+   "kind": "lecture",
+   "note": "Final group project due December 13",
+   "slides": [
+    {
+     "src": "assets/courses/45-851/s15-1.webp",
+     "caption": "A handwritten 9 becomes 784 pixel activations"
+    },
+    {
+     "src": "assets/courses/45-851/s15-2.webp",
+     "caption": "Hidden layers between the pixels and the digit"
+    },
+    {
+     "src": "assets/courses/45-851/s15-3.webp",
+     "caption": "A language model predicts the next word: 'cat sat on a' becomes 'mat'"
+    },
+    {
+     "src": "assets/courses/45-851/s15-4.webp",
+     "caption": "How a chat assistant is trained: pretraining, then fine-tuning"
+    },
+    {
+     "src": "assets/courses/45-851/s15-5.webp",
+     "caption": "Scaling laws: more parameters and more data, lower loss"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Final project",
+   "weight": "30%",
+   "description": "Teams of up to three bring their own business question and data, public or from their own workplace, and answer it with a method from the course. After a one-page proposal they hand in either an 8 to 10 minute recorded presentation or an 8 to 10 page report, with the analysis files."
+  },
+  {
+   "name": "Clustering project",
+   "weight": "Projects 40%",
+   "description": "Segment a bank's credit card customers with K-means, using at least two methods to choose the number of clusters, then with hierarchical clustering or DBSCAN. The deliverable is a 5 to 10 page report that names the segments and recommends products and marketing for each, plus the Python notebook."
+  },
+  {
+   "name": "Classification project",
+   "description": "Built on the Harvard case Retention Modeling at Scholastic Travel Company: predict which customers will book again. Teams tune KNN, a tree ensemble, and a third method of their choice, compare them on accuracy, precision, recall, and AUC, make three to five recommendations, and score an unlabeled holdout file that I grade against the true labels."
+  },
+  {
+   "name": "Minilabs",
+   "weight": "10%",
+   "description": "Three short individual labs with starter code, each one to two hours and graded on completion: pandas on avocado prices and sales, random forest prediction of house sale prices, and sentiment and topic analysis of e-commerce and hotel reviews, including spotting fake ones."
+  },
+  {
+   "name": "Quizzes",
+   "weight": "20%",
+   "description": "Six open-book Canvas quizzes on the week's lectures and readings, three attempts each, lowest score dropped."
+  },
+  {
+   "name": "In-class exercises",
+   "weight": "Up to 20% bonus",
+   "description": "Exercises in class earn bonus points that shift weight away from the projects."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2025",
+   "items": [
+    {
+     "subject": "Tech company trajectories through the COVID boom and 2023 downturn",
+     "approach": "K-means clustering on merged tech-layoff data (Kaggle) and Yahoo Finance stock prices, with engineered volatility and resilience features",
+     "description": "Asked whether tech companies fall into groups with similar growth-and-decline paths from 2020 to 2025. Found four clusters and used company case studies to explain which kinds of firms held up best after the post-pandemic correction."
+    },
+    {
+     "subject": "Credit card fraud detection",
+     "approach": "Classification, random forest and neural network models on a credit card transaction dataset, with attention to class imbalance",
+     "description": "Built and compared models to flag fraudulent transactions, also looking at fraud patterns by time of day, age group, profession and geography. The team picked a neural network as its best model."
+    },
+    {
+     "subject": "Predicting baseball Hall of Fame induction",
+     "approach": "Logistic regression with balancing and cross-validation, plus XGBoost and SMOTE extensions, on hitter, pitcher and Hall of Fame tables",
+     "description": "Modeled pitchers and hitters separately to see which traditional box-score statistics predict induction. Discussed limits such as the lack of era adjustment and voter sentiment."
+    },
+    {
+     "subject": "Optimizing argon gas recycling",
+     "approach": "Linear, polynomial, logarithmic and random forest regression on experimental data from an industrial gas process",
+     "description": "Predicted gas recovery rate and operating time from pressure, flow rate and nitrogen concentration, and compared model forms for accuracy and smooth behavior."
+    },
+    {
+     "subject": "Forecasting U.S. retail sales",
+     "approach": "Time-series forecasting with Facebook Prophet on Census Bureau monthly retail trade data, evaluated by back-testing",
+     "description": "Forecast monthly U.S. retail sales into 2026 and showed the strong late-year seasonal peaks. Discussed where Prophet works well and suggested adding holiday and economic indicators."
+    },
+    {
+     "subject": "Breast cancer diagnosis from cell measurements",
+     "approach": "Logistic regression, random forest and XGBoost with GridSearchCV on the Wisconsin breast cancer (FNA) dataset",
+     "description": "Classified breast masses as benign or malignant, with attention to avoiding missed malignancies. Chose logistic regression for its strong results and interpretability, and linked the top features (such as radius and texture) to known clinical indicators."
+    },
+    {
+     "subject": "Regional health disparities and economic mobility in U.S. cities",
+     "approach": "K-means clustering plus LASSO, decision tree, random forest and gradient boosting on Opportunity Insights health-inequality data",
+     "description": "Grouped U.S. cities by health outcomes and modeled which local factors predict them; gradient boosting fit best. Education, social capital and poverty stood out, with distinct patterns in the Southeast and Great Plains."
+    },
+    {
+     "subject": "Predicting first-round NFL draft picks",
+     "approach": "KNN, random forest, XGBoost and neural network classifiers on NFL Combine data from 2000 to 2024, with resampling for class imbalance",
+     "description": "Predicted which prospects go in the first round from physical measurements, position and school. A random forest tuned for recall was applied to the 2025 draft class; of its 32 picks, 8 were actual first-rounders."
+    },
+    {
+     "subject": "Does fitness-tracker use relate to better health?",
+     "approach": "Exploratory analysis, K-means clustering and random forest regression on a public Kaggle dataset of 30 Fitbit users",
+     "description": "Explored activity, sleep and weight patterns and identified three user types by activity profile. Also tried predicting weight change, which was limited by sparse self-logged data, and made product and marketing suggestions."
+    },
+    {
+     "subject": "Predicting student math performance",
+     "approach": "Linear regression with one-hot encoding on a public student-performance dataset (395 students, 33 features)",
+     "description": "Predicted final math grades from early-year information to flag students who need support. Prior grades, past failures and study time were the strongest predictors, with applications for schools and tutoring services."
+    },
+    {
+     "subject": "Stroke risk segmentation and prediction",
+     "approach": "K-means clustering, linear regression and random forest with threshold tuning on a public stroke dataset",
+     "description": "Segmented adults into clinically meaningful groups and predicted stroke risk, adjusting thresholds to improve recall on rare cases. Glucose, age and BMI were the top predictors, consistent with CDC guidance."
+    },
+    {
+     "subject": "College choice and graduates' financial outcomes",
+     "approach": "K-means and hierarchical clustering on U.S. Department of Education College Scorecard data",
+     "description": "Clustered colleges on a few variables tied to post-graduation earnings, and both methods produced consistent clusters. Selectivity (admission rate) did not track better income outcomes; retention rates and financial aid mattered more."
+    },
+    {
+     "subject": "Predicting flight delays",
+     "approach": "Decision tree classifier with time-of-day binning and threshold adjustment on a sample of a large U.S. flight records dataset",
+     "description": "Predicted delays from schedule, airline and airport features and found higher delay rates for evening flights and certain carriers. The team was candid that class imbalance limited the model's precision."
+    },
+    {
+     "subject": "Predicting emergency department disposition beyond triage",
+     "approach": "Logistic regression and random forest with SMOTE, engineered clinical flags and SHAP interpretation on the 2022 NHAMCS national ED survey",
+     "description": "Tested whether vital signs, arrival mode and return visits predict admission or critical care better than the triage level alone. Feature engineering and tuning noticeably improved recall for the high-stakes admitted and critical-care outcomes."
+    },
+    {
+     "subject": "Predicting which Solana memecoins 'graduate'",
+     "approach": "XGBoost, random forest and logistic regression with SMOTE and class weighting on early on-chain transaction features from Solana launchpad tokens",
+     "description": "Tried to predict from early trading activity whether a new memecoin reaches graduation, a rare (1 to 2 percent) outcome. The models mostly defaulted to the majority class, and the report concluded that sequence models may suit the problem better."
+    },
+    {
+     "subject": "Predicting gold prices",
+     "approach": "Random forest regression on historical financial and market indicators",
+     "description": "Modeled gold's price, as a safe-haven asset, from related market indicators, using correlation analysis and an actual-versus-predicted comparison to show model fit."
+    },
+    {
+     "subject": "Airline passenger satisfaction",
+     "approach": "Random forest classification and clustering on the Kaggle airline passenger satisfaction survey data",
+     "description": "Predicted passenger satisfaction with high accuracy and segmented passengers into groups resembling economy, business and first-class travelers, with service recommendations for each segment."
+    },
+    {
+     "subject": "Credit scorecard for loan applicants",
+     "approach": "Logistic regression scorecard with weight-of-evidence binning and information value on Lending Club loan data",
+     "description": "Built an interpretable model to separate good from bad loan applicants using industry-standard credit-risk methods, and validated it with ROC-AUC, Gini, KS and decile lift analysis."
+    },
+    {
+     "subject": "What predicts a Sweet 16 run in March Madness",
+     "approach": "Logistic regression on five seasons of NCAA team statistics",
+     "description": "Identified team stats linked to reaching the Sweet 16: win percentage helped most and turnovers hurt. Coefficient trends suggested scoring has become more important over time."
+    }
+   ]
+  },
+  {
+   "term": "Fall 2024",
+   "items": [
+    {
+     "subject": "Movie success factors from IMDB and TMDB data",
+     "approach": "Clustering, regression and random forest classification on a merged IMDB/TMDB movie dataset (sampled to about 250k records)",
+     "description": "Analyzed how genres, keywords, directors and studios relate to audience reception and profit. Recommended fantasy-adventure themes, sequels and adaptations of novels."
+    },
+    {
+     "subject": "Global fertility trends for healthcare planning",
+     "approach": "Clustering and linear and polynomial regression on IHME Global Burden of Disease fertility estimates, 1950 to 2019",
+     "description": "Grouped countries into four clusters with different fertility paths, from low and stable to high and declining, and suggested matching maternal-health and family policies. A polynomial fit captured the steep early decline and recent leveling better than a linear one."
+    },
+    {
+     "subject": "Short-term price forecasting for the 'Magnificent 7' stocks",
+     "approach": "Random forest versus LSTM neural network on historical daily closing prices, compared by RMSE",
+     "description": "Built models to forecast near-term prices for seven large tech stocks and compared predicted with actual prices. Suggested adding news sentiment and macroeconomic data."
+    },
+    {
+     "subject": "Predicting San Francisco 49ers wins",
+     "approach": "Logistic regression and random forest on game statistics from Pro Football Reference",
+     "description": "Found the game stats most tied to winning, including a scoring threshold around 23 points. Recommended protecting the ball, leaning on the run game and stopping opponents' rushing and third-down conversions."
+    },
+    {
+     "subject": "Do S&P 500 sectors match how stocks actually behave?",
+     "approach": "K-means clustering on financial ratios and price metrics for about 490 S&P 500 companies, with random forest feature importance",
+     "description": "Tested whether data-driven clusters would reproduce or improve on the official GICS sectors. The clusters were not well separated, which the team attributed to relying on price-based numeric features."
+    },
+    {
+     "subject": "What drives Airbnb prices in New York City",
+     "approach": "Linear regression, decision tree, random forest and XGBoost on NYC Airbnb listings, with amenity and distance-to-landmark features",
+     "description": "Identified the listing features that drive nightly price. Distance to the city center, bedrooms and bathrooms mattered most. Tree models predicted better, but the team used linear coefficients to give hosts actionable advice."
+    },
+    {
+     "subject": "Loan default risk",
+     "approach": "Random forest and XGBoost on a public loan dataset with income, credit and loan variables",
+     "description": "Predicted borrower default and turned the results into four risk tiers based on income, credit utilization, credit score, debt-to-income and age, with lending and financial-literacy recommendations for each."
+    },
+    {
+     "subject": "Predicting vehicle accidents",
+     "approach": "Decision tree, random forest and gradient boosting on a Kaggle accident dataset with weather, road and driver variables",
+     "description": "Built a model to predict whether an accident occurs, improving it substantially through iteration. Random forest was the final choice, with applications for insurers, logistics and ride-sharing."
+    },
+    {
+     "subject": "Finding undervalued soccer players",
+     "approach": "Random forest regression and K-means clustering by position on Bundesliga player statistics from FBref",
+     "description": "Framed for a club's sporting director: identified the metrics that matter most for each position to spot under- and over-performing players relative to their market value."
+    },
+    {
+     "subject": "Where to put new EV charging stations",
+     "approach": "K-means clustering plus random forest, logistic regression and XGBoost on Pennsylvania EV registrations and charging-station data by zip code",
+     "description": "Mapped zip codes where EV adoption is outpacing charging infrastructure and classified which areas need new stations. Proposed a tiered rollout starting with high-adoption, low-charger zip codes."
+    },
+    {
+     "subject": "Telecom customer churn",
+     "approach": "Random forest, decision tree, logistic regression and KNN with threshold tuning, plus clustering, on a Kaggle telecom churn dataset",
+     "description": "Identified at-risk customers and the behaviors behind churn, such as heavy usage and many customer-service calls. Recommended volume discounts, better customer service and redesigned add-on plans."
+    },
+    {
+     "subject": "Predicting departure delays to deploy airport ramp staff",
+     "approach": "XGBoost classification on hub-to-hub U.S. flight records from Kaggle",
+     "description": "Framed around helping a major U.S. airline's operations managers assign limited ramp crews to flights most at risk of delay. The model was modest with the limited public data, and the team laid out how internal data could improve it."
+    },
+    {
+     "subject": "Choosing where to live by cost of living",
+     "approach": "K-means clustering on a combined dataset of housing, tax, utility and distance-to-major-city data for U.S. towns",
+     "description": "Grouped U.S. places by total living cost and proximity to cities under different household scenarios. Saw hints that high-cost areas shift from cities toward suburbs for families."
+    },
+    {
+     "subject": "What drives airline passenger satisfaction",
+     "approach": "Classification with iterative imputation and PCA exploration on the Kaggle airline passenger satisfaction data, comparing demographic, pre-flight and in-flight feature sets",
+     "description": "Compared how well each stage of the customer journey predicts satisfaction. In-flight service was the strongest single group, and combining all three sets predicted best."
+    }
+   ]
+  },
+  {
+   "term": "Spring 2024",
+   "items": [
+    {
+     "subject": "What makes a song popular on Spotify",
+     "approach": "Correlation analysis, regression with variable importance, and K-means clustering (seven clusters) on a public Spotify song dataset, in R",
+     "description": "Framed for a hypothetical artist-advisory and DJ service. Inclusion in user playlists was most strongly tied to stream counts, and the song clusters were used to advise artists and event planners."
+    },
+    {
+     "subject": "Do Elon Musk's tweets move Tesla stock?",
+     "approach": "Sentiment analysis and correlation of tweets with Tesla daily stock data, in Python",
+     "description": "Tested whether the volume or sentiment of Musk's tweets explains Tesla price swings. The relationship was weak, with no consistent pattern even around high-profile tweets."
+    },
+    {
+     "subject": "Mapping biomedical research with PubMed MeSH terms",
+     "approach": "Data engineering and exploratory analysis of PubMed XML records and MeSH subject headings, in R",
+     "description": "Set out to find patterns in which populations and topics get studied. Much of the effort went into wrangling the very large database, and the report laid out next steps for classification once the MeSH term hierarchy is mapped."
+    },
+    {
+     "subject": "U.S. airline on-time performance, 2021 to 2023",
+     "approach": "Regression, classification and clustering on Department of Transportation on-time flight data, in R",
+     "description": "Examined what drives departure and arrival delays and which airports and carriers see the worst delays. Recommended that regulators look at airports in specific states and collect more operational and weather data."
+    },
+    {
+     "subject": "Building an NBA championship roster",
+     "approach": "K-means clustering of players (with salaries) and teams, plus classification of championship teams, in R",
+     "description": "Star-led, top-heavy teams won and won championships at much higher rates than balanced teams. Minutes per game was the strongest predictor in the classification model, suggesting teams should invest in stars."
+    },
+    {
+     "subject": "Auto insurance customer segments and fraud detection",
+     "approach": "K-means and hierarchical clustering plus random forest classification on the Kaggle vehicle insurance claim fraud dataset, in R",
+     "description": "Identified four customer segments to guide coverage offerings and built a model to flag likely fraudulent claims. No single variable was enough to detect fraud on its own; address changes and vehicle make were among the signals."
+    },
+    {
+     "subject": "Segmenting grocery stores by department sales",
+     "approach": "K-means clustering (elbow and silhouette) with a hierarchical comparison on daily department sales from 85 California grocery stores, in R",
+     "description": "Grouped stores to guide product mix and inventory. Stores turned out to differ mainly in total sales volume, not format, so the team clustered on each department's share of total sales."
+    },
+    {
+     "subject": "Supplier diversity spending on capital projects",
+     "approach": "Clustering, word clouds and LDA topic analysis on a company's capital-project spend data, in R",
+     "description": "Studied how project size and contractor choice relate to supplier diversity goals."
+    },
+    {
+     "subject": "Who are a convenience-store chain's customers?",
+     "approach": "K-means clustering on a sample of point-of-sale transactions, in R",
+     "description": "Segmented a retailer's customers into purchase archetypes and turned them into marketing and store-layout recommendations."
+    },
+    {
+     "subject": "Bias in the COMPAS recidivism risk tool",
+     "approach": "K-means clustering, regularized logistic regression, KNN and NLP on charge descriptions, using the public COMPAS dataset, in R",
+     "description": "Examined whether COMPAS recidivism predictions differ by race, gender and age, comparing models with and without demographic variables."
+    },
+    {
+     "subject": "Which phone features drive price?",
+     "approach": "K-means and hierarchical clustering plus multinomial logistic regression, KNN, random forest and XGBoost on the Kaggle mobile price classification dataset, in R",
+     "description": "Framed as a phone maker planning a product launch. Predicted a phone's price tier from its specs; RAM stood out as the most influential feature."
+    },
+    {
+     "subject": "Spotify user segments",
+     "approach": "K-means, hierarchical clustering and DBSCAN on a public Kaggle Spotify user-behavior survey, in R",
+     "description": "Segmented listeners by usage habits and preferences, compared the three clustering methods, and suggested which product features to prioritize for each segment."
+    },
+    {
+     "subject": "Where to invest in Pittsburgh real estate",
+     "approach": "Census trend analysis, Zillow home-value modeling and LLM-scored sentiment of city council resolutions, in Python",
+     "description": "Looked for up-and-coming Pittsburgh neighborhoods for investors. Recommended five zip codes and tested whether council actions relate to home values in one zip code."
+    },
+    {
+     "subject": "Where to add warehouses to cut freight costs",
+     "approach": "Clustering of shipment destinations plus regression of truckload and less-than-truckload costs, in R",
+     "description": "Tested whether adding one or two warehouses would cut a manufacturer's shipping costs."
+    },
+    {
+     "subject": "Benign versus malignant breast tumors",
+     "approach": "Logistic regression and random forest with cross-validation and ROC curves on the public breast cancer cell-imaging dataset (568 samples)",
+     "description": "Identified which cell measurements best separate malignant from benign masses, finding logistic regression more reliable than random forest. Proposed a clinical pilot inside an electronic health record."
+    },
+    {
+     "subject": "Global leaders and laggards in artificial intelligence",
+     "approach": "K-means and hierarchical clustering on the Global AI Index (Kaggle), in R",
+     "description": "Ranked countries on AI investment, innovation and implementation, and grouped them into tiers from emerging users to trailblazers, recommending talent, infrastructure and R&D investment to move up."
+    }
+   ]
+  }
+ ]
+}

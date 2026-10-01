@@ -1,0 +1,461 @@
+{
+ "slug": "90-803",
+ "term": "Spring 2026",
+ "meets": "Tuesdays and Thursdays, with a Friday recitation",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "part": "Part I: Foundations and unsupervised learning"
+  },
+  {
+   "date": "2026-01-13",
+   "week": 1,
+   "topic": "Overview of Machine Learning and Analytics in Organizations",
+   "kind": "lecture",
+   "note": "Case: predicting drug price spikes and shortages for a 40-hospital health system",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s01-1.webp",
+     "caption": "Data created worldwide each year keeps climbing, and most of it is never analyzed"
+    },
+    {
+     "src": "assets/courses/90-803/s01-2.webp",
+     "caption": "The motivating case: a 40-hospital system buying $1.5 billion of drugs a year with a handful of buyers"
+    },
+    {
+     "src": "assets/courses/90-803/s01-3.webp",
+     "caption": "Drug prices are on the rise, and a single price spike can blow a pharmacy budget"
+    },
+    {
+     "src": "assets/courses/90-803/s01-4.webp",
+     "caption": "Building a price spike model from drug, substitute, category, and manufacturer features"
+    },
+    {
+     "src": "assets/courses/90-803/s01-5.webp",
+     "caption": "What the shipped product claims: 93.8% accuracy on price increases, 76% early detection of shortages"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-15",
+   "week": 1,
+   "topic": "Data Exploration and Analysis with Python",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s02-1.webp",
+     "caption": "Opening puzzle from a quant interview: what is a die roll worth if you can reroll twice?"
+    },
+    {
+     "src": "assets/courses/90-803/s02-2.webp",
+     "caption": "Descriptive, diagnostic, predictive, prescriptive: analytics climbs in value and difficulty"
+    },
+    {
+     "src": "assets/courses/90-803/s02-3.webp",
+     "caption": "A short history of Python, from a hobby project in 1989 to the default language of data science"
+    },
+    {
+     "src": "assets/courses/90-803/s02-4.webp",
+     "caption": "Types of variables: numeric, categorical, ordinal, binary, and dates"
+    },
+    {
+     "src": "assets/courses/90-803/s02-5.webp",
+     "caption": "Group by and aggregate: the pandas move behind most business questions"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-16",
+   "week": 1,
+   "topic": "Recitation: Data Sourcing, Cleaning, and Visualization",
+   "kind": "exercise",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s03-1.webp",
+     "caption": "Flat files: the same data as CSV, JSON, and Excel"
+    },
+    {
+     "src": "assets/courses/90-803/s03-2.webp",
+     "caption": "How an API works: your code asks a server, the server answers with data"
+    },
+    {
+     "src": "assets/courses/90-803/s03-3.webp",
+     "caption": "Market data APIs like Alpha Vantage put live prices one request away"
+    },
+    {
+     "src": "assets/courses/90-803/s03-4.webp",
+     "caption": "Data professionals spend as much as 80% of their time cleaning and organizing data"
+    },
+    {
+     "src": "assets/courses/90-803/s03-5.webp",
+     "caption": "The Python visualization libraries, from Matplotlib to Plotly"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-20",
+   "week": 2,
+   "topic": "Unsupervised Learning: Clustering",
+   "kind": "lecture",
+   "note": "Clustering project kicks off: segmenting credit card customers",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s04-1.webp",
+     "caption": "Plain, spicy, extra chunky: Howard Moskowitz found segments where others saw one market"
+    },
+    {
+     "src": "assets/courses/90-803/s04-2.webp",
+     "caption": "Clustering for policy: finding eligible households that never enroll in SNAP or Medicaid"
+    },
+    {
+     "src": "assets/courses/90-803/s04-3.webp",
+     "caption": "K-means in four steps: place centroids, assign points, recompute, repeat"
+    },
+    {
+     "src": "assets/courses/90-803/s04-4.webp",
+     "caption": "The elbow method: add clusters until the error stops falling fast"
+    },
+    {
+     "src": "assets/courses/90-803/s04-5.webp",
+     "caption": "Same rings, two algorithms: k-means cuts them into wedges, DBSCAN follows the shape"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-27",
+   "week": 3,
+   "topic": "Factor Reduction and Feature Engineering",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s05-1.webp",
+     "caption": "The Hughes phenomenon: past some point, more features make a classifier worse"
+    },
+    {
+     "src": "assets/courses/90-803/s05-2.webp",
+     "caption": "Seventeen foods across four UK nations. Which country is the odd one out?"
+    },
+    {
+     "src": "assets/courses/90-803/s05-3.webp",
+     "caption": "A principal component is a direction in the 17-dimensional space of food types"
+    },
+    {
+     "src": "assets/courses/90-803/s05-4.webp",
+     "caption": "Squeezing square footage and number of rooms onto one line of best fit"
+    },
+    {
+     "src": "assets/courses/90-803/s05-5.webp",
+     "caption": "Feature engineering: imputation, outliers, one-hot encoding, log transforms, scaling"
+    }
+   ]
+  },
+  {
+   "part": "Part II: Supervised learning"
+  },
+  {
+   "date": "2026-02-03",
+   "week": 4,
+   "topic": "Regression Theory and Methods",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s06-1.webp",
+     "caption": "Inference versus prediction: explaining the world or forecasting it"
+    },
+    {
+     "src": "assets/courses/90-803/s06-2.webp",
+     "caption": "A policy regression: do workforce training programs raise earnings after six months?"
+    },
+    {
+     "src": "assets/courses/90-803/s06-3.webp",
+     "caption": "The assumptions of linear regression, and what breaks when each one fails"
+    },
+    {
+     "src": "assets/courses/90-803/s06-4.webp",
+     "caption": "A decision tree splits movies into hits and flops on stars and budget"
+    },
+    {
+     "src": "assets/courses/90-803/s06-5.webp",
+     "caption": "From one tree to many: bagging builds random forests, boosting builds gradient boosted trees"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-10",
+   "week": 5,
+   "topic": "Classification Theory and Methods, with a guest lecture on machine learning for product data science",
+   "kind": "lecture",
+   "note": "Guest lecture from a CMU alum working as a product data scientist; lab on telco customer churn"
+  },
+  {
+   "date": "2026-02-17",
+   "week": 6,
+   "topic": "Model Evaluation and Hyperparameter Tuning",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s08-1.webp",
+     "caption": "Amazon's resume screener learned to penalize the word women's. What went wrong?"
+    },
+    {
+     "src": "assets/courses/90-803/s08-2.webp",
+     "caption": "Generalization: training error keeps falling while test error turns back up"
+    },
+    {
+     "src": "assets/courses/90-803/s08-3.webp",
+     "caption": "The ROC curve: every threshold traded off between catching positives and false alarms"
+    },
+    {
+     "src": "assets/courses/90-803/s08-4.webp",
+     "caption": "LIME on a wolf-versus-husky classifier: the model was looking at the snow"
+    },
+    {
+     "src": "assets/courses/90-803/s08-5.webp",
+     "caption": "SHAP values: how much each feature pushed a mushroom toward poisonous"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-24",
+   "week": 7,
+   "topic": "Forecasting with Time Series Data",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s09-1.webp",
+     "caption": "U.S. retail sales: a steady trend with a holiday spike every year"
+    },
+    {
+     "src": "assets/courses/90-803/s09-2.webp",
+     "caption": "Random noise, trends, and seasonality: the patterns a forecast has to separate"
+    },
+    {
+     "src": "assets/courses/90-803/s09-3.webp",
+     "caption": "Duolingo daily active users, 2020 to 2024"
+    },
+    {
+     "src": "assets/courses/90-803/s09-4.webp",
+     "caption": "Google's stock price after differencing: the trend is gone, the noise remains"
+    },
+    {
+     "src": "assets/courses/90-803/s09-5.webp",
+     "caption": "Prophet decomposes a series into trend, seasonality, and holidays"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-03",
+   "topic": "No class: spring break",
+   "kind": "break"
+  },
+  {
+   "part": "Part III: Experiments, language, and vision"
+  },
+  {
+   "date": "2026-03-12",
+   "week": 8,
+   "topic": "A/B Testing and Multi-Armed Bandits",
+   "kind": "lecture",
+   "note": "No class Tuesday. Case: game design at Cookie Cats. Midterm projects due March 15",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s10-1.webp",
+     "caption": "An A/B test: split the audience, show each half a version, compare conversion"
+    },
+    {
+     "src": "assets/courses/90-803/s10-2.webp",
+     "caption": "How sad should Duo be? Even a mascot's expression is something you can test"
+    },
+    {
+     "src": "assets/courses/90-803/s10-3.webp",
+     "caption": "Dropping capitalization looked harmless and cost 0.5% of day-one retention"
+    },
+    {
+     "src": "assets/courses/90-803/s10-4.webp",
+     "caption": "Cookie Cats moved the first gate from level 40 to level 30. Did players stay longer?"
+    },
+    {
+     "src": "assets/courses/90-803/s10-5.webp",
+     "caption": "Bandits: an A/B test that shifts traffic to the winner while it is still running"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-17",
+   "week": 9,
+   "topic": "Natural Language Processing Theory and Methods",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s11-1.webp",
+     "caption": "Structured versus unstructured data, and why most of an organization's data is text"
+    },
+    {
+     "src": "assets/courses/90-803/s11-2.webp",
+     "caption": "English is 59% of web content but is spoken by about 20% of the world"
+    },
+    {
+     "src": "assets/courses/90-803/s11-3.webp",
+     "caption": "Stemming versus lemmatization: two ways to reduce words to their roots"
+    },
+    {
+     "src": "assets/courses/90-803/s11-4.webp",
+     "caption": "Word embeddings place words with similar meanings near each other"
+    },
+    {
+     "src": "assets/courses/90-803/s11-5.webp",
+     "caption": "Classical NLP pipelines gave way to deep learning in about five years"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-24",
+   "week": 10,
+   "topic": "Neural Network Fundamentals",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s12-1.webp",
+     "caption": "From a biological neuron to an artificial one: weighted inputs and an activation"
+    },
+    {
+     "src": "assets/courses/90-803/s12-2.webp",
+     "caption": "A handwritten digit is 784 pixels, each an activation between 0 and 1"
+    },
+    {
+     "src": "assets/courses/90-803/s12-3.webp",
+     "caption": "The hope for hidden layers: digits built from loops and strokes"
+    },
+    {
+     "src": "assets/courses/90-803/s12-4.webp",
+     "caption": "A single neuron can learn OR and AND, but not every pattern"
+    },
+    {
+     "src": "assets/courses/90-803/s12-5.webp",
+     "caption": "Forward propagation makes a prediction, backpropagation assigns the blame"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-31",
+   "week": 11,
+   "topic": "Large Language Models",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s13-1.webp",
+     "caption": "Pretraining is like compressing a chunk of the internet into a file of weights"
+    },
+    {
+     "src": "assets/courses/90-803/s13-2.webp",
+     "caption": "At bottom, a language model predicts the next word"
+    },
+    {
+     "src": "assets/courses/90-803/s13-3.webp",
+     "caption": "How to train a chatbot: pretrain a base model, then fine-tune it into an assistant"
+    },
+    {
+     "src": "assets/courses/90-803/s13-4.webp",
+     "caption": "Scaling laws: loss falls predictably with more parameters and more data"
+    },
+    {
+     "src": "assets/courses/90-803/s13-5.webp",
+     "caption": "In one clinical study, the LLM alone beat doctors using conventional resources on diagnostic reasoning"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-07",
+   "week": 12,
+   "topic": "Text Mining with Large Language Models",
+   "kind": "exercise",
+   "note": "Lab week, short for Spring Carnival. Language model project due: routing student loan complaints"
+  },
+  {
+   "date": "2026-04-14",
+   "week": 13,
+   "topic": "Computer Vision Fundamentals",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s14-1.webp",
+     "caption": "CheXNet: detecting pneumonia from chest X-rays at the level of radiologists"
+    },
+    {
+     "src": "assets/courses/90-803/s14-2.webp",
+     "caption": "Object detection: boxing every car and person on a busy street"
+    },
+    {
+     "src": "assets/courses/90-803/s14-3.webp",
+     "caption": "Add a little noise and a panda becomes a gibbon at 99% confidence"
+    },
+    {
+     "src": "assets/courses/90-803/s14-4.webp",
+     "caption": "ImageNet error rates fell below the 5.1% human benchmark"
+    },
+    {
+     "src": "assets/courses/90-803/s14-5.webp",
+     "caption": "A vertical edge detection kernel, the basic move inside a convolutional network"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-21",
+   "week": 14,
+   "topic": "Case: Tesla Vision vs. Waymo Sensor Fusion, and course wrap-up",
+   "kind": "case",
+   "note": "Computer vision project due. Final projects due April 30",
+   "slides": [
+    {
+     "src": "assets/courses/90-803/s15-1.webp",
+     "caption": "The six levels of driving automation, from none to full"
+    },
+    {
+     "src": "assets/courses/90-803/s15-2.webp",
+     "caption": "Waymo: 29 cameras, 5 lidar, 6 radar. Tesla: 9 cameras and vision alone"
+    },
+    {
+     "src": "assets/courses/90-803/s15-3.webp",
+     "caption": "How a self-driving car sees: cameras, short and long range radar, and lidar"
+    },
+    {
+     "src": "assets/courses/90-803/s15-5.webp",
+     "caption": "The toolkit built over the semester, from k-means to transformers"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "In-class exercises and participation",
+   "weight": "20%",
+   "description": "Lecture days end with a short two or three question quiz on Canvas. Lab days end with submitting the code we wrote together, graded pass/fail."
+  },
+  {
+   "name": "Quizzes",
+   "weight": "20%",
+   "description": "Weekly open-book quizzes on Canvas covering lectures and readings, about 15 to 20 minutes each, with the two lowest scores dropped. No generative AI on quizzes."
+  },
+  {
+   "name": "Mini-labs",
+   "weight": "10%",
+   "description": "Short individual labs of one to two hours, graded on completion, each starting from a notebook. Topics include avocado prices and sales across U.S. markets, feature engineering and PCA on a 70-column real estate dataset, random forests predicting home sale prices, predicting which households drop out of a subsidized broadband program, and NLP on CFPB student loan complaints."
+  },
+  {
+   "name": "Applied ML projects",
+   "weight": "30%",
+   "description": "Four projects in groups of up to three, graded the way a professional deliverable would be. Clustering segments credit card customers with k-means and at least two methods for choosing the number of clusters. Classification models customer retention at a student travel company. The language model project has a model reclassify student loan complaints into six policy categories, check agreement between models with Cohen's kappa, and test whether models can score complaint severity. The last project applies computer vision."
+  },
+  {
+   "name": "Midterm project",
+   "weight": "10%",
+   "description": "Groups pick a decision problem for a public agency, nonprofit, or mission-driven organization and answer it with clustering, regression, or classification. Deliverables are an 8 to 12 page paper and a short presentation at the start of a class in the second half of the term."
+  },
+  {
+   "name": "Final project",
+   "weight": "10%",
+   "description": "A policy question of the group's own, or one I define (legislative text, public comment sentiment, satellite imagery), answered with NLP, neural networks, language models, or vision. Deliverables are a one-page proposal, a 5 to 10 page report, and a 3 to 5 minute pitch on the last day of class."
+  }
+ ],
+ "projects": []
+}

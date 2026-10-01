@@ -237,6 +237,7 @@ Run it on a branch. It writes `CNAME`, flips `domain_live`, rebuilds, commits, p
 | Portfolio projects | `data/portfolio.json` (images in `assets/portfolio/`) | Yes |
 | Course sample projects (currently not rendered) | `data/projects.json` | Yes |
 | Courses, news log | `COURSES` / `NEWS` in `scripts/build.py` | Yes |
+| Course schedules, slides, assignments, project lists | `data/course_schedules/<slug>.json`, images in `assets/courses/<slug>/` | Yes |
 | Site-wide URLs, name, links | `data/site.json` | Yes |
 | LinkedIn shout-outs | `data/linkedin.json` or `scripts/add_linkedin_post.py` | No — fetched at runtime |
 | Student photos | `assets/students/<slug>.jpg` or `scripts/fetch_linkedin_photo.py` | Only if you change the `photo` path in `students.json` |

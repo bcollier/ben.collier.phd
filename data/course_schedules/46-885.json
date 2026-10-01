@@ -1,0 +1,262 @@
+{
+ "slug": "46-885",
+ "term": "Spring 2026, Mini 3",
+ "meets": "Once a week, mostly Mondays",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "date": "2026-01-12",
+   "week": 1,
+   "topic": "Course overview, design of visual information, and Tableau Desktop fundamentals",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s01-1.webp",
+     "caption": "What's wrong with this picture? Pies, 3D, and clutter"
+    },
+    {
+     "src": "assets/courses/46-885/s01-2.webp",
+     "caption": "Pre-attentive attributes: form, color, position, and motion"
+    },
+    {
+     "src": "assets/courses/46-885/s01-3.webp",
+     "caption": "Country sales ranks for five drugs, colored until nothing stands out"
+    },
+    {
+     "src": "assets/courses/46-885/s01-4.webp",
+     "caption": "Similarity: unemployment in Berlin, 1928 to 1930, one figure per 25,000 people"
+    },
+    {
+     "src": "assets/courses/46-885/s01-5.webp",
+     "caption": "Minard's map of Napoleon's 1812 Russian campaign, redrawn in color"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-23",
+   "week": 2,
+   "topic": "Storytelling with data, and data visualization in Tableau",
+   "kind": "lecture",
+   "note": "Lab 1 due",
+   "label": "Fri Jan 23",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s02-1.webp",
+     "caption": "A seven-day forecast with every number competing for attention"
+    },
+    {
+     "src": "assets/courses/46-885/s02-2.webp",
+     "caption": "Obamacare enrollment with and without a zero baseline"
+    },
+    {
+     "src": "assets/courses/46-885/s02-3.webp",
+     "caption": "Tree map of world population in 2012, grouped by region"
+    },
+    {
+     "src": "assets/courses/46-885/s02-4.webp",
+     "caption": "Small multiples: decades of US drought in June, from the New York Times"
+    },
+    {
+     "src": "assets/courses/46-885/s02-5.webp",
+     "caption": "A monthly energy bill redesigned as a Sankey diagram"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-26",
+   "week": 3,
+   "topic": "Calculations, parameters, aggregations, predictions, and trends in Tableau",
+   "kind": "lecture",
+   "note": "Lab 2 due",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s03-1.webp",
+     "caption": "A calculated field in Tableau's editor"
+    },
+    {
+     "src": "assets/courses/46-885/s03-2.webp",
+     "caption": "Three types of calculation: basic, level of detail, and table"
+    },
+    {
+     "src": "assets/courses/46-885/s03-3.webp",
+     "caption": "Basic calculations work row by row or on aggregates"
+    },
+    {
+     "src": "assets/courses/46-885/s03-4.webp",
+     "caption": "Level of detail expressions: INCLUDE, EXCLUDE, and FIXED"
+    },
+    {
+     "src": "assets/courses/46-885/s03-5.webp",
+     "caption": "Table calculations transform values at the level of the view"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-02",
+   "week": 4,
+   "topic": "Visualizing spatial data",
+   "kind": "lecture",
+   "note": "Lab 3 due",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s04-1.webp",
+     "caption": "Remove to improve: the anti-bacon map before and after"
+    },
+    {
+     "src": "assets/courses/46-885/s04-2.webp",
+     "caption": "Pop, soda, or coke? Generic soft drink names by county"
+    },
+    {
+     "src": "assets/courses/46-885/s04-3.webp",
+     "caption": "Flow map of 1,053 moves made for work or school, 2000 to 2010"
+    },
+    {
+     "src": "assets/courses/46-885/s04-4.webp",
+     "caption": "Which is the richest country? A world map of GDP per capita rank"
+    },
+    {
+     "src": "assets/courses/46-885/s04-5.webp",
+     "caption": "Earthquake density laid over tectonic plate lines"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-09",
+   "week": 5,
+   "topic": "Dashboards and interactive displays",
+   "kind": "lecture",
+   "note": "Lab 4 due",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s05-1.webp",
+     "caption": "High effectiveness: a dense CIO dashboard that still reads cleanly"
+    },
+    {
+     "src": "assets/courses/46-885/s05-2.webp",
+     "caption": "Emphasis guidelines: which quadrant of a dashboard the eye finds first"
+    },
+    {
+     "src": "assets/courses/46-885/s05-3.webp",
+     "caption": "Eye-tracking heat map: form is part of function"
+    },
+    {
+     "src": "assets/courses/46-885/s05-4.webp",
+     "caption": "New York City rat sightings as a dark-themed dashboard"
+    },
+    {
+     "src": "assets/courses/46-885/s05-5.webp",
+     "caption": "A website analytics dashboard with the key numbers up top"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-16",
+   "week": 6,
+   "topic": "Clustering and social network graphs",
+   "kind": "lecture",
+   "note": "Final project proposal due",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s06-1.webp",
+     "caption": "K-means, step by step: assign points, move the centroids, repeat"
+    },
+    {
+     "src": "assets/courses/46-885/s06-2.webp",
+     "caption": "Six degrees of separation, drawn as a network"
+    },
+    {
+     "src": "assets/courses/46-885/s06-3.webp",
+     "caption": "Granovetter's strength of weak ties"
+    },
+    {
+     "src": "assets/courses/46-885/s06-4.webp",
+     "caption": "Burt's structural holes: brokers who bridge separate groups"
+    },
+    {
+     "src": "assets/courses/46-885/s06-5.webp",
+     "caption": "A co-citation network: node size for connections, color for community"
+    }
+   ]
+  },
+  {
+   "date": "2026-02-23",
+   "week": 7,
+   "topic": "Explainable AI and data visualization for machine learning",
+   "kind": "lecture",
+   "note": "Final project due March 1",
+   "slides": [
+    {
+     "src": "assets/courses/46-885/s07-1.webp",
+     "caption": "A map of explainable AI methods, from interpretable models to adversarial examples"
+    },
+    {
+     "src": "assets/courses/46-885/s07-2.webp",
+     "caption": "Individual conditional expectation curves behind a partial dependence plot"
+    },
+    {
+     "src": "assets/courses/46-885/s07-3.webp",
+     "caption": "The explainability question: how did each feature change this predicted bonus?"
+    },
+    {
+     "src": "assets/courses/46-885/s07-4.webp",
+     "caption": "A SHAP waterfall: experience, degree, and sales build up one predicted bonus"
+    },
+    {
+     "src": "assets/courses/46-885/s07-5.webp",
+     "caption": "Poisonous or edible? Setting up a SHAP example with mushrooms"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Final visualization project",
+   "weight": "30%",
+   "description": "Individually or in pairs, students answer their own business question or take one of two set datasets (daily city temperatures or the Netflix catalog). They hand in a Tableau workbook with an interactive dashboard, the cleaned data, and a 5 to 7 minute recorded video that tells the story. A one to two page proposal comes due in the last module."
+  },
+  {
+   "name": "Lab 1: Design of visual information",
+   "weight": "Labs 40%",
+   "description": "No software yet. Students critique and redesign weak charts, including two published charts claiming college no longer pays off, then critique and redo a chart they made themselves before the course."
+  },
+  {
+   "name": "Lab 2: Data visualization with Tableau",
+   "description": "With a DonorsChoose extract where each row is a donation, students sort measures from dimensions, build a dual-axis chart of donations by grade level, write a students-reached-per-dollar calculated field, map donations by state, add a moving average, and report one insight of their own."
+  },
+  {
+   "name": "Lab 3: Calculations in Tableau",
+   "description": "Using avocado sales data, students build table calculations such as percent of total by market and FIXED and EXCLUDE level of detail expressions, and explain how filters interact with them."
+  },
+  {
+   "name": "Lab 4: Visualizing spatial data",
+   "description": "Did Austin's 2015 Uber ban hurt demand for Airbnb listings that are harder to reach? Students map transit and walk scores, map the change in demand from 2015 to 2016, and cluster listings by location in Tableau."
+  },
+  {
+   "name": "Data story analysis",
+   "weight": "10%",
+   "description": "Once in the term, a small team opens class with a data story published in the last six months, critiques two or three of its charts with principles from the course, and presents remade versions. Before presenting, teams test the redesign with the AI Data Visualization Coach."
+  },
+  {
+   "name": "Class participation",
+   "weight": "20%",
+   "description": "Credit in each of the seven modules for in-class quizzes, Tableau workbooks submitted from the lab sessions, or follow-along activities."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2025",
+   "items": [
+    {
+     "subject": "Kickstarter campaign success",
+     "approach": "Kickstarter data normalized with population data; time-based animation, clustering, category/subcategory drill-down",
+     "description": "Showed shifting success rates and funding goals by country and category, used clustering to separate high-risk from popular projects, and addressed where to launch a campaign."
+    },
+    {
+     "subject": "AWS software sales performance",
+     "approach": "Software sales data (profit, discount, region) with outliers excluded; scatter, treemap, bar, map, moving average, Top-N parameter, current vs. prior-year KPI cards",
+     "description": "Found higher discounts did not raise profit, revealed seasonal sales spikes, and highlighted Asia's high volume with negative profit."
+    }
+   ]
+  }
+ ]
+}

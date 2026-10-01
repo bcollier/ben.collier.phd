@@ -1,0 +1,116 @@
+{
+ "slug": "exec-teams",
+ "term": "Spring 2015 (February 15 to 17)",
+ "meets": "Three mornings, 8:00 to 1:00, at CMU-Q",
+ "unit_label": "Day",
+ "meta": {
+  "number": "Exec Ed",
+  "title": "Managing Groups and Teams",
+  "program": "Executive Education (open enrollment)",
+  "school": "CMU Qatar",
+  "era": "exec-ed",
+  "one_liner": "Team simulations, a global team case, and the research on why groups underperform",
+  "blurb": "I taught this one alone. Day one is a lunar survival simulation: everyone ranks the items alone, then as a team, and we score both against NASA's ranking so the room can see when the group beat its best member and when it didn't. Day two covers collective intelligence, psychological safety, and social loafing. Day three works through goal setting and a case about rebuilding a global team, then uses Hofstede's dimensions to compare the countries in the room.",
+  "offerings": [
+   "Spring 2015 (February 15 to 17)"
+  ],
+  "scale": "79 participants from 14 organizations",
+  "color": "c-olive",
+  "order": 3
+ },
+ "schedule": [
+  {
+   "date": "2015-02-15",
+   "week": 1,
+   "topic": "Space Journey: an interactive team simulation and debrief",
+   "kind": "exercise",
+   "slides": [
+    {
+     "src": "assets/courses/exec-teams/s01-1.webp",
+     "caption": "Crash-landed 320 km from the mother ship: which 15 items matter most?"
+    },
+    {
+     "src": "assets/courses/exec-teams/s01-2.webp",
+     "caption": "Scoring your team against the experts"
+    },
+    {
+     "src": "assets/courses/exec-teams/s01-3.webp",
+     "caption": "The wisdom of crowds needs diversity, independence, decentralization, and aggregation"
+    },
+    {
+     "src": "assets/courses/exec-teams/s01-4.webp",
+     "caption": "Forming, storming, norming, performing"
+    },
+    {
+     "src": "assets/courses/exec-teams/s01-5.webp",
+     "caption": "Moderate task conflict is good for creative performance"
+    }
+   ]
+  },
+  {
+   "date": "2015-02-16",
+   "week": 2,
+   "topic": "Collective intelligence, psychological safety, and social loafing",
+   "kind": "lecture",
+   "note": "Includes the IDEO case discussion and a team quiz on the research",
+   "slides": [
+    {
+     "src": "assets/courses/exec-teams/s02-1.webp",
+     "caption": "Collective intelligence depends on everyone contributing roughly equally"
+    },
+    {
+     "src": "assets/courses/exec-teams/s02-2.webp",
+     "caption": "Psychological safety: a shared belief that the team is safe for risk taking"
+    },
+    {
+     "src": "assets/courses/exec-teams/s02-3.webp",
+     "caption": "Social facilitation: people perform better when others are watching"
+    },
+    {
+     "src": "assets/courses/exec-teams/s02-4.webp",
+     "caption": "Ringelmann's rope pull: actual groups fall short of potential productivity"
+    },
+    {
+     "src": "assets/courses/exec-teams/s02-5.webp",
+     "caption": "Summary of findings on facilitation, loafing, task conflict, and relationship conflict"
+    }
+   ]
+  },
+  {
+   "date": "2015-02-17",
+   "week": 3,
+   "topic": "Goals, diversity, and working with global teams",
+   "kind": "case",
+   "note": "Interactive exercise based on a case about rebuilding a distressed global team, followed by participant presentations",
+   "slides": [
+    {
+     "src": "assets/courses/exec-teams/s03-1.webp",
+     "caption": "Goals cascade from vision to strategic to operating objectives"
+    },
+    {
+     "src": "assets/courses/exec-teams/s03-2.webp",
+     "caption": "When a trucking company set specific goals, performance went up"
+    },
+    {
+     "src": "assets/courses/exec-teams/s03-3.webp",
+     "caption": "Diversity cuts two ways: social categorization and information processing"
+    },
+    {
+     "src": "assets/courses/exec-teams/s03-4.webp",
+     "caption": "Diverse information helps when the team believes diversity is useful"
+    },
+    {
+     "src": "assets/courses/exec-teams/s03-5.webp",
+     "caption": "Hofstede's dimensions: the United States compared with the UAE"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Global team case presentations",
+   "description": "Small groups advise a new manager taking over a team spread across time zones and cultures, then present their plan to the room."
+  }
+ ],
+ "projects": []
+}

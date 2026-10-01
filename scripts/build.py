@@ -548,6 +548,7 @@ def footer(root: str) -> str:
   <script src="{root}js/config.js"></script>
   <script src="{root}js/site.js"></script>
   <script src="{root}js/course-hero.js" defer></script>
+  <script src="{root}js/course-schedule.js" defer></script>
   <script src="{root}js/portrait-dock.js" defer></script>
 </body>
 </html>
@@ -788,6 +789,43 @@ def build_home():
     )
 
 
+def education_sections(root: str) -> str:
+    """Executive education first, as the selling section, then the CMU Qatar
+    archive. Both come from data/course_schedules files with a meta block, and
+    the headline numbers from data/education_stats.json when it exists."""
+    cmuq = [c for c in EXTRA_COURSES if c["era"] == "cmuq"]
+    execs = [c for c in EXTRA_COURSES if c["era"] in ("exec-ed", "corporate")]
+    out = ""
+    stats_file = ROOT / "data" / "education_stats.json"
+    stats = json.loads(stats_file.read_text(encoding="utf-8")) if stats_file.exists() else {}
+    if execs or stats:
+        tiles = "".join(
+            f'<li><strong>{esc(n)}</strong><span>{esc(label)}</span></li>' for n, label in stats.get("stats", [])
+        )
+        cards = "\n".join(course_card(c, root) for c in execs)
+        out += f"""
+      <section class="edu-band" id="executive">
+        <p class="kicker">For organizations</p>
+        <h2>Executive and custom education</h2>
+        <p class="prose-width">{stats.get("intro", "Programs I have designed and taught for executives and company teams.")}</p>
+        {f'<ul class="stats">{tiles}</ul>' if tiles else ""}
+        <div class="grid">{cards}</div>
+        <p class="edu-cta"><a class="btn primary" href="{root}consult/#education">Plan a program for your team</a></p>
+      </section>
+"""
+    if cmuq:
+        cards = "\n".join(course_card(c, root) for c in cmuq)
+        out += f"""
+      <section class="era" id="cmu-qatar">
+        <p class="kicker">Earlier teaching</p>
+        <h2>Organizational behavior at CMU Qatar, 2012 to 2016</h2>
+        <p class="prose-width">My first appointment at Carnegie Mellon was as Assistant Teaching Professor of Organizational Behavior at the Qatar campus, where I also co-directed executive and continuing education. These are the undergraduate courses I taught there, each with its full schedule and slides.</p>
+        <div class="grid">{cards}</div>
+      </section>
+"""
+    return out
+
+
 def build_courses_index():
     built = "\n".join(course_card(c, "../") for c in COURSES if c["built"])
     taught = "\n".join(course_card(c, "../") for c in COURSES if not c["built"])
@@ -801,7 +839,7 @@ def build_courses_index():
 
       <h2>Courses I took over and rebuilt</h2>
       <div class="grid">{taught}</div>
-
+{education_sections("../")}
 """
     write(
         "courses/index.html",
@@ -816,12 +854,184 @@ def build_courses_index():
     )
 
 
+# Courses taught before the current appointment, executive programs, and
+# corporate workshops are defined entirely by their data/course_schedules file
+# (its "meta" block), so adding one needs no edit here.
+ERA_HERO = {"negotiat": "teams", "consult": "pipeline", "research": "galton", "marketing": "charts",
+            "social media": "charts", "decision": "descent", "data": "kmeans", "cloud": "pipeline",
+            "chatbot": "agents", "agile": "pipeline"}
+
+
+def data_courses():
+    out = []
+    folder = ROOT / "data" / "course_schedules"
+    for f in sorted(folder.glob("*.json")) if folder.exists() else []:
+        s = json.loads(f.read_text(encoding="utf-8"))
+        m = s.get("meta")
+        if not m:
+            continue
+        title = m["title"]
+        hero = next((h for k, h in ERA_HERO.items() if k in title.lower()), "teams")
+        out.append({
+            "slug": s["slug"], "number": m.get("number", ""), "label": m.get("label", ""),
+            "title": title, "program": m.get("program", ""), "school": m.get("school", ""),
+            "built": False, "color": m.get("color", "c-wine"), "hero": hero,
+            "one_liner": m["one_liner"], "blurb": m["blurb"], "offerings": m.get("offerings", []),
+            "materials": m.get("materials", ""), "era": m["era"], "scale": m.get("scale", ""),
+            "order": m.get("order", 50),
+        })
+    return sorted(out, key=lambda c: (c["order"], c["title"]))
+
+
+EXTRA_COURSES = data_courses()
+ALL_COURSES = COURSES + EXTRA_COURSES
+
 # Courses with an obvious version for company teams get a closing prompt.
 CORPORATE_VERSIONS = {"70-445", "45-884", "45-851", "45-885", "46-887"}
 
+# A row's kind becomes a small tag next to its topic. Lectures carry no tag.
+KIND_TAGS = {
+    "exercise": "In-class exercise",
+    "case": "Case",
+    "break": "No class",
+    "presentations": "Presentations",
+}
+
+WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+
+
+ERA_KICKER = {
+    "cmuq": "Carnegie Mellon University in Qatar · 2012 to 2016",
+    "exec-ed": "Executive education",
+    "corporate": "Corporate training · Hot Metal AI",
+}
+
+
+def course_kicker(c) -> str:
+    era = ERA_KICKER.get(c.get("era"))
+    if era:
+        return f"{era} · {c['program']}" if c.get("program") and c["era"] == "cmuq" else era
+    return f"{c['school']} · {c['program']}"
+
+
+def scale_note(c) -> str:
+    return f'<p class="scale-note">{esc(c["scale"])}</p>\n        ' if c.get("scale") else ""
+
+
+def load_schedule(slug: str):
+    """data/course_schedules/<slug>.json, or None for a course without one yet."""
+    path = ROOT / "data" / "course_schedules" / f"{slug}.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else None
+
+
+def short_date(iso: str) -> str:
+    """2026-09-08 -> Tue, Sep 8."""
+    d = date.fromisoformat(iso)
+    return f"{WEEKDAYS[d.weekday()]}, {MONTHS[d.month - 1][:3]} {d.day}"
+
+
+def thumb_src(src: str) -> str:
+    return src[: -len(".webp")] + "-t.webp"
+
+
+def schedule_section(s, root: str) -> str:
+    """The week-by-week table, with a slide stage that js/course-schedule.js
+    plays for whichever session is in view. Every row with slides also carries
+    its own thumbnail strip, so the page reads fine without JavaScript."""
+    unit = s.get("unit_label", "Week")
+    rows = []
+    for r in s["schedule"]:
+        if "part" in r:
+            rows.append(f'<li class="sched-part">{esc(r["part"])}</li>')
+            continue
+        kind = r.get("kind", "lecture")
+        tag = KIND_TAGS.get(kind)
+        tag_html = f' <span class="sched-tag {kind}">{tag}</span>' if tag else ""
+        note = f'<span class="sched-note">{esc(r["note"])}</span>' if r.get("note") else ""
+        when = esc(r.get("label") or short_date(r["date"]))
+        week = f'{unit} {r["week"]}' if r.get("week") else ""
+        strip = ""
+        if r.get("slides"):
+            imgs = "".join(
+                f'<img src="{root}{thumb_src(sl["src"])}" data-full="{root}{sl["src"]}" data-caption="{esc(sl["caption"])}" '
+                f'alt="{esc(sl["caption"])}" width="320" height="180" loading="lazy" decoding="async">'
+                for sl in r["slides"]
+            )
+            strip = f'<div class="sched-strip">{imgs}</div>'
+        cls = f"sched-row {kind}" + (" has-slides" if r.get("slides") else "")
+        tab = ' tabindex="0"' if r.get("slides") else ""
+        rows.append(
+            f'<li class="{cls}" data-date="{r["date"]}"{tab}>'
+            f'<div class="sched-when"><time datetime="{r["date"]}">{when}</time><span>{week}</span></div>'
+            f'<div class="sched-what"><span class="sched-topic">{esc(r["topic"])}</span>{tag_html}{note}{strip}</div>'
+            f"</li>"
+        )
+    first = next((r for r in s["schedule"] if r.get("slides")), None)
+    stage = ""
+    if first:
+        sl = first["slides"][0]
+        stage = f"""<figure class="stage" aria-label="Slides from the session in view">
+          <div class="stage-frame">
+            <img class="stage-img is-on" src="{root}{sl['src']}" alt="{esc(sl['caption'])}" width="1280" height="720">
+            <img class="stage-img" alt="" width="1280" height="720" aria-hidden="true">
+          </div>
+          <figcaption>
+            <span class="stage-when">{esc(short_date(first['date']))}</span>
+            <strong class="stage-topic">{esc(first['topic'])}</strong>
+            <span class="stage-caption" aria-live="polite">{esc(sl['caption'])}</span>
+            <span class="stage-pips" role="group" aria-label="Choose a slide"></span>
+          </figcaption>
+        </figure>"""
+    return f"""
+      <section class="schedule" data-schedule>
+        <h2>Week by week</h2>
+        <p class="muted">{esc(s['term'])} · {esc(s['meets'])}. Scroll the schedule and the slides follow along: five from each session, picked from the decks I taught from.</p>
+        <div class="sched-grid">
+          <ol class="sched-list">{''.join(rows)}</ol>
+          {stage}
+        </div>
+      </section>
+"""
+
+
+def assignments_section(s) -> str:
+    if not s or not s.get("assignments"):
+        return ""
+    items = "".join(
+        f'<li><div class="asg-head"><strong>{esc(a["name"])}</strong>'
+        + (f'<span class="asg-weight">{esc(a["weight"])}</span>' if a.get("weight") else "")
+        + f'</div><p>{esc(a["description"])}</p></li>'
+        for a in s["assignments"]
+    )
+    return f'        <h2>Major assignments</h2>\n        <ul class="assignments">{items}</ul>\n'
+
+
+def project_list(s) -> str:
+    """Every final project, grouped by term. No student names: subject, approach, one line."""
+    groups = (s or {}).get("projects") or []
+    if not groups:
+        return ""
+    out = []
+    for i, g in enumerate(groups):
+        items = "".join(
+            f'<li><strong>{esc(p["subject"])}</strong>'
+            + (f'. {esc(p["description"])}' if p.get("description") else "")
+            + (f' <span class="proj-approach">{esc(p["approach"])}</span>' if p.get("approach") else "")
+            + "</li>"
+            for p in g["items"]
+        )
+        open_attr = " open" if i == 0 else ""
+        out.append(
+            f'<details class="proj-term"{open_attr}><summary>{esc(g["term"])} '
+            f'<span class="count">{len(g["items"])} projects</span></summary><ul>{items}</ul></details>'
+        )
+    return '        <p class="muted">Every project, by term.</p>\n        ' + "\n        ".join(out) + "\n"
+
 
 def build_course_pages():
-    for c in COURSES:
+    for c in ALL_COURSES:
+        sched = load_schedule(c["slug"])
+
         def chip(o):
             kind = "hybrid" if "hybrid" in o else "evening" if "evening" in o else "qatar" if "Qatar" in o else "term"
             return f'<li class="chip {kind}">{o}</li>'
@@ -845,9 +1055,11 @@ def build_course_pages():
                 for t, n, ex in pj["types"]
             )
             lst = f'        <ul class="project-types">{rows}</ul>\n' if rows else ""
-            projects = f"        <h2>Final projects</h2>\n        <p>{pj['intro']}</p>\n{lst}"
+            projects = f"        <h2>Final projects</h2>\n        <p>{pj['intro']}</p>\n{lst}{project_list(sched)}"
+        if not pj and project_list(sched):
+            projects = f"        <h2>Student work</h2>\n{project_list(sched)}"
         topics = ""
-        if c.get("topics"):
+        if c.get("topics") and not sched:
             items = "".join(f"<li>{t}</li>" for t in c["topics"])
             topics = f"        <h2>Topics</h2>\n        <ol>{items}</ol>\n"
         built = '<span class="badge built">Course I built</span>' if c["built"] else ""
@@ -858,18 +1070,26 @@ def build_course_pages():
         {book_call("../../")}
       </aside>
 """
+        # With a schedule, the hero article closes so the week-by-week section
+        # can use the full page width, then the prose column picks up again.
+        split = ""
+        if sched:
+            split = f"""      </article>
+{schedule_section(sched, "../../")}
+      <article class="course-more prose-width">
+"""
         body = f"""
       <article class="course-hero prose-width">
-        <p class="kicker">{c['school']} · {c['program']}</p>
+        <p class="kicker">{course_kicker(c)}</p>
         <h1>{course_name(c)}</h1>
         <p>{built}</p>
         <div class="thumb hero {c['color']}"><canvas data-hero="{c['hero']}" role="img" aria-label="{esc(HERO_ALT[c['hero']])}"></canvas><span>{course_label(c)}</span></div>
         <p class="lede">{c['one_liner']}</p>
-        <p>{c['blurb']}</p>
+        {scale_note(c)}<p>{c['blurb']}</p>
         {c.get('panel', '')}
-{topics}{story}{projects}{history}        <h2>Offerings</h2>
+{split}{topics}{assignments_section(sched)}{story}{projects}{history}        <h2>Offerings</h2>
         <ul class="chips">{offerings}</ul>
-        <p class="muted">{c['materials']}</p>
+        {f'<p class="muted">{c["materials"]}</p>' if c.get("materials") else ""}
       </article>
 {cta}
       <p><a href="../">All courses</a></p>
@@ -1268,6 +1488,8 @@ def build_consult():
           </ul>
           <h3>Examples</h3>
           <ul>
+            <li>Three-day executive programs at Carnegie Mellon University in Qatar on <a href="../courses/exec-negotiation/">negotiation</a>, <a href="../courses/exec-decision-making/">decision making</a>, <a href="../courses/exec-teams/">managing teams</a>, and <a href="../courses/exec-leadership/">leadership</a>, with up to 114 managers in the room from ministries, energy, banking, telecom, aviation, and media.</li>
+            <li><a href="../courses/exec-custom/">Workshops built for one organization</a>: RasGas, a Carnegie Mellon senior staff retreat in Munich, and Qatar's Civil Service Bureau.</li>
             <li>Professional development courses for technology leaders and executives at Optum, AT&amp;T, Cox Communications, and RapidScale.</li>
             <li>Workshops on chatbot development, data programming, SQL and NoSQL, data mining, cloud infrastructure, and agile development.</li>
             <li>The kind of recorded course I can build for a team: the <a href="../courses/msba-math-skills-workshop/">MS in Business Analytics Math Skills Workshop</a>, about thirty short videos I scripted and recorded for incoming Carnegie Mellon MS in Business Analytics students.</li>
@@ -1554,7 +1776,7 @@ def build_404():
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
     paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/"]
-    paths += [f"courses/{c['slug']}/" for c in COURSES]
+    paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
 

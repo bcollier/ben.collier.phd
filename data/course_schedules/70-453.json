@@ -1,0 +1,553 @@
+{
+ "slug": "70-453",
+ "term": "Spring 2014",
+ "meets": "Sundays and Tuesdays",
+ "unit_label": "Week",
+ "meta": {
+  "number": "70-453",
+  "title": "Business Technology Consulting",
+  "program": "Undergraduate",
+  "school": "CMU Qatar",
+  "era": "cmuq",
+  "one_liner": "How consultants think, how they interview, and how technology projects get built and managed.",
+  "blurb": "I built this course for CMU Qatar from an older systems analysis and design course, and turned it toward both sides of consulting: the business analysis that consulting firms hire for, and the technology work of designing and running a project. The first half was frameworks and case interviews, with Harvard cases on Deloitte and BCG and live practice cases like Harley-Davidson and a fighter jet division. The second half ran a Harvard change management simulation and then moved into the systems development life cycle, UML, agile, and project management. Students in Business Administration, Information Systems, and Computer Science took it together, and it was built to get them ready for a first-round interview at firms like McKinsey, BCG, Accenture, and Bain.",
+  "offerings": [
+   "Spring 2014",
+   "Spring 2015"
+  ],
+  "scale": "15 students in 2014 and 7 in 2015",
+  "color": "c-navy",
+  "order": 4
+ },
+ "schedule": [
+  {
+   "part": "Part I: The consulting business"
+  },
+  {
+   "date": "2014-01-12",
+   "week": 1,
+   "topic": "Introduction and course overview",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s01-1.webp",
+     "caption": "The consulting life cycle, from first contact to review"
+    },
+    {
+     "src": "assets/courses/70-453/s01-2.webp",
+     "caption": "Business consulting spans marketing, accounting, strategy, management, finance, and technology"
+    },
+    {
+     "src": "assets/courses/70-453/s01-3.webp",
+     "caption": "Three kinds of consulting interview questions: behavioral, estimation, and case"
+    },
+    {
+     "src": "assets/courses/70-453/s01-4.webp",
+     "caption": "Estimation warm-up: how many tubes of lipstick are sold in Qatar in a year?"
+    },
+    {
+     "src": "assets/courses/70-453/s01-5.webp",
+     "caption": "London Bank: what are the economics of dropping a $50 annual fee?"
+    }
+   ]
+  },
+  {
+   "date": "2014-01-14",
+   "week": 1,
+   "topic": "Case: Deloitte & Touche Consulting Group",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s02-1.webp",
+     "caption": "Deloitte, the largest professional services network in the world"
+    },
+    {
+     "src": "assets/courses/70-453/s02-2.webp",
+     "caption": "A framework for any engagement: context, goals, focus, methods, resources"
+    },
+    {
+     "src": "assets/courses/70-453/s02-3.webp",
+     "caption": "The framework filled in for Deloitte's engagement at SKS"
+    },
+    {
+     "src": "assets/courses/70-453/s02-4.webp",
+     "caption": "What went wrong at SKS: retyped orders and hand-written parts lists"
+    },
+    {
+     "src": "assets/courses/70-453/s02-5.webp",
+     "caption": "What client and consultant should each have done before the engagement started"
+    }
+   ]
+  },
+  {
+   "date": "2014-01-19",
+   "week": 2,
+   "topic": "Overview of consulting: firms, roles, and skills",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s03-1.webp",
+     "caption": "The biggest consulting firms and what they sell"
+    },
+    {
+     "src": "assets/courses/70-453/s03-2.webp",
+     "caption": "A consulting typology: strategy firms, service providers, and technology providers"
+    },
+    {
+     "src": "assets/courses/70-453/s03-3.webp",
+     "caption": "Management consulting grew from $3 billion in 1980 to $330 billion in 2008"
+    },
+    {
+     "src": "assets/courses/70-453/s03-4.webp",
+     "caption": "Strategy versus IT consulting in the professional services market"
+    },
+    {
+     "src": "assets/courses/70-453/s03-5.webp",
+     "caption": "Why employ consultants? Expertise, objectivity, and someone to blame"
+    }
+   ]
+  },
+  {
+   "date": "2014-01-21",
+   "week": 2,
+   "topic": "Case: Innovation at the Boston Consulting Group",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s04-1.webp",
+     "caption": "Career ladders at Accenture and McKinsey"
+    },
+    {
+     "src": "assets/courses/70-453/s04-2.webp",
+     "caption": "Utilization: hours billed over hours worked"
+    },
+    {
+     "src": "assets/courses/70-453/s04-3.webp",
+     "caption": "Realization: billable rate times hours billed"
+    },
+    {
+     "src": "assets/courses/70-453/s04-4.webp",
+     "caption": "Decentralized innovation: knowledge built across client projects"
+    },
+    {
+     "src": "assets/courses/70-453/s04-5.webp",
+     "caption": "BCG's choice between exploring new knowledge and exploiting what it has"
+    }
+   ]
+  },
+  {
+   "part": "Part II: Business analysis with consulting frameworks"
+  },
+  {
+   "date": "2014-01-26",
+   "week": 3,
+   "topic": "Business analysis using consulting frameworks",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s05-1.webp",
+     "caption": "Warm-up case: is Volvo really the safest car in America?"
+    },
+    {
+     "src": "assets/courses/70-453/s05-2.webp",
+     "caption": "Frameworks are like knowing the anatomy before you operate"
+    },
+    {
+     "src": "assets/courses/70-453/s05-3.webp",
+     "caption": "Things that are not client friendly"
+    },
+    {
+     "src": "assets/courses/70-453/s05-4.webp",
+     "caption": "Analysis: break the problem into its components"
+    },
+    {
+     "src": "assets/courses/70-453/s05-5.webp",
+     "caption": "Segment your numbers: which segments are losing revenue?"
+    }
+   ]
+  },
+  {
+   "date": "2014-01-28",
+   "week": 3,
+   "topic": "Profitability framework: Harley-Davidson",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s06-1.webp",
+     "caption": "The profit framework"
+    },
+    {
+     "src": "assets/courses/70-453/s06-2.webp",
+     "caption": "E(P = R - C)M: start with the environment"
+    },
+    {
+     "src": "assets/courses/70-453/s06-3.webp",
+     "caption": "Then the market: how is the client doing against its industry?"
+    },
+    {
+     "src": "assets/courses/70-453/s06-4.webp",
+     "caption": "Questions to ask about revenues and costs"
+    },
+    {
+     "src": "assets/courses/70-453/s06-5.webp",
+     "caption": "Harley-Davidson's stock fell from $54 to $49 on news of declining profits"
+    }
+   ]
+  },
+  {
+   "date": "2014-02-04",
+   "week": 4,
+   "topic": "Profitability: the fighter jet case and segmenting",
+   "kind": "case",
+   "note": "The Feb 2 session was cancelled",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s07-1.webp",
+     "caption": "Segment profit into revenues and costs, then keep going"
+    },
+    {
+     "src": "assets/courses/70-453/s07-2.webp",
+     "caption": "Ways to segment revenue"
+    },
+    {
+     "src": "assets/courses/70-453/s07-3.webp",
+     "caption": "Ways to segment costs"
+    },
+    {
+     "src": "assets/courses/70-453/s07-4.webp",
+     "caption": "Profits have declined 10% in the fighter jet division"
+    },
+    {
+     "src": "assets/courses/70-453/s07-5.webp",
+     "caption": "Where the cost of a fighter jet goes"
+    }
+   ]
+  },
+  {
+   "date": "2014-02-09",
+   "week": 5,
+   "topic": "Strategy frameworks: Porter, SWOT, and BCG",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s08-1.webp",
+     "caption": "Should Qatar Airways become Qatar Transport and build high-speed rail?"
+    },
+    {
+     "src": "assets/courses/70-453/s08-2.webp",
+     "caption": "Porter's generic strategies"
+    },
+    {
+     "src": "assets/courses/70-453/s08-3.webp",
+     "caption": "Profitability of US industries, from soft drinks at the top to airlines at the bottom"
+    },
+    {
+     "src": "assets/courses/70-453/s08-4.webp",
+     "caption": "Porter's five forces"
+    },
+    {
+     "src": "assets/courses/70-453/s08-5.webp",
+     "caption": "The BCG matrix"
+    }
+   ]
+  },
+  {
+   "date": "2014-02-16",
+   "week": 6,
+   "topic": "The business situation framework",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s09-1.webp",
+     "caption": "Microsoft needs help: where should it invest next?"
+    },
+    {
+     "src": "assets/courses/70-453/s09-2.webp",
+     "caption": "Company, competition, customer, and product"
+    },
+    {
+     "src": "assets/courses/70-453/s09-3.webp",
+     "caption": "The business situation framework in full"
+    },
+    {
+     "src": "assets/courses/70-453/s09-4.webp",
+     "caption": "The mergers and acquisitions fit framework"
+    },
+    {
+     "src": "assets/courses/70-453/s09-5.webp",
+     "caption": "The capacity change framework"
+    }
+   ]
+  },
+  {
+   "date": "2014-02-18",
+   "week": 6,
+   "topic": "Case: retail banking in Southeast Asia, with a guest speaker",
+   "kind": "case"
+  },
+  {
+   "part": "Part III: Managing change"
+  },
+  {
+   "date": "2014-03-09",
+   "week": 9,
+   "topic": "Change management simulation: low urgency",
+   "kind": "exercise",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s10-1.webp",
+     "caption": "The fundamentals of business consulting so far, case by case"
+    },
+    {
+     "src": "assets/courses/70-453/s10-2.webp",
+     "caption": "What's next: change management, IT methods, and project management"
+    },
+    {
+     "src": "assets/courses/70-453/s10-3.webp",
+     "caption": "The Harvard change management simulation dashboard"
+    },
+    {
+     "src": "assets/courses/70-453/s10-4.webp",
+     "caption": "Change the minds of 20 people in 96 weeks"
+    }
+   ]
+  },
+  {
+   "date": "2014-03-11",
+   "week": 9,
+   "topic": "Change management simulation debrief",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s11-1.webp",
+     "caption": "Three phases of organizational change: mobilize, move, sustain"
+    },
+    {
+     "src": "assets/courses/70-453/s11-2.webp",
+     "caption": "Kotter's eight steps"
+    },
+    {
+     "src": "assets/courses/70-453/s11-3.webp",
+     "caption": "Why individuals resist change"
+    },
+    {
+     "src": "assets/courses/70-453/s11-4.webp",
+     "caption": "The typical adoption curve, and where it gets into trouble"
+    },
+    {
+     "src": "assets/courses/70-453/s11-5.webp",
+     "caption": "A strategy for change: who has power and who resists"
+    }
+   ]
+  },
+  {
+   "date": "2014-03-16",
+   "week": 10,
+   "topic": "Change management simulation: high urgency",
+   "kind": "exercise"
+  },
+  {
+   "date": "2014-03-18",
+   "week": 10,
+   "topic": "Change management: context, vision, and pace",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s12-1.webp",
+     "caption": "Four scenarios: how much power the change agent has, and how urgent the change is"
+    },
+    {
+     "src": "assets/courses/70-453/s12-2.webp",
+     "caption": "Reactive change closes a performance gap, proactive change an opportunity gap"
+    },
+    {
+     "src": "assets/courses/70-453/s12-3.webp",
+     "caption": "What makes a vision work: desirable, feasible, relevant"
+    },
+    {
+     "src": "assets/courses/70-453/s12-4.webp",
+     "caption": "In urgent situations, the build to institutionalization is faster"
+    },
+    {
+     "src": "assets/courses/70-453/s12-5.webp",
+     "caption": "Sustaining change means realigning the technical, political, and cultural"
+    }
+   ]
+  },
+  {
+   "part": "Part IV: IT consulting methods and project management"
+  },
+  {
+   "date": "2014-03-23",
+   "week": 11,
+   "topic": "Systems analysis and design: the SDLC",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s13-1.webp",
+     "caption": "What happens in the planning stage"
+    },
+    {
+     "src": "assets/courses/70-453/s13-2.webp",
+     "caption": "Why plans fail"
+    },
+    {
+     "src": "assets/courses/70-453/s13-3.webp",
+     "caption": "The security audit"
+    },
+    {
+     "src": "assets/courses/70-453/s13-4.webp",
+     "caption": "Waterfall and agile development"
+    },
+    {
+     "src": "assets/courses/70-453/s13-5.webp",
+     "caption": "Feature creep"
+    }
+   ]
+  },
+  {
+   "date": "2014-03-30",
+   "week": 12,
+   "topic": "Unified Modeling Language: use cases, activities, and classes",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s14-1.webp",
+     "caption": "Why model technology and human processes at all?"
+    },
+    {
+     "src": "assets/courses/70-453/s14-2.webp",
+     "caption": "Codified versus tacit knowledge"
+    },
+    {
+     "src": "assets/courses/70-453/s14-3.webp",
+     "caption": "A use case diagram"
+    },
+    {
+     "src": "assets/courses/70-453/s14-4.webp",
+     "caption": "An activity diagram with swim lanes for an order"
+    },
+    {
+     "src": "assets/courses/70-453/s14-5.webp",
+     "caption": "A class diagram for bank accounts"
+    }
+   ]
+  },
+  {
+   "date": "2014-04-01",
+   "week": 12,
+   "topic": "IT security, guest lecture",
+   "kind": "lecture"
+  },
+  {
+   "date": "2014-04-06",
+   "week": 13,
+   "topic": "Agile versus waterfall",
+   "kind": "lecture",
+   "note": "The deck is almost entirely embedded video"
+  },
+  {
+   "date": "2014-04-13",
+   "week": 14,
+   "topic": "Project management",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-453/s16-1.webp",
+     "caption": "Integrated project management with the project leader at the center"
+    },
+    {
+     "src": "assets/courses/70-453/s16-2.webp",
+     "caption": "The triple constraint: time, cost, and scope"
+    },
+    {
+     "src": "assets/courses/70-453/s16-3.webp",
+     "caption": "A Gantt chart"
+    },
+    {
+     "src": "assets/courses/70-453/s16-4.webp",
+     "caption": "Gartner: two in three IT projects fail to achieve their intended result"
+    },
+    {
+     "src": "assets/courses/70-453/s16-5.webp",
+     "caption": "Development and operational benefits, tangible and intangible"
+    }
+   ]
+  },
+  {
+   "date": "2014-04-22",
+   "week": 15,
+   "topic": "Review",
+   "kind": "lecture"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Case interviews",
+   "description": "In 2015, each student prepared two interview scripts, ran four case interviews with a partner (two as interviewer, two as candidate), and wrote a three to five page analysis of strengths and improvements for each. A second round followed with a new partner, then a case interview and a behavioral interview with me."
+  },
+  {
+   "name": "Client project",
+   "description": "Teams in 2015 worked through a full engagement for a client inside the university: a client interview graded against a rubric, a five to eight page proposal with a work breakdown structure and cost estimate at set daily rates, a technical design in UML, a user interface design, and a working prototype."
+  },
+  {
+   "name": "Final consulting project",
+   "description": "In 2014, small groups chose a real organization and applied the course frameworks (profit, business situation, SWOT, Porter) to a problem it faced, presented during the final exam period."
+  },
+  {
+   "name": "Simulations",
+   "description": "Harvard's change management simulation, run once in a low-urgency and once in a high-urgency scenario, plus project management and strategy simulations in 2015."
+  },
+  {
+   "name": "Exams",
+   "description": "Closed-book exams, one-third short answer and two-thirds consulting case analysis. In 2014 the midterm and final were 30% and 40%; in 2015 a single final was 20%."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2014: final consulting projects",
+   "items": [
+    {
+     "subject": "Vodafone Qatar",
+     "approach": "Porter's five forces and a youth-market strategy",
+     "description": "Looked at Vodafone's launch of Falla, the first Qatari telecom plan aimed at young people, and asked which youth products and services Vodafone should focus on to position itself against Ooredoo."
+    },
+    {
+     "subject": "Zara",
+     "approach": "Business situation framework and SWOT",
+     "description": "Analyzed Zara's vertically integrated, fast-turnover model, including its single distribution center and weak online presence, and recommended where it should grow next."
+    },
+    {
+     "subject": "A GCC charity supporting Syrian refugees",
+     "approach": "Profit framework, SWOT, and business situation framework",
+     "description": "The charity raised most of its money through events, an unstable source. The team estimated its revenues and costs and recommended ways to increase donations and build a steadier income."
+    },
+    {
+     "subject": "A yoga studio in Doha",
+     "approach": "SWOT, competitive comparison, BCG matrix, and Porter's five forces",
+     "description": "Asked how the studio could grow with the market, cross-sell, and attract new customers, and recommended partnerships with sports and hotel facilities, corporate yoga, and better merchandising."
+    },
+    {
+     "subject": "A long-established Doha electronics and video game retailer",
+     "approach": "Profit analysis from interviews with the general manager and an accountant",
+     "description": "Compared revenue and costs from 2011 to 2012, and weighed small stores, limited capital, and the shift to digital games against the store's reputation and locations."
+    }
+   ]
+  },
+  {
+   "term": "Spring 2015: client technology projects",
+   "items": [
+    {
+     "subject": "Visualizing Twitter for academic assessment",
+     "approach": "Client interview, proposal, UML design, UI design, prototype",
+     "description": "A tool to pull a Twitter stream by search term, sort it into threads, and let an instructor grade students' contributions to discussion outside class."
+    },
+    {
+     "subject": "Digitizing negotiation exercises",
+     "approach": "Client interview, proposal, UML design, UI design, prototype",
+     "description": "A web platform, aimed at the iPad, for running classroom negotiation exercises like New Recruit so that results and scoring are immediate instead of done on paper."
+    }
+   ]
+  }
+ ]
+}

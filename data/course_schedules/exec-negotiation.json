@@ -1,0 +1,186 @@
+{
+ "slug": "exec-negotiation",
+ "term": "Fall 2014 (November 16 to 18)",
+ "meets": "Three mornings, 8:00 to 1:00, at CMU-Q",
+ "unit_label": "Day",
+ "meta": {
+  "number": "Exec Ed",
+  "title": "Business Negotiation and Conflict Resolution",
+  "program": "Executive Education (open enrollment)",
+  "school": "CMU Qatar",
+  "era": "exec-ed",
+  "one_liner": "Three mornings of live negotiation simulations, each followed by a debrief and a short lecture",
+  "blurb": "I co-taught this course with philosopher David Emmanuel Gray four times between 2014 and 2016. Each morning starts with a negotiation that participants play against each other in randomly assigned pairs or groups, then we debrief the actual results before any theory. The arc runs from a two-party job offer, to a property deal where the money alone has no zone of agreement, to a six-party commodity auction where coalitions decide who wins. Participants leave with BATNA, ZOPA, reservation and target prices, and a plan for dealing with hard bargainers.",
+  "offerings": [
+   "Spring 2014 (March 24 to 26)",
+   "Fall 2014 (November 16 to 18)",
+   "Fall 2015 (September 29 to October 1)",
+   "Spring 2016 (March 22 to 24)"
+  ],
+  "scale": "91 participants from 15 organizations in the November 2014 run",
+  "color": "c-rust",
+  "order": 1
+ },
+ "schedule": [
+  {
+   "part": "Day 1: The job offer"
+  },
+  {
+   "date": "2014-11-16",
+   "week": 1,
+   "topic": "New Recruit: an eight-issue job negotiation and debrief",
+   "kind": "exercise",
+   "note": "Recruiter and candidate pairs negotiate a contract scored in points, then we compare every pair's outcome",
+   "slides": [
+    {
+     "src": "assets/courses/exec-negotiation/s01-1.webp",
+     "caption": "Each issue is worth points, and the two sides value them differently"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s01-2.webp",
+     "caption": "The Pareto frontier: creating value versus claiming it"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s01-3.webp",
+     "caption": "Party B could have done better without making Party A worse off"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s01-4.webp",
+     "caption": "Compatible and integrative issues: find the trades"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s01-5.webp",
+     "caption": "Grow the value first, then divide it"
+    }
+   ]
+  },
+  {
+   "date": "2014-11-16",
+   "week": 1,
+   "topic": "Negotiation tactics for success",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/exec-negotiation/s02-1.webp",
+     "caption": "Starting salaries of men in one MBA class were 7.6% higher than women's. What caused it?"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s02-2.webp",
+     "caption": "The compounding cost of not negotiating a first salary"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s02-3.webp",
+     "caption": "Your BATNA is your most important source of power"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s02-4.webp",
+     "caption": "Graphical negotiation analysis: the zone of possible agreement"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s02-5.webp",
+     "caption": "Review and prioritize your interests and your partner's"
+    }
+   ]
+  },
+  {
+   "part": "Day 2: Problem solving"
+  },
+  {
+   "date": "2014-11-17",
+   "week": 2,
+   "topic": "Problem solving: managing empathy and assertiveness, with the West Bay Lagoon property negotiation",
+   "kind": "case",
+   "note": "Lecture and debrief led by David Emmanuel Gray",
+   "slides": [
+    {
+     "src": "assets/courses/exec-negotiation/s03-1.webp",
+     "caption": "Every negotiation is three negotiations: substance, process, and relationship"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s03-2.webp",
+     "caption": "The structural change model of escalation"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s03-3.webp",
+     "caption": "The dual concern model: assertiveness and empathy are not opposites"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s03-4.webp",
+     "caption": "Problem solving means exchanging conclusions, interpretations, and what each side noticed"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s03-5.webp",
+     "caption": "West Bay Lagoon: a buyer and a seller of a Doha bed and breakfast"
+    }
+   ]
+  },
+  {
+   "part": "Day 3: Hard bargainers and coalitions"
+  },
+  {
+   "date": "2014-11-18",
+   "week": 3,
+   "topic": "Negotiation jujitsu and the hard bargainer",
+   "kind": "lecture",
+   "note": "Led by David Emmanuel Gray",
+   "slides": [
+    {
+     "src": "assets/courses/exec-negotiation/s04-1.webp",
+     "caption": "Fourteen hardball tactics and dirty tricks to recognize"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s04-2.webp",
+     "caption": "Responding to hardball: know yourself, prepare yourself, change the game"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s04-3.webp",
+     "caption": "Turn criticism into problem solving with questions"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s04-4.webp",
+     "caption": "Good cop, bad cop: name the tactic and it loses its force"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s04-5.webp",
+     "caption": "Remember your power: the BATNA does not change because the other side shouts"
+    }
+   ]
+  },
+  {
+   "date": "2014-11-18",
+   "week": 3,
+   "topic": "Commodity Purchase: a six-party negotiation over a scarce supply",
+   "kind": "exercise",
+   "note": "One seller, five buyers, thirty minutes; debrief by me",
+   "slides": [
+    {
+     "src": "assets/courses/exec-negotiation/s05-1.webp",
+     "caption": "One seller of 100,000 pheasant eggs and five potential buyers"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s05-2.webp",
+     "caption": "Who purchased the eggs?"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s05-3.webp",
+     "caption": "What were the interests of all the parties at the table?"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s05-4.webp",
+     "caption": "Coalitions: when parties cooperate to claim a share of the reward"
+    },
+    {
+     "src": "assets/courses/exec-negotiation/s05-5.webp",
+     "caption": "Lessons: do not anchor on your minimum, and look past positions"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Negotiation simulations",
+   "description": "Three graded-by-outcome simulations (New Recruit, West Bay Lagoon, Commodity Purchase). Results from every pair or group go up on the screen in the debrief so participants can see the full range of deals the same facts produced."
+  }
+ ],
+ "projects": []
+}

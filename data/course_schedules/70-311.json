@@ -1,0 +1,687 @@
+{
+ "slug": "70-311",
+ "term": "Fall 2014",
+ "meets": "Mondays and Wednesdays, two sections (10:30 and 1:30)",
+ "unit_label": "Week",
+ "meta": {
+  "number": "70-311",
+  "title": "Organizational Behavior",
+  "program": "Undergraduate",
+  "school": "CMU Qatar",
+  "era": "cmuq",
+  "one_liner": "Motivation, teams, decisions, negotiation, leadership, and change, taught through Harvard cases and simulations.",
+  "blurb": "This was the core organizational behavior course for business students at CMU Qatar, and the course I taught most during my years in Doha. I built it around cases and simulations: Lincoln Electric and SAS for motivation, an Everest simulation and the Carter Racing exercise for team decisions, live negotiations, and a change simulation at the end. Each year I replaced more lecture time with exercises, so students spent most of class applying a concept rather than hearing about it. Students finished by analyzing a real company of their choosing with the course's frameworks.",
+  "offerings": [
+   "Fall 2012 (2 sections)",
+   "Fall 2013 (2 sections)",
+   "Fall 2014 (2 sections)",
+   "Spring 2016 (1 section)"
+  ],
+  "scale": "About 70 to 90 students a year across two sections",
+  "color": "c-copper",
+  "order": 1
+ },
+ "schedule": [
+  {
+   "part": "Part I: Management and motivation"
+  },
+  {
+   "date": "2014-08-25",
+   "week": 1,
+   "topic": "Introduction and course overview",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s01-1.webp",
+     "caption": "Three levels of analysis, from the individual up to the organization"
+    },
+    {
+     "src": "assets/courses/70-311/s01-2.webp",
+     "caption": "How individual, group, and organizational mechanisms drive outcomes"
+    },
+    {
+     "src": "assets/courses/70-311/s01-3.webp",
+     "caption": "Psychology is the discipline that feeds most of the individual-level topics"
+    },
+    {
+     "src": "assets/courses/70-311/s01-4.webp",
+     "caption": "Is organizational behavior just common sense?"
+    },
+    {
+     "src": "assets/courses/70-311/s01-5.webp",
+     "caption": "Common sense says opposite things. Which proverb do you trust?"
+    }
+   ]
+  },
+  {
+   "date": "2014-08-27",
+   "week": 1,
+   "topic": "Motivation theories",
+   "kind": "lecture",
+   "note": "Reading: Motivation: The Not-So-Secret Ingredient of High Performance",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s02-1.webp",
+     "caption": "The Hawthorne effect: people change when they know they are watched"
+    },
+    {
+     "src": "assets/courses/70-311/s02-2.webp",
+     "caption": "Theory X and Theory Y: two assumptions about what workers are like"
+    },
+    {
+     "src": "assets/courses/70-311/s02-3.webp",
+     "caption": "Fixed, variable, bonus, or a mix: how pay tracks performance"
+    },
+    {
+     "src": "assets/courses/70-311/s02-4.webp",
+     "caption": "Maslow's hierarchy of needs"
+    },
+    {
+     "src": "assets/courses/70-311/s02-5.webp",
+     "caption": "Four need theories side by side: Maslow, Herzberg, Alderfer, McClelland"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-01",
+   "week": 2,
+   "topic": "Case: Lincoln Electric (A)",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s03-1.webp",
+     "caption": "Process theories of motivation: expectancy, prospect, and equity"
+    },
+    {
+     "src": "assets/courses/70-311/s03-2.webp",
+     "caption": "Motivation rises as we approach a goal and falls once we pass it"
+    },
+    {
+     "src": "assets/courses/70-311/s03-3.webp",
+     "caption": "Vroom's expectancy theory as a chain of three questions"
+    },
+    {
+     "src": "assets/courses/70-311/s03-4.webp",
+     "caption": "Adams' equity theory: we compare our inputs and outputs to others'"
+    },
+    {
+     "src": "assets/courses/70-311/s03-5.webp",
+     "caption": "Lincoln Electric's key HR practices, from piecework to guaranteed employment"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-03",
+   "week": 2,
+   "topic": "Case: Lincoln Electric (B); intrinsic motivation and job design",
+   "kind": "case",
+   "note": "Reading: Employee Motivation: A Powerful New Model",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s04-1.webp",
+     "caption": "Running Lincoln Electric through Herzberg's two-factor theory"
+    },
+    {
+     "src": "assets/courses/70-311/s04-2.webp",
+     "caption": "Running Lincoln Electric through expectancy theory"
+    },
+    {
+     "src": "assets/courses/70-311/s04-3.webp",
+     "caption": "Lincoln Electric looks at India. Will the system travel?"
+    },
+    {
+     "src": "assets/courses/70-311/s04-4.webp",
+     "caption": "Hofstede's six dimensions of national culture"
+    },
+    {
+     "src": "assets/courses/70-311/s04-5.webp",
+     "caption": "The United States, India, and the UAE on Hofstede's dimensions"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-08",
+   "week": 3,
+   "topic": "Case: SAS Institute (A)",
+   "kind": "case",
+   "note": "Assignment 1 due",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s05-1.webp",
+     "caption": "Four drives and the organizational lever that fulfills each"
+    },
+    {
+     "src": "assets/courses/70-311/s05-2.webp",
+     "caption": "Intrinsic motivation comes from the work itself"
+    },
+    {
+     "src": "assets/courses/70-311/s05-3.webp",
+     "caption": "The job characteristics model of work motivation"
+    },
+    {
+     "src": "assets/courses/70-311/s05-4.webp",
+     "caption": "Grant's fundraisers: does meeting a scholarship recipient change performance?"
+    },
+    {
+     "src": "assets/courses/70-311/s05-5.webp",
+     "caption": "Pledges before and after. Guess which group improved"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-10",
+   "week": 3,
+   "topic": "Case: SAS Institute (B)",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s06-1.webp",
+     "caption": "SAS and Lincoln Electric use opposite strategies. How do both work?"
+    },
+    {
+     "src": "assets/courses/70-311/s06-2.webp",
+     "caption": "SAS near the top of Fortune's 100 Best Companies to Work For"
+    },
+    {
+     "src": "assets/courses/70-311/s06-3.webp",
+     "caption": "What happens to SAS when Jim Goodnight retires?"
+    },
+    {
+     "src": "assets/courses/70-311/s06-4.webp",
+     "caption": "The attraction-selection-attrition model"
+    },
+    {
+     "src": "assets/courses/70-311/s06-5.webp",
+     "caption": "SAS and Lincoln Electric through the ASA lens"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-15",
+   "week": 4,
+   "topic": "Case: Raleigh and Rosse",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s07-1.webp",
+     "caption": "Cognitive evaluation theory: extrinsic rewards can crowd out intrinsic ones"
+    },
+    {
+     "src": "assets/courses/70-311/s07-2.webp",
+     "caption": "Paying people per correct answer. Predict what happened"
+    },
+    {
+     "src": "assets/courses/70-311/s07-3.webp",
+     "caption": "The puzzle study: paid participants stop playing once the pay stops"
+    },
+    {
+     "src": "assets/courses/70-311/s07-4.webp",
+     "caption": "The daycare mini-case: what happens when you fine late parents?"
+    },
+    {
+     "src": "assets/courses/70-311/s07-5.webp",
+     "caption": "Why extrinsic motivation can undermine intrinsic motivation"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-17",
+   "week": 4,
+   "topic": "Case: Southwest Airlines, putting motivation together with strategy",
+   "kind": "case",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s08-1.webp",
+     "caption": "Competitive advantage: cost or differentiation"
+    },
+    {
+     "src": "assets/courses/70-311/s08-2.webp",
+     "caption": "Herb Kelleher on building a people-focused culture"
+    },
+    {
+     "src": "assets/courses/70-311/s08-3.webp",
+     "caption": "Critical tasks, people, and culture all have to line up with strategy"
+    },
+    {
+     "src": "assets/courses/70-311/s08-4.webp",
+     "caption": "Culture, formal organization, and leadership work together"
+    },
+    {
+     "src": "assets/courses/70-311/s08-5.webp",
+     "caption": "How Southwest gets its advantage: selection, rewards, training, leadership"
+    }
+   ]
+  },
+  {
+   "part": "Part II: Teams and decision making"
+  },
+  {
+   "date": "2014-09-22",
+   "week": 5,
+   "topic": "Leadership and Team Simulation: Everest",
+   "kind": "exercise",
+   "note": "Harvard online simulation, run in teams. Reading: The Hidden Traps in Decision Making"
+  },
+  {
+   "date": "2014-09-24",
+   "week": 5,
+   "topic": "Everest simulation debrief",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s10-1.webp",
+     "caption": "Debriefing the Everest simulation"
+    },
+    {
+     "src": "assets/courses/70-311/s10-2.webp",
+     "caption": "The common information effect: groups talk about what everyone already knows"
+    },
+    {
+     "src": "assets/courses/70-311/s10-3.webp",
+     "caption": "Cognitive conflict versus affective conflict"
+    },
+    {
+     "src": "assets/courses/70-311/s10-4.webp",
+     "caption": "A field guide to cognitive biases"
+    },
+    {
+     "src": "assets/courses/70-311/s10-5.webp",
+     "caption": "What drives psychological safety on a team"
+    }
+   ]
+  },
+  {
+   "date": "2014-09-29",
+   "week": 6,
+   "topic": "Everest 1996 debrief and group decision making",
+   "kind": "lecture",
+   "note": "Assignment 2 due",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s11-1.webp",
+     "caption": "Space Journey: rank 15 items after crash-landing on the moon"
+    },
+    {
+     "src": "assets/courses/70-311/s11-2.webp",
+     "caption": "The wisdom of crowds needs diversity, independence, decentralization, and aggregation"
+    },
+    {
+     "src": "assets/courses/70-311/s11-3.webp",
+     "caption": "Forming, storming, norming, performing"
+    },
+    {
+     "src": "assets/courses/70-311/s11-4.webp",
+     "caption": "Extreme roles in a group push it toward groupthink and polarization"
+    },
+    {
+     "src": "assets/courses/70-311/s11-5.webp",
+     "caption": "Moderate task conflict is good for performance; too little or too much is not"
+    }
+   ]
+  },
+  {
+   "date": "2014-10-01",
+   "week": 6,
+   "topic": "In-class case exercise: Carter Racing",
+   "kind": "exercise",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s12-1.webp",
+     "caption": "Carter Racing: race or don't race?"
+    },
+    {
+     "src": "assets/courses/70-311/s12-2.webp",
+     "caption": "Plotting temperature against engine failures"
+    },
+    {
+     "src": "assets/courses/70-311/s12-3.webp",
+     "caption": "The space shuttle Challenger"
+    },
+    {
+     "src": "assets/courses/70-311/s12-4.webp",
+     "caption": "The same chart NASA had: O-ring incidents by launch temperature"
+    },
+    {
+     "src": "assets/courses/70-311/s12-5.webp",
+     "caption": "Flights with and without O-ring thermal distress"
+    }
+   ]
+  },
+  {
+   "date": "2014-10-06",
+   "week": 7,
+   "topic": "Eid al-Adha break",
+   "kind": "break"
+  },
+  {
+   "date": "2014-10-13",
+   "week": 8,
+   "topic": "Review",
+   "kind": "lecture"
+  },
+  {
+   "date": "2014-10-15",
+   "week": 8,
+   "topic": "Exam 1",
+   "kind": "exam"
+  },
+  {
+   "part": "Part III: Negotiation"
+  },
+  {
+   "date": "2014-10-20",
+   "week": 9,
+   "topic": "In-class negotiation: BioPharm-Seltek",
+   "kind": "exercise",
+   "note": "Reading: Five Essential Strategies for Creative Negotiations"
+  },
+  {
+   "date": "2014-10-22",
+   "week": 9,
+   "topic": "In-class negotiation: New Recruit",
+   "kind": "exercise",
+   "note": "Guest facilitators David Gray and Starling Hunter. Reading: In Global Negotiations, It's All About Trust",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s15-1.webp",
+     "caption": "New Recruit: a recruiter and a candidate negotiate eight issues"
+    },
+    {
+     "src": "assets/courses/70-311/s15-2.webp",
+     "caption": "Each issue is worth different points to each side"
+    },
+    {
+     "src": "assets/courses/70-311/s15-3.webp",
+     "caption": "Compatible issues: both sides want the same thing"
+    },
+    {
+     "src": "assets/courses/70-311/s15-4.webp",
+     "caption": "Distributive issues: one side's gain is the other's loss"
+    },
+    {
+     "src": "assets/courses/70-311/s15-5.webp",
+     "caption": "Integrative issues: trade what you value less for what you value more"
+    }
+   ]
+  },
+  {
+   "date": "2014-10-27",
+   "week": 10,
+   "topic": "OPEC simulation and the New Recruit debrief",
+   "kind": "exercise",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s16-1.webp",
+     "caption": "The cost of not negotiating your first salary compounds over a career"
+    },
+    {
+     "src": "assets/courses/70-311/s16-2.webp",
+     "caption": "Reservation points and the zone of possible agreement"
+    },
+    {
+     "src": "assets/courses/70-311/s16-3.webp",
+     "caption": "Reciprocity: the obligation to give when you receive"
+    },
+    {
+     "src": "assets/courses/70-311/s16-4.webp",
+     "caption": "Where New Recruit pairs ended up on job assignment"
+    },
+    {
+     "src": "assets/courses/70-311/s16-5.webp",
+     "caption": "Create value first, then claim it: the Pareto frontier"
+    }
+   ]
+  },
+  {
+   "date": "2014-10-29",
+   "week": 10,
+   "topic": "OPEC simulation debrief",
+   "kind": "lecture",
+   "note": "Assignment 3 due"
+  },
+  {
+   "part": "Part IV: Teams and leadership"
+  },
+  {
+   "date": "2014-11-03",
+   "week": 11,
+   "topic": "Teams: in-class case on IDEO",
+   "kind": "case",
+   "note": "Reading: A Note on Team Processes"
+  },
+  {
+   "date": "2014-11-05",
+   "week": 11,
+   "topic": "Guest lecture on leadership: Carolin Zeitler, Tataowar Consulting",
+   "kind": "lecture",
+   "note": "Reading: What Makes a Leader?"
+  },
+  {
+   "date": "2014-11-10",
+   "week": 12,
+   "topic": "Guest lecture on personal leadership: Youssef Gaboune, Al Jazeera Media Training and Development Center",
+   "kind": "lecture",
+   "note": "Assignment 4 due. Reading: Leadership That Gets Results"
+  },
+  {
+   "date": "2014-11-12",
+   "week": 12,
+   "topic": "Case: Bill Gates and Steve Jobs",
+   "kind": "case",
+   "note": "Reading: What Leaders Really Do",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s21-1.webp",
+     "caption": "A framework for studying leadership: traits, behaviors, situations, results"
+    },
+    {
+     "src": "assets/courses/70-311/s21-2.webp",
+     "caption": "Leadership trait theories: personality, motivation, ability"
+    },
+    {
+     "src": "assets/courses/70-311/s21-3.webp",
+     "caption": "Fiedler's contingency model: match the leader's style to the situation"
+    },
+    {
+     "src": "assets/courses/70-311/s21-4.webp",
+     "caption": "Goleman's six leadership styles. Which did Gates or Jobs use?"
+    },
+    {
+     "src": "assets/courses/70-311/s21-5.webp",
+     "caption": "Kotter: what leaders do versus what managers do"
+    }
+   ]
+  },
+  {
+   "date": "2014-11-17",
+   "week": 13,
+   "topic": "Review",
+   "kind": "lecture"
+  },
+  {
+   "date": "2014-11-19",
+   "week": 13,
+   "topic": "Exam 2",
+   "kind": "exam"
+  },
+  {
+   "part": "Part V: Change"
+  },
+  {
+   "date": "2014-11-24",
+   "week": 14,
+   "topic": "Change management simulation",
+   "kind": "exercise",
+   "note": "Reading: Leading Change: Why Transformation Efforts Fail",
+   "slides": [
+    {
+     "src": "assets/courses/70-311/s24-1.webp",
+     "caption": "Three phases of organizational change: mobilize, move, sustain"
+    },
+    {
+     "src": "assets/courses/70-311/s24-2.webp",
+     "caption": "Kotter's eight steps for leading change"
+    },
+    {
+     "src": "assets/courses/70-311/s24-3.webp",
+     "caption": "Why individuals resist change"
+    },
+    {
+     "src": "assets/courses/70-311/s24-4.webp",
+     "caption": "The adoption curve: expected versus experienced"
+    },
+    {
+     "src": "assets/courses/70-311/s24-5.webp",
+     "caption": "A strategy for change mapped by resistance and power"
+    }
+   ]
+  },
+  {
+   "date": "2014-11-26",
+   "week": 14,
+   "topic": "Change management debrief",
+   "kind": "lecture"
+  },
+  {
+   "date": "2014-12-01",
+   "week": 15,
+   "topic": "Final presentations",
+   "kind": "presentations"
+  },
+  {
+   "date": "2014-12-03",
+   "week": 15,
+   "topic": "Final presentations",
+   "kind": "presentations"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Exams",
+   "weight": "30%",
+   "description": "Two non-cumulative, closed-book exams mixing multiple choice, short answer, and essay questions."
+  },
+  {
+   "name": "Quizzes",
+   "weight": "10%",
+   "description": "Seven open-book online quizzes on the previous one to two weeks of lectures, readings, and cases."
+  },
+  {
+   "name": "Group case analysis papers",
+   "weight": "20%",
+   "description": "Four papers written in randomly assigned groups. Assignment 1 analyzed the SAS Institute case. Assignment 2 analyzed the team's own Everest simulation run alongside the 1996 Everest case. Assignment 3 had groups carry out two negotiations outside class, a movie production deal and a hotel coffee contract, and report their planning, BATNAs, and outcomes. Assignment 4 compared Bill Gates, Steve Jobs, and a leader of the group's choice using Kotter, Goleman's six styles, and StrengthsFinder."
+  },
+  {
+   "name": "Final project",
+   "weight": "20%",
+   "description": "In self-selected groups of three to five, students analyzed a real organization using three course topics, backed by at least six sources, and recommended improvements. Each group wrote an 8 to 10 page paper and gave a five-minute presentation. Companies from earlier course cases or earlier years were off limits."
+  },
+  {
+   "name": "Classroom engagement",
+   "weight": "20%",
+   "description": "Discussion, in-class exercises, and iClicker questions, with some cold calling so quieter students had an equal chance to contribute. Peer evaluations after every group assignment fed into this grade."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Fall 2014",
+   "items": [
+    {
+     "subject": "Adidas",
+     "approach": "Leadership, motivation, negotiation",
+     "description": "Looked at a sponsorship negotiation between Adidas and a sports team"
+    },
+    {
+     "subject": "Alibaba",
+     "approach": "Motivation and job design, leadership, change management",
+     "description": "Centered on Jack Ma's leadership"
+    },
+    {
+     "subject": "Amazon (group 1)",
+     "approach": "Motivation, decision making, leadership",
+     "description": "Looked at how Jeff Bezos makes decisions"
+    },
+    {
+     "subject": "Amazon (group 2)",
+     "approach": "Motivation and management, teams and decision making, leadership"
+    },
+    {
+     "subject": "BCG",
+     "approach": "Leadership, motivation, decision making"
+    },
+    {
+     "subject": "Disney",
+     "approach": "Motivation, leadership, negotiation"
+    },
+    {
+     "subject": "Facebook",
+     "approach": "Motivation and management, leadership, negotiation"
+    },
+    {
+     "subject": "General Motors",
+     "approach": "Motivation, leadership, change management"
+    },
+    {
+     "subject": "Hershey",
+     "approach": "Motivation, leadership, teams and decision making"
+    },
+    {
+     "subject": "IBM",
+     "approach": "Motivation and management, leadership, change management"
+    },
+    {
+     "subject": "IKEA",
+     "approach": "Motivation, leadership, negotiation"
+    },
+    {
+     "subject": "Kellogg's",
+     "approach": "Motivation, leadership, negotiation",
+     "description": "Analyzed two negotiations: with Procter & Gamble and with locked-out workers in Memphis"
+    },
+    {
+     "subject": "LEGO",
+     "approach": "Motivation, leadership, change management",
+     "description": "Looked at how leadership pulled LEGO back from the brink"
+    },
+    {
+     "subject": "Manchester United",
+     "approach": "Motivation, leadership, change management",
+     "description": "Sir Alex Ferguson's leadership and the change after he left"
+    },
+    {
+     "subject": "Marriott International",
+     "approach": "Motivation, leadership"
+    },
+    {
+     "subject": "Nestle",
+     "approach": "Motivation, leadership, change management"
+    },
+    {
+     "subject": "Netflix",
+     "approach": "Motivation, leadership, change management"
+    },
+    {
+     "subject": "Nike",
+     "approach": "Motivation and job design, leadership, negotiation"
+    },
+    {
+     "subject": "Swarovski",
+     "approach": "Leadership, motivation"
+    },
+    {
+     "subject": "Unilever",
+     "approach": "Motivation, leadership"
+    },
+    {
+     "subject": "Virgin Group",
+     "approach": "Leadership, motivation, structure and decision making"
+    },
+    {
+     "subject": "Zappos",
+     "approach": "Leadership, change management",
+     "description": "Looked at power shifts and resistance in the move to holacracy"
+    }
+   ]
+  }
+ ]
+}

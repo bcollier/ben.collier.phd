@@ -1,0 +1,592 @@
+{
+ "slug": "70-323",
+ "term": "Spring 2013",
+ "meets": "Mondays and Wednesdays",
+ "unit_label": "Week",
+ "meta": {
+  "number": "70-323",
+  "title": "Empirical Research Methods",
+  "program": "Undergraduate",
+  "school": "CMU Qatar",
+  "era": "cmuq",
+  "one_liner": "Ask a question about people, design a survey, collect the data, and test it with regression.",
+  "blurb": "This course taught students to evaluate and run original research on human behavior. Each student picked a question about life in Qatar, wrote a proposal, completed human subjects training, went through IRB review, wrote and piloted a survey, and collected their own data. We covered measurement, scales, sampling, survey design, and experiments along the way, then spent the last weeks on analysis so that every final paper tested its main hypothesis with regression. The semester ended with three days of student research presentations.",
+  "offerings": [
+   "Spring 2013"
+  ],
+  "scale": "About 23 students",
+  "color": "c-olive",
+  "order": 6
+ },
+ "schedule": [
+  {
+   "part": "Part I: Designing research"
+  },
+  {
+   "date": "2013-01-14",
+   "week": 1,
+   "topic": "Introduction to research design",
+   "kind": "lecture",
+   "note": "Covered January 14 and 16",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s01-1.webp",
+     "caption": "Errors in inquiry: inaccurate observation, overgeneralization, selective observation"
+    },
+    {
+     "src": "assets/courses/70-323/s01-2.webp",
+     "caption": "Concepts become variables, and variables have attributes"
+    },
+    {
+     "src": "assets/courses/70-323/s01-3.webp",
+     "caption": "What a relationship between education and prejudice looks like, and what no relationship looks like"
+    },
+    {
+     "src": "assets/courses/70-323/s01-4.webp",
+     "caption": "The elements of theory construction"
+    },
+    {
+     "src": "assets/courses/70-323/s01-5.webp",
+     "caption": "A worked example: the technology acceptance model"
+    }
+   ]
+  },
+  {
+   "date": "2013-01-21",
+   "week": 2,
+   "topic": "Research ethics",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s02-1.webp",
+     "caption": "Groups of three: would you approve this Facebook study?"
+    },
+    {
+     "src": "assets/courses/70-323/s02-2.webp",
+     "caption": "No harm to participants, and informed consent"
+    },
+    {
+     "src": "assets/courses/70-323/s02-3.webp",
+     "caption": "Anonymity versus confidentiality"
+    },
+    {
+     "src": "assets/courses/70-323/s02-4.webp",
+     "caption": "Deception, and debriefing afterward"
+    },
+    {
+     "src": "assets/courses/70-323/s02-5.webp",
+     "caption": "Institutional review boards"
+    }
+   ]
+  },
+  {
+   "date": "2013-01-23",
+   "week": 2,
+   "topic": "Research design",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s03-1.webp",
+     "caption": "A good hypothesis says which way the relationship goes"
+    },
+    {
+     "src": "assets/courses/70-323/s03-2.webp",
+     "caption": "Necessary and sufficient conditions"
+    },
+    {
+     "src": "assets/courses/70-323/s03-3.webp",
+     "caption": "Correlation, spurious relationships, and real causes"
+    },
+    {
+     "src": "assets/courses/70-323/s03-4.webp",
+     "caption": "Unit of analysis: do more tickets in poorer Doha neighborhoods mean poorer drivers speed?"
+    },
+    {
+     "src": "assets/courses/70-323/s03-5.webp",
+     "caption": "Cross-sectional and longitudinal designs"
+    }
+   ]
+  },
+  {
+   "part": "Part II: Measurement"
+  },
+  {
+   "date": "2013-01-28",
+   "week": 3,
+   "topic": "Measurement: conceptualization and operationalization",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s04-1.webp",
+     "caption": "How do we measure things we cannot see?"
+    },
+    {
+     "src": "assets/courses/70-323/s04-2.webp",
+     "caption": "Conceptualization: nominal and operational definitions"
+    },
+    {
+     "src": "assets/courses/70-323/s04-3.webp",
+     "caption": "Operationalization: range of variation and precision"
+    },
+    {
+     "src": "assets/courses/70-323/s04-4.webp",
+     "caption": "Levels of measurement"
+    },
+    {
+     "src": "assets/courses/70-323/s04-5.webp",
+     "caption": "Group exercise: conceptualize and operationalize 'love'"
+    }
+   ]
+  },
+  {
+   "date": "2013-01-30",
+   "week": 3,
+   "topic": "Indexes and scales",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s05-1.webp",
+     "caption": "Absorptive capacity, a construct you cannot observe directly"
+    },
+    {
+     "src": "assets/courses/70-323/s05-2.webp",
+     "caption": "Reliable but not valid, valid but not reliable, both"
+    },
+    {
+     "src": "assets/courses/70-323/s05-3.webp",
+     "caption": "The kinds of validity"
+    },
+    {
+     "src": "assets/courses/70-323/s05-4.webp",
+     "caption": "Index versus scale"
+    },
+    {
+     "src": "assets/courses/70-323/s05-5.webp",
+     "caption": "How a scale's items build on each other"
+    }
+   ]
+  },
+  {
+   "date": "2013-02-04",
+   "week": 4,
+   "topic": "Scale construction",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s06-1.webp",
+     "caption": "Social distance, one question at a time"
+    },
+    {
+     "src": "assets/courses/70-323/s06-2.webp",
+     "caption": "Thurstone scales: items weighted by judges"
+    },
+    {
+     "src": "assets/courses/70-323/s06-3.webp",
+     "caption": "Likert scales"
+    },
+    {
+     "src": "assets/courses/70-323/s06-4.webp",
+     "caption": "Guttman scales: agreeing with a strong item implies agreeing with weaker ones"
+    },
+    {
+     "src": "assets/courses/70-323/s06-5.webp",
+     "caption": "Card sorting to group items"
+    }
+   ]
+  },
+  {
+   "part": "Part III: Sampling and surveys"
+  },
+  {
+   "date": "2013-02-13",
+   "week": 5,
+   "topic": "Sampling",
+   "kind": "lecture",
+   "note": "Exam 1 was on February 11",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s07-1.webp",
+     "caption": "Convenience sampling, and when it might be acceptable"
+    },
+    {
+     "src": "assets/courses/70-323/s07-2.webp",
+     "caption": "Target population, sampling frame, and who you miss"
+    },
+    {
+     "src": "assets/courses/70-323/s07-3.webp",
+     "caption": "The sampling distribution of ten cases"
+    },
+    {
+     "src": "assets/courses/70-323/s07-4.webp",
+     "caption": "Bigger samples give tighter sampling distributions"
+    },
+    {
+     "src": "assets/courses/70-323/s07-5.webp",
+     "caption": "The central limit theorem"
+    }
+   ]
+  },
+  {
+   "date": "2013-02-18",
+   "week": 6,
+   "topic": "Sampling, part 2",
+   "kind": "lecture"
+  },
+  {
+   "date": "2013-02-20",
+   "week": 6,
+   "topic": "Survey design",
+   "kind": "lecture",
+   "note": "IRB forms due",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s09-1.webp",
+     "caption": "Simple random sampling from a numbered population"
+    },
+    {
+     "src": "assets/courses/70-323/s09-2.webp",
+     "caption": "What makes a good survey question"
+    },
+    {
+     "src": "assets/courses/70-323/s09-3.webp",
+     "caption": "A confusing double negative: 22% doubted the Holocaust in 1992, 1% with clearer wording in 1994"
+    },
+    {
+     "src": "assets/courses/70-323/s09-4.webp",
+     "caption": "Double-barreled questions"
+    },
+    {
+     "src": "assets/courses/70-323/s09-5.webp",
+     "caption": "Leading questions"
+    }
+   ]
+  },
+  {
+   "date": "2013-02-27",
+   "week": 7,
+   "topic": "Survey workshop: peer review of survey drafts",
+   "kind": "exercise"
+  },
+  {
+   "date": "2013-03-04",
+   "week": 8,
+   "topic": "Spring break",
+   "kind": "break"
+  },
+  {
+   "part": "Part IV: Experiments"
+  },
+  {
+   "date": "2013-03-11",
+   "week": 9,
+   "topic": "Experimental design",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s11-1.webp",
+     "caption": "The classical experiment"
+    },
+    {
+     "src": "assets/courses/70-323/s11-2.webp",
+     "caption": "Experimental and control groups, measured before and after"
+    },
+    {
+     "src": "assets/courses/70-323/s11-3.webp",
+     "caption": "Matching subjects across groups"
+    },
+    {
+     "src": "assets/courses/70-323/s11-4.webp",
+     "caption": "Pre-experimental designs and what they leave out"
+    },
+    {
+     "src": "assets/courses/70-323/s11-5.webp",
+     "caption": "Group exercise: design an experiment on whether review sessions raise exam grades"
+    }
+   ]
+  },
+  {
+   "date": "2013-03-13",
+   "week": 9,
+   "topic": "Experiments, part 2: validity and settings",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s12-1.webp",
+     "caption": "Rigor, relevance, and generalizability: you can't maximize all three"
+    },
+    {
+     "src": "assets/courses/70-323/s12-2.webp",
+     "caption": "Where each research method sits between rigor and relevance"
+    },
+    {
+     "src": "assets/courses/70-323/s12-3.webp",
+     "caption": "Threats to internal validity"
+    },
+    {
+     "src": "assets/courses/70-323/s12-4.webp",
+     "caption": "A pretest-posttest design with a control group"
+    },
+    {
+     "src": "assets/courses/70-323/s12-5.webp",
+     "caption": "A framing experiment run on the class with clickers"
+    }
+   ]
+  },
+  {
+   "date": "2013-03-20",
+   "week": 10,
+   "topic": "Evaluation research",
+   "kind": "lecture"
+  },
+  {
+   "part": "Part V: Analysis and presentation"
+  },
+  {
+   "date": "2013-04-03",
+   "week": 12,
+   "topic": "Analysis: from survey items to a model",
+   "kind": "lecture",
+   "note": "Exam 2 was on April 1",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s13-1.webp",
+     "caption": "Less than 15% of English Wikipedia editors are women. Why so few?"
+    },
+    {
+     "src": "assets/courses/70-323/s13-2.webp",
+     "caption": "Turning a hypothesis into a survey item: free time"
+    },
+    {
+     "src": "assets/courses/70-323/s13-3.webp",
+     "caption": "Discomfort with criticizing or editing others' work"
+    },
+    {
+     "src": "assets/courses/70-323/s13-4.webp",
+     "caption": "Confidence in one's own knowledge"
+    },
+    {
+     "src": "assets/courses/70-323/s13-5.webp",
+     "caption": "A mediation model of gender and editing"
+    }
+   ]
+  },
+  {
+   "date": "2013-04-08",
+   "week": 13,
+   "topic": "Analysis: distributions and regression",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s14-1.webp",
+     "caption": "The normal distribution"
+    },
+    {
+     "src": "assets/courses/70-323/s14-2.webp",
+     "caption": "68, 95, and 99.7 percent within one, two, and three standard deviations"
+    },
+    {
+     "src": "assets/courses/70-323/s14-3.webp",
+     "caption": "Predicting promotion from production contributions"
+    },
+    {
+     "src": "assets/courses/70-323/s14-4.webp",
+     "caption": "Predicting promotion from organization building"
+    },
+    {
+     "src": "assets/courses/70-323/s14-5.webp",
+     "caption": "Y = a + bX, term by term"
+    }
+   ]
+  },
+  {
+   "date": "2013-04-10",
+   "week": 13,
+   "topic": "Multiple regression and presenting research",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/70-323/s15-1.webp",
+     "caption": "Multiple regression: income on education, parents' income, and experience"
+    },
+    {
+     "src": "assets/courses/70-323/s15-2.webp",
+     "caption": "What 'controlling for' means"
+    },
+    {
+     "src": "assets/courses/70-323/s15-3.webp",
+     "caption": "Does playing the piano raise your income?"
+    },
+    {
+     "src": "assets/courses/70-323/s15-4.webp",
+     "caption": "Reading the stars on a regression table"
+    },
+    {
+     "src": "assets/courses/70-323/s15-5.webp",
+     "caption": "Magnitude versus significance: QR 8 a year is not much"
+    }
+   ]
+  },
+  {
+   "date": "2013-04-15",
+   "week": 14,
+   "topic": "In-class analysis in Excel",
+   "kind": "exercise"
+  },
+  {
+   "date": "2013-04-17",
+   "week": 14,
+   "topic": "Student research presentations",
+   "kind": "presentations",
+   "label": "Apr 17, 22, 24"
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Final research report",
+   "weight": "15%",
+   "description": "A 2,000 to 2,500 word paper with introduction, literature review of at least three research articles, hypotheses, methods, results, and the survey as an appendix. Every paper had to test its main hypothesis with regression."
+  },
+  {
+   "name": "Final presentation",
+   "weight": "15%",
+   "description": "A short talk on the study and its results, over three days at the end of the semester."
+  },
+  {
+   "name": "Pilot studies and drafts",
+   "weight": "10%",
+   "description": "CITI human subjects training, two proposal drafts, IRB forms, and a survey draft that classmates took and critiqued in class before the final version went out."
+  },
+  {
+   "name": "Two midterm exams",
+   "weight": "40%",
+   "description": "20% each, on research design and measurement, then sampling, surveys, and experiments."
+  },
+  {
+   "name": "Online quizzes",
+   "weight": "10%",
+   "description": "Eight quizzes on the Babbie readings, lowest score dropped."
+  },
+  {
+   "name": "Participation",
+   "weight": "10%",
+   "description": "Attendance by clicker, and in-class design exercises."
+  }
+ ],
+ "projects": [
+  {
+   "term": "Spring 2013: student survey studies",
+   "items": [
+    {
+     "subject": "Student satisfaction in Education City versus Qatar University",
+     "approach": "Survey",
+     "description": "Compared satisfaction at the private branch campuses and the national public university."
+    },
+    {
+     "subject": "School environment and the desire to study",
+     "approach": "Survey",
+     "description": "Whether the school environment relates to students' motivation to keep studying."
+    },
+    {
+     "subject": "Employment expectations of CMU Qatar students",
+     "approach": "Survey",
+     "description": "Whether nationality, family, and gender shape what students expect after graduation."
+    },
+    {
+     "subject": "First-year friendships",
+     "approach": "Survey",
+     "description": "Whether first-year students befriend people who are academically similar or similar in other ways."
+    },
+    {
+     "subject": "Pedestrian safety in Qatar",
+     "approach": "Survey",
+     "description": "Whether pedestrians feel safe on Doha's roads, and what urban planners could change."
+    },
+    {
+     "subject": "Mass media and body image",
+     "approach": "Survey",
+     "description": "Effects of mass media on body image, eating habits, and exercise."
+    },
+    {
+     "subject": "Attitudes toward weight-loss surgery",
+     "approach": "Survey",
+     "description": "Whether people accept surgical methods of losing weight over diet and exercise."
+    },
+    {
+     "subject": "Creativity",
+     "approach": "Survey",
+     "description": "What relates to self-reported creativity among students."
+    },
+    {
+     "subject": "Online piracy by students in Qatar",
+     "approach": "Survey",
+     "description": "Whether money and the lack of paid alternatives predict how much students pirate."
+    },
+    {
+     "subject": "Extracurricular activities and grades",
+     "approach": "Survey",
+     "description": "Whether taking part in extracurricular activities affects academic performance."
+    },
+    {
+     "subject": "Eating habits on and off campus",
+     "approach": "Survey",
+     "description": "Whether students living off campus eat more healthily than those in the dorms."
+    },
+    {
+     "subject": "Social capital and academic achievement",
+     "approach": "Survey",
+     "description": "Whether relationships with friends and professors relate to grades."
+    },
+    {
+     "subject": "Music and aggression",
+     "approach": "Survey",
+     "description": "Whether taste in music relates to aggressive attitudes."
+    },
+    {
+     "subject": "Buying a car in Qatar",
+     "approach": "Survey",
+     "description": "Consumer views of the car market and dealers."
+    },
+    {
+     "subject": "Parental control and childhood obesity",
+     "approach": "Survey",
+     "description": "Whether parents' control over eating and activity relates to obesity, given high overweight rates in Qatar."
+    },
+    {
+     "subject": "Motivation and academic performance",
+     "approach": "Survey",
+     "description": "How student motivation relates to grades."
+    },
+    {
+     "subject": "Sports in university life",
+     "approach": "Survey",
+     "description": "What keeps students from taking part in campus sports."
+    },
+    {
+     "subject": "Mobile phone use and academic productivity",
+     "approach": "Survey",
+     "description": "Whether heavier phone use goes with lower academic performance."
+    },
+    {
+     "subject": "Social media in Qatar",
+     "approach": "Survey",
+     "description": "How people in Qatar use social media."
+    },
+    {
+     "subject": "Internet use and happiness",
+     "approach": "Survey",
+     "description": "Whether how often people use the internet relates to depression and happiness."
+    },
+    {
+     "subject": "Why people lie",
+     "approach": "Survey",
+     "description": "Whether people with different characteristics tell different kinds of lies."
+    },
+    {
+     "subject": "Gender and computer literacy in Qatar",
+     "approach": "Survey",
+     "description": "Whether men and women in Qatar differ in computer literacy."
+    }
+   ]
+  }
+ ]
+}

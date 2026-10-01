@@ -1,0 +1,976 @@
+{
+ "slug": "msba-math-skills-workshop",
+ "term": "Summer 2026",
+ "meets": "Self-paced online, on Canvas",
+ "unit_label": "Module",
+ "schedule": [
+  {
+   "part": "Module 1: Algebra Fundamentals and Functions"
+  },
+  {
+   "date": "2026-03-30",
+   "week": 1,
+   "label": "Lesson 1.1",
+   "topic": "Solving Linear Equations and Isolating Variables",
+   "kind": "lecture",
+   "note": "Running case: The Daily Grind, a coffee shop",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s01-1.webp",
+     "caption": "The Daily Grind: $4,500 a month in fixed costs and a $5 cup. When does it break even?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s01-2.webp",
+     "caption": "The golden rule: whatever you do to one side, do to the other"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s01-3.webp",
+     "caption": "Translating words into algebra: cost and revenue as functions of cups sold"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s01-4.webp",
+     "caption": "Solving 4,500 + 1.50x = 5.00x step by step: about 1,286 cups a month"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s01-5.webp",
+     "caption": "Rearranging Revenue = Price × Quantity to answer the boss's new question"
+    }
+   ]
+  },
+  {
+   "date": "2026-03-30",
+   "week": 1,
+   "label": "Lesson 1.2",
+   "topic": "Solving Quadratic Equations",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s02-1.webp",
+     "caption": "Demand Q = 200 − 20P: at what price does the shop bring in $400 a day?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s02-2.webp",
+     "caption": "Factoring, the fast method when the numbers cooperate"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s02-3.webp",
+     "caption": "The quadratic formula gives two prices that produce the same revenue"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s02-4.webp",
+     "caption": "The discriminant tells you how many solutions exist before you solve"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s02-5.webp",
+     "caption": "The vertex of the revenue curve is the revenue-maximizing price"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-13",
+   "week": 1,
+   "label": "Lesson 1.3",
+   "topic": "Proportions and Percentages",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s03-1.webp",
+     "caption": "Profit margin, markup, and conversion rate: three formulas students will use constantly"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s03-2.webp",
+     "caption": "Every percentage problem is a rearrangement of Part = Rate × Whole"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s03-3.webp",
+     "caption": "Reversing a 15% increase means dividing by 1.15, not subtracting 15%"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s03-4.webp",
+     "caption": "Weighted averages: blending $18 and $10 beans to hit $13 a pound"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s03-5.webp",
+     "caption": "Funnel math: 2,000 visitors, 600 free trials, 120 paid subscribers"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-21",
+   "week": 1,
+   "label": "Lesson 1.4",
+   "topic": "Functions and Graphs",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s04-1.webp",
+     "caption": "A function is a machine: one input in, exactly one output out"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s04-2.webp",
+     "caption": "Linear in action: the shop's profit is P(x) = 3.50x − 4,500"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s04-3.webp",
+     "caption": "Polynomial in action: cut the price to sell more and revenue curves over"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s04-4.webp",
+     "caption": "Average cost per cup falls toward $1.50 but never reaches it"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s04-5.webp",
+     "caption": "Piecewise functions: a bulk discount changes the rule past a threshold"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-22",
+   "week": 1,
+   "label": "Lesson 1.5",
+   "topic": "Exponential and Logarithmic Functions",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s05-1.webp",
+     "caption": "Exponential growth, y = a·bᵗ, sketched by hand"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s05-2.webp",
+     "caption": "The natural base e: what compounding becomes when it is continuous"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s05-3.webp",
+     "caption": "Two logs that matter: ln for continuous growth, log₁₀ for orders of magnitude"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s05-4.webp",
+     "caption": "Logs turn an exponential curve into a straight line"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s05-5.webp",
+     "caption": "Reading a log scale: equal spacing means equal multiplication"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-23",
+   "week": 1,
+   "label": "Lesson 1.6",
+   "topic": "Algebra in Action: Applications to Analytics",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s06-1.webp",
+     "caption": "Multi-product break-even: coffee and pastries in one equation"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s06-2.webp",
+     "caption": "Why log-transform: in ln Q = a + b ln P, the slope b is the price elasticity"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s06-3.webp",
+     "caption": "Growth rate from $120K to $156K in two years, using logarithms"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s06-4.webp",
+     "caption": "The algebra behind linear regression: slope and intercept from sums"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s06-5.webp",
+     "caption": "Log scales let GDP per capita from $500 to $80,000 fit on one axis"
+    }
+   ]
+  },
+  {
+   "part": "Module 2: Calculus Essentials for Analytics"
+  },
+  {
+   "date": "2026-04-27",
+   "week": 2,
+   "label": "Lesson 2.1",
+   "topic": "Derivatives and Rates of Change",
+   "kind": "lecture",
+   "note": "Running case: NovaSilicon, an AI chip maker",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s07-1.webp",
+     "caption": "Average rate of change in profit between two production levels"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s07-2.webp",
+     "caption": "The derivative is the slope of the tangent line"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s07-3.webp",
+     "caption": "What the derivative tells the business: expand, cut back, or stop at the peak"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s07-4.webp",
+     "caption": "The chain rule is how a neural network passes gradients back through its layers"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s07-5.webp",
+     "caption": "Gradient descent: follow the slope down to the lowest loss"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-29",
+   "week": 2,
+   "label": "Lesson 2.2",
+   "topic": "Optimization and Critical Points",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s08-1.webp",
+     "caption": "NovaSilicon's pricing challenge: where is the peak of the profit curve?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s08-2.webp",
+     "caption": "A critical point is where the tangent goes flat"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s08-3.webp",
+     "caption": "The second-derivative test: concave down spills water, concave up holds it"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s08-4.webp",
+     "caption": "Inflection points on a technology adoption curve"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s08-5.webp",
+     "caption": "Training a model is optimization: set dL/dw to zero and check the curvature"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-29",
+   "week": 2,
+   "label": "Lesson 2.3",
+   "topic": "Applications to Analytics Models",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s09-1.webp",
+     "caption": "Predicting chip yield from fabrication temperature"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s09-2.webp",
+     "caption": "Loss as the sum of squared residuals"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s09-3.webp",
+     "caption": "Gradient descent: rolling downhill on the loss surface"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s09-4.webp",
+     "caption": "Logistic regression: the sigmoid turns a score into a probability"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s09-5.webp",
+     "caption": "Data, model, loss, gradient, update, repeat: the loop behind modern machine learning"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-29",
+   "week": 2,
+   "label": "Lesson 2.4",
+   "topic": "Partial Derivatives",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s10-1.webp",
+     "caption": "NovaSilicon sells two chip lines, so profit now has two inputs"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s10-2.webp",
+     "caption": "A function of two variables is a surface"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s10-3.webp",
+     "caption": "To take ∂f/∂x, treat every other variable as a constant"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s10-4.webp",
+     "caption": "The gradient points uphill, in the direction of steepest ascent"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s10-5.webp",
+     "caption": "Real models have millions of parameters, each with its own partial derivative"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-30",
+   "week": 2,
+   "label": "Lesson 2.5",
+   "topic": "Integration Basics",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s11-1.webp",
+     "caption": "A wafer line ramps up, then drifts down: how many chips in a 10-hour shift?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s11-2.webp",
+     "caption": "Integration reverses differentiation"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s11-3.webp",
+     "caption": "A definite integral is the area under the curve"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s11-4.webp",
+     "caption": "The Fundamental Theorem of Calculus: F(b) − F(a)"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s11-5.webp",
+     "caption": "Same machinery, different question: probability as area under a density"
+    }
+   ]
+  },
+  {
+   "part": "Module 3: Linear Algebra for Data Analytics"
+  },
+  {
+   "date": "2026-04-30",
+   "week": 3,
+   "label": "Lesson 3.1",
+   "topic": "Vector and Matrix Basics",
+   "kind": "lecture",
+   "note": "Running case: Tartan Robotics, a warehouse robot fleet",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s12-1.webp",
+     "caption": "Tartan Robotics: three warehouse robots, three readings each"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s12-2.webp",
+     "caption": "A vector is an ordered list of features"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s12-3.webp",
+     "caption": "The dot product turns a robot's readings and a manager's weights into one score"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s12-4.webp",
+     "caption": "Matrix multiplication: the inner dimensions must match"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s12-5.webp",
+     "caption": "Readiness scores for the whole fleet in one product, A·w"
+    }
+   ]
+  },
+  {
+   "date": "2026-04-30",
+   "week": 3,
+   "label": "Lesson 3.2",
+   "topic": "Solving Linear Systems",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s13-1.webp",
+     "caption": "How many Scouts, Haulers, and Lifters can Tartan build from the parts on hand?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s13-2.webp",
+     "caption": "The same system, repackaged as Ax = b"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s13-3.webp",
+     "caption": "Gaussian elimination: three legal row moves"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s13-4.webp",
+     "caption": "Unique, none, or infinitely many: three ways a linear system can end"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s13-5.webp",
+     "caption": "Linear regression is a linear system in disguise: (XᵀX)β = Xᵀy"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-12",
+   "week": 3,
+   "label": "Lesson 3.3",
+   "topic": "Matrix Properties and Techniques",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s14-1.webp",
+     "caption": "A task-weight matrix turns robot capabilities into task scores"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s14-2.webp",
+     "caption": "The identity matrix: multiplying by I changes nothing"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s14-3.webp",
+     "caption": "A 2×2 matrix has an inverse exactly when its determinant is not zero"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s14-4.webp",
+     "caption": "Matrix algebra mostly follows the usual rules, except that AB ≠ BA"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s14-5.webp",
+     "caption": "Working backward from target scores to capabilities with W⁻¹"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-13",
+   "week": 3,
+   "label": "Lesson 3.4",
+   "topic": "Eigenvalues and Eigenvectors",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s15-1.webp",
+     "caption": "The defining equation: Av = λv"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s15-2.webp",
+     "caption": "A stretch matrix tilts most vectors, but its eigenvectors only get longer"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s15-3.webp",
+     "caption": "PCA in one sentence: the eigenvectors of the covariance matrix"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s15-4.webp",
+     "caption": "Two components capture 83% of the variation across 400 robots"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s15-5.webp",
+     "caption": "Where else eigen-thinking shows up: PageRank, eigenfaces, Markov chains"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-13",
+   "week": 3,
+   "label": "Lesson 3.5",
+   "topic": "Data Analytics Applications",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s16-1.webp",
+     "caption": "Predicting each robot's daily throughput from its features"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s16-2.webp",
+     "caption": "Every prediction is one dot product, so all of them together are ŷ = Xβ"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s16-3.webp",
+     "caption": "The normal equations give the best-fitting β in closed form"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s16-4.webp",
+     "caption": "Recommender systems and PageRank run on the same matrix primitives"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s16-5.webp",
+     "caption": "Every Module 3 concept, mapped to where it lives in analytics"
+    }
+   ]
+  },
+  {
+   "part": "Module 4: Descriptive Statistics and Data Visualization"
+  },
+  {
+   "date": "2026-05-14",
+   "week": 4,
+   "label": "Lesson 4.1",
+   "topic": "Measures of Central Tendency",
+   "kind": "lecture",
+   "note": "Running case: Steel City Streaming, a Pittsburgh sports streaming service",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s17-1.webp",
+     "caption": "Steel City Streaming: what is a typical session when one viewer watched 395 minutes?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s17-2.webp",
+     "caption": "Three flavors of typical: mean, median, mode"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s17-3.webp",
+     "caption": "Weighted averages: watch time by subscriber tier"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s17-4.webp",
+     "caption": "Skewed data pulls the mean away from the median"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s17-5.webp",
+     "caption": "Choosing the right measure, and what to watch out for with each"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-14",
+   "week": 4,
+   "label": "Lesson 4.2",
+   "topic": "Measures of Dispersion",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s18-1.webp",
+     "caption": "Same average, different week: two broadcasts with very different spread"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s18-2.webp",
+     "caption": "The range is easy to compute, but one outlier blows it up"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s18-3.webp",
+     "caption": "Variance is the average squared distance from the mean"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s18-4.webp",
+     "caption": "Same 45-minute mean, very different standard deviations"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s18-5.webp",
+     "caption": "Variance is the language of risk in finance, operations, and analytics"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-15",
+   "week": 4,
+   "label": "Lesson 4.3",
+   "topic": "Data Distribution and Shape",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s19-1.webp",
+     "caption": "From a list of 30 watch times to a histogram"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s19-2.webp",
+     "caption": "Four classic shapes: bell, right-skewed, uniform, bimodal"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s19-3.webp",
+     "caption": "The box plot: the five-number summary as a picture"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s19-4.webp",
+     "caption": "Flagging outliers with the 1.5 × IQR rule"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s19-5.webp",
+     "caption": "One 220-minute session moves the mean and SD but barely touches the median and IQR"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-15",
+   "week": 4,
+   "label": "Lesson 4.4",
+   "topic": "Correlation and Scatter Plots",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s20-1.webp",
+     "caption": "The scatter plot: one point per week of marketing spend"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s20-2.webp",
+     "caption": "Four classic patterns: positive, negative, none, nonlinear"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s20-3.webp",
+     "caption": "What r of −0.9, −0.5, 0, 0.5, and 0.9 actually look like"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s20-4.webp",
+     "caption": "What r will not tell you: causation, curves, outliers, effect size"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s20-5.webp",
+     "caption": "Marketing spend and new subscribers: r = 0.80"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-18",
+   "week": 4,
+   "label": "Lesson 4.5",
+   "topic": "Principles of Data Visualization",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s21-1.webp",
+     "caption": "Pick the chart that fits the question, never the other way around"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s21-2.webp",
+     "caption": "Before the chart: who is the audience, what do they need to know, what should they do"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s21-3.webp",
+     "caption": "No zero baseline, so 6 million enrollments look like a fraction of 7 million"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s21-4.webp",
+     "caption": "The truncated y-axis trick in a newspaper chart of federal debt"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s21-5.webp",
+     "caption": "Data should tell a story: ticket volume rebuilt around one ask"
+    }
+   ]
+  },
+  {
+   "date": "2026-08-05",
+   "week": 4,
+   "label": "Lesson 4.6",
+   "topic": "Module 4 Hands-on Practice",
+   "kind": "exercise",
+   "note": "Five exercises on one week of Steel City data",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s22-1.webp",
+     "caption": "The dataset: peak concurrent viewers on eight Friday nights"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s22-2.webp",
+     "caption": "Reading a histogram of 30 Friday nights"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s22-3.webp",
+     "caption": "The five-number summary read off a box plot, with an outlier check"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s22-4.webp",
+     "caption": "Correlation step by step, from deviations to r"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s22-5.webp",
+     "caption": "The analyst's mini-report: the numbers turned into a short read for an executive"
+    }
+   ]
+  },
+  {
+   "part": "Module 5: Probability Foundations and Random Variables"
+  },
+  {
+   "date": "2026-05-19",
+   "week": 5,
+   "label": "Lesson 5.1",
+   "topic": "Probability Concepts",
+   "kind": "lecture",
+   "note": "Running case: Carnegie Quant Capital, a fictional Pittsburgh hedge fund",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s23-1.webp",
+     "caption": "The vocabulary of probability, using one stock's daily move"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s23-2.webp",
+     "caption": "Kolmogorov's three axioms: everything else is consequence"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s23-3.webp",
+     "caption": "Disjoint or overlapping: can both events happen at once?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s23-4.webp",
+     "caption": "Why subtract the overlap: P(A) + P(B) counts the intersection twice"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s23-5.webp",
+     "caption": "A decision tree for which probability rule you need"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-19",
+   "week": 5,
+   "label": "Lesson 5.2",
+   "topic": "Conditional Probability and Bayes' Theorem",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s24-1.webp",
+     "caption": "Conditioning on B shrinks the world to B"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s24-2.webp",
+     "caption": "A contingency table of 1,000 historical trading days"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s24-3.webp",
+     "caption": "Bayes' theorem: posterior, likelihood, prior, evidence"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s24-4.webp",
+     "caption": "A fraud alert that catches 99% of fraud is right only 9% of the time at a 0.5% base rate"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s24-5.webp",
+     "caption": "The same fraud problem as a tree diagram"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-19",
+   "week": 5,
+   "label": "Lesson 5.3",
+   "topic": "Random Variables",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s25-1.webp",
+     "caption": "A random variable is a function from outcomes to numbers"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s25-2.webp",
+     "caption": "Three picks, eight outcomes, and X = 0, 1, 2, or 3 winners"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s25-3.webp",
+     "caption": "Reading a PMF: the number of winning picks out of three"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s25-4.webp",
+     "caption": "Reading a PDF: probability as area under the portfolio return curve"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s25-5.webp",
+     "caption": "Two pictures, one idea: discrete probability lives in bars, continuous in area"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-19",
+   "week": 5,
+   "label": "Lesson 5.4",
+   "topic": "Key Discrete Distributions",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s26-1.webp",
+     "caption": "Two questions: winners across ten picks, and compliance alerts per hour"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s26-2.webp",
+     "caption": "Check BINS before you reach for the binomial"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s26-3.webp",
+     "caption": "The shape of the binomial with n = 10 and p = 0.6"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s26-4.webp",
+     "caption": "The Poisson distribution, where the mean and the variance are both λ"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s26-5.webp",
+     "caption": "Bernoulli, binomial, or Poisson: which one to use"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-19",
+   "week": 5,
+   "label": "Lesson 5.5",
+   "topic": "Key Continuous Distributions",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s27-1.webp",
+     "caption": "How likely is tomorrow to lose more than 2%?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s27-2.webp",
+     "caption": "Uniform, exponential, and normal: three shapes to recognize"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s27-3.webp",
+     "caption": "The exponential distribution: waiting time between events"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s27-4.webp",
+     "caption": "The 68-95-99.7 rule applied to daily ETF returns"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s27-5.webp",
+     "caption": "A z-score turns a 2% loss into about 10 losing days a trading year"
+    }
+   ]
+  },
+  {
+   "date": "2026-08-11",
+   "week": 5,
+   "label": "Lesson 5.6",
+   "topic": "Expectation and Variance",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s28-1.webp",
+     "caption": "Is the strategy worth running? Payoff per trade is a random variable"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s28-2.webp",
+     "caption": "Expected payoff: $0.70K per trade"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s28-3.webp",
+     "caption": "What 0.70 means: never the outcome of one trade, always the long-run average"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s28-4.webp",
+     "caption": "Same mean, very different risk"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s28-5.webp",
+     "caption": "Variance rules a trading desk uses daily"
+    }
+   ]
+  },
+  {
+   "part": "Module 6: Introduction to Statistical Inference"
+  },
+  {
+   "date": "2026-05-25",
+   "week": 6,
+   "label": "Lesson 6.1",
+   "topic": "From Sample to Population",
+   "kind": "lecture",
+   "note": "Running case: Three Rivers Health Analytics, ER wait times",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s29-1.webp",
+     "caption": "Three Rivers Health: 220,000 ER visits, and a sample of 300"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s29-2.webp",
+     "caption": "Why sample at all: cost, time, infeasibility, destruction"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s29-3.webp",
+     "caption": "Sampling pitfalls, and the direction each one biases the estimate"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s29-4.webp",
+     "caption": "The sample standard deviation, and why we divide by n − 1"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s29-5.webp",
+     "caption": "Every random sample yields a slightly different x̄"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-25",
+   "week": 6,
+   "label": "Lesson 6.2",
+   "topic": "Sampling Distributions and the Central Limit Theorem",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s30-1.webp",
+     "caption": "How spread out are the sample means across imaginary repeats?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s30-2.webp",
+     "caption": "Simulating 1,000 repeats of the ER study"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s30-3.webp",
+     "caption": "The Central Limit Theorem as three claims and a bonus"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s30-4.webp",
+     "caption": "Diminishing returns: to halve the standard error, quadruple the sample"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s30-5.webp",
+     "caption": "How large is large enough depends on how skewed the population is"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-25",
+   "week": 6,
+   "label": "Lesson 6.3",
+   "topic": "Confidence Intervals",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s31-1.webp",
+     "caption": "Point estimate versus interval estimate: 47 minutes, or 44.96 to 49.04"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s31-2.webp",
+     "caption": "Critical z* values worth memorizing"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s31-3.webp",
+     "caption": "With s and t instead of σ and z, the interval barely moves at n = 300"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s31-4.webp",
+     "caption": "What 95% confident means: about 19 of 20 intervals cover the true mean"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s31-5.webp",
+     "caption": "Watch the wording: the 95% describes the procedure, not μ"
+    }
+   ]
+  },
+  {
+   "date": "2026-05-25",
+   "week": 6,
+   "label": "Lesson 6.4",
+   "topic": "Hypothesis Testing",
+   "kind": "lecture",
+   "slides": [
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s32-1.webp",
+     "caption": "Does Hospital A match the 50-minute national benchmark?"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s32-2.webp",
+     "caption": "Courtroom logic: assume H₀ until the evidence is overwhelming"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s32-3.webp",
+     "caption": "The test statistic counts how many standard errors the sample sits from H₀"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s32-4.webp",
+     "caption": "Visualizing a two-sided p-value of 0.0455"
+    },
+    {
+     "src": "assets/courses/msba-math-skills-workshop/s32-5.webp",
+     "caption": "Type I and Type II errors"
+    }
+   ]
+  }
+ ],
+ "assignments": [
+  {
+   "name": "Pause-and-try problems",
+   "description": "Every lesson stops at least once for a problem set in the running case, such as a new break-even point for the coffee shop or the standard error for a smaller hospital sample. Students pause, work it on paper, then watch the solution worked out by hand."
+  },
+  {
+   "name": "Module 4 hands-on practice",
+   "description": "A full lesson of five exercises on one week of Steel City Streaming data: center, spread, a histogram, a box plot, and a correlation, ending with a one-paragraph analyst's report for an executive."
+  },
+  {
+   "name": "Diagnostic pretest, module quizzes, and posttest",
+   "description": "The workshop is designed to open with a diagnostic pretest that shows each student which topics need the most work, give a short low-stakes quiz with immediate feedback at the end of each module, and close with a comprehensive posttest."
+  }
+ ],
+ "projects": []
+}
