@@ -65,6 +65,12 @@
   var tipTimer = null;
   window.addEventListener("scroll", hideTip, { passive: true });
   document.addEventListener("pointerdown", function () { hideTip(); });
+  // A mark can be redrawn under a resting pointer (fonts loading, a filter
+  // change), and then its pointerleave never fires. So the note also goes away
+  // the moment the mouse is over anything that is not a chart mark.
+  document.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "mouse" && !tip.hidden && !(e.target.closest && e.target.closest(".ev-hit"))) hideTip();
+  }, { passive: true });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideTip(); });
   function touchTip() { clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 2600); }
   function hit(svg, cx, cy, r, lines, label) {
