@@ -402,6 +402,28 @@ a.sticky:hover, a.sticky:focus-visible { transform: rotate(0) scale(1.03); color
   .bubble { right: 76px; bottom: 80px; font-size: 17px; max-width: 170px; }
   .bot.pos-bl .bubble { left: 76px; }
 }
+/* Visit 3: the robot walks along the bottom of the window carrying the
+   "Book a call" note it lifted out of the header. */
+.bot.walker { left: 0; right: auto; transform: translateX(var(--x, -200px)) translateY(18%); transition: transform var(--walk, 2.6s) linear; animation: none; }
+.bot.walker .bubble { right: auto; left: 168px; bottom: 96px; border-radius: 18px 18px 18px 4px; transform-origin: 0 100%; max-width: 250px; pointer-events: none; }
+.bot.walker.out-say .bubble { opacity: 1; transform: rotate(-3deg); transition-delay: .35s; }
+.bot.walking svg { animation: bot-step .42s ease-in-out infinite alternate; transform-origin: 50% 100%; }
+@keyframes bot-step { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-7px) rotate(3deg); } }
+.bot.holding .arm { transform: rotate(-58deg); transition: transform .3s ease; }
+.bot-sign { position: absolute; left: 50%; bottom: calc(100% - 4px); width: 166px; margin-left: -60px;
+  padding: 14px 14px 11px; background: var(--sticky); color: var(--ink); text-decoration: none;
+  font-family: var(--hand); font-weight: 700; font-size: 21px; line-height: 1.05; transform: rotate(-6deg) scale(.8); transform-origin: 50% 100%;
+  box-shadow: 0 1px 1px rgba(0,0,0,.15), 0 12px 18px -8px rgba(0,0,0,.45); pointer-events: auto; cursor: pointer; }
+.bot-sign small { display: block; font-family: var(--mono); font-weight: 400; font-size: 11.5px; margin-top: 6px; }
+.bot-sign:hover, .bot-sign:focus-visible { color: var(--ink); transform: rotate(-2deg) scale(.86); }
+.bot.walking .bot-sign { animation: sign-sway .42s ease-in-out infinite alternate; }
+@keyframes sign-sway { from { transform: rotate(-9deg) scale(.8); } to { transform: rotate(-3deg) scale(.8); } }
+.sign-fly { position: fixed; z-index: 61; margin: 0; right: auto; transition: transform .9s cubic-bezier(.4,0,.2,1); pointer-events: none; }
+.sticky-cta.lifted { opacity: 0; transition: opacity .2s ease; }
+@media (max-width: 760px) {
+  .bot.walker .bubble { left: 98px; bottom: 70px; max-width: 170px; }
+  .bot-sign { width: 130px; font-size: 17px; margin-left: -46px; padding: 10px 10px 8px; }
+}
 @media (prefers-reduced-motion: reduce) {
   .bot { display: none !important; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
