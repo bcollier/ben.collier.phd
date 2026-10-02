@@ -2619,14 +2619,26 @@ def build_evaluations():
     body += sec(9, "ev-words", "In their words", "What they wrote", f"""    <p class="prose">Comments from the evaluations, by course. They are anonymous and unedited apart from trimming for length. The full set, suggestions included, is what I read at the end of every mini.</p>
 {qhtml}""")
 
+    notes = ev.get("notes", [])
+    if notes:
+        rots = [-2.2, 1.6, -0.8, 2.4, -1.4, 0.9, -2.6, 1.2]
+        env = "".join(
+            f'<figure class="ev-note drop" style="--rot:{rots[i % 8]}deg;--d:{0.1 + 0.06 * i:.2f}s">'
+            f'<div class="ev-letter"><p>{esc(n["text"])}</p></div>'
+            f'<figcaption class="ev-env"><span class="ev-postmark" aria-hidden="true">{esc(n["year"])}</span>'
+            f'<span class="ev-from">from {"an" if n["role"][:1] in "AEIOUaeio" or n["role"].startswith(("MBA", "MSBA")) else "a"} {esc(n["role"])}</span></figcaption></figure>'
+            for i, n in enumerate(notes)
+        )
+        body += sec(10, "ev-notes", "Notes that arrived unasked", "In the inbox", f"""    <p class="prose">Evaluations are asked for. These were not: {ev["notes_total"]} emails and notes from students, alumni, executive education participants and colleagues, saved since 2013. A few of them, with names left off.</p>
+    <div class="ev-notes">{env}</div>""")
     er = ev["earlier"]
     er_n = sum(x["n"] for x in er)
     er_avg = sum(x["teaching"] * x["n"] for x in er) / er_n
-    body += sec(10, "ev-earlier", "Before Tepper", "Carnegie Mellon Qatar, 2012 to 2016", f"""    <p class="prose">My first faculty job was at Carnegie Mellon's campus in Doha, teaching undergraduates organizational behavior, negotiation, research methods, digital marketing and consulting: {len(er)} sections, {er_n} responses, an average teaching rating of {er_avg:.2f}.</p>
+    body += sec(11, "ev-earlier", "Before Tepper", "Carnegie Mellon Qatar, 2012 to 2016", f"""    <p class="prose">My first faculty job was at Carnegie Mellon's campus in Doha, teaching undergraduates organizational behavior, negotiation, research methods, digital marketing and consulting: {len(er)} sections, {er_n} responses, an average teaching rating of {er_avg:.2f}.</p>
     <figure class="ev-fig"><svg data-ev="earlier" role="img" aria-label="Overall teaching rating for every section taught at Carnegie Mellon Qatar, 2012 to 2016"></svg>
     <figcaption class="figcap">fig. 7 &middot; one dot per section, sized by responses</figcaption></figure>""")
 
-    body += sec(11, "ev-method", "Read with care", "How to read these numbers", """    <div class="prose">
+    body += sec(12, "ev-method", "Read with care", "How to read these numbers", """    <div class="prose">
       <p>Carnegie Mellon asks every student to rate ten items at the end of a course, from 1 (poor) to 5 (excellent). The two that matter most are the overall rating of the teaching and the overall rating of the course. I show the teaching rating unless you pick another item.</p>
       <p>Small sections swing more. A section with five respondents can move half a point on one person's view, so the dots are sized by responses and the lines are weighted by them. Response rates matter too: mine average above 75 percent, so these are most of the students, not the loudest.</p>
       <p>What is not here: the school's comparison averages, which are internal, and the critical comments in full. Those I keep and act on, and the biggest change they produced was recording every class and posting the videos.</p>

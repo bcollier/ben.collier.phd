@@ -1501,3 +1501,22 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
 .travel-first + .page-head { padding-top: 26px; }
 .travel-first + .page-head h1 { font-size: clamp(38px, 4.6vw, 64px); margin-bottom: 16px; }
 .travel-list { padding-top: 0; }
+/* evaluations: notes that arrived unasked, as letters tucked in envelopes */
+.ev-notes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 34px 26px; margin-top: 22px; max-width: 1180px; align-items: start; }
+.ev-note { position: relative; margin: 0; transform: rotate(var(--rot, -1deg)); transition: transform .3s cubic-bezier(.3,1.4,.5,1); }
+.ev-letter { position: relative; background: var(--card); padding: 18px 18px 52px; margin: 0 10px -40px;
+  background-image: repeating-linear-gradient(transparent 0 23px, rgba(64,120,168,.17) 23px 24px); background-position: 0 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.14); transition: transform .35s cubic-bezier(.3,1.5,.5,1); }
+.ev-letter p { font-family: var(--hand); font-size: 17px; line-height: 24px; color: var(--pen); margin: 0; }
+.ev-env { position: relative; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; min-height: 64px; padding: 26px 14px 10px;
+  background: #e9dcc0; box-shadow: 0 1px 2px rgba(0,0,0,.16), 0 14px 22px -14px rgba(0,0,0,.45);
+  background-image: linear-gradient(160deg, transparent 49.5%, rgba(29,38,51,.12) 50%, transparent 51%), linear-gradient(20deg, transparent 49.5%, rgba(29,38,51,.12) 50%, transparent 51%); }
+.ev-from { font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; color: var(--ink-2); line-height: 1.35; }
+.ev-postmark { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--red); color: var(--red); display: grid; place-items: center;
+  font-family: var(--mono); font-size: 12px; font-weight: 600; transform: rotate(-14deg); opacity: .8; margin-top: -40px; background: rgba(255,255,255,.25); }
+@media (hover: hover) {
+  .ev-note:hover { transform: rotate(0deg); z-index: 2; }
+  .ev-note:hover .ev-letter { transform: translateY(-14px); }
+}
+@media (max-width: 1100px) { .ev-notes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .ev-notes { grid-template-columns: 1fr; } }
