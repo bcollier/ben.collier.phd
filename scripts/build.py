@@ -2570,21 +2570,21 @@ def build_evaluations():
       <label class="lab" for="ev-item" style="margin-left:14px">Item</label><select id="ev-item">{opts}</select>
     </div>
     <figure class="ev-fig"><svg data-ev="timeline" role="img" aria-label="Overall teaching rating for every section since Fall 2023, rising from below 4 to near 5"></svg>
-    <figcaption class="figcap">fig. 1 &middot; one dot per section, sized by responses; the axis is the full scale, 1 (poor) to 5 (excellent)</figcaption></figure>
+    <figcaption class="figcap">fig. 1 &middot; one dot per section, sized by responses; the axis starts at zero; ratings run from 1 (poor) to 5 (excellent)</figcaption></figure>
 {table}""")
 
     body += sec(4, "ev-courses", "By course", "Course by course", """    <p class="prose">Each course on its own line: every section as a dot, and the response-weighted average circled in pen. The program filter above applies here too.</p>
     <figure class="ev-fig"><svg data-ev="courses" role="img" aria-label="Average rating by course, with every section shown as a dot"></svg>
-    <figcaption class="figcap">fig. 2 &middot; courses sorted by average rating on the full 1 to 5 scale; the circle is the mean across sections</figcaption></figure>""")
+    <figcaption class="figcap">fig. 2 &middot; courses sorted by average rating, axis from zero; the circle is the mean across sections</figcaption></figure>""")
 
     body += sec(5, "ev-again", "Taught again, rated higher", "The second time around", """    <p class="prose">The courses I have taught three times or more. Each one got better as I rebuilt it: Data Mining moved from R to Python and a lab-first format, Data Visualization narrowed to one tool, Tableau, taught properly.</p>
     <div class="ev-multiples" data-ev-multiples></div>
-    <p class="figcap">fig. 3 &middot; the line is the term average; dots are sections</p>""")
+    <p class="figcap">fig. 3 &middot; the line is the term average; dots are sections; the axis starts at zero</p>""")
 
     body += sec(6, "ev-items", "Item by item", "Where the change came from", f"""    <p class="prose">The evaluation asks nine questions. Gray is my first year, {esc(terms[0])} to {esc(terms[1])}. Blue is the latest, {esc(terms[-3])} to {esc(terms[-1])}. Every item moved the same direction.</p>
     <div class="ev-legend"><span><i class="round" style="--c:#9aa3ad"></i>2023 to 2024, {sum(x["n"] for x in first)} responses</span><span><i class="round" style="--c:#2447a6"></i>2025 to 2026, {sum(x["n"] for x in last)} responses</span></div>
     <figure class="ev-fig"><svg data-ev="dumbbell" role="img" aria-label="Each evaluation item, first year against the latest year"></svg>
-    <figcaption class="figcap">fig. 4 &middot; response-weighted averages on the full 1 to 5 scale</figcaption></figure>""")
+    <figcaption class="figcap">fig. 4 &middot; response-weighted averages; the axis starts at zero</figcaption></figure>""")
 
     body += sec(7, "ev-excellent", "Rated excellent", "How many picked the top box", """    <p class="prose">For the Data Visualization sections I have the full distribution, not just the mean. In Spring 2026, nine in ten students rated the teaching excellent, and nobody rated it below average.</p>
     <div class="ev-legend"><span><i style="--c:#2447a6"></i>excellent</span><span><i style="--c:#9bb5e6"></i>above average</span><span><i style="--c:#ddd6c6"></i>average</span></div>
@@ -2640,7 +2640,7 @@ def build_evaluations():
     er_avg = sum(x["teaching"] * x["n"] for x in er) / er_n
     body += sec(11, "ev-earlier", "Before Tepper", "Carnegie Mellon Qatar, 2012 to 2016", f"""    <p class="prose">My first faculty job was at Carnegie Mellon's campus in Doha, teaching undergraduates organizational behavior, negotiation, research methods, digital marketing and consulting: {len(er)} sections, {er_n} responses, an average teaching rating of {er_avg:.2f}.</p>
     <figure class="ev-fig"><svg data-ev="earlier" role="img" aria-label="Overall teaching rating for every section taught at Carnegie Mellon Qatar, 2012 to 2016"></svg>
-    <figcaption class="figcap">fig. 7 &middot; one dot per section, sized by responses</figcaption></figure>""")
+    <figcaption class="figcap">fig. 7 &middot; one dot per section, sized by responses; the axis starts at zero</figcaption></figure>""")
 
     body += sec(12, "ev-method", "Read with care", "How to read these numbers", """    <div class="prose">
       <p>Carnegie Mellon asks every student to rate ten items at the end of a course, from 1 (poor) to 5 (excellent). The two that matter most are the overall rating of the teaching and the overall rating of the course. I show the teaching rating unless you pick another item.</p>

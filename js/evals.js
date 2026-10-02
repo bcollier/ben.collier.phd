@@ -88,7 +88,7 @@
     var L = 44, R = 16, T = 22, B = narrow ? 54 : 46;
     svgFor(svg, W, H); NB.seed(11);
     var list = visible(), terms = uniq(SECS.map(function (s) { return s.term; }));
-    var lo = 1, hi = 5;
+    var lo = 0, hi = 5;
     list.forEach(function (s) { if (val(s) < lo) lo = Math.floor(val(s) * 2) / 2; });
     function X(i) { return L + 18 + (i / Math.max(1, terms.length - 1)) * (W - L - R - 36); }
     function Y(v) { return T + (hi - v) / (hi - lo) * (H - T - B); }
@@ -147,7 +147,7 @@
     var rowH = narrow ? 58 : 44, L = narrow ? 16 : 300, R = 60, T = narrow ? 8 : 30, labelTop = narrow ? 16 : 0;
     var H = T + rows.length * rowH + 30;
     svgFor(svg, W, H); NB.seed(23);
-    var lo = 1, hi = 5;
+    var lo = 0, hi = 5;
     list.forEach(function (s) { if (val(s) < lo) lo = Math.floor(val(s) * 2) / 2; });
     function X(v) { return L + (v - lo) / (hi - lo) * (W - L - R); }
     for (var v = lo; v <= hi + 0.001; v += 1) {
@@ -183,7 +183,7 @@
       var svg = document.createElementNS(NS, "svg"); fig.appendChild(svg); wrap.appendChild(fig);
       var W = Math.max(260, fig.clientWidth), H = 220, L = 36, R = 44, T = 26, B = 40;
       svgFor(svg, W, H); NB.seed(31 + ci);
-      var lo = 1, hi = 5;
+      var lo = 0, hi = 5;
       inC.forEach(function (s) { if (val(s) < lo) lo = Math.floor(val(s) * 2) / 2; });
       function X(i) { return L + 12 + (i / Math.max(1, terms.length - 1)) * (W - L - R - 24); }
       function Y(v) { return T + (hi - v) / (hi - lo) * (H - T - B); }
@@ -200,7 +200,7 @@
       var first = pts[0][1], last = pts[pts.length - 1][1];
       var d = wmean(inC.filter(function (s) { return s.term === terms[terms.length - 1]; }), val) - wmean(inC.filter(function (s) { return s.term === terms[0]; }), val);
       kalam(svg, pts[pts.length - 1][0] + 8, last + 5, fmt(wmean(inC.filter(function (s) { return s.term === terms[terms.length - 1]; }), val)), { font: "700 15px Kalam, cursive", color: "#1d2633", d: 1.3 });
-      kalam(svg, pts[0][0] - 2, first - 12, (d >= 0 ? "+" : "") + fmt(d, 1) + " since " + terms[0].replace(/(\w+) 20(\d\d)/, "$1 '$2"), { font: "400 13px Kalam, cursive", color: "#b8352a", d: 1.5 });
+      kalam(svg, pts[0][0] - 2, first + 30, (d >= 0 ? "+" : "") + fmt(d, 1) + " since " + terms[0].replace(/(\w+) 20(\d\d)/, "$1 '$2"), { font: "400 13px Kalam, cursive", color: "#b8352a", d: 1.5 });
       NB.measure(svg);
     });
   }
@@ -210,7 +210,7 @@
     var W = Math.max(320, svg.parentNode.clientWidth), narrow = W < 640;
     var first = SECS.filter(function (s) { return s.t < 2024.5; }), latest = SECS.filter(function (s) { return s.t >= 2025.5; });
     var keys = Object.keys(ITEMS), rowH = narrow ? 52 : 40, L = narrow ? 16 : 250, R = 52, T = 26;
-    var H = T + keys.length * rowH + 28, lo = 1, hi = 5;
+    var H = T + keys.length * rowH + 28, lo = 0, hi = 5;
     svgFor(svg, W, H); NB.seed(41);
     function X(v) { return L + (v - lo) / (hi - lo) * (W - L - R); }
     for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, X(v), T - 6, X(v), H - 22); mono(svg, X(v), H - 6, v.toFixed(0), { anchor: "middle", size: 11.5 }); }
@@ -294,7 +294,7 @@
     var W = Math.max(320, svg.parentNode.clientWidth), narrow = W < 640, H = narrow ? 260 : 300, rows = D.earlier;
     var L = 44, R = 16, T = 20, B = 44, terms = uniq(rows.map(function (s) { return s.term; }));
     svgFor(svg, W, H); NB.seed(79);
-    var lo = 1, hi = 5;
+    var lo = 0, hi = 5;
     function X(i) { return L + 16 + (i / Math.max(1, terms.length - 1)) * (W - L - R - 32); }
     function Y(v) { return T + (hi - v) / (hi - lo) * (H - T - B); }
     for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, L, Y(v), W - R, Y(v)); mono(svg, L - 8, Y(v) + 4, v.toFixed(0), { anchor: "end", size: 11.5 }); }
