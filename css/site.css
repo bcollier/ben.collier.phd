@@ -1601,3 +1601,54 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
 @keyframes phd-nudge { 0%, 100% { transform: rotate(-9deg); } 35% { transform: rotate(-3deg) translateY(-.06em); } 70% { transform: rotate(-12deg); } }
 .hero h1:hover .phd { animation: phd-nudge .5s ease-in-out; }
 @media (prefers-reduced-motion: reduce) { .phd, .phd i, .phd-caret path { animation: none !important; } }
+
+/* ---- Reels (/reels/): two taped projector prints, played by js/reels.js ---- */
+.reels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px; align-items: start; margin-top: 8px; }
+.reel { position: relative; margin: 0; background: var(--card); border: 1.5px solid var(--ink); padding: 14px 14px 12px;
+  transform: rotate(var(--rot, 0deg)); box-shadow: 4px 5px 0 rgba(29, 38, 51, .12); min-width: 0; }
+.reel .tape.tc { top: -14px; }
+.reel-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 2px 2px 10px; }
+.reel-title h2 { font-family: var(--serif-d); font-size: clamp(22px, 2.4vw, 28px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.reel-count { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.reel-stage { position: relative; width: 100%; max-width: 100%; aspect-ratio: 4 / 5; max-height: 78vh; margin: 0 auto;
+  background: var(--bench); overflow: hidden; outline-offset: 3px; }
+.reel-stage:focus-visible { outline: 3px solid var(--pen); }
+.reel-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0;
+  transform-origin: 50% 40%; will-change: opacity, transform;
+  transition: opacity .35s ease, transform 1.7s linear; }
+.reel-img.on { opacity: 1; }
+.reel-img:not([src]) { visibility: hidden; }
+.reel-place { position: absolute; left: 12px; bottom: 14px; z-index: 2; max-width: calc(100% - 24px);
+  font: 400 19px/1.15 var(--hand); color: var(--ink); background: var(--legal); padding: 5px 12px 4px;
+  transform: rotate(-2deg); box-shadow: 0 2px 5px rgba(0, 0, 0, .25); }
+.reel-place::before { content: ""; position: absolute; top: -9px; left: 50%; width: 46px; height: 16px; margin-left: -23px;
+  background: var(--tape); transform: rotate(4deg); }
+.reel-play { position: absolute; left: 50%; top: 50%; z-index: 3; transform: translate(-50%, -50%) rotate(-2deg);
+  display: flex; align-items: center; gap: 8px; padding: 12px 22px 12px 16px; cursor: pointer;
+  font: 400 24px var(--hand); color: var(--ink); background: var(--card); border: 2px solid var(--ink);
+  border-radius: 18px 6px 16px 6px / 6px 16px 6px 18px; box-shadow: 4px 5px 0 rgba(0, 0, 0, .3); transition: transform .15s ease; }
+.reel-play[hidden] { display: none; }
+.reel-play svg { width: 30px; height: 30px; fill: var(--red); }
+.reel-play:hover { transform: translate(-50%, -50%) rotate(-2deg) scale(1.05); }
+.reel-play:focus-visible { outline: 3px solid var(--pen); outline-offset: 3px; }
+.reel-bar { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+.reel-btn { font: 600 12px var(--mono); letter-spacing: .04em; color: var(--ink); background: var(--card); cursor: pointer;
+  border: 1.5px solid var(--ink); border-radius: 10px 3px 9px 3px / 3px 9px 3px 10px; padding: 6px 10px 5px; min-height: 32px; white-space: nowrap; }
+.reel-btn:disabled { opacity: .45; cursor: default; }
+.reel-btn:focus-visible { outline: 3px solid var(--pen); outline-offset: 2px; }
+.reel-mute[aria-pressed="true"] { color: var(--red); border-color: var(--red); }
+.reel-track { flex: 1; min-width: 40px; height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.reel-fill { display: block; width: 0; height: 100%; background: var(--red); transition: width .3s linear; }
+.reel-counter { font: 500 12px var(--mono); color: var(--ink-2); font-variant-numeric: tabular-nums; min-width: 7ch; text-align: right; }
+.reel-credit { font: 12px/1.5 var(--mono); color: var(--ink-2); margin-top: 26px; max-width: 70ch; }
+.reel-credit a { color: inherit; }
+@media (max-width: 760px) {
+  .reels { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .reel { padding: 10px 10px 10px; }
+  .reel-place { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel { transform: none; }
+  .reel-img { transition: opacity .4s ease !important; transform: none !important; }
+  .reel-play, .reel-play:hover { transform: translate(-50%, -50%); }
+}

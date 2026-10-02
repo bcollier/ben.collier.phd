@@ -481,6 +481,7 @@ NAV = [
     ("strengths/", "strengths", "strengths", "#ffd2a8"),
     ("talks/", "talks", "talks", "#8ed3c7"),
     ("travel/", "travel", "travel", "#c9dd92"),
+    ("reels/", "reels", "reels", "#b8d8f0"),
     ("news/", "news", "news", "#f5b5c8"),
     ("contact/", "contact", "contact", "#e9dfc4"),
 ]
@@ -498,7 +499,7 @@ ARM = ('<script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("
 
 
 # The "Subject" field at the top of each notebook page. Pages not listed use the default.
-SUBJECTS = {"travel": "places I have been", "strengths": "how I work", "cv": "my career so far"}
+SUBJECTS = {"travel": "places I have been", "reels": "me, over the years", "strengths": "how I work", "cv": "my career so far"}
 
 
 def sheet_head(root: str, crumbs, active: str = "") -> str:
@@ -2823,6 +2824,62 @@ def build_travel():
     )
 
 
+def build_reels():
+    """Two photo reels of me, made by scripts/make_reels.py from my own Photos
+    library. The page lists the images; js/reels.js plays them as a slideshow."""
+    data = load_json("reels.json")
+    reels = [r for r in data["reels"] if r["items"]]
+    if not reels:
+        return
+    music = data.get("music") or {}
+    places = {i["place"] for r in reels for i in r["items"] if i["place"]}
+    cards = []
+    for k, r in enumerate(reels):
+        items = r["items"]
+        poster = items[-1]
+        rot = (-0.8, 0.9)[k % 2]
+        cards.append(f"""
+    <figure class="reel" data-reel="{esc(r["id"])}" style="--rot:{rot}deg">
+      <span class="tape tc" aria-hidden="true"></span>
+      <figcaption class="reel-title"><h2 id="reel-{esc(r["id"])}">{esc(r["title"])}</h2><span class="reel-count">{len(items)} photos</span></figcaption>
+      <div class="reel-stage" tabindex="0" role="group" aria-labelledby="reel-{esc(r["id"])}" aria-roledescription="slideshow">
+        <img class="reel-img on" src="../{esc(poster["src"])}" width="{poster["w"]}" height="{poster["h"]}" alt="Poster frame for {esc(r["title"])}" decoding="async">
+        <img class="reel-img" alt="" decoding="async">
+        <span class="reel-place" hidden></span>
+        <button type="button" class="reel-play" aria-label="Play {esc(r["title"])}"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 10 L31 20 L14 30 Z"/></svg><span>play</span></button>
+      </div>
+      <div class="reel-bar">
+        <button type="button" class="reel-btn reel-toggle" aria-label="Play" disabled>play</button>
+        <span class="reel-track" aria-hidden="true"><span class="reel-fill"></span></span>
+        <span class="reel-counter" aria-live="off">0 / {len(items)}</span>
+        <button type="button" class="reel-btn reel-mute" aria-pressed="false" aria-label="Mute music">sound on</button>
+      </div>
+    </figure>""")
+    years = "2000 to 2026"
+    head = page_head("Reels", "Me, over the years",
+                     f"Two short reels from my own photo library, {years}: one of me at work, one of me everywhere else. "
+                     f"{sum(len(r['items']) for r in reels)} photos from {len(places)} places, oldest first. "
+                     "Every photo is cropped so I am the only person in it.")
+    credit = ""
+    if music:
+        credit = (f'<p class="reel-credit">Music: “{esc(music["title"])}” by {esc(music["artist"])}, from '
+                  f'<a href="{esc(music["source_url"])}">{esc(music["album"])}</a>. '
+                  f'<a href="{esc(music["license_url"])}">{esc(music["license"])}</a>. Sound starts only when you press play.</p>')
+    blob = json.dumps({"reels": [{"id": r["id"], "items": r["items"]} for r in reels],
+                       "music": ("../" + music["src"]) if music else ""}, ensure_ascii=False).replace("</", "<\\/")
+    body = f"""{head}
+  <section class="sec reels-sec" aria-label="Photo reels">
+    <div class="reels">{"".join(cards)}
+    </div>
+    {credit}
+    <script type="application/json" id="reels-data">{blob}</script>
+  </section>
+"""
+    write("reels/index.html",
+          page("../", "reels", "Reels · Ben Collier", "Two short photo reels of me, 2000 to 2026.", "reels/", body,
+               scripts='\n<script src="../js/reels.js" defer></script>'))
+
+
 def build_404():
     body = page_head("Error 404", "Page not found", "That URL is not on this site.",
                      '<p class="links-404"><a class="go" href="./">Home</a> <a class="go" href="./courses/">Courses</a> <a class="go" href="./projects/">Coding with AI Projects</a> <a class="go" href="./cv/">CV</a></p>'
@@ -2835,7 +2892,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/", "travel/", "strengths/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
@@ -2913,6 +2970,7 @@ def main():
     build_talks()
     build_contact()
     build_travel()
+    build_reels()
     build_strengths()
     build_evaluations()
     build_404()

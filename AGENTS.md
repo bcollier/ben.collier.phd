@@ -71,6 +71,7 @@ committed, so what is in the repo is exactly what is served.
 | `js/course-schedule.js` | The schedule "projector" on course pages: shows the slides of the session in view. |
 | `js/notebook.js` | The field-notebook drawing on every page: hand-drawn charts and underlines, scroll-in reveals, slide piles, the home portrait that docks into the header, and the robot's three visits (hi at 6.5s, thanks at 30s, and at 90s a walk across the screen carrying the Book a call note). Pages read fully without it. |
 | `data/evaluations.json` | Ben's own course-evaluation numbers and chosen quotes for `/evaluations/`, drawn by `js/evals.js`. Generated from a private ingest outside this repo; it holds no school comparison averages and no colleague data. Never add either. |
+| `data/reels.json`, `assets/reels/` | The two photo reels on `/reels/`, written by `scripts/make_reels.py` (Ben's Mac only; reads Apple Photos read-only). Never hand-add a photo with another person's face in it, never blur instead of skipping, and never add dates, coordinates or names to `reels.json`. Hand fixes go in `scripts/reels_overrides.json`. `js/reels.js` plays them. |
 | `data/linkedin.json` | Imported LinkedIn posts. Read at runtime by `js/site.js`. |
 | `css/site.css` | All styles: the field-notebook design for every page, including the CV's print stylesheet. |
 | `js/config.js` | Calendly URL and other site config. |
