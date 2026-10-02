@@ -1017,7 +1017,7 @@ def build_home():
       <p class="stamp thunk" style="--d:.15s">Assistant Teaching Professor of Business Analytics</p>
       <h1 id="hero-title">Ben Collier</h1>
       <p class="lede">I teach <mark style="--d:.5s">AI and business analytics</mark> at Carnegie Mellon's Tepper School, and help companies <span class="u u2" data-d="1.2">put them to work</span>.</p>
-      <p class="hero-more">The courses are hands-on. Students write Python, reason about uncertainty, and decide what a model should and should not be used for once it leaves the <span class="circ" data-d="1.7">notebook</span>.</p>
+      <p class="hero-more">My students learn to build with AI, and to <span class="u" data-d="1.7">doubt it</span>: they compare the models, question the headline number, and defend the call.</p>
       <div class="cta-row">
         {sticky("book/", 'Book a free <span class="nw">15-minute call &rarr;</span>', rot=-3, d=1)}
         <a class="go" href="consult/">Consulting and custom education</a>
