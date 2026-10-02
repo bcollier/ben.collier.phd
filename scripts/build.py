@@ -2786,7 +2786,7 @@ def build_travel():
     # The map comes first so it is on screen without scrolling; the title and
     # the note on how to use it sit underneath.
     head = page_head("Travel", "Places I have been",
-                     f"{len(places)} countries so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.")
+                     f"{len(places)} countries and {sum(len(p.get('cities', [])) for p in places)} US cities so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.")
     body = f"""
   <section class="sec travel-sec travel-first" aria-label="Map of places visited">
     <div class="view-tabs" role="tablist" aria-label="Map or globe">

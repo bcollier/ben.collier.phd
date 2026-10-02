@@ -1549,3 +1549,11 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
   .tabs a { font-size: 12px; padding: 8px 7px 12px; }
   .tabs a[aria-current="page"]::after { left: 7px; right: 7px; }
 }
+
+/* US city dots: same red as the countries, smaller, drawn above the US. */
+.m-city .core, .g-city .core { stroke-width: 1.1; }
+.m-city .m-label { font-size: 10px; }
+.mp-sub { font: 500 11px var(--mono, ui-monospace, monospace); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin: 10px 0 4px; }
+.mp-cities { display: flex; flex-wrap: wrap; gap: 4px; max-height: 8.5rem; overflow-y: auto; }
+.mp-cities button { font: 12px var(--mono, ui-monospace, monospace); padding: 2px 7px; border: 1px solid var(--line, #d9cfba); border-radius: 999px; background: var(--card, #fff); color: var(--ink); cursor: pointer; }
+.mp-cities button:hover, .mp-cities button:focus-visible { border-color: var(--accent); color: var(--accent-ink); }

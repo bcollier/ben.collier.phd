@@ -83,6 +83,1793 @@
      "w": 1024,
      "h": 768
     }
+   ],
+   "cities": [
+    {
+     "slug": "pittsburgh-pa",
+     "name": "Pittsburgh",
+     "state": "PA",
+     "lat": 40.4399,
+     "lon": -79.9757,
+     "years": [
+      "2011",
+      "2026"
+     ],
+     "count": 6706,
+     "photos": [
+      {
+       "src": "assets/travel/us-pittsburgh-pa-1.webp",
+       "place": "Pittsburgh",
+       "date": "2013-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-pittsburgh-pa-2.webp",
+       "place": "Pittsburgh",
+       "date": "2021-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-pittsburgh-pa-3.webp",
+       "place": "Pittsburgh",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-pittsburgh-pa-4.webp",
+       "place": "Pittsburgh",
+       "date": "2025-03",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "madison-wi",
+     "name": "Madison",
+     "state": "WI",
+     "lat": 43.0878,
+     "lon": -89.4299,
+     "years": [
+      "2012",
+      "2025"
+     ],
+     "count": 596,
+     "photos": [
+      {
+       "src": "assets/travel/us-madison-wi-1.webp",
+       "place": "Madison",
+       "date": "2013-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-madison-wi-2.webp",
+       "place": "Madison",
+       "date": "2014-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-madison-wi-3.webp",
+       "place": "Madison",
+       "date": "2015-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-madison-wi-4.webp",
+       "place": "Madison",
+       "date": "2018-07",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "anaheim-ca",
+     "name": "Anaheim",
+     "state": "CA",
+     "lat": 33.8555,
+     "lon": -117.7587,
+     "years": [
+      "2013",
+      "2016"
+     ],
+     "count": 417,
+     "photos": [
+      {
+       "src": "assets/travel/us-anaheim-ca-1.webp",
+       "place": "Anaheim",
+       "date": "2013-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-anaheim-ca-2.webp",
+       "place": "Anaheim",
+       "date": "2013-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "grand-rapids-mi",
+     "name": "Grand Rapids",
+     "state": "MI",
+     "lat": 42.9612,
+     "lon": -85.6556,
+     "years": [
+      "2013",
+      "2023"
+     ],
+     "count": 363,
+     "photos": [
+      {
+       "src": "assets/travel/us-grand-rapids-mi-1.webp",
+       "place": "Grand Rapids",
+       "date": "2019-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "ohiopyle-pa",
+     "name": "Ohiopyle",
+     "state": "PA",
+     "lat": 39.8641,
+     "lon": -79.4947,
+     "years": [
+      "2015",
+      "2025"
+     ],
+     "count": 284,
+     "photos": [
+      {
+       "src": "assets/travel/us-ohiopyle-pa-1.webp",
+       "place": "Ohiopyle",
+       "date": "2015-08",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-ohiopyle-pa-2.webp",
+       "place": "Ohiopyle",
+       "date": "2022-07",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-ohiopyle-pa-3.webp",
+       "place": "Ohiopyle",
+       "date": "2024-08",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "washington-dc",
+     "name": "Washington",
+     "state": "DC",
+     "lat": 38.9042,
+     "lon": -77.0165,
+     "years": [
+      "2013",
+      "2024"
+     ],
+     "count": 273,
+     "photos": [
+      {
+       "src": "assets/travel/us-washington-dc-1.webp",
+       "place": "Washington",
+       "date": "2013-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-washington-dc-2.webp",
+       "place": "Washington",
+       "date": "2015-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-washington-dc-3.webp",
+       "place": "Washington",
+       "date": "2024-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "boone-nc",
+     "name": "Boone",
+     "state": "NC",
+     "lat": 36.2138,
+     "lon": -81.6652,
+     "years": [
+      "2018",
+      "2018"
+     ],
+     "count": 239,
+     "photos": [
+      {
+       "src": "assets/travel/us-boone-nc-1.webp",
+       "place": "Boone",
+       "date": "2018-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-boone-nc-2.webp",
+       "place": "Boone",
+       "date": "2018-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-boone-nc-3.webp",
+       "place": "Boone",
+       "date": "2018-07",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-boone-nc-4.webp",
+       "place": "Boone",
+       "date": "2018-07",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "milwaukee-wi",
+     "name": "Milwaukee",
+     "state": "WI",
+     "lat": 43.0633,
+     "lon": -87.9667,
+     "years": [
+      "2013",
+      "2026"
+     ],
+     "count": 233,
+     "photos": [
+      {
+       "src": "assets/travel/us-milwaukee-wi-1.webp",
+       "place": "Milwaukee",
+       "date": "2013-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-milwaukee-wi-2.webp",
+       "place": "Milwaukee",
+       "date": "2026-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-milwaukee-wi-3.webp",
+       "place": "Milwaukee",
+       "date": "2026-07",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "ligonier-pa",
+     "name": "Ligonier",
+     "state": "PA",
+     "lat": 40.2449,
+     "lon": -79.2375,
+     "years": [
+      "2015",
+      "2025"
+     ],
+     "count": 217,
+     "photos": [
+      {
+       "src": "assets/travel/us-ligonier-pa-1.webp",
+       "place": "Ligonier",
+       "date": "2016-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-ligonier-pa-2.webp",
+       "place": "Ligonier",
+       "date": "2016-10",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-ligonier-pa-3.webp",
+       "place": "Ligonier",
+       "date": "2025-04",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "san-francisco-ca",
+     "name": "San Francisco",
+     "state": "CA",
+     "lat": 37.7272,
+     "lon": -123.0322,
+     "years": [
+      "2018",
+      "2023"
+     ],
+     "count": 214,
+     "photos": [
+      {
+       "src": "assets/travel/us-san-francisco-ca-1.webp",
+       "place": "San Francisco",
+       "date": "2018-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-san-francisco-ca-2.webp",
+       "place": "San Francisco",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-san-francisco-ca-3.webp",
+       "place": "San Francisco",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-san-francisco-ca-4.webp",
+       "place": "San Francisco",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "newport-beach-ca",
+     "name": "Newport Beach",
+     "state": "CA",
+     "lat": 33.5973,
+     "lon": -117.8904,
+     "years": [
+      "2013",
+      "2013"
+     ],
+     "count": 183,
+     "photos": [
+      {
+       "src": "assets/travel/us-newport-beach-ca-1.webp",
+       "place": "Newport Beach",
+       "date": "2013-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-newport-beach-ca-2.webp",
+       "place": "Newport Beach",
+       "date": "2013-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-newport-beach-ca-3.webp",
+       "place": "Newport Beach",
+       "date": "2013-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-newport-beach-ca-4.webp",
+       "place": "Newport Beach",
+       "date": "2013-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "chicago-il",
+     "name": "Chicago",
+     "state": "IL",
+     "lat": 41.837,
+     "lon": -87.6849,
+     "years": [
+      "2013",
+      "2026"
+     ],
+     "count": 182,
+     "photos": [
+      {
+       "src": "assets/travel/us-chicago-il-1.webp",
+       "place": "Chicago",
+       "date": "2025-07",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "new-york-ny",
+     "name": "New York",
+     "state": "NY",
+     "lat": 40.6627,
+     "lon": -73.9387,
+     "years": [
+      "2018",
+      "2025"
+     ],
+     "count": 170,
+     "photos": [
+      {
+       "src": "assets/travel/us-new-york-ny-1.webp",
+       "place": "New York",
+       "date": "2019-03",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-new-york-ny-2.webp",
+       "place": "New York",
+       "date": "2025-04",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-new-york-ny-3.webp",
+       "place": "New York",
+       "date": "2025-04",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-new-york-ny-4.webp",
+       "place": "New York",
+       "date": "2025-04",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "somerset-pa",
+     "name": "Somerset",
+     "state": "PA",
+     "lat": 40.005,
+     "lon": -79.0779,
+     "years": [
+      "2020",
+      "2025"
+     ],
+     "count": 122,
+     "photos": [
+      {
+       "src": "assets/travel/us-somerset-pa-1.webp",
+       "place": "Somerset",
+       "date": "2022-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-somerset-pa-2.webp",
+       "place": "Somerset",
+       "date": "2022-11",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-somerset-pa-3.webp",
+       "place": "Somerset",
+       "date": "2023-02",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-somerset-pa-4.webp",
+       "place": "Somerset",
+       "date": "2023-11",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "the-sea-ranch-ca",
+     "name": "The Sea Ranch",
+     "state": "CA",
+     "lat": 38.7253,
+     "lon": -123.4583,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 119,
+     "photos": [
+      {
+       "src": "assets/travel/us-the-sea-ranch-ca-1.webp",
+       "place": "The Sea Ranch",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-the-sea-ranch-ca-2.webp",
+       "place": "The Sea Ranch",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-the-sea-ranch-ca-3.webp",
+       "place": "The Sea Ranch",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-the-sea-ranch-ca-4.webp",
+       "place": "The Sea Ranch",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 310
+      }
+     ]
+    },
+    {
+     "slug": "trinidad-ca",
+     "name": "Trinidad",
+     "state": "CA",
+     "lat": 41.0577,
+     "lon": -124.1433,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 116,
+     "photos": [
+      {
+       "src": "assets/travel/us-trinidad-ca-1.webp",
+       "place": "Trinidad",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-trinidad-ca-2.webp",
+       "place": "Trinidad",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-trinidad-ca-3.webp",
+       "place": "Trinidad",
+       "date": "2023-06",
+       "w": 576,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-trinidad-ca-4.webp",
+       "place": "Trinidad",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "sinks-grove-wv",
+     "name": "Sinks Grove",
+     "state": "WV",
+     "lat": 37.6643,
+     "lon": -80.5409,
+     "years": [
+      "2020",
+      "2020"
+     ],
+     "count": 113,
+     "photos": [
+      {
+       "src": "assets/travel/us-sinks-grove-wv-1.webp",
+       "place": "Sinks Grove",
+       "date": "2020-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-sinks-grove-wv-2.webp",
+       "place": "Sinks Grove",
+       "date": "2020-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-sinks-grove-wv-3.webp",
+       "place": "Sinks Grove",
+       "date": "2020-07",
+       "w": 886,
+       "h": 886
+      }
+     ]
+    },
+    {
+     "slug": "miami-fl",
+     "name": "Miami",
+     "state": "FL",
+     "lat": 25.7752,
+     "lon": -80.2086,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 112,
+     "photos": [
+      {
+       "src": "assets/travel/us-miami-fl-1.webp",
+       "place": "Miami",
+       "date": "2024-01",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-miami-fl-2.webp",
+       "place": "Miami",
+       "date": "2024-01",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-miami-fl-3.webp",
+       "place": "Miami",
+       "date": "2024-01",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "spring-green-wi",
+     "name": "Spring Green",
+     "state": "WI",
+     "lat": 43.1776,
+     "lon": -90.0688,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 103,
+     "photos": [
+      {
+       "src": "assets/travel/us-spring-green-wi-1.webp",
+       "place": "Spring Green",
+       "date": "2024-08",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-spring-green-wi-2.webp",
+       "place": "Spring Green",
+       "date": "2024-08",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-spring-green-wi-3.webp",
+       "place": "Spring Green",
+       "date": "2024-08",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "ann-arbor-mi",
+     "name": "Ann Arbor",
+     "state": "MI",
+     "lat": 42.2761,
+     "lon": -83.7309,
+     "years": [
+      "2023",
+      "2024"
+     ],
+     "count": 91,
+     "photos": [
+      {
+       "src": "assets/travel/us-ann-arbor-mi-1.webp",
+       "place": "Ann Arbor",
+       "date": "2023-05",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-ann-arbor-mi-2.webp",
+       "place": "Ann Arbor",
+       "date": "2023-05",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "southampton-ny",
+     "name": "Southampton",
+     "state": "NY",
+     "lat": 40.8766,
+     "lon": -72.4031,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 84,
+     "photos": [
+      {
+       "src": "assets/travel/us-southampton-ny-1.webp",
+       "place": "Southampton",
+       "date": "2024-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-southampton-ny-2.webp",
+       "place": "Southampton",
+       "date": "2024-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-southampton-ny-3.webp",
+       "place": "Southampton",
+       "date": "2024-08",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-southampton-ny-4.webp",
+       "place": "Southampton",
+       "date": "2024-08",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "satellite-beach-fl",
+     "name": "Satellite Beach",
+     "state": "FL",
+     "lat": 28.1787,
+     "lon": -80.5994,
+     "years": [
+      "2022",
+      "2022"
+     ],
+     "count": 80,
+     "photos": [
+      {
+       "src": "assets/travel/us-satellite-beach-fl-1.webp",
+       "place": "Satellite Beach",
+       "date": "2022-04",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-satellite-beach-fl-2.webp",
+       "place": "Satellite Beach",
+       "date": "2022-04",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-satellite-beach-fl-3.webp",
+       "place": "Satellite Beach",
+       "date": "2022-04",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-satellite-beach-fl-4.webp",
+       "place": "Satellite Beach",
+       "date": "2022-04",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "westfield-ny",
+     "name": "Westfield",
+     "state": "NY",
+     "lat": 42.3218,
+     "lon": -79.5748,
+     "years": [
+      "2019",
+      "2023"
+     ],
+     "count": 77,
+     "photos": [
+      {
+       "src": "assets/travel/us-westfield-ny-1.webp",
+       "place": "Westfield",
+       "date": "2019-01",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-westfield-ny-2.webp",
+       "place": "Westfield",
+       "date": "2019-01",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-westfield-ny-3.webp",
+       "place": "Westfield",
+       "date": "2019-01",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-westfield-ny-4.webp",
+       "place": "Westfield",
+       "date": "2019-01",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "rehoboth-beach-de",
+     "name": "Rehoboth Beach",
+     "state": "DE",
+     "lat": 38.7174,
+     "lon": -75.0806,
+     "years": [
+      "2017",
+      "2023"
+     ],
+     "count": 67,
+     "photos": [
+      {
+       "src": "assets/travel/us-rehoboth-beach-de-1.webp",
+       "place": "Rehoboth Beach",
+       "date": "2023-05",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-rehoboth-beach-de-2.webp",
+       "place": "Rehoboth Beach",
+       "date": "2023-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-rehoboth-beach-de-3.webp",
+       "place": "Rehoboth Beach",
+       "date": "2023-08",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "douglas-mi",
+     "name": "Douglas",
+     "state": "MI",
+     "lat": 42.6389,
+     "lon": -86.2076,
+     "years": [
+      "2019",
+      "2019"
+     ],
+     "count": 65,
+     "photos": [
+      {
+       "src": "assets/travel/us-douglas-mi-1.webp",
+       "place": "Douglas",
+       "date": "2019-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-douglas-mi-2.webp",
+       "place": "Douglas",
+       "date": "2019-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-douglas-mi-3.webp",
+       "place": "Douglas",
+       "date": "2019-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "delavan-wi",
+     "name": "Delavan",
+     "state": "WI",
+     "lat": 42.6305,
+     "lon": -88.6298,
+     "years": [
+      "2013",
+      "2013"
+     ],
+     "count": 64,
+     "photos": [
+      {
+       "src": "assets/travel/us-delavan-wi-1.webp",
+       "place": "Delavan",
+       "date": "2013-07",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-delavan-wi-2.webp",
+       "place": "Delavan",
+       "date": "2013-07",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "pinckney-mi",
+     "name": "Pinckney",
+     "state": "MI",
+     "lat": 42.4554,
+     "lon": -83.9411,
+     "years": [
+      "2020",
+      "2020"
+     ],
+     "count": 64,
+     "photos": [
+      {
+       "src": "assets/travel/us-pinckney-mi-1.webp",
+       "place": "Pinckney",
+       "date": "2020-10",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "las-vegas-nv",
+     "name": "Las Vegas",
+     "state": "NV",
+     "lat": 36.2335,
+     "lon": -115.264,
+     "years": [
+      "2016",
+      "2024"
+     ],
+     "count": 62,
+     "photos": [
+      {
+       "src": "assets/travel/us-las-vegas-nv-1.webp",
+       "place": "Las Vegas",
+       "date": "2016-10",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "albany-ny",
+     "name": "Albany",
+     "state": "NY",
+     "lat": 42.6657,
+     "lon": -73.7984,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 60,
+     "photos": [
+      {
+       "src": "assets/travel/us-albany-ny-1.webp",
+       "place": "Albany",
+       "date": "2024-07",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-albany-ny-2.webp",
+       "place": "Albany",
+       "date": "2024-07",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-albany-ny-3.webp",
+       "place": "Albany",
+       "date": "2024-07",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "jacksonville-il",
+     "name": "Jacksonville",
+     "state": "IL",
+     "lat": 39.7292,
+     "lon": -90.2322,
+     "years": [
+      "2015",
+      "2021"
+     ],
+     "count": 58,
+     "photos": [
+      {
+       "src": "assets/travel/us-jacksonville-il-1.webp",
+       "place": "Jacksonville",
+       "date": "2015-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-jacksonville-il-2.webp",
+       "place": "Jacksonville",
+       "date": "2015-07",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "mount-horeb-wi",
+     "name": "Mount Horeb",
+     "state": "WI",
+     "lat": 43.006,
+     "lon": -89.7315,
+     "years": [
+      "2021",
+      "2024"
+     ],
+     "count": 57,
+     "photos": [
+      {
+       "src": "assets/travel/us-mount-horeb-wi-1.webp",
+       "place": "Mount Horeb",
+       "date": "2024-12",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "ontario-wi",
+     "name": "Ontario",
+     "state": "WI",
+     "lat": 43.7219,
+     "lon": -90.5932,
+     "years": [
+      "2023",
+      "2024"
+     ],
+     "count": 53,
+     "photos": [
+      {
+       "src": "assets/travel/us-ontario-wi-1.webp",
+       "place": "Ontario",
+       "date": "2023-03",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-ontario-wi-2.webp",
+       "place": "Ontario",
+       "date": "2024-07",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-ontario-wi-3.webp",
+       "place": "Ontario",
+       "date": "2024-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-ontario-wi-4.webp",
+       "place": "Ontario",
+       "date": "2024-07",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "philadelphia-pa",
+     "name": "Philadelphia",
+     "state": "PA",
+     "lat": 40.0094,
+     "lon": -75.1333,
+     "years": [
+      "2018",
+      "2019"
+     ],
+     "count": 45,
+     "photos": [
+      {
+       "src": "assets/travel/us-philadelphia-pa-1.webp",
+       "place": "Philadelphia",
+       "date": "2018-06",
+       "w": 792,
+       "h": 990
+      },
+      {
+       "src": "assets/travel/us-philadelphia-pa-2.webp",
+       "place": "Philadelphia",
+       "date": "2019-11",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "frenchville-pa",
+     "name": "Frenchville",
+     "state": "PA",
+     "lat": 41.1017,
+     "lon": -78.2252,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 40,
+     "photos": [
+      {
+       "src": "assets/travel/us-frenchville-pa-1.webp",
+       "place": "Frenchville",
+       "date": "2023-09",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-frenchville-pa-2.webp",
+       "place": "Frenchville",
+       "date": "2023-09",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-frenchville-pa-3.webp",
+       "place": "Frenchville",
+       "date": "2023-09",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-frenchville-pa-4.webp",
+       "place": "Frenchville",
+       "date": "2023-09",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "garberville-ca",
+     "name": "Garberville",
+     "state": "CA",
+     "lat": 40.1003,
+     "lon": -123.7943,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 31,
+     "photos": [
+      {
+       "src": "assets/travel/us-garberville-ca-1.webp",
+       "place": "Garberville",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-garberville-ca-2.webp",
+       "place": "Garberville",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-garberville-ca-3.webp",
+       "place": "Garberville",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "redcrest-ca",
+     "name": "Redcrest",
+     "state": "CA",
+     "lat": 40.3988,
+     "lon": -123.9474,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 30,
+     "photos": [
+      {
+       "src": "assets/travel/us-redcrest-ca-1.webp",
+       "place": "Redcrest",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-redcrest-ca-2.webp",
+       "place": "Redcrest",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "camden-me",
+     "name": "Camden",
+     "state": "ME",
+     "lat": 44.2138,
+     "lon": -69.0685,
+     "years": [
+      "2015",
+      "2015"
+     ],
+     "count": 30,
+     "photos": [
+      {
+       "src": "assets/travel/us-camden-me-1.webp",
+       "place": "Camden",
+       "date": "2015-10",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-camden-me-2.webp",
+       "place": "Camden",
+       "date": "2015-10",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "manitowoc-wi",
+     "name": "Manitowoc",
+     "state": "WI",
+     "lat": 44.098,
+     "lon": -87.6789,
+     "years": [
+      "2013",
+      "2013"
+     ],
+     "count": 29,
+     "photos": [
+      {
+       "src": "assets/travel/us-manitowoc-wi-1.webp",
+       "place": "Manitowoc",
+       "date": "2013-07",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "carlotta-ca",
+     "name": "Carlotta",
+     "state": "CA",
+     "lat": 40.5374,
+     "lon": -124.0606,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 28,
+     "photos": [
+      {
+       "src": "assets/travel/us-carlotta-ca-1.webp",
+       "place": "Carlotta",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-carlotta-ca-2.webp",
+       "place": "Carlotta",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "copley-oh",
+     "name": "Copley",
+     "state": "OH",
+     "lat": 41.085,
+     "lon": -81.6323,
+     "years": [
+      "2025",
+      "2025"
+     ],
+     "count": 26,
+     "photos": [
+      {
+       "src": "assets/travel/us-copley-oh-1.webp",
+       "place": "Copley",
+       "date": "2025-04",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "morgantown-wv",
+     "name": "Morgantown",
+     "state": "WV",
+     "lat": 39.6375,
+     "lon": -79.9469,
+     "years": [
+      "2026",
+      "2026"
+     ],
+     "count": 26,
+     "photos": [
+      {
+       "src": "assets/travel/us-morgantown-wv-1.webp",
+       "place": "Morgantown",
+       "date": "2026-04",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-morgantown-wv-2.webp",
+       "place": "Morgantown",
+       "date": "2026-04",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-morgantown-wv-3.webp",
+       "place": "Morgantown",
+       "date": "2026-04",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "linesville-pa",
+     "name": "Linesville",
+     "state": "PA",
+     "lat": 41.6564,
+     "lon": -80.4224,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 26,
+     "photos": [
+      {
+       "src": "assets/travel/us-linesville-pa-1.webp",
+       "place": "Linesville",
+       "date": "2024-04",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "homestead-fl",
+     "name": "Homestead",
+     "state": "FL",
+     "lat": 25.4663,
+     "lon": -80.443,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 25,
+     "photos": [
+      {
+       "src": "assets/travel/us-homestead-fl-1.webp",
+       "place": "Homestead",
+       "date": "2024-01",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-homestead-fl-2.webp",
+       "place": "Homestead",
+       "date": "2024-01",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "cumberland-md",
+     "name": "Cumberland",
+     "state": "MD",
+     "lat": 39.6519,
+     "lon": -78.7584,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 25,
+     "photos": [
+      {
+       "src": "assets/travel/us-cumberland-md-1.webp",
+       "place": "Cumberland",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-cumberland-md-2.webp",
+       "place": "Cumberland",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-cumberland-md-3.webp",
+       "place": "Cumberland",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-cumberland-md-4.webp",
+       "place": "Cumberland",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "asheville-nc",
+     "name": "Asheville",
+     "state": "NC",
+     "lat": 35.571,
+     "lon": -82.5527,
+     "years": [
+      "2018",
+      "2018"
+     ],
+     "count": 25,
+     "photos": [
+      {
+       "src": "assets/travel/us-asheville-nc-1.webp",
+       "place": "Asheville",
+       "date": "2018-07",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "pulaski-pa",
+     "name": "Pulaski",
+     "state": "PA",
+     "lat": 41.1114,
+     "lon": -80.4306,
+     "years": [
+      "2016",
+      "2026"
+     ],
+     "count": 24,
+     "photos": [
+      {
+       "src": "assets/travel/us-pulaski-pa-1.webp",
+       "place": "Pulaski",
+       "date": "2017-10",
+       "w": 886,
+       "h": 886
+      },
+      {
+       "src": "assets/travel/us-pulaski-pa-2.webp",
+       "place": "Pulaski",
+       "date": "2025-04",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-pulaski-pa-3.webp",
+       "place": "Pulaski",
+       "date": "2025-04",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "new-florence-pa",
+     "name": "New Florence",
+     "state": "PA",
+     "lat": 40.3791,
+     "lon": -79.0751,
+     "years": [
+      "2022",
+      "2022"
+     ],
+     "count": 23,
+     "photos": [
+      {
+       "src": "assets/travel/us-new-florence-pa-1.webp",
+       "place": "New Florence",
+       "date": "2022-07",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-new-florence-pa-2.webp",
+       "place": "New Florence",
+       "date": "2022-07",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "williamsport-md",
+     "name": "Williamsport",
+     "state": "MD",
+     "lat": 39.5973,
+     "lon": -77.818,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 23,
+     "photos": [
+      {
+       "src": "assets/travel/us-williamsport-md-1.webp",
+       "place": "Williamsport",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-williamsport-md-2.webp",
+       "place": "Williamsport",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "oldtown-md",
+     "name": "Oldtown",
+     "state": "MD",
+     "lat": 39.545,
+     "lon": -78.6147,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 19,
+     "photos": [
+      {
+       "src": "assets/travel/us-oldtown-md-1.webp",
+       "place": "Oldtown",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-oldtown-md-2.webp",
+       "place": "Oldtown",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "cape-elizabeth-me",
+     "name": "Cape Elizabeth",
+     "state": "ME",
+     "lat": 43.5673,
+     "lon": -70.2035,
+     "years": [
+      "2015",
+      "2015"
+     ],
+     "count": 18,
+     "photos": [
+      {
+       "src": "assets/travel/us-cape-elizabeth-me-1.webp",
+       "place": "Cape Elizabeth",
+       "date": "2015-10",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "erie-pa",
+     "name": "Erie",
+     "state": "PA",
+     "lat": 42.1166,
+     "lon": -80.0735,
+     "years": [
+      "2019",
+      "2022"
+     ],
+     "count": 16,
+     "photos": [
+      {
+       "src": "assets/travel/us-erie-pa-1.webp",
+       "place": "Erie",
+       "date": "2022-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-erie-pa-2.webp",
+       "place": "Erie",
+       "date": "2022-08",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-erie-pa-3.webp",
+       "place": "Erie",
+       "date": "2022-08",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "elk-ca",
+     "name": "Elk",
+     "state": "CA",
+     "lat": 39.1302,
+     "lon": -123.7178,
+     "years": [
+      "2023",
+      "2023"
+     ],
+     "count": 16,
+     "photos": [
+      {
+       "src": "assets/travel/us-elk-ca-1.webp",
+       "place": "Elk",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-elk-ca-2.webp",
+       "place": "Elk",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-elk-ca-3.webp",
+       "place": "Elk",
+       "date": "2023-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-elk-ca-4.webp",
+       "place": "Elk",
+       "date": "2023-06",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "harpers-ferry-wv",
+     "name": "Harpers Ferry",
+     "state": "WV",
+     "lat": 39.3252,
+     "lon": -77.7414,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 15,
+     "photos": [
+      {
+       "src": "assets/travel/us-harpers-ferry-wv-1.webp",
+       "place": "Harpers Ferry",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      },
+      {
+       "src": "assets/travel/us-harpers-ferry-wv-2.webp",
+       "place": "Harpers Ferry",
+       "date": "2024-06",
+       "w": 1024,
+       "h": 768
+      }
+     ]
+    },
+    {
+     "slug": "new-wilmington-pa",
+     "name": "New Wilmington",
+     "state": "PA",
+     "lat": 41.1176,
+     "lon": -80.3315,
+     "years": [
+      "2018",
+      "2025"
+     ],
+     "count": 15,
+     "photos": [
+      {
+       "src": "assets/travel/us-new-wilmington-pa-1.webp",
+       "place": "New Wilmington",
+       "date": "2018-09",
+       "w": 768,
+       "h": 1024
+      },
+      {
+       "src": "assets/travel/us-new-wilmington-pa-2.webp",
+       "place": "New Wilmington",
+       "date": "2025-10",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    },
+    {
+     "slug": "la-farge-wi",
+     "name": "La Farge",
+     "state": "WI",
+     "lat": 43.5782,
+     "lon": -90.6383,
+     "years": [
+      "2024",
+      "2024"
+     ],
+     "count": 15,
+     "photos": [
+      {
+       "src": "assets/travel/us-la-farge-wi-1.webp",
+       "place": "La Farge",
+       "date": "2024-07",
+       "w": 768,
+       "h": 1024
+      }
+     ]
+    }
    ]
   },
   {

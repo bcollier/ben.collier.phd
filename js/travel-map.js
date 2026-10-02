@@ -7,15 +7,24 @@
   const dataEl = document.getElementById("travel-data");
   if (!mount || !dataEl || !window.d3 || !window.topojson) return;
   const root = document.documentElement.getAttribute("data-root") || "";
-  const places = JSON.parse(dataEl.textContent).countries;
-  const byId = new Map(places.map(function (p) { return [String(+p.id), p]; }));
+  // Countries, plus the US cities as smaller dots in the same list, so the
+  // labels, zoom, and popups treat them alike. byId only maps countries.
+  const nations = JSON.parse(dataEl.textContent).countries;
+  const cities = [];
+  nations.forEach(function (n) {
+    (n.cities || []).forEach(function (c) { c._city = true; c.cc = n.cc; c.parent = n; cities.push(c); });
+  });
+  cities.slice().sort(function (a, b) { return b.count - a.count; }).slice(0, 5).forEach(function (c) { c._top = true; });
+  const places = nations.concat(cities);
+  const byId = new Map(nations.map(function (p) { return [String(+p.id), p]; }));
+  const label = function (p) { return p._city ? p.name + ", " + p.state : p.name; };
   const pop = document.getElementById("map-pop");
   const wrap = document.getElementById("view-map");
   const viewer = document.getElementById("photo-view");
   const W = 960, H = 500;
 
   const svg = d3.select(mount).append("svg").attr("viewBox", "0 0 " + W + " " + H)
-    .attr("role", "img").attr("aria-label", "A world map marking the " + places.length + " countries I have visited");
+    .attr("role", "img").attr("aria-label", "A world map marking the " + nations.length + " countries and " + cities.length + " US cities I have visited");
   let dotNodes, landPaths, pinned = null, shown = null, hideTimer = null;
 
   fetch(root + "assets/vendor/countries-110m.json").then(function (r) { return r.json(); }).then(function (atlas) {
@@ -50,7 +59,8 @@
     // Labels go on the side away from a close neighbour, and at full view a
     // label only shows when the dot has room around it.
     places.forEach(function (p) {
-      const near = places.filter(function (q) { return q !== p && Math.hypot(q._xy[0] - p._xy[0], q._xy[1] - p._xy[1]) < 45; });
+      const peers = p._city ? cities : nations;
+      const near = peers.filter(function (q) { return q !== p && Math.hypot(q._xy[0] - p._xy[0], q._xy[1] - p._xy[1]) < 45; });
       // At full view, a dot with at most two neighbours gets a label when the
       // greedy placement below finds room (Australia beside New Zealand,
       // Iceland near the British Isles); crowded Europe waits for the zoom.
@@ -60,14 +70,14 @@
       p._left = right > left || (right > 0 && right === left && p.count < 100);
     });
 
-    dotNodes = world.append("g").selectAll("g").data(places).join("g").attr("class", "g-dot m-dot")
-      .attr("tabindex", 0).attr("role", "button").attr("aria-label", function (p) { return p.name + ": photos"; })
+    dotNodes = world.append("g").selectAll("g").data(places).join("g").attr("class", function (p) { return "g-dot m-dot" + (p._city ? " m-city" : ""); })
+      .attr("tabindex", 0).attr("role", "button").attr("aria-label", function (p) { return label(p) + ": photos"; })
       .on("focus", function (e, p) { zoomFor(p); show(p); })
       .on("click", function (e, p) { pin(p); })
       .on("keydown", function (e, p) { if (e.key === "Enter" || e.key === " ") { pin(p); e.preventDefault(); } });
-    dotNodes.append("circle").attr("class", "hit").attr("r", 9);
-    dotNodes.append("circle").attr("class", "pulse").attr("r", 7);
-    dotNodes.append("circle").attr("class", "core").attr("r", function (p) { return 3 + Math.min(3, Math.log10(p.count)); });
+    dotNodes.append("circle").attr("class", "hit").attr("r", function (p) { return p._city ? 6 : 9; });
+    dotNodes.append("circle").attr("class", "pulse").attr("r", function (p) { return p._city ? 4.5 : 7; });
+    dotNodes.append("circle").attr("class", "core").attr("r", function (p) { return p._city ? 1.8 + Math.min(1.4, Math.log10(p.count) / 2.6) : 3 + Math.min(3, Math.log10(p.count)); });
     dotNodes.append("text").attr("class", "m-label")
       .attr("x", 8).attr("dy", "0.35em")
       .attr("text-anchor", function (p) { return p._left ? "end" : "start"; })
@@ -78,31 +88,46 @@
     // keep their size; leaving the region eases back out.
     let view = { k: 1, x: W / 2, y: H / 2 }, zone = null;
     function crowd(p) {
-      const near = places.filter(function (q) { return Math.hypot(q._xy[0] - p._xy[0], q._xy[1] - p._xy[1]) < 70; });
+      // A city's crowd is its fellow cities; a country's crowd is countries.
+      const peers = p._city ? cities : nations;
+      const near = peers.filter(function (q) { return Math.hypot(q._xy[0] - p._xy[0], q._xy[1] - p._xy[1]) < (p._city ? 45 : 70); });
       if (near.length < 3) return null;
       const xs = near.map(function (q) { return q._xy[0]; }), ys = near.map(function (q) { return q._xy[1]; });
       const x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys);
-      const k = Math.max(1.8, Math.min(7, 0.55 * W / (x1 - x0 + 40), 0.55 * H / (y1 - y0 + 40)));
+      // US cities sit close together, so their zone may zoom further in.
+      const cap = near.every(function (q) { return q._city; }) ? 10 : 7;
+      const k = Math.max(1.8, Math.min(cap, 0.55 * W / (x1 - x0 + 40), 0.55 * H / (y1 - y0 + 40)));
       return { x: (x0 + x1) / 2, y: (y0 + y1) / 2, k: k, r: Math.max(x1 - x0, y1 - y0) / 2 + 40, members: near };
     }
     // Greedy label placement at a given zoom: try right, left, above, below,
     // and skip a spot that would collide with a label or dot already placed.
     function placeLabels(v, show) {
-      const boxes = [], at = function (p) { const q = pos(p, v.k); return [(q[0] - v.x) * v.k, (q[1] - v.y) * v.k]; };
-      places.forEach(function (p) { const s = at(p); boxes.push([s[0] - 5, s[1] - 5, s[0] + 5, s[1] + 5]); });
-      const hit = function (b) { return boxes.some(function (o) { return b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]; }); };
-      const order = places.filter(show).sort(function (a, b) { return b.count - a.count; });
+      // City dots are tiny, and labels carry a paper-coloured halo, so the US
+      // and city labels may sit over them; nothing may cover a label or a
+      // country dot.
+      const hard = [], soft = [], at = function (p) { const q = pos(p, v.k); return [(q[0] - v.x) * v.k, (q[1] - v.y) * v.k]; };
+      places.forEach(function (p) { const s = at(p), r = p._city ? 2.5 : 5; (p._city ? soft : hard).push([s[0] - r, s[1] - r, s[0] + r, s[1] + r]); });
+      const over = function (b, list) { return list.some(function (o) { return b[0] < o[2] && b[2] > o[0] && b[1] < o[3] && b[3] > o[1]; }); };
+      const order = places.filter(show).sort(function (a, b) { return (b.cities ? 1 : 0) - (a.cities ? 1 : 0) || b.count - a.count; });
       dotNodes.select(".m-label").style("display", "none");
       order.forEach(function (p) {
-        const s = at(p), w = p.name.length * 5.9 + 4, h = 12;
-        const spots = [["start", 8, 0, [s[0] + 7, s[1] - h / 2, s[0] + 7 + w, s[1] + h / 2]],
-                       ["end", -8, 0, [s[0] - 7 - w, s[1] - h / 2, s[0] - 7, s[1] + h / 2]],
-                       ["middle", 0, -12, [s[0] - w / 2, s[1] - 18, s[0] + w / 2, s[1] - 6]],
-                       ["middle", 0, 14, [s[0] - w / 2, s[1] + 7, s[0] + w / 2, s[1] + 19]]];
+        const s = at(p), w = p.name.length * (p._city ? 5.2 : 5.9) + 4, h = 12;
+        let spots = [["start", 8, 0, [s[0] + 7, s[1] - h / 2, s[0] + 7 + w, s[1] + h / 2]],
+                     ["end", -8, 0, [s[0] - 7 - w, s[1] - h / 2, s[0] - 7, s[1] + h / 2]],
+                     ["middle", 0, -12, [s[0] - w / 2, s[1] - 18, s[0] + w / 2, s[1] - 6]],
+                     ["middle", 0, 14, [s[0] - w / 2, s[1] + 7, s[0] + w / 2, s[1] + 19]],
+                     ["middle", 0, 26, [s[0] - w / 2, s[1] + 19, s[0] + w / 2, s[1] + 31]],
+                     ["middle", 0, -24, [s[0] - w / 2, s[1] - 30, s[0] + w / 2, s[1] - 18]]];
         if (p._left) spots.unshift(spots.splice(1, 1)[0]);
-        const spot = spots.find(function (c) { return !hit(c[3]); });
+        if (p.cities && v.k <= 1.2) {
+          // The US name sits in the open northern plains, clear of the cities.
+          const a = projection([-101, 46.5]), dx = (a[0] - p._xy[0]) * v.k, dy = (a[1] - p._xy[1]) * v.k;
+          spots.unshift(["middle", dx, dy, [s[0] + dx - w / 2, s[1] + dy - 8, s[0] + dx + w / 2, s[1] + dy + 4]]);
+        }
+        const lenient = v.k <= 1.2 && (p._city || p.cities);
+        const spot = spots.find(function (c) { return !over(c[3], hard) && (lenient || !over(c[3], soft)); });
         if (!spot) return;
-        boxes.push(spot[3]);
+        hard.push(spot[3]);
         dotNodes.filter(function (d) { return d === p; }).select(".m-label")
           .style("display", null).attr("text-anchor", spot[0]).attr("x", spot[1]).attr("y", spot[2]);
       });
@@ -119,7 +144,11 @@
       const z = zone;
       // At full view: every dot with room, plus the countries with the most photos
       // wherever the greedy placement can fit their names.
-      placeLabels(v, function (p) { return v.k > 1.2 ? (z && z.members.indexOf(p) >= 0) : (p._roomy || p.count >= 250); });
+      // US cities: only the five with the most photos are named at full view.
+      placeLabels(v, function (p) {
+        if (v.k > 1.2) return z && z.members.indexOf(p) >= 0;
+        return p._city ? !!p._top : (p._roomy || p.count >= 250);
+      });
       dotNodes.classed("labelled", true);
     }
     function zoomTo(v) {
@@ -160,6 +189,8 @@
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let zoomFor = function () {}, toScreen = function (p) { return p._xy; }, pos = function (p) { return p._xy; };
 
+  const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  function monthYear(d) { return d && d.length >= 7 ? MONTHS[+d.slice(5, 7) - 1] + " " + d.slice(0, 4) : (d || ""); }
   function years(p) {
     return p.years.length ? (p.years[0] === p.years[1] ? p.years[0] : p.years[0] + " to " + p.years[1]) : "";
   }
@@ -180,12 +211,20 @@
     const swap = !!shown;
     shown = p;
     const fill = function () {
-      pop.innerHTML = '<div class="mp-head"><strong>' + p.name + '</strong><span>' + [years(p), p.photos.length + (p.photos.length === 1 ? " photo" : " photos")].filter(Boolean).join(" · ") + '</span></div><div class="mp-thumbs">' +
+      const list = (p.cities || []).length
+        ? '<p class="mp-sub">' + p.cities.length + ' cities</p><div class="mp-cities">' + p.cities.map(function (c, i) {
+            return '<button type="button" data-c="' + i + '">' + c.name + '</button>';
+          }).join("") + "</div>"
+        : "";
+      pop.innerHTML = '<div class="mp-head"><strong>' + label(p) + '</strong><span>' + [years(p), p.photos.length + (p.photos.length === 1 ? " photo" : " photos")].filter(Boolean).join(" · ") + '</span></div><div class="mp-thumbs">' +
         p.photos.slice(0, 8).map(function (ph, i) {
-          return '<button type="button" data-i="' + i + '" style="--i:' + i + '" aria-label="' + p.name + ', ' + ph.place + '"><img src="' + root + ph.src.replace(".webp", "-t.webp") + '" alt=""></button>';
-        }).join("") + "</div>";
-      pop.querySelectorAll("button").forEach(function (b) {
+          return '<button type="button" data-i="' + i + '" style="--i:' + i + '" aria-label="' + label(p) + ', ' + monthYear(ph.date) + '"><img src="' + root + ph.src.replace(".webp", "-t.webp") + '" alt=""></button>';
+        }).join("") + "</div>" + list;
+      pop.querySelectorAll("button[data-i]").forEach(function (b) {
         b.addEventListener("click", function () { open(p, +b.dataset.i); });
+      });
+      pop.querySelectorAll("button[data-c]").forEach(function (b) {
+        b.addEventListener("click", function () { pin(p.cities[+b.dataset.c]); });
       });
       pop.classList.remove("swap"); void pop.offsetWidth; pop.classList.add("swap");
       reveal();
@@ -245,7 +284,7 @@
     render(p);
     pinned = p;
     pop.classList.add("pinned");
-    document.querySelectorAll(".country-list button").forEach(function (b) { b.classList.toggle("on", b.dataset.cc === p.cc); });
+    document.querySelectorAll(".country-list button").forEach(function (b) { b.classList.toggle("on", !p._city && b.dataset.cc === p.cc); });
   }
   document.addEventListener("click", function (e) {
     if (!pinned || pop.contains(e.target) || e.target.closest(".m-dot, .g-land.visited, .country-list")) return;
@@ -255,8 +294,8 @@
   function open(p, i) {
     const ph = p.photos[i];
     viewer.querySelector("img").src = root + ph.src;
-    viewer.querySelector("img").alt = p.name + ", " + ph.place;
-    viewer.querySelector("p").textContent = p.name + " · " + ph.place + " · " + ph.date.slice(0, 4);
+    viewer.querySelector("img").alt = p._city ? label(p) + ", " + monthYear(ph.date) : p.name + ", " + ph.place;
+    viewer.querySelector("p").textContent = p._city ? label(p) + " · " + monthYear(ph.date) : p.name + " · " + ph.place + " · " + ph.date.slice(0, 4);
     if (viewer.showModal) viewer.showModal();
   }
   viewer.querySelector("button").addEventListener("click", function () { viewer.close(); });
@@ -265,7 +304,7 @@
   document.querySelectorAll(".country-list button").forEach(function (b) {
     b.addEventListener("click", function () {
       if (wrap.hidden) return;
-      const p = places.find(function (x) { return x.cc === b.dataset.cc; });
+      const p = nations.find(function (x) { return x.cc === b.dataset.cc; });
       pin(p);
       wrap.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
