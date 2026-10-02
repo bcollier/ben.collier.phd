@@ -93,7 +93,13 @@
   // change), and then its pointerleave never fires. So the note also goes away
   // the moment the mouse is over anything that is not a chart mark.
   document.addEventListener("pointermove", function (e) {
-    if (e.pointerType === "mouse" && !tip.hidden && !(e.target.closest && e.target.closest(".ev-hit"))) hideTip();
+    if (e.pointerType !== "touch" && e.pointerType !== "pen" && !tip.hidden && !(e.target.closest && e.target.closest(".ev-hit"))) hideTip();
+  }, { passive: true });
+  // Some desktop browsers do not populate PointerEvent.pointerType reliably
+  // for SVG descendants. Mousemove is the reliable fallback: once the mouse
+  // is no longer over a hit target, dismiss the note immediately.
+  document.addEventListener("mousemove", function (e) {
+    if (!tip.hidden && !(e.target.closest && e.target.closest(".ev-hit"))) hideTip();
   }, { passive: true });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideTip(); });
   // ...and when the pointer leaves the window or the window loses focus, since
@@ -106,7 +112,7 @@
     var h = E("circle", { cx: cx, cy: cy, r: Math.max(r + 8, 14), class: "ev-hit", tabindex: "0", role: "img", "aria-label": label }, svg);
     h.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") showTip(lines, e.clientX, e.clientY); });
         h.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { showTip(lines, e.clientX, e.clientY); touchTip(); } });
-    h.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hideTip(); });
+    h.addEventListener("pointerleave", function (e) { if (e.pointerType !== "touch" && e.pointerType !== "pen") hideTip(); });
     h.addEventListener("focus", function () { if (!h.matches(":focus-visible")) return; var b = h.getBoundingClientRect(); showTip(lines, b.left + b.width / 2, b.top); });
     h.addEventListener("blur", hideTip);
     return h;
@@ -288,7 +294,7 @@
         var lines = [p + "% rated the teaching " + names[k], lab, r.n + " students responded"];
         hh.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") showTip(lines, e.clientX, e.clientY); });
         hh.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { showTip(lines, e.clientX, e.clientY); touchTip(); } });
-        hh.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hideTip(); });
+        hh.addEventListener("pointerleave", function (e) { if (e.pointerType !== "touch" && e.pointerType !== "pen") hideTip(); });
         hh.addEventListener("focus", function () { if (!hh.matches(":focus-visible")) return; var b = hh.getBoundingClientRect(); showTip(lines, b.left + b.width / 2, b.top); });
         hh.addEventListener("blur", hideTip);
         acc += sw;
@@ -317,7 +323,7 @@
       hh.style.fill = "transparent";
       hh.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") showTip(lines, e.clientX, e.clientY); });
         hh.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { showTip(lines, e.clientX, e.clientY); touchTip(); } });
-      hh.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hideTip(); });
+      hh.addEventListener("pointerleave", function (e) { if (e.pointerType !== "touch" && e.pointerType !== "pen") hideTip(); });
       hh.addEventListener("focus", function () { if (!hh.matches(":focus-visible")) return; var b = hh.getBoundingClientRect(); showTip(lines, b.left + 40, b.top); });
       hh.addEventListener("blur", hideTip);
     });
