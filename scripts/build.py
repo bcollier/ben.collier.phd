@@ -497,7 +497,11 @@ ARM = ('<script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("
        'setTimeout(function(){if(!window.__nb){c.remove("js-anim");c.remove("nb")}},4000)})(document.documentElement)</script>')
 
 
-def sheet_head(root: str, crumbs) -> str:
+# The "Subject" field at the top of each notebook page. Pages not listed use the default.
+SUBJECTS = {"travel": "places I have been", "strengths": "how I work", "cv": "my career so far"}
+
+
+def sheet_head(root: str, crumbs, active: str = "") -> str:
     """The notebook page's header fields: subject, and where the page is filed.
     crumbs is a list of (label, href or None). Two or more become a breadcrumb."""
     if not crumbs:
@@ -507,7 +511,7 @@ def sheet_head(root: str, crumbs) -> str:
     filed = (f'<nav class="field crumbs" aria-label="Breadcrumb">Filed under <span class="val">{trail}</span></nav>'
              if len(crumbs) > 1 else f'<span class="field" aria-hidden="true">Filed under <span class="val">{trail}</span></span>')
     return f"""  <div class="sheet-head">
-    <span class="field" aria-hidden="true">Subject <span class="val">AI and business analytics</span></span>
+    <span class="field" aria-hidden="true">Subject <span class="val">{esc(SUBJECTS.get(active, "AI and business analytics"))}</span></span>
     {filed}
   </div>
 """
@@ -577,7 +581,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 </header>
 
 <main id="main" class="sheet">
-{sheet_head(root, crumbs)}"""
+{sheet_head(root, crumbs, active)}"""
 
 
 def footer(root: str, scripts: str = "") -> str:
