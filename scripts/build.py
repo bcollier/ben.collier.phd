@@ -2508,7 +2508,6 @@ def build_strengths():
         <p>In 2009 my profile led with collecting and learning. By 2014 it led with thinking and finishing, <strong>Futuristic</strong> had arrived, and <strong>Individualization</strong> had dropped out.</p>
         <p>Gallup groups the themes into four domains. Mine sit almost entirely in one of them.</p>
         <ul class="sf-domains">{domains}</ul>
-        <p class="note">no influencing themes, either time &darr;</p>
       </div>
     </div>""")
     stick = [
