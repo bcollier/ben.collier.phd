@@ -1586,6 +1586,40 @@ def course_figure(c, s, fig: int, root: str) -> str:
             f'<figcaption class="figcap">fig. {fig} &middot; {esc(pick["caption"])}</figcaption></figure>')
 
 
+_EVALS = None
+
+
+def course_quotes_section(slug: str, root: str) -> str:
+    """Quote cards from the course evaluations, with the course's average rating,
+    in the same style as /evaluations/. Empty when a course has no quotes."""
+    global _EVALS
+    if _EVALS is None:
+        _EVALS = load_json("evaluations.json")
+    qs = _EVALS.get("course_quotes", {}).get(slug, [])
+    if not qs:
+        return ""
+    secs = [x for x in _EVALS["sections"] if x["course"] == slug]
+    if secs:
+        n = sum(x["n"] for x in secs)
+        m = sum(x["avg"]["9"] * x["n"] for x in secs) / n
+    else:
+        secs = [x for x in _EVALS["earlier"] if x["course"] == slug]
+        n = sum(x["n"] for x in secs)
+        m = sum(x["teaching"] * x["n"] for x in secs) / n if n else 0
+    stat = ""
+    if n:
+        plural = "s" if len(secs) > 1 else ""
+        stat = (f'<p class="ev-cstat"><b>{m:.2f}</b> out of 5 average teaching rating &middot; {len(secs)} section{plural} '
+                f'&middot; {n} student responses &middot; <a href="{root}evaluations/">all evaluations</a></p>')
+    rots = [-1.2, 0.8, -0.6, 1.4, -1.6]
+    cards = ""
+    for i, q in enumerate(qs):
+        small = " small" if q.get("small") else ""
+        cards += (f'<figure class="ev-quote drop{small}" style="--rot:{rots[i % 5]}deg;--d:{0.15 + 0.1 * i:.2f}s"><span class="tape tc"></span>'
+                  f'<p>{esc(q["text"])}</p><figcaption>{esc(q["term"])}</figcaption></figure>')
+    return f'    {stat}\n    <div class="ev-quotes">{cards}</div>'
+
+
 def build_course_pages():
     root = "../../"
     for c in ALL_COURSES:
@@ -1692,6 +1726,10 @@ def build_course_pages():
         mats = f'<p class="muted">{c["materials"]}</p>' if c.get("materials") else ""
         offer_h = "<h3>Offerings</h3>" if hist else ""
         offer = f'    <div class="offer">{offer_h}<ul class="chips">{chips}</ul>{mats}</div>' if chips or mats else ""
+        said = course_quotes_section(c["slug"], root)
+        if said:
+            body += sec(no, "said-title", "In their words", "What students say", said)
+            no += 1
         if hist:
             body += sec(no, "hist-title", "Revision history", "How the course developed", hist + offer)
         elif offer:
