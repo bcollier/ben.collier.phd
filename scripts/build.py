@@ -2708,10 +2708,12 @@ def build_travel():
         f'<li><button type="button" data-cc="{p["cc"]}">{esc(p["name"])}</button></li>' for p in sorted(places, key=lambda p: p["name"])
     )
     blob = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
-    body = page_head("Travel", "Places I have been",
+    # The map comes first so it is on screen without scrolling; the title and
+    # the note on how to use it sit underneath.
+    head = page_head("Travel", "Places I have been",
                      f"{len(places)} countries so far, mapped from my own photo library. Hover a dot or a highlighted country to see what I saw there, or pick one from the list.")
-    body += f"""
-  <section class="sec travel-sec" aria-label="Map of places visited">
+    body = f"""
+  <section class="sec travel-sec travel-first" aria-label="Map of places visited">
     <div class="view-tabs" role="tablist" aria-label="Map or globe">
       <button type="button" role="tab" aria-selected="true" data-view="map">Map</button>
       <button type="button" role="tab" aria-selected="false" data-view="globe">Globe</button>
@@ -2728,6 +2730,9 @@ def build_travel():
       </div>
     </div>
     <dialog id="photo-view" class="photo-view"><img alt=""><p></p><button type="button" aria-label="Close">×</button></dialog>
+  </section>
+{head}
+  <section class="sec travel-list headless" aria-label="Countries">
     <p class="note list-note">or pick a country</p>
     <ul class="country-list">{chips}</ul>
     <script type="application/json" id="travel-data">{blob}</script>

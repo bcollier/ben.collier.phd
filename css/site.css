@@ -1496,3 +1496,8 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
   .ev-kpis .stat .n { font-size: 54px; }
   .ev-table { font-size: 13px; }
 }
+/* travel: the map leads, the title and note follow it */
+.travel-first { padding-top: 14px; }
+.travel-first + .page-head { padding-top: 26px; }
+.travel-first + .page-head h1 { font-size: clamp(38px, 4.6vw, 64px); margin-bottom: 16px; }
+.travel-list { padding-top: 0; }
