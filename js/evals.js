@@ -59,18 +59,30 @@
   /* ---------- the sticky-note tooltip ---------- */
   var tip = document.createElement("div");
   tip.className = "ev-tip"; tip.hidden = true; tip.setAttribute("role", "status"); document.body.appendChild(tip);
+  // The note sits on the page, not the window: it scrolls with its chart, so it
+  // can never float over some other part of the page.
+  var tipAt = null, watch = null;
   function showTip(lines, x, y) {
     tip.textContent = "";
     lines.forEach(function (l, i) {
       var p = document.createElement(i === 0 ? "strong" : "span"); p.textContent = l; tip.appendChild(p);
     });
     tip.hidden = false;
-    var w = tip.offsetWidth, h = tip.offsetHeight, vw = window.innerWidth;
+    var w = tip.offsetWidth, h = tip.offsetHeight, vw = document.documentElement.clientWidth;
     var left = x + 16; if (left + w > vw - 8) left = x - w - 16;
     var top = y - h - 12; if (top < 8) top = y + 18;
-    tip.style.left = left + "px"; tip.style.top = top + "px";
+    tip.style.left = (left + window.scrollX) + "px"; tip.style.top = (top + window.scrollY) + "px";
+    tipAt = [x, y];
+    // Belt and braces for mice: if whatever is under the pointer stops being a
+    // chart mark (a scroll that sent no events, a redraw), the note goes.
+    clearInterval(watch);
+    watch = setInterval(function () {
+      if (tip.hidden || !tipAt) { clearInterval(watch); return; }
+      var el = document.elementFromPoint(tipAt[0], tipAt[1]);
+      if (!el || !el.closest || !el.closest(".ev-hit, .ev-tip")) hideTip();
+    }, 250);
   }
-  function hideTip() { tip.hidden = true; clearTimeout(tipTimer); }
+  function hideTip() { tip.hidden = true; clearTimeout(tipTimer); clearInterval(watch); tipAt = null; }
   // The note is pinned to the window, so it must never outlive the tap or the
   // scroll that produced it: on phones a tap leaves focus on the mark and no
   // pointerleave ever fires.
