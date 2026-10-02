@@ -677,9 +677,29 @@ def hide_email(html: str) -> str:
     return html.replace(PERSONAL_EMAIL, tag)
 
 
+_ASSET_HASH: dict[str, str] = {}
+
+
+def versioned(content: str) -> str:
+    """Tag local css/js URLs with a short hash of the file, so a browser holding
+    an old copy fetches the new one as soon as the file changes."""
+    import hashlib
+
+    def tag(m):
+        attr, prefix, path = m.group(1), m.group(2), m.group(3)
+        if path not in _ASSET_HASH:
+            f = ROOT / path
+            _ASSET_HASH[path] = hashlib.md5(f.read_bytes()).hexdigest()[:8] if f.exists() else ""
+        h = _ASSET_HASH[path]
+        return f'{attr}="{prefix}{path}{"?v=" + h if h else ""}"'
+
+    return re.sub(r'(src|href)="((?:\.\./)*)((?:css|js)/[\w./-]+\.(?:css|js))"', tag, content)
+
+
 def write(rel, content: str):
     if rel.endswith(".html"):
         content = hide_email(content)
+        content = versioned(content)
     path = ROOT / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
