@@ -1561,7 +1561,7 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
    A red proofreading caret pops in after "Collier" and "PhD" is written in
    above it, letter by letter, then gets a little nudge. Visible at rest
    without JS; the animation only plays once the hero is drawn. */
-.phd-ins { position: relative; display: inline-block; width: 0; height: 1em; vertical-align: baseline; }
+.phd-ins { position: relative; display: inline-block; width: 0; height: 1em; vertical-align: baseline; margin-left: .09em; }
 .phd-caret { position: absolute; left: -.02em; bottom: -.05em; width: .26em; height: .22em; overflow: visible; }
 .phd-caret path { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 0; }
 .phd { position: absolute; left: .07em; bottom: .32em; font-family: var(--hand); font-weight: 700; font-size: .42em; line-height: 1; color: var(--red);
