@@ -2566,12 +2566,12 @@ def build_evaluations():
       <label class="lab" for="ev-item" style="margin-left:14px">Item</label><select id="ev-item">{opts}</select>
     </div>
     <figure class="ev-fig"><svg data-ev="timeline" role="img" aria-label="Overall teaching rating for every section since Fall 2023, rising from below 4 to near 5"></svg>
-    <figcaption class="figcap">fig. 1 &middot; one dot per section, sized by responses; the axis runs from 3 to 5 on a 5-point scale</figcaption></figure>
+    <figcaption class="figcap">fig. 1 &middot; one dot per section, sized by responses; the axis is the full scale, 1 (poor) to 5 (excellent)</figcaption></figure>
 {table}""")
 
     body += sec(4, "ev-courses", "By course", "Course by course", """    <p class="prose">Each course on its own line: every section as a dot, and the response-weighted average circled in pen. The program filter above applies here too.</p>
     <figure class="ev-fig"><svg data-ev="courses" role="img" aria-label="Average rating by course, with every section shown as a dot"></svg>
-    <figcaption class="figcap">fig. 2 &middot; courses sorted by average rating; the circle is the mean across sections</figcaption></figure>""")
+    <figcaption class="figcap">fig. 2 &middot; courses sorted by average rating on the full 1 to 5 scale; the circle is the mean across sections</figcaption></figure>""")
 
     body += sec(5, "ev-again", "Taught again, rated higher", "The second time around", """    <p class="prose">The courses I have taught three times or more. Each one got better as I rebuilt it: Data Mining moved from R to Python and a lab-first format, Data Visualization narrowed to one tool, Tableau, taught properly.</p>
     <div class="ev-multiples" data-ev-multiples></div>
@@ -2580,7 +2580,7 @@ def build_evaluations():
     body += sec(6, "ev-items", "Item by item", "Where the change came from", f"""    <p class="prose">The evaluation asks nine questions. Gray is my first year, {esc(terms[0])} to {esc(terms[1])}. Blue is the latest, {esc(terms[-3])} to {esc(terms[-1])}. Every item moved the same direction.</p>
     <div class="ev-legend"><span><i class="round" style="--c:#9aa3ad"></i>2023 to 2024, {sum(x["n"] for x in first)} responses</span><span><i class="round" style="--c:#2447a6"></i>2025 to 2026, {sum(x["n"] for x in last)} responses</span></div>
     <figure class="ev-fig"><svg data-ev="dumbbell" role="img" aria-label="Each evaluation item, first year against the latest year"></svg>
-    <figcaption class="figcap">fig. 4 &middot; response-weighted averages; the axis starts at 3.5</figcaption></figure>""")
+    <figcaption class="figcap">fig. 4 &middot; response-weighted averages on the full 1 to 5 scale</figcaption></figure>""")
 
     body += sec(7, "ev-excellent", "Rated excellent", "How many picked the top box", """    <p class="prose">For the Data Visualization sections I have the full distribution, not just the mean. In Spring 2026, nine in ten students rated the teaching excellent, and nobody rated it below average.</p>
     <div class="ev-legend"><span><i style="--c:#2447a6"></i>excellent</span><span><i style="--c:#9bb5e6"></i>above average</span><span><i style="--c:#ddd6c6"></i>average</span></div>
