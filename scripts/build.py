@@ -2626,7 +2626,7 @@ def build_evaluations():
             f'<figure class="ev-note drop" style="--rot:{rots[i % 8]}deg;--d:{0.1 + 0.06 * i:.2f}s">'
             f'<div class="ev-letter"><p>{esc(n["text"])}</p></div>'
             f'<figcaption class="ev-env"><span class="ev-postmark" aria-hidden="true">{esc(n["year"])}</span>'
-            f'<span class="ev-from">from {"an" if n["role"][:1] in "AEIOUaeio" or n["role"].startswith(("MBA", "MSBA")) else "a"} {esc(n["role"])}</span></figcaption></figure>'
+            f'<span class="ev-from">from {"an" if n["role"][:1] in "AEIOUaeiou" or n["role"].startswith(("MBA", "MSBA")) else "a"} {esc(n["role"])}</span></figcaption></figure>'
             for i, n in enumerate(notes)
         )
         body += sec(10, "ev-notes", "Notes that arrived unasked", "In the inbox", f"""    <p class="prose">Evaluations are asked for. These were not: {ev["notes_total"]} emails and notes from students, alumni, executive education participants and colleagues, saved since 2013. A few of them, with names left off.</p>
