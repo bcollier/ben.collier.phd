@@ -690,6 +690,9 @@
     });
   }
   boot();
+  // The ink helpers, for page scripts that draw their own charts in the same hand (js/evals.js).
+  window.NB = { E: E, ink: ink, lineD: lineD, curve: curve, loopD: loopD, arrowD: arrowD, zigzag: zigzag,
+    measure: measure, text: text, seed: seed, J: J, reduce: reduce, STATIC: STATIC };
   function refit() { drawCharts(true); overlays(); }
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(refit);
