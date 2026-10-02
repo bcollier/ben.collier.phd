@@ -7,8 +7,12 @@ window.startGlobe = function () {
   const dataEl = document.getElementById("travel-data");
   if (!mount || !dataEl || !window.d3 || !window.topojson) return;
   const root = document.documentElement.getAttribute("data-root") || "";
-  const places = JSON.parse(dataEl.textContent).countries;
-  const byId = new Map(places.map(function (p) { return [String(+p.id), p]; }));
+  const nations = JSON.parse(dataEl.textContent).countries;
+  const cities = [];
+  nations.forEach(function (n) { (n.cities || []).forEach(function (c) { cities.push(Object.assign({}, c, { _city: true, cc: n.cc })); }); });
+  const places = nations.concat(cities);
+  const byId = new Map(nations.map(function (p) { return [String(+p.id), p]; }));
+  const label = function (p) { return p._city ? p.name + ", " + p.state : p.name; };
   const card = document.getElementById("globe-card");
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css = getComputedStyle(document.documentElement);
@@ -18,7 +22,7 @@ window.startGlobe = function () {
   const svg = d3.select(mount).append("svg")
     .attr("viewBox", "0 0 " + size + " " + size)
     .attr("role", "img")
-    .attr("aria-label", "A globe marking the " + places.length + " countries I have visited");
+    .attr("aria-label", "A globe marking the " + nations.length + " countries and " + cities.length + " US cities I have visited");
   const projection = d3.geoOrthographic().scale(size / 2 - 8).translate([size / 2, size / 2]).clipAngle(90).rotate([-20, -25]);
   const path = d3.geoPath(projection);
   const graticule = d3.geoGraticule10();
@@ -35,15 +39,15 @@ window.startGlobe = function () {
       .attr("class", function (d) { return byId.has(String(+d.id)) ? "g-land visited" : "g-land"; })
       .on("mouseenter", function (e, d) { const p = byId.get(String(+d.id)); if (p) open(p, e); })
       .on("click", function (e, d) { const p = byId.get(String(+d.id)); if (p) open(p, e, true); });
-    dotNodes = dots.selectAll("g").data(places).join("g").attr("class", "g-dot")
+    dotNodes = dots.selectAll("g").data(places).join("g").attr("class", function (p) { return "g-dot" + (p._city ? " g-city" : ""); })
       .attr("tabindex", 0).attr("role", "button")
-      .attr("aria-label", function (p) { return p.name + ": photos"; })
+      .attr("aria-label", function (p) { return label(p) + ": photos"; })
       .on("mouseenter", function (e, p) { open(p, e); })
       .on("focus", function (e, p) { open(p, e, true); })
       .on("click", function (e, p) { open(p, e, true); })
       .on("keydown", function (e, p) { if (e.key === "Enter" || e.key === " ") { open(p, e, true); e.preventDefault(); } });
-    dotNodes.append("circle").attr("class", "pulse").attr("r", 9);
-    dotNodes.append("circle").attr("class", "core").attr("r", function (p) { return 4 + Math.min(4, Math.log10(p.count)); });
+    dotNodes.append("circle").attr("class", "pulse").attr("r", function (p) { return p._city ? 5 : 9; });
+    dotNodes.append("circle").attr("class", "core").attr("r", function (p) { return p._city ? 2.2 : 4 + Math.min(4, Math.log10(p.count)); });
     draw();
     spin();
   });
@@ -99,9 +103,9 @@ window.startGlobe = function () {
       slide = 0;
       const years = p.years.length ? (p.years[0] === p.years[1] ? p.years[0] : p.years[0] + " to " + p.years[1]) : "";
       card.innerHTML =
-        '<div class="gc-head"><strong>' + p.name + '</strong><span>' + [p.city, years].filter(Boolean).join(" · ") + '</span></div>' +
+        '<div class="gc-head"><strong>' + label(p) + '</strong><span>' + [p._city ? "" : p.city, years].filter(Boolean).join(" · ") + '</span></div>' +
         '<div class="gc-stage">' + p.photos.map(function (ph, i) {
-          return '<img src="' + root + ph.src + '" alt="' + p.name + ', ' + ph.place + ', ' + ph.date + '"' + (i === 0 ? ' class="on"' : ' loading="lazy"') + '>';
+          return '<img src="' + root + ph.src + '" alt="' + label(p) + ', ' + ph.date + '"' + (i === 0 ? ' class="on"' : ' loading="lazy"') + '>';
         }).join("") + '<span class="gc-cap"></span></div>' +
         '<div class="gc-thumbs">' + p.photos.map(function (ph, i) {
           return '<button type="button" aria-label="Photo ' + (i + 1) + ' of ' + p.photos.length + '"><img src="' + root + ph.src.replace(".webp", "-t.webp") + '" alt=""></button>';
@@ -111,7 +115,7 @@ window.startGlobe = function () {
       });
       show(0);
       restart();
-      document.querySelectorAll(".country-list button").forEach(function (b) { b.classList.toggle("on", b.dataset.cc === p.cc); });
+      document.querySelectorAll(".country-list button").forEach(function (b) { b.classList.toggle("on", !p._city && b.dataset.cc === p.cc); });
       if (dotNodes) dotNodes.classed("on", function (d) { return d === p; });
     }
     card.hidden = false;
@@ -135,13 +139,13 @@ window.startGlobe = function () {
   document.querySelectorAll(".country-list button").forEach(function (b) {
     b.addEventListener("click", function () {
       if (document.getElementById("view-globe").hidden) return;
-      const p = places.find(function (x) { return x.cc === b.dataset.cc; });
+      const p = nations.find(function (x) { return x.cc === b.dataset.cc; });
       turnTo(p);
       open(p, null, true);
       if (window.matchMedia("(max-width: 52rem)").matches) card.scrollIntoView({ behavior: still ? "auto" : "smooth", block: "nearest" });
     });
   });
 
-  open(places[0], null, false);
+  open(nations[0], null, false);
   if (!still) spinning = true;
 };
