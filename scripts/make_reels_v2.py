@@ -319,8 +319,12 @@ def main():
     # Professional Ben: title, then 29 photos speeding up into the drop.
     D.shot(S["pro"], S["pro"] + 4, "title", [pro[0]], text="PROFESSIONAL BEN", fx="slam")
     b = S["pro"] + 4
+    # 40 beats to the drop: the last photo rides the riser for 1.5 beats, the
+    # one before it gets half a beat, and the rest share 38 beats, two beats
+    # each at first and then one, so the cuts speed up into the drop.
+    slow = max(0, min(len(pro) - 2, 40 - len(pro)))
     for k, i in enumerate(pro):
-        if k < 11:
+        if k < slow:
             L = 2
         elif k < len(pro) - 2:
             L = 1
@@ -328,7 +332,7 @@ def main():
             L = 0.5
         else:
             L = S["drop1"] - b
-        fx = ("frame push duo" if k < 11 else "punch rgb") + (" riser whiteout" if k == len(pro) - 1 else "")
+        fx = ("frame push duo" if k < slow else "punch rgb") + (" riser whiteout" if k == len(pro) - 1 else "")
         D.shot(b, b + L, "photo", [i], fx=fx, g=GRADES[k // 4 % len(GRADES)])
         b += L
     # Drop one: title slam over the first casual photo, then the bar pattern.

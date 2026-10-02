@@ -55,126 +55,84 @@
     },
     {
      "src": "assets/reels/pro/009.webp",
-     "w": 960,
-     "h": 1280,
+     "w": 1280,
+     "h": 1600,
      "place": "Doha, Qatar"
     },
     {
      "src": "assets/reels/pro/010.webp",
-     "w": 1280,
-     "h": 1600,
+     "w": 1600,
+     "h": 1200,
      "place": "Doha, Qatar"
     },
     {
      "src": "assets/reels/pro/011.webp",
      "w": 1600,
-     "h": 1200,
-     "place": "Doha, Qatar"
-    },
-    {
-     "src": "assets/reels/pro/012.webp",
-     "w": 1600,
      "h": 1600,
      "place": "Doha, Qatar"
     },
     {
-     "src": "assets/reels/pro/013.webp",
+     "src": "assets/reels/pro/012.webp",
      "w": 1280,
      "h": 1600,
      "place": "Doha, Qatar"
     },
     {
-     "src": "assets/reels/pro/014.webp",
+     "src": "assets/reels/pro/013.webp",
      "w": 1200,
      "h": 1600,
      "place": "Pennsylvania"
     },
     {
-     "src": "assets/reels/pro/015.webp",
+     "src": "assets/reels/pro/014.webp",
      "w": 1200,
      "h": 1600,
      "place": "Indiana"
     },
     {
-     "src": "assets/reels/pro/016.webp",
+     "src": "assets/reels/pro/015.webp",
      "w": 1200,
      "h": 1600,
      "place": "Pittsburgh"
     },
     {
+     "src": "assets/reels/pro/016.webp",
+     "w": 1600,
+     "h": 1200,
+     "place": "Pittsburgh"
+    },
+    {
      "src": "assets/reels/pro/017.webp",
-     "w": 1600,
-     "h": 1200,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/018.webp",
-     "w": 1600,
-     "h": 1200,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/019.webp",
      "w": 1067,
      "h": 1600,
      "place": "Pittsburgh"
     },
     {
+     "src": "assets/reels/pro/018.webp",
+     "w": 1600,
+     "h": 1600,
+     "place": "Pittsburgh"
+    },
+    {
+     "src": "assets/reels/pro/019.webp",
+     "w": 1200,
+     "h": 1600,
+     "place": "Pittsburgh"
+    },
+    {
      "src": "assets/reels/pro/020.webp",
-     "w": 1067,
+     "w": 1200,
      "h": 1600,
      "place": "Pittsburgh"
     },
     {
      "src": "assets/reels/pro/021.webp",
      "w": 1600,
-     "h": 1600,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/022.webp",
-     "w": 1600,
-     "h": 1600,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/023.webp",
-     "w": 1600,
-     "h": 1200,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/024.webp",
-     "w": 1200,
-     "h": 1600,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/025.webp",
-     "w": 1200,
-     "h": 1600,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/026.webp",
-     "w": 1200,
-     "h": 1600,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/027.webp",
-     "w": 1600,
      "h": 1200,
      "place": "Doha, Qatar"
     },
     {
-     "src": "assets/reels/pro/028.webp",
-     "w": 1200,
-     "h": 1600,
-     "place": "Pittsburgh"
-    },
-    {
-     "src": "assets/reels/pro/029.webp",
+     "src": "assets/reels/pro/022.webp",
      "w": 1200,
      "h": 1600,
      "place": "Pittsburgh"
