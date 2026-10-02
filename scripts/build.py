@@ -1891,23 +1891,23 @@ def _cv_glance():
 DIRECTIONS = "https://www.google.com/maps/dir/?api=1&destination=" + "Tepper+School+of+Business,+4765+Forbes+Ave,+Pittsburgh,+PA+15213"
 
 
-def office_pop(root: str, label: str) -> str:
+def office_pop(root: str, label: str, tag: str = "li") -> str:
     """The office chip opens an animated map of campus with Tepper Quad marked.
     The SVG is drawn once by scripts/make_campus_map.py from OpenStreetMap."""
     svg = (ROOT / "assets" / "campus" / "campus-map.svg").read_text(encoding="utf-8")
-    return (f'<li class="place-pop"><button type="button" class="pp-trigger" aria-expanded="false">{esc(label)}</button>'
+    return (f'<{tag} class="place-pop"><button type="button" class="pp-trigger" aria-expanded="false">{esc(label)}</button>'
             f'<div class="pp-card pp-map" role="dialog" aria-label="Campus map">{svg}'
             f'<p class="pp-note">Tepper Quad is on Forbes Avenue. Office 5135 is on the fifth floor. '
-            f'<a href="{DIRECTIONS}">Directions</a></p></div></li>')
+            f'<a href="{DIRECTIONS}">Directions</a></p></div></{tag}>')
 
 
-def address_pop(root: str, label: str) -> str:
+def address_pop(root: str, label: str, tag: str = "li") -> str:
     """The street address opens a photo of the building and a directions link."""
-    return (f'<li class="place-pop"><button type="button" class="pp-trigger" aria-expanded="false">{esc(label)}</button>'
+    return (f'<{tag} class="place-pop"><button type="button" class="pp-trigger" aria-expanded="false">{esc(label)}</button>'
             f'<div class="pp-card pp-photo" role="dialog" aria-label="Tepper Quad">'
             f'<img src="{root}assets/campus/tepper-quad.webp" width="720" height="450" alt="Tepper Quad, the glass-fronted home of the Tepper School of Business on Forbes Avenue" loading="lazy">'
             f'<p class="pp-note"><strong>Tepper Quad</strong>, 4765 Forbes Avenue. <a href="{DIRECTIONS}">Get directions in Google Maps</a></p>'
-            f'<p class="pp-credit">Photo: Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_University_Tepper_School_of_Business.jpg">CC BY-SA 2.0</a></p></div></li>')
+            f'<p class="pp-credit">Photo: Tony Webster, <a href="https://commons.wikimedia.org/wiki/File:Carnegie_Mellon_University_Tepper_School_of_Business.jpg">CC BY-SA 2.0</a></p></div></{tag}>')
 
 
 PLACE_POPS = {"Tepper Quad, Office 5135": office_pop, "4765 Forbes Avenue": address_pop}
@@ -2409,7 +2409,7 @@ def build_contact():
       <ul class="contact-list card-lined deal" style="--rot:-.6deg;--d:.2s">
         <li><span>CMU email</span><div><a href="mailto:bcollier@cmu.edu">bcollier@cmu.edu</a></div></li>
         <li><span>Personal</span><div><a href="mailto:ben@collier.phd">ben@collier.phd</a></div></li>
-{site_row}        <li><span>Office</span><div>Office 5135, Tepper Quad<br>Tepper School of Business, Carnegie Mellon University<br>4765 Forbes Avenue<br>Pittsburgh, PA 15213</div></li>
+{site_row}        <li><span>Office</span><div class="office-lines">{office_pop("../", "Office 5135, Tepper Quad", "div")}<br>Tepper School of Business, Carnegie Mellon University<br>{address_pop("../", "4765 Forbes Avenue", "div")}<br>Pittsburgh, PA 15213</div></li>
         <li><span>Consulting</span><div>{book_call("../", "")} &middot; <a href="../consult/">Consulting and custom education</a></div></li>
         <li><span>Students</span><div><a data-book="studentHours" data-live-label="Book a 30-minute appointment" href="mailto:bcollier@cmu.edu">Email me</a> two times that work for office hours and I will confirm one.</div></li>
         <li><span>LinkedIn</span><div><a href="https://www.linkedin.com/in/bcollierphd">linkedin.com/in/bcollierphd</a></div></li>
@@ -2432,6 +2432,7 @@ def build_contact():
             "Email, office, and links for Ben Collier.",
             "contact/",
             body,
+            scripts='\n<script src="../js/place-pop.js" defer></script>',
         ),
     )
 
