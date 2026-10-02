@@ -59,6 +59,7 @@ flowchart TB
   every --> courses["/courses/&lt;slug&gt;/<br/>+ js/course-schedule.js<br/>slide projector"]
   every --> evals["/evaluations/<br/>+ js/evals.js<br/>7 interactive charts"]
   every --> travel["/travel/<br/>+ d3 + topojson-client<br/>+ js/travel-map.js + js/travel.js"]
+  every --> reels["/reels/<br/>+ js/reels.js<br/>photo slideshow and music"]
   every --> cv["/cv/ and /contact/<br/>+ js/cv.js, js/place-pop.js<br/>campus map pop-ups"]
 ```
 
@@ -70,6 +71,7 @@ flowchart TB
 | `js/evals.js` | ~420 | The evaluation charts, drawn with the pen, with sticky-note tooltips |
 | `js/travel-map.js` | ~330 | Flat world map with country and US city dots (d3) |
 | `js/travel.js` | ~150 | The spinning globe (d3) |
+| `js/reels.js` | ~150 | The two photo reels on /reels/: crossfade, pan and zoom, place labels, shared music |
 | `js/course-schedule.js` | ~160 | The slide "projector" that follows the schedule on course pages |
 | `js/site.js` | ~130 | Email assembly, LinkedIn feed, booking links |
 | `js/place-pop.js` | ~40 | Campus map and building photo pop-ups on /cv/ and /contact/ |
@@ -90,6 +92,7 @@ flowchart TB
 | `/strengths/` | Two StrengthsFinder results, five years apart | Slope chart of theme ranks |
 | `/talks/` | Talks with selected slides | |
 | `/travel/` | 27 countries and 55 US cities from the photo library | Flat map and globe, photo pop-ups |
+| `/reels/` | Two photo reels of Ben, 2000 to 2026: Professional Ben and Casual Ben | Slideshow with pan and zoom, taped place labels, CC0 music that starts only on play |
 | `/news/` | Dated log plus LinkedIn posts | |
 | `/contact/` | Email, office, links | Campus map pop-ups |
 
@@ -233,6 +236,41 @@ How it behaves:
 
 ---
 
+## The reels
+
+`/reels/` plays two short slideshows of Ben's face over the years, made from his Apple Photos library by `scripts/make_reels.py`. The script runs on Ben's Mac only. It reads the library through osxphotos, read-only, and does every check locally: no photo is sent to any online service, and the only copies that leave the Mac are the exported WebP files committed here.
+
+```mermaid
+flowchart LR
+  photos["Apple Photos<br/>(osxphotos, read-only)"] --> filter["filter<br/>Ben's face · no screenshots,<br/>documents, screens · not too dark<br/>or blurry · one per burst"]
+  filter --> sort["sort<br/>local CLIP: professional<br/>or casual · spread by year<br/>and place-month"]
+  sort --> crop["crop<br/>Photos face regions +<br/>Apple Vision faces, bodies, text ·<br/>no other face, or skip"]
+  crop --> check["second look<br/>on the final frame:<br/>Vision faces + CLIP"]
+  check --> export["export<br/>WebP 1600px + thumb,<br/>no metadata · data/reels.json"]
+  export --> build["scripts/build.py"]
+  build --> page(["/reels/<br/>js/reels.js"])
+```
+
+```bash
+# needs osxphotos, open_clip_torch, torch, pillow, pillow-heif, numpy,
+# pyobjc-framework-Vision and pyobjc-framework-Quartz
+python scripts/make_reels.py --per-reel 150 --dry-run   # list the picks, write nothing
+python scripts/make_reels.py --per-reel 150             # write assets/reels/ and data/reels.json
+python3 scripts/build.py
+```
+
+- **Who.** Only photos where Photos has tagged Ben ("Benjamin Collier") as a face.
+- **Dropped.** Screenshots, videos, hidden photos, documents, receipts and screens (by Photos labels and CLIP), graphics and posters, very dark or very blurry shots, and all but the best photo of any series taken within a minute.
+- **Other people.** Each original is checked with Photos' face regions and Apple Vision (faces, whole and upper bodies). The script looks for a 4:5 or 16:9 frame at least 1080px tall that holds Ben's face and no part of anyone else's. If there is none, the photo is skipped, always so for a child. A second, independent pass runs Vision's newer face model and a local CLIP "more than one person" vote on the exact frame being published. Nothing is ever blurred.
+- **Home.** Photos taken at home are kept, labelled only "Pittsburgh", and any that shows a house or street number (Vision text recognition) is dropped.
+- **Places** are coarse: a well-known city, otherwise a US state or a country. Photos with no location borrow the place of the nearest located photo within 36 hours.
+- **Hand review.** Every exported image is checked by eye. `scripts/reels_overrides.json` maps a Photos UUID to `"skip"`, `"pro"` or `"casual"`; it holds no images or names.
+- **Deterministic.** The same library and overrides give the same picks in the same order. CLIP scores are cached in `~/Library/Caches/ben-reels/`, which also holds the private report (counts per year and place, and what was skipped and why) and the file-to-UUID manifest. None of that is committed.
+
+The professional reel is short because the library has few genuinely professional photos of Ben alone; the script does not pad it with casual ones.
+
+---
+
 ## Where the data comes from
 
 ```mermaid
@@ -258,6 +296,7 @@ flowchart LR
   notes --> ingest
   ingest --> evaljson["data/evaluations.json<br/>Ben's numbers and chosen quotes only"]
   photos -->|osxphotos, faces skipped or blurred,<br/>metadata stripped| traveljson["data/travel.json<br/>+ assets/travel/"]
+  photos -->|scripts/make_reels.py, cropped so<br/>only Ben appears, metadata stripped| reelsjson["data/reels.json<br/>+ assets/reels/"]
   linkedin -->|weekly cloud routine opens a PR| lijson["data/linkedin.json"]
   sf --> buildpy["scripts/build.py"]
   osm --> campus["assets/campus/campus-map.svg"]
@@ -274,6 +313,8 @@ flowchart LR
 | Evaluations | `data/evaluations.json` | 24 CMU section reports (727 responses) and the 2012 to 2016 Qatar record, read from the PDF reports by a private ingest that keeps the full data outside this repo. The public file holds only Ben's own numbers, hand-picked quotes (trimmed, never added to), and short excerpts from 86 unsolicited notes. No school comparison averages, no colleague data, no names |
 | Advising | `data/advising.json`, `assets/partners/` | Project descriptions without student names; partner logos from each organisation's own site |
 | Travel | `data/travel.json`, `assets/travel/` | Ben's Apple Photos library read with osxphotos: 27 countries and 55 US cities (suburbs merged into their city). Photos with other people's faces were skipped or blurred, all metadata and GPS stripped, dots placed on official city centres, nothing near home |
+| Reels | `data/reels.json`, `assets/reels/` | `scripts/make_reels.py` (see [The reels](#the-reels)). Ordered list of `{src, w, h, place}` per reel; no dates, coordinates or names |
+| Reels music | `assets/reels/music.mp3`, `assets/reels/music.json` | "Travel to the Horizon" by Komiku, from *Poupi's Incredible Adventures*, CC0 1.0, via the [Internet Archive](https://archive.org/details/Komiku-Poupis_incredible_adventures). Loudness-normalised and re-encoded at 128 kbps |
 | LinkedIn | `data/linkedin.json` | A weekly cloud routine reads Ben's public profile and opens a pull request with any new posts; Ben approves it. Read in the browser, so no rebuild |
 | Campus map | `assets/campus/campus-map.svg` | OpenStreetMap extract (ODbL), drawn by `scripts/make_campus_map.py` |
 | World shapes | `assets/vendor/countries-110m.json` | Natural Earth via world-atlas |
@@ -321,6 +362,7 @@ python3 -m http.server 8000                  # preview at http://localhost:8000
 | Evaluations and quotes | regenerate `data/evaluations.json` from the private ingest | Yes |
 | Advising projects | `data/advising.json` | Yes |
 | Travel | `data/travel.json`, `assets/travel/` | Yes |
+| Reels | rerun `scripts/make_reels.py`; hand fixes in `scripts/reels_overrides.json` | Yes |
 | Domain, name, links | `data/site.json` | Yes |
 | LinkedIn posts | `data/linkedin.json` or `scripts/add_linkedin_post.py` | No |
 | Booking links (Cal.com, Calendly) | `js/config.js` | No |
@@ -335,7 +377,7 @@ Other scripts: `add_linkedin_post.py` (add a post by hand), `fetch_linkedin_phot
 
 - **Students.** No student names, photos or projects without explicit permission. Capstones are described without names, final-project lists are anonymised, and evaluation quotes carry only the term.
 - **Colleagues.** No other instructor's ratings or comparison numbers appear anywhere on the site.
-- **Photos.** Faces other than Ben's are excluded or blurred, and every photo is re-encoded without metadata.
+- **Photos.** Faces other than Ben's are excluded or blurred, and every photo is re-encoded without metadata. The reels never blur: a photo with anyone else in it is cropped until they are gone, or left out.
 - **Email.** The personal address never appears in the HTML; `js/site.js` assembles it in the browser.
 - **Copy.** Public copy is written in Ben's voice, with no em dashes and no instructions to editors rendered into pages (see `AGENTS.md`).
 
