@@ -1557,3 +1557,25 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
 .mp-cities { display: flex; flex-wrap: wrap; gap: 4px; max-height: 8.5rem; overflow-y: auto; }
 .mp-cities button { font: 12px var(--mono, ui-monospace, monospace); padding: 2px 7px; border: 1px solid var(--line, #d9cfba); border-radius: 999px; background: var(--card, #fff); color: var(--ink); cursor: pointer; }
 .mp-cities button:hover, .mp-cities button:focus-visible { border-color: var(--accent); color: var(--accent-ink); }
+/* ---------- Home: the editor's caret that adds "PhD" to the name ----------
+   A red proofreading caret pops in after "Collier" and "PhD" is written in
+   above it, letter by letter, then gets a little nudge. Visible at rest
+   without JS; the animation only plays once the hero is drawn. */
+.phd-ins { position: relative; display: inline-block; width: 0; height: 1em; vertical-align: baseline; }
+.phd-caret { position: absolute; left: -.02em; bottom: -.05em; width: .26em; height: .22em; overflow: visible; }
+.phd-caret path { fill: none; stroke: var(--red); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 60; stroke-dashoffset: 0; }
+.phd { position: absolute; left: .07em; bottom: .32em; font-family: var(--hand); font-weight: 700; font-size: .42em; line-height: 1; color: var(--red);
+  letter-spacing: .02em; white-space: nowrap; transform: rotate(-9deg); transform-origin: 0 100%; }
+.phd i { font-style: normal; display: inline-block; }
+.js-anim .hero.reveal.drawn .phd-caret path { animation: phd-caret .45s cubic-bezier(.5,0,.3,1) 1.9s backwards; }
+.js-anim .hero.reveal.drawn .phd i { animation: phd-write .26s cubic-bezier(.3,1.6,.5,1) backwards; }
+.js-anim .hero.reveal.drawn .phd i:nth-child(1) { animation-delay: 2.35s; }
+.js-anim .hero.reveal.drawn .phd i:nth-child(2) { animation-delay: 2.55s; }
+.js-anim .hero.reveal.drawn .phd i:nth-child(3) { animation-delay: 2.75s; }
+.js-anim .hero.reveal.drawn .phd { animation: phd-nudge .5s ease-in-out 3.15s; }
+.js-anim .hero.reveal:not(.drawn) .phd i, .js-anim .hero.reveal:not(.drawn) .phd-caret { opacity: 0; }
+@keyframes phd-caret { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
+@keyframes phd-write { from { opacity: 0; transform: translateY(-.35em) scale(1.6) rotate(-14deg); } to { opacity: 1; transform: none; } }
+@keyframes phd-nudge { 0%, 100% { transform: rotate(-9deg); } 35% { transform: rotate(-3deg) translateY(-.06em); } 70% { transform: rotate(-12deg); } }
+.hero h1:hover .phd { animation: phd-nudge .5s ease-in-out; }
+@media (prefers-reduced-motion: reduce) { .phd, .phd i, .phd-caret path { animation: none !important; } }
