@@ -72,6 +72,11 @@
     if (e.pointerType === "mouse" && !tip.hidden && !(e.target.closest && e.target.closest(".ev-hit"))) hideTip();
   }, { passive: true });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideTip(); });
+  // ...and when the pointer leaves the window or the window loses focus, since
+  // no pointermove arrives after that.
+  document.documentElement.addEventListener("mouseleave", hideTip);
+  window.addEventListener("blur", hideTip);
+  document.addEventListener("visibilitychange", hideTip);
   function touchTip() { clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 2600); }
   function hit(svg, cx, cy, r, lines, label) {
     var h = E("circle", { cx: cx, cy: cy, r: Math.max(r + 8, 14), class: "ev-hit", tabindex: "0", role: "img", "aria-label": label }, svg);
