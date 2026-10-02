@@ -1674,5 +1674,256 @@
    "year": "2025"
   }
  ],
- "notes_total": 86
+ "notes_total": 86,
+ "course_quotes": {
+  "45-851": [
+   {
+    "text": "How to teach a very technical course like data mining to most students who have never touched coding? Just ask Prof Collier. He was outstanding. The structure of the course was spectacular.",
+    "term": "Fall 2023",
+    "small": false
+   },
+   {
+    "text": "This is definitely one of the top 3 best courses I have taken at CMU.",
+    "term": "Fall 2024",
+    "small": false
+   },
+   {
+    "text": "Loved this class and the acceptance and encouragement to use AI as it is a tool and not a mode of cheating.",
+    "term": "Spring 2025",
+    "small": false
+   },
+   {
+    "text": "His class has been one of my favorites throughout my MBA. I wish I had taken it earlier, and it truly feels like I'll be using these skills for a long time in my future career.",
+    "term": "Spring 2025",
+    "small": false
+   },
+   {
+    "text": "His insights are sharp and highly practical, and his classes are well-organized and efficient.",
+    "term": "Fall 2025",
+    "small": false
+   },
+   {
+    "text": "Professor Collier has a very deep understanding of the material, but more importantly, he has the ability to explain it so anyone can understand.",
+    "term": "Fall 2025",
+    "small": false
+   },
+   {
+    "text": "THE GOAT OF ANALYTICS AT TEPPER!!!",
+    "term": "Fall 2025",
+    "small": true
+   }
+  ],
+  "45-884": [
+   {
+    "text": "This was one of the best courses I've taken at Tepper, which is especially impressive since this is the first time Prof Collier is teaching it.",
+    "term": "Fall 2025",
+    "small": false
+   },
+   {
+    "text": "Some instructors go years without changing a course, but I can tell he is laser focused on making sure this is accurate and up-to-date.",
+    "term": "Fall 2025",
+    "small": false
+   },
+   {
+    "text": "This course belongs in the core curriculum. Collier is equipping us with a set of tools to get far more out of AI than peers and colleagues.",
+    "term": "Summer 2026",
+    "small": false
+   },
+   {
+    "text": "Professor Collier did an excellent job of making complex technical concepts accessible and engaging.",
+    "term": "Fall 2025",
+    "small": false
+   }
+  ],
+  "45-885": [
+   {
+    "text": "One of the most practical classes I've taken at Tepper, I actually learned something I could take to work today and use.",
+    "term": "Spring 2025",
+    "small": false
+   },
+   {
+    "text": "This was truly the best class I have had at Tepper. No other class has been as good as this.",
+    "term": "Fall 2025",
+    "small": false
+   },
+   {
+    "text": "It feels like you're discovering together what are good and bad practices. The format forces you to think and judge before learning best practices.",
+    "term": "Spring 2026",
+    "small": false
+   },
+   {
+    "text": "He made everything idiot proof and really met people where they were at. He is so knowledgeable & cool. 10/10",
+    "term": "Spring 2026",
+    "small": true
+   },
+   {
+    "text": "He is a great teacher, very patient, helpful and understanding of different perspectives.",
+    "term": "Spring 2025",
+    "small": false
+   }
+  ],
+  "46-880": [
+   {
+    "text": "He has listened to the midpoint feedback of students and adjusted the teaching style based from that.",
+    "term": "Fall 2024",
+    "small": false
+   },
+   {
+    "text": "He shows respect and care to every single student, and he uses real interview questions as brain teasers at the beginning of every class.",
+    "term": "Fall 2024",
+    "small": false
+   },
+   {
+    "text": "He takes the time after class to answer everyone's doubts, not only limited to course but also extended to professional development.",
+    "term": "Fall 2024",
+    "small": false
+   }
+  ],
+  "46-885": [
+   {
+    "text": "Have already convinced my work to purchase the software for me and I am using it at work now.",
+    "term": "Spring 2025",
+    "small": false
+   },
+   {
+    "text": "Professor Collier is one of the most passionate professors I've come across!",
+    "term": "Spring 2025",
+    "small": false
+   },
+   {
+    "text": "The professor's undeniable enthusiasm for the topics he was sharing, whether it was experiments or fonts!",
+    "term": "Spring 2025",
+    "small": true
+   }
+  ],
+  "46-887": [
+   {
+    "text": "He showed many examples of how academic ideas connect to real work, and encourages hands-on tasks with real tools like AWS.",
+    "term": "Spring 2026",
+    "small": false
+   },
+   {
+    "text": "Probably the most relevant class I took.",
+    "term": "Spring 2026",
+    "small": false
+   },
+   {
+    "text": "Ben is my favorite professor of all time, please keep up the great work!",
+    "term": "Spring 2026",
+    "small": true
+   }
+  ],
+  "90-803": [
+   {
+    "text": "Dr. Collier made me actually care about this course. I was not excited about it and felt like it was going to be massively over my head.",
+    "term": "Spring 2026",
+    "small": false
+   },
+   {
+    "text": "One of the best courses I have taken at Heinz. He does a wonderful job of explaining ML topics to technical and non-technical students alike.",
+    "term": "Spring 2026",
+    "small": false
+   },
+   {
+    "text": "Thank you for making this class project based, which helps me prove to my future employer that I can actually use these skills.",
+    "term": "Spring 2026",
+    "small": false
+   },
+   {
+    "text": "I LOVE THIS COURSE, PLEASE STAY IN THIS COURSE",
+    "term": "Spring 2026",
+    "small": true
+   }
+  ],
+  "70-311": [
+   {
+    "text": "Professor Collier is a great professor! His main goal is students learning the principles and applying them in real life.",
+    "term": "Fall 2012",
+    "small": false
+   },
+   {
+    "text": "Professor Collier organizes the course in such a way that the large amount of work seems less and interesting. His teaching method is very student friendly.",
+    "term": "Fall 2014",
+    "small": false
+   },
+   {
+    "text": "I thought this class would be a burden, but it was the opposite, the things we learn about in this class are very useful for our future.",
+    "term": "Fall 2014",
+    "small": false
+   },
+   {
+    "text": "One of the best courses this semester; loved the way it was structured and thoroughly enjoyed the content, especially the simulations!",
+    "term": "Fall 2013",
+    "small": false
+   }
+  ],
+  "70-321": [
+   {
+    "text": "This is a very interesting course because it allows us, the students, to learn by doing, rather listening to lectures.",
+    "term": "Spring 2013",
+    "small": false
+   },
+   {
+    "text": "I really enjoyed this course and I would say that it's the best class that I've taken in cmu so far.",
+    "term": "Spring 2013",
+    "small": false
+   },
+   {
+    "text": "A really great, enjoyable, and beneficial course. The instructor is helpful, provides feedback, and explains the concepts in a well presented manner.",
+    "term": "Spring 2013",
+    "small": false
+   }
+  ],
+  "70-323": [
+   {
+    "text": "Very interesting course that will help me a lot, we learned a lot about research, how to conduct surveys and how to evaluate the data. The professor was supporting.",
+    "term": "Spring 2013",
+    "small": false
+   },
+   {
+    "text": "He is very flexible and welcoming. He helped me a lot in coming up with a good research topic.",
+    "term": "Spring 2013",
+    "small": false
+   },
+   {
+    "text": "Professor Ben is awesome! So kind and respectful.",
+    "term": "Spring 2013",
+    "small": false
+   }
+  ],
+  "70-443": [
+   {
+    "text": "This is a great course to take because the topics are changing as we speak in class and we have seen how it is true.",
+    "term": "Spring 2014",
+    "small": false
+   },
+   {
+    "text": "I enjoyed the course very much, and found the cases chosen to be interesting and useful. I especially liked how interactive the classes were as opposed to being a traditional lecture type class.",
+    "term": "Spring 2015",
+    "small": false
+   },
+   {
+    "text": "I really enjoyed the course and I think that I learnt new things that are new and futuristic. Also I think that it helped in generating new unsolved questions that makes up an excellent research question.",
+    "term": "Spring 2014",
+    "small": false
+   }
+  ],
+  "70-453": [
+   {
+    "text": "Great instructor and treats us as professionals not only students",
+    "term": "Spring 2015",
+    "small": false
+   },
+   {
+    "text": "One of the things I enjoyed the most about this course is the simulations aspect in the last module. I would recommend anyone to take a course with professor Collier.",
+    "term": "Spring 2015",
+    "small": false
+   },
+   {
+    "text": "Very wonderful course that taught me what is consulting",
+    "term": "Spring 2014",
+    "small": false
+   }
+  ]
+ }
 }
