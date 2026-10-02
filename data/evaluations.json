@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-01",
+ "updated": "2026-10-02",
  "scale": "Students rate each item from 1 (poor) to 5 (excellent).",
  "items": {
   "2": "Interest in students' learning",
@@ -1041,12 +1041,6 @@
    "course": "45-885",
    "term": "Fall 2025",
    "text": "This was truly the best class I have had at Tepper. No other class has been as good as this. I actually learnt something.",
-   "small": false
-  },
-  {
-   "course": "45-885",
-   "term": "Fall 2025",
-   "text": "Tableau is, without question, the most valuable skillset I have gained in the MBA program.",
    "small": false
   },
   {
