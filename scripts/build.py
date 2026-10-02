@@ -2575,7 +2575,11 @@ def build_evaluations():
     for x in secs:
         if x["term"] not in terms:
             terms.append(x["term"])
-    body = page_head(
+    variant_bar = """<aside class="eval-variant-bar" aria-label="Evaluation report version">
+      <p><strong>Version B</strong><span>Claude Opus 5.5</span><span>Fall 2023 to Spring 2026</span><span>24 sections</span><span>727 responses</span></p>
+      <nav aria-label="Compare evaluation reports"><a href="../evaluations/">compare A and B</a><a href="../evaluations-a/">open Version A</a></nav>
+    </aside>"""
+    body = variant_bar + page_head(
         "Evaluations", "What students say",
         f"Every Carnegie Mellon course I have taught since Fall 2023, rated by the students who took it: "
         f"{n_resp} responses across {len(secs)} sections of {n_courses} courses, with {rr}% of students responding. "
@@ -2710,10 +2714,29 @@ def build_evaluations():
 
     data = json.dumps(ev, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
     tag = '<script id="ev-data" type="application/json">' + data + '</script><script src="../js/evals.js" defer></script>'
-    write("evaluations/index.html", page(
+    write("evaluations-b/index.html", page(
         "../", "evaluations", "Evaluations · Ben Collier",
         f"Student evaluations of every Carnegie Mellon course Ben Collier has taught since 2023: {n_resp} responses, {len(secs)} sections, charted and quoted.",
-        "evaluations/", body, scripts="\n" + tag))
+        "evaluations-b/", body, scripts="\n" + tag))
+
+    comparison = page_head(
+        "Evaluations", "Two analyses, one teaching record",
+        "These two interactive reports were made from overlapping sets of Benjamin Collier's de-identified teaching evaluations. "
+        "They use different time windows, which is why their headline response counts differ.",
+        stamp="Version A + Version B")
+    comparison += """<section class="eval-compare" aria-labelledby="eval-compare-title">
+      <div class="section-h"><span class="section-n">02</span><div><p class="kicker">The denominator, made explicit</p><h2 id="eval-compare-title">727 recent responses + 430 earlier responses = 1,157 total responses</h2></div></div>
+      <p class="prose">Version A combines all 44 comparable five-point sections from 2011 to 2026. Version B uses the 24 sections since Fall 2023 for its headline and places the earlier CMU-Q record in a separate section. The pages are therefore different views of overlapping evidence, not conflicting counts.</p>
+      <div class="eval-compare-grid">
+        <article class="eval-version-card eval-version-a"><p class="kicker">Version A</p><h3>Full-history teaching story</h3><dl><div><dt>Model</dt><dd>GPT-5.6 Sol High</dd></div><div><dt>Coverage</dt><dd>2011 to 2026</dd></div><div><dt>Comparable sections</dt><dd>44</dd></div><div><dt>Section-level responses</dt><dd>1,157</dd></div></dl><p>A visual narrative with the long timeline, comment themes, course-level quotes, improvement ideas, and methods.</p><a class="go" href="../evaluations-a/">Open Version A</a></article>
+        <article class="eval-version-card eval-version-b"><p class="kicker">Version B</p><h3>Recent-first evaluation notebook</h3><dl><div><dt>Model</dt><dd>Claude Opus 5.5</dd></div><div><dt>Headline coverage</dt><dd>Fall 2023 to Spring 2026</dd></div><div><dt>Headline sections</dt><dd>24</dd></div><div><dt>Headline responses</dt><dd>727</dd></div></dl><p>A recent-first analysis with section and course charts. Its separate historical CMU-Q section contains 428 responses from 19 sections; the two-response 2011 record is not included there.</p><a class="go" href="../evaluations-b/">Open Version B</a></article>
+      </div>
+      <p class="eval-count-note"><strong>Why B's page does not say 1,155:</strong> its 727-response headline intentionally excludes the historical section, and its separate earlier series starts in 2012. Version A also includes a two-response 2011 section, bringing the complete comparable total to 1,157.</p>
+    </section>"""
+    write("evaluations/index.html", page(
+        "../", "evaluations", "Compare teaching-evaluation analyses · Ben Collier",
+        "Compare two interactive analyses of Benjamin Collier's de-identified teaching evaluations, with their time windows and response counts made explicit.",
+        "evaluations/", comparison))
 
 
 def build_strengths():
@@ -2967,7 +2990,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
