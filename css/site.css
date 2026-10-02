@@ -1521,15 +1521,15 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
 @media (max-width: 560px) { .ev-notes { grid-template-columns: 1fr; } }
 
 /* ---------- Index tabs: always one row, never cut off ----------
-   Eleven tabs do not fit beside the name on a laptop screen. Between phone
-   width and 1500px the tabs get their own full-width row under the name and
-   the "Book a call" note shrinks to one line; wider screens keep everything
-   on one line. */
+   Eleven tabs do not fit beside the name, so on every screen wider than a
+   phone the tabs get their own full-width row under the name and the
+   "Book a call" note shrinks to one line. */
 @media (min-width: 761px) {
-  .tabs a { font-size: 12.5px; padding: 8px 10px 12px; }
-  .tabs a[aria-current="page"]::after { left: 10px; right: 10px; }
+  .tabs { gap: 4px; }
+  .tabs a { font-size: 12.5px; padding: 8px 9px 12px; }
+  .tabs a[aria-current="page"]::after { left: 9px; right: 9px; }
 }
-@media (min-width: 761px) and (max-width: 1499px) {
+@media (min-width: 761px) {
   .topbar-in { flex-wrap: wrap; padding: 12px 28px 0; gap: 2px 22px; min-height: 0; }
   .brand { padding-bottom: 2px; }
   .topbar-in > nav { flex-basis: 100%; }
@@ -1538,10 +1538,14 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
   .sticky-cta small { display: none; }
   .sticky-cta::before { width: 44px; margin-left: -22px; top: -8px; height: 16px; }
 }
-@media (min-width: 1500px) {
-  .topbar-in { max-width: 1500px; }
-}
-@media (min-width: 761px) and (max-width: 979px) {
+@media (min-width: 761px) and (max-width: 909px) {
   /* the one width band where the tab row still has to scroll: fade its edge */
   .tabs { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 50px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 50px), transparent); }
+}
+/* contact: the office lines carry the same map and photo pop-ups as the CV */
+.office-lines .place-pop { display: inline-block; }
+@media (min-width: 761px) and (max-width: 1019px) {
+  .tabs { gap: 3px; }
+  .tabs a { font-size: 12px; padding: 8px 7px 12px; }
+  .tabs a[aria-current="page"]::after { left: 7px; right: 7px; }
 }
