@@ -1,4 +1,4 @@
-# collier.phd
+# ben.collier.phd
 
 Faculty site for [Ben Collier](https://www.linkedin.com/in/bcollierphd), Assistant Teaching Professor of Business Analytics at the Tepper School of Business, Carnegie Mellon University.
 
@@ -9,7 +9,7 @@ dependencies. See [Build](#build).
 - **Host:** GitHub Pages, from `main` at the repo root
 - **Live now:** <https://bcollier.github.io/ben.collier.phd/>
 - **Compare the designs:** <https://bcollier.github.io/ben.collier.phd/designs/>
-- **Final URL:** `https://collier.phd`, with `www.collier.phd` redirecting to it. See [Custom domain](#custom-domain).
+- **Final URL:** `https://ben.collier.phd`. `collier.phd` and `www.collier.phd` forward to it, path and all, through the [collier.phd-redirect](https://github.com/bcollier/collier.phd-redirect) repo. See [Custom domain](#custom-domain).
 - **15-113 submission:** frozen as the [`cs15-113-submission`](https://github.com/bcollier/ben.collier.phd/releases/tag/cs15-113-submission) tag. The six designs, both session logs, and `PROMPTS.md` below describe that version.
 
 ---
@@ -206,7 +206,7 @@ Hand in the `github.io` URL that Settings → Pages shows.
 
 ## Custom domain
 
-The site is served at the apex, `collier.phd`. Attaching it makes GitHub Pages redirect the `github.io` URL to the domain, so the version handed in for 15-113 is kept as the `cs15-113-submission` tag rather than as a live URL.
+The site is served at `ben.collier.phd`. The bare domain `collier.phd` and `www.collier.phd` belong to a second GitHub Pages repo, [bcollier/collier.phd-redirect](https://github.com/bcollier/collier.phd-redirect), whose `index.html` and `404.html` send every path to the same path on `ben.collier.phd`. Attaching the custom domain makes GitHub Pages redirect the `github.io` URL to it, so the version handed in for 15-113 is kept as the `cs15-113-submission` tag rather than as a live URL.
 
 DNS for `collier.phd` is managed at Squarespace Domains (account.squarespace.com → Domains → collier.phd → DNS). It has no API, so records are edited by hand. The records below have been in place since 30 September 2026:
 
@@ -218,7 +218,7 @@ DNS for `collier.phd` is managed at Squarespace Domains (account.squarespace.com
 | `A` | `@` | `185.199.111.153` |
 | `CNAME` | `www` | `bcollier.github.io` |
 
-GitHub redirects `www.collier.phd` to `collier.phd` on its own once both are in place.
+Plus one more record for the site itself: `CNAME` `ben` → `bcollier.github.io`. GitHub serves `www.collier.phd` from the redirect repo along with the apex.
 
 Then:
 

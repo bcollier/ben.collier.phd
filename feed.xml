@@ -2,274 +2,274 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Ben Collier: news</title>
   <subtitle>Teaching, advising, and applied work.</subtitle>
-  <link href="https://collier.phd/feed.xml" rel="self"/>
-  <link href="https://collier.phd/"/>
-  <id>https://collier.phd/</id>
+  <link href="https://ben.collier.phd/feed.xml" rel="self"/>
+  <link href="https://ben.collier.phd/"/>
+  <id>https://ben.collier.phd/</id>
   <updated>2026-09-29T12:00:00Z</updated>
   <author><name>Ben Collier</name></author>
   <entry>
     <title>Led the information session for MBA students considering the Business Analytics track.</title>
     <link href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics"/>
-    <id>tag:collier.phd,2026:news/2026-09-29</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09-29</id>
     <updated>2026-09-29T12:00:00Z</updated>
     <summary>Led the information session for MBA students considering the Business Analytics track.</summary>
   </entry>
   <entry>
     <title>Opened the Artificial Intelligence for Business Leaders agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.</title>
     <link href="https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy"/>
-    <id>tag:collier.phd,2026:news/2026-09-24</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09-24</id>
     <updated>2026-09-24T12:00:00Z</updated>
     <summary>Opened the Artificial Intelligence for Business Leaders agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.</summary>
   </entry>
   <entry>
     <title>Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.</title>
     <link href="https://www.thedartmouth.com/article/2026/09/schnell-ai-writing"/>
-    <id>tag:collier.phd,2026:news/2026-09-24</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09-24</id>
     <updated>2026-09-24T12:00:00Z</updated>
     <summary>Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.</summary>
   </entry>
   <entry>
     <title>Became faculty coordinator of the MBA Business Analytics track at Tepper.</title>
     <link href="https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics"/>
-    <id>tag:collier.phd,2026:news/2026-09</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09</id>
     <updated>2026-09-01T12:00:00Z</updated>
     <summary>Became faculty coordinator of the MBA Business Analytics track at Tepper.</summary>
   </entry>
   <entry>
     <title>Opened Artificial Intelligence for Business Leaders with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.</title>
     <link href="https://www.quantamagazine.org/ai-has-solved-one-of-maths-1-million-millennium-prize-problems-20260908/"/>
-    <id>tag:collier.phd,2026:news/2026-09-10</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09-10</id>
     <updated>2026-09-10T12:00:00Z</updated>
     <summary>Opened Artificial Intelligence for Business Leaders with OpenAI's proof of the Navier-Stokes problem, one of the seven $1 million Millennium Prize problems, announced a few hours after our previous class. By our rough math in class, it took about $100 million of compute to win a $1 million prize.</summary>
   </entry>
   <entry>
     <title>Same class, darker headline: an Anthropic alignment lead put the chance that AI kills all humans within a decade at more than 10 percent. We set it next to the p(doom) numbers other AI leaders have given, and a week later the class gave its own. The median was 20 percent.</title>
     <link href="https://www.forbes.com/sites/siladityaray/2026/09/09/anthropic-alignment-lead-warns-ai-could-kill-all-humans-as-researcher-quits/"/>
-    <id>tag:collier.phd,2026:news/2026-09-10</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09-10</id>
     <updated>2026-09-10T12:00:00Z</updated>
     <summary>Same class, darker headline: an Anthropic alignment lead put the chance that AI kills all humans within a decade at more than 10 percent. We set it next to the p(doom) numbers other AI leaders have given, and a week later the class gave its own. The median was 20 percent.</summary>
   </entry>
   <entry>
     <title>Started Artificial Intelligence for Business Leaders on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.</title>
     <link href="https://www.foxbusiness.com/technology/nvidia-ceo-jensen-huang-declares-agi-has-arrived-after-openai-unveils-gpt-6-astra"/>
-    <id>tag:collier.phd,2026:news/2026-09-08</id>
+    <id>tag:ben.collier.phd,2026:news/2026-09-08</id>
     <updated>2026-09-08T12:00:00Z</updated>
     <summary>Started Artificial Intelligence for Business Leaders on the GPT-6 Astra launch, which reached the human baseline on ARC-AGI-3 the evening after our last class. Jensen Huang posted that AGI has arrived. We put his claim next to Yann LeCun's skepticism.</summary>
   </entry>
   <entry>
     <title>Opened the history of AI in Artificial Intelligence for Business Leaders with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.</title>
     <link href="https://techstartups.com/2026/08/26/top-tech-news-today-august-26-2026-amazon-anthropic-google-microsoft-waymo-more/"/>
-    <id>tag:collier.phd,2026:news/2026-08-27</id>
+    <id>tag:ben.collier.phd,2026:news/2026-08-27</id>
     <updated>2026-08-27T12:00:00Z</updated>
     <summary>Opened the history of AI in Artificial Intelligence for Business Leaders with the Mechanical Turk, the 1770 chess machine with a person hidden inside, and the news from the day before: Amazon is shutting down its Mechanical Turk marketplace after 21 years, the human workforce that labeled data for a generation of machine learning.</summary>
   </entry>
   <entry>
     <title>Taught the first class of Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-08-25</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-08-25</id>
     <updated>2026-08-25T12:00:00Z</updated>
     <summary>Taught the first class of Artificial Intelligence for Business Leaders, a new undergraduate course I built. Students learn how AI works, work hands-on with AI agents, and then judge where AI creates value across marketing, finance, operations, and strategy, and how to defend that judgment to executives.</summary>
   </entry>
   <entry>
     <title>Started the third run of AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-08-24</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-08-24</id>
     <updated>2026-08-24T12:00:00Z</updated>
     <summary>Started the third run of AI Methods for Social and Visual Data, with agents moved earlier in the term and a summary and cleaned transcript for students after every class.</summary>
   </entry>
   <entry>
     <title>Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.</title>
-    <link href="https://collier.phd/talks/"/>
-    <id>tag:collier.phd,2026:news/2026-08-07</id>
+    <link href="https://ben.collier.phd/talks/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-08-07</id>
     <updated>2026-08-07T12:00:00Z</updated>
     <summary>Led a discussion at the Tepper AI-Exchange on what I learned building two new AI courses: what worked in the MBA course AI Methods for Social and Visual Data, and what I was changing for the new undergraduate course, Artificial Intelligence for Business Leaders.</summary>
   </entry>
   <entry>
     <title>Finished recording the MS in Business Analytics Math Skills Workshop, a self-paced course for incoming MS in Business Analytics students that runs from algebra through gradient descent, PCA, and statistical inference.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-08</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-08</id>
     <updated>2026-08-01T12:00:00Z</updated>
     <summary>Finished recording the MS in Business Analytics Math Skills Workshop, a self-paced course for incoming MS in Business Analytics students that runs from algebra through gradient descent, PCA, and statistical inference.</summary>
   </entry>
   <entry>
     <title>Received the George Leland Bach Excellence in Teaching Award, voted by the MBA Class of 2026 and presented at the MBA diploma ceremony.</title>
     <link href="https://www.youtube.com/watch?v=wkVLIOVPTbU&amp;t=2890s"/>
-    <id>tag:collier.phd,2026:news/2026-05-09</id>
+    <id>tag:ben.collier.phd,2026:news/2026-05-09</id>
     <updated>2026-05-09T12:00:00Z</updated>
     <summary>Received the George Leland Bach Excellence in Teaching Award, voted by the MBA Class of 2026 and presented at the MBA diploma ceremony.</summary>
   </entry>
   <entry>
     <title>Really proud of this summer's AI Methods final projects. Three of the nineteen are already in use, and they range from social listening on an aircraft maker's safety crisis to an offline tool that helps bomb-disposal teams identify ordnance.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-06</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-06</id>
     <updated>2026-06-01T12:00:00Z</updated>
     <summary>Really proud of this summer's AI Methods final projects. Three of the nineteen are already in use, and they range from social listening on an aircraft maker's safety crisis to an offline tool that helps bomb-disposal teams identify ordnance.</summary>
   </entry>
   <entry>
     <title>Taught AI Methods for Social and Visual Data for the second time, rebuilt for the summer with one live session a week and hands-on Python videos for every module.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-05-04</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-05-04</id>
     <updated>2026-05-04T12:00:00Z</updated>
     <summary>Taught AI Methods for Social and Visual Data for the second time, rebuilt for the summer with one live session a week and hands-on Python videos for every module.</summary>
   </entry>
   <entry>
     <title>Talked with Tepper for a Faculty Spotlight on what students learn in the MS in Business Analytics, and why I describe business analytics as a decathlon.</title>
     <link href="https://www.youtube.com/watch?v=UxBPkez6Mc4"/>
-    <id>tag:collier.phd,2026:news/2026-04-30</id>
+    <id>tag:ben.collier.phd,2026:news/2026-04-30</id>
     <updated>2026-04-30T12:00:00Z</updated>
     <summary>Talked with Tepper for a Faculty Spotlight on what students learn in the MS in Business Analytics, and why I describe business analytics as a decathlon.</summary>
   </entry>
   <entry>
     <title>Started teaching Machine Learning for Business Applications to the in-person MS in Business Analytics cohort, redesigned around AWS. Students take a model from S3 through SageMaker to a database they run themselves and a live dashboard.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-03-11</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-03-11</id>
     <updated>2026-03-11T12:00:00Z</updated>
     <summary>Started teaching Machine Learning for Business Applications to the in-person MS in Business Analytics cohort, redesigned around AWS. Students take a model from S3 through SageMaker to a database they run themselves and a live dashboard.</summary>
   </entry>
   <entry>
     <title>Made a cameo in a Tepper reel for the end of Mini 3: your professor tells a joke that is not funny, but finals are next week. For the record, the jokes are funny.</title>
     <link href="https://www.instagram.com/p/DU86OS8Echk/"/>
-    <id>tag:collier.phd,2026:news/2026-02-19</id>
+    <id>tag:ben.collier.phd,2026:news/2026-02-19</id>
     <updated>2026-02-19T12:00:00Z</updated>
     <summary>Made a cameo in a Tepper reel for the end of Mini 3: your professor tells a joke that is not funny, but finals are next week. For the record, the jokes are funny.</summary>
   </entry>
   <entry>
     <title>Started teaching Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-01-13</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-01-13</id>
     <updated>2026-01-13T12:00:00Z</updated>
     <summary>Started teaching Machine Learning Foundations with Python at Heinz College, rebuilt around four applied projects on policy questions, from broadband subsidies to student loan complaints.</summary>
   </entry>
   <entry>
     <title>Advising two MS in Business Analytics capstone teams this spring.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2026:news/2026-01</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2026:news/2026-01</id>
     <updated>2026-01-01T12:00:00Z</updated>
     <summary>Advising two MS in Business Analytics capstone teams this spring.</summary>
   </entry>
   <entry>
     <title>Taught Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-10-22</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-10-22</id>
     <updated>2025-10-22T12:00:00Z</updated>
     <summary>Taught Managing and Assessing Tech Talent and Organizations for CMU Qatar, my first course in Doha since 2016: mock technical interviews on Zoom, then an in-person week on teams and culture.</summary>
   </entry>
   <entry>
     <title>Taught Data Mining in person and online hybrid in the same seven-week term, and added principal component analysis to the course.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-10</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-10</id>
     <updated>2025-10-01T12:00:00Z</updated>
     <summary>Taught Data Mining in person and online hybrid in the same seven-week term, and added principal component analysis to the course.</summary>
   </entry>
   <entry>
     <title>Taught the first class of AI Methods for Social and Visual Data, a course I built for MBA and master's students on text, images, and AI agents, using foundation models rather than training them.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-08-26</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-08-26</id>
     <updated>2025-08-26T12:00:00Z</updated>
     <summary>Taught the first class of AI Methods for Social and Visual Data, a course I built for MBA and master's students on text, images, and AI agents, using foundation models rather than training them.</summary>
   </entry>
   <entry>
     <title>Joined gAIm Systems as Senior Director of AI and Data Science.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-05</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-05</id>
     <updated>2025-05-01T12:00:00Z</updated>
     <summary>Joined gAIm Systems as Senior Director of AI and Data Science.</summary>
   </entry>
   <entry>
     <title>Proud of this spring's Data Mining final projects: teams brought their own questions, from predicting baseball Hall of Fame induction to siting EV chargers in Pennsylvania.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-05</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-05</id>
     <updated>2025-05-01T12:00:00Z</updated>
     <summary>Proud of this spring's Data Mining final projects: teams brought their own questions, from predicting baseball Hall of Fame induction to siting EV chargers in Pennsylvania.</summary>
   </entry>
   <entry>
     <title>This spring's Data Visualization final projects were 29 recorded data stories, from Netflix's global catalog to city-by-city warming and public-sector dashboards.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-03</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-03</id>
     <updated>2025-03-01T12:00:00Z</updated>
     <summary>This spring's Data Visualization final projects were 29 recorded data stories, from Netflix's global catalog to city-by-city warming and public-sector dashboards.</summary>
   </entry>
   <entry>
     <title>Poets &amp; Quants profiled Tepper's MBA Class of 2026, and Tepper's director of masters admissions named me as the new professor teaching business analytics in the MBA program.</title>
     <link href="https://poetsandquants.com/2025/01/10/meet-carnegie-mellon-teppers-mba-class-of-2026/2/"/>
-    <id>tag:collier.phd,2025:news/2025-01-10</id>
+    <id>tag:ben.collier.phd,2025:news/2025-01-10</id>
     <updated>2025-01-10T12:00:00Z</updated>
     <summary>Poets &amp; Quants profiled Tepper's MBA Class of 2026, and Tepper's director of masters admissions named me as the new professor teaching business analytics in the MBA program.</summary>
   </entry>
   <entry>
     <title>Rebuilt Data Visualization entirely in Tableau for its second run, added clustering, network graphs, and explainable AI, and recorded about fifty short screencast lessons. Also started teaching its MS in Business Analytics counterpart, Data Exploration and Visualization.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-01-13</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-01-13</id>
     <updated>2025-01-13T12:00:00Z</updated>
     <summary>Rebuilt Data Visualization entirely in Tableau for its second run, added clustering, network graphs, and explainable AI, and recorded about fifty short screencast lessons. Also started teaching its MS in Business Analytics counterpart, Data Exploration and Visualization.</summary>
   </entry>
   <entry>
     <title>Advised five MS in Business Analytics capstone projects.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2025:news/2025-01</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2025:news/2025-01</id>
     <updated>2025-01-01T12:00:00Z</updated>
     <summary>Advised five MS in Business Analytics capstone projects.</summary>
   </entry>
   <entry>
     <title>Taught Data Mining for the third time and moved it from R to Python, adding time series forecasting and a session on building data-driven products to clustering, regression, classification, and text mining.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-10</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-10</id>
     <updated>2024-10-01T12:00:00Z</updated>
     <summary>Taught Data Mining for the third time and moved it from R to Python, adding time series forecasting and a session on building data-driven products to clustering, regression, classification, and text mining.</summary>
   </entry>
   <entry>
     <title>Started teaching Introduction to Probability and Statistics, the first quantitative course in the full-time MS in Business Analytics, pairing every distribution with its Excel formula and its Python call.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-08-26</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-08-26</id>
     <updated>2024-08-26T12:00:00Z</updated>
     <summary>Started teaching Introduction to Probability and Statistics, the first quantitative course in the full-time MS in Business Analytics, pairing every distribution with its Excel formula and its Python call.</summary>
   </entry>
   <entry>
     <title>Joined Tepper as Assistant Teaching Professor of Business Analytics.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-08</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-08</id>
     <updated>2024-08-01T12:00:00Z</updated>
     <summary>Joined Tepper as Assistant Teaching Professor of Business Analytics.</summary>
   </entry>
   <entry>
     <title>Taught in the Business Analytics Summer Summit.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-06</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-06</id>
     <updated>2024-06-01T12:00:00Z</updated>
     <summary>Taught in the Business Analytics Summer Summit.</summary>
   </entry>
   <entry>
     <title>Proud of the first Data Mining final projects: sixteen online hybrid MBA teams, many working on data from their own employers.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-05</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-05</id>
     <updated>2024-05-01T12:00:00Z</updated>
     <summary>Proud of the first Data Mining final projects: sixteen online hybrid MBA teams, many working on data from their own employers.</summary>
   </entry>
   <entry>
     <title>Started teaching Data Visualization with an evening MBA section, mixing Tableau with R and ggplot2.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-03-13</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-03-13</id>
     <updated>2024-03-13T12:00:00Z</updated>
     <summary>Started teaching Data Visualization with an evening MBA section, mixing Tableau with R and ggplot2.</summary>
   </entry>
   <entry>
     <title>Taught Data Mining for the second time, rebuilt for the online hybrid MBA with a recorded video module for each topic and a self-directed final project in place of the exam.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-03</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-03</id>
     <updated>2024-03-01T12:00:00Z</updated>
     <summary>Taught Data Mining for the second time, rebuilt for the online hybrid MBA with a recorded video module for each topic and a self-directed final project in place of the exam.</summary>
   </entry>
   <entry>
     <title>Advising three MS in Business Analytics capstone teams this spring, with Tindoori Labs, Marinus Analytics, and 412 Food Rescue.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2024:news/2024-01</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2024:news/2024-01</id>
     <updated>2024-01-01T12:00:00Z</updated>
     <summary>Advising three MS in Business Analytics capstone teams this spring, with Tindoori Labs, Marinus Analytics, and 412 Food Rescue.</summary>
   </entry>
   <entry>
     <title>Started teaching Data Mining to full-time MBA students as an adjunct, redesigning it around business questions, with labs in R and tidymodels.</title>
-    <link href="https://collier.phd/news/"/>
-    <id>tag:collier.phd,2023:news/2023-10-25</id>
+    <link href="https://ben.collier.phd/news/"/>
+    <id>tag:ben.collier.phd,2023:news/2023-10-25</id>
     <updated>2023-10-25T12:00:00Z</updated>
     <summary>Started teaching Data Mining to full-time MBA students as an adjunct, redesigning it around business questions, with labs in R and tidymodels.</summary>
   </entry>
