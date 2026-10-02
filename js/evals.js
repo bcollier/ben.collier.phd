@@ -39,6 +39,18 @@
     t.textContent = str; if (o.color) t.style.fill = o.color; if (o.size) t.style.fontSize = o.size + "px";
     return t;
   }
+  // The words on the evaluation form for each point of the 1 to 5 scale.
+  var ANCHOR = { 1: "poor", 2: "below average", 3: "average", 4: "above average", 5: "excellent" };
+  // A tick on a vertical axis: the number, and on wide charts the survey's word for it.
+  function yTick(svg, x, y, v, wide) {
+    mono(svg, x, y + 4, v.toFixed(0), { anchor: "end", size: 11.5 });
+    if (wide && ANCHOR[v]) { var t = mono(svg, x - 16, y + 4, ANCHOR[v], { anchor: "end", size: 10.5 }); t.style.fontStyle = "italic"; }
+  }
+  // A tick on a horizontal axis: the number with the survey's word underneath.
+  function xTick(svg, x, y, v) {
+    mono(svg, x, y, v.toFixed(0), { anchor: "middle", size: 11.5 });
+    if (ANCHOR[v]) { var t = mono(svg, x, y + 14, ANCHOR[v], { anchor: "middle", size: 10.5 }); t.style.fontStyle = "italic"; }
+  }
   function hair(svg, x1, y1, x2, y2) {
     var p = E("path", { d: "M" + x1 + " " + y1 + "L" + x2 + " " + y2, class: "ev-grid" }, svg);
     return p;
@@ -96,7 +108,7 @@
   /* ---------- fig. 1: every section on a timeline ---------- */
   function timeline(svg) {
     var W = Math.max(320, svg.parentNode.clientWidth), narrow = W < 640, H = narrow ? 340 : 420;
-    var L = 44, R = 16, T = 22, B = narrow ? 54 : 46;
+    var L = narrow ? 44 : 132, R = 16, T = 22, B = narrow ? 54 : 46;
     svgFor(svg, W, H); NB.seed(11);
     var list = visible(), terms = uniq(SECS.map(function (s) { return s.term; }));
     var lo = 0, hi = 5;
@@ -105,7 +117,7 @@
     function Y(v) { return T + (hi - v) / (hi - lo) * (H - T - B); }
     for (var v = lo; v <= hi + 0.001; v += 1) {
       hair(svg, L, Y(v), W - R, Y(v));
-      mono(svg, L - 8, Y(v) + 4, v.toFixed(0), { anchor: "end", size: 11.5 });
+      yTick(svg, L - 8, Y(v), v, !narrow);
     }
     ink(svg, lineD(L, Y(lo), L, Y(hi), 0.5), { w: 2, d: 0.1, dur: 0.5, color: "#1d2633" });
     ink(svg, lineD(L, Y(lo), W - R, Y(lo), 0.5), { w: 2, d: 0.1, dur: 0.7, color: "#1d2633" });
@@ -156,14 +168,14 @@
       return { c: c, name: COURSES[c].name, m: wmean(inC, val), secs: inC, n: inC.reduce(function (a, s) { return a + s.n; }, 0) };
     }).sort(function (a, b) { return b.m - a.m; });
     var rowH = narrow ? 58 : 44, L = narrow ? 16 : 300, R = 60, T = narrow ? 8 : 30, labelTop = narrow ? 16 : 0;
-    var H = T + rows.length * rowH + 30;
+    var H = T + rows.length * rowH + 44;
     svgFor(svg, W, H); NB.seed(23);
     var lo = 0, hi = 5;
     list.forEach(function (s) { if (val(s) < lo) lo = Math.floor(val(s) * 2) / 2; });
     function X(v) { return L + (v - lo) / (hi - lo) * (W - L - R); }
     for (var v = lo; v <= hi + 0.001; v += 1) {
-      hair(svg, X(v), T - 4, X(v), H - 22);
-      mono(svg, X(v), H - 6, v.toFixed(0), { anchor: "middle", size: 11.5 });
+      hair(svg, X(v), T - 4, X(v), H - 36);
+      xTick(svg, X(v), H - 20, v);
     }
     rows.forEach(function (r, i) {
       var y = T + i * rowH + rowH / 2 + labelTop;
@@ -192,13 +204,13 @@
       var fig = document.createElement("figure"); fig.className = "ev-multiple";
       var h = document.createElement("h3"); h.textContent = COURSES[c].name; fig.appendChild(h);
       var svg = document.createElementNS(NS, "svg"); fig.appendChild(svg); wrap.appendChild(fig);
-      var W = Math.max(260, fig.clientWidth), H = 220, L = 36, R = 44, T = 26, B = 40;
+      var W = Math.max(260, fig.clientWidth), H = 220, L = W >= 420 ? 120 : 36, R = 44, T = 26, B = 40;
       svgFor(svg, W, H); NB.seed(31 + ci);
       var lo = 0, hi = 5;
       inC.forEach(function (s) { if (val(s) < lo) lo = Math.floor(val(s) * 2) / 2; });
       function X(i) { return L + 12 + (i / Math.max(1, terms.length - 1)) * (W - L - R - 24); }
       function Y(v) { return T + (hi - v) / (hi - lo) * (H - T - B); }
-      for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, L, Y(v), W - R, Y(v)); mono(svg, L - 6, Y(v) + 4, v.toFixed(0), { anchor: "end", size: 11 }); }
+      for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, L, Y(v), W - R, Y(v)); yTick(svg, L - 6, Y(v), v, L > 60); }
       ink(svg, lineD(L, Y(lo), W - R, Y(lo), 0.4), { w: 1.8, d: 0.1, dur: 0.5, color: "#1d2633" });
       terms.forEach(function (t, i) { kalam(svg, X(i), H - B + 20, t.replace(/(\w)\w+ 20(\d\d)/, "$1'$2"), { anchor: "middle", font: "400 13px Kalam, cursive", d: 0.2 + i * 0.05 }); });
       var pts = terms.map(function (t, i) { return [X(i), Y(wmean(inC.filter(function (s) { return s.term === t; }), val))]; });
@@ -221,10 +233,10 @@
     var W = Math.max(320, svg.parentNode.clientWidth), narrow = W < 640;
     var first = SECS.filter(function (s) { return s.t < 2024.5; }), latest = SECS.filter(function (s) { return s.t >= 2025.5; });
     var keys = Object.keys(ITEMS), rowH = narrow ? 52 : 40, L = narrow ? 16 : 250, R = 52, T = 26;
-    var H = T + keys.length * rowH + 28, lo = 0, hi = 5;
+    var H = T + keys.length * rowH + 42, lo = 0, hi = 5;
     svgFor(svg, W, H); NB.seed(41);
     function X(v) { return L + (v - lo) / (hi - lo) * (W - L - R); }
-    for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, X(v), T - 6, X(v), H - 22); mono(svg, X(v), H - 6, v.toFixed(0), { anchor: "middle", size: 11.5 }); }
+    for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, X(v), T - 6, X(v), H - 36); xTick(svg, X(v), H - 20, v); }
     keys.forEach(function (k, i) {
       var y = T + i * rowH + rowH / 2 + (narrow ? 10 : 0);
       var a = wmean(first, function (s) { return s.avg[k]; }), b = wmean(latest, function (s) { return s.avg[k]; });
@@ -303,12 +315,12 @@
   /* ---------- fig. 7: before Tepper, 2012 to 2016 ---------- */
   function earlier(svg) {
     var W = Math.max(320, svg.parentNode.clientWidth), narrow = W < 640, H = narrow ? 260 : 300, rows = D.earlier;
-    var L = 44, R = 16, T = 20, B = 44, terms = uniq(rows.map(function (s) { return s.term; }));
+    var L = narrow ? 44 : 132, R = 16, T = 20, B = 44, terms = uniq(rows.map(function (s) { return s.term; }));
     svgFor(svg, W, H); NB.seed(79);
     var lo = 0, hi = 5;
     function X(i) { return L + 16 + (i / Math.max(1, terms.length - 1)) * (W - L - R - 32); }
     function Y(v) { return T + (hi - v) / (hi - lo) * (H - T - B); }
-    for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, L, Y(v), W - R, Y(v)); mono(svg, L - 8, Y(v) + 4, v.toFixed(0), { anchor: "end", size: 11.5 }); }
+    for (var v = lo; v <= hi + 0.001; v += 1) { hair(svg, L, Y(v), W - R, Y(v)); yTick(svg, L - 8, Y(v), v, !narrow); }
     ink(svg, lineD(L, Y(lo), W - R, Y(lo), 0.5), { w: 2, d: 0.1, dur: 0.7, color: "#1d2633" });
     terms.forEach(function (t, i) { kalam(svg, X(i), H - B + 22, t.replace(/(\w)\w+ 20(\d\d)/, "$1'$2"), { anchor: "middle", font: "400 13px Kalam, cursive", d: 0.2 + i * 0.04 }); });
     var pts = terms.map(function (t, i) { var inT = rows.filter(function (s) { return s.term === t; }); return [X(i), Y(wmean(inT, function (s) { return s.teaching; }))]; });
