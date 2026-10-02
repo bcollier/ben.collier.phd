@@ -182,6 +182,7 @@ a:hover { color: var(--pen); }
 
 /* ---------- Generic section scaffolding ---------- */
 .sec { position: relative; padding: 72px 0 24px; }
+.sec.headless { padding-top: 18px; }   /* a section with no heading of its own, right under the page head */
 .sec-no {
   position: absolute; left: calc(-1 * var(--gutter) + 72px); top: 80px;
   font-family: var(--mono); font-size: 13px; color: var(--red); letter-spacing: .08em;

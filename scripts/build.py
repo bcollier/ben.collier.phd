@@ -2247,7 +2247,7 @@ def build_book():
 def build_news():
     body = page_head("Teaching and practice", "News", "A dated log of teaching, advising, and practice.")
     body += f"""
-  <section class="sec reveal" aria-label="News log">
+  <section class="sec reveal headless" aria-label="News log">
     {news_items(root="../")}
   </section>
 """
