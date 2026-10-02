@@ -61,7 +61,7 @@
   .story-card h3{font-size:18px;margin:12px 0 6px}.story-card p{margin:0;color:var(--muted);font-size:14px}
   .story-card .mini{height:44px;margin-top:16px;display:flex;align-items:end;gap:7px}
   .story-card .mini i{display:block;flex:1;background:var(--blue);border-radius:6px 6px 2px 2px;opacity:.78}
-  .chart-wrap{background:var(--paper-2);border:1px solid var(--line);border-radius:32px;padding:20px 22px 16px;box-shadow:var(--shadow)}
+  .chart-wrap{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:32px;padding:20px 22px 16px;box-shadow:var(--shadow)}
   .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
   .segmented{display:flex;background:var(--cream);border-radius:999px;padding:4px}
   .segmented button{border:0;background:transparent;color:var(--ink);padding:8px 13px;border-radius:999px}
@@ -73,6 +73,8 @@
   .year-line{fill:none;stroke:var(--ink);stroke-width:2.5}.gap-connector{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:6 7;opacity:.42}.section-dot{stroke:var(--paper-2);stroke-width:2;transition:r .16s,opacity .16s}.section-dot:hover,.section-dot:focus{stroke:var(--ink);stroke-width:3}
   .benchmark-tick{stroke:var(--muted);stroke-width:1.5;opacity:.65}
   .timeline-caption{display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px;padding:0 8px 8px}
+  .hover-directions{display:flex;align-items:center;gap:10px;margin:10px 6px 4px;padding:9px 12px;border-left:4px solid var(--blue);background:rgba(91,140,255,.08);color:var(--ink);font-family:ui-rounded,system-ui;font-size:12px;line-height:1.4}.hover-directions strong{color:var(--blue)}
+  .hover-tour{position:absolute;z-index:40;width:190px;opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,-100%) translateY(-8px);transition:opacity .18s ease,visibility .18s}.hover-tour.is-running{opacity:1;visibility:visible}.hover-tour span{display:block;width:max-content;max-width:190px;margin:0 auto;padding:8px 11px;background:var(--lime);border:2px solid var(--ink);border-radius:7px 11px 6px 10px;box-shadow:4px 4px 0 rgba(23,34,56,.2);font-family:var(--hand);font-weight:700;font-size:16px;transform:rotate(-2deg)}.hover-tour svg{display:block;width:72px;height:56px;margin:-2px auto -1px;overflow:visible}.hover-tour path{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.hover-tour.is-running svg{animation:hover-nudge .62s ease-in-out 2}@keyframes hover-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
   .detail{margin-top:12px;padding:14px 16px;border-radius:17px;background:var(--cream);display:grid;grid-template-columns:1fr auto;gap:12px;min-height:70px}
   .detail b{display:block}.detail span{font-size:13px;color:var(--muted)}.detail-score{font-family:Georgia,serif;font-size:34px}
   .detail.expanded{display:block}.detail-heading{display:flex;justify-content:space-between;gap:18px;align-items:start}.comment-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.comment-column{background:rgba(255,255,255,.55);border-radius:13px;padding:12px}.comment-column h4{margin:0 0 8px;font-size:13px}.comment-column ul{margin:0;padding-left:18px}.comment-column li{font-family:Georgia,serif;font-size:13px;line-height:1.35;margin-bottom:8px}.comment-column .empty{font-family:ui-rounded,system-ui;color:var(--muted);font-style:normal}
@@ -101,7 +103,8 @@
   footer{display:flex;justify-content:space-between;gap:20px;padding-top:36px;color:var(--muted);font-size:12px}
   @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.quote-stage{transform:none}.story-grid,.course-grid{grid-template-columns:1fr 1fr}.signature,.garden{grid-template-columns:1fr}.big-number{font-size:88px}.method{grid-template-columns:1fr}.repro-links{grid-template-columns:1fr 1fr}.bar-row{grid-template-columns:150px 1fr 42px}.navlinks{display:none}.theme-popout{right:0;top:calc(100% + 8px);width:min(520px,100%);transform:translateY(-6px)}.theme-row:hover .theme-popout,.theme-row:focus-within .theme-popout{transform:translateY(0)}.theme-popout:after{display:none}}
   @media(max-width:760px){.comment-columns{grid-template-columns:1fr}.tooltip .hover-groups{grid-template-columns:1fr}.tooltip,.theme-popout{display:none}}
-  @media(max-width:620px){.shell{padding-inline:14px}.story-nav{margin:0 -6px;padding-inline:9px}.wordmark{font-size:13px}.next-content{padding-inline:10px}.hero{padding-top:38px}.story-grid,.course-grid,.growth-notes,.supplement-grid,.improvement-grid,.ai-method-grid,.repro-links{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.quote-stage{padding:42px 26px 30px}.quote-stage blockquote{font-size:23px}.chart-wrap{padding:14px 8px}.bar-row{grid-template-columns:120px 1fr 40px}.timeline-caption{display:block}.method{padding:24px}.audit{grid-template-columns:1fr 1fr}.hero-stat{flex:1}.big-number{font-size:76px}}
+  @media(max-width:620px){.shell{padding-inline:14px}.story-nav{margin:0 -6px;padding-inline:9px}.wordmark{font-size:13px}.next-content{padding-inline:10px}.hero{padding-top:38px}.story-grid,.course-grid,.growth-notes,.supplement-grid,.improvement-grid,.ai-method-grid,.repro-links{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.quote-stage{padding:42px 26px 30px}.quote-stage blockquote{font-size:23px}.chart-wrap{padding:14px 8px}.bar-row{grid-template-columns:120px 1fr 40px}.timeline-caption{display:block}.method{padding:24px}.audit{grid-template-columns:1fr 1fr}.hero-stat{flex:1}.big-number{font-size:76px}.hover-tour{display:none}}
+  @media(prefers-reduced-motion:reduce){.hover-tour{display:none}.hover-tour.is-running svg{animation:none}}
 
   /* collier.phd field-notebook integration */
   :root{--bench:#22302b;--bench-ink:#efe8d6;--paper:#fbf8f1;--paper-2:#fffefa;--cream:#ece5d3;--ink:#1d2633;--muted:#4a5463;--line:#d9cfba;--coral:#b8352a;--lime:#ffe17a;--blue:#2447a6;--violet:#6b3fa0;--teal:#278c7d;--gold:#d89b20;--shadow:0 18px 34px -20px rgba(0,0,0,.42);--serif-d:"Young Serif",Georgia,serif;--serif:"Literata",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--hand:"Kalam","Comic Sans MS",cursive}
@@ -184,7 +187,9 @@
         <select id="course-filter" aria-label="Filter by course"><option>All courses</option></select>
 
       </div>
+      <p class="hover-directions"><strong>Explore the dots:</strong><span>Hover over any dot for course, term, section, rating, and student-comment details. Click or tap a dot to keep its full details below the chart.</span></p>
       <svg id="timeline" viewBox="0 0 1080 430" role="img" aria-labelledby="timeline-title timeline-desc"><title id="timeline-title">Course evaluation timeline</title><desc id="timeline-desc">Section ratings from 2011 through 2026, with response-weighted yearly averages.</desc></svg>
+      <div class="hover-tour" id="hover-tour" aria-hidden="true"><span>Hover for more information</span><svg viewBox="0 0 72 56"><path d="M15 7 C25 11 35 19 38 35"></path><path d="M29 30 L39 39 L47 28"></path></svg></div>
       <div class="timeline-caption"><span><span class="career-key"><i style="background:rgba(91,140,255,.22)"></i>UPMC · Pensiamo</span><span class="career-key"><i style="background:rgba(88,204,2,.28)"></i>Duolingo</span><span class="career-key"><i style="background:rgba(255,107,82,.20)"></i>CMU</span></span><span>Scale: 1–5 · Hover or tap a dot for exact values.</span></div>
       <div class="detail" id="timeline-detail" aria-live="polite"><div><b>Choose a point</b><span>Course, section, response rate, and available written comments appear here.</span></div><div class="detail-score">−</div></div>
     </div>
@@ -465,6 +470,32 @@ const grid=document.getElementById('course-grid');const desired=['Data Visualiza
 const supp=document.getElementById('supplement-grid');DATA.supplemental_instruments.forEach(d=>supp.insertAdjacentHTML('beforeend',`<div class="supplement-item"><b>${d.course}</b><span>${d.mean_across_items.toFixed(2)}/10 across instructor items · ${Math.round(d.good_or_excellent_share*100)}% “good” or “excellent” overall. Informal survey; kept outside the formal five-point FCE timeline.</span></div>`));
 document.addEventListener('click',e=>{if(!(e.target instanceof Element))return;if(!e.target.closest('.section-dot')&&!e.target.closest('#timeline-detail'))resetDetail()});
 drawTimeline();
+function initHoverTour(){
+  const wrap=document.getElementById('timeline-wrap'),tour=document.getElementById('hover-tour');
+  if(!wrap||!tour||window.matchMedia('(prefers-reduced-motion: reduce)').matches||window.matchMedia('(pointer: coarse)').matches)return;
+  let started=false,finished=false,activeDot=null,timers=[];
+  const later=(fn,ms)=>timers.push(window.setTimeout(fn,ms));
+  const stop=()=>{if(finished)return;finished=true;timers.forEach(window.clearTimeout);tour.classList.remove('is-running');if(activeDot)activeDot.dispatchEvent(new MouseEvent('mouseleave',{bubbles:false}))};
+  const start=()=>{
+    if(started)return;started=true;
+    window.requestAnimationFrame(()=>{
+      const dots=[...document.querySelectorAll('#timeline .section-dot')],wrapBox=wrap.getBoundingClientRect();
+      const choices=dots.filter(dot=>{const box=dot.getBoundingClientRect(),x=box.left+box.width/2;return x>wrapBox.left+wrapBox.width*.55&&x<wrapBox.right-wrapBox.width*.08});
+      activeDot=choices[Math.floor(choices.length*.55)]||dots[Math.floor(dots.length*.72)];
+      if(!activeDot){stop();return}
+      const box=activeDot.getBoundingClientRect(),x=box.left+box.width/2,y=box.top+box.height/2;
+      tour.style.left=(x-wrapBox.left)+'px';tour.style.top=(y-wrapBox.top-9)+'px';tour.classList.add('is-running');
+      activeDot.addEventListener('pointerenter',stop,{once:true});
+      later(()=>activeDot.dispatchEvent(new MouseEvent('mouseenter',{bubbles:false,clientX:x,clientY:y})),950);
+      later(()=>{activeDot.dispatchEvent(new MouseEvent('mouseleave',{bubbles:false,clientX:x,clientY:y}));tour.classList.remove('is-running')},2600);
+      later(()=>{finished=true},2900);
+    });
+  };
+  const observer=new IntersectionObserver(entries=>{if(entries.some(entry=>entry.isIntersecting)){observer.disconnect();later(start,350)}},{threshold:.45});
+  observer.observe(wrap);
+  wrap.addEventListener('pointerdown',stop,{once:true});
+}
+initHoverTour();
 </script>
 <script src="../js/config.js?v=eval-ab" defer></script><script src="../js/site.js?v=eval-ab" defer></script><script src="../js/notebook.js?v=eval-ab" defer></script>
 </body>
