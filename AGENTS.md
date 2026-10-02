@@ -70,6 +70,7 @@ committed, so what is in the repo is exactly what is served.
 | `data/course_schedules/<slug>.json` | Week-by-week schedule, five slides per session, major assignments, and the anonymized final-project list for a course page. Slide images live in `assets/courses/<slug>/` (1280x720 WebP plus a `-t` 320px thumbnail). A course with a file here gets the schedule section instead of its plain Topics list. |
 | `js/course-schedule.js` | The schedule "projector" on course pages: shows the slides of the session in view. |
 | `js/notebook.js` | The field-notebook drawing on every page: hand-drawn charts and underlines, scroll-in reveals, slide piles, the home portrait that docks into the header, and the robot that says hi once per visit. Pages read fully without it. |
+| `data/evaluations.json` | Ben's own course-evaluation numbers and chosen quotes for `/evaluations/`, drawn by `js/evals.js`. Generated from a private ingest outside this repo; it holds no school comparison averages and no colleague data. Never add either. |
 | `data/linkedin.json` | Imported LinkedIn posts. Read at runtime by `js/site.js`. |
 | `css/site.css` | All styles: the field-notebook design for every page, including the CV's print stylesheet. |
 | `js/config.js` | Calendly URL and other site config. |

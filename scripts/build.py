@@ -476,6 +476,7 @@ NAV = [
     ("projects/", "coding with AI projects", "projects", "#9ccbea"),
     ("advising/", "advising", "advising", "#a9d8a1"),
     ("consult/", "consulting", "consult", "#f3a391"),
+    ("evaluations/", "evaluations", "evaluations", "#ffd96b"),
     ("cv/", "cv", "cv", "#cdb8e8"),
     ("strengths/", "strengths", "strengths", "#ffd2a8"),
     ("talks/", "talks", "talks", "#8ed3c7"),
@@ -2492,6 +2493,153 @@ def strengths_rank_tag(a, b) -> str:
     return f'<span class="sf-tag">2009 {fmt(a)} &rarr; 2014 {fmt(b)}</span>'
 
 
+def build_evaluations():
+    """What students say: every CMU course evaluation since Fall 2023, drawn by js/evals.js."""
+    ev = load_json("evaluations.json")
+    secs, courses, items = ev["sections"], ev["courses"], ev["items"]
+    n_resp = sum(x["n"] for x in secs)
+    n_poss = sum(x["possible"] for x in secs)
+    rr = round(100 * n_resp / n_poss)
+    n_courses = len({x["course"] for x in secs})
+    recent = [x for x in secs if x["t"] >= 2025.5]
+    recent_avg = sum(x["avg"]["9"] * x["n"] for x in recent) / sum(x["n"] for x in recent)
+    first = [x for x in secs if x["t"] < 2024.5]
+    last = recent
+    respect = sum(x["avg"]["8"] * x["n"] for x in last) / sum(x["n"] for x in last)
+    n_comments = sum(x["comments"] for x in secs)
+    terms = []
+    for x in secs:
+        if x["term"] not in terms:
+            terms.append(x["term"])
+    body = page_head(
+        "Evaluations", "What students say",
+        f"Every Carnegie Mellon course I have taught since Fall 2023, rated by the students who took it: "
+        f"{n_resp} responses across {len(secs)} sections of {n_courses} courses, with {rr}% of students responding. "
+        f"The numbers are the official faculty course evaluations. The quotes are theirs.",
+        stamp="George Leland Bach Teaching Award, 2026")
+
+    tiles = f"""    <div class="stats ev-kpis">
+      <div class="stat">
+        <span class="n"><span class="count-dec" data-to="{recent_avg:.2f}">{recent_avg:.2f}</span><small>of 5</small></span>
+        <svg class="spark" data-ev="spark" aria-hidden="true"></svg>
+        <span class="l">average teaching rating, this academic year</span>
+      </div>
+      <div class="stat">
+        <span class="n"><span class="count" data-to="{n_resp}" data-d=".3">{n_resp}</span></span>
+        <span class="l">student responses, {len(secs)} sections, {n_courses} courses</span>
+      </div>
+      <div class="stat">
+        <span class="n"><span class="count" data-to="{rr}" data-d=".5">{rr}</span><small>%</small></span>
+        <span class="l">of enrolled students filled in an evaluation</span>
+      </div>
+      <div class="stat">
+        <span class="n">{respect:.2f}</span>
+        <span class="l">for respect for all students, the item I watch first</span>
+      </div>
+    </div>
+    {sticky("cv/#honors-and-awards", "Bach Teaching Award", "voted by the MBA class of 2026", cls="ev-award", rot=2, d=1.2, tape=True)}"""
+    body += sec(2, "ev-numbers", "By the numbers", "The short version", tiles)
+
+    sw = '<span class="sw"></span>'
+    progs = (("all", "All programs", "#1d2633"), ("MBA", "MBA", "#2447a6"), ("MSBA", "MS in Business Analytics", "#b8352a"),
+             ("Undergraduate", "Undergraduate", "#6b3fa0"), ("Heinz", "Heinz College", "#c47a12"))
+    chip_html = ""
+    for k, lab, c in progs:
+        pressed = "true" if k == "all" else "false"
+        chip_html += f'<button type="button" class="ev-chip" data-prog="{k}" aria-pressed="{pressed}" style="--c:{c}">{sw if k != "all" else ""}{esc(lab)}</button>'
+    opts = "".join(f'<option value="{k}"{" selected" if k == "9" else ""}>{esc(v)}</option>' for k, v in items.items())
+    rows = "".join(
+        f'<tr><td>{esc(x["term"])}</td><td><a href="../courses/{x["course"]}/">{esc(courses[x["course"]]["name"])}</a> ({esc(x["section"])})</td>'
+        f'<td>{esc(x["program"])}</td><td class="num">{x["n"]} / {x["possible"]}</td><td class="num">{round(100 * x["rr"])}%</td>'
+        f'<td class="num">{x["avg"]["9"]:.2f}</td><td class="num">{x["avg"]["10"]:.2f}</td><td class="num">{x["avg"]["8"]:.2f}</td></tr>'
+        for x in secs
+    )
+    table = f"""    <button type="button" class="ev-toggle needs-js" data-ev-table="ev-table-1" aria-expanded="false" aria-controls="ev-table-1">show the table</button>
+    <table class="ev-table" id="ev-table-1">
+      <caption class="figcap">Every section, with the two overall items and the respect item. Scale 1 to 5.</caption>
+      <thead><tr><th>Term</th><th>Course</th><th>Program</th><th class="num">Responses</th><th class="num">Rate</th><th class="num">Teaching</th><th class="num">Course</th><th class="num">Respect</th></tr></thead>
+      <tbody>{rows}</tbody>
+    </table>"""
+    body += sec(3, "ev-timeline", "Every section, in order", "Term by term", f"""    <p class="prose">One dot per section. Bigger dots had more respondents. The line is the average across the sections taught that term. I started as an adjunct in Fall 2023 with two sections of Data Mining; the rest followed as a full-time faculty member.</p>
+    <div class="ev-controls needs-js" role="group" aria-label="Chart filters">
+      <span class="lab">Program</span>{chip_html}
+      <label class="lab" for="ev-item" style="margin-left:14px">Item</label><select id="ev-item">{opts}</select>
+    </div>
+    <figure class="ev-fig"><svg data-ev="timeline" role="img" aria-label="Overall teaching rating for every section since Fall 2023, rising from below 4 to near 5"></svg>
+    <figcaption class="figcap">fig. 1 &middot; one dot per section, sized by responses; the axis runs from 3 to 5 on a 5-point scale</figcaption></figure>
+{table}""")
+
+    body += sec(4, "ev-courses", "By course", "Course by course", """    <p class="prose">Each course on its own line: every section as a dot, and the response-weighted average circled in pen. The program filter above applies here too.</p>
+    <figure class="ev-fig"><svg data-ev="courses" role="img" aria-label="Average rating by course, with every section shown as a dot"></svg>
+    <figcaption class="figcap">fig. 2 &middot; courses sorted by average rating; the circle is the mean across sections</figcaption></figure>""")
+
+    body += sec(5, "ev-again", "Taught again, rated higher", "The second time around", """    <p class="prose">The courses I have taught three times or more. Each one got better as I rebuilt it: Data Mining moved from R to Python and a lab-first format, Data Visualization narrowed to one tool, Tableau, taught properly.</p>
+    <div class="ev-multiples" data-ev-multiples></div>
+    <p class="figcap">fig. 3 &middot; the line is the term average; dots are sections</p>""")
+
+    body += sec(6, "ev-items", "Item by item", "Where the change came from", f"""    <p class="prose">The evaluation asks nine questions. Gray is my first year, {esc(terms[0])} to {esc(terms[1])}. Blue is the latest, {esc(terms[-3])} to {esc(terms[-1])}. Every item moved the same direction.</p>
+    <div class="ev-legend"><span><i class="round" style="--c:#9aa3ad"></i>2023 to 2024, {sum(x["n"] for x in first)} responses</span><span><i class="round" style="--c:#2447a6"></i>2025 to 2026, {sum(x["n"] for x in last)} responses</span></div>
+    <figure class="ev-fig"><svg data-ev="dumbbell" role="img" aria-label="Each evaluation item, first year against the latest year"></svg>
+    <figcaption class="figcap">fig. 4 &middot; response-weighted averages; the axis starts at 3.5</figcaption></figure>""")
+
+    body += sec(7, "ev-excellent", "Rated excellent", "How many picked the top box", """    <p class="prose">For the Data Visualization sections I have the full distribution, not just the mean. In Spring 2026, nine in ten students rated the teaching excellent, and nobody rated it below average.</p>
+    <div class="ev-legend"><span><i style="--c:#2447a6"></i>excellent</span><span><i style="--c:#9bb5e6"></i>above average</span><span><i style="--c:#ddd6c6"></i>average</span></div>
+    <figure class="ev-fig"><svg data-ev="excellent" role="img" aria-label="Share of students rating the teaching excellent, above average, or average in six Data Visualization sections"></svg>
+    <figcaption class="figcap">fig. 5 &middot; share of respondents by rating of the teaching</figcaption></figure>""")
+
+    body += sec(8, "ev-themes", f"{n_comments} written comments", "What comes up", """    <p class="prose">I tagged every written comment, the critical ones included. Practical and useful at work comes up most. Pace comes up too: the minis are seven weeks, and that is the main thing students ask me to change. The red bars are the asks.</p>
+    <figure class="ev-fig"><svg data-ev="themes" role="img" aria-label="How often each theme appears in student comments"></svg>
+    <figcaption class="figcap">fig. 6 &middot; number of comments mentioning each theme; hover for an example</figcaption></figure>""")
+
+    order = []
+    for x in secs:
+        if x["course"] not in order:
+            order.append(x["course"])
+    rots = [-1.2, 0.8, -0.6, 1.4, -1.6]
+    qhtml = ""
+    for c in order:
+        qs = [q for q in ev["quotes"] if q["course"] == c]
+        if not qs:
+            continue
+        in_c = [x for x in secs if x["course"] == c]
+        n = sum(x["n"] for x in in_c)
+        m = sum(x["avg"]["9"] * x["n"] for x in in_c) / n
+        cards = ""
+        for i, q in enumerate(qs):
+            small = " small" if q["small"] else ""
+            cards += (f'<figure class="ev-quote drop{small}" style="--rot:{rots[i % 5]}deg;--d:{0.15 + 0.1 * i:.2f}s"><span class="tape tc"></span>'
+                      f'<p>{esc(q["text"])}</p><figcaption>{esc(q["term"])}</figcaption></figure>')
+        plural = "s" if len(in_c) > 1 else ""
+        qhtml += f"""    <div class="ev-course">
+      <h3><a href="../courses/{c}/">{esc(courses[c]["name"])}</a></h3>
+      <p class="ev-cstat"><b>{m:.2f}</b> average teaching rating &middot; {len(in_c)} section{plural} &middot; {n} responses</p>
+      <div class="ev-quotes">{cards}</div>
+    </div>
+"""
+    body += sec(9, "ev-words", "In their words", "What they wrote", f"""    <p class="prose">Comments from the evaluations, by course. They are anonymous and unedited apart from trimming for length. The full set, suggestions included, is what I read at the end of every mini.</p>
+{qhtml}""")
+
+    er = ev["earlier"]
+    er_n = sum(x["n"] for x in er)
+    er_avg = sum(x["teaching"] * x["n"] for x in er) / er_n
+    body += sec(10, "ev-earlier", "Before Tepper", "Carnegie Mellon Qatar, 2012 to 2016", f"""    <p class="prose">My first faculty job was at Carnegie Mellon's campus in Doha, teaching undergraduates organizational behavior, negotiation, research methods, digital marketing and consulting: {len(er)} sections, {er_n} responses, an average teaching rating of {er_avg:.2f}.</p>
+    <figure class="ev-fig"><svg data-ev="earlier" role="img" aria-label="Overall teaching rating for every section taught at Carnegie Mellon Qatar, 2012 to 2016"></svg>
+    <figcaption class="figcap">fig. 7 &middot; one dot per section, sized by responses</figcaption></figure>""")
+
+    body += sec(11, "ev-method", "Read with care", "How to read these numbers", """    <div class="prose">
+      <p>Carnegie Mellon asks every student to rate ten items at the end of a course, from 1 (poor) to 5 (excellent). The two that matter most are the overall rating of the teaching and the overall rating of the course. I show the teaching rating unless you pick another item.</p>
+      <p>Small sections swing more. A section with five respondents can move half a point on one person's view, so the dots are sized by responses and the lines are weighted by them. Response rates matter too: mine average above 75 percent, so these are most of the students, not the loudest.</p>
+      <p>What is not here: the school's comparison averages, which are internal, and the critical comments in full. Those I keep and act on, and the biggest change they produced was recording every class and posting the videos.</p>
+    </div>""")
+
+    data = json.dumps(ev, separators=(",", ":"), ensure_ascii=False).replace("</", "<\\/")
+    tag = '<script id="ev-data" type="application/json">' + data + '</script><script src="../js/evals.js" defer></script>'
+    write("evaluations/index.html", page(
+        "../", "evaluations", "Evaluations · Ben Collier",
+        f"Student evaluations of every Carnegie Mellon course Ben Collier has taught since 2023: {n_resp} responses, {len(secs)} sections, charted and quoted.",
+        "evaluations/", body, scripts="\n" + tag))
+
+
 def build_strengths():
     body = page_head("Strengths", "Strengths",
                      "I have taken Gallup's StrengthsFinder twice: in 2009 as a PhD student in Pittsburgh, and in 2014 as a professor in Doha. "
@@ -2686,6 +2834,7 @@ def main():
     build_contact()
     build_travel()
     build_strengths()
+    build_evaluations()
     build_404()
     build_sitemap()
     build_robots()
