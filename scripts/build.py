@@ -1040,7 +1040,7 @@ def build_home():
   <section class="hero reveal" aria-labelledby="hero-title">
     <div class="hero-text">
       <p class="stamp thunk" style="--d:.15s">Assistant Teaching Professor of Business Analytics</p>
-      <h1 id="hero-title">Ben Collier</h1>
+      <h1 id="hero-title">Ben Collier<span class="phd-ins" aria-hidden="true"><svg class="phd-caret" viewBox="0 0 40 30"><path d="M4 26 L20 5 L36 26" /></svg><span class="phd"><i>P</i><i>h</i><i>D</i></span></span><span class="sr-only">, PhD</span></h1>
       <p class="lede">I teach <mark style="--d:.5s">AI and business analytics</mark> at Carnegie Mellon's Tepper School, and help companies <span class="u u2" data-d="1.2">put them to work</span>.</p>
       <p class="hero-more">My students learn to build with AI, and to <span class="u" data-d="1.7">doubt it</span>: they compare the models, question the headline number, and defend the call.</p>
       <div class="cta-row">
