@@ -117,7 +117,9 @@
     }
     function labelsFor(v) {
       const z = zone;
-      placeLabels(v, function (p) { return v.k > 1.2 ? (z && z.members.indexOf(p) >= 0) : p._roomy; });
+      // At full view: every dot with room, plus the countries with the most photos
+      // wherever the greedy placement can fit their names.
+      placeLabels(v, function (p) { return v.k > 1.2 ? (z && z.members.indexOf(p) >= 0) : (p._roomy || p.count >= 250); });
       dotNodes.classed("labelled", true);
     }
     function zoomTo(v) {
