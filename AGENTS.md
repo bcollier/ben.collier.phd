@@ -51,7 +51,7 @@ chore/update-cv
 ## About this repository
 
 Static faculty site for Ben Collier, served by GitHub Pages at
-`https://collier.phd`. The old `bcollier.github.io/ben.collier.phd/` address
+`https://ben.collier.phd`; `collier.phd` forwards there. The old `bcollier.github.io/ben.collier.phd/` address
 redirects there. The version submitted for 15-113 is the
 `cs15-113-submission` tag; do not move or delete it.
 
@@ -90,9 +90,11 @@ python3 scripts/build.py
 
 ### Deployment rules
 
-- `CNAME` attaches `collier.phd` to GitHub Pages. Do not remove it. DNS lives at
-  Squarespace Domains, where the apex has GitHub's four A records
-  (185.199.108-111.153) and `www` is a CNAME to `bcollier.github.io`.
+- `CNAME` attaches `ben.collier.phd` to GitHub Pages; the bare `collier.phd` and
+  `www.collier.phd` are served by the bcollier/collier.phd-redirect repo, which sends
+  every path to the same path here. Do not remove `CNAME`. DNS lives at
+  Squarespace Domains (the old Google Domains), where the apex has GitHub's four A
+  records (185.199.108-111.153), and `www` and `ben` are CNAMEs to `bcollier.github.io`.
 - Public copy uses no em dashes. Use a period, comma, or colon instead.
 - Keep `.nojekyll`. The site must be served as-is, without a Jekyll build.
 - Keep internal links relative (`../courses/`, not `/courses/`) so the site works
