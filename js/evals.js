@@ -58,12 +58,21 @@
     var top = y - h - 12; if (top < 8) top = y + 18;
     tip.style.left = left + "px"; tip.style.top = top + "px";
   }
-  function hideTip() { tip.hidden = true; }
+  function hideTip() { tip.hidden = true; clearTimeout(tipTimer); }
+  // The note is pinned to the window, so it must never outlive the tap or the
+  // scroll that produced it: on phones a tap leaves focus on the mark and no
+  // pointerleave ever fires.
+  var tipTimer = null;
+  window.addEventListener("scroll", hideTip, { passive: true });
+  document.addEventListener("pointerdown", function () { hideTip(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") hideTip(); });
+  function touchTip() { clearTimeout(tipTimer); tipTimer = setTimeout(hideTip, 2600); }
   function hit(svg, cx, cy, r, lines, label) {
     var h = E("circle", { cx: cx, cy: cy, r: Math.max(r + 8, 14), class: "ev-hit", tabindex: "0", role: "img", "aria-label": label }, svg);
-    h.addEventListener("pointermove", function (e) { showTip(lines, e.clientX, e.clientY); });
-    h.addEventListener("pointerleave", hideTip);
-    h.addEventListener("focus", function () { var b = h.getBoundingClientRect(); showTip(lines, b.left + b.width / 2, b.top); });
+    h.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") showTip(lines, e.clientX, e.clientY); });
+        h.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { showTip(lines, e.clientX, e.clientY); touchTip(); } });
+    h.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hideTip(); });
+    h.addEventListener("focus", function () { if (!h.matches(":focus-visible")) return; var b = h.getBoundingClientRect(); showTip(lines, b.left + b.width / 2, b.top); });
     h.addEventListener("blur", hideTip);
     return h;
   }
@@ -242,9 +251,10 @@
         var hh = E("rect", { x: x + acc, y: y - 4, width: sw, height: h + 8, class: "ev-hit", tabindex: "0", role: "img", "aria-label": p + "% " + names[k] }, svg);
         hh.style.fill = "transparent";
         var lines = [p + "% rated the teaching " + names[k], lab, r.n + " students responded"];
-        hh.addEventListener("pointermove", function (e) { showTip(lines, e.clientX, e.clientY); });
-        hh.addEventListener("pointerleave", hideTip);
-        hh.addEventListener("focus", function () { var b = hh.getBoundingClientRect(); showTip(lines, b.left + b.width / 2, b.top); });
+        hh.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") showTip(lines, e.clientX, e.clientY); });
+        hh.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { showTip(lines, e.clientX, e.clientY); touchTip(); } });
+        hh.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hideTip(); });
+        hh.addEventListener("focus", function () { if (!hh.matches(":focus-visible")) return; var b = hh.getBoundingClientRect(); showTip(lines, b.left + b.width / 2, b.top); });
         hh.addEventListener("blur", hideTip);
         acc += sw;
       });
@@ -270,9 +280,10 @@
       var lines = [r.count + " comments mention " + (names[r.tag] || r.tag)]; if (r.example) lines.push("“" + r.example + "”");
       var hh = E("rect", { x: L, y: y - 4, width: bw + 40, height: h + 8, class: "ev-hit", tabindex: "0", role: "img", "aria-label": lines[0] }, svg);
       hh.style.fill = "transparent";
-      hh.addEventListener("pointermove", function (e) { showTip(lines, e.clientX, e.clientY); });
-      hh.addEventListener("pointerleave", hideTip);
-      hh.addEventListener("focus", function () { var b = hh.getBoundingClientRect(); showTip(lines, b.left + 40, b.top); });
+      hh.addEventListener("pointermove", function (e) { if (e.pointerType === "mouse") showTip(lines, e.clientX, e.clientY); });
+        hh.addEventListener("pointerup", function (e) { if (e.pointerType !== "mouse") { showTip(lines, e.clientX, e.clientY); touchTip(); } });
+      hh.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") hideTip(); });
+      hh.addEventListener("focus", function () { if (!hh.matches(":focus-visible")) return; var b = hh.getBoundingClientRect(); showTip(lines, b.left + 40, b.top); });
       hh.addEventListener("blur", hideTip);
     });
     NB.measure(svg);
