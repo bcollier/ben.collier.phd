@@ -1597,5 +1597,88 @@
    "teaching": 4.0,
    "course_rating": 4.04
   }
- ]
+ ],
+ "notes": [
+  {
+   "text": "Storytelling through data has come up in so many of my conversations with hiring managers! Several have remarked in their feedback that it's helped distinguish me from other candidates.",
+   "role": "former student",
+   "year": "2025"
+  },
+  {
+   "text": "I've talked to many students at Tepper and they all rave about your data visualization class.",
+   "role": "colleague",
+   "year": "2026"
+  },
+  {
+   "text": "It has been my favorite so far in the program and I have already convinced my employer to let me purchase a Tableau license at work.",
+   "role": "master's student",
+   "year": "2025"
+  },
+  {
+   "text": "This is the first time in my three years at Tepper that data has actually felt \"fun\" for me, especially as someone who leans more toward soft skills.",
+   "role": "MBA student",
+   "year": "2025"
+  },
+  {
+   "text": "You made the 8 AMs bearable and I had a good time with a subject I used to be uncomfortable with.",
+   "role": "MSBA student",
+   "year": "2024"
+  },
+  {
+   "text": "I work in finance and have no real experience in this area, but have wanted to get into Python for some time. You made it both approachable and interesting.",
+   "role": "MBA student",
+   "year": "2025"
+  },
+  {
+   "text": "Before starting I had heard so many of the ML terms we learned in class tossed around without understanding them. I can now talk the talk.",
+   "role": "Heinz master's student",
+   "year": "2026"
+  },
+  {
+   "text": "I don't think I've ever had a professor take this much initiative in our learning, so that is much appreciated.",
+   "role": "Heinz master's student",
+   "year": "2026"
+  },
+  {
+   "text": "My performance was all thanks to your excellent teaching style and your ability to break down complex problems into smaller, more manageable sections.",
+   "role": "MSBA student",
+   "year": "2024"
+  },
+  {
+   "text": "The course content was clear and useful, and I appreciated how everything was relevant without any unnecessary information. You're honestly the most considerate professor I've ever had.",
+   "role": "MSBA student",
+   "year": "2024"
+  },
+  {
+   "text": "Data Mining was by far my favorite MBA course. That course emphasized exactly the type of technical skills I hoped to learn when coming to Tepper.",
+   "role": "graduating MBA student",
+   "year": "2025"
+  },
+  {
+   "text": "I just received an offer of an Analyst position. I wanted to express my sincere gratitude for your guidance and support throughout the process!",
+   "role": "MSBA student",
+   "year": "2024"
+  },
+  {
+   "text": "I actually used some of what we learned at work! I also just appreciated how laid out everything was and easy to follow for someone without a coding background!",
+   "role": "MBA student",
+   "year": "2026"
+  },
+  {
+   "text": "I learnt a lot from this course, and I loved your teaching style. Until now, this has been the best course I've taken at CMU.",
+   "role": "undergraduate student",
+   "year": "2014"
+  },
+  {
+   "text": "As a trainer myself, I need to tell you that you were very strong in terms of handling a relatively tough highly diversified audience.",
+   "role": "executive education participant",
+   "year": "2015"
+  },
+  {
+   "text": "Across all three courses, I found the structure and progression of the material especially impactful. These courses have been among the most formative of my time at Tepper.",
+   "role": "full-time MBA student",
+   "year": "2025"
+  }
+ ],
+ "notes_total": 86
 }
