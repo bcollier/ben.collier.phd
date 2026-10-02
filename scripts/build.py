@@ -2841,7 +2841,7 @@ def build_reels():
         cards.append(f"""
     <figure class="reel" data-reel="{esc(r["id"])}" style="--rot:{rot}deg">
       <span class="tape tc" aria-hidden="true"></span>
-      <figcaption class="reel-title"><h2 id="reel-{esc(r["id"])}">{esc(r["title"])}</h2><span class="reel-count">{len(items)} photos</span></figcaption>
+      <figcaption class="reel-title"><h3 id="reel-{esc(r["id"])}">{esc(r["title"])}</h3><span class="reel-count">{len(items)} photos</span></figcaption>
       <div class="reel-stage" tabindex="0" role="group" aria-labelledby="reel-{esc(r["id"])}" aria-roledescription="slideshow">
         <img class="reel-img on" src="../{esc(poster["src"])}" width="{poster["w"]}" height="{poster["h"]}" alt="Poster frame for {esc(r["title"])}" decoding="async">
         <img class="reel-img" alt="" decoding="async">
@@ -2855,29 +2855,104 @@ def build_reels():
         <button type="button" class="reel-btn reel-mute" aria-pressed="false" aria-label="Mute music">sound on</button>
       </div>
     </figure>""")
-    years = "2000 to 2026"
+    v2 = load_json("reels_v2.json") if (ROOT / "data" / "reels_v2.json").exists() else None
+    total = sum(len(r["items"]) for r in reels)
     head = page_head("Reels", "Me, over the years",
-                     f"Two short reels from my own photo library, {years}: one of me at work, one of me everywhere else. "
-                     f"{sum(len(r['items']) for r in reels)} photos from {len(places)} places, oldest first. "
+                     f"{total} photos of me from my own library, 2000 to 2026, cut two ways. Version 2 is a music video "
+                     "cut to the beat. Version 1 is the original pair of slideshows: me at work, and me everywhere else. "
                      "Every photo is cropped so I am the only person in it.")
-    credit = ""
-    if music:
-        credit = (f'<p class="reel-credit">Music: “{esc(music["title"])}” by {esc(music["artist"])}, from '
-                  f'<a href="{esc(music["source_url"])}">{esc(music["album"])}</a>. '
-                  f'<a href="{esc(music["license_url"])}">{esc(music["license"])}</a>. Sound starts only when you press play.</p>')
-    blob = json.dumps({"reels": [{"id": r["id"], "items": r["items"]} for r in reels],
-                       "music": ("../" + music["src"]) if music else ""}, ensure_ascii=False).replace("</", "<\\/")
-    body = f"""{head}
-  <section class="sec reels-sec" aria-label="Photo reels">
-    <div class="reels">{"".join(cards)}
+
+    def credit_line(m, label):
+        return (f'<li>{label}: \u201c{esc(m["title"])}\u201d by {esc(m["artist"])}, from '
+                f'<a href="{esc(m["source_url"])}">{esc(m["album"])}</a>. '
+                f'<a href="{esc(m["license_url"])}">{esc(m["license"])}</a>.</li>')
+
+    credits = []
+    v2_html = ""
+    scripts = '\n<script src="../js/reels.js" defer></script>'
+    if v2:
+        ben = [i for i in v2["img"] if i["r"] != "b"]
+        n_broll = sum(1 for i in v2["img"] if i["r"] == "b")
+        mins = f'{int(v2["dur"] // 60)}:{int(v2["dur"] % 60):02d}'
+        poster = "assets/reels/v2-poster.webp"
+        tall = "assets/reels/v2-poster-tall.webp"
+        poster_img = (f'<picture><source media="(max-width: 760px)" srcset="../{tall}">'
+                      f'<img class="v2-poster" src="../{poster}" alt="Version 2 title frame: my name in neon over a glowing seal" decoding="async"></picture>'
+                      if (ROOT / poster).exists() and (ROOT / tall).exists() else '<span class="v2-poster"></span>')
+        vblob = json.dumps(v2, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+        v2_html = f"""
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap">
+  <section class="sec v2-sec" aria-labelledby="v2-title">
+    <p class="kicker">Version 2</p>
+    <h2 id="v2-title" class="v2-h">The music video</h2>
+    <div class="v2">
+      <div class="v2-stage" tabindex="0" role="group" aria-label="Version 2, a {mins} music video of my photos" aria-roledescription="video">
+        {poster_img}
+        <canvas class="v2-gl" aria-hidden="true"></canvas>
+        <canvas class="v2-fx" aria-hidden="true"></canvas>
+        <button type="button" class="v2-play" aria-label="Play version 2"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M14 10 L31 20 L14 30 Z"/></svg><span>play</span></button>
+      </div>
+      <div class="v2-bar">
+        <button type="button" class="reel-btn v2-toggle" aria-label="Play" disabled>play</button>
+        <input class="v2-seek" type="range" min="0" max="{v2["dur"]}" step="0.01" value="0" aria-label="Position in the video">
+        <span class="v2-time">0:00 / {mins}</span>
+        <button type="button" class="reel-btn v2-mute" aria-pressed="false" aria-label="Mute music">sound on</button>
+        <button type="button" class="reel-btn v2-full" aria-label="Full screen">full screen</button>
+      </div>
+      <p class="v2-note">{mins} · {len(v2["shots"])} shots · {len(ben)} photos of me and {n_broll} places with nobody in them. Fast cuts and flashing colour; with reduced motion turned on it plays a calm cut. Sound starts only when you press play.</p>
     </div>
-    {credit}
-    <script type="application/json" id="reels-data">{blob}</script>
+    <script type="application/json" id="reels-v2-data">{vblob}</script>
   </section>
 """
+        scripts += '\n<script src="../js/reels-v2.js" defer></script>'
+        if v2.get("music"):
+            credits.append(credit_line(v2["music"], "Version 2"))
+    if music:
+        credits.append(credit_line(music, "Version 1"))
+    notes = f"""
+  <section class="sec reel-notes" aria-labelledby="notes-title">
+    <p class="kicker">Notes</p>
+    <h2 id="notes-title">How these were made</h2>
+    <div class="notes-cols">
+      <div>
+        <h3>Version 1</h3>
+        <ul>
+          <li>A script on my Mac read my Apple Photos library, read-only, and kept photos where Photos had tagged my face.</li>
+          <li>It dropped screenshots, documents, screens, very dark or blurry shots, and all but the best of any burst.</li>
+          <li>A local image model sorted the rest into work and everything else, spread across the years and places.</li>
+          <li>Apple Vision found every other face and body. Each photo is cropped so mine is the only face, or it is left out. Nothing is blurred, and a photo with a child in it is skipped unless the child is fully out of frame.</li>
+          <li>I checked every photo by eye. The files carry no dates, locations or camera data; the only label is a city, state or country.</li>
+          <li>The page plays them as slideshows: 1.2 seconds a photo, a slow pan and zoom, a quick crossfade.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Version 2</h3>
+        <ul>
+          <li>The same {total} photos, with nothing new taken from the library, plus place photos from my travel map with nobody in them.</li>
+          <li>A script measured the track (140 beats a minute, with drops at 0:54 and 2:30) and laid every shot on that beat grid, section by section: a cold open, the places, Professional Ben speeding into the first drop, Casual Ben, a slow breakdown, a rebuild, a second drop and a closing mosaic of every photo.</li>
+          <li>Apple Vision found my face in each photo, so every crop and zoom moves toward it.</li>
+          <li>Your browser draws it live with WebGL, in the neon style of K-pop animation: zoom punches on the kick, colour split, glitch bars, two-tone colour grades, a kaleidoscope, four-up grids and triple panels, a glowing seal, stage lights and sparkles.</li>
+          <li>With reduced motion turned on, it plays the same cut without flashes, glitch, shake or spin.</li>
+        </ul>
+      </div>
+    </div>
+    <ul class="reel-credit">{"".join(credits)}</ul>
+  </section>
+"""
+    blob = json.dumps({"reels": [{"id": r["id"], "items": r["items"]} for r in reels],
+                       "music": ("../" + music["src"]) if music else ""}, ensure_ascii=False).replace("</", "<\\/")
+    body = f"""{head}{v2_html}
+  <section class="sec reels-sec" aria-labelledby="v1-title">
+    <p class="kicker">Version 1</p>
+    <h2 id="v1-title" class="v2-h">The slideshows</h2>
+    <div class="reels">{"".join(cards)}
+    </div>
+    <script type="application/json" id="reels-data">{blob}</script>
+  </section>
+{notes}"""
     write("reels/index.html",
-          page("../", "reels", "Reels · Ben Collier", "Two short photo reels of me, 2000 to 2026.", "reels/", body,
-               scripts='\n<script src="../js/reels.js" defer></script>'))
+          page("../", "reels", "Reels · Ben Collier", "Photo reels of me, 2000 to 2026: a music video and two slideshows.", "reels/", body,
+               scripts=scripts))
 
 
 def build_404():

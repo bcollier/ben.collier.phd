@@ -59,7 +59,7 @@ flowchart TB
   every --> courses["/courses/&lt;slug&gt;/<br/>+ js/course-schedule.js<br/>slide projector"]
   every --> evals["/evaluations/<br/>+ js/evals.js<br/>7 interactive charts"]
   every --> travel["/travel/<br/>+ d3 + topojson-client<br/>+ js/travel-map.js + js/travel.js"]
-  every --> reels["/reels/<br/>+ js/reels.js<br/>photo slideshow and music"]
+  every --> reels["/reels/<br/>+ js/reels-v2.js (WebGL music video)<br/>+ js/reels.js (v1 slideshows)"]
   every --> cv["/cv/ and /contact/<br/>+ js/cv.js, js/place-pop.js<br/>campus map pop-ups"]
 ```
 
@@ -71,6 +71,7 @@ flowchart TB
 | `js/evals.js` | ~420 | The evaluation charts, drawn with the pen, with sticky-note tooltips |
 | `js/travel-map.js` | ~330 | Flat world map with country and US city dots (d3) |
 | `js/travel.js` | ~150 | The spinning globe (d3) |
+| `js/reels-v2.js` | ~700 | Reels version 2: WebGL music video renderer that plays `data/reels_v2.json` against the song clock |
 | `js/reels.js` | ~150 | The two photo reels on /reels/: crossfade, pan and zoom, place labels, shared music |
 | `js/course-schedule.js` | ~160 | The slide "projector" that follows the schedule on course pages |
 | `js/site.js` | ~130 | Email assembly, LinkedIn feed, booking links |
@@ -92,7 +93,7 @@ flowchart TB
 | `/strengths/` | Two StrengthsFinder results, five years apart | Slope chart of theme ranks |
 | `/talks/` | Talks with selected slides | |
 | `/travel/` | 27 countries and 55 US cities from the photo library | Flat map and globe, photo pop-ups |
-| `/reels/` | Two photo reels of Ben, 2000 to 2026: Professional Ben and Casual Ben | Slideshow with pan and zoom, taped place labels, CC0 music that starts only on play |
+| `/reels/` | Version 2: a 3:41 music video of the same 179 photos plus 48 place shots. Version 1: two slideshows, Professional Ben and Casual Ben | WebGL beat-cut video with neon grades, glitch, kaleidoscope, grids, seal and mosaic; v1 slideshow with pan and zoom; CC0 music that starts only on play |
 | `/news/` | Dated log plus LinkedIn posts | |
 | `/contact/` | Email, office, links | Campus map pop-ups |
 
@@ -269,6 +270,29 @@ python3 scripts/build.py
 
 The professional reel is short because the library has few genuinely professional photos of Ben alone; the script does not pad it with casual ones.
 
+Version 1 is tagged `reels-v1` in git.
+
+### Version 2: the music video
+
+Version 2 recuts the exact version 1 photos as a 3:41 music video. It takes nothing new from the Photos library. The only other images are 48 place photos already published on `/travel/`, each checked by Apple Vision and by eye to have nobody in it (`scripts/reels_v2_broll.json`).
+
+```mermaid
+flowchart LR
+  v1["data/reels.json<br/>179 photos (v1)"] --> dir
+  broll["reels_v2_broll.json<br/>48 travel photos"] --> dir
+  music["v2-music.mp3"] -->|kick-drum onsets:<br/>140 BPM, first beat 0.409 s| dir
+  dir["scripts/make_reels_v2.py<br/>faces (Vision) · beat grid ·<br/>bar patterns → 197 shots"] --> json["data/reels_v2.json"]
+  json --> player["js/reels-v2.js<br/>WebGL + 2D overlay,<br/>driven by the song clock"]
+  player --> page(["/reels/"])
+  player -->|?capture, frame by frame| mp4["render_reels_v2.py<br/>MP4 + posters"]
+```
+
+- **Direction.** The track is laid out as sections on its beat grid (bars start on beats 2, 6, 10 ...): cold open with a seal drawing itself (0:00), glitch-in title (0:08), 24 places at two beats each (0:15), Professional Ben speeding from two beats to a half beat into a white-out (0:35), drop one with "CASUAL BEN" (0:54), breakdown (2:03), rebuild and riser (2:16), drop two with "STILL BEN" (2:30), and a closing mosaic of all 179 photos (3:11).
+- **Bar patterns.** Each bar is one letter in `make_reels_v2.py`: `H` four one-beat hits, `h` two punched two-beat holds, `S` framed slow pushes, `G` a 2x2 grid landing one cell a beat, `P` triple colour panels, `B` neon b-roll, `K` a kaleidoscope of the busiest place photos, `X` glitch, `R` a riser. `fit()` trades `H` for `h` until every casual photo appears exactly once, oldest to newest.
+- **Renderer.** One fragment shader handles crop-toward-face, push and punch zooms, colour split, glitch blocks, two-tone grades, zoom blur, framed shots over their own blurred glow, grids, panels and the kaleidoscope. A 2D canvas on top draws the type (Black Han Sans), the seal with Ben's name in hangul, stage-light beams, sparkles, drop shockwaves, place chips and the mosaic. Every frame is a pure function of the song time, so seeking is exact and `?capture` renders a video file.
+- **Safety.** With `prefers-reduced-motion` the same cut plays with no flashes, colour split, glitch, shake, zoom punches or spin. Full-screen flashes happen only at the two drops and the two white-outs, well under three a second.
+- **Music.** Kept under 4 MB, starts only on play, and the audio element is the master clock. Seeking needs HTTP range requests, which GitHub Pages serves; `python3 -m http.server` does not, so seek locally with a range-capable server.
+
 ---
 
 ## Where the data comes from
@@ -314,6 +338,8 @@ flowchart LR
 | Advising | `data/advising.json`, `assets/partners/` | Project descriptions without student names; partner logos from each organisation's own site |
 | Travel | `data/travel.json`, `assets/travel/` | Ben's Apple Photos library read with osxphotos: 27 countries and 55 US cities (suburbs merged into their city). Photos with other people's faces were skipped or blurred, all metadata and GPS stripped, dots placed on official city centres, nothing near home |
 | Reels | `data/reels.json`, `assets/reels/` | `scripts/make_reels.py` (see [The reels](#the-reels)). Ordered list of `{src, w, h, place}` per reel; no dates, coordinates or names |
+| Reels v2 edit | `data/reels_v2.json`, `assets/reels/v2-poster*.webp` | `scripts/make_reels_v2.py` from `data/reels.json`, `scripts/reels_v2_broll.json` and the track's beat grid; posters by `scripts/render_reels_v2.py` |
+| Reels v2 music | `assets/reels/v2-music.mp3`, `assets/reels/v2-music.json` | "High Technologic Beat Explosion" by Loyalty Freak Music, from *Robot Dance!*, CC0 1.0, via the [Internet Archive](https://archive.org/details/LoyaltyFreakMusicROBOTDANCE2017113032423755). Loudness-normalised, 128 kbps |
 | Reels music | `assets/reels/music.mp3`, `assets/reels/music.json` | "Travel to the Horizon" by Komiku, from *Poupi's Incredible Adventures*, CC0 1.0, via the [Internet Archive](https://archive.org/details/Komiku-Poupis_incredible_adventures). Loudness-normalised and re-encoded at 128 kbps |
 | LinkedIn | `data/linkedin.json` | A weekly cloud routine reads Ben's public profile and opens a pull request with any new posts; Ben approves it. Read in the browser, so no rebuild |
 | Campus map | `assets/campus/campus-map.svg` | OpenStreetMap extract (ODbL), drawn by `scripts/make_campus_map.py` |
@@ -363,6 +389,7 @@ python3 -m http.server 8000                  # preview at http://localhost:8000
 | Advising projects | `data/advising.json` | Yes |
 | Travel | `data/travel.json`, `assets/travel/` | Yes |
 | Reels | rerun `scripts/make_reels.py`; hand fixes in `scripts/reels_overrides.json` | Yes |
+| Reels v2 | rerun `scripts/make_reels_v2.py` after any v1 change; `scripts/render_reels_v2.py --posters` | Yes |
 | Domain, name, links | `data/site.json` | Yes |
 | LinkedIn posts | `data/linkedin.json` or `scripts/add_linkedin_post.py` | No |
 | Booking links (Cal.com, Calendly) | `js/config.js` | No |
