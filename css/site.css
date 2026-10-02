@@ -181,7 +181,7 @@ a:hover { color: var(--pen); }
 .sheet-head .pageno { margin-left: auto; }
 
 /* ---------- Generic section scaffolding ---------- */
-.sec { position: relative; padding: 72px 0 24px; }
+.sec { position: relative; padding: 50px 0 20px; }
 .sec.headless { padding-top: 18px; }   /* a section with no heading of its own, right under the page head */
 .sec-no {
   position: absolute; left: calc(-1 * var(--gutter) + 72px); top: 80px;
