@@ -509,16 +509,19 @@
      It asks for nothing and links nowhere: it bounces up, says hello, waves, blinks,
      and tucks itself back out of view. A click makes it hop and wave again. The whole
      figure is decorative, so it is hidden from assistive technology. */
-  function robot() {
-    if (reduce) return;
-    var seen = false;
-    try { seen = sessionStorage.getItem("nb-robot") === "1"; } catch (e) { /* storage blocked */ }
-    if (seen) return;
+  /* ---------- the robot: three visits per browsing session ----------
+     1. about 6.5s in: pops up in a free bottom corner, says "Hi!", waves, leaves.
+     2. about 30s in: pops up on the left, says thanks for sticking around.
+     3. about 90s in: walks in from the left, lifts the "Book a call" note out of
+        the header, offers a 15-minute Zoom call, and walks off with the note.
+     The clock starts on the first page of the visit (sessionStorage), so moving
+     between pages does not restart it, and each visit happens once. */
+  function makeBot(say) {
     var bot = document.createElement("div");
     bot.className = "bot reveal"; bot.hidden = true;
     bot.setAttribute("aria-hidden", "true");
     bot.innerHTML =
-      '<p class="bubble">Hi!</p>' +
+      '<p class="bubble"></p>' +
       '<svg viewBox="0 0 132 150" aria-hidden="true">' +
       '<g class="body-fill fade" style="--d:.35s">' +
       '<rect x="40" y="78" width="54" height="72" rx="12" fill="#f6c453"/>' +
@@ -532,6 +535,7 @@
       '<g class="arm"><g class="arm-lines" style="color:#1d2633"></g><circle class="fade" style="--d:.5s" cx="122" cy="54" r="8" fill="#9ccbea"/></g>' +
       "</svg>" +
       '<span class="bot-hit"></span>';
+    bot.querySelector(".bubble").textContent = say;
     document.body.appendChild(bot);
     var g = bot.querySelector(".lines"), arm = bot.querySelector(".arm-lines");
     seed(11);
@@ -548,49 +552,121 @@
     ink(arm, "M94 94 Q118 88 121 62", { w: 3.4, d: 0.35, dur: 0.3 });
     ink(arm, loopD(122, 54, 8, 8, 0.3, 0.02), { w: 2.6, d: 0.5, dur: 0.2 });
     measure(bot);
-    function tuck() {
-      bot.classList.remove("out"); bot.classList.add("tuck");
-      setTimeout(function () { bot.remove(); }, 700);
-    }
-    var leave = null;
-    // A click: a happy hop and another wave, and a little more time on stage.
-    bot.addEventListener("click", function () {
-      if (!bot.classList.contains("out")) return;
-      bot.classList.remove("hop", "rewave"); void bot.offsetWidth;
-      bot.classList.add("hop", "rewave");
-      clearTimeout(leave); leave = setTimeout(tuck, 4200);
-    });
-    // Pick a corner that does not cover the nav or any call to action; if both are
-    // busy, try again a little later, and give up quietly after a few tries.
-    var CTA = "nav a, .sticky, .sticky-cta, .go, .btn, .stat, .icard, .video, .thumb, .proj-strip button, summary, .country-list button, .map-pop, .tprint";
-    function freeCorner() {
-      var vw = window.innerWidth, vh = window.innerHeight, phone = vw < 761;
-      var zw = phone ? 270 : 360, zh = phone ? 190 : 230;
-      var zones = { br: [vw - zw, vh - zh, vw, vh], bl: [0, vh - zh, zw, vh] };
-      var order = ["br", "bl"], els = document.querySelectorAll(CTA);
-      for (var i = 0; i < order.length; i++) {
-        var z = zones[order[i]], hit = false;
-        for (var k = 0; k < els.length && !hit; k++) {
-          var r = els[k].getBoundingClientRect();
-          if (r.width && r.right > z[0] && r.left < z[2] && r.bottom > z[1] && r.top < z[3]) hit = true;
-        }
-        if (!hit) return order[i];
+    return bot;
+  }
+  // Pick a bottom corner that does not cover the nav or any call to action.
+  var CTA = "nav a, .sticky, .sticky-cta, .go, .btn, .stat, .icard, .video, .thumb, .proj-strip button, summary, .country-list button, .map-pop, .tprint";
+  function freeCorner(order) {
+    var vw = window.innerWidth, vh = window.innerHeight, phone = vw < 761;
+    var zw = phone ? 270 : 360, zh = phone ? 190 : 230;
+    var zones = { br: [vw - zw, vh - zh, vw, vh], bl: [0, vh - zh, zw, vh] };
+    var els = document.querySelectorAll(CTA);
+    for (var i = 0; i < order.length; i++) {
+      var z = zones[order[i]], hit = false;
+      for (var k = 0; k < els.length && !hit; k++) {
+        var r = els[k].getBoundingClientRect();
+        if (r.width && r.right > z[0] && r.left < z[2] && r.bottom > z[1] && r.top < z[3]) hit = true;
       }
-      return null;
+      if (!hit) return order[i];
     }
+    return null;
+  }
+  // Visits 1 and 2: pop up in a corner, wave, say one line, tuck back down.
+  function peek(say, order, stay, done) {
     var tries = 0;
-    function show() {
-      var pos = freeCorner();
-      if (!pos) { if (++tries < 6) setTimeout(show, 2500); return; }
+    (function show() {
+      var pos = freeCorner(order);
+      if (!pos) { if (++tries < 6) setTimeout(show, 2500); else done(false); return; }
+      var bot = makeBot(say), leave = null;
+      function tuck() {
+        bot.classList.remove("out"); bot.classList.add("tuck");
+        setTimeout(function () { bot.remove(); done(true); }, 700);
+      }
+      // A click: a happy hop and another wave, and a little more time on stage.
+      bot.addEventListener("click", function () {
+        if (!bot.classList.contains("out")) return;
+        bot.classList.remove("hop", "rewave"); void bot.offsetWidth;
+        bot.classList.add("hop", "rewave");
+        clearTimeout(leave); leave = setTimeout(tuck, 4200);
+      });
       bot.classList.add("pos-" + pos);
       bot.hidden = false;
       requestAnimationFrame(function () { requestAnimationFrame(function () { bot.classList.add("out", "drawn"); }); });
-      try { sessionStorage.setItem("nb-robot", "1"); } catch (e) { /* ignore */ }
-      leave = setTimeout(tuck, 6200);
-    }
-    setTimeout(show, 6500);
+      leave = setTimeout(tuck, stay);
+    })();
   }
-
+  // Visit 3: walk in from the left, lift the header's "Book a call" note, offer a
+  // call, then walk off to the right with the note, which goes back in the header.
+  function walkWithBanner(done) {
+    var cta = document.querySelector(".sticky-cta");
+    if (!cta || /\/book\/?$/.test(location.pathname)) { done(false); return; }
+    var bot = makeBot("Wow, you're really into this! Want to chat? 15 minutes on Zoom.");
+    var vw = window.innerWidth, phone = vw < 761, bw = phone ? 92 : 132;
+    bot.classList.add("walker"); bot.hidden = false;
+    bot.style.setProperty("--x", (-bw - 40) + "px");
+    var stop = Math.round(Math.min(vw * 0.3, vw - bw - (phone ? 190 : 260)));
+    // the note this robot will carry: a copy of the header's, still a real link
+    var sign = cta.cloneNode(true);
+    sign.classList.remove("sticky-cta"); sign.classList.add("bot-sign");
+    sign.removeAttribute("id");
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      bot.classList.add("drawn", "walking");
+      bot.style.setProperty("--walk", "2.6s");
+      bot.style.setProperty("--x", stop + "px");
+    }); });
+    setTimeout(function () {
+      bot.classList.remove("walking");
+      // fly the note from the header down into the robot's raised hand
+      var from = cta.getBoundingClientRect();
+      var fly = cta.cloneNode(true); fly.classList.add("sign-fly"); fly.removeAttribute("id");
+      fly.style.left = from.left + "px"; fly.style.top = from.top + "px"; fly.style.width = from.width + "px";
+      document.body.appendChild(fly);
+      cta.classList.add("lifted");
+      var b = bot.getBoundingClientRect();
+      requestAnimationFrame(function () {
+        fly.style.transform = "translate(" + (b.left + b.width * 0.55 - from.left - from.width / 2) + "px," + (b.top - (phone ? 46 : 64) - from.top) + "px) rotate(-6deg) scale(" + (phone ? 0.62 : 0.8) + ")";
+      });
+      setTimeout(function () {
+        fly.remove();
+        bot.appendChild(sign);
+        bot.classList.add("holding", "out-say");
+      }, 950);
+    }, 2700);
+    setTimeout(function () {
+      bot.classList.remove("out-say"); bot.classList.add("walking");
+      bot.style.setProperty("--walk", "5.5s");
+      bot.style.setProperty("--x", (vw + 60) + "px");
+    }, 2700 + 950 + 7200);
+    setTimeout(function () {
+      bot.remove(); cta.classList.remove("lifted"); done(true);
+    }, 2700 + 950 + 7200 + 5600);
+  }
+  function robot() {
+    if (reduce) return;
+    var now = Date.now(), t0 = now;
+    var get = function (k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
+    var set = function (k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
+    if (get("nb-robot") === "1") set("nb-robot-1", "1"); // the key the single robot used
+    t0 = +get("nb-t0") || now; if (!get("nb-t0")) set("nb-t0", String(now));
+    var plan = [
+      { k: 1, at: 6.5, run: function (d) { peek("Hi!", ["br", "bl"], 6200, d); } },
+      { k: 2, at: 30, run: function (d) { peek("Thanks for sticking around to check things out!", ["bl", "br"], 6800, d); } },
+      { k: 3, at: 90, run: walkWithBanner }
+    ];
+    var busy = false;
+    plan.forEach(function (p) {
+      if (get("nb-robot-" + p.k) === "1") return;
+      var wait = Math.max(4, p.at - (now - t0) / 1000) * 1000;
+      setTimeout(function go() {
+        // never two robots at once, never while the tab is in the background,
+        // and never before the earlier visit has happened
+        var before = plan.filter(function (q) { return q.k < p.k && get("nb-robot-" + q.k) !== "1"; }).length;
+        if (busy || document.hidden || before) { setTimeout(go, 3000); return; }
+        busy = true;
+        p.run(function () { busy = false; set("nb-robot-" + p.k, "1"); });
+      }, wait);
+    });
+  }
 
   /* ---------- slide stacks: the top print lifts off and goes to the back of the pile ---------- */
   function stacks() {
