@@ -382,6 +382,10 @@ function showMeasureTip(e,key){cancelTipHide();const info=measureHelp[key],t=doc
 function hideTip(){cancelTipHide();const t=document.getElementById('tooltip');t.style.opacity=0;t.classList.remove('visible')}
 document.getElementById('tooltip').addEventListener('mouseenter',cancelTipHide);
 document.getElementById('tooltip').addEventListener('mouseleave',scheduleTipHide);
+document.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&!e.target.closest('.section-dot,[data-measure-help],#tooltip'))hideTip()},{passive:true});
+document.addEventListener('mousemove',e=>{if(!e.target.closest('.section-dot,[data-measure-help],#tooltip'))hideTip()},{passive:true});
+document.documentElement.addEventListener('mouseleave',hideTip);
+window.addEventListener('blur',hideTip);
 
 const recent=DATA.sections.filter(d=>d.year>=2025);
 const dims=[['respect_for_students','Respect for students'],['importance_of_subject','Importance of subject'],['subject_explanation','Explains subject matter'],['interest_in_learning','Interest in learning'],['objectives_clear','Clear objectives'],['requirements_clear','Clear requirements'],['overall_teaching','Overall teaching'],['overall_course','Overall course'],['helpful_feedback','Helpful feedback']];
