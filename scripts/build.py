@@ -2855,6 +2855,12 @@ def build_travel():
 PIPELINE_DOC = "https://github.com/bcollier/ben.collier.phd/blob/main/docs/reels-pipeline.md"
 
 
+def played(reel):
+    """The photos a v1 slideshow plays: its hand-picked short cut if it has one
+    (items marked "cut", see scripts/reels_cut.json), otherwise all of them."""
+    return [i for i in reel["items"] if i.get("cut")] or reel["items"]
+
+
 def build_reels():
     """Two photo reels of me, made by scripts/make_reels.py from my own Photos
     library. The page lists the images; js/reels.js plays them as a slideshow."""
@@ -2866,7 +2872,7 @@ def build_reels():
     places = {i["place"] for r in reels for i in r["items"] if i["place"]}
     cards = []
     for k, r in enumerate(reels):
-        items = r["items"]
+        items = played(r)
         poster = items[-1]
         rot = (-0.8, 0.9)[k % 2]
         cards.append(f"""
@@ -2973,7 +2979,7 @@ def build_reels():
     <ul class="reel-credit">{"".join(credits)}</ul>
   </section>
 """
-    blob = json.dumps({"reels": [{"id": r["id"], "items": r["items"]} for r in reels],
+    blob = json.dumps({"reels": [{"id": r["id"], "items": [{k: v for k, v in i.items() if k != "cut"} for i in played(r)]} for r in reels],
                        "music": ("../" + music["src"]) if music else ""}, ensure_ascii=False).replace("</", "<\\/")
     body = f"""{head}{v2_html}
   <section class="sec reels-sec" aria-labelledby="v1-title">

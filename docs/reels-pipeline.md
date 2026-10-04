@@ -6,7 +6,7 @@ The two reels on [ben.collier.phd/reels](https://ben.collier.phd/reels/) were ma
 
 | | |
 |---|---|
-| Version 1 | Two slideshows: **Professional Ben** (22 photos) and **Casual Ben** (149 photos), 2000 to 2026, 29 places |
+| Version 1 | Two slideshows, each under 40 seconds: **Professional Ben** (22 photos) and **Casual Ben** (a 31-photo cut, picked by eye from 149), 2000 to 2026, 29 places |
 | Version 2 | A 3:41 music video of the same 171 photos plus 48 place shots, cut to a 140 BPM track: 190 shots |
 | Made with | Claude Code, two sessions on two Macs |
 | Code | `scripts/make_reels.py`, `scripts/make_reels_v2.py`, `scripts/render_reels_v2.py`, `js/reels.js`, `js/reels-v2.js` |
@@ -95,7 +95,7 @@ A few of the published frames:
 <img src="../assets/reels/pro/015-t.webp" height="110" alt="">
 </p>
 
-**The slideshow player** (`js/reels.js`) shows each photo for about 1.2 seconds with a slow pan and zoom and a 0.35-second crossfade, puts the place on a taped label in Kalam handwriting, preloads four photos ahead, and pauses when the tab is hidden. Music plays only after the visitor presses play.
+**The slideshow player** (`js/reels.js`) shows each photo for about 1.2 seconds with a slow pan and zoom and a 0.35-second crossfade, puts the place on a taped label in Kalam handwriting, preloads four photos ahead, and pauses when the tab is hidden. Music plays only after the visitor presses play. A reel with a hand-picked short cut (`scripts/reels_cut.json`: no goofy faces, spread over years and places) plays only that cut, so neither slideshow runs past 40 seconds.
 
 ---
 
