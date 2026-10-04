@@ -345,7 +345,7 @@
     return out;
   }
 
-  // The seal: rings, ticks, a six-point star and Ben's name in hangul,
+  // The seal: rings, ticks, a compass rose and Ben's name in hangul,
   // drawn as if by a brush of light.
   function seal(cx, cy, R, k, alpha, rot) {
     ctx.save();
@@ -373,19 +373,23 @@
       var an = i / 24 * Math.PI * 2, r1 = R * (i % 2 ? 0.9 : 0.88), r2 = R * 0.97;
       ctx.beginPath(); ctx.moveTo(Math.cos(an) * r1, Math.sin(an) * r1); ctx.lineTo(Math.cos(an) * r2, Math.sin(an) * r2); ctx.stroke();
     }
-    var st = seg(0.35, 0.75);
-    [0, Math.PI].forEach(function (off, j) {
-      ctx.strokeStyle = j ? pink : gold; ctx.shadowColor = ctx.strokeStyle; ctx.lineWidth = R * 0.012;
-      ctx.beginPath();
-      for (var e = 0; e <= 3; e++) {
-        var kk = clamp(st * 3 - e + 1, 0, 1);
-        var a0 = off - Math.PI / 2 + (e - 1) * Math.PI * 2 / 3, a1 = a0 + Math.PI * 2 / 3;
-        var x0 = Math.cos(a0) * R * 0.8, y0 = Math.sin(a0) * R * 0.8, x1 = Math.cos(a1) * R * 0.8, y1 = Math.sin(a1) * R * 0.8;
-        if (e === 0) continue;
-        ctx.moveTo(x0, y0); ctx.lineTo(lerp(x0, x1, kk), lerp(y0, y1, kk));
-      }
-      ctx.stroke();
+    // Compass rose: four long gold points, then four short pink ones.
+    var st = seg(0.35, 0.75), ORDER = [0, 2, 4, 6, 1, 3, 5, 7];
+    ctx.lineWidth = R * 0.012;
+    ctx.beginPath();
+    ORDER.forEach(function (o, p) {
+      var kk = clamp(st * 8 - p, 0, 1);
+      if (kk <= 0) return;
+      var card = o % 2 === 0, an = o * Math.PI / 4 - Math.PI / 2, L = R * (card ? 0.62 : 0.4), w = R * 0.13;
+      if (p === 4) { ctx.stroke(); ctx.beginPath(); }
+      ctx.strokeStyle = card ? gold : pink; ctx.shadowColor = ctx.strokeStyle;
+      var tx = Math.cos(an) * L, ty = Math.sin(an) * L;
+      [-1, 1].forEach(function (sd) {
+        var sx = Math.cos(an + sd * Math.PI / 8) * w, sy = Math.sin(an + sd * Math.PI / 8) * w;
+        ctx.moveTo(sx, sy); ctx.lineTo(lerp(sx, tx, kk), lerp(sy, ty, kk));
+      });
     });
+    ctx.stroke();
     var ring = "벤 · 콜리어 · BEN COLLIER · ";
     var lk = seg(0.55, 0.95);
     ctx.font = Math.round(R * 0.075) + "px " + DISPLAY;
