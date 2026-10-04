@@ -1726,3 +1726,7 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
 .page-head .pipe-note { width: 300px; margin-top: 22px; }
 .page-head .pipe-note .big { font-size: 25px; }
 .page-head .pipe-note .sub { display: block; font-family: var(--mono); font-size: 12px; font-weight: 400; margin-top: 6px; line-height: 1.4; }
+/* strengths: the note on how the page was written */
+.sf-made { display: block; max-width: 34em; margin: 26px 0 4px; padding: 22px 24px 18px; }
+.sf-made .big { font-size: 24px; }
+.sf-made .sub { display: block; font-family: var(--serif); font-weight: 400; font-size: 16.5px; line-height: 1.5; margin-top: 8px; }

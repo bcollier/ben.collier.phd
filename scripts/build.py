@@ -2743,6 +2743,11 @@ def build_strengths():
     body = page_head("Strengths", "Strengths",
                      "I have taken Gallup's StrengthsFinder twice: in 2009 as a PhD student in Pittsburgh, and in 2014 as a professor in Doha. "
                      "Four of the same five themes came back both times. This page is what they say about how I work, checked against what I have actually done.",
+                     '<aside class="sf-made sticky land" style="--rot:-1.2deg;--d:.5s"><span class="tape tc"></span>'
+                     '<span class="big">How this page was made</span>'
+                     '<span class="sub">AI wrote it, working from my two StrengthsFinder reports and what it had learned about me while building '
+                     'this site, mostly from my CV. It is not dramatically far off. I also do not swear by this or any system for '
+                     'sizing up a human being.</span></aside>',
                      stamp="Two tests &middot; five years apart")
     domains = "".join(
         f'<li class="{k}"><span class="sf-n">{n}</span><span class="sf-dl">{SF_DOMAIN_NAME[k]}</span></li>'
