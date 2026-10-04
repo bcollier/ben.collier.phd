@@ -67,8 +67,20 @@
 
   <section class="page-head reveal"><p class="kicker">Portfolio</p><h1>Coding with AI <span class="u u2" data-d="0.4">Projects</span></h1><p class="lede">Working projects I built with AI coding tools, several of them for Effective Coding with AI, a Carnegie Mellon course. Each repo includes the prompts and build log, and I use them as examples in class.</p></section>
   <div class="portfolio">
+  <article class="pf reveal" id="reels">
+    <a class="pf-shot polaroid drop" href="../reels/" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/reels.jpg" alt="A four-up grid from version 2 of the reels: four photos of me from the mid-2000s under neon stage lights and sparkles" width="1200" height="675" loading="lazy"></a>
+    <div class="pf-body">
+      <p class="kicker">Web app &middot; October 2026</p>
+      <h2>Reels: Me, Over the Years</h2>
+      <p class="pf-tools">Python, osxphotos, Apple Vision, OpenCLIP, NumPy, WebGL, Claude Code</p>
+      
+      <p>172 photos of me from my own photo library, 2000 to 2026, cut two ways. Version 2 is a 3:41 music video drawn live in the browser with WebGL, cut to the beat of a CC0 track in the neon style of K-pop animation. Version 1 is a pair of slideshows: me at work, and me everywhere else. I built it for Effective Coding with AI, a Carnegie Mellon course, as Project 2.</p>
+      <ul class="dashes"><li>A script on my Mac picks the photos: it reads Apple Photos read-only, finds my tagged face, drops screenshots, blurry shots and bursts, and sorts the rest with a local image model. No photo goes to any online service.</li><li>Nobody else appears. Apple Vision finds every other face and body, and each photo is cropped until mine is the only face, or it is left out. A second check runs on the final crop, because the first pass missed a toddler and a kiss.</li><li>Version 2 is directed by code: a script measures the track's kick drum (140 beats a minute), finds the drops, and lays 190 shots on that beat grid. The browser then draws every frame from the song time alone, so seeking is exact.</li><li>With reduced motion turned on, the same cut plays without flashes, glitch or shake.</li></ul>
+      <p class="pf-links"><a class="go" href="../reels/">Watch it</a> <a class="go" href="https://github.com/bcollier/ben.collier.phd/tree/main/reels">README and prompt log</a> <a class="go" href="https://github.com/bcollier/ben.collier.phd/blob/main/scripts/make_reels_v2.py">The scripts</a></p>
+    </div>
+  </article>
   <article class="pf reveal tall" id="ignatius-at-home">
-    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/ignatius-hw4-web/" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/ignatius-at-home.jpg" alt="Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting" width="1200" height="1600" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/ignatius-hw4-web/" style="--rot:1.6deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/ignatius-at-home.jpg" alt="Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting" width="1200" height="1600" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Web app &middot; September 2026</p>
       <h2>Ignatius at Home</h2>
@@ -80,7 +92,7 @@
     </div>
   </article>
   <article class="pf reveal" id="rink-rivals">
-    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/nhl-player-compare" style="--rot:1.6deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/rink-rivals.png" alt="Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted" width="1600" height="900" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/nhl-player-compare" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/rink-rivals.png" alt="Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted" width="1600" height="900" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Web app &middot; September 2026</p>
       <h2>Rink Rivals</h2>
@@ -93,7 +105,7 @@
     </div>
   </article>
   <article class="pf reveal" id="charlie-road">
-    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/charlie-road/" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/charlie-road.jpg" alt="Charlie the cocker spaniel, in a sweater, hopping across a voxel road in Charlie Road" width="1280" height="642" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/charlie-road/" style="--rot:2.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/charlie-road.jpg" alt="Charlie the cocker spaniel, in a sweater, hopping across a voxel road in Charlie Road" width="1280" height="642" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Browser game &middot; September 2026</p>
       <h2>Charlie Road</h2>
@@ -105,7 +117,7 @@
     </div>
   </article>
   <article class="pf reveal" id="claude-ravens-demo">
-    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/claude-ravens-demo" style="--rot:2.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/claude-ravens-demo.png" alt="A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options" width="902" height="664" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/claude-ravens-demo" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/claude-ravens-demo.png" alt="A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options" width="902" height="664" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Experiment &middot; September 2026</p>
       <h2>Can a computer pass an IQ test?</h2>
