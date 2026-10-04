@@ -342,6 +342,35 @@ def year_quotas(counts: dict, n: int) -> dict:
     return q
 
 
+# Photos removed from the published reels by hand, named by their published file
+# ("casual/021"), because the repo never records which library photo a file came
+# from. The next run on Ben's Mac looks each name up in the private manifest from
+# the last export, turns it into a permanent "skip" override, and empties this list.
+REMOVED = ROOT / "scripts" / "reels_removed.json"
+
+
+def apply_removed():
+    if not REMOVED.exists():
+        return
+    spec = json.loads(REMOVED.read_text())
+    names = spec.get("remove", [])
+    man_path = CACHE / "manifest.json"
+    if not names or not man_path.exists():
+        return
+    manifest = json.loads(man_path.read_text())
+    over = json.loads(OVERRIDES.read_text()) if OVERRIDES.exists() else {}
+    left = []
+    for n in names:
+        uuid = manifest.get(n)
+        if uuid:
+            over[uuid] = "skip"
+        else:
+            left.append(n)
+    OVERRIDES.write_text(json.dumps(dict(sorted(over.items())), indent=1) + "\n")
+    REMOVED.write_text(json.dumps({"note": spec.get("note", ""), "remove": left}, indent=1) + "\n")
+    print(f"turned {len(names) - len(left)} hand removals into skip overrides")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--per-reel", type=int, default=150)
@@ -385,6 +414,7 @@ def main():
     print("Scoring scenes with a local CLIP model...")
     clip = clip_scores(best)
 
+    apply_removed()
     over = json.loads(OVERRIDES.read_text()) if OVERRIDES.exists() else {}
     pool = {"pro": [], "casual": []}
     for p in best:

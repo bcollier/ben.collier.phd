@@ -2847,6 +2847,9 @@ def build_travel():
     )
 
 
+PIPELINE_DOC = "https://github.com/bcollier/ben.collier.phd/blob/main/docs/reels-pipeline.md"
+
+
 def build_reels():
     """Two photo reels of me, made by scripts/make_reels.py from my own Photos
     library. The page lists the images; js/reels.js plays them as a slideshow."""
@@ -2883,7 +2886,9 @@ def build_reels():
     head = page_head("Reels", "Me, over the years",
                      f"{total} photos of me from my own library, 2000 to 2026, cut two ways. Version 2 is a music video "
                      "cut to the beat. Version 1 is the original pair of slideshows: me at work, and me everywhere else. "
-                     "Every photo is cropped so I am the only person in it.")
+                     "Every photo is cropped so I am the only person in it.",
+                     sticky(PIPELINE_DOC, "100% made by AI &rarr;", "the pipeline, from my first question to the encoded video",
+                            cls="pipe-note", rot=-2.5, d=0.6, tape=True))
 
     def credit_line(m, label):
         return (f'<li>{label}: \u201c{esc(m["title"])}\u201d by {esc(m["artist"])}, from '
@@ -2936,6 +2941,7 @@ def build_reels():
   <section class="sec reel-notes" aria-labelledby="notes-title">
     <p class="kicker">Notes</p>
     <h2 id="notes-title">How these were made</h2>
+    <p class="prose">AI made both versions end to end, from my request in plain English to the encoded video. <a class="go" href="{PIPELINE_DOC}">The full pipeline, with diagrams and the edit timeline</a></p>
     <div class="notes-cols">
       <div>
         <h3>Version 1</h3>

@@ -1722,3 +1722,7 @@ html:not(.nb) .checks li::before { content: "\2713"; font-family: var(--hand); f
   .eval-version-card dl { grid-template-columns: minmax(0, 1fr); }
   .eval-version-card > p:not(.kicker) { min-height: 0; }
 }
+/* reels: the note linking to the AI pipeline write-up */
+.page-head .pipe-note { width: 300px; margin-top: 22px; }
+.page-head .pipe-note .big { font-size: 25px; }
+.page-head .pipe-note .sub { display: block; font-family: var(--mono); font-size: 12px; font-weight: 400; margin-top: 6px; line-height: 1.4; }

@@ -1,0 +1,6 @@
+{
+ "note": "Published reel files Ben asked to remove. scripts/make_reels.py turns each into a skip override on its next run, using the private manifest on Ben's Mac.",
+ "remove": [
+  "casual/021"
+ ]
+}
