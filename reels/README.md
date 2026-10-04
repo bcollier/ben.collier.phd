@@ -1,7 +1,5 @@
 # Reels: Me, Over the Years
 
-> **DRAFT. Ben: rewrite every section above "AI-generated technical notes" in your own words before you submit.** The course requires the README to be written by you. The bullets below are facts to work from, not finished prose. Delete this box when you are done.
-
 **Live:** https://ben.collier.phd/reels/
 **Course:** CMU 15-113 Effective Coding with AI, Project 2 (Creative Web App)
 **Works on phones:** yes. The stage switches from 16:9 to 4:5 below 760px wide.
