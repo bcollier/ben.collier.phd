@@ -133,7 +133,7 @@ The page draws the video live, so a video file is made by filming the page, fram
 ```mermaid
 sequenceDiagram
   participant S as render_reels_v2.py
-  participant C as headless Chrome<br/>(Playwright)
+  participant C as headless Chrome (Playwright)
   participant P as /reels/?capture
   participant F as ffmpeg
   S->>C: open the page at 1280x720
