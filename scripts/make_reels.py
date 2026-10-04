@@ -349,6 +349,29 @@ def year_quotas(counts: dict, n: int) -> dict:
 REMOVED = ROOT / "scripts" / "reels_removed.json"
 
 
+# The short cut each slideshow plays, picked by eye. Named by published file like
+# REMOVED; the next run turns names into UUIDs so the cut survives renumbering.
+CUT = ROOT / "scripts" / "reels_cut.json"
+
+
+def apply_cut():
+    """Turn hand-picked names into UUIDs; return the set of UUIDs in the cut."""
+    if not CUT.exists():
+        return set()
+    spec = json.loads(CUT.read_text())
+    uuids, left = list(spec.get("uuids", [])), []
+    man_path = CACHE / "manifest.json"
+    manifest = json.loads(man_path.read_text()) if man_path.exists() else {}
+    for n in spec.get("names", []):
+        if manifest.get(n):
+            uuids.append(manifest[n])
+        else:
+            left.append(n)
+    spec.update(names=left, uuids=sorted(set(uuids)))
+    CUT.write_text(json.dumps(spec, indent=1) + "\n")
+    return set(uuids)
+
+
 def apply_removed():
     if not REMOVED.exists():
         return
@@ -415,6 +438,7 @@ def main():
     clip = clip_scores(best)
 
     apply_removed()
+    cut = apply_cut()
     over = json.loads(OVERRIDES.read_text()) if OVERRIDES.exists() else {}
     pool = {"pro": [], "casual": []}
     for p in best:
@@ -500,7 +524,7 @@ def main():
         write_report(picks, report, skipped, dry=True)
         return
 
-    export(picks)
+    export(picks, cut)
     write_report(picks, report, skipped, dry=False)
 
 
@@ -582,7 +606,7 @@ def clean_copy(im: Image.Image) -> Image.Image:
     return out
 
 
-def export(picks):
+def export(picks, cut=frozenset()):
     data = {"generated_by": "scripts/make_reels.py", "reels": []}
     manifest = {}
     for reel, chosen in picks.items():
@@ -603,6 +627,8 @@ def export(picks):
             th.thumbnail((THUMB_SIDE, THUMB_SIDE), Image.LANCZOS)
             th.save(folder / f"{name}-t.webp", "WEBP", quality=72, method=6)
             items.append({"src": f"assets/reels/{reel}/{name}.webp", "w": im.width, "h": im.height, "place": coarse_place(p)})
+            if p.uuid in cut:
+                items[-1]["cut"] = True
             manifest[f"{reel}/{name}"] = p.uuid
             print(f"  {REELS[reel]} {i}/{len(chosen)}", end="\r", flush=True)
         print()
