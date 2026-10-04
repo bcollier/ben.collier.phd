@@ -93,7 +93,7 @@ flowchart TB
 | `/strengths/` | Two StrengthsFinder results, five years apart | Slope chart of theme ranks |
 | `/talks/` | Talks with selected slides | |
 | `/travel/` | 27 countries and 55 US cities from the photo library | Flat map and globe, photo pop-ups |
-| `/reels/` | Version 2: a 3:41 music video of the same 179 photos plus 48 place shots. Version 1: two slideshows, Professional Ben and Casual Ben | WebGL beat-cut video with neon grades, glitch, kaleidoscope, grids, seal and mosaic; v1 slideshow with pan and zoom; CC0 music that starts only on play |
+| `/reels/` | Version 2: a 3:41 music video of the same 171 photos plus 48 place shots. Version 1: two slideshows, Professional Ben and Casual Ben | WebGL beat-cut video with neon grades, glitch, kaleidoscope, grids, seal and mosaic; v1 slideshow with pan and zoom; CC0 music that starts only on play |
 | `/news/` | Dated log plus LinkedIn posts | |
 | `/contact/` | Email, office, links | Campus map pop-ups |
 
@@ -239,6 +239,8 @@ How it behaves:
 
 ## The reels
 
+The whole story, from the first question to the encoded video, with diagrams and the edit timeline: **[docs/reels-pipeline.md](docs/reels-pipeline.md)**.
+
 `/reels/` plays two short slideshows of Ben's face over the years, made from his Apple Photos library by `scripts/make_reels.py`. The script runs on Ben's Mac only. It reads the library through osxphotos, read-only, and does every check locally: no photo is sent to any online service, and the only copies that leave the Mac are the exported WebP files committed here.
 
 ```mermaid
@@ -265,7 +267,7 @@ python3 scripts/build.py
 - **Other people.** Each original is checked with Photos' face regions and Apple Vision (faces, whole and upper bodies). The script looks for a 4:5 or 16:9 frame at least 1080px tall that holds Ben's face and no part of anyone else's. If there is none, the photo is skipped, always so for a child. A second, independent pass runs Vision's newer face model and a local CLIP "more than one person" vote on the exact frame being published. Nothing is ever blurred.
 - **Home.** Photos taken at home are kept, labelled only "Pittsburgh", and any that shows a house or street number (Vision text recognition) is dropped.
 - **Places** are coarse: a well-known city, otherwise a US state or a country. Photos with no location borrow the place of the nearest located photo within 36 hours.
-- **Hand review.** Every exported image is checked by eye. `scripts/reels_overrides.json` maps a Photos UUID to `"skip"`, `"pro"` or `"casual"`; it holds no images or names.
+- **Hand review.** Every exported image is checked by eye. `scripts/reels_overrides.json` maps a Photos UUID to `"skip"`, `"pro"` or `"casual"`; it holds no images or names. To pull a published photo without the library at hand, list its file name (`"casual/021"`) in `scripts/reels_removed.json`; the next run turns it into a `"skip"` using the private manifest.
 - **Deterministic.** The same library and overrides give the same picks in the same order. CLIP scores are cached in `~/Library/Caches/ben-reels/`, which also holds the private report (counts per year and place, and what was skipped and why) and the file-to-UUID manifest. None of that is committed.
 
 The professional reel is short because the library has few genuinely professional photos of Ben alone; the script does not pad it with casual ones.
@@ -278,16 +280,16 @@ Version 2 recuts the exact version 1 photos as a 3:41 music video. It takes noth
 
 ```mermaid
 flowchart LR
-  v1["data/reels.json<br/>179 photos (v1)"] --> dir
+  v1["data/reels.json<br/>171 photos (v1)"] --> dir
   broll["reels_v2_broll.json<br/>48 travel photos"] --> dir
   music["v2-music.mp3"] -->|kick-drum onsets:<br/>140 BPM, first beat 0.409 s| dir
-  dir["scripts/make_reels_v2.py<br/>faces (Vision) · beat grid ·<br/>bar patterns → 197 shots"] --> json["data/reels_v2.json"]
+  dir["scripts/make_reels_v2.py<br/>faces (Vision) · beat grid ·<br/>bar patterns → 190 shots"] --> json["data/reels_v2.json"]
   json --> player["js/reels-v2.js<br/>WebGL + 2D overlay,<br/>driven by the song clock"]
   player --> page(["/reels/"])
   player -->|?capture, frame by frame| mp4["render_reels_v2.py<br/>MP4 + posters"]
 ```
 
-- **Direction.** The track is laid out as sections on its beat grid (bars start on beats 2, 6, 10 ...): cold open with a seal drawing itself (0:00), glitch-in title (0:08), 24 places at two beats each (0:15), Professional Ben speeding from two beats to a half beat into a white-out (0:35), drop one with "CASUAL BEN" (0:54), breakdown (2:03), rebuild and riser (2:16), drop two with "STILL BEN" (2:30), and a closing mosaic of all 179 photos (3:11).
+- **Direction.** The track is laid out as sections on its beat grid (bars start on beats 2, 6, 10 ...): cold open with a seal drawing itself (0:00), glitch-in title (0:08), 24 places at two beats each (0:15), Professional Ben speeding from two beats to a half beat into a white-out (0:35), drop one with "CASUAL BEN" (0:54), breakdown (2:03), rebuild and riser (2:16), drop two with "STILL BEN" (2:30), and a closing mosaic of all 171 photos (3:11).
 - **Bar patterns.** Each bar is one letter in `make_reels_v2.py`: `H` four one-beat hits, `h` two punched two-beat holds, `S` framed slow pushes, `G` a 2x2 grid landing one cell a beat, `P` triple colour panels, `B` neon b-roll, `K` a kaleidoscope of the busiest place photos, `X` glitch, `R` a riser. `fit()` trades `H` for `h` until every casual photo appears exactly once, oldest to newest.
 - **Renderer.** One fragment shader handles crop-toward-face, push and punch zooms, colour split, glitch blocks, two-tone grades, zoom blur, framed shots over their own blurred glow, grids, panels and the kaleidoscope. A 2D canvas on top draws the type (Black Han Sans), the seal with Ben's name in hangul, stage-light beams, sparkles, drop shockwaves, place chips and the mosaic. Every frame is a pure function of the song time, so seeking is exact and `?capture` renders a video file.
 - **Safety.** With `prefers-reduced-motion` the same cut plays with no flashes, colour split, glitch, shake, zoom punches or spin. Full-screen flashes happen only at the two drops and the two white-outs, well under three a second.
@@ -340,7 +342,7 @@ flowchart LR
 | Reels | `data/reels.json`, `assets/reels/` | `scripts/make_reels.py` (see [The reels](#the-reels)). Ordered list of `{src, w, h, place}` per reel; no dates, coordinates or names |
 | Reels v2 edit | `data/reels_v2.json`, `assets/reels/v2-poster*.webp` | `scripts/make_reels_v2.py` from `data/reels.json`, `scripts/reels_v2_broll.json` and the track's beat grid; posters by `scripts/render_reels_v2.py` |
 | Reels v2 music | `assets/reels/v2-music.mp3`, `assets/reels/v2-music.json` | "High Technologic Beat Explosion" by Loyalty Freak Music, from *Robot Dance!*, CC0 1.0, via the [Internet Archive](https://archive.org/details/LoyaltyFreakMusicROBOTDANCE2017113032423755). Loudness-normalised, 128 kbps |
-| Reels music | `assets/reels/music.mp3`, `assets/reels/music.json` | "Travel to the Horizon" by Komiku, from *Poupi's Incredible Adventures*, CC0 1.0, via the [Internet Archive](https://archive.org/details/Komiku-Poupis_incredible_adventures). Loudness-normalised and re-encoded at 128 kbps |
+| Reels music | `assets/reels/music.mp3`, `assets/reels/music.json` | "Juillet" by Monplaisir, fingerstyle folk guitar from *Bonjour from Paris, Nantes and Montreal*, CC0 1.0, via the [Internet Archive](https://archive.org/details/MonplaisirBonjourFromParisNantesAndMontreal). Loudness-normalised, metadata stripped |
 | LinkedIn | `data/linkedin.json` | A weekly cloud routine reads Ben's public profile and opens a pull request with any new posts; Ben approves it. Read in the browser, so no rebuild |
 | Campus map | `assets/campus/campus-map.svg` | OpenStreetMap extract (ODbL), drawn by `scripts/make_campus_map.py` |
 | World shapes | `assets/vendor/countries-110m.json` | Natural Earth via world-atlas |

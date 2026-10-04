@@ -1,0 +1,240 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 338' width='1200' height='338'>
+<rect width='1200' height='338' fill='#fbf8f1'/>
+<text x='130' y='22' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='13' fill='#1d2633' font-weight='600'>Version 2: every shot on the song's timeline (190 shots, 140 BPM, 3:41)</text>
+<rect x='131.9' y='44' width='36.6' height='234' fill='#f1ebdd'/>
+<text x='134.9' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>open</text>
+<rect x='168.5' y='44' width='32.5' height='234' fill='#fbf8f1'/>
+<text x='171.5' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>title</text>
+<rect x='201.0' y='44' width='97.5' height='234' fill='#f1ebdd'/>
+<text x='204.0' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>places</text>
+<rect x='298.6' y='44' width='89.4' height='234' fill='#fbf8f1'/>
+<text x='301.6' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>pro</text>
+<rect x='388.0' y='44' width='325.2' height='234' fill='#f1ebdd'/>
+<text x='391.0' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>drop 1: casual</text>
+<rect x='713.2' y='44' width='65.0' height='234' fill='#fbf8f1'/>
+<text x='716.2' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>breakdown</text>
+<rect x='778.2' y='44' width='65.0' height='234' fill='#f1ebdd'/>
+<text x='781.2' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>rebuild</text>
+<rect x='843.2' y='44' width='195.1' height='234' fill='#fbf8f1'/>
+<text x='846.2' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>drop 2</text>
+<rect x='1038.3' y='44' width='141.7' height='234' fill='#f1ebdd'/>
+<text x='1041.3' y='58' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463'>mosaic + end</text>
+<line x1='130' x2='1180' y1='96.0' y2='96.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='87.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>seal</text>
+<line x1='130' x2='1180' y1='122.0' y2='122.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='113.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>title card</text>
+<line x1='130' x2='1180' y1='148.0' y2='148.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='139.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>single photo</text>
+<line x1='130' x2='1180' y1='174.0' y2='174.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='165.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>2x2 grid</text>
+<line x1='130' x2='1180' y1='200.0' y2='200.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='191.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>triple panels</text>
+<line x1='130' x2='1180' y1='226.0' y2='226.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='217.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>kaleidoscope</text>
+<line x1='130' x2='1180' y1='252.0' y2='252.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='243.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>mosaic</text>
+<line x1='130' x2='1180' y1='278.0' y2='278.0' stroke='#d9d2c3' stroke-width='1'/>
+<text x='122' y='269.0' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='11' fill='#1d2633' text-anchor='end'>end card</text>
+<rect x='131.9' y='75' width='36.0' height='16' rx='2' fill='#2447a6'/>
+<rect x='168.5' y='101' width='31.9' height='16' rx='2' fill='#2447a6'/>
+<rect x='201.0' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='205.1' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='209.2' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='213.2' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='217.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='221.4' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='225.4' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='229.5' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='233.6' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='237.6' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='241.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='245.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='249.8' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='253.9' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='257.9' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='262.0' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='266.1' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='270.1' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='274.2' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='278.3' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='282.3' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='286.4' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='290.5' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='294.5' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='298.6' y='101' width='7.5' height='16' rx='2' fill='#2447a6'/>
+<rect x='306.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='310.8' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='314.8' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='318.9' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='323.0' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='327.0' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='331.1' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='335.2' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='339.2' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='343.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='347.4' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='351.4' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='355.5' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='359.6' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='363.6' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='367.7' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='371.7' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='375.8' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='379.9' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='381.9' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='383.9' y='127' width='1.2' height='16' rx='2' fill='#ff2d95'/>
+<rect x='385.0' y='127' width='2.4' height='16' rx='2' fill='#ff2d95'/>
+<rect x='388.0' y='101' width='7.5' height='16' rx='2' fill='#2447a6'/>
+<rect x='396.1' y='127' width='1.4' height='16' rx='2' fill='#ff2d95'/>
+<rect x='398.2' y='127' width='1.4' height='16' rx='2' fill='#ff2d95'/>
+<rect x='400.2' y='127' width='1.4' height='16' rx='2' fill='#ff2d95'/>
+<rect x='402.2' y='127' width='1.4' height='16' rx='2' fill='#ff2d95'/>
+<rect x='404.3' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='408.3' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='412.4' y='153' width='7.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='420.5' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='424.6' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='428.7' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='430.7' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='432.7' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='434.7' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='436.8' y='179' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='440.8' y='179' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='444.9' y='205' width='7.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='453.0' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='457.1' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='461.2' y='127' width='1.4' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='463.2' y='127' width='1.4' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='465.2' y='127' width='1.4' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='467.3' y='127' width='1.4' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='469.3' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='473.4' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='477.4' y='153' width='7.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='485.6' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='489.6' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='493.7' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='497.7' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='501.8' y='179' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='505.9' y='179' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='509.9' y='205' width='7.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='518.1' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='522.1' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='526.2' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='530.3' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='534.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='538.4' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='542.5' y='153' width='7.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='550.6' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='554.6' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='558.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='562.8' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='566.8' y='179' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='570.9' y='179' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='575.0' y='205' width='7.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='583.1' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='587.2' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='591.2' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='595.3' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='599.4' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='603.4' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='607.5' y='153' width='7.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='615.6' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='619.7' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='623.7' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='627.8' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='631.9' y='179' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='635.9' y='179' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='640.0' y='205' width='7.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='648.1' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='652.2' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='656.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='660.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='664.4' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='668.5' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='672.5' y='153' width='7.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='680.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='684.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='688.8' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='692.8' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='696.9' y='179' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='701.0' y='179' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='705.0' y='205' width='7.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='713.2' y='127' width='7.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='721.3' y='127' width='7.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='729.4' y='127' width='7.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='737.6' y='127' width='7.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='745.7' y='127' width='7.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='753.8' y='127' width='7.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='761.9' y='127' width='7.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='770.1' y='127' width='7.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='778.2' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='782.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='786.3' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='790.4' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='794.5' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='798.5' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='802.6' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='806.6' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='810.7' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='814.8' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='818.8' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='822.9' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='827.0' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='831.0' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='835.1' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='837.1' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='839.2' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='841.2' y='127' width='1.4' height='16' rx='2' fill='#9b5cff'/>
+<rect x='843.2' y='101' width='7.5' height='16' rx='2' fill='#2447a6'/>
+<rect x='851.4' y='153' width='7.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='859.5' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='863.6' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='867.6' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='871.7' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='875.7' y='179' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='879.8' y='179' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='883.9' y='153' width='7.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='892.0' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='896.1' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='900.1' y='205' width='7.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='908.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='912.3' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='916.4' y='153' width='7.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='924.5' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='928.6' y='127' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='932.6' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='936.7' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='940.8' y='179' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='944.8' y='179' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='948.9' y='153' width='7.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='957.0' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='961.1' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='965.2' y='205' width='7.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='973.3' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='977.4' y='127' width='3.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='981.4' y='153' width='7.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='989.6' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='993.6' y='127' width='3.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='997.7' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='1001.7' y='127' width='3.5' height='16' rx='2' fill='#ff3b3b'/>
+<rect x='1005.8' y='179' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='1009.9' y='179' width='3.5' height='16' rx='2' fill='#9b5cff'/>
+<rect x='1013.9' y='153' width='7.5' height='16' rx='2' fill='#ff2d95'/>
+<rect x='1022.1' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='1026.1' y='127' width='3.5' height='16' rx='2' fill='#ffd23f'/>
+<rect x='1030.2' y='205' width='7.5' height='16' rx='2' fill='#ff5ec4'/>
+<rect x='1038.3' y='231' width='64.4' height='16' rx='2' fill='#2447a6'/>
+<rect x='1103.4' y='257' width='74.6' height='16' rx='2' fill='#2447a6'/>
+<line x1='388.0' x2='388.0' y1='44' y2='278' stroke='#b8352a' stroke-width='2'/>
+<text x='392.0' y='294' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#b8352a'>drop 0:54</text>
+<line x1='843.2' x2='843.2' y1='44' y2='278' stroke='#b8352a' stroke-width='2'/>
+<text x='847.2' y='294' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#b8352a'>drop 2:30</text>
+<text x='130.0' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>0:00</text>
+<text x='272.3' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>0:30</text>
+<text x='414.5' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>1:00</text>
+<text x='556.8' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>1:30</text>
+<text x='699.0' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>2:00</text>
+<text x='841.3' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>2:30</text>
+<text x='983.5' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>3:00</text>
+<text x='1125.8' y='328' font-family='IBM Plex Mono, ui-monospace, monospace' font-size='10' fill='#4a5463' text-anchor='middle'>3:30</text>
+</svg>

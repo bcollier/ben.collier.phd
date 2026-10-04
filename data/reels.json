@@ -264,12 +264,6 @@
      "place": ""
     },
     {
-     "src": "assets/reels/casual/021.webp",
-     "w": 1200,
-     "h": 1600,
-     "place": ""
-    },
-    {
      "src": "assets/reels/casual/022.webp",
      "w": 1600,
      "h": 1200,
@@ -1048,11 +1042,11 @@
  ],
  "music": {
   "src": "assets/reels/music.mp3",
-  "title": "Travel to the Horizon",
-  "artist": "Komiku",
-  "album": "Poupi's Incredible Adventures",
+  "title": "Juillet",
+  "artist": "Monplaisir",
+  "album": "Bonjour from Paris, Nantes and Montreal",
   "license": "CC0 1.0 (public domain dedication)",
   "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-  "source_url": "https://archive.org/details/Komiku-Poupis_incredible_adventures"
+  "source_url": "https://archive.org/details/MonplaisirBonjourFromParisNantesAndMontreal"
  }
 }
