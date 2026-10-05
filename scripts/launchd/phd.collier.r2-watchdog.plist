@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Runs scripts/r2_watchdog.py every day at 9:00 on Ben's Mac mini.
+     Install: cp scripts/launchd/phd.collier.r2-watchdog.plist ~/Library/LaunchAgents/
+              launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/phd.collier.r2-watchdog.plist
+     Log:     ~/Library/Logs/r2-watchdog.log -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>phd.collier.r2-watchdog</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/jarvis/Code/ben.collier.phd/scripts/r2_watchdog.py</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict><key>Hour</key><integer>9</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key><string>/Users/jarvis/Library/Logs/r2-watchdog.log</string>
+  <key>StandardErrorPath</key><string>/Users/jarvis/Library/Logs/r2-watchdog.log</string>
+</dict>
+</plist>

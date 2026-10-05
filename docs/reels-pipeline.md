@@ -147,7 +147,7 @@ sequenceDiagram
   S->>C: frames at 11.6 s → v2-poster.webp, v2-poster-tall.webp
 ```
 
-The MP4 is for sharing by hand and is not committed, since it is too big for the repo. The two poster images on the page come from the same renderer.
+The MP4 is too big for the repo, so it is not committed. It goes to a Cloudflare R2 bucket instead, `ben-reels`, which stays inside R2's free tier. Drafts go under `drafts/`, which deletes itself after 30 days. A finished cut goes under `published/` with a dated name, and a small Cloudflare Worker serves it with range requests, so a video player can seek. An upload script refuses anything past 8 GB, and a daily watchdog switches the Worker off if use reaches 80% of any free limit. The README's [Video storage](../README.md#video-storage-cloudflare-r2) section has the commands and the guards. The two poster images on the page come from the same renderer and are committed, since they are small.
 
 ---
 
