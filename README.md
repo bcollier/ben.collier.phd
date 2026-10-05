@@ -295,6 +295,39 @@ flowchart LR
 - **Safety.** With `prefers-reduced-motion` the same cut plays with no flashes, colour split, glitch, shake, zoom punches or spin. Full-screen flashes happen only at the two drops and the two white-outs, well under three a second.
 - **Music.** Kept under 4 MB, starts only on play, and the audio element is the master clock. Seeking needs HTTP range requests, which GitHub Pages serves; `python3 -m http.server` does not, so seek locally with a range-capable server.
 
+### Video storage: Cloudflare R2
+
+The page draws version 2 live, so no video file is needed to watch it. Rendered MP4s, for sharing or for a future reels app, live in a Cloudflare R2 bucket, `ben-reels`, kept inside R2's free tier: 10 GB stored, 1 million writes (Class A) and 10 million reads (Class B) a month, with no charge for downloads.
+
+```mermaid
+flowchart LR
+  render["render_reels_v2.py<br/>--video out.mp4"] --> put["scripts/r2.py put<br/>refuses past 8 GB"]
+  put --> drafts[("ben-reels/drafts/<br/>deleted after 30 days")]
+  put --> pub[("ben-reels/published/<br/>dated names, never overwritten")]
+  pub --> worker["workers/reels-media<br/>Free plan · range requests"]
+  worker --> url(["reels-media.ben-b77.workers.dev/&lt;name&gt;.mp4"])
+  watch["scripts/r2_watchdog.py<br/>daily, 9:00"] -. "80% of any free limit" .-> worker
+```
+
+```bash
+python3 scripts/r2.py usage                                            # bytes stored vs the 8 GB cap
+python3 scripts/r2.py put out.mp4 drafts/reels-v2-2026-10-05.mp4       # private, auto-deleted in 30 days
+python3 scripts/r2.py put out.mp4 published/reels-v2-2026-10-05.mp4    # public at the Worker URL
+python3 scripts/r2_watchdog.py --dry-run                               # this month's use vs the free tier
+cd workers/reels-media && npx wrangler@4 deploy                        # deploy, or turn the Worker back on
+```
+
+How it stays free, since Cloudflare has no hard spending cap:
+
+| Charge | Who can cause it | Guard |
+|---|---|---|
+| Storage over 10 GB | only these scripts | `r2.py` refuses any upload past 8 GB; `drafts/` empties itself after 30 days |
+| Class A (writes, lists) over 1 million | only these scripts | the upload keys reach this one bucket and live only on Ben's Mac mini |
+| Class B (reads) over 10 million | visitors | the bucket has no public or `r2.dev` access; reads go through the Worker, and the Workers **Free** plan stops at 100,000 requests a day instead of billing (at most 3 million a month) |
+| Anything | anyone | Cloudflare e-mails Ben at $1 of spend and at 80% of each free amount; `r2_watchdog.py` (run daily by `scripts/launchd/phd.collier.r2-watchdog.plist`) switches the Worker's address off at 80% |
+
+Credentials are in `~/.config/r2/reels.env` on the Mac mini (mode 600): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` (an R2 token limited to `ben-reels`), and `CLOUDFLARE_API_TOKEN` (Workers R2 Storage and Workers Scripts edit, for deploys and the watchdog). They are never in the repo. Wrangler reads the token from the environment: `set -a; . ~/.config/r2/reels.env; set +a; export CLOUDFLARE_ACCOUNT_ID=$R2_ACCOUNT_ID`.
+
 ---
 
 ## Where the data comes from

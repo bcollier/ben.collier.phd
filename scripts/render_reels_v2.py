@@ -9,7 +9,8 @@ screenshots into ffmpeg with the music. Nothing is uploaded anywhere.
     python scripts/render_reels_v2.py --posters        # assets/reels/v2-poster*.webp
     python scripts/render_reels_v2.py --video out.mp4  # 1280x720, 30 fps
 
-The video is for sharing by hand; it is not committed (too big for the repo).
+The video is not committed (too big for the repo). Store it in R2 with
+scripts/r2.py (drafts/ or published/); see README, "Video storage".
 Needs playwright (with Chrome), pillow and imageio-ffmpeg.
 """
 from __future__ import annotations

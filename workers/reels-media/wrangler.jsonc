@@ -1,0 +1,12 @@
+// The Worker that plays reels videos from the ben-reels R2 bucket.
+// Deploy from this folder: see "Reels video storage" in README.md.
+{
+  "name": "reels-media",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  // Served at https://reels-media.ben-b77.workers.dev. scripts/r2_watchdog.py
+  // turns this address off if R2 use nears the free tier; a redeploy turns it back on.
+  "workers_dev": true,
+  "preview_urls": false,
+  "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "ben-reels" }]
+}
