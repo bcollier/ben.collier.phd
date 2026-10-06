@@ -562,7 +562,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" media="print" onload="this.media='all'" href="{FONTS}">
   <noscript><link rel="stylesheet" href="{FONTS}"></noscript>
-  <link rel="stylesheet" href="{root}css/site.css">{ld}
+  <link rel="stylesheet" href="{root}css/site.css">{analytics_tag(root)}{ld}
 </head>
 <body{cls}>
 <a class="skip" href="#main">Skip to content</a>
@@ -585,11 +585,25 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 {sheet_head(root, crumbs, active)}"""
 
 
+def analytics_tag(root: str) -> str:
+    """The Google Analytics loader, or nothing while data/site.json has no
+    ga4_id. js/analytics.js skips local copies, headless renders and ?notrack."""
+    gid = SITE.get("ga4_id", "").strip()
+    if not gid:
+        return ""
+    return f'\n  <script src="{root}js/analytics.js" data-ga="{esc(gid)}" defer></script>'
+
+
+ANALYTICS_NOTE = ('\n  <p class="foot-note">I count visits with Google Analytics, which sets cookies. '
+                  'No ads, and nothing is shared for advertising. '
+                  '<a href="https://policies.google.com/technologies/partner-sites">How Google uses this data</a>.</p>')
+
+
 def footer(root: str, scripts: str = "") -> str:
     return f"""</main>
 
 <footer class="foot">
-  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier</p>
+  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier</p>{ANALYTICS_NOTE if SITE.get("ga4_id", "").strip() else ""}
   <nav aria-label="Footer">
     <a href="{root}consult/">Consulting</a>
     <a href="{root}contact/">Contact</a>
