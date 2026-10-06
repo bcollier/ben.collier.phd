@@ -13,5 +13,7 @@
     "https://scholar.google.com/citations?user=xaB1sR0AAAAJ",
     "https://github.com/bcollier",
     "https://orcid.org/0000-0002-4651-7684"
-  ]
+  ],
+  "ga4_note": "Google Analytics 4 measurement ID (G-XXXXXXXXXX). Public, not a secret. Empty turns analytics off: no tag is written into any page.",
+  "ga4_id": ""
 }

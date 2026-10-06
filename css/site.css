@@ -317,6 +317,7 @@ a.sticky:hover, a.sticky:focus-visible { transform: rotate(0) scale(1.03); color
 .foot .sign { font-family: var(--hand); font-size: 26px; color: var(--sticky); transform: rotate(-3deg); display: inline-block; }
 .foot nav { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--mono); font-size: 13.5px; }
 .foot p { margin: 0; }
+.foot .foot-note { flex-basis: 100%; order: 3; font-size: 13px; opacity: .72; max-width: 60em; }
 
 /* ---------- Portrait that docks into the header ---------- */
 .portrait-morph { position: relative; z-index: 45; will-change: transform; transform-origin: 0 0; }

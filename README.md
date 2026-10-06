@@ -384,6 +384,20 @@ flowchart LR
 
 ---
 
+## Analytics
+
+Google Analytics 4, switched on by `ga4_id` in `data/site.json` (empty means no tag on any page). `build.py` writes `js/analytics.js` into every page's head, and that file loads Google's tag.
+
+| What | Where in GA4 |
+|---|---|
+| Pages people read, and time on each (engagement time) | Reports, Engagement, Pages and screens |
+| Where visitors come from (search, LinkedIn, links, direct) | Reports, Acquisition, Traffic acquisition |
+| Country and city, device, browser | Reports, User attributes and Tech |
+| Scroll depth, outbound links, PDF downloads | GA4 enhanced measurement, built in |
+| Every link and button pressed: nav tabs, Book a call, reel play, the robot's note | the `ui_click` event, with `click_label` (what it said) and `click_area` (nav tab, book a call (header), reels player, robot, footer, or the section id) |
+
+`click_label` and `click_area` show up in reports once they are registered as event-scoped custom dimensions (Admin, Custom definitions). Ben's own visits stay out after opening any page once with `?notrack`; `?track` undoes it. A cookie-free second count with Cloudflare Web Analytics is on the [roadmap](docs/ROADMAP.md).
+
 ## Domains and deployment
 
 ```mermaid
@@ -437,6 +451,7 @@ Other scripts: `add_linkedin_post.py` (add a post by hand), `fetch_linkedin_phot
 
 ## Privacy rules
 
+- **Analytics.** Google Analytics 4 only, with ad features and Google signals off, and a footer note on every page saying so. It is not loaded on localhost, in headless renders, or in a browser that has opened any page with `?notrack`.
 - **Students.** No student names, photos or projects without explicit permission. Capstones are described without names, final-project lists are anonymised, and evaluation quotes carry only the term.
 - **Colleagues.** No other instructor's ratings or comparison numbers appear anywhere on the site.
 - **Photos.** Faces other than Ben's are excluded or blurred, and every photo is re-encoded without metadata. The reels never blur: a photo with anyone else in it is cropped until they are gone, or left out.
