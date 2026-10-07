@@ -2,6 +2,33 @@
  "note": "Fun projects shown to classes. Each entry renders as a card on /projects/. Keep image paths under assets/portfolio/.",
  "projects": [
   {
+   "id": "faculty-twin",
+   "title": "Faculty Twin",
+   "kind": "Web app",
+   "date": "October 2026",
+   "tools": "Python, FastAPI, Claude, Voyage AI embeddings, ElevenLabs, Supabase, Vercel, Claude Code",
+   "image": "assets/portfolio/faculty-twin.jpg",
+   "image_alt": "The Faculty Twin sign-in screen: \"Ask me about the course\", a line saying it is an AI version of me that teaches from my own slides, and a box for the course passcode",
+   "image_width": 1200,
+   "image_height": 675,
+   "summary": "An AI version of me that teaches from my own slides. Students ask a course question and get my slides from this semester with a narrated walkthrough in an AI voice made from my recordings, and short clips of me explaining it in class. It is behind a passcode for my students. I built it for Effective Coding with AI (15-113), a Carnegie Mellon course, as Project 2 in Fall 2026.",
+   "decisions": [
+    "Every answer comes from my own course material: a slide, its speaker notes, or what I said in class. If the material does not cover a question, the twin says so instead of guessing.",
+    "The voice is AI-generated from my recordings, and the page labels it that way. It only reads narration the backend wrote and signed, so nobody can make it say something else.",
+    "Students stay out of it. Class transcripts are scrubbed of names before anything is indexed, and no clip includes a student speaking."
+   ],
+   "links": [
+    {
+     "label": "Try it (passcode for my students)",
+     "href": "https://faculty-twin.vercel.app"
+    },
+    {
+     "label": "Source and prompt log on GitHub",
+     "href": "https://github.com/bcollier/faculty-twin"
+    }
+   ]
+  },
+  {
    "id": "reels",
    "title": "Reels: Me, Over the Years",
    "kind": "Web app",
