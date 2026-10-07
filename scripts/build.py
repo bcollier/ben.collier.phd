@@ -2911,7 +2911,10 @@ def build_reels():
     head = page_head("Reels", "Me, over the years",
                      f"{total} photos of me from my own library, 2000 to 2026, cut two ways. Version 2 is a music video "
                      "cut to the beat. Version 1 is the original pair of slideshows: me at work, and me everywhere else. "
-                     "Every photo is cropped so I am the only person in it.",
+                     "Every photo is cropped so I am the only person in it. I made it with Claude Code as one automated "
+                     "command-line pipeline: a semantic search of my Photos library for \u201cprofessional photos of Ben\u201d "
+                     "with a local AI image model, Apple Vision to find faces and crop out everyone else, and beats measured "
+                     "from the music, all the way to the finished video.",
                      sticky(PIPELINE_DOC, "100% made by AI &rarr;", "the pipeline, from my first question to the encoded video",
                             cls="pipe-note", rot=-2.5, d=0.6, tape=True))
 
