@@ -90,10 +90,10 @@ flowchart TB
 | `/evaluations/` | Every CMU course evaluation since Fall 2023 | Seven charts, a program filter and an item picker, quote cards, unsolicited notes as letters in envelopes |
 | `/consult/`, `/book/` | Consulting and custom education, booking | |
 | `/cv/` | The CV from `data/cv.md` | Career-at-a-glance timeline, campus map pop-ups, print stylesheet |
-| `/strengths/` | Two StrengthsFinder results, five years apart | Slope chart of theme ranks |
+| `/strengths/` | Two StrengthsFinder results, five years apart | Slope chart of theme ranks. History: [strengths/prompt_log.md](strengths/prompt_log.md) |
 | `/talks/` | Talks with selected slides | |
-| `/travel/` | 27 countries and 55 US cities from the photo library | Flat map and globe, photo pop-ups |
-| `/reels/` | Version 2: a 3:41 music video of the same 171 photos plus 48 place shots. Version 1: two slideshows, Professional Ben and Casual Ben | WebGL beat-cut video with neon grades, glitch, kaleidoscope, grids, seal and mosaic; v1 slideshow with pan and zoom; CC0 music that starts only on play |
+| `/travel/` | 27 countries and 55 US cities from the photo library | Flat map and globe, photo pop-ups. Docs: [travel/README.md](travel/README.md), [travel/prompt_log.md](travel/prompt_log.md) |
+| `/reels/` | Version 2: a 3:41 music video of the same 171 photos plus 48 place shots. Version 1: two slideshows, Professional Ben and Casual Ben | WebGL beat-cut video with neon grades, glitch, kaleidoscope, grids, seal and mosaic; v1 slideshow with pan and zoom; CC0 music that starts only on play. Docs: [reels/README.md](reels/README.md), [reels/prompt_log.md](reels/prompt_log.md) |
 | `/news/` | Dated log plus LinkedIn posts | |
 | `/contact/` | Email, office, links | Campus map pop-ups |
 
@@ -161,7 +161,7 @@ flowchart TB
 | Comment themes (hatched bars) | `/evaluations/` | `themes()`, `js/evals.js:301` |
 | World map, US cities, photo pop-ups | `/travel/` | `js/travel-map.js` |
 | Globe | `/travel/` | `js/travel.js` |
-| StrengthsFinder slope chart | `/strengths/` | `strengths_chart()`, `scripts/build.py:2493` |
+| StrengthsFinder slope chart | `/strengths/` | `strengths_chart()`, `scripts/build.py:2508` |
 | Advising project diagrams | `/advising/` | `scripts/advising_art.py` |
 | Campus map | `/cv/`, `/contact/` | `scripts/make_campus_map.py` |
 
@@ -187,7 +187,7 @@ Small, self-contained pieces that make good teaching examples. None needs anythi
 | A dumbbell chart | `dumbbell()`, `js/evals.js:244` | Before and after for many items on one axis |
 | Small multiples on a shared scale | `multiples()`, `js/evals.js:211` | One chart per group, same axes, comparable at a glance |
 | Greedy label placement without overlaps | `placeLabels()`, `js/travel-map.js:104` | A real-world collision problem solved with bounding boxes and a priority order |
-| A slope chart in plain Python that writes SVG | `strengths_chart()`, `scripts/build.py:2493` | Rank change between two snapshots, no plotting library |
+| A slope chart in plain Python that writes SVG | `strengths_chart()`, `scripts/build.py:2508` | Rank change between two snapshots, no plotting library |
 | OpenStreetMap to SVG | `scripts/make_campus_map.py` | Projecting lat/lon to a page and drawing buildings and roads |
 | Stippling a photo with Pillow and numpy | `scripts/make_hedcut.py` | Image processing as data: brightness becomes dot density |
 | Cache-busting by content hash | `versioned()`, `scripts/build.py:683` | Why "it works on my machine" happens with caches, fixed in 15 lines |
