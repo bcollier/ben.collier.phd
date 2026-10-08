@@ -473,8 +473,7 @@ def esc(text: str) -> str:
 # Index tabs across the top of every page, in order, each with its own colour.
 NAV = [
     ("courses/", "courses", "courses", "#f6c453"),
-    ("projects/", "coding with AI projects", "projects", "#9ccbea"),
-    ("ai-apps/", "apps coded with AI", "ai-apps", "#ffd96b"),
+    ("projects/", "coding with AI", "projects", "#9ccbea"),
     ("advising/", "advising", "advising", "#a9d8a1"),
     ("consult/", "consulting", "consult", "#f3a391"),
     ("cv/", "cv", "cv", "#cdb8e8"),
@@ -483,7 +482,7 @@ NAV = [
     ("contact/", "contact", "contact", "#e9dfc4"),
 ]
 
-# Pages that live under the "apps coded with AI" tab instead of their own tab.
+# Apps and visualizations that live under the "coding with AI" tab instead of their own tabs.
 AI_APPS = [
     # (href, title, one line, nav key)
     ("reels/", "Reels", "172 photos of me, 2000 to 2026, picked and cropped with Apple's Vision API from Python and cut into a WebGL music video.", "reels"),
@@ -528,7 +527,7 @@ def sheet_head(root: str, crumbs, active: str = "") -> str:
 def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: str,
            crumbs=None, body_class: str = "") -> str:
     def item(href, label, key, color):
-        current = ' aria-current="page"' if active == key or (key == "ai-apps" and active in AI_APP_KEYS) else ""
+        current = ' aria-current="page"' if active == key or (key == "projects" and active in AI_APP_KEYS) else ""
         return f'<li style="--c:{color}"><a href="{root}{href}"{current}>{label}</a></li>'
 
     url = f"{HOST}/{canon}"
@@ -630,7 +629,7 @@ def page(root, active, title, desc, canon, body, jsonld="", crumbs=None, body_cl
     page-specific <script> tags, appended after the shared ones."""
     if crumbs is None and active in AI_APP_KEYS:
         title_of = {key: name for _, name, _, key in AI_APPS}
-        crumbs = [("apps coded with AI", "ai-apps/"), (title_of[active], None)]
+        crumbs = [("coding with AI", "projects/#apps-coded-with-ai"), (title_of[active], None)]
     elif crumbs is None and active not in ("home", ""):
         label = next((n[1] for n in NAV if n[2] == active), active)
         crumbs = [(label, None)]
@@ -2106,15 +2105,18 @@ def portfolio_card(p, root, i=0):
 
 def build_portfolio(portfolio):
     items = "\n".join(portfolio_card(p, "../", i) for i, p in enumerate(portfolio))
-    body = page_head("Portfolio", "Coding with AI Projects",
-                     "Working projects I built with AI coding tools, several of them for Effective Coding with AI, a Carnegie Mellon course. Each repo includes the prompts and build log, and I use them as examples in class.")
+    body = page_head("Portfolio", "Coding with AI",
+                     "Working projects I built with AI coding tools, several of them for Effective Coding with AI, a Carnegie Mellon course, "
+                     'and <a href="#apps-coded-with-ai">smaller apps and visualizations</a> I coded with an AI assistant from my own data. '
+                     "Each repo includes the prompts and build log, and I use them as examples in class.")
     body += f'  <div class="portfolio">\n{items}\n  </div>\n'
+    body += ai_apps_section()
     write(
         "projects/index.html",
         page(
             "../",
             "projects",
-            "Coding with AI Projects · Ben Collier",
+            "Coding with AI · Ben Collier",
             "Coding with AI projects Ben Collier builds for his classes, with source code, prompts, and build logs.",
             "projects/",
             body,
@@ -2763,17 +2765,27 @@ def build_evaluations():
         "evaluations/", comparison))
 
 
-def build_ai_apps():
-    """The landing page for the apps and visualizations I coded with an AI assistant, which used to be separate header tabs."""
+def ai_apps_section() -> str:
+    """The apps and visualizations I coded with an AI assistant, as sticky notes at the end of the coding-with-AI page."""
     rots = [-3, 2.5, -1.5, 3]
     notes = "\n      ".join(sticky(f"../{href}", f"{esc(name)} &rarr;", esc(line), ("pink" if i % 2 else ""), rots[i % 4], .3 + i * .25)
                            for i, (href, name, line, _) in enumerate(AI_APPS))
-    body = page_head("AI-engineered", "Apps and visualizations coded with an AI assistant",
-                     "Small apps and data visualizations I engineered with an AI coding assistant, from my own data: my photo library, my teaching evaluations, and my StrengthsFinder results. Each page links its prompt log.")
-    body += f'  <div class="cta-row ai-apps">\n      {notes}\n  </div>\n'
-    write("ai-apps/index.html", page("../", "ai-apps", "Apps coded with AI · Ben Collier",
-                                     "Apps and data visualizations Ben Collier engineered with an AI coding assistant: reels, a travel map, strengths, and teaching evaluations.",
-                                     "ai-apps/", body))
+    return (f'\n  <section class="page-head reveal" id="apps-coded-with-ai"><p class="kicker">AI-engineered</p>'
+            f'<h2>{u_last("Apps and visualizations coded with an AI assistant", 0.4, "u")}</h2>'
+            '<p class="lede">Small apps and data visualizations I engineered with an AI coding assistant, from my own data: '
+            "my photo library, my teaching evaluations, and my StrengthsFinder results. Each page links its prompt log.</p></section>\n"
+            f'  <div class="cta-row ai-apps">\n      {notes}\n  </div>\n')
+
+
+def build_ai_apps():
+    """The old ai-apps/ address now forwards to the apps section of the coding-with-AI page."""
+    target = "../projects/#apps-coded-with-ai"
+    write("ai-apps/index.html", f"""<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Coding with AI · Ben Collier</title>
+<meta name="robots" content="noindex"><link rel="canonical" href="{HOST}/projects/#apps-coded-with-ai">
+<meta http-equiv="refresh" content="0; url={target}"></head>
+<body><p>This page moved to <a href="{target}">Coding with AI</a>.</p></body></html>
+""")
 
 
 def build_strengths():
@@ -3047,7 +3059,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "ai-apps/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
