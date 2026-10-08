@@ -532,6 +532,9 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
         return f'<li style="--c:{color}"><a href="{root}{href}"{current}>{label}</a></li>'
 
     url = f"{HOST}/{canon}"
+    # Pages that carry the course-assistant launcher (home, /courses/) also get a
+    # small one in the header, so it is in view without scrolling on a laptop.
+    header_assistant = course_assistant_header() if "css/handoff.css" in head else ""
     ld = (
         f'\n  <script type="application/ld+json">{jsonld}</script>' if jsonld else ""
     )
@@ -586,7 +589,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
       </ul>
       <a class="search-tab" href="{root}search/"{search_current} data-search-open aria-label="Search the site" aria-keyshortcuts="/ Control+K Meta+K" title="Search the site (press /)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.6 4.2c3.7-.3 6.6 2.5 6.5 6.1-.1 3.5-3 6.3-6.6 6.2-3.5-.1-6.2-3-6.1-6.4.1-3.2 2.8-5.7 6.2-5.9Z"/><path d="M15.4 15.6c1.6 1.5 3.3 3.1 4.9 4.8"/></svg><span class="st-l" aria-hidden="true">search</span></a>
     </nav>
-    <a class="sticky-cta" href="{root}book/"{book_current}><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
+    {header_assistant}<a class="sticky-cta" href="{root}book/"{book_current}><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
   </div>
 </header>
 
@@ -704,6 +707,12 @@ def course_assistant_note(rot: float = 2.5, d: float = 1.6) -> str:
     return (f'<a class="sticky ca-note land" href="{COURSE_ASSISTANT_URL}" data-handoff style="--rot:{rot}deg;--d:{d}s">'
             f'<span class="tape tc"></span><span class="big">Ask my course assistant &rarr;</span>'
             f'<span class="sub">For my students in <span class="nw">70-445</span> and <span class="nw">45-884</span> (passcode)</span></a>')
+
+
+def course_assistant_header() -> str:
+    """The header's small launcher, next to "Book a call". Teaching pages only, like the note."""
+    return (f'<a class="ca-cta" href="{COURSE_ASSISTANT_URL}" data-handoff>'
+            '<span class="nw">Ask my course assistant &rarr;</span><small>for my students</small></a>\n    ')
 
 
 def course_assistant_assets(root: str) -> tuple[str, str]:
