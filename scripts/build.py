@@ -474,17 +474,24 @@ def esc(text: str) -> str:
 NAV = [
     ("courses/", "courses", "courses", "#f6c453"),
     ("projects/", "coding with AI projects", "projects", "#9ccbea"),
+    ("ai-apps/", "AI apps and visualizations", "ai-apps", "#ffd96b"),
     ("advising/", "advising", "advising", "#a9d8a1"),
     ("consult/", "consulting", "consult", "#f3a391"),
-    ("evaluations/", "evaluations", "evaluations", "#ffd96b"),
     ("cv/", "cv", "cv", "#cdb8e8"),
-    ("strengths/", "strengths", "strengths", "#ffd2a8"),
     ("talks/", "talks", "talks", "#8ed3c7"),
-    ("travel/", "travel", "travel", "#c9dd92"),
-    ("reels/", "reels", "reels", "#b8d8f0"),
     ("news/", "news", "news", "#f5b5c8"),
     ("contact/", "contact", "contact", "#e9dfc4"),
 ]
+
+# Pages that live under the "AI apps and visualizations" tab instead of their own tab.
+AI_APPS = [
+    # (href, title, one line, nav key)
+    ("reels/", "Reels", "172 photos of me, 2000 to 2026, picked and cropped with Apple's Vision API from Python and cut into a WebGL music video.", "reels"),
+    ("travel/", "Travel map", "27 countries and 55 US cities, mapped from my own photo library with Apple's Vision API from Python.", "travel"),
+    ("strengths/", "Strengths", "What two StrengthsFinder results, five years apart, say about how I work.", "strengths"),
+    ("evaluations/", "Teaching evaluations", "Two interactive analyses of my de-identified course evaluations, compared side by side.", "evaluations"),
+]
+AI_APP_KEYS = {key for *_, key in AI_APPS}
 
 FONTS = ("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600"
          "&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400"
@@ -521,7 +528,7 @@ def sheet_head(root: str, crumbs, active: str = "") -> str:
 def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: str,
            crumbs=None, body_class: str = "") -> str:
     def item(href, label, key, color):
-        current = ' aria-current="page"' if active == key else ""
+        current = ' aria-current="page"' if active == key or (key == "ai-apps" and active in AI_APP_KEYS) else ""
         return f'<li style="--c:{color}"><a href="{root}{href}"{current}>{label}</a></li>'
 
     url = f"{HOST}/{canon}"
@@ -621,7 +628,10 @@ def footer(root: str, scripts: str = "") -> str:
 def page(root, active, title, desc, canon, body, jsonld="", crumbs=None, body_class="", scripts="") -> str:
     """crumbs: where the page is filed, for the sheet header. scripts: extra
     page-specific <script> tags, appended after the shared ones."""
-    if crumbs is None and active not in ("home", ""):
+    if crumbs is None and active in AI_APP_KEYS:
+        title_of = {key: name for _, name, _, key in AI_APPS}
+        crumbs = [("AI apps and visualizations", "ai-apps/"), (title_of[active], None)]
+    elif crumbs is None and active not in ("home", ""):
         label = next((n[1] for n in NAV if n[2] == active), active)
         crumbs = [(label, None)]
     return (header(root, active, title, desc, canon, jsonld, crumbs, body_class)
@@ -2753,6 +2763,19 @@ def build_evaluations():
         "evaluations/", comparison))
 
 
+def build_ai_apps():
+    """The landing page for the apps and visualizations I built with AI, which used to be separate header tabs."""
+    rots = [-3, 2.5, -1.5, 3]
+    notes = "\n      ".join(sticky(f"../{href}", f"{esc(name)} &rarr;", esc(line), ("pink" if i % 2 else ""), rots[i % 4], .3 + i * .25)
+                           for i, (href, name, line, _) in enumerate(AI_APPS))
+    body = page_head("AI apps and visualizations", "AI-generated apps and visualizations",
+                     "Small apps and data visualizations I built with AI coding tools from my own data: my photo library, my teaching evaluations, and my StrengthsFinder results. Each page links its prompt log.")
+    body += f'  <div class="cta-row ai-apps">\n      {notes}\n  </div>\n'
+    write("ai-apps/index.html", page("../", "ai-apps", "AI apps and visualizations · Ben Collier",
+                                     "Apps and data visualizations Ben Collier built with AI coding tools: reels, a travel map, strengths, and teaching evaluations.",
+                                     "ai-apps/", body))
+
+
 def build_strengths():
     body = page_head("Strengths", "Strengths",
                      "I have taken Gallup's StrengthsFinder twice: in 2009 as a PhD student in Pittsburgh, and in 2014 as a professor in Doha. "
@@ -3024,7 +3047,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "ai-apps/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     return paths
 
@@ -3105,6 +3128,7 @@ def main():
     build_reels()
     build_strengths()
     build_evaluations()
+    build_ai_apps()
     build_404()
     build_sitemap()
     build_robots()
