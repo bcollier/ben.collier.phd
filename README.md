@@ -74,6 +74,7 @@ flowchart TB
 | `js/reels-v2.js` | ~700 | Reels version 2: WebGL music video renderer that plays `data/reels_v2.json` against the song clock |
 | `js/reels.js` | ~150 | The two photo reels on /reels/: crossfade, pan and zoom, place labels, shared music |
 | `js/course-schedule.js` | ~160 | The slide "projector" that follows the schedule on course pages |
+| `js/course-assistant.js` | ~210 | The course-assistant note: lifts, straightens and opens into the legal-pad hand-off frame (`css/handoff.css`, shared with Faculty Twin), then goes to the twin |
 | `js/site.js` | ~130 | Email assembly, LinkedIn feed, booking links |
 | `js/search.js` | ~590 | Site search: a small full-text engine (prefix, typo and synonym matching, field boosts) and the legal-pad search box. Ranking is explained at the top of the file |
 | `scripts/search_index.py` | ~360 | Cuts the built pages into search records and writes `assets/search-index.json` |
