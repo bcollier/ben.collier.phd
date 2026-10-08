@@ -454,6 +454,20 @@ a.sticky:hover, a.sticky:focus-visible { transform: rotate(0) scale(1.03); color
     repeating-linear-gradient(180deg, transparent 0 25px, var(--rule) 25px 26px);
   background-position: 0 0, 0 8px; }
 .ca-note .big { font-size: 25px; }
+/* The header's small launcher, left of "Book a call" (home and /courses/ only). Phones keep the note in the page. */
+.ca-cta { position: absolute; top: 14px; right: 212px; z-index: 4; display: block; white-space: nowrap;
+  padding: 8px 14px 6px 26px; color: var(--ink); text-decoration: none;
+  font-family: var(--hand); font-weight: 700; font-size: 19px; line-height: 1.05;
+  background-color: var(--legal);
+  background-image: linear-gradient(90deg, transparent 14px, var(--margin) 14px 16px, transparent 16px);
+  transform: rotate(-3deg); transition: transform .25s ease;
+  box-shadow: 0 1px 1px rgba(0,0,0,.15), 0 12px 18px -8px rgba(0,0,0,.45); }
+.ca-cta small { display: block; font-family: var(--mono); font-weight: 400; font-size: 11px; margin-top: 4px; color: var(--ink-2); letter-spacing: .02em; }
+.ca-cta:hover, .ca-cta:focus-visible { transform: rotate(0deg) scale(1.04); color: var(--ink); }
+a.ca-cta:focus-visible { outline: 3px solid var(--pen); outline-offset: 4px; }
+.ca-cta.ca-lifted { visibility: hidden; }
+.topbar.docked .ca-cta { transform: translateY(-6px) rotate(-2deg) scale(.92); }
+@media (max-width: 760px) { .ca-cta { display: none; } }
 .ca-note .sub { display: block; font-family: var(--mono); font-size: 11.5px; line-height: 1.5; margin-top: 10px; color: var(--ink-2); letter-spacing: .01em; }
 .ca-note .tape.tc { width: 70px; margin-left: -35px; top: -13px; height: 24px; }
 a.ca-note:focus-visible { outline: 3px solid var(--pen); outline-offset: 6px; }
