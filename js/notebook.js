@@ -510,9 +510,9 @@
      and tucks itself back out of view. A click makes it hop and wave again. The whole
      figure is decorative, so it is hidden from assistive technology. */
   /* ---------- the robot: three visits per browsing session ----------
-     1. about 6.5s in: pops up in a free bottom corner, says "Hi!", waves, leaves.
-     2. about 30s in: pops up on the left, says thanks for sticking around.
-     3. about 90s in: walks in from the left, lifts the "Book a call" note out of
+     1. about 36.5s in: pops up in a free bottom corner, says "Hi!", waves, leaves.
+     2. about 90s in: pops up on the left, says thanks for sticking around.
+     3. about 180s in: walks in from the left, lifts the "Book a call" note out of
         the header, offers a 15-minute Zoom call, and walks off with the note.
      The clock starts on the first page of the visit (sessionStorage), so moving
      between pages does not restart it, and each visit happens once. */
@@ -649,9 +649,9 @@
     if (get("nb-robot") === "1") set("nb-robot-1", "1"); // the key the single robot used
     t0 = +get("nb-t0") || now; if (!get("nb-t0")) set("nb-t0", String(now));
     var plan = [
-      { k: 1, at: 6.5, run: function (d) { peek("Hi!", ["br", "bl"], 6200, d); } },
-      { k: 2, at: 30, run: function (d) { peek("Thanks for sticking around to check things out!", ["bl", "br"], 6800, d); } },
-      { k: 3, at: 90, run: walkWithBanner }
+      { k: 1, at: 36.5, run: function (d) { peek("Hi!", ["br", "bl"], 6200, d); } },
+      { k: 2, at: 90, run: function (d) { peek("Thanks for sticking around to check things out!", ["bl", "br"], 6800, d); } },
+      { k: 3, at: 180, run: walkWithBanner }
     ];
     var busy = false;
     plan.forEach(function (p) {
