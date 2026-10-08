@@ -191,6 +191,37 @@
      93
     ]
    ]
+  },
+  {
+   "id": "connections",
+   "title": "Connections About You",
+   "kind": "Browser game",
+   "date": "September 2025",
+   "tools": "JavaScript, Node.js, Express, OpenAI GPT-5 with web search, Claude Code",
+   "image": "assets/portfolio/connections.jpg",
+   "image_alt": "The game mid-puzzle: QUARTER-MUNCHING ARCADE ICONS solved in yellow above twelve words such as PIEROGI, CATAN and KAYAK, two of them selected",
+   "image_width": 1200,
+   "image_height": 675,
+   "summary": "A word game in the style of the NYT's Connections, where an AI writes the four groups about you. Type a name and a town, and GPT-5 searches the web and builds four groups of four from that person's work, their city, and some guesses about their tastes. When the game ends, it explains each group and links to what it read. The demo plays five puzzles it wrote about me.",
+   "decisions": [
+    "A few rules keep it a game and not a resume: at least two groups are about fun things, at most one is about work, and at most one is about the place. Real Connections groups in the prompt show the format and the difficulty ladder, from yellow up to purple.",
+    "Every answer is checked before anyone plays it: a schema, sixteen different words across the four groups, and up to two retries. The last twenty puzzles go back into the prompt so it stops reaching for the same themes.",
+    "The demo has no live generation. A static page cannot keep an OpenAI key secret, so it plays five puzzles GPT-5 wrote about me, saved from the server's history. Run the server and it makes one about you."
+   ],
+   "links": [
+    {
+     "label": "Play the demo",
+     "href": "https://bcollier.github.io/connections_demo/"
+    },
+    {
+     "label": "Source on GitHub",
+     "href": "https://github.com/bcollier/connections_demo"
+    },
+    {
+     "label": "How a puzzle is made",
+     "href": "https://github.com/bcollier/connections_demo#how-a-puzzle-is-made"
+    }
+   ]
   }
  ]
 }
