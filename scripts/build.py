@@ -1199,7 +1199,7 @@ def build_home():
       <figure class="polaroid portrait-morph" style="--rot:3deg">
         <span class="tape tl"></span><span class="tape tr"></span>
         <div class="ph">
-          <img class="photo" src="assets/portrait.jpg" alt="Ben Collier, smiling, in a tweed jacket and red tie" width="500" height="500" fetchpriority="high">
+          <img class="photo" src="assets/portrait.jpg" alt="Ben Collier, smiling, drawn in ink on graph paper" width="500" height="500" fetchpriority="high">
           <img class="hedcut" src="assets/portrait-hedcut.png" alt="" width="360" height="360" loading="lazy">
         </div>
         <figcaption>hi, I'm Ben!</figcaption>
@@ -2132,7 +2132,7 @@ def _cv_header(lines):
                     chips.append(f"<li>{inline(part)}</li>")
     return f"""
   <header class="cv-head reveal">
-    <figure class="polaroid cv-portrait" style="--rot:-3deg"><span class="tape tc"></span><img src="../assets/portrait.jpg" width="500" height="500" alt="Portrait of Ben Collier" loading="lazy"></figure>
+    <figure class="polaroid cv-portrait" style="--rot:-3deg"><span class="tape tc"></span><img src="../assets/portrait.jpg" width="500" height="500" alt="Ben Collier, drawn in ink on graph paper" loading="lazy"></figure>
     <div class="cv-card">
       <p class="stamp thunk" style="--d:.15s">Curriculum vitae</p>
       <h1>Ben Collier, <span class="u u2" data-d=".4">PhD</span></h1>

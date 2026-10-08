@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draw assets/portrait-hedcut.png, a stippled ink version of the portrait in the
+"""Draw assets/portrait-hedcut.png, a stippled ink version of my cartoon avatar in the
 spirit of a newspaper hedcut. The header shows it small, and the home page
 morphs the colour portrait into it on scroll.
 
@@ -17,7 +17,9 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "assets" / "portrait.jpg"
+# The flat cartoon avatar stipples more cleanly than the notebook-ink portrait (its graph paper and
+# highlighter turn into noise), so the hedcut is drawn from it.
+SRC = ROOT / "assets" / "avatars" / "flat-vector.webp"
 OUT = ROOT / "assets" / "portrait-hedcut.png"
 
 SIZE = 360          # output pixels; shown at 10rem at most, so this is 2x+
