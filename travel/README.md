@@ -127,6 +127,47 @@ The travel map did not use a semantic text-to-image search such as CLIP. That ca
 | Darkness | by eye | skip if mean luma of a 32x32 greyscale copy is under 45 |
 | Final choice | I picked by eye from contact sheets | 3 rounds of review sheets checked by eye; rejects go to `skip.json`, then re-pick |
 
+### How the contact sheets work
+
+A contact sheet is one image holding a numbered grid of candidate photos. It is how every photo on the map was checked by eye before it was published: a person, or Claude reading the image, can scan dozens of candidates at once, then refer to any photo by its number.
+
+![Example contact sheet in the same format, made only from photos already published on the map](contact-sheet-example.jpg)
+
+*This example uses the same layout as the real sheets but contains only photos already on the site, each checked to have nobody in it. The real sheets stayed in a private scratch folder because they held unpublished candidates. The green frames are added here to show what "picked" means. The real sheets had no frames: picks and rejects were recorded as numbers.*
+
+**1. Making a sheet.** After the automatic filters, each script draws its candidates into a grid with Pillow:
+
+```python
+W, H = 300, 230                                    # one cell
+sheet = Image.new("RGB", (8 * W, rows * H), "white")
+d = ImageDraw.Draw(sheet)
+for j, (thumb, label, uuid) in enumerate(chunk):   # 40 photos per sheet
+    im = Image.open(thumb); im.thumbnail((W - 8, H - 26))
+    x, y = (j % 8) * W, (j // 8) * H
+    sheet.paste(im, (x + 4, y + 4))
+    d.text((x + 6, y + H - 18), f"{si + j} {label}", fill=(200, 0, 0))
+sheet.save(f"review_{si // 40}.jpg", quality=80)
+```
+
+- Each cell is a 360 px thumbnail shrunk to fit, with a red label underneath: the running index, then the place and photo number (for example `14 us-new-york-ny-4`). On the US sheets, `B` after the label meant a face had been blurred. None of those were published.
+- Country candidates got one sheet per country (`sheet_<CC>.jpg`, from `travel/candidates.py`). US cities were batched 40 to a sheet (`review_N.jpg`, from `uscity/export.py`).
+- **No names or IDs go on the sheet.** A side file maps each index back to the photo's Photos UUID (`candidates.json` for countries, `sheet_uuids.json` for cities). The sheet itself carries only a number and a place.
+
+**2. Reviewing it.** Claude opened each sheet with its image-reading tool, the same way it reads a screenshot, and looked for anything the detectors could miss:
+- people at the edge of a frame, or in a reflection
+- signs, screens, house numbers or licence plates
+- near-duplicates, and dull or dark shots
+
+I looked at the same sheets and corrected the calls, for example which countries were real (Bahrain and Belgium, yes; Iraq, China and Cambodia, no).
+
+**3. Recording the decision as numbers.**
+- *Countries, keeps:* the chosen indices per country went into `picks.json`, e.g. `{"AU": [1, 4], ...}`. `export.py` exported only those.
+- *Cities, rejects:* each rejected index became a Photos UUID in `skip.json`. `pick.py` then ran again, skipped those UUIDs (and anything whose image hash was within 8 bits of a reject, which catches re-imported copies), and filled the gap with the next candidate.
+
+**4. Repeating until clean.** Each rerun produced a new sheet, and only the new picks needed looking at. The US cities took three rounds. Cities that ran out of clean candidates dropped off the map, which is how 75 candidate places became 55.
+
+Why sheets instead of the detectors alone: Apple Vision and Photos' own face tags missed people turned away from the camera or cut off at the edge. One look at a grid of 40 catches those in seconds. The same method was reused for the photo reels, where it caught a toddler, a wedding kiss and a mis-tagged face (see [reels/README.md](../reels/README.md)).
+
 **Blurring.** The US export has a `blur(im, faces)` function. It pads each face box by 45%, pixelates it to 1/24 size, applies a Gaussian blur, and pastes the result back through a feathered elliptical mask. The first US export blurred 4 photos. As review tightened, every photo with another person in it was skipped instead, so **no published photo is blurred**. Country photos never needed blurring, because any photo with a face was excluded. The site's `AGENTS.md` now states the same rule for the photo reels ("never blur instead of skipping").
 
 **5. Export.** Pillow opens the source (Photos' derivative preview if present, else the original), applies `ImageOps.exif_transpose` (US) and converts to RGB.
