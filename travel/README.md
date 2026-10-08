@@ -25,48 +25,75 @@ The pipeline that chose and exported the photos was one-off Python run on my Mac
 
 ## Data flow
 
+Every box names the code that did the work. Nothing in this pipeline sent a photo to an online service. All the machine learning ran on my Mac, either inside Apple Photos or through Apple's Vision framework.
+
 ```mermaid
-flowchart TD
-  P["Apple Photos library<br/>(osxphotos, read only)"]
-
-  subgraph C["Countries (Sep 30)"]
-    L["locate.py<br/>reverse_geocoder.search(coords, mode=1)<br/>offline GeoNames cities1000"]
-    S["small.py<br/>inspect low-count countries<br/>(place name, altitude, labels)"]
-    D["DROP = IQ, CN, KH, HK<br/>(Ben's corrections + airport-only)"]
-    K["candidates.py<br/>no persons, no screenshots/selfies,<br/>BAD labels out, rank by favourite + score,<br/>cap per day, contact sheets"]
-    H["Hand-picked by eye<br/>picks.json"]
-    E1["export.py<br/>WebP max 1100 px (1024 in practice) + 360 px thumb,<br/>no EXIF/GPS, dot = GeoNames city centre"]
+flowchart TB
+  subgraph LIB["1 · Read the library"]
+    P["<b>osxphotos</b> (Python, read-only)<br/>osxphotos.PhotosDB().photos()<br/>PhotoInfo: .location .date .place .labels<br/>.face_info .persons .score.overall .path_derivatives"]
   end
 
-  subgraph U["US cities (Oct 1 to 2)"]
-    CI["cities.py<br/>Photos' own place.address city/state,<br/>drop transit places, drop within 1 km of home,<br/>rules: 8+ in a day OR 2+ days OR 15+ total"]
-    M["merge pass<br/>anchors with radii, then 15 km merge<br/>205 places to 109"]
-    F["filter: 15+ photos (75 places),<br/>drop family-home towns"]
-    PK["pick.py<br/>GOOD/BAD labels, Photos face regions +<br/>Vision VNDetectFaceRectanglesRequest +<br/>VNDetectHumanRectanglesRequest,<br/>aHash dedupe, darkness, 1 per day"]
-    G["City centres<br/>Census 2023 Gazetteer, GeoNames US.txt"]
-    E2["export.py<br/>blur() if 1 to 3 other faces (final: 0 used),<br/>WebP 1024 + 360 thumb, no metadata,<br/>review sheets"]
-    R["3 rounds of review by eye<br/>skip.json grows, filters tighten<br/>55 cities, 145 photos"]
+  subgraph ML["2 · Apple's on-device AI, already in the library"]
+    LB["<b>Photos scene classifier</b><br/>PhotoInfo.labels<br/>e.g. Landscape, Beach, Document, Child"]
+    FC["<b>Photos face recognition</b><br/>PhotoInfo.face_info (name, center_x, center_y, size)<br/>PhotoInfo.persons → 'Benjamin Collier'"]
+    SC["<b>Photos aesthetic score</b><br/>PhotoInfo.score.overall"]
+    PL["<b>Photos reverse geocoding</b><br/>PhotoInfo.place.address.city / state_province<br/>PhotoInfo.place.ishome"]
   end
 
-  J["data/travel.json"]
-  A["assets/travel/*.webp"]
-  B["scripts/build.py build_travel()<br/>inlines JSON, writes travel/index.html"]
-  T["/travel/ page"]
-  TM["js/travel-map.js<br/>d3.geoNaturalEarth1 flat map"]
-  TG["js/travel.js<br/>d3.geoOrthographic globe (lazy)"]
+  subgraph GEO["3 · Where each photo was taken"]
+    RG["<b>reverse_geocoder</b> (offline GeoNames)<br/>rg.search(coords, mode=1) → cc, city<br/>+ pycountry for country names"]
+    AG["aggregation (plain Python)<br/>countries: drop false positives IQ, CN, KH, HK<br/>cities: transit regex, 1 km home radius,<br/>8 in a day / 2 days / 15 total, suburb merge"]
+    CE["city centres<br/>US Census 2023 Gazetteer, GeoNames US.txt"]
+  end
 
-  P --> L --> S --> D --> K --> H --> E1
-  P --> CI --> M --> F --> PK --> E2 --> R
-  G --> E2
-  E1 --> J
-  E1 --> A
-  R --> J
-  R --> A
-  J --> B --> T
-  A --> T
-  T --> TM
-  T --> TG
+  subgraph PICK["4 · Choose photos with nobody in them"]
+    F1["label filter<br/>BAD labels out (Document, People, Child, Bed…)<br/>GOOD labels ranked (Landscape, City, Sunset…)"]
+    V["<b>Apple Vision</b> via PyObjC<br/>VNImageRequestHandler.initWithURL_options_<br/>VNDetectFaceRectanglesRequest → face boxes<br/>VNDetectHumanRectanglesRequest → body boxes"]
+    Q["<b>Pillow + plain Python</b><br/>ahash() 9x8 difference hash (dedupe)<br/>mean luma &lt; 45 → too dark<br/>one per day per place"]
+    EYE["contact sheets, checked by eye<br/>rejects → skip.json"]
+  end
+
+  subgraph OUT["5 · Export, metadata stripped"]
+    EX["<b>Pillow</b><br/>ImageOps.exif_transpose → RGB<br/>thumbnail((1024,1024)) and ((360,360))<br/>save('WEBP', quality=78–80, method=6)"]
+    J["data/travel.json<br/>countries, cities, photo src / place / month"]
+    A["assets/travel/*.webp<br/>287 photos + 287 thumbnails"]
+  end
+
+  subgraph WEB["6 · Build and draw"]
+    B["<b>scripts/build.py</b> build_travel()<br/>inlines the JSON, writes travel/index.html"]
+    TM["<b>js/travel-map.js</b><br/>d3.geoNaturalEarth1 · topojson.feature<br/>placeLabels() · crowd() zoom · &lt;dialog&gt;"]
+    TG["<b>js/travel.js</b><br/>d3.geoOrthographic globe · d3.drag<br/>requestAnimationFrame spin"]
+  end
+
+  P --> LB & FC & SC & PL
+  P --> RG
+  PL --> AG
+  RG --> AG
+  CE --> AG
+  AG --> F1
+  LB --> F1
+  SC --> F1
+  F1 --> V
+  FC --> V
+  V --> Q --> EYE --> EX
+  EX --> J & A
+  J --> B
+  A --> B
+  B --> TM & TG
 ```
+
+### Which AI ran where
+
+| AI or ML | What it did here | How the code reached it |
+|---|---|---|
+| Apple Photos scene classifier (on-device) | The "search" for usable photos: keep landscapes, cities, food and sunsets; drop documents, screens, people, children, bedrooms and drinks | `PhotoInfo.labels`, read through osxphotos. No new model was run; Photos had already labelled every photo |
+| Apple Photos face recognition (on-device) | Knows which face is me ("Benjamin Collier") and where every face sits | `PhotoInfo.persons`, `PhotoInfo.face_info` |
+| Apple Photos aesthetic score (on-device) | Ranks the better-composed shot first | `PhotoInfo.score.overall` |
+| Apple Photos reverse geocoding | City and state for US photos, and which photos were taken at home | `PhotoInfo.place.address`, `PhotoInfo.place.ishome` |
+| Apple Vision framework (on-device) | A second, independent face and body detector, which catches people Photos never tagged | PyObjC: `Vision.VNDetectFaceRectanglesRequest`, `Vision.VNDetectHumanRectanglesRequest`, run with `VNImageRequestHandler` |
+| Claude Code (Claude Opus 5.5) | Wrote and ran every script, made the contact sheets, reviewed them with me, and built the page | Terminal agent on my Mac |
+
+The travel map did not use a semantic text-to-image search such as CLIP. That came later, for the photo reels, which use OpenCLIP prompts such as "a man in a suit and tie" (see [reels/README.md](../reels/README.md)).
 
 ### Stage by stage
 
