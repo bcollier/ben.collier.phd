@@ -474,7 +474,7 @@ def esc(text: str) -> str:
 NAV = [
     ("courses/", "courses", "courses", "#f6c453"),
     ("projects/", "coding with AI projects", "projects", "#9ccbea"),
-    ("ai-apps/", "AI apps and visualizations", "ai-apps", "#ffd96b"),
+    ("ai-apps/", "apps coded with AI", "ai-apps", "#ffd96b"),
     ("advising/", "advising", "advising", "#a9d8a1"),
     ("consult/", "consulting", "consult", "#f3a391"),
     ("cv/", "cv", "cv", "#cdb8e8"),
@@ -483,7 +483,7 @@ NAV = [
     ("contact/", "contact", "contact", "#e9dfc4"),
 ]
 
-# Pages that live under the "AI apps and visualizations" tab instead of their own tab.
+# Pages that live under the "apps coded with AI" tab instead of their own tab.
 AI_APPS = [
     # (href, title, one line, nav key)
     ("reels/", "Reels", "172 photos of me, 2000 to 2026, picked and cropped with Apple's Vision API from Python and cut into a WebGL music video.", "reels"),
@@ -630,7 +630,7 @@ def page(root, active, title, desc, canon, body, jsonld="", crumbs=None, body_cl
     page-specific <script> tags, appended after the shared ones."""
     if crumbs is None and active in AI_APP_KEYS:
         title_of = {key: name for _, name, _, key in AI_APPS}
-        crumbs = [("AI apps and visualizations", "ai-apps/"), (title_of[active], None)]
+        crumbs = [("apps coded with AI", "ai-apps/"), (title_of[active], None)]
     elif crumbs is None and active not in ("home", ""):
         label = next((n[1] for n in NAV if n[2] == active), active)
         crumbs = [(label, None)]
@@ -2764,15 +2764,15 @@ def build_evaluations():
 
 
 def build_ai_apps():
-    """The landing page for the apps and visualizations I built with AI, which used to be separate header tabs."""
+    """The landing page for the apps and visualizations I coded with an AI assistant, which used to be separate header tabs."""
     rots = [-3, 2.5, -1.5, 3]
     notes = "\n      ".join(sticky(f"../{href}", f"{esc(name)} &rarr;", esc(line), ("pink" if i % 2 else ""), rots[i % 4], .3 + i * .25)
                            for i, (href, name, line, _) in enumerate(AI_APPS))
-    body = page_head("AI apps and visualizations", "AI-generated apps and visualizations",
-                     "Small apps and data visualizations I built with AI coding tools from my own data: my photo library, my teaching evaluations, and my StrengthsFinder results. Each page links its prompt log.")
+    body = page_head("AI-engineered", "Apps and visualizations coded with an AI assistant",
+                     "Small apps and data visualizations I engineered with an AI coding assistant, from my own data: my photo library, my teaching evaluations, and my StrengthsFinder results. Each page links its prompt log.")
     body += f'  <div class="cta-row ai-apps">\n      {notes}\n  </div>\n'
-    write("ai-apps/index.html", page("../", "ai-apps", "AI apps and visualizations · Ben Collier",
-                                     "Apps and data visualizations Ben Collier built with AI coding tools: reels, a travel map, strengths, and teaching evaluations.",
+    write("ai-apps/index.html", page("../", "ai-apps", "Apps coded with AI · Ben Collier",
+                                     "Apps and data visualizations Ben Collier engineered with an AI coding assistant: reels, a travel map, strengths, and teaching evaluations.",
                                      "ai-apps/", body))
 
 
