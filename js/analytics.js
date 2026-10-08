@@ -28,7 +28,10 @@
   function gtag() { window.dataLayer.push(arguments); }
   window.gtag = gtag;
   gtag("js", new Date());
-  gtag("config", id, { allow_google_signals: false, allow_ad_personalization_signals: false });
+  // What someone typed into search stays out of the page address GA records.
+  var where = location.href;
+  try { var u = new URL(where); u.searchParams.delete("q"); where = u.href; } catch (e) { /* old browser: keep it */ }
+  gtag("config", id, { allow_google_signals: false, allow_ad_personalization_signals: false, page_location: where });
   var s = document.createElement("script");
   s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
@@ -41,6 +44,7 @@
     if (el.closest(".brand")) return "logo";
     if (el.closest(".foot")) return "footer";
     if (el.closest(".bot, .bot-sign")) return "robot";
+    if (el.closest(".srch, .srch-page, .search-tab")) return "search";
     if (el.closest(".reel, .v2")) return "reels player";
     var sec = el.closest("section[id], section[aria-labelledby], [id]:not(main)");
     if (sec) return sec.id || sec.getAttribute("aria-labelledby");
@@ -53,7 +57,8 @@
     // The visible words, without small print or icons ("Book a call", not "Book a call free, 15 minutes").
     var copy = el.cloneNode(true);
     Array.prototype.forEach.call(copy.querySelectorAll("small, svg"), function (n) { n.remove(); });
-    var label = (el.getAttribute("aria-label") || copy.textContent || el.getAttribute("title") || "")
+    // Search's recent-search buttons carry a fixed label instead of what the visitor typed.
+    var label = (el.getAttribute("data-ga-label") || el.getAttribute("aria-label") || copy.textContent || el.getAttribute("title") || "")
       .replace(/[\s\u2192]+/g, " ").trim().slice(0, 100);
     gtag("event", "ui_click", {
       click_label: label || "(no text)",
