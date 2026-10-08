@@ -536,6 +536,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
     )
     tabs = "\n        ".join(item(*n) for n in NAV)
     book_current = ' aria-current="page"' if active == "book" else ""
+    search_current = ' aria-current="page"' if active == "search" else ""
     cls = f' class="{body_class}"' if body_class else ""
     return f"""<!DOCTYPE html>
 <html lang="en" data-root="{root}">
@@ -582,6 +583,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
       <ul class="tabs">
         {tabs}
       </ul>
+      <a class="search-tab" href="{root}search/"{search_current} data-search-open aria-label="Search the site" aria-keyshortcuts="/ Control+K Meta+K" title="Search the site (press /)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.6 4.2c3.7-.3 6.6 2.5 6.5 6.1-.1 3.5-3 6.3-6.6 6.2-3.5-.1-6.2-3-6.1-6.4.1-3.2 2.8-5.7 6.2-5.9Z"/><path d="M15.4 15.6c1.6 1.5 3.3 3.1 4.9 4.8"/></svg><span class="st-l" aria-hidden="true">search</span></a>
     </nav>
     <a class="sticky-cta" href="{root}book/"{book_current}><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
   </div>
@@ -618,7 +620,8 @@ def footer(root: str, scripts: str = "") -> str:
 </footer>
 <script src="{root}js/config.js"></script>
 <script src="{root}js/site.js"></script>
-<script src="{root}js/notebook.js" defer></script>{scripts}
+<script src="{root}js/notebook.js" defer></script>
+<script src="{root}js/search.js" defer></script>{scripts}
 </body>
 </html>
 """
@@ -702,6 +705,7 @@ def hide_email(html: str) -> str:
 
 
 _ASSET_HASH: dict[str, str] = {}
+WRITTEN: dict[str, str] = {}   # every file this run wrote, for the search index
 
 
 def versioned(content: str) -> str:
@@ -727,6 +731,7 @@ def write(rel, content: str):
     path = ROOT / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+    WRITTEN[rel] = content
     print("wrote", rel)
 
 
@@ -938,9 +943,19 @@ def log_date(iso: str) -> str:
     return iso
 
 
-def news_items(limit=None, root=""):
+def news_ids():
+    """A stable anchor per news item, so search can link straight to it."""
+    seen, out = {}, []
+    for iso, *_ in NEWS:
+        seen[iso] = seen.get(iso, 0) + 1
+        out.append(f"news-{iso}" + (f"-{seen[iso]}" if seen[iso] > 1 else ""))
+    return out
+
+
+def news_items(limit=None, root="", ids=False):
     """The dated log: date in red pen, the note, a taped picture on the right."""
     items = NEWS if limit is None else NEWS[:limit]
+    anchors = news_ids()
     out = ['<ol class="log">']
     for index, (iso, text, *rest) in enumerate(items):
         more = ""
@@ -955,8 +970,9 @@ def news_items(limit=None, root=""):
             body = body.replace(phrase, f'<mark class="{colour}">{phrase}</mark>', 1)
         visual = news_visual(text, slugs, root, index, href)
         d = f' style="--d:{0.3 + 0.15 * index:.2f}s"' if index < 8 else ""
+        nid = f' id="{anchors[index]}"' if ids else ""
         out.append(
-            f'<li class="fade"{d}><time datetime="{iso}">{log_date(iso)}</time>'
+            f'<li class="fade"{d}{nid}><time datetime="{iso}">{log_date(iso)}</time>'
             f'<p>{body}{more}</p>{visual}</li>'
         )
     out.append("</ol>")
@@ -2338,7 +2354,7 @@ def build_news():
     body = page_head("Teaching and practice", "News", "A dated log of teaching, advising, and practice.")
     body += f"""
   <section class="sec reveal headless" aria-label="News log">
-    {news_items(root="../")}
+    {news_items(root="../", ids=True)}
   </section>
 """
     body += sec(2, "linkedin", "Shared elsewhere", "On LinkedIn", '    <ol class="feed log" id="linkedin-all"></ol>')
@@ -3047,6 +3063,108 @@ def build_reels():
                scripts=scripts))
 
 
+# ---------------------------------------------------------------------------
+# Search: an index of every page, read from the HTML this run just wrote, and
+# a search page that works as a deep link (search/?q=) and, without
+# JavaScript, as a plain list of every page. js/search.js does the searching.
+# ---------------------------------------------------------------------------
+
+SEARCH_INDEX = "assets/search-index.json"
+SEARCH_GROUPS = [("course", "Courses"), ("project", "Coding with AI projects"), ("app", "Apps coded with AI"),
+                 ("talk", "Talks"), ("news", "News"), ("cv", "CV"), ("page", "Pages")]
+
+
+def offering_span(offerings) -> str:
+    years = sorted({int(y) for o in offerings for y in re.findall(r"\b((?:19|20)\d{2})\b", o)})
+    if not years:
+        return ""
+    if len(offerings) == 1:
+        m = re.match(r"((?:Spring|Summer|Fall|Winter) \d{4})", offerings[0])
+        return m.group(1) if m else str(years[0])
+    return str(years[0]) if years[0] == years[-1] else f"{years[0]} to {years[-1]}"
+
+
+def search_meta(portfolio) -> dict:
+    """Facts a record's own text does not spell out: course numbers, short
+    names, tools, dates. Keyed by the record URL."""
+    meta = {}
+    for c in ALL_COURSES:
+        num = c.get("number", "")
+        tags = [num]
+        if re.fullmatch(r"\d{2}-\d{3}", num):
+            tags.append(num.split("-")[1])
+        tags += [SHORT_NAMES.get(c["slug"], ""), c.get("label", ""), *COURSE_ALIASES.get(c["slug"], []),
+                 c.get("program", ""), c.get("school", ""), "course"]
+        meta[f"courses/{c['slug']}/"] = {"g": " · ".join(dict.fromkeys(t for t in tags if t)),
+                                          "d": offering_span(c.get("offerings", []))}
+    for p in portfolio:
+        meta[f"projects/#{p['id']}"] = {"g": f"{p['tools']} · {p['kind']}", "d": p["date"]}
+    # The apps are filed under coding with AI, in the projects page's apps section.
+    for href, _, _, _ in AI_APPS:
+        meta[href] = {"g": "app coded with AI · visualization", "p": "Coding with AI"}
+    for href in ("evaluations-a/", "evaluations-b/"):
+        meta[href] = {"g": "app coded with AI · visualization · course evaluations", "p": "Coding with AI"}
+    meta["projects/#apps-coded-with-ai"] = {"k": "app", "g": "apps coded with AI · visualizations"}
+    meta["cv/"] = {"g": "cv · curriculum vitae · resume"}
+    for nid, (iso, *_) in zip(news_ids(), NEWS):
+        meta[f"news/#{nid}"] = {"d": human_date(iso)}
+    return meta
+
+
+def rendered(rel: str) -> str:
+    return WRITTEN.get(rel) or (ROOT / rel).read_text(encoding="utf-8")
+
+
+SEARCH_APP_PATHS = {href for href, *_ in AI_APPS} | {"evaluations-a/", "evaluations-b/"}
+
+
+def search_records(portfolio):
+    """Every page except the search page itself, cut into search records."""
+    import search_index
+
+    paths = [p for p in site_paths() if p != "search/"]
+    pages = {p: rendered(p + "index.html") for p in paths}
+    return paths, pages, search_index.build_records(pages, search_meta(portfolio), SEARCH_APP_PATHS)
+
+
+def build_search(portfolio):
+    import search_index
+
+    app_paths = SEARCH_APP_PATHS
+    paths, pages, records = search_records(portfolio)
+    out = ROOT / SEARCH_INDEX
+    out.write_text(search_index.write_index(records), encoding="utf-8")
+    print("wrote", SEARCH_INDEX, f"({len(records)} records, {out.stat().st_size // 1024} KB)")
+
+    # Without JavaScript the search page is a plain list of every page, grouped like the results.
+    groups = {k: [] for k, _ in SEARCH_GROUPS}
+    for p in paths:
+        title = search_index.page_title(pages[p]) if p else "Home"
+        num = next((c.get("number", "") for c in ALL_COURSES if p == f"courses/{c['slug']}/"), "")
+        extra = f' <span class="srch-num">{esc(num)}</span>' if re.fullmatch(r"\d{2}-\d{3}", num) else ""
+        groups[search_index.kind_of(p, app_paths)].append(f'<li><a href="../{p}">{esc(title)}</a>{extra}</li>')
+    lists = "".join(f'\n    <div class="srch-all-g"><h3>{label}</h3><ul>{"".join(groups[k])}</ul></div>'
+                    for k, label in SEARCH_GROUPS if groups[k])
+    body = page_head("Search", "Search the notebook",
+                     "Courses, projects, talks, news and my CV in one place. Type a topic, a tool, or a course number like 45-851.")
+    body += f"""
+  <section class="srch-page" aria-label="Search">
+    <form class="srch-form" action="./" method="get" role="search">
+      <label class="srch-label" for="srch-page-q">What are you looking for?</label>
+      <div class="srch-pad"><svg class="srch-glass" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.6 4.2c3.7-.3 6.6 2.5 6.5 6.1-.1 3.5-3 6.3-6.6 6.2-3.5-.1-6.2-3-6.1-6.4.1-3.2 2.8-5.7 6.2-5.9Z"/><path d="M15.4 15.6c1.6 1.5 3.3 3.1 4.9 4.8"/></svg><input id="srch-page-q" name="q" type="search" placeholder="search courses, projects, talks..." autocomplete="off" spellcheck="false" enterkeyhint="search"><button class="btn" type="submit">search</button></div>
+    </form>
+    <div class="srch-mount" data-search-page></div>
+  </section>
+  <section class="sec srch-all" id="every-page" aria-labelledby="every-page-title"><p class="kicker">The whole notebook</p><h2 id="every-page-title">Every <span class="u" data-d="0.3">page</span></h2>
+    <div class="srch-all-grid">{lists}
+    </div>
+  </section>
+"""
+    write("search/index.html", page("../", "search", "Search · Ben Collier",
+                                    "Search Ben Collier's courses, coding with AI projects, apps, talks, news and CV.",
+                                    "search/", body, crumbs=[("search", None)]))
+
+
 def build_404():
     body = page_head("Error 404", "Page not found", "That URL is not on this site.",
                      '<p class="links-404"><a class="go" href="./">Home</a> <a class="go" href="./courses/">Courses</a> <a class="go" href="./projects/">Coding with AI Projects</a> <a class="go" href="./cv/">CV</a></p>'
@@ -3061,6 +3179,7 @@ def site_paths():
     """Every canonical URL path on the site, in navigation order."""
     paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
+    paths.append("search/")
     return paths
 
 
@@ -3142,6 +3261,7 @@ def main():
     build_evaluations()
     build_ai_apps()
     build_404()
+    build_search(portfolio)
     build_sitemap()
     build_robots()
     build_feed()
