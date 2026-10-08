@@ -511,12 +511,11 @@ a.ca-note:focus-visible { outline: 3px solid var(--pen); outline-offset: 6px; }
   position: relative; display: flex; flex-direction: column; min-height: 400px;
   padding: 14px 20px 18px; text-decoration: none; color: var(--ink);
   background-color: var(--card);
-  background-image:
-    linear-gradient(transparent 80px, rgba(184,53,42,.55) 80px, rgba(184,53,42,.55) 82px, transparent 82px),
-    repeating-linear-gradient(transparent 0 27px, rgba(64,120,168,.2) 27px 28px);
-  background-position: 0 0, 0 82px;
-  background-repeat: no-repeat, repeat;
-  background-size: 100% 100%, 100% calc(100% - 82px);
+  /* blue ruled lines below the header; the red header rule is .ic-top's border, so it moves down when the header wraps */
+  background-image: repeating-linear-gradient(transparent 0 27px, rgba(64,120,168,.2) 27px 28px);
+  background-position: 0 82px;
+  background-repeat: repeat;
+  background-size: 100% calc(100% - 82px);
   box-shadow: 0 1px 2px rgba(0,0,0,.15), 0 16px 26px -16px rgba(0,0,0,.45);
   transform: rotate(var(--rot, 0deg));
 }
@@ -833,7 +832,10 @@ html { overflow-x: hidden; }
 
 /* course cards: the slides lead, the doodle becomes a corner accent */
 .icard .stack { margin: 2px 4px 22px; }
-.icard .ic-top { height: auto; min-height: 66px; margin-bottom: 20px; }
+.icard .ic-top {
+  height: auto; min-height: 66px; margin: 0 -20px 20px; padding: 0 20px 8px;
+  border-bottom: 2px solid rgba(184,53,42,.55); background: var(--card);
+}
 .icard { padding-bottom: 20px; }
 .icard .ic-doodle.corner { position: absolute; right: 12px; bottom: 10px; width: 58px; margin: 0; opacity: .8; }
 
