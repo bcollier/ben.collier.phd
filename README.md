@@ -76,6 +76,8 @@ flowchart TB
 | `js/course-schedule.js` | ~160 | The slide "projector" that follows the schedule on course pages |
 | `js/course-assistant.js` | ~210 | The course-assistant note: lifts, straightens and opens into the legal-pad hand-off frame (`css/handoff.css`, shared with Faculty Twin), then goes to the twin |
 | `js/site.js` | ~130 | Email assembly, LinkedIn feed, booking links |
+| `js/search.js` | ~590 | Site search: a small full-text engine (prefix, typo and synonym matching, field boosts) and the legal-pad search box. Ranking is explained at the top of the file |
+| `scripts/search_index.py` | ~360 | Cuts the built pages into search records and writes `assets/search-index.json` |
 | `js/place-pop.js` | ~40 | Campus map and building photo pop-ups on /cv/ and /contact/ |
 
 ---
@@ -96,6 +98,7 @@ flowchart TB
 | `/travel/` | 27 countries and 55 US cities from the photo library | Flat map and globe, photo pop-ups. Docs: [travel/README.md](travel/README.md), [travel/prompt_log.md](travel/prompt_log.md) |
 | `/reels/` | Version 2: a 3:41 music video of the same 171 photos plus 48 place shots. Version 1: two slideshows, Professional Ben and Casual Ben | WebGL beat-cut video with neon grades, glitch, kaleidoscope, grids, seal and mosaic; v1 slideshow with pan and zoom; CC0 music that starts only on play. Docs: [reels/README.md](reels/README.md), [reels/prompt_log.md](reels/prompt_log.md) |
 | `/news/` | Dated log plus LinkedIn posts | |
+| `/search/` | Search across every page; `?q=` deep links; a plain list of every page without JavaScript | The magnifier tab, `/` or Cmd/Ctrl+K opens the same search as a legal pad over any page. The index (`assets/search-index.json`, about 215 KB, 73 KB gzipped) is fetched only when someone reaches for search. Tests: `python3 -m unittest discover -s tests` |
 | `/contact/` | Email, office, links | Campus map pop-ups |
 
 ---
