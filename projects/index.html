@@ -140,6 +140,18 @@
       <p class="pf-links"><a class="go" href="https://github.com/bcollier/claude-ravens-demo">Read the write-up and browse the code on GitHub</a> <a class="go" href="https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md">Prompt history</a></p>
     </div>
   </article>
+  <article class="pf reveal" id="connections">
+    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/connections_demo/" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/connections.jpg" alt="The game mid-puzzle: QUARTER-MUNCHING ARCADE ICONS solved in yellow above twelve words such as PIEROGI, CATAN and KAYAK, two of them selected" width="1200" height="675" loading="lazy"></a>
+    <div class="pf-body">
+      <p class="kicker">Browser game &middot; September 2025</p>
+      <h2>Connections About You</h2>
+      <p class="pf-tools">JavaScript, Node.js, Express, OpenAI GPT-5 with web search, Claude Code</p>
+      
+      <p>A word game in the style of the NYT's Connections, where an AI writes the four groups about you. Type a name and a town, and GPT-5 searches the web and builds four groups of four from that person's work, their city, and some guesses about their tastes. When the game ends, it explains each group and links to what it read. The demo plays five puzzles it wrote about me.</p>
+      <ul class="dashes"><li>A few rules keep it a game and not a resume: at least two groups are about fun things, at most one is about work, and at most one is about the place. Real Connections groups in the prompt show the format and the difficulty ladder, from yellow up to purple.</li><li>Every answer is checked before anyone plays it: a schema, sixteen different words across the four groups, and up to two retries. The last twenty puzzles go back into the prompt so it stops reaching for the same themes.</li><li>The demo has no live generation. A static page cannot keep an OpenAI key secret, so it plays five puzzles GPT-5 wrote about me, saved from the server's history. Run the server and it makes one about you.</li></ul>
+      <p class="pf-links"><a class="go" href="https://bcollier.github.io/connections_demo/">Play the demo</a> <a class="go" href="https://github.com/bcollier/connections_demo">Source on GitHub</a> <a class="go" href="https://github.com/bcollier/connections_demo#how-a-puzzle-is-made">How a puzzle is made</a></p>
+    </div>
+  </article>
   </div>
 </main>
 
