@@ -867,7 +867,11 @@ CARD_ROT = [-1.4, 1, -0.7, 1.6, -1.1, 0.8, -1.6, 1.2]
 
 
 def course_level(c) -> str:
-    bits = [b for b in (c.get("program"), c.get("school")) if b]
+    # Skip the program when the card's red label already says it (the exec ed cards), so it isn't printed twice.
+    program = c.get("program")
+    if program and program == course_label(c):
+        program = None
+    bits = [b for b in (program, c.get("school")) if b]
     return " · ".join(bits) or ERA_KICKER.get(c.get("era"), "")
 
 
