@@ -383,7 +383,8 @@ flowchart LR
 | LinkedIn | `data/linkedin.json` | A weekly cloud routine reads Ben's public profile and opens a pull request with any new posts; Ben approves it. Read in the browser, so no rebuild |
 | Campus map | `assets/campus/campus-map.svg` | OpenStreetMap extract (ODbL), drawn by `scripts/make_campus_map.py` |
 | World shapes | `assets/vendor/countries-110m.json` | Natural Earth via world-atlas |
-| Portrait hedcut | `assets/portrait-hedcut.png` | `scripts/make_hedcut.py` from `assets/portrait.jpg` |
+| Portrait hedcut | `assets/portrait-hedcut.png` | `scripts/make_hedcut.py` from `assets/avatars/flat-vector.webp` |
+| Cartoon avatars of me | `assets/avatars/*.webp` (current look, Oct 2026: notebook ink, flat vector, whiteboard, comic, waving sticker, watercolor, plus `contact-sheet.webp`); `assets/avatars/2025-portrait/` (the same styles from the older portrait) | OpenAI `gpt-image-2.5-sunburst` image edits from my own photos, Oct 8, 2026. `assets/portrait.jpg` and `.webp` are the notebook-ink one at 500 px |
 | Share card | `assets/og.png` | `scripts/make_og_image.py` |
 
 ---
