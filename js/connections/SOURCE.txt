@@ -1,2 +1,2 @@
-Copied from https://github.com/bcollier/connections_demo at commit 6358c739cbe6cbe9428dfea7bfc03db9b442b58d by scripts/sync_connections.sh.
+Copied from https://github.com/bcollier/connections_demo at commit 65f70f43a5af19fafb5329db3b799035ef7fedbb by scripts/sync_connections.sh.
 Do not edit these files here: change them in bcollier/connections_demo and sync again.
