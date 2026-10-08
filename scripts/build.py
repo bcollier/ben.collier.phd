@@ -580,7 +580,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
 <header class="topbar">
   <div class="topbar-in">
     <a class="brand" href="{root or './'}" aria-label="Ben Collier, PhD, home">
-      <span class="badge"><img src="{root}assets/portrait-hedcut.png" alt="" width="46" height="46" loading="lazy"><svg data-chart="ring"></svg></span>
+      <span class="badge"><img src="{root}assets/portrait-badge.webp" alt="" width="46" height="46" loading="lazy"><svg data-chart="ring"></svg></span>
       <span>Ben Collier, PhD</span>
     </a>
     <nav aria-label="Main">
@@ -1200,7 +1200,7 @@ def build_home():
         <span class="tape tl"></span><span class="tape tr"></span>
         <div class="ph">
           <img class="photo" src="assets/portrait.jpg" alt="Ben Collier, smiling, drawn in ink on graph paper" width="500" height="500" fetchpriority="high">
-          <img class="hedcut" src="assets/portrait-hedcut.png" alt="" width="360" height="360" loading="lazy">
+          <img class="hedcut" src="assets/portrait-badge.webp" alt="" width="360" height="360" loading="lazy">
         </div>
         <figcaption>hi, I'm Ben!</figcaption>
       </figure>
