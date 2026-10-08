@@ -489,6 +489,7 @@ AI_APPS = [
     ("travel/", "Travel map", "27 countries and 55 US cities, mapped from my own photo library with Apple's Vision API from Python.", "travel"),
     ("strengths/", "Strengths", "What two StrengthsFinder results, five years apart, say about how I work.", "strengths"),
     ("evaluations/", "Teaching evaluations", "Two interactive analyses of my de-identified course evaluations, compared side by side.", "evaluations"),
+    ("connections/", "Connections", "A word game: puzzles an AI wrote about me, and ones I wrote for Star Wars, The Lord of the Rings and Carnegie Mellon, each in its own animated theme.", "connections"),
 ]
 AI_APP_KEYS = {key for *_, key in AI_APPS}
 
@@ -505,7 +506,7 @@ ARM = ('<script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("
 
 
 # The "Subject" field at the top of each notebook page. Pages not listed use the default.
-SUBJECTS = {"travel": "places I have been", "reels": "me, over the years", "strengths": "how I work", "cv": "my career so far"}
+SUBJECTS = {"travel": "places I have been", "reels": "me, over the years", "strengths": "how I work", "cv": "my career so far", "connections": "word games"}
 
 
 def sheet_head(root: str, crumbs, active: str = "") -> str:
@@ -2818,7 +2819,7 @@ def ai_apps_section() -> str:
     return (f'\n  <section class="page-head reveal" id="apps-coded-with-ai"><p class="kicker">AI-engineered</p>'
             f'<h2>{u_last("Apps and visualizations coded with an AI assistant", 0.4, "u")}</h2>'
             '<p class="lede">Small apps and data visualizations I engineered with an AI coding assistant, from my own data: '
-            "my photo library, my teaching evaluations, and my StrengthsFinder results. Each page links its prompt log.</p></section>\n"
+            "my photo library, my teaching evaluations, and my StrengthsFinder results, plus a word game. Each page links its prompt log.</p></section>\n"
             f'  <div class="cta-row ai-apps">\n      {notes}\n  </div>\n')
 
 
@@ -2831,6 +2832,65 @@ def build_ai_apps():
 <meta http-equiv="refresh" content="0; url={target}"></head>
 <body><p>This page moved to <a href="{target}">Coding with AI</a>.</p></body></html>
 """)
+
+
+# The theme picker on /connections/: (pack id, name, note, sticky colour, tilt).
+CONNECTIONS_THEMES = [
+    ("ben", "About Ben", "puzzles an AI wrote about me", "#ffe17a", -3),
+    ("starwars", "Star Wars", "droids, Sith and famous lines", "#bfe3ff", 2),
+    ("lotr", "The Lord of the Rings", "hobbits, rings and second breakfast", "#f1e2b8", -1.5),
+    ("cmu", "Carnegie Mellon", "buggy, bagpipes and Pittsburghese", "#ffbdcc", 2.5),
+]
+CONNECTIONS_FONTS = ("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700"
+                     "&family=IM+Fell+English:ital@0;1&family=Orbitron:wght@600;800&display=swap")
+
+
+def build_connections():
+    """The Connections game. The player and the packs are copies synced from
+    the connections_demo repo by scripts/sync_connections.sh; this page is the
+    site's frame around them: the heading, a sticky-note theme picker, and notes."""
+    picks = "\n      ".join(
+        f'<button type="button" class="cx-theme" data-pack="{pid}" aria-pressed="{str(i == 0).lower()}" '
+        f'style="--rot:{rot}deg;--bg:{bg}"><span class="tape tc"></span><span class="big">{esc(name)}</span>'
+        f'<span class="sub">{esc(note)}</span></button>'
+        for i, (pid, name, note, bg, rot) in enumerate(CONNECTIONS_THEMES))
+    head = page_head("Coding with AI &middot; a word game", "Connections",
+                     "A word game in the style of the New York Times' Connections: find four groups of four before you make four mistakes. "
+                     "Pick a theme. The first is puzzles an AI wrote about me after searching the web; the others I wrote by hand.")
+    how = ('<ul class="dashes prose">'
+           "<li>The About Ben puzzles were written by GPT-5. It searched the web for my name and Pittsburgh, then built four groups under rules "
+           "that keep it a game and not a resume: at least two groups about fun things, at most one about work. Code checks every answer for "
+           "sixteen different words and asks again when it fails. These are five it wrote, saved as they came.</li>"
+           "<li>I wrote the other nine myself, three per theme, each with a red herring: a word that fits two groups, where only one grouping works. "
+           "Writing them showed me how much of a good puzzle lives in the trap, which is the part the AI rarely builds on purpose.</li>"
+           "<li>Each theme is drawn with CSS, SVG and canvas: a starfield that jumps to hyperspace, a map border that inks itself in, a tartan and "
+           "a marching bagpipe. There are no logos or film art. With reduced motion on, nothing moves and the game plays the same.</li>"
+           "<li>The Star Wars and Lord of the Rings packs are fan trivia, not affiliated with or endorsed by their owners, and the game is "
+           "inspired by the Times' Connections without any tie to it.</li></ul>"
+           '<p class="pf-links"><a class="go" href="https://github.com/bcollier/connections_demo#readme">How it works, in full</a> '
+           '<a class="go" href="https://github.com/bcollier/connections_demo">Source on GitHub</a> '
+           '<a class="go" href="https://bcollier.github.io/connections_demo/">The standalone version</a></p>')
+    body = head + f"""
+  <section class="sec headless cx-page" aria-label="The game">
+    <div class="cx-themes" role="group" aria-label="Pick a theme">
+      {picks}
+    </div>
+    <div class="cx-card">
+      <span class="tape tl"></span><span class="tape tr"></span>
+      <div id="cx-game"><noscript><p class="cx-noscript">The game needs JavaScript. The puzzles and how they are made are on
+        <a href="https://github.com/bcollier/connections_demo">GitHub</a>.</p></noscript></div>
+    </div>
+  </section>
+{sec(1, "cx-how", "Under the hood", "How the puzzles are made", how)}"""
+    fonts = (f'\n  <link rel="stylesheet" media="print" onload="this.media=\'all\'" href="{CONNECTIONS_FONTS}">'
+             '\n  <link rel="stylesheet" href="../css/connections.css">')
+    scripts = ('\n<script src="../js/connections/packs.js" defer></script>'
+               '\n<script src="../js/connections/player.js" defer></script>'
+               '\n<script src="../js/connections-page.js" defer></script>')
+    write("connections/index.html", page(
+        "../", "connections", "Connections · Ben Collier",
+        "A Connections-style word game: puzzles an AI wrote about Ben Collier, and hand-made Star Wars, Lord of the Rings and Carnegie Mellon packs, each in its own animated theme.",
+        "connections/", body, scripts=scripts, head=fonts))
 
 
 def build_strengths():
@@ -3206,7 +3266,7 @@ def build_404():
 
 def site_paths():
     """Every canonical URL path on the site, in navigation order."""
-    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/"]
+    paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/", "connections/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
     paths.append("search/")
     return paths
@@ -3289,6 +3349,7 @@ def main():
     build_strengths()
     build_evaluations()
     build_ai_apps()
+    build_connections()
     build_404()
     build_search(portfolio)
     build_sitemap()
