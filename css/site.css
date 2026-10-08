@@ -447,6 +447,25 @@ a.sticky:hover, a.sticky:focus-visible { transform: rotate(0) scale(1.03); color
 .figcap { font-family: var(--mono); font-size: 12px; color: var(--ink-2); margin: 6px 0 0; line-height: 1.4; }
 .hero-note { position: absolute; right: -8px; bottom: -58px; width: 190px; transform: rotate(-3deg); }
 
+/* Course-assistant launcher: a torn-off legal-pad note for my students.
+   js/course-assistant.js opens it into the full pad (css/handoff.css). */
+.ca-note { width: 216px; padding: 22px 16px 16px 34px; background-color: var(--legal);
+  background-image: linear-gradient(90deg, transparent 22px, var(--margin) 22px 24px, transparent 24px),
+    repeating-linear-gradient(180deg, transparent 0 25px, var(--rule) 25px 26px);
+  background-position: 0 0, 0 8px; }
+.ca-note .big { font-size: 25px; }
+.ca-note .sub { display: block; font-family: var(--mono); font-size: 11.5px; line-height: 1.5; margin-top: 10px; color: var(--ink-2); letter-spacing: .01em; }
+.ca-note .tape.tc { width: 70px; margin-left: -35px; top: -13px; height: 24px; }
+a.ca-note:focus-visible { outline: 3px solid var(--pen); outline-offset: 6px; }
+.ca-note.ca-lifted { visibility: hidden; }
+.ca-note.ca-lifted .tape { visibility: visible; }
+.ca-face { position: absolute; left: 0; top: 0; margin: 0; transform: none; box-shadow: none; }
+.hero > .ca-note { grid-column: 2; grid-row: 2; justify-self: start; align-self: start; margin: -10px 0 0 -14px; }
+@media (min-width: 961px) and (max-width: 1240px) { .hero > .ca-note { margin-top: 36px; } }
+.hero.has-ca { grid-template-rows: auto 1fr; }
+.ca-head { margin: 30px 0 4px 2px; }
+.hero.has-ca > .hero-text { grid-row: 1 / span 2; }
+
 .bio-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: start; }
 .bio .prose { font-size: 18px; }
 .tl-fig { margin: 6px 0 0; padding: 16px 0 0; }
@@ -559,6 +578,11 @@ a.sticky:hover, a.sticky:focus-visible { transform: rotate(0) scale(1.03); color
 @media (max-width: 960px) {
   .hero { grid-template-columns: 1fr; gap: 20px; }
   .hero-art { max-width: 520px; }
+  .hero.has-ca { grid-template-rows: none; }
+  .hero.has-ca > .hero-text { grid-row: auto; }
+  /* After the figures, not before: the portrait flies up through the space
+     above them as it docks, and would pass over the note. */
+  .hero > .ca-note { grid-column: 1; grid-row: auto; margin: 34px 0 6px 2px; }
   .bio-grid, .talks-grid { grid-template-columns: 1fr; gap: 30px; }
   .courses-note { left: auto; right: 0; }
 }

@@ -525,7 +525,7 @@ def sheet_head(root: str, crumbs, active: str = "") -> str:
 
 
 def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: str,
-           crumbs=None, body_class: str = "") -> str:
+           crumbs=None, body_class: str = "", head: str = "") -> str:
     def item(href, label, key, color):
         current = ' aria-current="page"' if active == key or (key == "projects" and active in AI_APP_KEYS) else ""
         return f'<li style="--c:{color}"><a href="{root}{href}"{current}>{label}</a></li>'
@@ -568,7 +568,7 @@ def header(root: str, active: str, title: str, desc: str, canon: str, jsonld: st
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" media="print" onload="this.media='all'" href="{FONTS}">
   <noscript><link rel="stylesheet" href="{FONTS}"></noscript>
-  <link rel="stylesheet" href="{root}css/site.css">{analytics_tag(root)}{ld}
+  <link rel="stylesheet" href="{root}css/site.css">{head}{analytics_tag(root)}{ld}
 </head>
 <body{cls}>
 <a class="skip" href="#main">Skip to content</a>
@@ -624,16 +624,17 @@ def footer(root: str, scripts: str = "") -> str:
 """
 
 
-def page(root, active, title, desc, canon, body, jsonld="", crumbs=None, body_class="", scripts="") -> str:
+def page(root, active, title, desc, canon, body, jsonld="", crumbs=None, body_class="", scripts="", head="") -> str:
     """crumbs: where the page is filed, for the sheet header. scripts: extra
-    page-specific <script> tags, appended after the shared ones."""
+    page-specific <script> tags, appended after the shared ones. head: extra
+    tags for the <head>, after the site stylesheet."""
     if crumbs is None and active in AI_APP_KEYS:
         title_of = {key: name for _, name, _, key in AI_APPS}
         crumbs = [("coding with AI", "projects/#apps-coded-with-ai"), (title_of[active], None)]
     elif crumbs is None and active not in ("home", ""):
         label = next((n[1] for n in NAV if n[2] == active), active)
         crumbs = [(label, None)]
-    return (header(root, active, title, desc, canon, jsonld, crumbs, body_class)
+    return (header(root, active, title, desc, canon, jsonld, crumbs, body_class, head)
             + body + footer(root, scripts))
 
 
@@ -686,6 +687,26 @@ def sticky(href: str, big: str, sub: str = "", cls: str = "", rot: float = -3, d
     t = '<span class="tape tc"></span>' if tape else ""
     return (f'<a class="sticky land{(" " + cls) if cls else ""}" href="{href}" style="--rot:{rot}deg;--d:{d}s">'
             f'{t}<span class="big">{big}</span>{s}</a>')
+
+
+# The course assistant (Faculty Twin) for my students. js/course-assistant.js
+# turns the note into the legal-pad hand-off; without it the note is a plain
+# link. ?from=collier.phd tells the twin to start from the same frame.
+COURSE_ASSISTANT_URL = "https://faculty-twin.vercel.app/?from=collier.phd"
+
+
+def course_assistant_note(rot: float = 2.5, d: float = 1.6) -> str:
+    """The launcher note. Teaching only: keep it off the consulting pages."""
+    return (f'<a class="sticky ca-note land" href="{COURSE_ASSISTANT_URL}" data-handoff style="--rot:{rot}deg;--d:{d}s">'
+            f'<span class="tape tc"></span><span class="big">Ask my course assistant &rarr;</span>'
+            f'<span class="sub">For my students in <span class="nw">70-445</span> and <span class="nw">45-884</span> (passcode)</span></a>')
+
+
+def course_assistant_assets(root: str) -> tuple[str, str]:
+    """(head, scripts) for a page with the launcher. The hand-off frame's
+    stylesheet loads without blocking first paint: it is only needed on click."""
+    head = (f'\n  <link rel="stylesheet" href="{root}css/handoff.css" media="print" onload="this.media=\'all\'">')
+    return head, f'\n<script src="{root}js/course-assistant.js" defer></script>'
 
 
 PERSONAL_EMAIL = "ben@collier.phd"
@@ -1060,8 +1081,9 @@ def build_home():
     rows = json.dumps([[a, b, c, d] for a, b, c, d, _ in CAREER])
     table = "".join(f"<tr><th>{esc(full)}</th><td>{a} to {b or 'now'}</td></tr>" for _, a, b, _, full in CAREER)
     latest = NEWS[:5]
+    ca_head, ca_scripts = course_assistant_assets("")
     body = f"""
-  <section class="hero reveal" aria-labelledby="hero-title">
+  <section class="hero has-ca reveal" aria-labelledby="hero-title">
     <div class="hero-text">
       <p class="stamp thunk" style="--d:.15s">Assistant Teaching Professor of Business Analytics</p>
       <h1 id="hero-title">Ben Collier<span class="phd-ins" aria-hidden="true"><svg class="phd-caret" viewBox="0 0 40 30"><path d="M4 26 L20 5 L36 26" /></svg><span class="phd"><i>P</i><i>h</i><i>D</i></span></span><span class="sr-only">, PhD</span></h1>
@@ -1089,6 +1111,7 @@ def build_home():
       </figure>
       <p class="note hero-note fade needs-js" style="--d:3.4s">&uarr; k-means found these 3 groups on its own</p>
     </div>
+    {course_assistant_note()}
   </section>
 
   <section class="sec bio reveal" aria-labelledby="bio-title">
@@ -1237,6 +1260,8 @@ def build_home():
             body,
             person_jsonld(),
             body_class="home",
+            head=ca_head,
+            scripts=ca_scripts,
         ),
     )
 
@@ -1272,7 +1297,9 @@ def education_sections(root: str, no: int) -> str:
 def build_courses_index():
     built = "\n".join(course_card(c, "../", i) for i, c in enumerate(c for c in COURSES if c["built"]))
     taught = "\n".join(course_card(c, "../", i) for i, c in enumerate(c for c in COURSES if not c["built"]))
-    body = page_head("Teaching", "Courses", "Courses I designed from scratch, then courses I took over and rebuilt.")
+    ca_head, ca_scripts = course_assistant_assets("../")
+    body = page_head("Teaching", "Courses", "Courses I designed from scratch, then courses I took over and rebuilt.",
+                     f'<div class="ca-head">{course_assistant_note(rot=-2, d=0.8)}</div>')
     body += sec(2, "built", "Designed from scratch", "Courses I built", f'    <div class="cards">{built}</div>')
     body += sec(3, "taught", "Taken over and rebuilt", "Courses I took over and rebuilt", f'    <div class="cards">{taught}</div>')
     body += education_sections("../", 4)
@@ -1285,6 +1312,8 @@ def build_courses_index():
             "Courses Ben Collier built and teaches at Tepper and Heinz.",
             "courses/",
             body,
+            head=ca_head,
+            scripts=ca_scripts,
         ),
     )
 

@@ -74,6 +74,7 @@ flowchart TB
 | `js/reels-v2.js` | ~700 | Reels version 2: WebGL music video renderer that plays `data/reels_v2.json` against the song clock |
 | `js/reels.js` | ~150 | The two photo reels on /reels/: crossfade, pan and zoom, place labels, shared music |
 | `js/course-schedule.js` | ~160 | The slide "projector" that follows the schedule on course pages |
+| `js/course-assistant.js` | ~210 | The course-assistant note: lifts, straightens and opens into the legal-pad hand-off frame (`css/handoff.css`, shared with Faculty Twin), then goes to the twin |
 | `js/site.js` | ~130 | Email assembly, LinkedIn feed, booking links |
 | `js/place-pop.js` | ~40 | Campus map and building photo pop-ups on /cv/ and /contact/ |
 
