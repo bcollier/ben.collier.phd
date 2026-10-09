@@ -283,11 +283,11 @@
   {
    "name": "Clustering project",
    "weight": "Projects 40%",
-   "description": "Segment a bank's credit card customers with K-means, using at least two methods to choose the number of clusters, then with hierarchical clustering or DBSCAN. The deliverable is a 5 to 10 page report that names the segments and recommends products and marketing for each, plus the Python notebook."
+   "description": "Segment a bank's credit card customers with clustering, name the segments, and recommend products and marketing for each."
   },
   {
    "name": "Classification project",
-   "description": "Built on the Harvard case Retention Modeling at Scholastic Travel Company: predict which customers will book again. Teams tune KNN, a tree ensemble, and a third method of their choice, compare them on accuracy, precision, recall, and AUC, make three to five recommendations, and score an unlabeled holdout file that I grade against the true labels."
+   "description": "Predict which customers will book again, compare several classification models, and turn the best one into business recommendations."
   },
   {
    "name": "Minilabs",
