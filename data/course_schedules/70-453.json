@@ -10,7 +10,7 @@
   "school": "CMU Qatar",
   "era": "cmuq",
   "one_liner": "How consultants think, how they interview, and how technology projects get built and managed.",
-  "blurb": "I built this course for CMU Qatar from an older systems analysis and design course, and turned it toward both sides of consulting: the business analysis that consulting firms hire for, and the technology work of designing and running a project. The first half was frameworks and case interviews, with Harvard cases on Deloitte and BCG and live practice cases like Harley-Davidson and a fighter jet division. The second half ran a Harvard change management simulation and then moved into the systems development life cycle, UML, agile, and project management. Students in Business Administration, Information Systems, and Computer Science took it together, and it was built to get them ready for a first-round interview at firms like McKinsey, BCG, Accenture, and Bain.",
+  "blurb": "I built this course for CMU Qatar from an older systems analysis and design course, and turned it toward both sides of consulting: the business analysis that consulting firms hire for, and the technology work of designing and running a project. The first half was frameworks and case interviews, with cases on consulting firms and live practice cases like Harley-Davidson and a fighter jet division. The second half ran a change management simulation and then moved into the systems development life cycle, UML, agile, and project management. Students in Business Administration, Information Systems, and Computer Science took it together, and it was built to get them ready for a first-round interview at firms like McKinsey, BCG, Accenture, and Bain.",
   "offerings": [
    "Spring 2014",
    "Spring 2015"
@@ -303,10 +303,6 @@
      "caption": "What's next: change management, IT methods, and project management"
     },
     {
-     "src": "assets/courses/70-453/s10-3.webp",
-     "caption": "The Harvard change management simulation dashboard"
-    },
-    {
      "src": "assets/courses/70-453/s10-4.webp",
      "caption": "Change the minds of 20 people in 96 weeks"
     }
@@ -496,7 +492,7 @@
   },
   {
    "name": "Simulations",
-   "description": "Harvard's change management simulation, run once in a low-urgency and once in a high-urgency scenario, plus project management and strategy simulations in 2015."
+   "description": "A change management simulation, run once in a low-urgency and once in a high-urgency scenario, plus project management and strategy simulations in 2015."
   },
   {
    "name": "Exams",

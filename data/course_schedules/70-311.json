@@ -9,7 +9,7 @@
   "program": "Undergraduate",
   "school": "CMU Qatar and Pittsburgh",
   "era": "cmuq",
-  "one_liner": "Motivation, teams, decisions, negotiation, leadership, and change, taught through Harvard cases and simulations.",
+  "one_liner": "Motivation, teams, decisions, negotiation, leadership, and change, taught through business cases and simulations.",
   "blurb": "This was the core organizational behavior course for business students, and the course I taught most: first in Pittsburgh as a PhD student, then every year in Doha, and again in Pittsburgh in 2016. I built it around cases and simulations: Lincoln Electric and SAS for motivation, an Everest simulation and the Carter Racing exercise for team decisions, live negotiations, and a change simulation at the end. Each year I replaced more lecture time with exercises, so students spent most of class applying a concept rather than hearing about it. Students finished by analyzing a real company of their choosing with the course's frameworks.",
   "offerings": [
    "Summer 2011 (Pittsburgh)",
@@ -262,7 +262,7 @@
    "week": 5,
    "topic": "Leadership and Team Simulation: Everest",
    "kind": "exercise",
-   "note": "Harvard online simulation, run in teams. Reading: The Hidden Traps in Decision Making"
+   "note": "An online simulation, run in teams. Reading: The Hidden Traps in Decision Making"
   },
   {
    "date": "2014-09-24",

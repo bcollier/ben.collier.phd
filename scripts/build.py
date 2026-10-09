@@ -138,7 +138,7 @@ COURSES = [
         ],
         "story": [
             "Students sit on both sides of the interview table. In live mock interviews on Zoom they rotate through interviewer, candidate, and observer, using the formats large tech companies use: live coding, data take-homes, case interviews, and behavioral interviews. Candidates may solve the coding problems in a spreadsheet, so business students take part alongside computer science students.",
-            "The in-person week in Doha turned to teams and culture. Groups allocated a $120 million fund across twenty proposals, analyzed a Harvard case on a global team at Sun Microsystems, and rescued a failing mobile banking project by cutting its scope and writing recovery OKRs."
+            "The in-person week in Doha turned to teams and culture. Groups allocated a $120 million fund across twenty proposals, analyzed a case on leading a global team, and rescued a failing mobile banking project by cutting its scope and writing recovery OKRs."
         ],
     },
     {
