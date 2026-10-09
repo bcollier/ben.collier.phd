@@ -182,7 +182,7 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-rust",
-        "one_liner": "Finding structure in messy business data, then deciding whether to trust it.",
+        "one_liner": "Applied machine learning techniques in Python: finding structure in messy business data, then deciding whether to trust it.",
         "blurb": "Tepper's MBA data mining course, which I have taught six times since 2023. It covers clustering, PCA, regression, classification, forecasting, and text, with labs in Python, and it keeps asking what each model is for. Labs are in Python. The goal is not a long list of algorithms. It is a workflow students can apply to an unfamiliar dataset the week after the course ends.",
         "offerings": [
             "Fall 2023 full-time",
