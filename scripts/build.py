@@ -262,7 +262,7 @@ COURSES = [
         "school": "Tepper",
         "built": False,
         "color": "c-pine",
-        "one_liner": "The MS in Business Analytics program's Tableau course: chart design, data stories, dashboards, and visualization for machine learning.",
+        "one_liner": "We spend half the time hands-on with applied tools and half learning to tell stories with data: chart design, dashboards, and visualization for machine learning.",
         "blurb": "The MS in Business Analytics counterpart to the MBA course Data Visualization: seven weekly modules in Tableau, with the same labs, weekly data stories, and AI coach as the MBA course, ending on explainable AI and visualization for machine learning.",
         "offerings": ["Spring 2025 online hybrid", "Spring 2026"],
         "materials": "Enrolled students get the workbooks and lessons on Canvas.",
