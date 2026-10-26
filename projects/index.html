@@ -64,8 +64,20 @@
 
   <section class="page-head reveal"><p class="kicker">Portfolio</p><h1>Coding with <span class="u u2" data-d="0.4">AI</span></h1><p class="lede">Working projects I built with AI coding tools, several of them for Effective Coding with AI, a Carnegie Mellon course, and <a href="#apps-coded-with-ai">smaller apps and visualizations</a> I coded with an AI assistant from my own data. Each repo includes the prompts and build log, and I use them as examples in class.</p></section>
   <div class="portfolio">
+  <article class="pf reveal" id="slide-finder">
+    <a class="pf-shot polaroid drop" href="https://slide-finder.vercel.app" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/slide-finder.jpg" alt="Slide Finder results for &quot;how does a computer read a photo&quot;: a grid of slide cards led by Images are Numbers, each with its course, session, distance and the narration that matched" width="1200" height="675" loading="lazy"></a>
+    <div class="pf-body">
+      <p class="kicker">Web app &middot; October 2026</p>
+      <h2>Slide Finder</h2>
+      <p class="pf-tools">Python, FastAPI, Supabase Postgres with pgvector, Voyage AI embeddings, Claude Haiku (image descriptions and titles), Vercel, Claude Code</p>
+      
+      <p>Search my own slides by meaning. Every deck I have taught since Fall 2023, across five courses, plus what I said in class while each slide was on screen, is indexed in one vector database. Ask a question the way a student would and it returns the slides that answer it, with what I said over each one term by term, and shows exactly why each slide was chosen. Built for Effective Coding with AI (15-113), a Carnegie Mellon course, as the vector database project in Fall 2026.</p>
+      <ul class="dashes"><li>The same slide comes back year after year in a new template, so repeated slides are recognised by the pictures embedded in them, not by how the page renders. 5,623 deck pages became 2,801 unique slides, each listing every term that used it.</li><li>Picture-only slides get a description written by a vision model, stored as its own searchable item, so a slide that is just a chart can still be found by what it shows.</li><li>Keyword matches count half as much as meaning matches, because a measured evaluation showed keywords alone almost never find the right slide; every ranking choice was checked against 28 labeled questions.</li><li>Each result explains itself: a sentence saying why it ranked, a distance gauge, and the exact sentence of narration or description that matched.</li></ul>
+      <p class="pf-links"><a class="go" href="https://slide-finder.vercel.app">Try it</a> <a class="go" href="https://github.com/bcollier/slide-finder">Source, architecture and prompt log on GitHub</a></p>
+    </div>
+  </article>
   <article class="pf reveal" id="faculty-twin">
-    <a class="pf-shot polaroid drop" href="https://faculty-twin.vercel.app" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/faculty-twin.jpg" alt="The Faculty Twin sign-in screen: &quot;Ask me about the course&quot;, a line saying it is an AI version of me that teaches from my own slides, and a box for the course passcode" width="1200" height="675" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://faculty-twin.vercel.app" style="--rot:1.6deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/faculty-twin.jpg" alt="The Faculty Twin sign-in screen: &quot;Ask me about the course&quot;, a line saying it is an AI version of me that teaches from my own slides, and a box for the course passcode" width="1200" height="675" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Web app &middot; October 2026</p>
       <h2>Faculty Twin</h2>
@@ -77,7 +89,7 @@
     </div>
   </article>
   <article class="pf reveal" id="reels">
-    <a class="pf-shot polaroid drop" href="../reels/" style="--rot:1.6deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/reels.jpg" alt="A four-up grid from version 2 of the reels: four photos of me from the mid-2000s under neon stage lights and sparkles" width="1200" height="675" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="../reels/" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/reels.jpg" alt="A four-up grid from version 2 of the reels: four photos of me from the mid-2000s under neon stage lights and sparkles" width="1200" height="675" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Web app &middot; October 2026</p>
       <h2>Reels: Me, Over the Years</h2>
@@ -89,7 +101,7 @@
     </div>
   </article>
   <article class="pf reveal tall" id="ignatius-at-home">
-    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/ignatius-hw4-web/" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/ignatius-at-home.jpg" alt="Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting" width="1200" height="1600" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/ignatius-hw4-web/" style="--rot:2.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/ignatius-at-home.jpg" alt="Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting" width="1200" height="1600" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Web app &middot; September 2026</p>
       <h2>Ignatius at Home</h2>
@@ -101,7 +113,7 @@
     </div>
   </article>
   <article class="pf reveal" id="rink-rivals">
-    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/nhl-player-compare" style="--rot:2.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/rink-rivals.png" alt="Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted" width="1600" height="900" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/nhl-player-compare" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/rink-rivals.png" alt="Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted" width="1600" height="900" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Web app &middot; September 2026</p>
       <h2>Rink Rivals</h2>
@@ -114,7 +126,7 @@
     </div>
   </article>
   <article class="pf reveal" id="charlie-road">
-    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/charlie-road/" style="--rot:-2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/charlie-road.jpg" alt="Charlie the cocker spaniel, in a sweater, hopping across a voxel road in Charlie Road" width="1280" height="642" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://bcollier.github.io/charlie-road/" style="--rot:1.6deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/charlie-road.jpg" alt="Charlie the cocker spaniel, in a sweater, hopping across a voxel road in Charlie Road" width="1280" height="642" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Browser game &middot; September 2026</p>
       <h2>Charlie Road</h2>
@@ -126,7 +138,7 @@
     </div>
   </article>
   <article class="pf reveal" id="claude-ravens-demo">
-    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/claude-ravens-demo" style="--rot:1.6deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/claude-ravens-demo.png" alt="A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options" width="902" height="664" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="https://github.com/bcollier/claude-ravens-demo" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/claude-ravens-demo.png" alt="A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options" width="902" height="664" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Experiment &middot; September 2026</p>
       <h2>Can a computer pass an IQ test?</h2>
@@ -138,7 +150,7 @@
     </div>
   </article>
   <article class="pf reveal" id="connections">
-    <a class="pf-shot polaroid drop" href="../connections/" style="--rot:-1.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/connections.jpg" alt="The game mid-puzzle: QUARTER-MUNCHING ARCADE ICONS solved in yellow above twelve words such as PIEROGI, CATAN and KAYAK, two of them selected" width="1200" height="675" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="../connections/" style="--rot:2.2deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="../assets/portfolio/connections.jpg" alt="The game mid-puzzle: QUARTER-MUNCHING ARCADE ICONS solved in yellow above twelve words such as PIEROGI, CATAN and KAYAK, two of them selected" width="1200" height="675" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">Browser game &middot; September 2025</p>
       <h2>Connections About You</h2>
