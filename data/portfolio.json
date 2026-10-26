@@ -1,228 +1,256 @@
 {
- "note": "Fun projects shown to classes. Each entry renders as a card on /projects/. Keep image paths under assets/portfolio/.",
- "projects": [
-  {
-   "id": "faculty-twin",
-   "title": "Faculty Twin",
-   "kind": "Web app",
-   "date": "October 2026",
-   "tools": "Python, FastAPI, Claude, Voyage AI embeddings, ElevenLabs, Supabase, Vercel, Claude Code",
-   "image": "assets/portfolio/faculty-twin.jpg",
-   "image_alt": "The Faculty Twin sign-in screen: \"Ask me about the course\", a line saying it is an AI version of me that teaches from my own slides, and a box for the course passcode",
-   "image_width": 1200,
-   "image_height": 675,
-   "summary": "An AI version of me that teaches from my own slides. Students ask a course question and get my slides from this semester with a narrated walkthrough in an AI voice made from my recordings, and short clips of me explaining it in class. It is behind a passcode for my students. I built it for Effective Coding with AI (15-113), a Carnegie Mellon course, as Project 2 in Fall 2026.",
-   "decisions": [
-    "Every answer comes from my own course material: a slide, its speaker notes, or what I said in class. If the material does not cover a question, the twin says so instead of guessing.",
-    "The voice is AI-generated from my recordings, and the page labels it that way. It only reads narration the backend wrote and signed, so nobody can make it say something else.",
-    "Students stay out of it. Class transcripts are scrubbed of names before anything is indexed, and no clip includes a student speaking."
-   ],
-   "links": [
+  "note": "Fun projects shown to classes. Each entry renders as a card on /projects/. Keep image paths under assets/portfolio/.",
+  "projects": [
     {
-     "label": "Try it (passcode for my students)",
-     "href": "https://faculty-twin.vercel.app"
+      "id": "slide-finder",
+      "title": "Slide Finder",
+      "kind": "Web app",
+      "date": "October 2026",
+      "tools": "Python, FastAPI, Supabase Postgres with pgvector, Voyage AI embeddings, Claude Haiku (image descriptions and titles), Vercel, Claude Code",
+      "image": "assets/portfolio/slide-finder.jpg",
+      "image_alt": "Slide Finder results for \"how does a computer read a photo\": a grid of slide cards led by Images are Numbers, each with its course, session, distance and the narration that matched",
+      "image_width": 1200,
+      "image_height": 675,
+      "summary": "Search my own slides by meaning. Every deck I have taught since Fall 2023, across five courses, plus what I said in class while each slide was on screen, is indexed in one vector database. Ask a question the way a student would and it returns the slides that answer it, with what I said over each one term by term, and shows exactly why each slide was chosen. Built for Effective Coding with AI (15-113), a Carnegie Mellon course, as the vector database project in Fall 2026.",
+      "decisions": [
+        "The same slide comes back year after year in a new template, so repeated slides are recognised by the pictures embedded in them, not by how the page renders. 5,623 deck pages became 2,801 unique slides, each listing every term that used it.",
+        "Picture-only slides get a description written by a vision model, stored as its own searchable item, so a slide that is just a chart can still be found by what it shows.",
+        "Keyword matches count half as much as meaning matches, because a measured evaluation showed keywords alone almost never find the right slide; every ranking choice was checked against 28 labeled questions.",
+        "Each result explains itself: a sentence saying why it ranked, a distance gauge, and the exact sentence of narration or description that matched."
+      ],
+      "links": [
+        {
+          "label": "Try it",
+          "href": "https://slide-finder.vercel.app"
+        },
+        {
+          "label": "Source, architecture and prompt log on GitHub",
+          "href": "https://github.com/bcollier/slide-finder"
+        }
+      ]
     },
     {
-     "label": "Source and prompt log on GitHub",
-     "href": "https://github.com/bcollier/faculty-twin"
+      "id": "faculty-twin",
+      "title": "Faculty Twin",
+      "kind": "Web app",
+      "date": "October 2026",
+      "tools": "Python, FastAPI, Claude, Voyage AI embeddings, ElevenLabs, Supabase, Vercel, Claude Code",
+      "image": "assets/portfolio/faculty-twin.jpg",
+      "image_alt": "The Faculty Twin sign-in screen: \"Ask me about the course\", a line saying it is an AI version of me that teaches from my own slides, and a box for the course passcode",
+      "image_width": 1200,
+      "image_height": 675,
+      "summary": "An AI version of me that teaches from my own slides. Students ask a course question and get my slides from this semester with a narrated walkthrough in an AI voice made from my recordings, and short clips of me explaining it in class. It is behind a passcode for my students. I built it for Effective Coding with AI (15-113), a Carnegie Mellon course, as Project 2 in Fall 2026.",
+      "decisions": [
+        "Every answer comes from my own course material: a slide, its speaker notes, or what I said in class. If the material does not cover a question, the twin says so instead of guessing.",
+        "The voice is AI-generated from my recordings, and the page labels it that way. It only reads narration the backend wrote and signed, so nobody can make it say something else.",
+        "Students stay out of it. Class transcripts are scrubbed of names before anything is indexed, and no clip includes a student speaking."
+      ],
+      "links": [
+        {
+          "label": "Try it (passcode for my students)",
+          "href": "https://faculty-twin.vercel.app"
+        },
+        {
+          "label": "Source and prompt log on GitHub",
+          "href": "https://github.com/bcollier/faculty-twin"
+        }
+      ]
+    },
+    {
+      "id": "reels",
+      "title": "Reels: Me, Over the Years",
+      "kind": "Web app",
+      "date": "October 2026",
+      "tools": "Python, osxphotos, Apple Vision, OpenCLIP, NumPy, WebGL, Claude Code",
+      "image": "assets/portfolio/reels.jpg",
+      "image_alt": "A four-up grid from version 2 of the reels: four photos of me from the mid-2000s under neon stage lights and sparkles",
+      "image_width": 1200,
+      "image_height": 675,
+      "summary": "172 photos of me from my own photo library, 2000 to 2026, cut two ways. Version 2 is a 3:41 music video drawn live in the browser with WebGL, cut to the beat of a CC0 track in the neon style of K-pop animation. Version 1 is a pair of slideshows: me at work, and me everywhere else. I built it for Effective Coding with AI, a Carnegie Mellon course, as Project 2.",
+      "decisions": [
+        "A script on my Mac picks the photos: it reads Apple Photos read-only, finds my tagged face, drops screenshots, blurry shots and bursts, and sorts the rest with a local image model. No photo goes to any online service.",
+        "Nobody else appears. Apple Vision finds every other face and body, and each photo is cropped until mine is the only face, or it is left out. A second check runs on the final crop, because the first pass missed a toddler and a kiss.",
+        "Version 2 is directed by code: a script measures the track's kick drum (140 beats a minute), finds the drops, and lays 190 shots on that beat grid. The browser then draws every frame from the song time alone, so seeking is exact.",
+        "With reduced motion turned on, the same cut plays without flashes, glitch or shake."
+      ],
+      "links": [
+        {
+          "label": "Watch it",
+          "href": "../reels/"
+        },
+        {
+          "label": "README and prompt log",
+          "href": "https://github.com/bcollier/ben.collier.phd/tree/main/reels"
+        },
+        {
+          "label": "The scripts",
+          "href": "https://github.com/bcollier/ben.collier.phd/blob/main/scripts/make_reels_v2.py"
+        }
+      ]
+    },
+    {
+      "id": "ignatius-at-home",
+      "title": "Ignatius at Home",
+      "kind": "Web app",
+      "date": "September 2026",
+      "tools": "Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render",
+      "image": "assets/portfolio/ignatius-at-home.jpg",
+      "image_alt": "Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting",
+      "image_width": 1200,
+      "image_height": 1600,
+      "summary": "A meditation app that turns reading material, such as a handout, a few passages, or just an idea like \"seven days on a theme\", into a guided audio series listened to one day at a time. Each day pairs a reading with a slow, repeated listening, a short reflection, some background on the text, a stretch of quiet between two bells, and a painting to sit with. I built it for Effective Coding with AI, a Carnegie Mellon course, as the course's server-side project on Render.",
+      "process": "I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes the guidance around the reading, but it never rewrites the source text: readings come from the person's own material or a public-domain source. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.",
+      "links": [
+        {
+          "label": "Try it",
+          "href": "https://bcollier.github.io/ignatius-hw4-web/"
+        },
+        {
+          "label": "Source, screenshots, and prompt log on GitHub",
+          "href": "https://github.com/bcollier/ignatius-hw4-web"
+        },
+        {
+          "label": "Backend and architecture",
+          "href": "https://github.com/bcollier/ignatius-hw4-api"
+        },
+        {
+          "label": "The original design spec",
+          "href": "https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md"
+        }
+      ],
+      "decisions": [
+        "The model plans each day and writes the guidance around the reading, but never rewrites the source text. Readings come from the person's own material or a public-domain source.",
+        "It is free for anyone: open models on an academic cloud, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier.",
+        "Notes a person writes about themselves stay private, even in the build logs of the shared examples."
+      ]
+    },
+    {
+      "id": "rink-rivals",
+      "title": "Rink Rivals",
+      "kind": "Web app",
+      "date": "September 2026",
+      "tools": "Python, Flask, Claude Code, the NHL API, OpenAI",
+      "image": "assets/portfolio/rink-rivals.png",
+      "image_alt": "Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted",
+      "summary": "Type in two NHL players and see their careers side by side: every regular-season statistic with the leader highlighted, each player's draft position and trophies, and a season-by-season chart of their production. If you want it settled, a language model reads the whole comparison and picks a winner. It has to commit, explain the pick, and give the strongest argument against it. I built it for Effective Coding with AI, a Carnegie Mellon course, as a study in what a small app owes the person using it.",
+      "process": "Most of the interesting work was deciding what the app should refuse to do. The NHL's search endpoint does not rank results by relevance. A search for \"Marc-Andre Fleury\" returns Marc-Andre Dorion first, so taking the top result quietly shows the wrong career without any error. A scoring function fixes that, and a regression test checks that the endpoint still behaves this way. Skaters and goalies share almost no statistics, so the app declines to compare them rather than print numbers that are accurate and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, which keeps a long career from passing for a great one. The OpenAI key stays on the server. GitHub Pages has no server to hold a secret, and GitHub Secrets are build-time variables that would end up in the published JavaScript.",
+      "links": [
+        {
+          "label": "Source, tests, and prompt log on GitHub",
+          "href": "https://github.com/bcollier/nhl-player-compare"
+        },
+        {
+          "label": "How the two APIs are called",
+          "href": "https://github.com/bcollier/nhl-player-compare#the-apis-used"
+        }
+      ],
+      "image_width": 1600,
+      "image_height": 900,
+      "note": "This is the small, public version. I have also built a much larger hockey platform that is now being demonstrated to NCAA Division I programs for their coaches, managers, scouts, and players. Its code and login are private, so they are not linked here. It runs several coordinating agents and a data-analysis agent over a hockey database of more than 6 GB. I am happy to demo it in person for anyone interested in hockey data work at that scale."
+    },
+    {
+      "id": "charlie-road",
+      "title": "Charlie Road",
+      "kind": "Browser game",
+      "date": "September 2026",
+      "tools": "Kiro, Claude Code, three.js",
+      "image": "assets/portfolio/charlie-road.jpg",
+      "image_alt": "Charlie the cocker spaniel, in a sweater, hopping across a voxel road in Charlie Road",
+      "summary": "A browser version of Crossy Road starring Charlie, our nine-year-old cocker spaniel, in place of the chicken. It keeps what makes the original work: the voxel look, one hop per input, endless roads, rivers, and railways, and a camera that punishes dawdling. Then it adds what matters to Charlie: tennis balls instead of coins, a bark that stops traffic, squirrels to chase, his real outfits as unlocks, a giant caterpillar toy worth five balls, and a flying saucer piloted by a squirrel where the eagle used to be.",
+      "process": "The first version came from thirty minutes in class with Kiro. It went through five iterations, from colored rectangles to a fake-isometric board that never quite worked. I rebuilt it in an evening at home with Claude Code. I measured the camera angle from real gameplay screenshots and wrote a spec with acceptance criteria a machine could check, plus fairness rules for the world generator. Then I let an autonomous run build it one block at a time, checking each block by stepping the simulation through a debug harness instead of trusting a screenshot. After I played it, a second round added the bark, the saucer, combos, a daily challenge, and a shareable trading card. Every prompt, decision, and build step is in the repo.",
+      "links": [
+        {
+          "label": "Play it",
+          "href": "https://bcollier.github.io/charlie-road/"
+        },
+        {
+          "label": "Play the 30-minute class prototype",
+          "href": "https://bcollier.github.io/charlie-road/v1/"
+        },
+        {
+          "label": "Source, prompts, and build log on GitHub",
+          "href": "https://github.com/bcollier/charlie-road"
+        },
+        {
+          "label": "Gameplay video",
+          "href": "https://youtu.be/4csO6aQQAdw"
+        }
+      ],
+      "image_width": 1280,
+      "image_height": 642
+    },
+    {
+      "id": "claude-ravens-demo",
+      "title": "Can a computer pass an IQ test?",
+      "kind": "Experiment",
+      "date": "September 2026",
+      "tools": "Python, Claude Code, 16 language models",
+      "image": "assets/portfolio/claude-ravens-demo.png",
+      "image_width": 902,
+      "image_height": 664,
+      "image_alt": "A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options",
+      "summary": "Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A current language model, given the puzzle sheet and every cell as images, nearly aces it.",
+      "process": "Sixteen language models from nine companies ran the same puzzles with the same prompt, so the write-up compares accuracy, cost, and speed directly. Four models tied at 92 while their prices differed by almost five to one. Five scored below the program with no AI in it. One release changed how the model works at answer time, and that moved its score more than two years of scaling did on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the explanation is the most useful lesson in the repo. A script generates every number from the raw results, and the prompt history quotes every instruction that produced them.",
+      "links": [
+        {
+          "label": "Read the write-up and browse the code on GitHub",
+          "href": "https://github.com/bcollier/claude-ravens-demo"
+        },
+        {
+          "label": "Prompt history",
+          "href": "https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md"
+        }
+      ],
+      "stats": [
+        [
+          "random guessing",
+          13
+        ],
+        [
+          "a student's 2017 program",
+          34
+        ],
+        [
+          "expert system, no language model",
+          59
+        ],
+        [
+          "current language model",
+          93
+        ]
+      ]
+    },
+    {
+      "id": "connections",
+      "title": "Connections About You",
+      "kind": "Browser game",
+      "date": "September 2025",
+      "tools": "JavaScript, Node.js, Express, OpenAI GPT-5 with web search, gpt-oss-120b, Playwright, Claude Code",
+      "image": "assets/portfolio/connections.jpg",
+      "image_alt": "The game mid-puzzle: QUARTER-MUNCHING ARCADE ICONS solved in yellow above twelve words such as PIEROGI, CATAN and KAYAK, two of them selected",
+      "image_width": 1200,
+      "image_height": 675,
+      "summary": "A word game in the style of the NYT's Connections. An AI writes puzzles about a person: type a name and a town, and GPT-5 searches the web and builds four groups of four from that person's work, their city, and some guesses about their tastes. When the game ends, it explains each group and links to what it read. Next to five puzzles it wrote about me, I added three packs I wrote by hand, for Star Wars, The Lord of the Rings and Carnegie Mellon, each in its own animated theme.",
+      "decisions": [
+        "A few rules keep it a game and not a resume: at least two groups are about fun things, at most one is about work, and at most one is about the place. Real Connections groups in the prompt show the format and the difficulty ladder, from yellow up to purple.",
+        "Every answer is checked before anyone plays it: a schema, sixteen different words across the four groups, and up to two retries. The last twenty puzzles go back into the prompt so it stops reaching for the same themes.",
+        "The demo has no live generation. A static page cannot keep an OpenAI key secret, so it plays five puzzles GPT-5 wrote about me, saved from the server's history. Run the server and it makes one about you.",
+        "Writing nine puzzles by hand showed me what the AI misses: a good puzzle lives in its red herring, a word that fits two groups when only one grouping works. The model rarely builds one on purpose."
+      ],
+      "links": [
+        {
+          "label": "Play it here",
+          "href": "../connections/"
+        },
+        {
+          "label": "Source on GitHub",
+          "href": "https://github.com/bcollier/connections_demo"
+        },
+        {
+          "label": "How a puzzle is made",
+          "href": "https://github.com/bcollier/connections_demo#how-a-live-puzzle-is-made"
+        }
+      ]
     }
-   ]
-  },
-  {
-   "id": "reels",
-   "title": "Reels: Me, Over the Years",
-   "kind": "Web app",
-   "date": "October 2026",
-   "tools": "Python, osxphotos, Apple Vision, OpenCLIP, NumPy, WebGL, Claude Code",
-   "image": "assets/portfolio/reels.jpg",
-   "image_alt": "A four-up grid from version 2 of the reels: four photos of me from the mid-2000s under neon stage lights and sparkles",
-   "image_width": 1200,
-   "image_height": 675,
-   "summary": "172 photos of me from my own photo library, 2000 to 2026, cut two ways. Version 2 is a 3:41 music video drawn live in the browser with WebGL, cut to the beat of a CC0 track in the neon style of K-pop animation. Version 1 is a pair of slideshows: me at work, and me everywhere else. I built it for Effective Coding with AI, a Carnegie Mellon course, as Project 2.",
-   "decisions": [
-    "A script on my Mac picks the photos: it reads Apple Photos read-only, finds my tagged face, drops screenshots, blurry shots and bursts, and sorts the rest with a local image model. No photo goes to any online service.",
-    "Nobody else appears. Apple Vision finds every other face and body, and each photo is cropped until mine is the only face, or it is left out. A second check runs on the final crop, because the first pass missed a toddler and a kiss.",
-    "Version 2 is directed by code: a script measures the track's kick drum (140 beats a minute), finds the drops, and lays 190 shots on that beat grid. The browser then draws every frame from the song time alone, so seeking is exact.",
-    "With reduced motion turned on, the same cut plays without flashes, glitch or shake."
-   ],
-   "links": [
-    {
-     "label": "Watch it",
-     "href": "../reels/"
-    },
-    {
-     "label": "README and prompt log",
-     "href": "https://github.com/bcollier/ben.collier.phd/tree/main/reels"
-    },
-    {
-     "label": "The scripts",
-     "href": "https://github.com/bcollier/ben.collier.phd/blob/main/scripts/make_reels_v2.py"
-    }
-   ]
-  },
-  {
-   "id": "ignatius-at-home",
-   "title": "Ignatius at Home",
-   "kind": "Web app",
-   "date": "September 2026",
-   "tools": "Python, FastAPI, Claude Code, Claude, ElevenLabs, Supabase, Render",
-   "image": "assets/portfolio/ignatius-at-home.jpg",
-   "image_alt": "Three iPhone screens from Ignatius at Home: the home page picking up day three of a guided series, the audio player reading that day's reflection with its progress through the session, and the series page with its days and a painting",
-   "image_width": 1200,
-   "image_height": 1600,
-   "summary": "A meditation app that turns reading material, such as a handout, a few passages, or just an idea like \"seven days on a theme\", into a guided audio series listened to one day at a time. Each day pairs a reading with a slow, repeated listening, a short reflection, some background on the text, a stretch of quiet between two bells, and a painting to sit with. I built it for Effective Coding with AI, a Carnegie Mellon course, as the course's server-side project on Render.",
-   "process": "I wrote a design spec and a build plan before any code. After that came a spec-driven revision, a Clean Code cleanup, and a visual redesign from mockups, and every prompt is logged. A few decisions mattered most. The model plans each day and writes the guidance around the reading, but it never rewrites the source text: readings come from the person's own material or a public-domain source. The app is free for anyone: it runs on an academic cloud's open models, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier. Notes a person writes about themselves are hidden from everyone else, including in the build logs of the shared examples. Most of the late work was on the iPhone, where a nested form blanked the whole app, a long label pushed the close button off the screen, and guided sessions stalled whenever the screen turned off.",
-   "links": [
-    {
-     "label": "Try it",
-     "href": "https://bcollier.github.io/ignatius-hw4-web/"
-    },
-    {
-     "label": "Source, screenshots, and prompt log on GitHub",
-     "href": "https://github.com/bcollier/ignatius-hw4-web"
-    },
-    {
-     "label": "Backend and architecture",
-     "href": "https://github.com/bcollier/ignatius-hw4-api"
-    },
-    {
-     "label": "The original design spec",
-     "href": "https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md"
-    }
-   ],
-   "decisions": [
-    "The model plans each day and writes the guidance around the reading, but never rewrites the source text. Readings come from the person's own material or a public-domain source.",
-    "It is free for anyone: open models on an academic cloud, free Microsoft voices, and the free tiers of six search services, with Claude and ElevenLabs as the paid tier.",
-    "Notes a person writes about themselves stay private, even in the build logs of the shared examples."
-   ]
-  },
-  {
-   "id": "rink-rivals",
-   "title": "Rink Rivals",
-   "kind": "Web app",
-   "date": "September 2026",
-   "tools": "Python, Flask, Claude Code, the NHL API, OpenAI",
-   "image": "assets/portfolio/rink-rivals.png",
-   "image_alt": "Rink Rivals comparing Sidney Crosby and Alex Ovechkin: both player cards with draft position and trophies, the points-per-season chart aligned by career year, and the stat table with each category's leader highlighted",
-   "summary": "Type in two NHL players and see their careers side by side: every regular-season statistic with the leader highlighted, each player's draft position and trophies, and a season-by-season chart of their production. If you want it settled, a language model reads the whole comparison and picks a winner. It has to commit, explain the pick, and give the strongest argument against it. I built it for Effective Coding with AI, a Carnegie Mellon course, as a study in what a small app owes the person using it.",
-   "process": "Most of the interesting work was deciding what the app should refuse to do. The NHL's search endpoint does not rank results by relevance. A search for \"Marc-Andre Fleury\" returns Marc-Andre Dorion first, so taking the top result quietly shows the wrong career without any error. A scoring function fixes that, and a regression test checks that the endpoint still behaves this way. Skaters and goalies share almost no statistics, so the app declines to compare them rather than print numbers that are accurate and meaningless. Shots against and games played measure workload, not quality, so they are shown but never scored, which keeps a long career from passing for a great one. The OpenAI key stays on the server. GitHub Pages has no server to hold a secret, and GitHub Secrets are build-time variables that would end up in the published JavaScript.",
-   "links": [
-    {
-     "label": "Source, tests, and prompt log on GitHub",
-     "href": "https://github.com/bcollier/nhl-player-compare"
-    },
-    {
-     "label": "How the two APIs are called",
-     "href": "https://github.com/bcollier/nhl-player-compare#the-apis-used"
-    }
-   ],
-   "image_width": 1600,
-   "image_height": 900,
-   "note": "This is the small, public version. I have also built a much larger hockey platform that is now being demonstrated to NCAA Division I programs for their coaches, managers, scouts, and players. Its code and login are private, so they are not linked here. It runs several coordinating agents and a data-analysis agent over a hockey database of more than 6 GB. I am happy to demo it in person for anyone interested in hockey data work at that scale."
-  },
-  {
-   "id": "charlie-road",
-   "title": "Charlie Road",
-   "kind": "Browser game",
-   "date": "September 2026",
-   "tools": "Kiro, Claude Code, three.js",
-   "image": "assets/portfolio/charlie-road.jpg",
-   "image_alt": "Charlie the cocker spaniel, in a sweater, hopping across a voxel road in Charlie Road",
-   "summary": "A browser version of Crossy Road starring Charlie, our nine-year-old cocker spaniel, in place of the chicken. It keeps what makes the original work: the voxel look, one hop per input, endless roads, rivers, and railways, and a camera that punishes dawdling. Then it adds what matters to Charlie: tennis balls instead of coins, a bark that stops traffic, squirrels to chase, his real outfits as unlocks, a giant caterpillar toy worth five balls, and a flying saucer piloted by a squirrel where the eagle used to be.",
-   "process": "The first version came from thirty minutes in class with Kiro. It went through five iterations, from colored rectangles to a fake-isometric board that never quite worked. I rebuilt it in an evening at home with Claude Code. I measured the camera angle from real gameplay screenshots and wrote a spec with acceptance criteria a machine could check, plus fairness rules for the world generator. Then I let an autonomous run build it one block at a time, checking each block by stepping the simulation through a debug harness instead of trusting a screenshot. After I played it, a second round added the bark, the saucer, combos, a daily challenge, and a shareable trading card. Every prompt, decision, and build step is in the repo.",
-   "links": [
-    {
-     "label": "Play it",
-     "href": "https://bcollier.github.io/charlie-road/"
-    },
-    {
-     "label": "Play the 30-minute class prototype",
-     "href": "https://bcollier.github.io/charlie-road/v1/"
-    },
-    {
-     "label": "Source, prompts, and build log on GitHub",
-     "href": "https://github.com/bcollier/charlie-road"
-    },
-    {
-     "label": "Gameplay video",
-     "href": "https://youtu.be/4csO6aQQAdw"
-    }
-   ],
-   "image_width": 1280,
-   "image_height": 642
-  },
-  {
-   "id": "claude-ravens-demo",
-   "title": "Can a computer pass an IQ test?",
-   "kind": "Experiment",
-   "date": "September 2026",
-   "tools": "Python, Claude Code, 16 language models",
-   "image": "assets/portfolio/claude-ravens-demo.png",
-   "image_width": 902,
-   "image_height": 664,
-   "image_alt": "A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options",
-   "summary": "Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A current language model, given the puzzle sheet and every cell as images, nearly aces it.",
-   "process": "Sixteen language models from nine companies ran the same puzzles with the same prompt, so the write-up compares accuracy, cost, and speed directly. Four models tied at 92 while their prices differed by almost five to one. Five scored below the program with no AI in it. One release changed how the model works at answer time, and that moved its score more than two years of scaling did on either side. A neural network trained on thousands of invented puzzles scored 10, worse than guessing, and the explanation is the most useful lesson in the repo. A script generates every number from the raw results, and the prompt history quotes every instruction that produced them.",
-   "links": [
-    {
-     "label": "Read the write-up and browse the code on GitHub",
-     "href": "https://github.com/bcollier/claude-ravens-demo"
-    },
-    {
-     "label": "Prompt history",
-     "href": "https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md"
-    }
-   ],
-   "stats": [
-    [
-     "random guessing",
-     13
-    ],
-    [
-     "a student's 2017 program",
-     34
-    ],
-    [
-     "expert system, no language model",
-     59
-    ],
-    [
-     "current language model",
-     93
-    ]
-   ]
-  },
-  {
-   "id": "connections",
-   "title": "Connections About You",
-   "kind": "Browser game",
-   "date": "September 2025",
-   "tools": "JavaScript, Node.js, Express, OpenAI GPT-5 with web search, gpt-oss-120b, Playwright, Claude Code",
-   "image": "assets/portfolio/connections.jpg",
-   "image_alt": "The game mid-puzzle: QUARTER-MUNCHING ARCADE ICONS solved in yellow above twelve words such as PIEROGI, CATAN and KAYAK, two of them selected",
-   "image_width": 1200,
-   "image_height": 675,
-   "summary": "A word game in the style of the NYT's Connections. An AI writes puzzles about a person: type a name and a town, and GPT-5 searches the web and builds four groups of four from that person's work, their city, and some guesses about their tastes. When the game ends, it explains each group and links to what it read. Next to five puzzles it wrote about me, I added three packs I wrote by hand, for Star Wars, The Lord of the Rings and Carnegie Mellon, each in its own animated theme.",
-   "decisions": [
-    "A few rules keep it a game and not a resume: at least two groups are about fun things, at most one is about work, and at most one is about the place. Real Connections groups in the prompt show the format and the difficulty ladder, from yellow up to purple.",
-    "Every answer is checked before anyone plays it: a schema, sixteen different words across the four groups, and up to two retries. The last twenty puzzles go back into the prompt so it stops reaching for the same themes.",
-    "The demo has no live generation. A static page cannot keep an OpenAI key secret, so it plays five puzzles GPT-5 wrote about me, saved from the server's history. Run the server and it makes one about you.",
-    "Writing nine puzzles by hand showed me what the AI misses: a good puzzle lives in its red herring, a word that fits two groups when only one grouping works. The model rarely builds one on purpose."
-   ],
-   "links": [
-    {
-     "label": "Play it here",
-     "href": "../connections/"
-    },
-    {
-     "label": "Source on GitHub",
-     "href": "https://github.com/bcollier/connections_demo"
-    },
-    {
-     "label": "How a puzzle is made",
-     "href": "https://github.com/bcollier/connections_demo#how-a-live-puzzle-is-made"
-    }
-   ]
-  }
- ]
+  ]
 }
