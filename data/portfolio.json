@@ -8,7 +8,7 @@
       "date": "October 2026",
       "tools": "Python, FastAPI, Supabase Postgres with pgvector, Voyage AI embeddings, Claude Haiku (image descriptions and titles), Vercel, Claude Code",
       "image": "assets/portfolio/slide-finder.jpg",
-      "image_alt": "Slide Finder results for \"how does a computer read a photo\": a grid of slide cards led by Images are Numbers, each with its course, session, distance and the narration that matched",
+      "image_alt": "Slide Finder results for \"how does a computer read a photo\", laid out as prints taped to a notebook page: Images are Numbers first, each with its course, session, distance and the narration that matched",
       "image_width": 1200,
       "image_height": 675,
       "summary": "Search my own slides by meaning. Every deck I have taught since Fall 2023, across five courses, plus what I said in class while each slide was on screen, is indexed in one vector database. Ask a question the way a student would and it returns the slides that answer it, with what I said over each one term by term, and shows exactly why each slide was chosen. Built for Effective Coding with AI (15-113), a Carnegie Mellon course, as the vector database project in Fall 2026.",
