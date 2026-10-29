@@ -2443,8 +2443,10 @@ def build_book():
         <li>Live session on Zoom or Google Meet</li>
         <li>A one-page written recommendation within two business days</li>
         <li data-live-text="Paid when you book">Invoiced before we meet</li>
+        <li>Full refund if you cancel at least a day ahead</li>
       </ul>
       {book_link("paidHour", "Book a consulting session", "../")}
+      <p class="alt-book">Need an invoice for your company? <a data-book="invoicedSession" data-subject="Consulting session (invoiced)" data-live-label="Book here instead" href="../contact/">Email me to book one</a></p>
     </section>
   </div>
 """

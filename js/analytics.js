@@ -68,8 +68,7 @@
     // A press on a consulting booking button is the site's lead, marked as a key event in GA.
     // Student office hours use the same buttons but are not leads.
     var book = el.getAttribute("data-book");
-    if (book === "freeChat" || book === "paidHour") {
-      gtag("event", "generate_lead", { lead_type: book === "paidHour" ? "consulting session" : "intro call" });
-    }
+    var leads = { freeChat: "intro call", paidHour: "consulting session", invoicedSession: "consulting session (invoiced)" };
+    if (leads[book]) gtag("event", "generate_lead", { lead_type: leads[book] });
   }, true);
 })();
