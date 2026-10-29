@@ -65,5 +65,11 @@
       click_area: area(el),
       link_url: el.href ? String(el.href).slice(0, 300) : ""
     });
+    // A press on a consulting booking button is the site's lead, marked as a key event in GA.
+    // Student office hours use the same buttons but are not leads.
+    var book = el.getAttribute("data-book");
+    if (book === "freeChat" || book === "paidHour") {
+      gtag("event", "generate_lead", { lead_type: book === "paidHour" ? "consulting session" : "intro call" });
+    }
   }, true);
 })();

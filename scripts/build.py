@@ -3430,6 +3430,21 @@ def build_feed():
     )
 
 
+# Standalone pages committed as-is rather than generated here. The build only
+# keeps their Google Analytics tag in step with data/site.json.
+STANDALONE_PAGES = ["evaluations-a/index.html"]
+
+
+def tag_standalone_pages():
+    for rel in STANDALONE_PAGES:
+        path = ROOT / rel
+        html = path.read_text(encoding="utf-8")
+        html = re.sub(r'\n  <script src="[./]*js/analytics\.js[^"]*" data-ga="[^"]*" defer></script>', "", html)
+        html = html.replace("</head>", versioned(analytics_tag("../" * rel.count("/"))) + "\n</head>", 1)
+        path.write_text(html, encoding="utf-8")
+        print("tagged", rel)
+
+
 def main():
     portfolio = load_json("portfolio.json")["projects"]
     build_home()
@@ -3450,6 +3465,7 @@ def main():
     build_reels()
     build_strengths()
     build_evaluations()
+    tag_standalone_pages()
     build_ai_apps()
     build_connections()
     build_404()
