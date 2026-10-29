@@ -1219,8 +1219,33 @@ def build_home():
     {course_assistant_note()}
   </section>
 
-  <section class="sec bio reveal" aria-labelledby="bio-title">
+  <section class="sec talks reveal" aria-labelledby="talks-title">
     <span class="sec-no" aria-hidden="true">No. 02</span>
+    <div class="talks-grid">
+      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <span class="ph"><img src="assets/talks/agents-interview-2026.jpg" alt="Ben Collier at a podcast microphone, gesturing with both hands as he explains AI agents" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">New &middot; Tepperspectives &middot; October 29, 2026 &middot; 17 min</span>
+      </a>
+      <div class="talks-text">
+        <p class="kicker">Talks</p>
+        <h2 id="talks-title">Understanding AI <span class="u u2" data-d=".5">agents</span></h2>
+        <p>An interview for Tepperspectives with Emily DeJeu. What agentic AI is, how it works, how it differs from generative AI, and how agents may change what a normal workday looks like.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=80GGsjiXN-I">Watch on YouTube</a></p>
+        <div class="also">
+          <p class="note">also on the talks page</p>
+          <ul>
+            <li><span class="when">Apr 2026 &middot; Faculty Spotlight</span>Business analytics as a decathlon</li>
+            <li><span class="when">Aug 2026 &middot; Tepper AI-Exchange</span>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</li>
+          </ul>
+          <p><a class="go" href="talks/">All talks</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec bio reveal" aria-labelledby="bio-title">
+    <span class="sec-no" aria-hidden="true">No. 03</span>
     <p class="kicker">About</p>
     <h2 id="bio-title">From industry to the <span class="u" data-d=".3">classroom</span>, and back</h2>
     <div class="bio-grid">
@@ -1238,7 +1263,7 @@ def build_home():
   </section>
 
   <section class="sec reveal" aria-labelledby="stats-title">
-    <span class="sec-no" aria-hidden="true">No. 03</span>
+    <span class="sec-no" aria-hidden="true">No. 04</span>
     <p class="kicker">By the numbers</p>
     <h2 id="stats-title">So far, in <span class="u" data-d=".3">tally marks</span></h2>
     <div class="stats">
@@ -1274,7 +1299,7 @@ def build_home():
   </section>
 
   <section class="sec reveal" aria-labelledby="courses-title">
-    <span class="sec-no" aria-hidden="true">No. 04</span>
+    <span class="sec-no" aria-hidden="true">No. 05</span>
     <p class="kicker">Teaching</p>
     <h2 id="courses-title">Courses I <span class="u" data-d=".3">built</span></h2>
     <div class="mnote courses-note fade" style="--d:.9s">
@@ -1288,7 +1313,7 @@ def build_home():
   </section>
 
   <section class="sec reveal" aria-labelledby="work-title">
-    <span class="sec-no" aria-hidden="true">No. 05</span>
+    <span class="sec-no" aria-hidden="true">No. 06</span>
     <div class="pad">
       <p class="kicker">Consulting and custom education</p>
       <h2 id="work-title">Work with <span class="u" data-d=".3">me</span></h2>
@@ -1321,37 +1346,12 @@ def build_home():
   </section>
 
   <section class="sec reveal" aria-labelledby="news-title">
-    <span class="sec-no" aria-hidden="true">No. 06</span>
+    <span class="sec-no" aria-hidden="true">No. 07</span>
     <p class="kicker">News</p>
     <h2 id="news-title">Recent <span class="u" data-d=".3">entries</span></h2>
     {news_note(latest)}
     {news_items(5)}
     <p class="after"><a class="go" href="news/">All news</a> &nbsp; <a class="go" href="cv/">Full CV</a></p>
-  </section>
-
-  <section class="sec talks reveal" aria-labelledby="talks-title">
-    <span class="sec-no" aria-hidden="true">No. 07</span>
-    <div class="talks-grid">
-      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
-        <span class="tape tl"></span><span class="tape br"></span>
-        <span class="ph"><img src="assets/talks/agents-interview-2026.jpg" alt="Ben Collier at a podcast microphone, gesturing with both hands as he explains AI agents" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
-        <span class="cap">New &middot; Tepperspectives &middot; October 29, 2026 &middot; 17 min</span>
-      </a>
-      <div class="talks-text">
-        <p class="kicker">Talks</p>
-        <h2 id="talks-title">Understanding AI <span class="u u2" data-d=".5">agents</span></h2>
-        <p>An interview for Tepperspectives with Emily DeJeu. What agentic AI is, how it works, how it differs from generative AI, and how agents may change what a normal workday looks like.</p>
-        <p><a class="go" href="https://www.youtube.com/watch?v=80GGsjiXN-I">Watch on YouTube</a></p>
-        <div class="also">
-          <p class="note">also on the talks page</p>
-          <ul>
-            <li><span class="when">Apr 2026 &middot; Faculty Spotlight</span>Business analytics as a decathlon</li>
-            <li><span class="when">Aug 2026 &middot; Tepper AI-Exchange</span>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</li>
-          </ul>
-          <p><a class="go" href="talks/">All talks</a></p>
-        </div>
-      </div>
-    </div>
   </section>
 """
     write(
