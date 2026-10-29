@@ -1103,6 +1103,7 @@ html:not(.nb) .art-print .back { display: none; }
 .sticky-card p, .sticky-card li { font-size: 16.5px; line-height: 1.55; }
 .sticky-card .dashes { margin-bottom: 20px; }
 .sticky-card .btn { align-self: flex-start; margin-top: auto; background: var(--card); }
+.sticky-card .alt-book { margin-top: 12px; font-size: 15px; }
 .checks.prose li { font-size: 17px; }
 
 /* ---------- News ---------- */
