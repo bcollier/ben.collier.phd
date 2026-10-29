@@ -161,6 +161,7 @@ https://ben.collier.phd · https://www.linkedin.com/in/bcollierphd · [CMU Schol
 
 ## Invited talks and media
 
+- Understanding AI Agents, interview with Emily DeJeu, Tepperspectives video, Tepper School of Business, October 29, 2026. https://www.youtube.com/watch?v=80GGsjiXN-I
 - Business Analytics Track Information Session, Tepper MBA program, Carnegie Mellon University, September 29, 2026
 - Perspectives on Analytics, BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business, August 22, 2025 and August 21, 2026
 - Managing Groups and Teams: Strategies for Collaborative Excellence, Community Partner Workshop, Carnegie Mellon University in Qatar, November 2025

@@ -380,6 +380,7 @@ COURSES = [
 NEWS = [
     # (date, text) or (date, text, link). A link makes the item point somewhere.
     # Newest first.
+    ("2026-10-29", "Tepper released my Tepperspectives interview on AI agents: what agentic AI is, how it differs from generative AI, and how agents may change day-to-day work.", "https://www.youtube.com/watch?v=80GGsjiXN-I", "Watch the interview"),
     ("2026-09-29", "Led the information session for MBA students considering the Business Analytics track.", "https://www.cmu.edu/tepper/programs/mba/curriculum/tracks/business-analytics", "About the track"),
     ("2026-09-24", "Opened the Artificial Intelligence for Business Leaders agent lab with how fast this is moving. A year earlier, superforecasters put the chance of AI solving a Millennium Prize problem by this fall at 1.7 percent, and industry experts at 4.6 percent. Two weeks before class, it happened.", "https://forecastingresearch.substack.com/p/ai-progress-forecasts-accuracy", "The forecasts"),
     ("2026-09-24", "Same class: Dartmouth's provost defended having used AI on his published writing since 2022, after a detector flagged it as almost entirely AI-written. We talked about where assistance ends and authorship begins.", "https://www.thedartmouth.com/article/2026/09/schnell-ai-writing", "The story"),
@@ -1331,21 +1332,21 @@ def build_home():
   <section class="sec talks reveal" aria-labelledby="talks-title">
     <span class="sec-no" aria-hidden="true">No. 07</span>
     <div class="talks-grid">
-      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=UxBPkez6Mc4" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the Faculty Spotlight video on YouTube, 11 minutes">
+      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
         <span class="tape tl"></span><span class="tape br"></span>
-        <span class="ph"><img src="assets/talks/faculty-spotlight-2026.jpg" alt="Ben Collier in conversation on a bench in Tepper's atrium, gesturing as he explains" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
-        <span class="cap">Faculty Spotlight &middot; April 30, 2026 &middot; 11 min</span>
+        <span class="ph"><img src="assets/talks/agents-interview-2026.jpg" alt="Ben Collier at a podcast microphone, gesturing with both hands as he explains AI agents" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">New &middot; Tepperspectives &middot; October 29, 2026 &middot; 17 min</span>
       </a>
       <div class="talks-text">
         <p class="kicker">Talks</p>
-        <h2 id="talks-title">Business analytics as a <span class="u u2" data-d=".5">decathlon</span></h2>
-        <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
-        <p><a class="go" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
+        <h2 id="talks-title">Understanding AI <span class="u u2" data-d=".5">agents</span></h2>
+        <p>An interview for Tepperspectives with Emily DeJeu. What agentic AI is, how it works, how it differs from generative AI, and how agents may change what a normal workday looks like.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=80GGsjiXN-I">Watch on YouTube</a></p>
         <div class="also">
           <p class="note">also on the talks page</p>
           <ul>
+            <li><span class="when">Apr 2026 &middot; Faculty Spotlight</span>Business analytics as a decathlon</li>
             <li><span class="when">Aug 2026 &middot; Tepper AI-Exchange</span>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</li>
-            <li><span class="when">Jun 2025 &middot; Kellogg, Northwestern</span>AI Data Visualization Coach</li>
           </ul>
           <p><a class="go" href="talks/">All talks</a></p>
         </div>
@@ -2535,7 +2536,19 @@ def talk_card(when: str, event: str, where: str, fmt: str, rot: float = 2) -> st
 
 def build_talks():
     body = page_head("Talks", "Talks", "Talks and workshops on building AI courses, teaching with AI, and putting analytics to work.")
-    body += sec(2, "talk-aix", "August 7, 2026 &middot; Tepper AI-Exchange &middot; Carnegie Mellon University, Pittsburgh",
+    body += sec(2, "talk-agents", "October 29, 2026 &middot; Tepperspectives &middot; Tepper School of Business",
+                "Understanding AI agents", """    <div class="talks-grid">
+      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <span class="ph"><img src="../assets/talks/agents-interview-2026.jpg" width="1280" height="720" alt="Ben Collier at a podcast microphone, gesturing with both hands as he explains AI agents"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">Understanding AI Agents &middot; 17 min</span>
+      </a>
+      <div class="prose">
+        <p>An interview for Tepperspectives, hosted by Emily DeJeu. We talk about what agentic AI is, how it works, how it differs from the generative AI most people have already tried, and how agents may change what day-to-day work looks like.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=80GGsjiXN-I">Watch on YouTube</a></p>
+      </div>
+    </div>""", cls="talk")
+    body += sec(3, "talk-aix", "August 7, 2026 &middot; Tepper AI-Exchange &middot; Carnegie Mellon University, Pittsburgh",
                 "Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students", f"""    <div class="talk-row">
     <div class="prose">
       <p>Over the past year I designed and taught a new MBA elective, <a href="../courses/45-884/">AI Methods for Social and Visual Data</a>, and I was developing an undergraduate course, <a href="../courses/70-445/">Artificial Intelligence for Business Leaders</a>, launching that fall. In this talk I shared what has worked well in the MBA classroom, from assignment design to helping students build hands-on skills with modern AI tools, along with what I was changing or trying differently in the new undergraduate course. I also gave a brief introduction to a large randomized controlled trial of AI in the classroom that I am taking part in, and what we hope to learn from it about how AI actually affects student outcomes.</p>
@@ -2547,7 +2560,7 @@ def build_talks():
     <div class="tslides">
 {talk_slides("ai-exchange-2026")}
     </div>""", cls="talk")
-    body += sec(3, "talk-kellogg", "June 5, 2025 &middot; Teaching with AI Summer Workshop &middot; Kellogg School of Management, Northwestern University",
+    body += sec(4, "talk-kellogg", "June 5, 2025 &middot; Teaching with AI Summer Workshop &middot; Kellogg School of Management, Northwestern University",
                 "AI Data Visualization Coach", f"""    <div class="talk-row">
     <div class="prose">
       <p>A flash talk with my colleague Zoey Jiang on the custom GPT we built for <a href="../courses/45-885/">Data Visualization</a>. Before presenting a chart redesign, teams test it with the coach. It will not hand over a redesign. It questions the team from three seats: a journalist, a chart designer, and a business stakeholder.</p>
@@ -2559,7 +2572,7 @@ def build_talks():
     <div class="tslides">
 {talk_slides("kellogg-2025")}
     </div>""", cls="talk")
-    body += sec(4, "talk-spotlight", "April 30, 2026 &middot; Tepper School of Business",
+    body += sec(5, "talk-spotlight", "April 30, 2026 &middot; Tepper School of Business",
                 "Faculty Spotlight: what students learn in the MS in Business Analytics", """    <div class="talks-grid">
       <a class="video polaroid drop" href="https://www.youtube.com/watch?v=UxBPkez6Mc4" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the Faculty Spotlight video on YouTube, 11 minutes">
         <span class="tape tl"></span><span class="tape br"></span>
@@ -2571,7 +2584,7 @@ def build_talks():
         <p><a class="go" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
       </div>
     </div>""", cls="talk")
-    body += sec(5, "earlier-talks", "Before that", "Earlier talks", """    <ul class="earlier-list">
+    body += sec(6, "earlier-talks", "Before that", "Earlier talks", """    <ul class="earlier-list">
       <li><span>Sep 2026</span><div>Business Analytics track information session. <em>Tepper MBA program</em></div></li>
       <li><span>2025, 2026</span><div>Perspectives on Analytics. <em>BaseCamp orientation for incoming part-time MS in Business Analytics students, Tepper School of Business</em></div></li>
       <li><span>Nov 2025</span><div>Managing groups and teams: strategies for collaborative excellence. <em>Community partner workshop, Carnegie Mellon University in Qatar</em></div></li>
