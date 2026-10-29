@@ -423,7 +423,7 @@ NEWS = [
 
 
 BOOK_EMAIL = "ben@collier.phd"
-HOURLY_RATE = "$450"
+SESSION_RATE = "$450"  # per 90-minute consulting session
 
 
 def book_call(root: str, cls: str = "btn primary") -> str:
@@ -437,7 +437,7 @@ def book_link(kind: str, label: str, root: str, cls: str = "btn primary") -> str
     never written into the page, to keep it from address harvesters) and
     swaps in the URL and live label once one is configured. Without
     JavaScript it falls back to the contact page."""
-    subject = {"freeChat": "Free 15-minute call", "paidHour": "Consulting hour"}[kind]
+    subject = {"freeChat": "Free 15-minute call", "paidHour": "Consulting session"}[kind]
     fallback = "Email to " + label[0].lower() + label[1:]
     return (f'<a class="{cls}" data-book="{kind}" data-subject="{esc(subject)}" '
             f'data-live-label="{esc(label)}" href="{root}contact/">{esc(fallback)}</a>')
@@ -2424,7 +2424,7 @@ def build_consult():
 def build_book():
     body = page_head(
         "Book time", "Book a call",
-        'Start with a free intro call, or book a working hour on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.')
+        'Start with a free intro call, or book a 90-minute working session on a specific problem. Not sure what you need? See the kinds of <a href="../consult/">consulting and custom education</a> I do.')
     body += f"""
   <div class="offers reveal">
     <section class="offer sticky-card land" style="--rot:-2deg;--d:.2s">
@@ -2436,21 +2436,21 @@ def build_book():
     </section>
     <section class="offer sticky-card pink land" style="--rot:1.6deg;--d:.45s">
       <span class="tape tc"></span>
-      <p class="kicker">60 minutes &middot; online &middot; {HOURLY_RATE}</p>
-      <h2>Consulting hour</h2>
+      <p class="kicker">90 minutes &middot; online &middot; {SESSION_RATE}</p>
+      <h2>Consulting session</h2>
       <p>One working session on a decision you are stuck on: a model that will not hold up, a metric nobody trusts, an AI use case you are not sure is worth building, or a hiring bar for a data team.</p>
       <ul class="dashes">
         <li>Live session on Zoom or Google Meet</li>
         <li>A one-page written recommendation within two business days</li>
         <li data-live-text="Paid when you book">Invoiced before we meet</li>
       </ul>
-      {book_link("paidHour", "Book a consulting hour", "../")}
+      {book_link("paidHour", "Book a consulting session", "../")}
     </section>
   </div>
 """
     body += sec(2, "fit", "Choosing", "Which option fits", f"""    <ul class="checks prose">
       <li><svg data-chart="check" data-d="0.4"></svg><span><strong>Not sure yet?</strong> Start with the intro call. It is free, and by the end you will know whether you need anything more.</span></li>
-      <li><svg data-chart="check" data-d="0.7"></svg><span><strong>One specific decision or blocker?</strong> A consulting hour is usually enough.</span></li>
+      <li><svg data-chart="check" data-d="0.7"></svg><span><strong>One specific decision or blocker?</strong> One 90-minute consulting session is usually enough.</span></li>
       <li><svg data-chart="check" data-d="1.0"></svg><span><strong>Training for a team, or a project that needs weeks?</strong> Book the intro call and we will scope <a href="../consult/#education">custom education</a> or <a href="../consult/#ai-data">AI and data consulting</a>.</span></li>
     </ul>
     <p class="prose">Prefer email? Write to <a href="mailto:{BOOK_EMAIL}">{BOOK_EMAIL}</a>.</p>""")
@@ -2460,7 +2460,7 @@ def build_book():
             "../",
             "book",
             "Book a call · Ben Collier",
-            "Book a free 15-minute intro chat or a consulting hour with Ben Collier.",
+            "Book a free 15-minute intro chat or a 90-minute consulting session with Ben Collier.",
             "book/",
             body,
             crumbs=[("book a call", None)],
