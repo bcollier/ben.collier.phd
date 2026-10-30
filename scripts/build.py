@@ -775,14 +775,14 @@ COURSE_ASSISTANT_URL = "https://faculty-twin.vercel.app/?from=collier.phd"
 def course_assistant_note(rot: float = 2.5, d: float = 1.6) -> str:
     """The launcher note. Teaching only: keep it off the consulting pages."""
     return (f'<a class="sticky ca-note land" href="{COURSE_ASSISTANT_URL}" data-handoff style="--rot:{rot}deg;--d:{d}s">'
-            f'<span class="tape tc"></span><span class="big">Ask my course assistant &rarr;</span>'
+            f'<span class="tape tc"></span><span class="big">Ask my AI course assistant &rarr;</span>'
             f'<span class="sub">For my students in <span class="nw">70-445</span> and <span class="nw">45-884</span> (passcode)</span></a>')
 
 
 def course_assistant_header() -> str:
     """The header's small launcher, next to "Book a call". Teaching pages only, like the note."""
     return (f'<a class="ca-cta" href="{COURSE_ASSISTANT_URL}" data-handoff>'
-            '<span class="nw">Ask my course assistant &rarr;</span><small>for my students</small></a>\n    ')
+            '<span class="nw">Ask my AI course assistant &rarr;</span><small>for my students</small></a>\n    ')
 
 
 def course_assistant_assets(root: str) -> tuple[str, str]:
