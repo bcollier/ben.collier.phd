@@ -1188,7 +1188,7 @@ def build_home():
       <p class="stamp thunk" style="--d:.15s">Assistant Teaching Professor of Business Analytics</p>
       <h1 id="hero-title">Ben Collier<span class="phd-ins" aria-hidden="true"><svg class="phd-caret" viewBox="0 0 40 30"><path d="M4 26 L20 5 L36 26" /></svg><span class="phd"><i>P</i><i>h</i><i>D</i></span></span><span class="sr-only">, PhD</span></h1>
       <p class="lede">I teach <mark style="--d:.5s">AI and business analytics</mark> at Carnegie Mellon's Tepper School, and help companies <span class="u u2" data-d="1.2">put them to work</span>.</p>
-      <p class="hero-more">My students learn to build with AI, and to <span class="u" data-d="1.7">doubt it</span>: they compare the models, question the headline number, and defend the call.</p>
+      <p class="hero-more">My students learn to analyze data with AI, and to <span class="u" data-d="1.7">doubt it</span>: they question the headline number and defend the call.</p>
       <div class="cta-row">
         {sticky("book/", 'Book a free <span class="nw">15-minute call &rarr;</span>', rot=-3, d=1)}
         <a class="go" href="consult/">Consulting and custom education</a>
@@ -1206,10 +1206,10 @@ def build_home():
       </figure>
       <figure class="figcard needs-js" style="--rot:-3.5deg">
         <span class="tape tc"></span>
-        <svg data-chart="kmeans" data-d="0.8"></svg>
-        <figcaption class="figcap">fig. 1 &middot; k-means clustering, from Data Mining</figcaption>
+        <svg data-chart="fm" data-d="0.8"></svg>
+        <figcaption class="figcap">fig. 1 &middot; a foundation model as analyst</figcaption>
       </figure>
-      <p class="note hero-note fade needs-js" style="--d:3.4s">&uarr; k-means found these 3 groups on its own</p>
+      <p class="note hero-note fade needs-js" style="--d:4.4s">&uarr; it writes the query. You check its work</p>
     </div>
     {course_assistant_note()}
   </section>

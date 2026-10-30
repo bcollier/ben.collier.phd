@@ -218,6 +218,60 @@
       ink(svg, ar[0], { w: 2, d: t0 + 1.8, dur: 0.3, color: "var(--pen)" });
       ink(svg, ar[1], { w: 2, d: t0 + 2.1, dur: 0.15, color: "var(--pen)" });
     },
+    // Fig. 1 on the home page: a question and a data file go into a foundation model,
+    // which writes the query and draws the chart. The red note asks whether the dip is real.
+    fm: function (svg) {
+      var W = 420, H = 300; svgFor(svg, W, H); seed(11);
+      var b = num(svg, "d", 0.5);
+      function rect(x, y, w, h, o) { return ink(svg, lineD(x, y, x + w, y, 0.6) + lineD(x + w, y, x + w, y + h, 0.6).replace("M", "L") + lineD(x + w, y + h, x, y + h, 0.6).replace("M", "L") + "Z", o); }
+      function arrow(x1, y1, x2, y2, bend, d, color) {
+        var a = arrowD(x1, y1, x2, y2, bend, 9);
+        ink(svg, a[0], { w: 2, d: d, dur: 0.3, color: color }); ink(svg, a[1], { w: 2, d: d + 0.3, dur: 0.12, color: color });
+      }
+      // the question
+      ink(svg, loopD(116, 44, 104, 28, 0.4, 0.04), { w: 2, d: b, dur: 0.6 });
+      ink(svg, lineD(64, 70, 50, 92, 0.4) + lineD(50, 92, 86, 72, 0.4).replace("M", "L"), { w: 2, d: b + 0.5, dur: 0.2 });
+      text(svg, 116, 51, "why did sales dip?", { anchor: "middle", d: b + 0.4, font: "700 19px Kalam, cursive" });
+      // the data
+      var tx = 18, ty = 168, tw = 104, th = 72;
+      rect(tx, ty, tw, th, { w: 2, d: b + 0.5, dur: 0.4 });
+      [ty + 18, ty + 36, ty + 54].forEach(function (y, i) { ink(svg, lineD(tx + 2, y, tx + tw - 2, y, 0.3), { w: i ? 1.2 : 2, d: b + 0.7 + i * 0.05, dur: 0.15 }); });
+      [tx + 36, tx + 70].forEach(function (x, i) { ink(svg, lineD(x, ty + 2, x, ty + th - 2, 0.3), { w: 1.2, d: b + 0.85 + i * 0.05, dur: 0.15 }); });
+      text(svg, tx + tw / 2, ty + th + 22, "sales.csv", { anchor: "middle", d: b + 0.9, color: "var(--ink-2)", font: "500 13px 'IBM Plex Mono', monospace" });
+      // the model
+      var mx = 166, my = 104, mw = 108, mh = 96, t = b + 1.2;
+      arrow(132, 82, 186, 102, -10, t - 0.2);
+      arrow(126, 196, 162, 168, 8, t - 0.1);
+      rect(mx, my, mw, mh, { w: 2.6, d: t, dur: 0.5 });
+      var cols = [mx + 22, mx + 54, mx + 86], rows = [my + 22, my + 48, my + 74];
+      cols.slice(0, 2).forEach(function (x, ci) {
+        rows.forEach(function (y1) { rows.forEach(function (y2) { ink(svg, lineD(x, y1, cols[ci + 1], y2, 0.2), { w: 1, d: t + 0.4 + ci * 0.15, dur: 0.25, op: 0.55 }); }); });
+      });
+      var k = 0;
+      cols.forEach(function (x) { rows.forEach(function (y) {
+        var d = E("circle", { cx: x, cy: y, r: 5, class: "dot" }, svg);
+        d.style.fill = "var(--pen)"; d.style.setProperty("--d", (t + 0.5 + k++ * 0.04) + "s");
+      }); });
+      text(svg, mx + mw / 2, my + mh + 24, "foundation model", { anchor: "middle", d: t + 0.8, color: "var(--pen)", font: "700 18px Kalam, cursive" });
+      // what it hands back: the query and the chart
+      var o = t + 1.3;
+      arrow(278, 112, 304, 86, -6, o);
+      ["SELECT month,", "  SUM(sales)", "GROUP BY 1"].forEach(function (l, i) {
+        text(svg, 304, 32 + i * 18, l, { d: o + 0.3 + i * 0.12, color: i ? "var(--ink-2)" : "var(--ink)", font: "500 13px 'IBM Plex Mono', monospace" });
+      });
+      arrow(278, 184, 302, 206, 6, o + 0.2);
+      var base = 262, cx0 = 312;
+      ink(svg, lineD(304, base, 412, base, 0.4), { w: 2, d: o + 0.5, dur: 0.3 });
+      [64, 74, 70, 34, 78].forEach(function (h, i) {
+        var x = cx0 + i * 20, dip = i === 3;
+        var r = E("rect", { x: x, y: base - h, width: 13, height: h, class: "fade" }, svg);
+        r.style.fill = dip ? "var(--red)" : "var(--pen)"; r.style.fillOpacity = dip ? 0.8 : 0.35;
+        r.style.setProperty("--d", (o + 0.7 + i * 0.08) + "s");
+      });
+      // the doubt
+      ink(svg, loopD(cx0 + 66, base - 20, 17, 30, 0.5, 0.05), { w: 2.2, d: o + 1.3, dur: 0.5, color: "var(--red)" });
+      text(svg, 372, 158, "real?", { anchor: "middle", d: o + 1.6, color: "var(--red)", font: "700 22px Kalam, cursive" });
+    },
     timeline: function (svg) {
       var W = Math.max(280, svg.parentNode.clientWidth), narrow = W < 520;
       var rows = JSON.parse(svg.dataset.rows), y0 = 2012, y1 = 2026.9, rowH = narrow ? 50 : 52;
