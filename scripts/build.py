@@ -607,11 +607,6 @@ def analytics_tag(root: str) -> str:
     return f'\n  <script src="{root}js/analytics.js" data-ga="{esc(gid)}" defer></script>'
 
 
-ANALYTICS_NOTE = ('\n  <p class="foot-note">I count visits with Google Analytics, which sets cookies. '
-                  'No ads, and nothing is shared for advertising. '
-                  '<a href="https://policies.google.com/technologies/partner-sites">How Google uses this data</a>.</p>')
-
-
 def build_policies():
     """Privacy Policy and Terms & Conditions: this site, Faculty Twin, and the Faculty Twin SMS alerts
     (Twilio A2P registration asks for both pages, titled exactly so, naming the brand)."""
@@ -688,7 +683,7 @@ def footer(root: str, scripts: str = "") -> str:
     return f"""</main>
 
 <footer class="foot">
-  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier</p>{ANALYTICS_NOTE if SITE.get("ga4_id", "").strip() else ""}
+  <p><span class="sign">thanks for reading!</span><br>&copy; {date.today().year} Ben Collier</p>
   <nav aria-label="Footer">
     <a href="{root}consult/">Consulting</a>
     <a href="{root}contact/">Contact</a>
