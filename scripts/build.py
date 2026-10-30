@@ -3442,6 +3442,7 @@ def tag_standalone_pages():
         path = ROOT / rel
         html = path.read_text(encoding="utf-8")
         html = re.sub(r'\n  <script src="[./]*js/analytics\.js[^"]*" data-ga="[^"]*" defer></script>', "", html)
+        html = re.sub(r"\n+</head>", "\n</head>", html, count=1)  # rebuilds must not pile up blank lines
         html = html.replace("</head>", versioned(analytics_tag("../" * rel.count("/"))) + "\n</head>", 1)
         path.write_text(html, encoding="utf-8")
         print("tagged", rel)
