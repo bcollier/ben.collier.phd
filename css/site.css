@@ -476,6 +476,13 @@ a.ca-note:focus-visible { outline: 3px solid var(--pen); outline-offset: 6px; }
 .ca-face { position: absolute; left: 0; top: 0; margin: 0; transform: none; box-shadow: none; }
 .hero > .ca-note { grid-column: 2; grid-row: 2; justify-self: start; align-self: start; margin: -10px 0 0 -14px; }
 @media (min-width: 961px) and (max-width: 1240px) { .hero > .ca-note { margin-top: 36px; } }
+/* Where the header launcher shows, the in-page note is a small reminder. Phones keep it full size: it is their only launcher. */
+@media (min-width: 761px) {
+  .ca-note { width: 172px; padding: 16px 12px 12px 32px; background-size: auto, auto; }
+  .ca-note .big { font-size: 18px; }
+  .ca-note .sub { font-size: 10.5px; margin-top: 6px; }
+  .ca-note .tape.tc { width: 54px; margin-left: -27px; height: 20px; top: -11px; }
+}
 .hero.has-ca { grid-template-rows: auto 1fr; }
 .ca-head { margin: 30px 0 4px 2px; }
 .hero.has-ca > .hero-text { grid-row: 1 / span 2; }
