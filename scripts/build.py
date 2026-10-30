@@ -1227,10 +1227,21 @@ def build_home():
         <h2 id="talks-title">Understanding AI <span class="u u2" data-d=".5">agents</span></h2>
         <p>An interview for Tepperspectives with Emily DeJeu. What agentic AI is, how it works, how it differs from generative AI, and how agents may change what a normal workday looks like.</p>
         <p><a class="go" href="https://www.youtube.com/watch?v=80GGsjiXN-I">Watch on YouTube</a></p>
+      </div>
+    </div>
+    <div class="talks-grid next">
+      <a class="video corner polaroid drop" href="https://www.youtube.com/watch?v=UxBPkez6Mc4" style="--rot:1.4deg;--d:.2s" aria-label="Watch the Faculty Spotlight video on YouTube, 11 minutes">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <span class="ph"><img src="assets/talks/faculty-spotlight-2026.jpg" alt="Ben Collier explaining a point during the Tepper Faculty Spotlight conversation" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
+        <span class="cap">Faculty Spotlight &middot; April 30, 2026 &middot; 11 min</span>
+      </a>
+      <div class="talks-text">
+        <h3>What students learn in the MS in Business Analytics</h3>
+        <p>A conversation for Tepper about the MS in Business Analytics curriculum, and why I describe business analytics as a decathlon.</p>
+        <p><a class="go" href="https://www.youtube.com/watch?v=UxBPkez6Mc4">Watch on YouTube</a></p>
         <div class="also">
           <p class="note">also on the talks page</p>
           <ul>
-            <li><span class="when">Apr 2026 &middot; Faculty Spotlight</span>Business analytics as a decathlon</li>
             <li><span class="when">Aug 2026 &middot; Tepper AI-Exchange</span>Lessons Learned from Developing New AI Courses for MBA and Undergraduate Business Students</li>
           </ul>
           <p><a class="go" href="talks/">All talks</a></p>
