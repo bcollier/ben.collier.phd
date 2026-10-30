@@ -1222,7 +1222,7 @@ def build_home():
   <section class="sec talks reveal" aria-labelledby="talks-title">
     <span class="sec-no" aria-hidden="true">No. 02</span>
     <div class="talks-grid">
-      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
+      <a class="video corner polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
         <span class="tape tl"></span><span class="tape br"></span>
         <span class="ph"><img src="assets/talks/agents-interview-2026.jpg" alt="Ben Collier at a podcast microphone, gesturing with both hands as he explains AI agents" width="1280" height="720" loading="lazy"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
         <span class="cap">New &middot; Tepperspectives &middot; October 29, 2026 &middot; 17 min</span>
@@ -2540,7 +2540,7 @@ def build_talks():
     body = page_head("Talks", "Talks", "Talks and workshops on building AI courses, teaching with AI, and putting analytics to work.")
     body += sec(2, "talk-agents", "October 29, 2026 &middot; Tepperspectives &middot; Tepper School of Business",
                 "Understanding AI agents", """    <div class="talks-grid">
-      <a class="video polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
+      <a class="video corner polaroid drop" href="https://www.youtube.com/watch?v=80GGsjiXN-I" style="--rot:-1.8deg;--d:.2s" aria-label="Watch the interview on AI agents on YouTube, 17 minutes">
         <span class="tape tl"></span><span class="tape br"></span>
         <span class="ph"><img src="../assets/talks/agents-interview-2026.jpg" width="1280" height="720" alt="Ben Collier at a podcast microphone, gesturing with both hands as he explains AI agents"><span class="vplay big" aria-hidden="true"></span><svg class="play" data-chart="play" data-d="0.9"></svg></span>
         <span class="cap">Understanding AI Agents &middot; 17 min</span>
