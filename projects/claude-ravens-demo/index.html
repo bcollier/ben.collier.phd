@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Can a computer pass an IQ test? · Coding with AI · Ben Collier</title>
+  <meta name="description" content="Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring.">
+  <meta name="author" content="Ben Collier">
+  <meta name="theme-color" content="#22302b">
+  <link rel="canonical" href="https://ben.collier.phd/projects/claude-ravens-demo/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ben Collier">
+  <meta property="og:title" content="Can a computer pass an IQ test? · Coding with AI · Ben Collier">
+  <meta property="og:description" content="Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring.">
+  <meta property="og:url" content="https://ben.collier.phd/projects/claude-ravens-demo/">
+  <meta property="og:image" content="https://ben.collier.phd/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ben Collier, Assistant Teaching Professor of Business Analytics, Tepper School of Business">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Can a computer pass an IQ test? · Coding with AI · Ben Collier">
+  <meta name="twitter:description" content="Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring.">
+  <meta name="twitter:image" content="https://ben.collier.phd/assets/og.png">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <link rel="alternate" type="application/atom+xml" title="Ben Collier: news" href="../../feed.xml">
+  <script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;c.add("nb");if(r||!("IntersectionObserver" in window)){c.add("static")}else{c.add("js-anim")}setTimeout(function(){if(!window.__nb){c.remove("js-anim");c.remove("nb")}},4000)})(document.documentElement)</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Young+Serif&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Young+Serif&display=swap"></noscript>
+  <link rel="stylesheet" href="../../css/site.css?v=31e6de0a">
+  <script src="../../js/analytics.js?v=a48777f8" data-ga="G-GDXYCRQWHR" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../" aria-label="Ben Collier, PhD, home">
+      <span class="badge"><img src="../../assets/portrait-badge.webp" alt="" width="46" height="46" loading="lazy"><svg data-chart="ring"></svg></span>
+      <span>Ben Collier, PhD</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        <li style="--c:#f6c453"><a href="../../courses/">courses</a></li>
+        <li style="--c:#9ccbea"><a href="../../projects/" aria-current="page">coding with AI</a></li>
+        <li style="--c:#a9d8a1"><a href="../../advising/">advising</a></li>
+        <li style="--c:#f3a391"><a href="../../consult/">consulting</a></li>
+        <li style="--c:#cdb8e8"><a href="../../cv/">cv</a></li>
+        <li style="--c:#8ed3c7"><a href="../../talks/">talks</a></li>
+        <li style="--c:#f5b5c8"><a href="../../news/">news</a></li>
+        <li style="--c:#e9dfc4"><a href="../../contact/">contact</a></li>
+      </ul>
+      <a class="search-tab" href="../../search/" data-search-open aria-label="Search the site" aria-keyshortcuts="/ Control+K Meta+K" title="Search the site (press /)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.6 4.2c3.7-.3 6.6 2.5 6.5 6.1-.1 3.5-3 6.3-6.6 6.2-3.5-.1-6.2-3-6.1-6.4.1-3.2 2.8-5.7 6.2-5.9Z"/><path d="M15.4 15.6c1.6 1.5 3.3 3.1 4.9 4.8"/></svg><span class="st-l" aria-hidden="true">search</span></a>
+    </nav>
+    <a class="sticky-cta" href="../../book/"><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
+  </div>
+</header>
+
+<main id="main" class="sheet">
+  <div class="sheet-head">
+    <span class="field" aria-hidden="true">Subject <span class="val">AI and business analytics</span></span>
+    <nav class="field crumbs" aria-label="Breadcrumb">Filed under <span class="val"><a href="../../projects/">coding with AI</a> / Can a computer pass an IQ test?</span></nav>
+  </div>
+
+  <section class="page-head reveal"><p class="kicker">Experiment &middot; September 2026</p><h1>Can a computer pass an IQ <span class="u u2" data-d="0.4">test?</span></h1></section>
+
+  <div class="proj-intro reveal">
+    <a class="pf-shot polaroid drop" href="../../assets/portfolio/claude-ravens-demo.png" data-lightbox style="--rot:-1.6deg;--d:.2s"><span class="tape tc"></span><img src="../../assets/portfolio/claude-ravens-demo.png" alt="A 3x3 Raven's Progressive Matrices puzzle with the last cell missing and six answer options" width="902" height="664"></a>
+    <div class="proj-facts">
+      <p class="pf-tools">Python, Claude Code, 16 language models</p>
+      <ul class="mini-stats"><li><b>13</b><span>random guessing</span></li><li><b>34</b><span>a student's 2017 program</span></li><li><b>59</b><span>expert system, no language model</span></li><li><b>93</b><span>current language model</span></li></ul>
+      <p>Three programs, one from 2017 and two from this year, take the same 96 Raven's Progressive Matrices, the wordless reasoning test from 1936 that still shows up in hiring. A current language model, given the puzzle sheet and every cell as images, nearly aces it.</p>
+      
+      <p class="pf-links"><a class="go" href="https://github.com/bcollier/claude-ravens-demo">Read the write-up and browse the code on GitHub</a> <a class="go" href="https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md">Prompt history</a></p>
+    </div>
+  </div>
+  <aside class="sticky-card proj-teaches" style="--rot:1.2deg" aria-labelledby="teaches"><span class="tape tc"></span><h2 id="teaches">What it teaches</h2><ul class="dashes"><li>Run a diagnostic that asks where the bottleneck is before you ask an AI to add more machinery.</li><li>Check that invented training data looks like the real test, and hold out data the model never saw.</li><li>Compare AI models on accuracy, cost and time with the same prompt, and let a script generate every number from the raw results.</li><li>Treat a suspicious zero as a bug in your own code before you blame the model.</li><li>Steer a coding agent with corrections and challenges to its work, not only with the opening brief.</li></ul></aside>
+
+  <section class="sec reveal proj-sec" aria-labelledby="what-it-is"><span class="sec-no" aria-hidden="true">No. 01</span><h2 id="what-it-is">What it <span class="u" data-d="0.3">is</span></h2>
+<p>Raven's Progressive Matrices is a reasoning test from 1936. It uses no words and no numbers. You see a grid of pictures with the last one missing, and you pick the piece that completes the pattern. It still shows up in some hiring and admissions.</p>
+<p>I gave Claude Code one job during a class: take the same 96 puzzles and have three programs sit the test. The first is a program I wrote as a student in 2017, for Georgia Tech's course on knowledge-based AI. The second is new and is not allowed to use a language model. The third is a language model.</p>
+<figure class="polaroid proj-fig" style="--rot:1.8deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/scoreboard.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/scoreboard.webp" alt="The repo's results page: Raven's Three Ways, with three score cards reading 34, 59 and 93 out of 96, and a note that chance would score 13" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption>three programs, one test</figcaption></figure>
+<p>Here is a typical puzzle. Every cell has an outer shape and an inner bar, and each row and column uses each shape and each bar once, like a sudoku made of pictures. The answer is option 3, the octagon with the vertical bar.</p>
+<figure class="polaroid proj-fig" style="--rot:1.2deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/example-puzzle.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/example-puzzle.webp" alt="Basic Problem D-09: a 3x3 grid of circles, octagons and squares with bars, the last cell missing, and eight answer options" width="902" height="664" loading="lazy" decoding="async"></a><figcaption>sudoku made of pictures</figcaption></figure>
+<p>All three programs got this one, though the new program picked 7 before it learned which rules to trust. The language model, `gpt-5.6-sol`, picked 3 in 4.8 seconds and explained itself: "Both the outer shapes and bar patterns cycle through three states in each row and column, requiring an octagon with a vertical bar."</p>
+  </section>
+
+  <section class="sec reveal proj-sec" aria-labelledby="a-tour-of-the-results"><span class="sec-no" aria-hidden="true">No. 02</span><h2 id="a-tour-of-the-results">A tour of the <span class="u" data-d="0.3">results</span></h2>
+<figure class="polaroid proj-fig" style="--rot:-0.8deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/accuracy-by-set.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/accuracy-by-set.webp" alt="Two bar charts: overall accuracy for the 2017 program, the classical solver with and without training, and three OpenAI models, then correct answers out of 12 for each of the eight problem sets" width="1600" height="1174" loading="lazy" decoding="async"></a><figcaption>the in-class scores</figcaption></figure>
+<p>The 2017 program ran with not a single character changed and scored 34 of 96 in 34 seconds. It turns each picture into a few numbers, mostly how much of the square is black ink, and skips all 24 of the 2x2 puzzles. Fixing its two arithmetic bugs makes it slightly worse, because the weights had been tuned around them.</p>
+<p>The new program without a language model is a classic expert system. It proposes about 300 candidate rules for every puzzle (flips, rotations, overlaps, counts, sudoku arrangements) and searches for the one in force. It scored 55 of 96 nine and a half minutes into the session, and 59 once it learned how much to trust each kind of rule.</p>
+<figure class="polaroid proj-fig" style="--rot:1.8deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/rule-trust.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/rule-trust.webp" alt="A diagram of rule trust: hide a cell you can already see, let one candidate rule predict it, and make it compete against the real answer options" width="980" height="300" loading="lazy" decoding="async"></a><figcaption>how a rule earns trust</figcaption></figure>
+<p>After class I asked for more. Sixteen language models from nine companies ran the same puzzles with the same prompt. Four tied at 92, and their prices differed by almost five to one. Five scored below the program with no AI in it. Running all sixteen models on every puzzle cost $44.72 in total.</p>
+<figure class="polaroid proj-fig" style="--rot:-0.8deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/openai-timeline.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/openai-timeline.webp" alt="OpenAI models by release date, from gpt-4-turbo at 34 to gpt-5.6-sol at 93, with a jump between gpt-4.1 at 36 and o3 at 76" width="1583" height="1259" loading="lazy" decoding="async"></a><figcaption>two days apart, forty problems</figcaption></figure>
+<p>`gpt-4.1` and `o3` came out two days apart and scored 36 and 76. What changed was that `o3` works the problem through step by step before it answers. That moved the score more than two years of scaling did on either side.</p>
+<p>The failures are not random. When several models miss the same puzzle, about 68% of them choose the same wrong option.</p>
+<figure class="polaroid proj-fig" style="--rot:-1.2deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/two-rules-mistake.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/two-rules-mistake.webp" alt="Challenge Problem B-03: concentric squares where one rule fills alternate bands across and another removes two rings going down, with option 3, a plain black square, as the answer" width="980" height="795" loading="lazy" decoding="async"></a><figcaption>the loud rule wins</figcaption></figure>
+<p>Here two rules run at once. Five of seven models applied the dramatic one (fill alternate bands black) and missed the quiet one (remove two rings each step). The 2017 program skipped it. The expert system picked 2, which was wrong. `gpt-5.6-sol` got it right. And the best model reported 0.99 confidence on every answer, including the three it got wrong.</p>
+  </section>
+
+  <section class="sec reveal proj-sec" aria-labelledby="how-i-built-it"><span class="sec-no" aria-hidden="true">No. 03</span><h2 id="how-i-built-it">How I built <span class="u" data-d="0.3">it</span></h2>
+<p>Everything was built in one Claude Code session with Claude Opus 5, while I was teaching. My first prompt asked for three things: get my eight-year-old code running, build a solver with any technique except a language model, and build one that uses a language model. The one question Claude asked was whether the repo should be public, since that is hard to undo.</p>
+<p>The most useful hour was a diagnostic, not a solver. Claude asked whether the right answer was even among the rules the program proposed. It was, 95 times out of 96. Simply believing the single best rule scored 34, the same as my 2017 program. So the problem was choosing between rules, not finding them. Adding more rules, the obvious next step, had made the cross-validated score worse. The fix was to hide part of the puzzle the program can already see and trust only the rules that recover it.</p>
+<p>For the language model, each puzzle is one request: the whole sheet as one image, then all 16 cells and options as separate labelled images, and a 134-word instruction. The reply is forced into a fixed format with a rule, an answer and a confidence, so a script can mark it.</p>
+<figure class="polaroid proj-fig tall" style="--rot:-1.6deg"><span class="tape tc"></span><a href="../../assets/portfolio/claude-ravens-demo/what-the-model-sees.webp" data-lightbox><img src="../../assets/portfolio/claude-ravens-demo/what-the-model-sees.webp" alt="Everything sent in one API call: the 17 image files, the system prompt, the problem sheet, eight cells, eight options, and the JSON schema for the reply" width="1180" height="1663" loading="lazy" decoding="async"></a><figcaption>one call, one puzzle</figcaption></figure>
+<p>My later prompts mattered more than the first one. I pointed out that Claude had left out a neural network. It built one, trained it on thousands of invented puzzles, and it scored 10 of 96, worse than guessing. The invented puzzles had a quirk: the answer repeated a visible picture about 30% of the time, against 10% in the real test. The network learned the quirk perfectly. I also asked whether it was testing on data it had trained on, which led to a proper 70/30 split.</p>
+<p>Three models first scored 0 of 96, and all three were bugs in how the questions were sent. And the puzzles have been public since 2017, so the language models may have seen them in training.</p>
+<p>Every number in the write-up comes from the raw results by a script. The <a href="https://github.com/bcollier/claude-ravens-demo/blob/main/PROMPT_HISTORY.md">prompt history</a> quotes all 18 of my instructions as typed, and the last one asked Claude to open a pull request so I could show students what one looks like. The problems and harness come from the Georgia Tech Knowledge-Based AI project. The full write-up and code are on <a href="https://github.com/bcollier/claude-ravens-demo">GitHub</a>.</p>
+  </section>
+
+  <p class="proj-nav"><a class="go back" href="../">All projects</a> <a class="go" href="../connections/">Next: Connections About You</a></p>
+</main>
+
+<footer class="foot">
+  <p><span class="sign">thanks for reading!</span><br>&copy; 2026 Ben Collier</p>
+  <nav aria-label="Footer">
+    <a href="../../consult/">Consulting</a>
+    <a href="../../contact/">Contact</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../feed.xml">RSS</a>
+  </nav>
+</footer>
+<script src="../../js/config.js?v=3c19b151"></script>
+<script src="../../js/site.js?v=67b40b6f"></script>
+<script src="../../js/notebook.js?v=73bfb9c3" defer></script>
+<script src="../../js/search.js?v=884eb635" defer></script>
+<script src="../../js/lightbox.js?v=d62fc3e0" defer></script>
+</body>
+</html>

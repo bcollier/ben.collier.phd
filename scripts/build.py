@@ -2218,8 +2218,135 @@ def build_cv():
     )
 
 
+PROJECT_STORIES = ROOT / "data" / "portfolio"
+
+
+def project_href(href: str, root: str) -> str:
+    """Portfolio links are written relative to /projects/ ("../reels/"). On a
+    project's own page, one folder deeper, they need the site root instead."""
+    return root + href[3:] if href.startswith("../") else href
+
+
+def image_size(path: Path) -> tuple[int, int]:
+    """Pixel size of a WebP, PNG or JPEG, read from its header (stdlib only)."""
+    b = path.read_bytes()
+    if b[:4] == b"RIFF" and b[8:12] == b"WEBP":
+        chunk = b[12:16]
+        if chunk == b"VP8X":
+            return 1 + int.from_bytes(b[24:27], "little"), 1 + int.from_bytes(b[27:30], "little")
+        if chunk == b"VP8L":
+            v = int.from_bytes(b[21:25], "little")
+            return (v & 0x3FFF) + 1, ((v >> 14) & 0x3FFF) + 1
+        return int.from_bytes(b[26:28], "little") & 0x3FFF, int.from_bytes(b[28:30], "little") & 0x3FFF
+    if b[:8] == b"\x89PNG\r\n\x1a\n":
+        return int.from_bytes(b[16:20], "big"), int.from_bytes(b[20:24], "big")
+    i = 2
+    while i < len(b):
+        marker, size = b[i + 1], int.from_bytes(b[i + 2:i + 4], "big")
+        if marker in (0xC0, 0xC1, 0xC2):
+            return int.from_bytes(b[i + 7:i + 9], "big"), int.from_bytes(b[i + 5:i + 7], "big")
+        i += 2 + size
+    raise ValueError(f"unknown image format: {path}")
+
+
+def load_project_story(pid: str):
+    """data/portfolio/<id>.md: a "## What it teaches" list, then "## " sections
+    of paragraphs, "- " lists and image lines. Returns (objectives, sections),
+    each section a (heading, blocks) pair; a block is ("p", text),
+    ("ul", items) or ("figs", [(alt, file, caption), ...])."""
+    path = PROJECT_STORIES / f"{pid}.md"
+    if not path.exists():
+        return [], []
+    sections, cur, para = [], None, []
+
+    def flush():
+        if para:
+            cur[1].append(("p", " ".join(para)))
+            para.clear()
+
+    for line in path.read_text(encoding="utf-8").splitlines() + [""]:
+        fig = re.fullmatch(r'!\[(.*?)\]\((\S+?)(?: "(.*?)")?\)', line.strip())
+        if line.startswith("## "):
+            if cur is not None:
+                flush()
+            cur = [line[3:].strip(), []]
+            sections.append(cur)
+        elif cur is None:
+            continue
+        elif fig:
+            flush()
+            last = cur[1][-1] if cur[1] else None
+            if last and last[0] == "figs" and last[2]:
+                last[1].append(fig.groups())
+            else:
+                cur[1].append(["figs", [fig.groups()], True])
+        elif line.startswith("- "):
+            flush()
+            last = cur[1][-1] if cur[1] else None
+            if last and last[0] == "ul" and last[2]:
+                last[1].append(line[2:].strip())
+            else:
+                cur[1].append(["ul", [line[2:].strip()], True])
+        elif not line.strip():
+            flush()
+            for block in cur[1]:
+                if isinstance(block, list):
+                    block[2] = False   # a blank line ends a list or an image row
+        else:
+            para.append(line.strip())
+    sections = [(h, [(b[0], b[1]) for b in blocks]) for h, blocks in sections]
+    objectives = []
+    if sections and sections[0][0].lower() == "what it teaches":
+        objectives = [item for kind, items in sections[0][1] if kind == "ul" for item in items]
+        sections = sections[1:]
+    return objectives, sections
+
+
+PRINT_ROTS = [-1.6, 1.2, -0.8, 1.8, -1.2, 0.9]
+
+
+def project_figures(pid: str, figs, root: str, title: str) -> str:
+    """One image line renders as a large taped print; a run of two or three as
+    a row that fills the column; four or more as a grid of small prints. Each
+    opens its full-size image. A file "x.webp" may have a "x-t.webp" thumbnail
+    beside it, used in the grid."""
+    folder = f"assets/portfolio/{pid}/"
+
+    def img(file, alt, thumb=False):
+        name = file
+        if thumb:
+            stem, dot, ext = file.rpartition(".")
+            if (ROOT / folder / f"{stem}-t.{ext}").exists():
+                name = f"{stem}-t.{ext}"
+        w, h = image_size(ROOT / folder / name)
+        return f'<img src="{root}{folder}{esc(name)}" alt="{esc(alt)}" width="{w}" height="{h}" loading="lazy" decoding="async">'
+
+    if len(figs) == 1:
+        alt, file, cap = figs[0]
+        caption = f"<figcaption>{esc(cap)}</figcaption>" if cap else ""
+        w, h = image_size(ROOT / folder / file)
+        tall = " tall" if h > w * 0.9 else ""
+        return (f'<figure class="polaroid proj-fig{tall}" style="--rot:{PRINT_ROTS[len(file) % 6]}deg"><span class="tape tc"></span>'
+                f'<a href="{root}{folder}{esc(file)}" data-lightbox>{img(file, alt)}</a>{caption}</figure>')
+    few = len(figs) <= 3
+    prints = "".join(
+        f'<figure class="polaroid pf-print" style="--rot:{PRINT_ROTS[i % 6]}deg">'
+        f'<a href="{root}{folder}{esc(file)}" data-lightbox>{img(file, alt, thumb=not few)}</a>'
+        + (f"<figcaption>{esc(cap)}</figcaption>" if cap else "") + "</figure>"
+        for i, (alt, file, cap) in enumerate(figs)
+    )
+    cls = f' few" style="--n:{len(figs)}' if few else ""
+    return f'<div class="pf-gallery{cls}" aria-label="Screenshots of {esc(title)}">{prints}</div>'
+
+
+def project_objectives(objectives, cls: str = "") -> str:
+    items = "".join(f"<li>{inline(o)}</li>" for o in objectives)
+    return f'<ul class="dashes{(" " + cls) if cls else ""}">{items}</ul>'
+
+
 def portfolio_card(p, root, i=0):
-    links = " ".join(f'<a class="go" href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"])
+    page_href = f"{p['id']}/"
+    links = " ".join(f'<a class="go" href="{esc(l["href"])}">{esc(l["label"])}</a>' for l in p["links"][:2])
     # Optional aside: context that is not the project itself, such as related
     # private work. Rendered as a margin note so it reads as a footnote to the card.
     note = f'    <p class="aside">{p["note"]}</p>\n' if p.get("note") else ""
@@ -2228,35 +2355,87 @@ def portfolio_card(p, root, i=0):
         stats = '<ul class="mini-stats">' + "".join(f'<li><b>{v}</b><span>{k}</span></li>' for k, v in p["stats"]) + "</ul>"
     tall = int(p["image_height"]) > int(p["image_width"])
     rot = [-2, 1.6, -1.2, 2.2][i % 4]
-    decisions = ('<ul class="dashes">' + "".join(f"<li>{d}</li>" for d in p["decisions"]) + "</ul>") if p.get("decisions") else f"<p>{p['process']}</p>"
+    objectives, _ = load_project_story(p["id"])
+    if objectives:
+        takeaway = f'<p class="pf-teaches">What it teaches</p>{project_objectives(objectives)}'
+    elif p.get("decisions"):
+        takeaway = '<ul class="dashes">' + "".join(f"<li>{d}</li>" for d in p["decisions"]) + "</ul>"
+    else:
+        takeaway = f"<p>{p['process']}</p>"
     return f"""  <article class="pf reveal{' tall' if tall else ''}" id="{p['id']}">
-    <a class="pf-shot polaroid drop" href="{esc(p['links'][0]['href'])}" style="--rot:{rot}deg;--d:.2s" tabindex="-1"><span class="tape tc"></span><img src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}" loading="lazy"></a>
+    <a class="pf-shot polaroid drop" href="{root}{p['image']}" data-lightbox style="--rot:{rot}deg;--d:.2s"><span class="tape tc"></span><img src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}" loading="lazy"></a>
     <div class="pf-body">
       <p class="kicker">{esc(p['kind'])} &middot; {esc(p['date'])}</p>
-      <h2>{esc(p['title'])}</h2>
+      <h2><a class="pf-title" href="{page_href}">{esc(p['title'])}</a></h2>
       <p class="pf-tools">{esc(p['tools'])}</p>
       {stats}
       <p>{p['summary']}</p>
-      {decisions}
-{note}      <p class="pf-links">{links}</p>
+      {takeaway}
+{note}      <p class="pf-links"><a class="go pf-more" href="{page_href}">The full story, with screenshots</a> {links}</p>
     </div>
-{portfolio_gallery(p, root)}  </article>"""
+  </article>"""
 
 
-def portfolio_gallery(p, root):
-    """Optional row of extra screenshots under a card, each a small taped print
-    that opens the full-size image."""
-    if not p.get("gallery"):
-        return ""
-    rots = [-1.6, 1.2, -0.8, 1.8, -1.2, 0.9]
-    shots = "".join(
-        f'<figure class="polaroid pf-print" style="--rot:{rots[i % len(rots)]}deg">'
-        f'<a href="{root}{esc(g["src"])}"><img src="{root}{esc(g["thumb"])}" alt="{esc(g["alt"])}" '
-        f'width="{g["thumb_width"]}" height="{g["thumb_height"]}" loading="lazy"></a>'
-        f'<figcaption>{esc(g["caption"])}</figcaption></figure>'
-        for i, g in enumerate(p["gallery"])
+def build_project_page(p, portfolio):
+    """projects/<id>/: one project told for a reader: the screenshots, how it
+    was built, and what it teaches."""
+    root = "../../"
+    objectives, sections = load_project_story(p["id"])
+    links = " ".join(f'<a class="go" href="{esc(project_href(l["href"], root))}">{esc(l["label"])}</a>' for l in p["links"])
+    note = f'<p class="aside">{p["note"]}</p>' if p.get("note") else ""
+    stats = ""
+    if p.get("stats"):
+        stats = '<ul class="mini-stats">' + "".join(f'<li><b>{v}</b><span>{k}</span></li>' for k, v in p["stats"]) + "</ul>"
+    teaches = ""
+    if objectives:
+        teaches = (f'<aside class="sticky-card proj-teaches" style="--rot:1.2deg" aria-labelledby="teaches">'
+                   f'<span class="tape tc"></span><h2 id="teaches">What it teaches</h2>{project_objectives(objectives)}</aside>')
+    tall = int(p["image_height"]) > int(p["image_width"])
+    intro = f"""
+  <div class="proj-intro reveal{' tall' if tall else ''}">
+    <a class="pf-shot polaroid drop" href="{root}{p['image']}" data-lightbox style="--rot:-1.6deg;--d:.2s"><span class="tape tc"></span><img src="{root}{p['image']}" alt="{esc(p['image_alt'])}" width="{p['image_width']}" height="{p['image_height']}"></a>
+    <div class="proj-facts">
+      <p class="pf-tools">{esc(p['tools'])}</p>
+      {stats}
+      <p>{p['summary']}</p>
+      {note}
+      <p class="pf-links">{links}</p>
+    </div>
+  </div>
+  {teaches}
+"""
+    body = page_head(f"{p['kind']} &middot; {esc(p['date'])}", p["title"]) + intro
+    n = 0
+    for heading, blocks in sections:
+        n += 1
+        inner = []
+        for kind, content in blocks:
+            if kind == "p":
+                inner.append(f"<p>{inline(content)}</p>")
+            elif kind == "ul":
+                inner.append('<ul class="dashes">' + "".join(f"<li>{inline(x)}</li>" for x in content) + "</ul>")
+            else:
+                inner.append(project_figures(p["id"], content, root, p["title"]))
+        body += sec(n, _slug(heading), "", heading, "\n".join(inner), cls="proj-sec")
+    if p.get("decisions"):
+        n += 1
+        body += sec(n, "decisions", "", "Decisions that mattered",
+                    '<ul class="dashes">' + "".join(f"<li>{d}</li>" for d in p["decisions"]) + "</ul>", cls="proj-sec")
+    elif p.get("process") and not sections:
+        n += 1
+        body += sec(n, "process", "", "How I built it", f"<p>{p['process']}</p>", cls="proj-sec")
+    i = portfolio.index(p)
+    nxt = portfolio[(i + 1) % len(portfolio)]
+    body += (f'\n  <p class="proj-nav"><a class="go back" href="../">All projects</a>'
+             f' <a class="go" href="../{nxt["id"]}/">Next: {esc(nxt["title"])}</a></p>\n')
+    summary_text = re.sub(r"<[^>]+>", "", p["summary"])
+    desc = summary_text.split(". ")[0].rstrip(".") + "."
+    write(
+        f"projects/{p['id']}/index.html",
+        page(root, "projects", f"{p['title']} · Coding with AI · Ben Collier", desc, f"projects/{p['id']}/", body,
+             crumbs=[("coding with AI", "projects/"), (p["title"], None)],
+             scripts=f'\n<script src="{root}js/lightbox.js" defer></script>'),
     )
-    return f'    <div class="pf-gallery" aria-label="More screenshots of {esc(p["title"])}">{shots}</div>\n'
 
 
 def build_portfolio(portfolio):
@@ -2264,7 +2443,8 @@ def build_portfolio(portfolio):
     body = page_head("Portfolio", "Coding with AI",
                      "Working projects I built with AI coding tools, several of them for Effective Coding with AI, a Carnegie Mellon course, "
                      'and <a href="#apps-coded-with-ai">smaller apps and visualizations</a> I coded with an AI assistant from my own data. '
-                     "Each repo includes the prompts and build log, and I use them as examples in class.")
+                     "Each project has its own page with screenshots, how I built it, and what it teaches, "
+                     "and each repo includes the prompts and build log. I use them as examples in class.")
     body += f'  <div class="portfolio">\n{items}\n  </div>\n'
     body += ai_apps_section()
     write(
@@ -2276,8 +2456,11 @@ def build_portfolio(portfolio):
             "Coding with AI projects Ben Collier builds for his classes, with source code, prompts, and build logs.",
             "projects/",
             body,
+            scripts='\n<script src="../js/lightbox.js" defer></script>',
         ),
     )
+    for p in portfolio:
+        build_project_page(p, portfolio)
 
 
 def build_practice():
@@ -3311,7 +3494,7 @@ def search_meta(portfolio) -> dict:
         meta[f"courses/{c['slug']}/"] = {"g": " · ".join(dict.fromkeys(t for t in tags if t)),
                                           "d": offering_span(c.get("offerings", []))}
     for p in portfolio:
-        meta[f"projects/#{p['id']}"] = {"g": f"{p['tools']} · {p['kind']}", "d": p["date"]}
+        meta[f"projects/{p['id']}/"] = {"g": f"{p['tools']} · {p['kind']}", "d": p["date"]}
     # The apps are filed under coding with AI, in the projects page's apps section.
     for href, _, _, _ in AI_APPS:
         meta[href] = {"g": "app coded with AI · visualization", "p": "Coding with AI"}
@@ -3392,6 +3575,7 @@ def site_paths():
     """Every canonical URL path on the site, in navigation order."""
     paths = ["", "consult/", "book/", "advising/", "courses/", "projects/", "evaluations/", "evaluations-a/", "evaluations-b/", "talks/", "cv/", "news/", "contact/", "travel/", "reels/", "strengths/", "connections/", "privacy/", "terms/", "sms/"]
     paths += [f"courses/{c['slug']}/" for c in ALL_COURSES]
+    paths += [f"projects/{p['id']}/" for p in load_json("portfolio.json")["projects"]]
     paths.append("search/")
     return paths
 

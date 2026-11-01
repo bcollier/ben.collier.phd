@@ -260,7 +260,7 @@ def page_title(html: str) -> str:
 def kind_of(path: str, app_paths: set[str]) -> str:
     if path.startswith("courses/"):
         return "course"
-    if path == "projects/":
+    if path.startswith("projects/"):
         return "project"
     if path in app_paths:
         return "app"

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slide Finder · Coding with AI · Ben Collier</title>
+  <meta name="description" content="A technical project on one question: how do you match a question to a slide? Every slide I have taught since Fall 2023, across five courses, is indexed four ways in one vector database: what I said in class while it was on screen, an AI's description of its picture, the slide's own text and speaker notes, and plain keywords.">
+  <meta name="author" content="Ben Collier">
+  <meta name="theme-color" content="#22302b">
+  <link rel="canonical" href="https://ben.collier.phd/projects/slide-finder/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Ben Collier">
+  <meta property="og:title" content="Slide Finder · Coding with AI · Ben Collier">
+  <meta property="og:description" content="A technical project on one question: how do you match a question to a slide? Every slide I have taught since Fall 2023, across five courses, is indexed four ways in one vector database: what I said in class while it was on screen, an AI's description of its picture, the slide's own text and speaker notes, and plain keywords.">
+  <meta property="og:url" content="https://ben.collier.phd/projects/slide-finder/">
+  <meta property="og:image" content="https://ben.collier.phd/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ben Collier, Assistant Teaching Professor of Business Analytics, Tepper School of Business">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Slide Finder · Coding with AI · Ben Collier">
+  <meta name="twitter:description" content="A technical project on one question: how do you match a question to a slide? Every slide I have taught since Fall 2023, across five courses, is indexed four ways in one vector database: what I said in class while it was on screen, an AI's description of its picture, the slide's own text and speaker notes, and plain keywords.">
+  <meta name="twitter:image" content="https://ben.collier.phd/assets/og.png">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <link rel="alternate" type="application/atom+xml" title="Ben Collier: news" href="../../feed.xml">
+  <script>(function(d){var c=d.classList,r=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;c.add("nb");if(r||!("IntersectionObserver" in window)){c.add("static")}else{c.add("js-anim")}setTimeout(function(){if(!window.__nb){c.remove("js-anim");c.remove("nb")}},4000)})(document.documentElement)</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Young+Serif&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Kalam:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Young+Serif&display=swap"></noscript>
+  <link rel="stylesheet" href="../../css/site.css?v=31e6de0a">
+  <script src="../../js/analytics.js?v=a48777f8" data-ga="G-GDXYCRQWHR" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="../../" aria-label="Ben Collier, PhD, home">
+      <span class="badge"><img src="../../assets/portrait-badge.webp" alt="" width="46" height="46" loading="lazy"><svg data-chart="ring"></svg></span>
+      <span>Ben Collier, PhD</span>
+    </a>
+    <nav aria-label="Main">
+      <ul class="tabs">
+        <li style="--c:#f6c453"><a href="../../courses/">courses</a></li>
+        <li style="--c:#9ccbea"><a href="../../projects/" aria-current="page">coding with AI</a></li>
+        <li style="--c:#a9d8a1"><a href="../../advising/">advising</a></li>
+        <li style="--c:#f3a391"><a href="../../consult/">consulting</a></li>
+        <li style="--c:#cdb8e8"><a href="../../cv/">cv</a></li>
+        <li style="--c:#8ed3c7"><a href="../../talks/">talks</a></li>
+        <li style="--c:#f5b5c8"><a href="../../news/">news</a></li>
+        <li style="--c:#e9dfc4"><a href="../../contact/">contact</a></li>
+      </ul>
+      <a class="search-tab" href="../../search/" data-search-open aria-label="Search the site" aria-keyshortcuts="/ Control+K Meta+K" title="Search the site (press /)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.6 4.2c3.7-.3 6.6 2.5 6.5 6.1-.1 3.5-3 6.3-6.6 6.2-3.5-.1-6.2-3-6.1-6.4.1-3.2 2.8-5.7 6.2-5.9Z"/><path d="M15.4 15.6c1.6 1.5 3.3 3.1 4.9 4.8"/></svg><span class="st-l" aria-hidden="true">search</span></a>
+    </nav>
+    <a class="sticky-cta" href="../../book/"><span class="nw">Book a call &rarr;</span><small>free, 15 minutes</small></a>
+  </div>
+</header>
+
+<main id="main" class="sheet">
+  <div class="sheet-head">
+    <span class="field" aria-hidden="true">Subject <span class="val">AI and business analytics</span></span>
+    <nav class="field crumbs" aria-label="Breadcrumb">Filed under <span class="val"><a href="../../projects/">coding with AI</a> / Slide Finder</span></nav>
+  </div>
+
+  <section class="page-head reveal"><p class="kicker">Web app &middot; October 2026</p><h1>Slide <span class="u u2" data-d="0.4">Finder</span></h1></section>
+
+  <div class="proj-intro reveal">
+    <a class="pf-shot polaroid drop" href="../../assets/portfolio/slide-finder.jpg" data-lightbox style="--rot:-1.6deg;--d:.2s"><span class="tape tc"></span><img src="../../assets/portfolio/slide-finder.jpg" alt="Slide Finder results for &quot;how does a computer read a photo&quot;, laid out as prints taped to a notebook page: Images are Numbers first, each with its course, session, distance and the narration that matched" width="1200" height="675"></a>
+    <div class="proj-facts">
+      <p class="pf-tools">Python, FastAPI, Supabase Postgres with pgvector, Voyage AI embeddings, Claude Haiku (image descriptions and titles), Vercel, Claude Code</p>
+      
+      <p>A technical project on one question: how do you match a question to a slide? Every slide I have taught since Fall 2023, across five courses, is indexed four ways in one vector database: what I said in class while it was on screen, an AI's description of its picture, the slide's own text and speaker notes, and plain keywords. Meaning and keyword matches are fused into one ranking, and every result shows which way found it and why. It is my own tool, not a student-facing one; I use it to pull old slides into new decks. Built for Effective Coding with AI (15-113), a Carnegie Mellon course, as the vector database project in Fall 2026.</p>
+      
+      <p class="pf-links"><a class="go" href="https://slide-finder.vercel.app">Try it</a> <a class="go" href="https://github.com/bcollier/slide-finder">Source, architecture and prompt log on GitHub</a></p>
+    </div>
+  </div>
+  <aside class="sticky-card proj-teaches" style="--rot:1.2deg" aria-labelledby="teaches"><span class="tape tc"></span><h2 id="teaches">What it teaches</h2><ul class="dashes"><li>Test retrieval with questions that share no words with the answer, so you measure meaning and not word overlap.</li><li>Store each kind of evidence (narration, image description, slide text, keywords) as its own embedded item instead of one long blob of text.</li><li>Score every ranking idea against labeled questions before keeping it, and drop the ones that lose, even when they felt right.</li><li>Make each search result explain why it ranked, so you can debug the ranking by looking at it.</li><li>Push back when an AI agent invents a constraint or keeps adding scope, and switch models when its advice keeps going wrong.</li></ul></aside>
+
+  <section class="sec reveal proj-sec" aria-labelledby="what-it-is"><span class="sec-no" aria-hidden="true">No. 01</span><h2 id="what-it-is">What it <span class="u" data-d="0.3">is</span></h2>
+<p>Slide Finder is a technical project on one question: how do you match a question to a slide? I type a question the way a student would ask it, and it finds the slides where I taught that idea, from every slide I have taught since Fall 2023 across five courses.</p>
+<figure class="polaroid proj-fig" style="--rot:1.2deg"><span class="tape tc"></span><a href="../../assets/portfolio/slide-finder/how-it-matches.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/how-it-matches.webp" alt="The landing page's fig. 1: the question &quot;how does a computer read a photo&quot; is compared with four texts attached to one slide, and the slide whose closest text wins comes back first" width="1600" height="545" loading="lazy" decoding="async"></a><figcaption>one question, four texts</figcaption></figure>
+<p>Every slide is stored as several searchable items, each with its own embedding: what I said in class while it was on screen, an AI's description of its picture, the slide's own text and speaker notes, and the keywords stemmed from all of that. A question is embedded once and compared with all of them. Meaning matches and keyword matches are fused into one ranking, and each slide is ranked by its best item.</p>
+<p>The same slide comes back year after year, often in a new deck template. Repeats are recognised by the pictures embedded in them, not by how the page looks. 5,623 deck pages became 2,801 unique slides, and each one lists every session that used it.</p>
+<p>It is my own tool, not a student-facing one. I use it when I build a new deck and want the slide where I already explained something, whatever course or term it was in.</p>
+<figure class="polaroid proj-fig" style="--rot:1.8deg"><span class="tape tc"></span><a href="../../assets/portfolio/slide-finder/results-photo-question.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/results-photo-question.webp" alt="Results for &quot;how does a computer read a photo&quot;: Images are Numbers first, then the attention visualization and the lion slide, each taped to the page with a red-pen rank" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption>how does a computer read a photo</figcaption></figure>
+  </section>
+
+  <section class="sec reveal proj-sec" aria-labelledby="a-tour"><span class="sec-no" aria-hidden="true">No. 02</span><h2 id="a-tour">A <span class="u" data-d="0.3">tour</span></h2>
+<p>Open a slide and you see the full image, the exact text that was embedded for it, and on the right why it was chosen. For "how does a computer read a photo", the winner was a chunk of my narration: "Ultimately, images are numbers." None of the question's words are on the slide.</p>
+<figure class="polaroid proj-fig" style="--rot:0.9deg"><span class="tape tc"></span><a href="../../assets/portfolio/slide-finder/slide-images-are-numbers.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/slide-images-are-numbers.webp" alt="The slide view for Images are Numbers: the slide, what is indexed for it, and why it was chosen" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption>why this one won</figcaption></figure>
+<p>The "why" panel has a sentence that names the item that ranked the slide, a bar that splits the score into meaning and keywords, a distance gauge with a red line at 0.55 where matches stop being trusted, and a ledger with one row per matched item. The landing page explains the four kinds of item.</p>
+<div class="pf-gallery few" style="--n:2" aria-label="Screenshots of Slide Finder"><figure class="polaroid pf-print" style="--rot:-1.6deg"><a href="../../assets/portfolio/slide-finder/why-this-slide.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/why-this-slide.webp" alt="Why this slide was chosen: the score split, the distance gauge from 0.3 to 0.7, the best sentence, and one bar per matched item" width="794" height="1215" loading="lazy" decoding="async"></a><figcaption>the evidence ledger</figcaption></figure><figure class="polaroid pf-print" style="--rot:1.2deg"><a href="../../assets/portfolio/slide-finder/four-ways.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/four-ways.webp" alt="Four index cards for the four ways a slide can match: narration, image description, slide text and notes, keywords" width="1600" height="1045" loading="lazy" decoding="async"></a><figcaption>four ways to match</figcaption></figure></div>
+<p>Three searches show the edges. A question about overfitting in plain words finds the bias and variance slide through my narration. A question I never taught gets a warning. A short exact term like `mtry` is found by keywords, even though nothing is close by meaning.</p>
+<div class="pf-gallery few" style="--n:3" aria-label="Screenshots of Slide Finder"><figure class="polaroid pf-print" style="--rot:-1.6deg"><a href="../../assets/portfolio/slide-finder/slide-bias-variance.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/slide-bias-variance.webp" alt="The bias and variance slide opened for &quot;it fits the data it has seen perfectly and falls apart on anything new&quot;, matched through my narration at distance 0.50" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption>no shared words</figcaption></figure><figure class="polaroid pf-print" style="--rot:1.2deg"><a href="../../assets/portfolio/slide-finder/weak-match-sourdough.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/weak-match-sourdough.webp" alt="The &quot;not sure I taught this&quot; warning for &quot;how do I bake sourdough bread&quot;, over weak matches" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption>never taught this</figcaption></figure><figure class="polaroid pf-print" style="--rot:-0.8deg"><a href="../../assets/portfolio/slide-finder/keyword-mtry.webp" data-lightbox><img src="../../assets/portfolio/slide-finder/keyword-mtry.webp" alt="Results for &quot;mtry&quot;: the random forest slide first, found by keyword, under the weak-match warning" width="1600" height="1000" loading="lazy" decoding="async"></a><figcaption>keywords still help</figcaption></figure></div>
+  </section>
+
+  <section class="sec reveal proj-sec" aria-labelledby="how-i-built-it"><span class="sec-no" aria-hidden="true">No. 03</span><h2 id="how-i-built-it">How I built <span class="u" data-d="0.3">it</span></h2>
+<p>I built it in Claude Code on October 26, in about six hours. I described the project in my own words first and only gave the agent the assignment page after the spec was drafted. Then it built one step at a time: spec, install and a five-line check, a smoke test that found the slides again in a second process, my real data, a look at the distances, runtime adds, deploy, evaluate. I tested each deployed version in my browser and sent back screenshots when something was wrong.</p>
+<p>The stack: Supabase Postgres with pgvector, Voyage AI embeddings, FastAPI and a static page on Vercel. Claude Haiku wrote the image descriptions and read titles off slides whose heading was inside a picture. That runs offline, never in the web app.</p>
+<p>About two hours in I switched models. The agent kept recommending Chroma and then wanted to keep it as a second backend "for graders", a constraint nobody gave it. I already pay for Supabase. I told it the recommendations were bad, switched from Claude Opus 5.5 to Claude Fable 5.1, and asked why. Its answer: it had invented a grading rule, kept Chroma out of sunk cost, and kept adding scope instead of cutting it. The design became one backend.</p>
+<p>Other things that went wrong, all in the prompt log:</p>
+<ul class="dashes"><li>Appending the image description to each slide's card made results worse. Long cards dilute the slide's own words. Descriptions became their own item.</li><li>pgvector's HNSW index returns at most 40 candidates, so "show 100" gave 24 slides. The vector side became an exact scan, which takes a few milliseconds at under 10,000 items.</li><li>The first duplicate grouping merged different slides that shared a template, then split one slide into a copy per term. Hashing the embedded pictures fixed both.</li><li>The vision pass returned a sentence of prose instead of a title for 32 slides, and the cleanup then shortened 38 real titles that had to be restored.</li></ul>
+<p>To check it, I wrote 28 questions the way a student would ask them, each labeled with the slide that answers it. The hybrid search puts a right slide first for 19 of 28 (hit@1 0.68). Keywords alone get 1 of 28. A 15% bonus I added by intuition, for slides matched two ways, dropped hit@1 to 0.57, so it came out. Measuring it was the point. All six off-topic questions got the warning.</p>
+<p>Some questions still miss. "It aced the practice problems but bombed the real test" means overfitting, but the embedding reads it as being about exams. Metaphors two steps away from the concept don't land.</p>
+<p>The project started because retrieval in my earlier project, <a href="https://github.com/bcollier/faculty-twin">Faculty Twin</a>, missed too often, and I wanted to work out how to get it right and prove it with numbers.</p>
+  </section>
+
+  <section class="sec reveal proj-sec" aria-labelledby="decisions"><span class="sec-no" aria-hidden="true">No. 04</span><h2 id="decisions">Decisions that <span class="u" data-d="0.3">mattered</span></h2>
+<ul class="dashes"><li>The same slide comes back year after year in a new template, so repeated slides are recognised by the pictures embedded in them, not by how the page renders. 5,623 deck pages became 2,801 unique slides, each listing every term that used it.</li><li>Picture-only slides get a description written by a vision model, stored as its own searchable item, so a slide that is just a chart can still be found by what it shows.</li><li>Keywords are not generated: Postgres stems every item's text into a full-text index, so a slide's keywords are the vocabulary of everything attached to it, including what I said and the description of its picture. They count half as much as meaning, because keywords alone found the right slide first for 1 of 28 labeled questions.</li><li>Each result explains itself: a sentence saying why it ranked, a distance gauge, and the exact sentence of narration or description that matched.</li></ul>
+  </section>
+
+  <p class="proj-nav"><a class="go back" href="../">All projects</a> <a class="go" href="../faculty-twin/">Next: Faculty Twin</a></p>
+</main>
+
+<footer class="foot">
+  <p><span class="sign">thanks for reading!</span><br>&copy; 2026 Ben Collier</p>
+  <nav aria-label="Footer">
+    <a href="../../consult/">Consulting</a>
+    <a href="../../contact/">Contact</a>
+    <a href="../../privacy/">Privacy</a>
+    <a href="../../terms/">Terms</a>
+    <a href="../../feed.xml">RSS</a>
+  </nav>
+</footer>
+<script src="../../js/config.js?v=3c19b151"></script>
+<script src="../../js/site.js?v=67b40b6f"></script>
+<script src="../../js/notebook.js?v=73bfb9c3" defer></script>
+<script src="../../js/search.js?v=884eb635" defer></script>
+<script src="../../js/lightbox.js?v=d62fc3e0" defer></script>
+</body>
+</html>
