@@ -2240,7 +2240,23 @@ def portfolio_card(p, root, i=0):
       {decisions}
 {note}      <p class="pf-links">{links}</p>
     </div>
-  </article>"""
+{portfolio_gallery(p, root)}  </article>"""
+
+
+def portfolio_gallery(p, root):
+    """Optional row of extra screenshots under a card, each a small taped print
+    that opens the full-size image."""
+    if not p.get("gallery"):
+        return ""
+    rots = [-1.6, 1.2, -0.8, 1.8, -1.2, 0.9]
+    shots = "".join(
+        f'<figure class="polaroid pf-print" style="--rot:{rots[i % len(rots)]}deg">'
+        f'<a href="{root}{esc(g["src"])}"><img src="{root}{esc(g["thumb"])}" alt="{esc(g["alt"])}" '
+        f'width="{g["thumb_width"]}" height="{g["thumb_height"]}" loading="lazy"></a>'
+        f'<figcaption>{esc(g["caption"])}</figcaption></figure>'
+        for i, g in enumerate(p["gallery"])
+    )
+    return f'    <div class="pf-gallery" aria-label="More screenshots of {esc(p["title"])}">{shots}</div>\n'
 
 
 def build_portfolio(portfolio):
