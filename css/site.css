@@ -1011,6 +1011,11 @@ html:not(.nb) .wk-strip img { width: 110px; border: 3px solid #fff; box-shadow: 
 .pf-body > p { font-size: 17px; }
 .pf-body .dashes li { margin-bottom: 8px; font-size: 16px; line-height: 1.5; }
 .pf-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; }
+.pf-gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 30px 26px; padding: 6px 10px 0; }
+.pf-print { padding: 8px 8px 0; }
+.pf-print a { display: block; }
+.pf-print figcaption { font-size: 17px; padding: 6px 2px 9px; }
+.pf-print:hover { transform: rotate(0deg) scale(1.02); }
 .aside { font-family: var(--hand); font-size: 19px; line-height: 1.25; color: var(--pen); border-left: 3px solid var(--margin); padding-left: 14px; }
 .aside a { color: var(--pen); }
 .mini-stats { list-style: none; padding: 0; margin: 4px 0 18px; display: flex; flex-wrap: wrap; gap: 12px; }
@@ -1384,6 +1389,7 @@ html:not(.nb) .art-print .back { display: none; }
   .pf, .pf.tall { grid-template-columns: minmax(0, 1fr); gap: 30px; }
   .pf-shot { max-width: 560px; }
   .pf.tall .pf-shot { max-width: 340px; }
+  .pf-gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 22px 18px; padding: 0; }
   .advised { grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 30px; }
   .contact-grid { grid-template-columns: 1fr; gap: 30px; }
   .contact-side { padding-top: 0; }
