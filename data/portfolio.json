@@ -221,19 +221,19 @@
       "links": [
         {
           "label": "Try it",
-          "href": "https://bcollier.github.io/ignatius-hw4-web/"
+          "href": "https://bcollier.github.io/ignatius-at-home-web/"
         },
         {
           "label": "Source, screenshots, and prompt log on GitHub",
-          "href": "https://github.com/bcollier/ignatius-hw4-web"
+          "href": "https://github.com/bcollier/ignatius-at-home-web"
         },
         {
           "label": "Backend and architecture",
-          "href": "https://github.com/bcollier/ignatius-hw4-api"
+          "href": "https://github.com/bcollier/ignatius-at-home-api"
         },
         {
           "label": "The original design spec",
-          "href": "https://github.com/bcollier/ignatius-hw4-api/blob/main/docs/original-spec/design-spec.md"
+          "href": "https://github.com/bcollier/ignatius-at-home-api/blob/main/docs/original-spec/design-spec.md"
         }
       ],
       "decisions": [
