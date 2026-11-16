@@ -16,7 +16,17 @@ This README describes the **Field Notebook** revision (late September to October
 | Fonts | Young Serif, Literata, IBM Plex Mono and Kalam, from Google Fonts |
 | Data | JSON and Markdown files in `data/`, baked into HTML at build time |
 
-**Contents:** [Architecture](#architecture) · [Pages](#the-pages) · [The pen: how the animation works](#the-pen-how-the-animation-works) · [Data visualization](#data-visualization) · [Code worth sharing with students](#code-worth-sharing-with-students) · [The robot](#the-robot) · [Where the data comes from](#where-the-data-comes-from) · [Domains and deployment](#domains-and-deployment) · [Working on the site](#working-on-the-site) · [Privacy rules](#privacy-rules) · [History](#history-15-113-and-the-six-designs)
+## Quick start
+
+```bash
+python3 scripts/build.py                       # regenerate every page, the sitemap, feed and search index
+python3 -m http.server 8000                    # preview at http://localhost:8000
+python3 -m unittest discover -s tests          # search index tests
+```
+
+Every change goes through a pull request: branch off `main`, commit the source edits together with the rebuilt HTML, open a PR, squash-merge, pull. `main` is what GitHub Pages serves, so it must always be a working site. The full rules for people and AI agents are in [`AGENTS.md`](AGENTS.md).
+
+**Contents:** [Quick start](#quick-start) · [Architecture](#architecture) · [Pages](#the-pages) · [The pen: how the animation works](#the-pen-how-the-animation-works) · [Data visualization](#data-visualization) · [Code worth sharing with students](#code-worth-sharing-with-students) · [The robot](#the-robot) · [The reels](#the-reels) · [Where the data comes from](#where-the-data-comes-from) · [Analytics](#analytics) · [Domains and deployment](#domains-and-deployment) · [Working on the site](#working-on-the-site) · [Privacy rules](#privacy-rules) · [Related repositories](#related-repositories) · [History](#history-15-113-and-the-six-designs)
 
 ---
 
@@ -41,7 +51,7 @@ flowchart LR
     ver["versioned()<br/>?v=hash on css/js"]
   end
   subgraph out["committed output"]
-    html["*/index.html<br/>35 pages"]
+    html["*/index.html<br/>about 45 pages"]
     xml["sitemap.xml · feed.xml<br/>robots.txt"]
   end
   data --> build --> out
@@ -65,13 +75,13 @@ flowchart TB
 
 | File | Lines | What it does |
 |---|---:|---|
-| `scripts/build.py` | ~2,900 | Generates every page, the sitemap, the Atom feed and robots.txt. Course list and news log live here |
-| `css/site.css` | ~1,600 | The whole Field Notebook design, every page, plus the CV's print styles |
-| `js/notebook.js` | ~780 | The pen: wobbly SVG strokes, charts, scroll reveals, count-ups, the docking portrait, slide piles, the robot |
-| `js/evals.js` | ~420 | The evaluation charts, drawn with the pen, with sticky-note tooltips |
+| `scripts/build.py` | ~3,500 | Generates every page, the sitemap, the Atom feed and robots.txt. Course list and news log live here |
+| `css/site.css` | ~2,000 | The whole Field Notebook design, every page, plus the CV's print styles |
+| `js/notebook.js` | ~830 | The pen: wobbly SVG strokes, charts, scroll reveals, count-ups, the docking portrait, slide piles, the robot |
+| `js/evals.js` | ~430 | The evaluation charts, drawn with the pen, with sticky-note tooltips |
 | `js/travel-map.js` | ~330 | Flat world map with country and US city dots (d3) |
 | `js/travel.js` | ~150 | The spinning globe (d3) |
-| `js/reels-v2.js` | ~700 | Reels version 2: WebGL music video renderer that plays `data/reels_v2.json` against the song clock |
+| `js/reels-v2.js` | ~690 | Reels version 2: WebGL music video renderer that plays `data/reels_v2.json` against the song clock |
 | `js/reels.js` | ~150 | The two photo reels on /reels/: crossfade, pan and zoom, place labels, shared music |
 | `js/course-schedule.js` | ~160 | The slide "projector" that follows the schedule on course pages |
 | `js/course-assistant.js` | ~210 | The course-assistant note: lifts, straightens and opens into the legal-pad hand-off frame (`css/handoff.css`, shared with Faculty Twin), then goes to the twin |
@@ -79,6 +89,8 @@ flowchart TB
 | `js/search.js` | ~590 | Site search: a small full-text engine (prefix, typo and synonym matching, field boosts) and the legal-pad search box. Ranking is explained at the top of the file |
 | `scripts/search_index.py` | ~360 | Cuts the built pages into search records and writes `assets/search-index.json` |
 | `js/place-pop.js` | ~40 | Campus map and building photo pop-ups on /cv/ and /contact/ |
+| `js/analytics.js` | ~70 | Loads Google Analytics 4 and sends the `ui_click` event (see [Analytics](#analytics)) |
+| `js/connections-page.js` | ~20 | The theme picker around the Connections game; the game itself is copied from connections_demo |
 
 ---
 
@@ -88,10 +100,12 @@ flowchart TB
 |---|---|---|
 | `/` | Hero, bio, career timeline, tally-mark stats, courses, recent news | Portrait that peels off and docks into the header on scroll; red proofreader's caret that writes "PhD" after the name; k-means margin sketch |
 | `/courses/` and 21 course pages | Index cards with slide piles; per course: hero slides, week-by-week schedule with a slide projector, assignments, final projects, student quotes | Projector follows the session in view; "What students say" quote cards |
-| `/projects/` | Coding with AI projects | |
+| `/projects/` | Coding with AI projects, with source code, prompts and build logs | `/ai-apps/` redirects here |
 | `/advising/` | 13 capstones and independent studies | Each print lands face down showing the partner's logo, flips to a diagram that inks itself in |
-| `/evaluations/` | Every CMU course evaluation since Fall 2023 | Seven charts, a program filter and an item picker, quote cards, unsolicited notes as letters in envelopes |
-| `/consult/`, `/book/` | Consulting and custom education, booking | |
+| `/evaluations/` | Chooser between two independently written analyses of the same de-identified evaluations | |
+| `/evaluations-a/` | Version A: the full 2011 to 2026 history, 44 sections | |
+| `/evaluations-b/` | Version B: every CMU course evaluation since Fall 2023 (24 sections, 727 responses), with the Qatar record shown separately | Seven charts, a program filter and an item picker, quote cards, unsolicited notes as letters in envelopes |
+| `/consult/`, `/book/` | Consulting and custom education, booking (Cal.com) | `/practice/` redirects to `/consult/` |
 | `/cv/` | The CV from `data/cv.md` | Career-at-a-glance timeline, campus map pop-ups, print stylesheet |
 | `/strengths/` | Two StrengthsFinder results, five years apart | Slope chart of theme ranks. History: [strengths/prompt_log.md](strengths/prompt_log.md) |
 | `/talks/` | Talks with selected slides | |
@@ -100,6 +114,8 @@ flowchart TB
 | `/news/` | Dated log plus LinkedIn posts | |
 | `/search/` | Search across every page; `?q=` deep links; a plain list of every page without JavaScript | The magnifier tab, `/` or Cmd/Ctrl+K opens the same search as a legal pad over any page. The index (`assets/search-index.json`, about 215 KB, 73 KB gzipped) is fetched only when someone reaches for search. Tests: `python3 -m unittest discover -s tests` |
 | `/contact/` | Email, office, links | Campus map pop-ups |
+| `/connections/` | A Connections-style word game: AI-written puzzles about Ben, plus hand-made packs | Player and packs synced from [connections_demo](https://github.com/bcollier/connections_demo) |
+| `/privacy/`, `/terms/`, `/sms/` | Privacy policy and terms for the site and the Faculty Twin course assistant; opt-in page for Faculty Twin SMS alerts | Written by `build_policies()` and `build_sms_optin()` |
 
 ---
 
@@ -121,10 +137,10 @@ flowchart LR
 - **Seeded wobble.** `rng(seed)` (`js/notebook.js:20`) is a tiny mulberry32 generator. Every chart seeds it with a fixed number, so the "hand-drawn" jitter is identical on every visit and every reload.
 - **Path generators** (`js/notebook.js:40-85`): `lineD` bends a straight line into a cubic curve with jittered control points; `curve` turns a list of points into a smooth Catmull-Rom-style path; `loopD` draws a pen circle that overshoots its start; `arrowD` returns a curved shaft plus a two-stroke head; `zigzag` hatches the inside of a bar like a highlighter.
 - **Drawing.** `ink()` (`:86`) appends the path with a per-stroke delay and duration as CSS custom properties; `measure()` (`:96`) stores each path's length. CSS does the rest.
-- **Choreography.** `arm()` (`:425`) holds every `.reveal` section in its "before" state until it scrolls into view, with a plain geometry sweep as a safety net so nothing can stay hidden. Other entrance classes in `css/site.css`: `.land` (sticky notes drop with a bounce), `.deal` (index cards dealt onto the page), `.thunk` (rubber stamps), `.drop` (taped photos), and highlighter `mark`s that sweep left to right.
-- **Count-ups** (`:404`) tick numbers up to their value, then always settle on the true number even if frames are throttled.
-- **Docking portrait** (`dock()`, `:453`): on the home page the colour portrait shrinks, turns into a stippled newspaper-style hedcut (`scripts/make_hedcut.py`) and lands in the header badge as you scroll.
-- **Slide piles** (`stacks()`, `:672`): a print lifts off the top of each pile and slides to the back every few seconds while the pile is on screen.
+- **Choreography.** `arm()` (`:479`) holds every `.reveal` section in its "before" state until it scrolls into view, with a plain geometry sweep as a safety net so nothing can stay hidden. Other entrance classes in `css/site.css`: `.land` (sticky notes drop with a bounce), `.deal` (index cards dealt onto the page), `.thunk` (rubber stamps), `.drop` (taped photos), and highlighter `mark`s that sweep left to right.
+- **Count-ups** (`countUp()`, `:458`) tick numbers up to their value, then always settle on the true number even if frames are throttled.
+- **Docking portrait** (`dock()`, `:507`): on the home page the colour portrait shrinks, turns into a stippled newspaper-style hedcut (`scripts/make_hedcut.py`) and lands in the header badge as you scroll.
+- **Slide piles** (`stacks()`, `:726`): a print lifts off the top of each pile and slides to the back every few seconds while the pile is on screen.
 - **Rules.** Every page reads fully without JavaScript. With `prefers-reduced-motion`, everything is drawn at once and the robot stays home. Scripts and the stylesheet are versioned by content hash (`versioned()` in `build.py`), so a change reaches visitors on their next load.
 
 ---
@@ -154,18 +170,18 @@ flowchart TB
 |---|---|---|
 | Tally marks (home stats) | `/` | `charts.tally`, `js/notebook.js:164` |
 | k-means sketch with centroids | `/` | `charts.kmeans`, `js/notebook.js:191` |
-| Career timeline | `/`, `/cv/` | `charts.timeline`, `js/notebook.js:221` |
-| Hatched bar chart | course pages (project types) | `charts.bar`, `js/notebook.js:250` |
-| Course doodles (net, scatter, bell curve, gradient descent...) | course cards | `charts.icon`, `js/notebook.js` |
-| Every evaluation, term by term (dot plot sized by n, weighted mean line) | `/evaluations/` | `timeline()`, `js/evals.js:121` |
-| Course by course (dot lines, circled mean) | `/evaluations/` | `courses()`, `js/evals.js:175` |
-| Small multiples for repeat courses | `/evaluations/` | `multiples()`, `js/evals.js:211` |
-| First year against latest, nine items (dumbbell) | `/evaluations/` | `dumbbell()`, `js/evals.js:244` |
-| Share of "excellent" ratings (100% stacked bars) | `/evaluations/` | `excellent()`, `js/evals.js:268` |
-| Comment themes (hatched bars) | `/evaluations/` | `themes()`, `js/evals.js:301` |
+| Career timeline | `/`, `/cv/` | `charts.timeline`, `js/notebook.js:275` |
+| Hatched bar chart | course pages (project types) | `charts.bar`, `js/notebook.js:304` |
+| Course doodles (net, scatter, bell curve, gradient descent...) | course cards | `charts.icon`, `js/notebook.js:315` |
+| Every evaluation, term by term (dot plot sized by n, weighted mean line) | `/evaluations/` | `timeline()`, `js/evals.js:127` |
+| Course by course (dot lines, circled mean) | `/evaluations/` | `courses()`, `js/evals.js:181` |
+| Small multiples for repeat courses | `/evaluations/` | `multiples()`, `js/evals.js:217` |
+| First year against latest, nine items (dumbbell) | `/evaluations/` | `dumbbell()`, `js/evals.js:250` |
+| Share of "excellent" ratings (100% stacked bars) | `/evaluations/` | `excellent()`, `js/evals.js:274` |
+| Comment themes (hatched bars) | `/evaluations/` | `themes()`, `js/evals.js:307` |
 | World map, US cities, photo pop-ups | `/travel/` | `js/travel-map.js` |
 | Globe | `/travel/` | `js/travel.js` |
-| StrengthsFinder slope chart | `/strengths/` | `strengths_chart()`, `scripts/build.py:2508` |
+| StrengthsFinder slope chart | `/strengths/` | `strengths_chart()`, `scripts/build.py:2690` |
 | Advising project diagrams | `/advising/` | `scripts/advising_art.py` |
 | Campus map | `/cv/`, `/contact/` | `scripts/make_campus_map.py` |
 
@@ -187,14 +203,14 @@ Small, self-contained pieces that make good teaching examples. None needs anythi
 | A seeded random number generator in 8 lines | `js/notebook.js:20` | Reproducibility: the same seed gives the same "random" drawing every time |
 | Hand-drawn lines from cubic Béziers | `lineD`, `js/notebook.js:40` | Shows how control points shape a curve; jitter makes it look human |
 | The stroke-dashoffset drawing trick | `ink()` and `measure()`, `js/notebook.js:86-102`, plus `.ink` in `css/site.css` | The standard technique behind "self-drawing" SVG, in about 20 lines |
-| A dot plot sized by sample size, with a weighted mean line | `timeline()`, `js/evals.js:121` | Encoding n visually; why weighted means differ from simple means |
-| A dumbbell chart | `dumbbell()`, `js/evals.js:244` | Before and after for many items on one axis |
-| Small multiples on a shared scale | `multiples()`, `js/evals.js:211` | One chart per group, same axes, comparable at a glance |
+| A dot plot sized by sample size, with a weighted mean line | `timeline()`, `js/evals.js:127` | Encoding n visually; why weighted means differ from simple means |
+| A dumbbell chart | `dumbbell()`, `js/evals.js:250` | Before and after for many items on one axis |
+| Small multiples on a shared scale | `multiples()`, `js/evals.js:217` | One chart per group, same axes, comparable at a glance |
 | Greedy label placement without overlaps | `placeLabels()`, `js/travel-map.js:104` | A real-world collision problem solved with bounding boxes and a priority order |
-| A slope chart in plain Python that writes SVG | `strengths_chart()`, `scripts/build.py:2508` | Rank change between two snapshots, no plotting library |
+| A slope chart in plain Python that writes SVG | `strengths_chart()`, `scripts/build.py:2690` | Rank change between two snapshots, no plotting library |
 | OpenStreetMap to SVG | `scripts/make_campus_map.py` | Projecting lat/lon to a page and drawing buildings and roads |
 | Stippling a photo with Pillow and numpy | `scripts/make_hedcut.py` | Image processing as data: brightness becomes dot density |
-| Cache-busting by content hash | `versioned()`, `scripts/build.py:683` | Why "it works on my machine" happens with caches, fixed in 15 lines |
+| Cache-busting by content hash | `versioned()`, `scripts/build.py:812` | Why "it works on my machine" happens with caches, fixed in 15 lines |
 
 ---
 
@@ -208,11 +224,11 @@ sequenceDiagram
   participant V as Visitor
   participant R as Robot
   participant H as Header "Book a call" note
-  Note over V,R: about 6.5 s into the visit
+  Note over V,R: about 36.5 s into the visit
   R->>V: pops up in a free bottom corner, waves: "Hi!"
-  Note over V,R: about 30 s
-  R->>V: pops up on the left: "Thanks for sticking around to check things out!"
   Note over V,R: about 90 s
+  R->>V: pops up on the left: "Thanks for sticking around to check things out!"
+  Note over V,R: about 180 s
   R->>R: walks in from the left edge
   H-->>R: the note lifts out of the header and flies into the robot's hand
   R->>V: "Wow, you're really into this! Want to chat? 15 minutes on Zoom."
@@ -223,20 +239,20 @@ sequenceDiagram
 ```mermaid
 stateDiagram-v2
   [*] --> Waiting
-  Waiting --> Visit1: 6.5 s
+  Waiting --> Visit1: 36.5 s
   Visit1 --> Waiting: tucks away after ~6 s
-  Waiting --> Visit2: 30 s, visit 1 done
+  Waiting --> Visit2: 90 s, visit 1 done
   Visit2 --> Waiting: tucks away after ~7 s
-  Waiting --> Visit3: 90 s, visit 2 done
+  Waiting --> Visit3: 180 s, visit 2 done
   Visit3 --> [*]: walks off with the note
   Waiting --> Waiting: tab in background or another robot on screen, check again in 3 s
 ```
 
 How it behaves:
 
-- **Code:** `makeBot()` draws it (`js/notebook.js:519`); `peek()` handles visits 1 and 2; `walkWithBanner()` (`:600`) handles visit 3; `robot()` (`:644`) runs the schedule.
+- **Code:** `makeBot()` draws it (`js/notebook.js:573`); `peek()` (`:629`) handles visits 1 and 2; `walkWithBanner()` (`:654`) handles visit 3; `robot()` (`:698`) runs the schedule.
 - **Placement:** visits 1 and 2 choose a bottom corner that does not cover the nav or any button, link card or sticky note. If both corners are busy they wait and try again.
-- **Clicking:** a click on the robot makes it hop and wave again. Only visit 3 offers anything, and only after a visitor has spent a minute and a half on the site.
+- **Clicking:** a click on the robot makes it hop and wave again. Only visit 3 offers anything, and only after a visitor has spent three minutes on the site.
 - **When it stays home:** never two robots at once, never in a background tab, never on `/book/` (visit 3), and never with reduced motion.
 
 ---
@@ -245,7 +261,7 @@ How it behaves:
 
 The whole story, from the first question to the encoded video, with diagrams and the edit timeline: **[docs/reels-pipeline.md](docs/reels-pipeline.md)**.
 
-`/reels/` plays two short slideshows of Ben's face over the years, made from his Apple Photos library by `scripts/make_reels.py`. The script runs on Ben's Mac only. It reads the library through osxphotos, read-only, and does every check locally: no photo is sent to any online service, and the only copies that leave the Mac are the exported WebP files committed here.
+`/reels/` plays two short slideshows of Ben's face over the years, made from his Apple Photos library by `scripts/make_reels.py`. The script runs locally on macOS, next to the Photos library. It reads the library through osxphotos, read-only, and does every check on that machine: no photo is sent to any online service, and the only copies that leave it are the exported WebP files committed here.
 
 ```mermaid
 flowchart LR
@@ -326,11 +342,11 @@ How it stays free, since Cloudflare has no hard spending cap:
 | Charge | Who can cause it | Guard |
 |---|---|---|
 | Storage over 10 GB | only these scripts | `r2.py` refuses any upload past 8 GB; `drafts/` empties itself after 30 days |
-| Class A (writes, lists) over 1 million | only these scripts | the upload keys reach this one bucket and live only on Ben's Mac mini |
+| Class A (writes, lists) over 1 million | only these scripts | the upload keys reach this one bucket and are never in the repo |
 | Class B (reads) over 10 million | visitors | the bucket has no public or `r2.dev` access; reads go through the Worker, and the Workers **Free** plan stops at 100,000 requests a day instead of billing (at most 3 million a month) |
 | Anything | anyone | Cloudflare e-mails Ben at $1 of spend and at 80% of each free amount; `r2_watchdog.py` (run daily by `scripts/launchd/phd.collier.r2-watchdog.plist`) switches the Worker's address off at 80% |
 
-Credentials are in `~/.config/r2/reels.env` on the Mac mini (mode 600): `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` (an R2 token limited to `ben-reels`), and `CLOUDFLARE_API_TOKEN` (Workers R2 Storage and Workers Scripts edit, for deploys and the watchdog). They are never in the repo. Wrangler reads the token from the environment: `set -a; . ~/.config/r2/reels.env; set +a; export CLOUDFLARE_ACCOUNT_ID=$R2_ACCOUNT_ID`.
+Credentials are in `~/.config/r2/reels.env` (mode 600), outside the repo: `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` (an R2 token limited to `ben-reels`), and `CLOUDFLARE_API_TOKEN` (Workers R2 Storage and Workers Scripts edit, for deploys and the watchdog). They are never in the repo. Wrangler reads the token from the environment: `set -a; . ~/.config/r2/reels.env; set +a; export CLOUDFLARE_ACCOUNT_ID=$R2_ACCOUNT_ID`.
 
 ---
 
@@ -429,10 +445,7 @@ flowchart LR
 
 ## Working on the site
 
-```bash
-python3 scripts/build.py                     # regenerate every page
-python3 -m http.server 8000                  # preview at http://localhost:8000
-```
+See [Quick start](#quick-start) for the build, preview and test commands.
 
 | To change | Edit | Rebuild? |
 |---|---|---|
@@ -447,6 +460,7 @@ python3 -m http.server 8000                  # preview at http://localhost:8000
 | Domain, name, links | `data/site.json` | Yes |
 | LinkedIn posts | `data/linkedin.json` or `scripts/add_linkedin_post.py` | No |
 | Booking links (Cal.com, Calendly) | `js/config.js` | No |
+| Connections game | change it in connections_demo, then `scripts/sync_connections.sh` | Yes |
 | Styles | `css/site.css` | Yes (so the version hash updates) |
 | Scripts | `js/*.js` | Yes (same reason) |
 
@@ -462,6 +476,18 @@ Other scripts: `add_linkedin_post.py` (add a post by hand), `fetch_linkedin_phot
 - **Photos.** Faces other than Ben's are excluded or blurred, and every photo is re-encoded without metadata. The reels never blur: a photo with anyone else in it is cropped until they are gone, or left out.
 - **Email.** The personal address never appears in the HTML; `js/site.js` assembles it in the browser.
 - **Copy.** Public copy is written in Ben's voice, with no em dashes and no instructions to editors rendered into pages (see `AGENTS.md`).
+
+---
+
+## Related repositories
+
+| Repository | Relationship |
+|---|---|
+| [collier.phd-redirect](https://github.com/bcollier/collier.phd-redirect) | Serves `collier.phd` and `www.collier.phd` and forwards every path here |
+| [hotmetal.ai](https://github.com/bcollier/hotmetal.ai) | Forwards `hotmetal.ai` to `/consult/` |
+| [faculty-twin](https://github.com/bcollier/faculty-twin) | The course assistant the home-page note hands off to. `css/handoff.css` and `assets/handoff-text.svg` must stay byte-identical in both repos |
+| [connections_demo](https://github.com/bcollier/connections_demo) | Source of truth for the Connections player and puzzle packs; `scripts/sync_connections.sh` copies them here |
+| cmu-page (private) | A plain jemdoc-style page for `andrew.cmu.edu/user/bcollier`, generated from this repo's `data/site.json`, `data/cv.md`, `data/advising.json`, `COURSES` and `NEWS`. Rename or restructure those and its `build.py` needs the same change |
 
 ---
 
