@@ -2,6 +2,60 @@
   "note": "Fun projects shown to classes. Each entry renders as a card on /projects/. Keep image paths under assets/portfolio/.",
   "projects": [
     {
+      "id": "places-please",
+      "title": "Places, Please",
+      "kind": "iPhone app",
+      "date": "November 2026",
+      "tools": "Expo and React Native, TypeScript, Supabase, OpenRouter (Gemini Flash), ElevenLabs, Claude Code",
+      "image": "assets/portfolio/places-please.jpg",
+      "image_alt": "Three iPhone screens from Places, Please: the home page rehearsing Romeo and Juliet with Run Lines, Warm Up and Listen, the Run Lines start screen explaining the chime, soft tone and buzz, and Listen highlighting Romeo's line",
+      "image_width": 1200,
+      "image_height": 900,
+      "summary": "An iPhone app for learning lines. You photograph a script's pages or upload a PDF or Word file, and AI pulls out the characters, scenes and lines. Then you rehearse with an AI scene partner: it reads every other part aloud, with a voice for each character, listens while you say your line, and checks it word for word. A chime means word perfect, a soft tone means close, and a buzz means missed. Flash cards drill which line follows each cue, and a listen mode plays the scene like a radio play with the screen off. I built it in one day with Claude Code, from a one-page spec, as a homework assignment.",
+      "decisions": [
+        "Scoring happens on the phone, word by word, after a speech model writes down what you said. Contractions count the same as the words written out, because the transcript often says \"what are\" when the actor said \"what're\". That rule came from a real rehearsal where every line kept coming back Missed.",
+        "No API key is on the phone. One Supabase function calls OpenRouter and ElevenLabs, logs every paid call with its cost before it is sent and after it returns, and stops at a daily spending cap. I started with free Microsoft voices, which were blocked from cloud servers, so the scene partner moved to ElevenLabs, with the iPhone's own voices as the fallback.",
+        "It keeps running with the screen off, so you can pocket the phone and walk a scene. The hardest bug was silence on a real iPhone: the app switched audio off between sessions, and the audio library then ignored every later request to play a sound.",
+        "A clean code pass at the end split each screen into named hooks and small components. The add-a-script screen went from about 250 lines to about 60, and screenshots of every screen were compared pixel by pixel before and after to show nothing changed."
+      ],
+      "links": [
+        {
+          "label": "Source, screenshots and prompt log on GitHub",
+          "href": "https://github.com/bcollier/places_please"
+        },
+        {
+          "label": "The original spec",
+          "href": "https://github.com/bcollier/places_please/blob/main/SPEC.md"
+        }
+      ],
+      "gallery": [
+        {
+          "src": "assets/portfolio/places-please/import.webp",
+          "thumb": "assets/portfolio/places-please/import-t.webp",
+          "thumb_width": 480,
+          "thumb_height": 320,
+          "caption": "add a script, then fix a line",
+          "alt": "Three screens: Add a Script with photograph pages, choose photos or upload a PDF or Word file; the script page with character and scene pickers; and the Edit Line sheet"
+        },
+        {
+          "src": "assets/portfolio/places-please/practice.webp",
+          "thumb": "assets/portfolio/places-please/practice-t.webp",
+          "thumb_width": 480,
+          "thumb_height": 320,
+          "caption": "flash cards, history, settings",
+          "alt": "Three screens: a Warm Up flash card with Juliet's cue and four choices for Romeo's reply; practice history with a four-day streak and scores; and settings for voices, speed and pause length"
+        },
+        {
+          "src": "assets/portfolio/places-please/dark.webp",
+          "thumb": "assets/portfolio/places-please/dark-t.webp",
+          "thumb_width": 480,
+          "thumb_height": 320,
+          "caption": "dark mode",
+          "alt": "The home page, script page and Listen screen in dark mode"
+        }
+      ]
+    },
+    {
       "id": "monday-855",
       "title": "Monday, 8:55",
       "kind": "Browser game",
